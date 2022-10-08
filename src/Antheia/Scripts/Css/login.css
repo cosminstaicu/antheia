@@ -1,0 +1,62 @@
+body.jsf_login {
+	background-color: var(--jsf-theme-panelBorder);
+	height: 100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+body.jsf_login.jsf-hasRecaptcha {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+body.jsf_login input {
+	margin-bottom: 14px;
+}
+body.jsf_login form {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+#jsf_login-submit {
+	width: 150px;
+}
+#jsf_login-submit:disabled, #jsf_login-submit:disabled:hover {
+	color: var(--jsf-theme-buttonBackground);
+	background-color: var(--jsf-theme-buttonText);
+}
+#jsf_login-action {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	overflow: hidden;
+	min-width: 310px;
+	min-height: 80px;
+}
+#jsf_login-action > * {
+	transition: left 0.6s;
+}
+#jsf_login-action > *:not(#jsf_login-recaptcha) {
+	position: relative;
+	top:0px;
+	left: 0%;
+}
+#jsf_login-action > #jsf_login-recaptcha {
+	position: absolute;
+	top:0px;
+	left: -100%;
+}
+
+#jsf_login-action.jsf_login-wait-recaptcha > *:not(#jsf_login-recaptcha) {
+	position: relative;
+	top:0px;
+	left: -100%;
+}
+#jsf_login-action.jsf_login-wait-recaptcha > #jsf_login-recaptcha {
+	position: absolute;
+	top:0px;
+	left: 0%;
+}

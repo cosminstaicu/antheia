@@ -1,0 +1,81 @@
+#jsf_header {
+	padding-top: 100px;
+	background-color: var(--jsf-theme-headerBackground);
+	width: 100%;
+	padding-left: 40px;
+	padding-right: 40px;
+	padding-bottom: 30px;
+}
+#jsf_header-tabs {
+	overflow-x: auto;
+	width: 100%;
+	padding: 0px 30px 1px 30px;
+	white-space: nowrap;
+	background-color: var(--jsf-theme-headerBackground);
+}
+#jsf_header-tabs.jsf-hidden {
+	display: none;
+}
+#jsf_header-tabs > div {
+	display: inline-block;
+	text-align: right;
+	border: 1px solid var(--jsf-theme-tabText);
+	border-radius: 6px 6px 0px 0px;
+	padding: 5px 5px 5px 5px;
+	margin-right: 5px;
+	font-size: 12px;
+	text-align: left;
+	white-space: nowrap;
+	background-color: var(--jsf-theme-tabBackground);
+	vertical-align: bottom;
+}
+#jsf_header-tabs > div.jsf-hidden {
+	display: none;
+}
+#jsf_header-tabs > div > a {
+	color: var(--jsf-theme-tabText);
+}
+#jsf_header-tabs > div > a:first-child {
+	padding: 5px;
+	line-height: 18px;
+}
+#jsf_header-tabs > div > a:nth-of-type(2) {
+	line-height: 6px;
+	vertical-align: bottom;
+}
+#jsf_header-tabs > div > a:hover {
+	text-decoration: none;
+}
+#jsf_header-tabs > div.jsf-selected {
+	background-color: var(--jsf-theme-tabText);
+}
+#jsf_header-tabs > div.jsf-selected > a {
+	color: var(--jsf-theme-tabBackground);
+}
+#jsf_header-tabs > div.jsf-accent > a {
+	font-weight: bold;
+}
+/************************************************************* SM DEFINITIONS */
+@media only screen and (min-width: 768px) {
+	div#jsf_header-tabs  {
+		text-align: center;
+	}
+	#jsf_header {
+		padding-left: calc(calc(100vw - 710px) / 2);
+		padding-right: calc(calc(100vw - 710px) / 2);
+	}
+}
+/************************************************************* MD DEFINITIONS */
+@media only screen and (min-width: 992px) {
+	#jsf_header {
+		padding-left: calc(calc(100vw - 930px) / 2);
+		padding-right: calc(calc(100vw - 930px) / 2);
+	}
+}
+/************************************************************* LG DEFINITIONS */
+@media only screen and (min-width: 1200px) {
+	#jsf_header {
+		padding-left: calc(calc(100vw - 1130px) / 2);
+		padding-right: calc(calc(100vw - 1130px) / 2);
+	}
+}

@@ -1,0 +1,95 @@
+body.jsf_message-active {
+	visibility: hidden;
+}
+body.jsf_tags_bottom-bar.jsf_message-active {
+	background: var(--jsf-theme-background);
+}
+#jsf_message-text-container {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+.jsf_message-text {
+	margin: 5px;
+	min-width: 250px;
+	background-color: var(--jsf-theme-text);
+	color: var(--jsf-theme-panelBackground);
+	text-align: center;
+	border: 1px solid var(--jsf-theme-panelBorder);
+	border-radius: 2px;
+	padding: 16px;
+	transition: all .5s;
+	opacity: 1;
+}
+.jsf_message-text.jsf-pre-visible {
+	opacity: 0;
+	transform: translateX(100%);
+}
+.jsf_message-text.jsf-slide-out-mode {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+}
+.jsf_message-text.jsf-slide-out-mode.jsf-end-slide {
+	opacity: 0;
+	transform: translateY(100%);
+}
+.jsf-slide-down-placeholder {
+	transition: all .5s;
+	width: 10px;
+}
+.jsf_message-image {
+	position: fixed;
+	top:0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background-color: var(--jsf-theme-menuBackground);
+	background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.jsf_message-image.jsf-close-on-click:after {
+	position: absolute;
+	content: '\2716';
+	font-size: 24px;
+	right: 50px;
+	top: 50px;
+	background-color: var(--jsf-theme-menuBackground);
+	color: white;
+	padding: 10px 30px;
+	border-radius: 5px;
+	cursor: pointer;
+	opacity: .8;
+}
+.jsf_message-image > p {
+	position: absolute;
+	bottom: 200px;
+	display: block;
+	opacity: 0.8;
+	background-color: var(--jsf-theme-menuBackground);
+	padding-top: 30px;
+	padding-bottom: 30px;
+	padding-right: 10vw;
+	width: 100%;
+	text-align: right;
+	font-size: 24px;
+	white-space: nowrap;
+	left: 0px;
+	color: transparent;
+}
+.jsf_message-image.jsf-visible > p {
+	padding-right: 30vw;
+	color: white;
+	transition: 3s;
+	transition-timing-function: liniar;
+}
+.jsf_message-image.jsf-finish {
+	opacity: 0;
+	transition: 1s;
+}
+.jsf_message-image.jsf-finish > p {
+	padding-right: 50vw;
+	transition: 1s;
+	color:  var(--jsf-theme-menuText);
+}

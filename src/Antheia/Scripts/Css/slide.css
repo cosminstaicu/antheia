@@ -1,0 +1,47 @@
+.jsf_slide-button {
+	text-decoration: none;
+	color: var(--jsf-theme-link);
+}
+.jsf_slide-button:hover {
+	text-decoration: none;
+	color: var(--jsf-theme-linkHover);
+}
+.jsf_slide-button.jsf-icon:before {
+	font-family: "Material Icons";
+	font-size: 24px;
+	content: "arrow_downward";
+	position: relative;
+	top: 6px;
+}
+.jsf_slide-button.jsf-icon.jsf-enabled:before {
+	content: "close";
+}
+.jsf_slide {
+	overflow: hidden;
+}
+.jsf_slide > div {
+	position: relative;
+	top: 0px;
+	transition: top 0.5s, opacity 0.5s;
+	overflow: hidden;
+}
+.jsf_slide > div:first-child {
+	top: -80px;
+	height: 0;
+	opacity: 0;
+}
+.jsf_slide > div:last-child {
+	top: 0px;
+	height: auto;
+	opacity: 1;
+}
+.jsf_slide.jsf-enabled > div:first-child {
+	top: 0px;
+	height: auto;
+	opacity: 1;
+}
+.jsf_slide.jsf-enabled > div:last-child {
+	top: -80px;
+	height: 0;
+	opacity: 0;
+}

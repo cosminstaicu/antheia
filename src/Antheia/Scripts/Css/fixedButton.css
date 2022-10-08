@@ -1,0 +1,34 @@
+#jsf_fixedButton {
+	position: fixed;
+	display: block;
+	bottom: 30px;
+	right: 100%;
+	transition: 1s;
+	opacity: 0;
+	text-align: right;
+	white-space: nowrap;
+}
+#jsf_fixedButton.jsf-enabled {
+	right: 30px;
+	opacity: 1;
+}
+#jsf_fixedButton > a {
+	display: inline-block;
+	padding: 12px;
+	margin-right: 15px;
+	border-radius: 50%;
+	box-shadow: 0px 0px 5px var(--jsf-theme-shadow);
+	transition: 0.4s;
+	color: var(--jsf-theme-panelBorder);
+	background-color: var(--jsf-theme-panelBackground);
+}
+#jsf_fixedButton > a:hover {
+	box-shadow: 0px 0px 5px var(--jsf-theme-shadow);
+	padding: 20px;
+}
+#jsf_fixedButton > a.jsf-valid {
+	color: var(--jsf-theme-valid);
+}
+#jsf_fixedButton > a.jsf-warning {
+	color: var(--jsf-theme-warning);
+}

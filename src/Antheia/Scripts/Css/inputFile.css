@@ -1,0 +1,3 @@
+.jsf_form-item > input[type=file] {
+	display: none;
+}

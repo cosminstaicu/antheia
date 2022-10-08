@@ -1,0 +1,7 @@
+# Files used by Eclipse PDT IDE for project management
+.settings
+.buildpath
+.project
+.dbeaver
+
+/vendor/

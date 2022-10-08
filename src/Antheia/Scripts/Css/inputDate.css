@@ -1,0 +1,121 @@
+/* main visible panel */
+.jsf_inputDate {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+}
+/* button placeholders */
+.jsf_inputDate > div {
+	text-align: center;
+	margin-bottom: 10px;
+}
+/* buttons for previous, next month, month selection, year selection*/
+.jsf_inputDate > div > input[type=button] {
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	border: 1px solid var(--jsf-theme-buttonBackground);
+	transition: 0.4s;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	text-align: center;
+	color: var(--jsf-theme-buttonBackground);
+	background-color: var(--jsf-theme-buttonText);
+	border-radius: 0px 0px 0px 0px;
+	margin: 2px;
+}
+.jsf_inputDate > div > input.jsf_current-year {
+	border: 1px solid var(--jsf-theme-buttonBackground);
+}
+.jsf_inputDate > div > input[type=button]:first-of-type {
+	border-radius: 4px 0px 0px 4px;
+}
+.jsf_inputDate > div > input[type=button]:last-of-type {
+	border-radius: 0px 4px 4px 0px;
+}
+.jsf_inputDate > div > input[type=button]:hover {
+	border: 1px solid var(--jsf-theme-buttonBackgroundHover);
+	color: var(--jsf-theme-buttonBackgroundHover);
+}
+/* button for current month and year (fixed width) */
+.jsf_inputDate:first-of-type > div:first-of-type > input[type=button]:nth-of-type(2) {
+	width: 110px;
+}
+.jsf_inputDate:first-of-type > div:first-of-type > input[type=button]:nth-of-type(3) {
+	width: 70px;
+}
+/* buttons with month name and year name */
+.jsf_inputDate > div:nth-of-type(3) > input[type=button],
+.jsf_inputDate > div:nth-of-type(4) > input[type=button] {
+	border-radius: 0px 0px 0px 0px;
+	margin: 5px;
+	width: 150px;
+}
+/* table with days */
+.jsf_inputDate > table {
+	margin-top: 15px;
+	width: 100%;
+}
+.jsf_inputDate > table > thead th {
+	text-align: center;
+	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+}
+.jsf_inputDate > table > tbody td {
+	text-align: center;
+}
+.jsf_inputDate > table a {
+	display: block;
+	margin: 5px;
+	padding: 5px;
+	background-color: var(--jsf-theme-inputBackground);
+	border: 1px solid var(--jsf-theme-inputBorder);
+	border-radius: 4px;
+	transition: .2s;
+	color: var(--jsf-theme-inputText);
+}
+.jsf_inputDate > table a.jsf_today {
+	border-style: dashed;
+}
+.jsf_inputDate > table a:hover {
+	text-decoration: none;
+	padding: 10px;
+	margin: 0px;
+	background-color: var(--jsf-theme-buttonBackground);
+	color: var(--jsf-theme-buttonText);
+}
+/* select day status */
+.jsf_inputDate.jsf-day > div:nth-of-type(2) {
+	display: none;
+}
+.jsf_inputDate.jsf-day > div:nth-of-type(3) {
+	display: none;
+}
+.jsf_inputDate.jsf-day > div:nth-of-type(4) {
+	display: none;
+}
+/* select month status */
+.jsf_inputDate.jsf-month > div:nth-of-type(1) {
+	display: none;
+}
+.jsf_inputDate.jsf-month > div:nth-of-type(2) {
+	display: none;
+}
+.jsf_inputDate.jsf-month > table {
+	display: none;
+}
+.jsf_inputDate.jsf-month > div:nth-of-type(4) {
+	display: none;
+}
+/* select year status */
+.jsf_inputDate.jsf-year > div:nth-of-type(1) {
+	display: none;
+}
+.jsf_inputDate.jsf-year > table {
+	display: none;
+}
+.jsf_inputDate.jsf-year > div:nth-of-type(3) {
+	display: none;
+}

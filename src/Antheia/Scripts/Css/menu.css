@@ -1,0 +1,87 @@
+/* main wrapper */
+div.jsf_menu {
+	position: relative;
+	left: 0px;
+	top: 0px;
+}
+/* the 3 lines button */
+div.jsf_menu > a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+}
+/* the lines from the button */
+div.jsf_menu > a > div {
+	width: 36px;
+	height: 5px;
+	background-color: var(--jsf-theme-buttonBackground);
+	transition: 0.4s;
+}
+div.jsf_menu > a:hover > div {
+	background-color: var(--jsf-theme-buttonBackgroundHover);
+}
+div.jsf_menu > a > div:nth-child(2) {
+	margin-top: 6px;
+}
+div.jsf_menu > a > div:nth-child(3) {
+	margin-top: 6px;
+}
+div.jsf_menu > div:first-of-type {
+	opacity: 1;
+	position: relative;
+	top: 0px;
+	margin-left: 40px;
+	transition: 0.4s;
+}
+div.jsf_menu > div:last-of-type {
+	position: absolute;
+	top: -3px;
+	left: 40px;
+	display: none;
+}
+.jsf_menu-button {
+	color: var(--jsf-theme-buttonText);
+	background-color: var(--jsf-theme-buttonBackground);
+	border-radius: 4px;
+	display: inline-block;
+	font-size: 16px;
+	padding: 4px 8px 4px 8px;
+	margin-right: 5px;
+	transition: 0.4s;
+}
+.jsf_menu-button.jsf-hidden {
+	display: none;
+}
+.jsf_menu-button:hover {
+	color: var(--jsf-theme-buttonText);
+	background-color: var(--jsf-theme-buttonBackgroundHover);
+	text-decoration: none;
+}
+.jsf_menu-button > * {
+	vertical-align: middle;
+}
+.jsf_menu-button > span {
+	display: none;
+}
+div.jsf_menu.jsf-active > a > div:nth-child(1) {
+	transform: rotate(-45deg) translate(-8px, 6px);
+}
+div.jsf_menu.jsf-active > a > div:nth-child(2) {
+	opacity: 0;
+}
+div.jsf_menu.jsf-active > a > div:nth-child(3) {
+	transform: rotate(45deg) translate(-8px, -8px) ;
+}
+div.jsf_menu.jsf-active > div:first-of-type {
+	top: -30px;
+	opacity: 0;
+}
+div.jsf_menu.jsf-active > div:last-of-type {
+	display: block;
+}
+
+@media only screen and (min-width: 500px) {
+	.jsf_menu-button > span {
+		display: inline;
+	}
+}

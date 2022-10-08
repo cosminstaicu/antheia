@@ -1,0 +1,27 @@
+{
+	"name" : "cosmin/antheia",
+	"description" : "Frontend library optimised for web based applications.",
+	"type" : "library",
+	"license" : "Apache-2.0",
+	"autoload" : {
+		"psr-4" : {
+			"Cosmin\\Antheia\\" : "src/Antheia"
+		}
+	},
+	"authors" : [{
+			"name" : "Cosmin Staicu",
+			"email" : "cosminstaicu@gmail.com",
+			"role" : "Main Developer"
+		}
+	],
+	"require" : {
+		"php" : "^7.2 || ^8.0",
+		"ext-gd" : "*",
+		"ext-zip" : "*"
+	},
+	"minimum-stability" : "stable",
+	"keywords" : [
+		"frontend",
+		"dark mode"
+	]
+}

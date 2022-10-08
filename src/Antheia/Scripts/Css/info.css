@@ -1,0 +1,27 @@
+/* definitions for a wireframe that displayes key - value pairs */
+/* used by jsc_wireframe_custom_info php class*/
+.jsf_info-name {
+	font-size: 12px;
+	font-weight: bold;
+}
+.jsf_info-value {
+	font-size: 16px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.jsf_info-only-value {
+	text-align: center;
+	font-size: 16px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+@media only screen and (min-width: 768px) {
+	.jsf_info-name {
+		font-size: 16px;
+		font-weight: normal;
+		text-align:right;
+		padding-bottom: 5px;
+		margin-bottom: 5px;
+		opacity: .7;
+	}
+}

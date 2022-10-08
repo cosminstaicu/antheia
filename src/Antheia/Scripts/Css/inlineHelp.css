@@ -1,0 +1,36 @@
+.jsf_inlineHelp {
+	position: relative;
+	display: inline-block;
+	cursor: pointer;
+	color: var(--jsf-theme-buttonBackground);
+	line-height: 20px;
+}
+.jsf_inlineHelp > span {
+	display: none;
+	width: 160px;
+	background-color: var(--jsf-theme-buttonBackground);
+	color: var(--jsf-theme-buttonText);
+	text-align: center;
+	font-size: 14px;
+	font-weight: normal;
+	border-radius: 6px;
+	padding: 8px 8px 8px 8px;
+	position: absolute;
+	z-index: 1;
+	bottom: 125%;
+	left: 50%;
+	margin-left: -80px;
+}
+.jsf_inlineHelp > span::after {
+	content: "";
+	position: absolute;
+	top: 100%;
+	left: 50%;
+	margin-left: -5px;
+	border-width: 5px;
+	border-style: solid;
+	border-color: var(--jsf-theme-buttonBackground) transparent transparent transparent;
+}
+.jsf_inlineHelp.jsf-visible > span {
+	display: block;
+}

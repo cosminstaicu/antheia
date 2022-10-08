@@ -1,0 +1,27 @@
+.jsf_inputFileDrop {
+	border: 1px dashed var(--jsf-theme-inputBorder);
+	border-radius: 4px;
+	background-color: var(--jsf-theme-inputBackground);
+	padding: 15px;
+	text-align: center;
+	transition: background-color .5s;
+}
+.jsf_inputFileDrop.jsf-active {
+	border-style: solid;
+	background-color: var(--jsf-theme-panelSecondaryBackground);
+}
+.jsf_inputFileDrop > i {
+	opacity: .5;
+	transition: opacity .5s;
+}
+.jsf_inputFileDrop.jsf-active > i {
+	opacity: 1;
+}
+.jsf_inputFileDrop > p {
+	font-size: 12px;
+	margin-top: 0px;
+	margin-bottom: 5px;
+}
+.jsf_inputFileDrop > input[type=file] {
+	display: none;
+}

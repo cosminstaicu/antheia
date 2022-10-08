@@ -1,0 +1,40 @@
+#jsf_topBar {
+	display: flex;
+	padding: 15px 15px 15px 15px;
+	justify-content: space-between;
+	background-color: var(--jsf-theme-topBottomBarBackground);
+}
+#jsf_topBar a {
+	color: var(--jsf-theme-topBottomBarText);
+	white-space:nowrap;
+	font-size: 16px;
+}
+#jsf_topBar a > span {
+	display: none;
+}
+#jsf_topBar a > * {
+	vertical-align: middle;
+}
+#jsf_topBar a > i {
+	font-size: 24px;
+	margin-right: 1px;
+}
+#jsf_topBar a:hover {
+	text-decoration: none;
+	text-shadow: 0px 0px 8px var(--jsf-theme-topBottomBarText);
+}
+#jsf_topBar > ul {
+	list-style-type: none;
+	display: inline;
+	padding: 0px 0px 0px 0px;
+	margin: 0px 0px 0px 0px;
+}
+#jsf_topBar > ul > li {
+	margin-left: 15px;
+	display: inline;
+}
+@media only screen and (min-width: 768px) {
+	#jsf_topBar a > span {
+		display: inline;
+	}
+}

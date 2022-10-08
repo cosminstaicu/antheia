@@ -1,0 +1,147 @@
+<?php
+namespace Cosmin\Antheia\Classes\Input\Raw;
+use Cosmin\Antheia\Classes\Icon\IconVector;
+use Cosmin\Antheia\Classes\Texts;
+use Cosmin\Antheia\Interfaces\HtmlCode;
+use Cosmin\Antheia\Interfaces\HtmlAttribute;
+use Cosmin\Antheia\Interfaces\HtmlId;
+use Cosmin\Antheia\Classes\AbstractClass;
+use Cosmin\Antheia\Classes\Exception;
+/**
+ * The class renders a custom button, to be used by some types of inputs.
+ * For example, the select input, the file input, the date input etc.
+ * The button has a sibling as a hidden input that is used to store the
+ * value to be sent to the server
+ * The class does not need to be instanced by the end user, as it is automatically
+ * used by the framework when the coresponding input type is used.
+ * @author Cosmin Staicu
+ */
+class InputRawCustomButton extends AbstractClass
+implements HtmlCode, HtmlAttribute, HtmlId {
+	private $text;
+	private $icon;
+	private $onClick;
+	private $htmlId;
+	private $attributes;
+	private $hiddenInput;
+	private $hiddenInputExport;
+	public function __construct() {
+		parent::__construct();
+		$this->icon = new IconVector();
+		$this->setText('');
+		$this->setOnClick('');
+		$this->htmlId = '';
+		$this->attributes = [];
+		$this->hiddenInput = new InputRawHidden();
+		$this->hiddenInputExport = true;
+	}
+	public function addAttribute(string $name, string $value):void {
+		$this->attributes[] = ['name'=>$name, 'value'=>$value];
+	}
+	public function addTextAttribute(string $name, string $value):void {
+		$this->addAttribute('data-text-'.$name, Texts::get($value));
+	}
+	/**
+	 * Returns the html id for the button
+	 * @return string the html id for the button
+	 */
+	public function getHtmlId():string {
+		return $this->htmlId;
+	}
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
+	}
+	/**
+	 * Calling the method will instruct the instance to export the button
+	 * without the hidden input element
+	 */
+	public function disableHiddenInputExport():void {
+		$this->hiddenInputExport = false;
+	}
+	/**
+	 * Defines the name for the hidden input sibling
+	 * @param string $name the name for the hidden input sibling
+	 */
+	public function setHiddenInputName(string $name):void {
+		$this->hiddenInput->setName($name);
+	}
+	/**
+	 * Defines the value for the hidden input sibling
+	 * @param string $value the value for the hidden input sibling
+	 */
+	public function setHiddenInputValue(string $value):void {
+		$this->hiddenInput->setValue($value);
+	}
+	/**
+	 * Defines the html id for the hidden input sibling
+	 * @param string $id the html id for the hidden input sibling
+	 */
+	public function setHiddenInputHtmlId(string $id):void {
+		$this->hiddenInput->setHtmlId($id);
+	}
+	/**
+	 * Returns the hidden input to be added in the html code,
+	 * as a sibling of the button
+	 * @return InputRawHidden the hidden input to be added
+	 * in the html code, as a sibling of the button
+	 */
+	public function getHiddenInput():InputRawHidden {
+		return $this->hiddenInput;
+	}
+	/**
+	 * Add an name=value attribute to the hidden input sibling
+	 * @param string $name attribute name (for custom attributes you should
+	 * use "data-XXXX" template)
+	 * @param string $value attribute value
+	 */
+	public function addHiddenInputAttribute(string $name, string $value):void {
+		$this->hiddenInput->addAttribute($name, $value);
+	}
+	/**
+	 * Defines the text to be displayed on the button
+	 * @param string $text the text to be displayed on the button
+	 */
+	public function setText($text):void {
+		$this->text = $text;
+	}
+	/**
+	 * Defines the javascript code to be executed when the button is clicked
+	 * @param string $cod the javascript code to be executed when the button
+	 * is clicked or an empty string, if no code is required
+	 */
+	public function setOnClick(string $code):void {
+		$this->onClick = $code;
+	}
+	/**
+	 * Defines the icon to be displayed on the right side of the button
+	 * @param integer $icon the icon to be displayed on the right side
+	 * of the button, as a constant like jsc_element_icon::ICON_##
+	 */
+	public function setIcon(int $icon):void {
+		$this->icon->setIcon($icon);
+	}
+	public function getHtml():string {
+		if ($this->onClick == '') {
+			throw new Exception('onClick function is not defined');
+		}
+		$code = '';
+		$code .= '<input type="button" class="jsf_form-button"'
+				.' value="'.htmlspecialchars($this->text)
+				.'" onClick="'.$this->onClick.'"';
+		if ($this->htmlId !== '') {
+			$code .= ' id="'.$this->htmlId.'"';
+		}
+		foreach ($this->attributes as $atribut) {
+			$code .= ' '.$atribut['name'].'="'.$atribut['value'].'"';
+		}
+		$code .= '>';
+		if ($this->icon !== null) {
+			$code .= $this->icon->getHtml();
+		}
+		if ($this->hiddenInputExport) {
+			$code .= $this->hiddenInput->getHtml();
+		}
+		return $code;
+	}
+}
+?>

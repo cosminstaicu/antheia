@@ -1,0 +1,101 @@
+#jsf_search_accordion {
+	position: relative;
+}
+/* the header has a relative position, to position the access button */
+#jsf_search_accordion .jsf_panel > .jsf-header {
+	position: relative;
+}
+#jsf_search_accordion .jsf_panel > .jsf-header > * {
+	vertical-align: middle;
+}
+/* the selection checkbox (the only div in the header) */
+#jsf_search_accordion .jsf_panel > .jsf-header > div:first-child {
+	position: absolute;
+}
+/* if a div is present in the header, that is the selection checkbox */
+/* so I will push the trigger to the right */
+#jsf_search_accordion .jsf_panel > .jsf-header > div:first-child + * {
+	margin-left: 30px;
+}
+#jsf_search_accordion .jsf_panel > .jsf-header > a {
+	color: var(--jsf-theme-link);
+	margin-left: 5px;
+}
+/* the access button (the round one) */
+#jsf_search_accordion .jsf_panel > .jsf-header > a:last-child {
+	position: absolute;
+	background-color: var(--jsf-theme-buttonBackground);
+	border-radius: 50%;
+	overflow: hidden;
+	display: inline-block;
+	font-size: 1px;
+	text-align: center;
+	transition: all 0.5s;
+	opacity: 0;
+	bottom: 0px;
+	right: 0px;
+	width: 0px;
+	height: 0px;
+	padding-top: 0px;
+	color: rgba(255,255,255,0);
+}
+#jsf_search_accordion .jsf_panel > .jsf-header a:last-child.jsf-visible {
+	opacity: 1;
+	bottom: -20px;
+	right: -20px;
+	width: 40px;
+	height: 40px;
+	color: var(--jsf-theme-buttonText);
+	padding-top: 8px;
+	font-size: 20px;
+}
+#jsf_search_accordion .jsf_panel > .jsf-header a:last-child.jsf-visible:hover {
+	background-color: var(--jsf-theme-buttonBackgroundHover);
+	box-shadow: 0px 0px 5px var(--jsf-theme-shadow);
+}
+#jsf_search_accordion > div.jsf_panel {
+	border-left-width: 1px;
+	border-right-width: 1px;
+	transition: border-left-width .5s, border-right-width .5s;
+}
+#jsf_search_accordion div.jsf_panel.jsf-selected {
+	background-color: var(--jsf-theme-panelBackground);
+	border-color: var(--jsf-theme-warning);
+	border-left-width: 10px;
+	border-right-width: 10px;
+}
+/* The optional buttons (menu) */
+#jsf_search_accordion .jsf-buttons-row > div {
+	display: flex;
+	flex-wrap: wrap;
+}
+#jsf_search_accordion .jsf-buttons-row > div > input[type=button] {
+	margin: 5px;
+	width: 100%;
+}
+/* the container properties (the name is the first child, the value is the last child) */
+#jsf_search_accordion .jsf-properties-row > div > div:first-child {
+	font-size: 14px;
+	font-weight: bold;
+	display: block;
+	padding-top: 5px;
+}
+#jsf_search_accordion .jsf-properties-row > div > div:last-child {
+	font-size: 18px;
+	display: block;
+	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+	padding-top: 5px;
+	padding-bottom: 5px;
+}	
+@media only screen and (min-width: 768px) {
+	#jsf_search_accordion .jsf-properties-row > div > div:first-child {
+		text-align: left;
+		width: auto;
+	}
+	#jsf_search_accordion .jsf-properties-row > div > div:last-child {
+		border-bottom: none;
+	}
+	#jsf_search_accordion .jsf-buttons-row > div > input[type=button] {
+		width: auto;
+	}
+}

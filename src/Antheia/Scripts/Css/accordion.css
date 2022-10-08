@@ -1,0 +1,70 @@
+/* the main container, containing all items*/
+.jsf_accordion {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+	border-left: 1px solid var(--jsf-theme-panelBorder);
+	border-right: 1px solid var(--jsf-theme-panelBorder);
+}
+/* the always visible link */
+.jsf_accordion > a {
+	position: relative;
+	display: block;
+	width: 100%;
+	background-color: var(--jsf-theme-panelSecondaryBackground);
+	border-top: 1px solid var(--jsf-theme-panelBorder);
+	padding: 14px 80px 14px 10px;
+	transition: 0.5s;
+}
+.jsf_accordion > a:hover {
+	text-decoration: none;
+	padding-left: 35px;
+}
+/* up and down arrows */
+.jsf_accordion > a:hover span {
+	opacity: 1;
+}
+.jsf_accordion > a span {
+	position: absolute;
+	top: 10px;
+	left: 2px;
+	opacity: 0;
+	transition: 0.5s;
+}
+.jsf_accordion > a span:first-child {
+	display: block;
+}
+.jsf_accordion > a span:last-child {
+	display: none;
+}
+/* the sliding container */
+.jsf_accordion > div {
+	display: block;
+	position: relative;
+	top: -10px;
+	height: 0px;
+	padding-top: -10px;
+	transition: opacity 0.5s, top 0.5s;
+	opacity: 0;
+	overflow: hidden;
+}
+/* definitions for the active item */
+.jsf_accordion > a.jsf-selected {
+	box-shadow: 0px 3px 3px var(--jsf-theme-shadow);
+}
+.jsf_accordion > a.jsf-selected span:first-child {
+	display: none;
+}
+.jsf_accordion > a.jsf-selected span:last-child {
+	display: block;
+}
+.jsf_accordion > a.jsf-selected+div {
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	top: 5px;
+	margin-bottom: 15px;
+	opacity: 1;
+	height: 100%;
+}

@@ -1,0 +1,160 @@
+div.jsf_search_card {
+	position: relative;
+	display: block;
+	border: 1px solid var(--jsf-theme-panelBorder);
+	border-radius: 4px;
+	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+	overflow: hidden;
+	background-color: var(--jsf-theme-panelBackground);
+	text-align: center;
+	height: 400px;
+	overflow: hidden;
+	margin: 5px;
+}
+div.jsf_search_card.jsf-selected {
+	border: 2px solid var(--jsf-theme-warning);
+	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+}
+/* selection checkbox container */
+div.jsf_search_card-checkbox:before {
+	position: absolute;
+	content: "";
+	left: 0px;
+	top: 0px;
+	display: block;
+	width: 30px;
+	height: 100%;
+	background-color: var(--jsf-theme-panelBackground);
+	opacity: .8;
+	border-radius: 0px 0px 5px 5px;
+}
+div.jsf_search_card.jsf-selected div.jsf_search_card-checkbox:before {
+	opacity: 1;
+}
+div.jsf_search_card-checkbox {
+	position: absolute;
+	left: 5px;
+	top: 5px;
+}
+/* main image */
+div.jsf_search_card img {
+	width: 100%;
+	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+}
+div.jsf_search_card img.maximum {
+	height: 300px;
+}
+div.jsf_search_card img.medium {
+	height: 150px;
+}
+div.jsf_search_card img.fill {
+	object-fit : cover;
+}
+div.jsf_search_card img.fit {
+	object-fit : contain;
+}
+/* main image link, if present */
+div.jsf_search_card > a.jsf_search_card-imageLink > img {
+	outline: none;
+	outline-offset: -2px;
+}
+div.jsf_search_card > a.jsf_search_card-imageLink:hover > img {
+	outline: 2px solid var(--jsf-theme-panelBorder);
+}
+/* item name */
+div.jsf_search_card > p:first-of-type {
+	font-size: 14px;
+	font-weight: bold;
+}
+/* item description */
+div.jsf_search_card > p:nth-of-type(2) {
+	font-size: 14px;
+}
+/* details page access button */
+div.jsf_search_card > a.jsf_search_card-access {
+	background-color: var(--jsf-theme-buttonBackground);
+	color: var(--jsf-theme-buttonText);
+	padding: 5px 15px 5px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	border-radius: 4px;
+	transition: 0.5s;
+	font-size: 16px;
+	position: absolute;
+	bottom: 10px;
+	left: 30px;
+	width: calc(100% - 60px);
+}
+div.jsf_search_card > a.jsf_search_card-access:hover {
+	background-color: var(--jsf-theme-buttonBackgroundHover);
+	cursor: pointer;
+	text-decoration: none;
+}
+/* additional info trigger button */
+div.jsf_search_card > a:last-of-type {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+	width: 34px;
+	height: 34px;
+	padding-top: 4px;
+	border-radius: 50%;
+	background-color: var(--jsf-theme-buttonBackground);
+	color: var(--jsf-theme-buttonText);
+	transition: 0.5s;
+}
+div.jsf_search_card > a:last-of-type:hover {
+	background-color: var(--jsf-theme-buttonBackgroundHover);
+	padding-top: 2px;
+}
+/* the additional info container */
+div.jsf_search_card > div:last-of-type {
+	position: absolute;
+	top: 400px;
+	left: 0px;
+	width: 100%;
+	height: 400px;
+	background-color: var(--jsf-theme-panelBackground);
+	opacity: 0;
+	transition: 0.5s;
+}
+div.jsf_search_card.jsf-details > div:last-of-type {
+	top: 0px;
+	opacity: 1;
+}
+div.jsf_search_card > div > p {
+	font-size: 14px;
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+}
+div.jsf_search_card > div:last-of-type > dl > dt {
+	font-size: 12px;
+	font-weight: bold;
+	text-align: left;
+	margin-left: 15px;
+}
+div.jsf_search_card > div:last-of-type > dl > dd {
+	font-size: 12px;
+	text-align: left;
+	margin-left: 15px;
+	margin-bottom: 5px;
+}
+/* close additional info button */
+div.jsf_search_card > div:last-of-type > a {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	color: var(--jsf-theme-text);
+	text-decoration: none;
+	display: block;
+	font-size: 16px;
+	transition: 0.5s;
+}
+div.jsf_search_card > div:last-of-type > a:hover {
+	color: var(--jsf-theme-link);
+	cursor: pointer;
+	text-decoration: none;
+}

@@ -1,0 +1,19 @@
+#jsf_content {
+	width: 100%;
+	border-top: 1px solid var(--jsf-theme-panelBorder);
+	padding-top: 30px;
+	margin-bottom: 70px;
+}
+body.jsf-has-fixed-buttons #jsf_content {
+	margin-bottom: 100px;
+}
+div#jsf_content-debug {
+	position: fixed;
+	background-color: white;
+	color: black;
+	padding: 15px;
+	border: 1px solid black;
+	border-radius: 5px;
+	left: 10px;
+	bottom: 10px;
+}
