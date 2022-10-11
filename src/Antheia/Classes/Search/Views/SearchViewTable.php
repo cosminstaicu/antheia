@@ -14,7 +14,7 @@ class SearchViewTable extends AbstractSearchView {
 		parent::__construct();
 	}
 	public function getJavascriptStatusUpdate():string {
-		return 'jsf_search_table_statusUpdate();';
+		return 'ant_search_table_statusUpdate();';
 	}
 	public function getHtml():string {
 		$results = $this->getItems();
@@ -24,7 +24,7 @@ class SearchViewTable extends AbstractSearchView {
 			return $emptyList->getHtml();
 		}
 		$table = new TablePlain();
-		$table->setHtmlId('jsf_search_table');
+		$table->setHtmlId('ant_search_table');
 		$table->setWidth('100%');
 		$table->setHorizontalScroll();
 		$row = $table->addRow();
@@ -42,13 +42,13 @@ class SearchViewTable extends AbstractSearchView {
 		/** @var SearchResult $result */
 		foreach ($results as $index => $result) {
 			$row = $table->addRow();
-			$row->setHtmlId('jsf_search_table_item_'.$index);
+			$row->setHtmlId('ant_search_table_item_'.$index);
 			if ($this->getSelectionStatus()) {
 				$cell = $row->addCell();
 				$check = new InputRawCheckbox();
-				$check->setHtmlId('jsf_search_checkboxItem'.$index);
+				$check->setHtmlId('ant_search_checkboxItem'.$index);
 				$check->setValue($result->getItemId());
-				$check->setOnClick('jsf_search_updateSelection()');
+				$check->setOnClick('ant_search_updateSelection()');
 				$cell->addElement($check);
 			}
 			$properties = $result->getProperties();

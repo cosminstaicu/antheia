@@ -22,7 +22,7 @@ class Accordion extends AbstractClass implements HtmlCode {
 		return $item;
 	}
 	public function getHtml():string {
-		$code = '<div class="jsf_accordion">';
+		$code = '<div class="ant_accordion">';
 		/** @var Item $item */
 		foreach ($this->items as $item) {
 			$code .= $item->getHtml();

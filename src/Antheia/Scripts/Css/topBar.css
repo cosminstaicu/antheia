@@ -1,40 +1,40 @@
-#jsf_topBar {
+#ant_topBar {
 	display: flex;
 	padding: 15px 15px 15px 15px;
 	justify-content: space-between;
-	background-color: var(--jsf-theme-topBottomBarBackground);
+	background-color: var(--ant-theme-topBottomBarBackground);
 }
-#jsf_topBar a {
-	color: var(--jsf-theme-topBottomBarText);
+#ant_topBar a {
+	color: var(--ant-theme-topBottomBarText);
 	white-space:nowrap;
 	font-size: 16px;
 }
-#jsf_topBar a > span {
+#ant_topBar a > span {
 	display: none;
 }
-#jsf_topBar a > * {
+#ant_topBar a > * {
 	vertical-align: middle;
 }
-#jsf_topBar a > i {
+#ant_topBar a > i {
 	font-size: 24px;
 	margin-right: 1px;
 }
-#jsf_topBar a:hover {
+#ant_topBar a:hover {
 	text-decoration: none;
-	text-shadow: 0px 0px 8px var(--jsf-theme-topBottomBarText);
+	text-shadow: 0px 0px 8px var(--ant-theme-topBottomBarText);
 }
-#jsf_topBar > ul {
+#ant_topBar > ul {
 	list-style-type: none;
 	display: inline;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 }
-#jsf_topBar > ul > li {
+#ant_topBar > ul > li {
 	margin-left: 15px;
 	display: inline;
 }
 @media only screen and (min-width: 768px) {
-	#jsf_topBar a > span {
+	#ant_topBar a > span {
 		display: inline;
 	}
 }

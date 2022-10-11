@@ -20,7 +20,7 @@ class Texts {
 	/**
 	 * Returns a lowercase text, according to the selected language
 	 * @param string $id the id of the text, (the name of the constant) as
-	 * defined inside the jsc_text_XXXX file
+	 * defined inside the language file
 	 * @return string the text that will be displayed
 	 */
 	public static function getLc(string $id):string {

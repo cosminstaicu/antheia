@@ -10,7 +10,7 @@ class Table extends TablePlain {
 	private $alternateRows;
 	public function __construct() {
 		parent::__construct();
-		$this->addClass('jsf_table-default');
+		$this->addClass('ant_table-default');
 		$this->setHeaderRowStatus();
 		$this->alternateRows = false;
 	}
@@ -29,7 +29,7 @@ class Table extends TablePlain {
 	 * If the parameter is not defined then a new row will be created
 	 * @return Row the added row
 	 */
-	public function addRow(?Row $row):Row {
+	public function addRow(Row $row = NULL):Row {
 		if ($row === null) {
 			$row = new Row();
 		}
@@ -42,7 +42,7 @@ class Table extends TablePlain {
 	}
 	public function getHtml():string {
 		if ($this->alternateRows) {
-			$this->addClass('jsf_table-alternate');
+			$this->addClass('ant_table-alternate');
 		}
 		return parent::getHtml();
 	}

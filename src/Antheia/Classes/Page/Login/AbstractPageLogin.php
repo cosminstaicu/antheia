@@ -14,7 +14,7 @@ abstract class AbstractPageLogin extends AbstractPage {
 	private $rightWireframe;
 	public function __construct() {
 		parent::__construct();
-		$this->addBodyClass('jsf_login');
+		$this->addBodyClass('ant_login');
 		$this->rightWireframe = new Cell();
 		$this->rightWireframe->addWidth('xs', 12);
 		$this->rightWireframe->addWidth('sm', 7);
@@ -27,9 +27,9 @@ abstract class AbstractPageLogin extends AbstractPage {
 		return $this->rightWireframe;
 	}
 	public function getHtml():string {
-		$this->addHtmlClass('jsf_other_full-height');
+		$this->addHtmlClass('ant_other_full-height');
 		$mainPanel = new Panel();
-		$mainPanel->setHtmlId('jsf_panel-centered');
+		$mainPanel->setHtmlId('ant_panel-centered');
 		$wireframe = new Wireframe();
 		$row = $wireframe->addRow();
 		$leftWireframe = $row->addCell();

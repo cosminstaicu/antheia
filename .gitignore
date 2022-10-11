@@ -1,7 +1,11 @@
-# Files used by Eclipse PDT IDE for project management
-.settings
+# Items used by Eclipse PDT IDE for project management
+/.settings/
 .buildpath
 .project
-.dbeaver
-
+/.dbeaver/
+# Composer vendor folder
 /vendor/
+# Examples cache folder
+/examples/cache/
+# Folder for private user usage
+/_private/

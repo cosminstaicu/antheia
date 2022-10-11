@@ -70,7 +70,7 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 			throw new Exception('Illegal column span: '.$span);
 		}
 		$this->widthIsDefined = true;
-		$this->addClass('jsf_wireframe-col-'.$screen.'-'.$span);
+		$this->addClass('ant_wireframe-col-'.$screen.'-'.$span);
 	}
 	/**
 	 * Adds a class to the cell tag definition
@@ -125,18 +125,18 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 	/**
 	 * Defines the alignment for the content of the cell
 	 * @param integer $align the align, as a constant like
-	 * jsc_wireframe_cell:ALIGN_###
+	 * Cell:ALIGN_###
 	 */
 	public function setAlign(string $align):void{
 		switch ($align) {
 			case Cell::ALIGN_LEFT:
-				$this->addClass('jsf-left');
+				$this->addClass('ant-left');
 				break;
 			case Cell::ALIGN_CENTER:
-				$this->addClass('jsf-center');
+				$this->addClass('ant-center');
 				break;
 			case Cell::ALIGN_RIGHT:
-				$this->addClass('jsf-right');
+				$this->addClass('ant-right');
 				break;
 			default:
 				throw new Exception();
@@ -147,10 +147,10 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 			$this->addWidth('xs', 12);
 		}
 		if ($this->horizontalPadding) {
-			$this->addClass('jsf-h-padding');
+			$this->addClass('ant-h-padding');
 		}
 		if ($this->verticalPadding) {
-			$this->addClass('jsf_v-padding');
+			$this->addClass('ant_v-padding');
 		}
 		$code = '<div class="'.implode(' ', array_unique($this->classes)).'"';
 		if ($this->htmlId != '') {

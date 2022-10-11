@@ -26,7 +26,7 @@ abstract class AbstractInputButton extends AbstractInput {
 	/**
 	 * Defines the button type
 	 * @param integer $type the button type, as a constant like
-	 * jsc_input_abstractButton::TYPE_##
+	 * AbstractInputButton::TYPE_##
 	 */
 	protected function setButtonType(int $type):void {
 		$this->buttonType = $type;

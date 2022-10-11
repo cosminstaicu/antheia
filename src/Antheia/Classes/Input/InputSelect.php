@@ -120,7 +120,7 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		$this->button->setText($selectedText);
 		$this->button->addAttribute('data-label', $this->getLabelText());
 		$this->button->disableHiddenInputExport();
-		$this->button->setOnClick('jsf_inputSelect_start(this)');
+		$this->button->setOnClick('ant_inputSelect_start(this)');
 		$code = $this->button->getHtml();
 		$code .= '<select name="'.$this->getName().'"';
 		if ($this->getHtmlId() !== '') {
@@ -155,7 +155,7 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		$code .= '</select>';
 		$code .= '<div';
 		if ($helpText === '') {
-			$code .= ' class="jsf-hidden"';
+			$code .= ' class="ant-hidden"';
 		}
 		$code .= '>'.htmlspecialchars($helpText).'</div>';
 		$this->setHtmlCode($code);

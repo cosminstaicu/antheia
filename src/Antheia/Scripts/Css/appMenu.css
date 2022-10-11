@@ -1,5 +1,5 @@
 /* the container for all app menu items, including the overlay */
-#jsf_appMenu {
+#ant_appMenu {
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -10,33 +10,33 @@
 	transition-delay: 0.5s;
 	transition-timing-function: linear;
 }
-#jsf_appMenu.jsf-enabled {
+#ant_appMenu.ant-enabled {
 	width: 100%;
 	transition: width 0s;
 	transition-delay: 0.1s;
 }
 /* the transparent overlay */
-#jsf_appMenu > div {
+#ant_appMenu > div {
 	position: absolute;
 	top: 0px;
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	background-color: var(--jsf-theme-overlay);
+	background-color: var(--ant-theme-overlay);
 	transition: left 0.5s, opacity 0.5s;
 	transition-delay: 0.2s;
 	opacity: 0;
 }
-#jsf_appMenu.jsf-enabled > div {
+#ant_appMenu.ant-enabled > div {
 	left: 280px;
 	opacity: 1;
 }
 /* the left container */
-#jsf_appMenu > nav {
+#ant_appMenu > nav {
 	position: absolute;
 	left: -280px;
 	top:0px;
-	background-color: var(--jsf-theme-menuBackground);
+	background-color: var(--ant-theme-menuBackground);
 	width: 280px;
 	height: 100%;
 	text-align: center;
@@ -47,56 +47,56 @@
 	transition: left 0.5s;
 	transition-delay: 0.2s;
 }
-#jsf_appMenu.jsf-enabled > nav {
+#ant_appMenu.ant-enabled > nav {
 	left: 0px;
 }
 /* app logo */
-#jsf_appMenu > nav > img {
+#ant_appMenu > nav > img {
 	margin-top: 30px;
 }
 /* app name */
-#jsf_appMenu > nav > p {
-	color: var(--jsf-theme-menuText);
+#ant_appMenu > nav > p {
+	color: var(--ant-theme-menuText);
 	font-size: 18px;
 }
 /* a menu and a submenu item */
-#jsf_appMenu a {
-	color: var(--jsf-theme-menuText);
+#ant_appMenu a {
+	color: var(--ant-theme-menuText);
 	display: block;
 	width: 100%;
 	padding-top: 7px;
 	padding-bottom: 7px;
 	padding-right: 30px;
 	text-align: left;
-	border-bottom: 1px solid var(--jsf-theme-menuText);
+	border-bottom: 1px solid var(--ant-theme-menuText);
 	text-decoration: none;
 }
-#jsf_appMenu a > img {
+#ant_appMenu a > img {
 	margin-right: 5px;
 }
-#jsf_appMenu a:hover {
-	background-color: var(--jsf-theme-menuBackground);
-	background: linear-gradient(to right, var(--jsf-theme-menuBackground) 60%, var(--jsf-theme-menuBackgroundHover));
+#ant_appMenu a:hover {
+	background-color: var(--ant-theme-menuBackground);
+	background: linear-gradient(to right, var(--ant-theme-menuBackground) 60%, var(--ant-theme-menuBackgroundHover));
 }
-#jsf_appMenu a:hover > img {
+#ant_appMenu a:hover > img {
 	filter: brightness(120%);
 }
-#jsf_appMenu a > * {
+#ant_appMenu a > * {
 	vertical-align: middle;
 }
 /* submenu item */
-#jsf_appMenu > nav > div {
+#ant_appMenu > nav > div {
 	padding-left: 20px;
 	opacity: 0;
 	transition: opacity 1s;
 	overflow: hidden;
 	height: 0;
 }
-#jsf_appMenu a.jsf-selected + div {
+#ant_appMenu a.ant-selected + div {
 	opacity: 1;
 	height: auto;
 }
-#jsf_appMenu > nav > div > a {
-	border-left: 1px solid var(--jsf-theme-menuText);
+#ant_appMenu > nav > div > a {
+	border-left: 1px solid var(--ant-theme-menuText);
 	padding-left: 7px;
 }

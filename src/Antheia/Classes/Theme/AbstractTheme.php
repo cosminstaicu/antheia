@@ -633,7 +633,7 @@ abstract class AbstractTheme {
 	 * Defines the background effect for the transparent background, when the
 	 * loading animation is displayed
 	 * @param string $effect the effect name, as a constant like
-	 * jsc_theme_abstract::LOADING_BACKDROP_##
+	 * AbstractTheme::LOADING_BACKDROP_##
 	 */
 	public function setLoadingBackdrop(string $effect):void {
 		$this->auto_loadingBackdrop = $effect;
@@ -642,7 +642,7 @@ abstract class AbstractTheme {
 	 * Returns the background effect for the transparent background, when the
 	 * loading animation is displayed
 	 * @return string the name of the effect as a constant like
-	 * jsc_theme_abstract::LOADING_BACKDROP_##
+	 * AbstractTheme::LOADING_BACKDROP_##
 	 */
 	public function getLoadingBackdrop() {
 		return $this->auto_loadingBackdrop;

@@ -12,7 +12,7 @@ class InputCustomButton extends AbstractInput {
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
-		$this->button->addAttribute('data-jsf-type', 'custom');
+		$this->button->addAttribute('data-ant-type', 'custom');
 		$this->exportForAttributeInLabel(false);
 	}
 	/**

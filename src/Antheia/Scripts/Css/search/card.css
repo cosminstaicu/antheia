@@ -1,22 +1,22 @@
-div.jsf_search_card {
+div.ant_search_card {
 	position: relative;
 	display: block;
-	border: 1px solid var(--jsf-theme-panelBorder);
+	border: 1px solid var(--ant-theme-panelBorder);
 	border-radius: 4px;
-	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 	overflow: hidden;
-	background-color: var(--jsf-theme-panelBackground);
+	background-color: var(--ant-theme-panelBackground);
 	text-align: center;
 	height: 400px;
 	overflow: hidden;
 	margin: 5px;
 }
-div.jsf_search_card.jsf-selected {
-	border: 2px solid var(--jsf-theme-warning);
-	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+div.ant_search_card.ant-selected {
+	border: 2px solid var(--ant-theme-warning);
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 }
 /* selection checkbox container */
-div.jsf_search_card-checkbox:before {
+div.ant_search_card-checkbox:before {
 	position: absolute;
 	content: "";
 	left: 0px;
@@ -24,56 +24,56 @@ div.jsf_search_card-checkbox:before {
 	display: block;
 	width: 30px;
 	height: 100%;
-	background-color: var(--jsf-theme-panelBackground);
+	background-color: var(--ant-theme-panelBackground);
 	opacity: .8;
 	border-radius: 0px 0px 5px 5px;
 }
-div.jsf_search_card.jsf-selected div.jsf_search_card-checkbox:before {
+div.ant_search_card.ant-selected div.ant_search_card-checkbox:before {
 	opacity: 1;
 }
-div.jsf_search_card-checkbox {
+div.ant_search_card-checkbox {
 	position: absolute;
 	left: 5px;
 	top: 5px;
 }
 /* main image */
-div.jsf_search_card img {
+div.ant_search_card img {
 	width: 100%;
-	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
-div.jsf_search_card img.maximum {
+div.ant_search_card img.maximum {
 	height: 300px;
 }
-div.jsf_search_card img.medium {
+div.ant_search_card img.medium {
 	height: 150px;
 }
-div.jsf_search_card img.fill {
+div.ant_search_card img.fill {
 	object-fit : cover;
 }
-div.jsf_search_card img.fit {
+div.ant_search_card img.fit {
 	object-fit : contain;
 }
 /* main image link, if present */
-div.jsf_search_card > a.jsf_search_card-imageLink > img {
+div.ant_search_card > a.ant_search_card-imageLink > img {
 	outline: none;
 	outline-offset: -2px;
 }
-div.jsf_search_card > a.jsf_search_card-imageLink:hover > img {
-	outline: 2px solid var(--jsf-theme-panelBorder);
+div.ant_search_card > a.ant_search_card-imageLink:hover > img {
+	outline: 2px solid var(--ant-theme-panelBorder);
 }
 /* item name */
-div.jsf_search_card > p:first-of-type {
+div.ant_search_card > p:first-of-type {
 	font-size: 14px;
 	font-weight: bold;
 }
 /* item description */
-div.jsf_search_card > p:nth-of-type(2) {
+div.ant_search_card > p:nth-of-type(2) {
 	font-size: 14px;
 }
 /* details page access button */
-div.jsf_search_card > a.jsf_search_card-access {
-	background-color: var(--jsf-theme-buttonBackground);
-	color: var(--jsf-theme-buttonText);
+div.ant_search_card > a.ant_search_card-access {
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	padding: 5px 15px 5px 15px;
 	text-align: center;
 	text-decoration: none;
@@ -87,13 +87,13 @@ div.jsf_search_card > a.jsf_search_card-access {
 	left: 30px;
 	width: calc(100% - 60px);
 }
-div.jsf_search_card > a.jsf_search_card-access:hover {
-	background-color: var(--jsf-theme-buttonBackgroundHover);
+div.ant_search_card > a.ant_search_card-access:hover {
+	background-color: var(--ant-theme-buttonBackgroundHover);
 	cursor: pointer;
 	text-decoration: none;
 }
 /* additional info trigger button */
-div.jsf_search_card > a:last-of-type {
+div.ant_search_card > a:last-of-type {
 	position: absolute;
 	top: 20px;
 	right: 20px;
@@ -101,60 +101,60 @@ div.jsf_search_card > a:last-of-type {
 	height: 34px;
 	padding-top: 4px;
 	border-radius: 50%;
-	background-color: var(--jsf-theme-buttonBackground);
-	color: var(--jsf-theme-buttonText);
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	transition: 0.5s;
 }
-div.jsf_search_card > a:last-of-type:hover {
-	background-color: var(--jsf-theme-buttonBackgroundHover);
+div.ant_search_card > a:last-of-type:hover {
+	background-color: var(--ant-theme-buttonBackgroundHover);
 	padding-top: 2px;
 }
 /* the additional info container */
-div.jsf_search_card > div:last-of-type {
+div.ant_search_card > div:last-of-type {
 	position: absolute;
 	top: 400px;
 	left: 0px;
 	width: 100%;
 	height: 400px;
-	background-color: var(--jsf-theme-panelBackground);
+	background-color: var(--ant-theme-panelBackground);
 	opacity: 0;
 	transition: 0.5s;
 }
-div.jsf_search_card.jsf-details > div:last-of-type {
+div.ant_search_card.ant-details > div:last-of-type {
 	top: 0px;
 	opacity: 1;
 }
-div.jsf_search_card > div > p {
+div.ant_search_card > div > p {
 	font-size: 14px;
 	font-weight: bold;
 	padding-bottom: 10px;
-	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
-div.jsf_search_card > div:last-of-type > dl > dt {
+div.ant_search_card > div:last-of-type > dl > dt {
 	font-size: 12px;
 	font-weight: bold;
 	text-align: left;
 	margin-left: 15px;
 }
-div.jsf_search_card > div:last-of-type > dl > dd {
+div.ant_search_card > div:last-of-type > dl > dd {
 	font-size: 12px;
 	text-align: left;
 	margin-left: 15px;
 	margin-bottom: 5px;
 }
 /* close additional info button */
-div.jsf_search_card > div:last-of-type > a {
+div.ant_search_card > div:last-of-type > a {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	color: var(--jsf-theme-text);
+	color: var(--ant-theme-text);
 	text-decoration: none;
 	display: block;
 	font-size: 16px;
 	transition: 0.5s;
 }
-div.jsf_search_card > div:last-of-type > a:hover {
-	color: var(--jsf-theme-link);
+div.ant_search_card > div:last-of-type > a:hover {
+	color: var(--ant-theme-link);
 	cursor: pointer;
 	text-decoration: none;
 }

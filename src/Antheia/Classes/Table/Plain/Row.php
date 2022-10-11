@@ -28,8 +28,8 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		$this->htmlId = '';
 		$this->attributes = [];
 	}
-	public function setHtmlId(string $idUnic):void {
-		$this->htmlId = $idUnic;
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
 	}
 	/**
 	 * Calling the method will render the row as a title row
@@ -79,7 +79,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	 * parameter is not defined then a new cell will be created.
 	 * @return Cell the new added cell
 	 */
-	public function addCell(?Cell $cell):Cell {
+	public function addCell(Cell $cell = NULL):Cell {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

@@ -88,7 +88,7 @@ class IconVector implements HtmlCode {
 	/**
 	 * The type of the icon to be displayed (the render)
 	 * @param integer $iconType the icon type, as a constant like
-	 * jsc_element_icon::TIP_ICON_###
+	 * IconVector::TIP_ICON_###
 	 */
 	public function setIconType(int $iconType):void {
 		$this->iconType = $iconType;
@@ -96,7 +96,7 @@ class IconVector implements HtmlCode {
 	/**
 	 * The size of the icon
 	 * @param integer $size the size of the element, as a constant like
-	 * jsc_element_icon::SIZE_##
+	 * IconVector::SIZE_##
 	 */
 	public function setSize(int $size):void {
 		$this->size = $size;
@@ -104,7 +104,7 @@ class IconVector implements HtmlCode {
 	/**
 	 * The icon to be displayed
 	 * @param integer $icon the icon to be displayed, as a constant like
-	 * jsc_element_icon::ICON_##
+	 * IconVector::ICON_##
 	 */
 	public function setIcon(int $icon):void {
 		if (!in_array($icon, self::$iconList)) {
@@ -116,7 +116,7 @@ class IconVector implements HtmlCode {
 	 * Returns the name of the icon, as it is defined inside the render
 	 * @return string the name of the icon
 	 */
-	public function getIconName():void {
+	public function getIconName():string {
 		switch ($this->iconType) {
 			case self::TYPE_MATERIAL_DESIGN:
 				$this->icon = new MaterialDesign();

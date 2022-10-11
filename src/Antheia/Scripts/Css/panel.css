@@ -1,50 +1,50 @@
-.jsf_panel {
-	border: 1px solid var(--jsf-theme-panelBorder);
+.ant_panel {
+	border: 1px solid var(--ant-theme-panelBorder);
 	border-radius: 4px;
-	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 	padding: 10px;
-	background-color: var(--jsf-theme-panelBackground);
+	background-color: var(--ant-theme-panelBackground);
 }
-.jsf_panel hr {
+.ant_panel hr {
 	border: none;
-	background-color: var(--jsf-theme-panelBorder);
+	background-color: var(--ant-theme-panelBorder);
 	height: 1px;
 }
-.jsf_panel > .jsf_form-item {
+.ant_panel > .ant_form-item {
 	margin-bottom: 10px;
 }
-.jsf_panel ~ .jsf_panel {
-	margin-top: var(--jsf_var-wireframe-padding);
+.ant_panel ~ .ant_panel {
+	margin-top: var(--ant_var-wireframe-padding);
 }
-.jsf_panel.jsf-max-height {
+.ant_panel.ant-max-height {
 	height: 100%;
 	display: flex;
 	flex-direction: column;
 }
-.jsf_panel > .jsf-header {
+.ant_panel > .ant-header {
 	position: relative;
-	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+	border-bottom: 1px solid var(--ant-theme-panelBorder);
 	padding-bottom: 10px;
 	margin-bottom: 10px;
-	color: var(--jsf-theme-panelTitle);
+	color: var(--ant-theme-panelTitle);
 }
-.jsf_panel > .jsf-header h2 {
-	color: var(--jsf-theme-panelTitle);
+.ant_panel > .ant-header h2 {
+	color: var(--ant-theme-panelTitle);
 }
-.jsf_panel > .jsf-content > p:first-child {
+.ant_panel > .ant-content > p:first-child {
 	margin-top: 0px;
 }
-.jsf_panel > .jsf-footer {
+.ant_panel > .ant-footer {
 	padding-top: 10px;
-	border-top: 1px solid var(--jsf-theme-panelBorder);
+	border-top: 1px solid var(--ant-theme-panelBorder);
 	margin-top: auto;
 }
-#jsf_panel-centered {
+#ant_panel-centered {
 	margin-left: 8px;
 	margin-right: 8px;
 }
 @media only screen and (min-width: 768px) {
-	#jsf_panel-centered {
+	#ant_panel-centered {
 		padding-left: 30px;
 		padding-right: 30px;
 		margin-left: 30px;
@@ -52,14 +52,14 @@
 	}
 }
 /** loading animation */
-.jsf_panel.jsf-loading > div.jsf-content {
+.ant_panel.ant-loading > div.ant-content {
 	visibility: hidden;
 	min-height: 132px;
 	height: 100%;
 	overflow: hidden;
 	position: relative;
 }
-.jsf_panel.jsf-loading > div.jsf-content:before {
+.ant_panel.ant-loading > div.ant-content:before {
 	content: "";
 	visibility: visible;
 	position: absolute;
@@ -69,42 +69,42 @@
 	margin-top: -56px;
 	width: 80px;
 	height: 80px;
-	border: 16px solid var(--jsf-theme-loadingA);
-	border-top-color: var(--jsf-theme-loadingB);
-	border-bottom-color: var(--jsf-theme-loadingB);
+	border: 16px solid var(--ant-theme-loadingA);
+	border-top-color: var(--ant-theme-loadingB);
+	border-bottom-color: var(--ant-theme-loadingB);
 	border-radius: 50%;
-	animation: jsf_loading-spin 2s linear infinite;
+	animation: ant_loading-spin 2s linear infinite;
 }
-.jsf_panel.jsf-loading > div.jsf-footer {
+.ant_panel.ant-loading > div.ant-footer {
 	display: none;
 }
 /** FILE BROWSER PANEL */
 /** the empty folder text info */
-.jsf_panel.jsf-fileBrowser > .jsf-content > p {
+.ant_panel.ant-fileBrowser > .ant-content > p {
 	text-align: center;
 }
 /** the visible links */
-.jsf_panel.jsf-fileBrowser > .jsf-content > div:last-child {
-	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+.ant_panel.ant-fileBrowser > .ant-content > div:last-child {
+	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
-.jsf_panel.jsf-fileBrowser > .jsf-content > div > a {
+.ant_panel.ant-fileBrowser > .ant-content > div > a {
 	display: block;
 	width: 100%;
-	background-color: var(--jsf-theme-panelSecondaryBackground);
-	border-top: 1px solid var(--jsf-theme-panelBorder);
-	border-left: 0px solid var(--jsf-theme-panelBorder);
+	background-color: var(--ant-theme-panelSecondaryBackground);
+	border-top: 1px solid var(--ant-theme-panelBorder);
+	border-left: 0px solid var(--ant-theme-panelBorder);
 	padding: 10px;
 	transition: 0.5s;
 }
-.jsf_panel.jsf-fileBrowser > .jsf-content > div > a > * {
+.ant_panel.ant-fileBrowser > .ant-content > div > a > * {
 	vertical-align: middle;
 }
-.jsf_panel.jsf-fileBrowser > .jsf-content > div > a:hover {
+.ant_panel.ant-fileBrowser > .ant-content > div > a:hover {
 	text-decoration: none;
-	border-left: 10px solid var(--jsf-theme-panelBorder);
+	border-left: 10px solid var(--ant-theme-panelBorder);
 }
 /** the hidden options */
-.jsf_panel.jsf-fileBrowser > .jsf-content > div > div {
+.ant_panel.ant-fileBrowser > .ant-content > div > div {
 	transition: opacity 0.6s;
 	opacity: 0;
 	overflow: hidden;
@@ -112,11 +112,11 @@
 	margin-left: 5px;
 	margin-right: 5px;
 }
-.jsf_panel.jsf-fileBrowser > .jsf-content > div.jsf-active > div {
+.ant_panel.ant-fileBrowser > .ant-content > div.ant-active > div {
 	opacity: 1;
 	height: auto;
 	padding: 10px;
 }
-.jsf_panel.jsf-fileBrowser > .jsf-content > div.jsf-active > div {
-	box-shadow: 0px 0px 2px var(--jsf-theme-shadow);
+.ant_panel.ant-fileBrowser > .ant-content > div.ant-active > div {
+	box-shadow: 0px 0px 2px var(--ant-theme-shadow);
 }

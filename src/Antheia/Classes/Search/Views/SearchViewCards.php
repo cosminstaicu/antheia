@@ -16,7 +16,7 @@ class SearchViewCards extends AbstractSearchView {
 		parent::__construct();
 	}
 	public function getJavascriptStatusUpdate():string {
-		return 'jsf_search_card_statusUpdate();';
+		return 'ant_search_card_statusUpdate();';
 	}
 	public function getHtml():string {
 		$slideIcon = new IconVector();
@@ -37,14 +37,14 @@ class SearchViewCards extends AbstractSearchView {
 			$cell->addWidth('lg', 3);
 			$cell->addWidth('md', 4);
 			$cell->addWidth('sm', 6);
-			$code = '<div id="jsf_search_card_item_'.$index.'" class="jsf_search_card">';
+			$code = '<div id="ant_search_card_item_'.$index.'" class="ant_search_card">';
 			// selection checkbox
 			if ($this->getSelectionStatus()) {
-				$code .= '<div class="jsf_search_card-checkbox">';
+				$code .= '<div class="ant_search_card-checkbox">';
 				$check = new InputRawCheckbox();
-				$check->setHtmlId('jsf_search_checkboxItem'.$index);
+				$check->setHtmlId('ant_search_checkboxItem'.$index);
 				$check->setValue($result->getItemId());
-				$check->setOnClick('jsf_search_updateSelection()');
+				$check->setOnClick('ant_search_updateSelection()');
 				$code .= $check->getHtml();
 				$code .= '</div>';
 			}
@@ -71,7 +71,7 @@ class SearchViewCards extends AbstractSearchView {
 			}
 			if ($result->getImageLink() !== '') {
 				$code .= '<a href="'.$result->getImageLink().'"
-					class="jsf_search_card-imageLink" title="'
+					class="ant_search_card-imageLink" title="'
 					.htmlspecialchars($result->getName()).'">';
 			}
 			$code .= '<img src="'.$result->getImageUrl().'" class="'
@@ -84,11 +84,11 @@ class SearchViewCards extends AbstractSearchView {
 				$code .= '<p>'.htmlspecialchars($result->getDescription()).'</p>';
 			}
 			$code .= '<a href="'.$result->getAccessHref().'"
-				class="jsf_search_card-access">'
+				class="ant_search_card-access">'
 				.htmlspecialchars($result->getAccessText())
 				.'</a>';
 			$code .= '<a href="javascript:void(0)"
-					onclick="jsf_search_card_toggleInfo(this.parentElement)">'
+					onclick="ant_search_card_toggleInfo(this.parentElement)">'
 					.$slideIcon->getHtml().'</a>';
 			// the hidden container
 			$code .= '<div>';
@@ -101,7 +101,7 @@ class SearchViewCards extends AbstractSearchView {
 			}
 			$code .= '</dl>';
 			$code .= '<a href="javascript:void(0)"
-				onclick="jsf_search_card_toggleInfo(this.parentElement.parentElement)">'
+				onclick="ant_search_card_toggleInfo(this.parentElement.parentElement)">'
 				.$closeIcon->getHtml().'</a>';
 			$code .= '</div>';
 			$code .= '</div>';

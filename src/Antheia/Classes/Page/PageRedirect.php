@@ -14,7 +14,7 @@ class PageRedirect extends AbstractPage {
 	public function __construct() {
 		parent::__construct();
 		$this->form = new Form();
-		$this->form->setHtmlId('jsf_form');
+		$this->form->setHtmlId('ant_form');
 		$this->doNotInit = false;
 	}
 	/**
@@ -54,7 +54,7 @@ class PageRedirect extends AbstractPage {
 	}
 	public function getHtml():string {
 		if (!$this->doNotInit) {
-			$this->addOnLoad("document.getElementById('jsf_form').submit()");
+			$this->addOnLoad("document.getElementById('ant_form').submit()");
 		}
 		$this->addElement($this->form);
 		return parent::getHtml();

@@ -27,8 +27,8 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 		$this->horizontalScroll = false;
 		$this->htmlId = '';
 	}
-	public function setHtmlId(string $idUnic):void {
-		$this->htmlId = $idUnic;
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
 	}
 	/**
 	 * Defines if a horizontal scroll should be displayed when the table is
@@ -94,13 +94,13 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 	 * parameter is not defined then a new row will be created
 	 * @return Row the added row
 	 */
-	public function addRow(?Row $row):Row {
+	public function addRow(Row $row = NULL):Row {
 		if ($row === null) {
 			$row = new Row();
 		}
-		if (!is_a($row, 'Cosmin\Antheia\Classes\Table\Plain\Row ')) {
+		if (!is_a($row, 'Cosmin\Antheia\Classes\Table\Plain\Row')) {
 			throw new Exception(
-				'Only Cosmin\Antheia\Classes\Table\Plain\Row  instances allowed'
+				'Only Cosmin\Antheia\Classes\Table\Plain\Row instances allowed'
 			);
 		}
 		$this->rows[] = $row;
@@ -115,7 +115,7 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 		}
 		$code = '';
 		if ($this->horizontalScroll) {
-			$code .= '<div class="jsf_table-scroll">';
+			$code .= '<div class="ant_table-scroll">';
 		}
 		$code .= '<table ';
 		if (count($this->classes) > 0) {

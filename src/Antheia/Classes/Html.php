@@ -4,7 +4,7 @@ use Cosmin\Antheia\Interfaces\HtmlCode;
 /**
  * An element that can be added to a HTML page. The element is
  * a container for raw HTML code or some other objects that are implementing
- * the jsi_code interface
+ * the HtmlCode interface
  * @author Cosmin Staicu
  */
 class Html extends AbstractClass implements HtmlCode {

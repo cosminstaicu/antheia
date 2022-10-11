@@ -104,7 +104,7 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 		}
 		$code .='>';
 		$code .= '<a href="javascript:void(0)" ';
-		$code .= ' onclick="jsf_panel_fileBrowserItemClick(this)">';
+		$code .= ' onclick="ant_panel_fileBrowserItemClick(this)">';
 		$code .= $this->icon->getHtml($this->iconAltText);
 		$code .= ' '.$this->name;
 		$code .= '</a>';

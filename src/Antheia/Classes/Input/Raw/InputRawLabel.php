@@ -32,11 +32,11 @@ class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 	/**
 	 * Returns the inline help object that will be displayed next to the label
 	 * or null if no inline help is defined
-	 * @return null | jsc_inlineHelp_abstract the inline help object 
+	 * @return null | AbstractInlineHelp the inline help object 
 	 * that will be displayed next to the label or null if no inline help
 	 * is required
 	 */
-	public function getInlineHelp():void {
+	public function getInlineHelp():?AbstractInlineHelp {
 		return $this->inlineHelp;
 	}
 	public function setHtmlId(string $id):void {

@@ -3,5 +3,5 @@
 	The space between 2 panels (horizontal or vertical).
 	It has to be an even number (so it can be divided by 2)
 	*/
-	--jsf_var-wireframe-padding: 14px;
+	--ant_var-wireframe-padding: 14px;
 }

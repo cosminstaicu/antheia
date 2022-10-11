@@ -19,7 +19,7 @@ class SearchViewAccordion extends AbstractSearchView {
 		parent::__construct();
 	}
 	public function getJavascriptStatusUpdate():string {
-		return 'jsf_search_accordion_statusUpdate();';
+		return 'ant_search_accordion_statusUpdate();';
 	}
 	public function getHtml():string {
 		$results = $this->getItems();
@@ -28,19 +28,19 @@ class SearchViewAccordion extends AbstractSearchView {
 			$emptyList->setText($this->getNoItemsText());
 			return $emptyList->getHtml();
 		}
-		$code = '<div id="jsf_search_accordion">';
+		$code = '<div id="ant_search_accordion">';
 		/** @var SearchResult $result */
 		foreach ($results as $index => $result) {
 			$panel = new Panel();
-			$panel->setHtmlId('jsf_search_accordion_item_'.$index);
+			$panel->setHtmlId('ant_search_accordion_item_'.$index);
 			$slidePanel = new SlidePanel();
 			$titleCode = new Html();
 			// selection checkbox
 			if ($this->getSelectionStatus()) {
 				$check = new InputRawCheckbox();
-				$check->setHtmlId('jsf_search_checkboxItem'.$index);
+				$check->setHtmlId('ant_search_checkboxItem'.$index);
 				$check->setValue($result->getItemId());
-				$check->setOnClick('jsf_search_updateSelection()');
+				$check->setOnClick('ant_search_updateSelection()');
 				$titleCode->addElement($check);
 			}
 			// left side icon
@@ -58,7 +58,7 @@ class SearchViewAccordion extends AbstractSearchView {
 			$button = $slidePanel->getController();
 			$button->setDisplayIcon(false);
 			$button->setText($result->getName());
-			$button->setAfterCallback('jsf_search_accordion_click');
+			$button->setAfterCallback('ant_search_accordion_click');
 			$titleCode->addElement($button);
 			// access button
 			$icon = new IconVector();
@@ -72,7 +72,7 @@ class SearchViewAccordion extends AbstractSearchView {
 			$buttons = $result->getButtons();
 			if (count($buttons) > 0) {
 				$row = $wireframe->addRow();
-				$row->addClass('jsf-buttons-row');
+				$row->addClass('ant-buttons-row');
 				$cell = $row->addCell();
 				foreach ($buttons as $buttonInfo) {
 					$cell->addElement(new Html(
@@ -83,7 +83,7 @@ class SearchViewAccordion extends AbstractSearchView {
 				}
 			}
 			$row = $wireframe->addRow();
-			$row->addClass('jsf-properties-row');
+			$row->addClass('ant-properties-row');
 			$properties = $result->getProperties();
 			foreach ($properties as $property) {
 				$cell = $row->addCell();

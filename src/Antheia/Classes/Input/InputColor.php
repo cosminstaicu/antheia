@@ -43,7 +43,7 @@ class InputColor extends AbstractInput {
 		$onChangeCode = '';
 		if ($this->getValidation() !== '') {
 			$code .= ' data-validate="'.$this->getValidation().'"';
-			$function = 'jsf_forms_updateStatus(\''.$this->getHtmlId().'\')';
+			$function = 'ant_forms_updateStatus(\''.$this->getHtmlId().'\')';
 			$code .=' onkeyup = "'.$function.'"';
 			$code .=' onblur = "'.$function.'"';
 			$onChangeCode .= $function;

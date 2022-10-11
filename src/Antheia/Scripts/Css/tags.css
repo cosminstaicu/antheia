@@ -7,36 +7,36 @@ html {
 	-ms-text-size-adjust: 100%;
 	min-height: 100%;
 }
-html.jsf_other_full-height {
+html.ant_other_full-height {
 	height: 100%;
 }
 body {
 	position: relative;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
-	color: var(--jsf-theme-text);
+	color: var(--ant-theme-text);
 }
-body.jsf_tags_bottom-bar {
-	background: linear-gradient(to top, var(--jsf-theme-topBottomBarBackground) 50px, var(--jsf-theme-background) 50px);
+body.ant_tags_bottom-bar {
+	background: linear-gradient(to top, var(--ant-theme-topBottomBarBackground) 50px, var(--ant-theme-background) 50px);
 }
 img {
     max-width: 100%;
     height: auto;
 }
 h1 {
-	color: var(--jsf-theme-headerText);
+	color: var(--ant-theme-headerText);
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	font-size: 25px;
 }
 h2 {
-	color: var(--jsf-theme-text);
+	color: var(--ant-theme-text);
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	font-size: 20px;
 }
 h3 {
-	color: var(--jsf-theme-text);
+	color: var(--ant-theme-text);
 	margin: 0px 0px 0px 0px;
 	padding: 0px 0px 0px 0px;
 	font-size: 16px;
@@ -49,7 +49,7 @@ table, tr, td {
 a {
 	text-decoration: none;
 	outline:0;
-	color: var(--jsf-theme-link);
+	color: var(--ant-theme-link);
 }
 a:link {
 	text-decoration: none;
@@ -61,11 +61,11 @@ a:visited {
 	text-decoration: none;
 }
 a:hover {
-	color: var(--jsf-theme-linkHover);
+	color: var(--ant-theme-linkHover);
 	text-decoration: underline;
 }
 label {
 	font-size: 14px;
 	font-weight: bold;
-	color: var(--jsf-theme-inputLabel);
+	color: var(--ant-theme-inputLabel);
 }

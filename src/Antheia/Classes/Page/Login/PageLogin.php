@@ -62,30 +62,30 @@ class PageLogin extends AbstractPageLogin {
 			}
 		}
 		function recaptchaSolved(result) {
-			document.getElementById("jsf_recaptha-answer").value = result;
-			document.getElementById("jsf_login-action").classList.remove("jsf_login-wait-recaptcha");
+			document.getElementById("ant_recaptha-answer").value = result;
+			document.getElementById("ant_login-action").classList.remove("ant_login-wait-recaptcha");
 		}
 		function formValidation() {
 			if (!usernameValid()) {
-				jsf_alert.quickError("'.Texts::get('USERNAME_3_CHARACTERS').'", () => {
+				ant_alert.quickError("'.Texts::get('USERNAME_3_CHARACTERS').'", () => {
 					document.getElementById("username").focus();
 				});
 				return false;
 			}
 			if (!passwordValid()) {
-				jsf_alert.quickError("'.Texts::get('PASSWORD_3_CHARACTERS').'", () => {
+				ant_alert.quickError("'.Texts::get('PASSWORD_3_CHARACTERS').'", () => {
 					document.getElementById("password").focus();
 				});
 				return false;
 			}
-			if (document.getElementById("jsf_recaptha-answer") !== null) {
-				if (document.getElementById("jsf_recaptha-answer").value === "") {
-					jsf_alert.quickError("Recaptcha error");
+			if (document.getElementById("ant_recaptha-answer") !== null) {
+				if (document.getElementById("ant_recaptha-answer").value === "") {
+					ant_alert.quickError("Recaptcha error");
 					return false;
 				}
 			}
-			document.getElementById("jsf_login-submit").value="'.Texts::getLc('LOADING').'";
-			document.getElementById("jsf_login-submit").disabled = true;
+			document.getElementById("ant_login-submit").value="'.Texts::getLc('LOADING').'";
+			document.getElementById("ant_login-submit").disabled = true;
 			return true;
 		}';
 		$this->addJavascript($javascript);
@@ -93,7 +93,7 @@ class PageLogin extends AbstractPageLogin {
 		$form = new Form();
 		if ($this->recaptchaKey !== NULL) {
 			$this->addJavascriptFile('https://www.google.com/recaptcha/api.js');
-			$this->addBodyClass('jsf-hasRecaptcha');
+			$this->addBodyClass('ant-hasRecaptcha');
 		}
 		if ($this->url == '') {
 			throw new Exception('URL not defined');
@@ -118,7 +118,7 @@ class PageLogin extends AbstractPageLogin {
 		$actionDiv = new Html();
 		$actionDiv->addRawCode('<div');
 		if ($this->recaptchaKey !== NULL) {
-			$actionDiv->addRawCode(' id="jsf_login-action" class="jsf_login-wait-recaptcha"');
+			$actionDiv->addRawCode(' id="ant_login-action" class="ant_login-wait-recaptcha"');
 		}
 		$actionDiv->addRawCode('>');
 		if ($this->rememberLogin) {
@@ -131,14 +131,14 @@ class PageLogin extends AbstractPageLogin {
 		}
 		// buton submit
 		$submit = new InputSubmit();
-		$submit->setHtmlId('jsf_login-submit');
+		$submit->setHtmlId('ant_login-submit');
 		$submit->setValue(Texts::get('LOGIN'));
 		$actionDiv->addElement($submit);
 		if ($this->recaptchaKey !== NULL) {
 			$actionDiv->addElement(new Html('
-			<input type="hidden" name="recaptcha" id="jsf_recaptha-answer" value="">
+			<input type="hidden" name="recaptcha" id="ant_recaptha-answer" value="">
 			<div class="g-recaptcha" data-callback="recaptchaSolved"
-			id="jsf_login-recaptcha" data-sitekey="'.$this->recaptchaKey.'"></div>
+			id="ant_login-recaptcha" data-sitekey="'.$this->recaptchaKey.'"></div>
 			</div>
 			'));
 		}

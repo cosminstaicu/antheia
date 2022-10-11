@@ -34,7 +34,7 @@ class InputTextarea extends AbstractInput {
 	 * Defines the text used as a placeholder inside the element
 	 * @param string $text the placeholder text
 	 */
-	public function setPlaceholder(int $text):void {
+	public function setPlaceholder(string $text):void {
 		$this->placeholder = $text;
 	}
 	/**
@@ -63,7 +63,7 @@ class InputTextarea extends AbstractInput {
 		}
 		if ($this->getValidation() !== '') {
 			$code .= ' data-validate = "'.$this->getValidation().'"';
-			$callback = 'jsf_forms_updateStatus(\''.$this->getHtmlId().'\')';
+			$callback = 'ant_forms_updateStatus(\''.$this->getHtmlId().'\')';
 			$code .= ' onchange = "'.$callback.'"'
 					.' onkeyup = "'.$callback.'"'
 					.' onblur = "'.$callback.'"';

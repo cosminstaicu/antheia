@@ -106,7 +106,7 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 	public function getHtml():string {
 		$this->checkHtmlId();
 		$button = new InputRawCustomButton();
-		$button->addAttribute('data-jsf-type', 'time');
+		$button->addAttribute('data-ant-type', 'time');
 		$button->setText(Texts::formatTime($this->getValue()));
 		$button->setIcon(IconVector::ICON_TIME);
 		$button->setHiddenInputHtmlId($this->getHtmlId());
@@ -115,7 +115,7 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		if ($this->getDefaultValue() !== NULL) {
 			$button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
 		}
-		$button->setOnClick('jsf_inputTime_start(this)');
+		$button->setOnClick('ant_inputTime_start(this)');
 		$button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		if ($this->selectMode) {
 			$button->addAttribute('data-select', 'active');

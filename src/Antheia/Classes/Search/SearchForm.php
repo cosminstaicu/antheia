@@ -38,8 +38,8 @@ class SearchForm extends Form {
 	public function __construct() {
 		parent::__construct ();
 		$this->setAction($_SERVER['PHP_SELF']);
-		$this->setHtmlId('jsf_search-form');
-		$this->setOnSubmit('jsf_loading_start(true)');
+		$this->setHtmlId('ant_search-form');
+		$this->setOnSubmit('ant_loading_start(true)');
 		$this->setResultIndex(0, 0, 0);
 		$this->setPagination(0, 0);
 		$this->setOrder(self::SORT_ASC);
@@ -126,10 +126,9 @@ class SearchForm extends Form {
 	 */
 	private function createHtml():void {
 		$slide = new SlidePanel();
-		//TODO paginaCurenta must be translated to english
 		$this->addElement(new Html(
-			'<input type="hidden" name="pagina" value="'
-			.$this->page.'" id="jsf_paginaCurenta">'));
+			'<input type="hidden" name="page" value="'
+			.$this->page.'" id="ant_currentPage">'));
 		$displaySortBy = false;
 		if (count($this->sortByList) > 0) {
 			$displaySortBy = true;
@@ -148,13 +147,12 @@ class SearchForm extends Form {
 		if ($this->displayFilters) {
 			$slideControl = $slide->getController();
 			$slideControl->setText($textFromTo);
-			$slideControl->setHtmlId('jsf_search-filter-expand-control');
+			$slideControl->setHtmlId('ant_search-filter-expand-control');
 			$code .= $slideControl->getHtml();
 		} else {
 			$code .= '<div style="margin-top: 15px">'.$textFromTo.'</div>';
 		}
 		$cell->addElement(new Html($code));
-		$row->addCell($cell);
 		$sortBy = '';
 		switch ($this->order) {
 			case self::SORT_ASC:
@@ -170,9 +168,9 @@ class SearchForm extends Form {
 		$orderBy->setIcon(IconVector::ICON_SORT);
 		$sortArrow = new IconVector();
 		$sortCode = '<input type="hidden" name="sortOrder" 
-			id="jsf_sort-order" value="'.$this->order
-			.'"><a id="jsf_search-sort-order"
-			href="javascript:jsf_search_changeSortOrder(\''.$sortBy.'\')">';
+			id="ant_sort-order" value="'.$this->order
+			.'"><a id="ant_search-sort-order"
+			href="javascript:ant_search_changeSortOrder(\''.$sortBy.'\')">';
 		switch ($this->order) {
 			case self::SORT_ASC:
 				$sortArrow->setIcon(IconVector::ICON_SORT_ASC);
@@ -189,7 +187,7 @@ class SearchForm extends Form {
 		if ($displaySortBy) {
 			$this->sortByInput->setLabel(Texts::get('SORT_BY'));
 			$this->sortByInput->setName('sortBy');
-			$this->sortByInput->setAfterCallback('jsf_search_submit');
+			$this->sortByInput->setAfterCallback('ant_search_submit');
 			$this->sortByInput->setLabelExport(false);
 			foreach ($this->sortByList as $index => $name) {
 				$selected = false;
@@ -200,7 +198,7 @@ class SearchForm extends Form {
 			}
 			$cell = $row->addCell();
 			$cell->addWidth('sm', 2);
-			$this->sortByInput->getLabel()->setHtmlId('jsf_search-sort-label');
+			$this->sortByInput->getLabel()->setHtmlId('ant_search-sort-label');
 			$cell->addElement($this->sortByInput->getLabel());
 			$cell = $row->addCell();
 			$cell->addWidth('sm', 5);
@@ -236,12 +234,12 @@ class SearchForm extends Form {
 				continue;
 			}
 			if ($input->getHtmlId() === '') {
-				$input->setHtmlId('jsf_searchFilterHtmlId_'.$index);
+				$input->setHtmlId('ant_searchFilterHtmlId_'.$index);
 			}
 			$activeFilters->addRawCode(
-				'<div class="jsf_search-active-filter">'.$input->getLabelText().': '
+				'<div class="ant_search-active-filter">'.$input->getLabelText().': '
 				.htmlspecialchars($input->getReadableValue())
-				.'<a href="javascript:void(0)" onClick="jsf_search_resetInput(\''
+				.'<a href="javascript:void(0)" onClick="ant_search_resetInput(\''
 				.$input->getHtmlId().'\')">'.$closeButton->getHtml().'</a></div>'
 			);
 		}
@@ -275,8 +273,8 @@ class SearchForm extends Form {
 		);
 		if ($this->displayResetButton) {
 			$butonReset = new InputButton();
-			$butonReset->setHtmlId('jsf_search-reset');
-			$butonReset->setOnClick('jsf_search_reset(this)');
+			$butonReset->setHtmlId('ant_search-reset');
+			$butonReset->setOnClick('ant_search_reset(this)');
 			$butonReset->setValue(Texts::get('RESET'));
 			$table->addElement($butonReset);
 			$table->addRawCode('</td><td>');

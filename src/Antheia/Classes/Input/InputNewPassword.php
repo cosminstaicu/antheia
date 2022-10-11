@@ -27,7 +27,7 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
 		$this->button = new InputRawCustomButton();
-		$this->button->addAttribute('data-jsf-type', 'newPassword');
+		$this->button->addAttribute('data-ant-type', 'newPassword');
 		$this->username = '';
 		$this->minLength = 3;
 		$this->maxLength = 30;
@@ -157,7 +157,7 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		}
 		$this->button->setText($this->initialText);
 		$this->button->setIcon(IconVector::ICON_PASSWORD);
-		$this->button->setOnClick('jsf_inputNewPassword_start(this)');
+		$this->button->setOnClick('ant_inputNewPassword_start(this)');
 		$this->button->addAttribute('data-digits', $this->digits);
 		$this->button->addAttribute('data-label', $this->getLabelText());
 		$this->button->addAttribute('data-lowercase', $this->uppercase);

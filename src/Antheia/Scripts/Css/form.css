@@ -1,7 +1,7 @@
-form.jsf-max-height {
+form.ant-max-height {
 	height: 100%;
 }
-.jsf_form-item {
+.ant_form-item {
 	position: relative;
 	top: 0px;
 	left: 0px;
@@ -10,35 +10,35 @@ form.jsf-max-height {
 	margin: 0px 0px 0px 0px;
 	padding: 2px;
 }
-.jsf_form-item.jsf-status {
+.ant_form-item.ant-status {
 	padding-right: 30px;
 }
-.jsf_form-item.jsf-status:after {
+.ant_form-item.ant-status:after {
 	position: absolute;
 	top: 3px;
 	right: 0px;
 	font-family: 'Material Icons';
 	font-size: 24px;
 }
-.jsf_form-item.jsf-valid:after {
+.ant_form-item.ant-valid:after {
 	content: "\e876";
-	color: var(--jsf-theme-valid);
+	color: var(--ant-theme-valid);
 }
-.jsf_form-item.jsf-invalid:after  {
+.ant_form-item.ant-invalid:after  {
 	content: "\e002";
-	color: var(--jsf-theme-warning);
+	color: var(--ant-theme-warning);
 }
-.jsf_form-item > i {
+.ant_form-item > i {
 	position: absolute;
 	top: 5px;
 	right: 5px;
-	color: var(--jsf-theme-inputIcon);
+	color: var(--ant-theme-inputIcon);
 	pointer-events: none;
 }
-.jsf_form-item > select {
+.ant_form-item > select {
 	display: none;
 }
-.jsf_form-item.jsf-status > i {
+.ant_form-item.ant-status > i {
 	right: 33px;
 }
 input[type=text], input[type=password], input[type=email],
@@ -47,11 +47,11 @@ input[type=tel], input[type=number], input[type=color], textarea {
 	padding: 8px 35px 8px 15px;
 	margin: 0;
 	display: inline-block;
-	border: 1px solid var(--jsf-theme-inputBorder);
+	border: 1px solid var(--ant-theme-inputBorder);
 	border-radius: 4px;
-	background-color: var(--jsf-theme-inputBackground);
+	background-color: var(--ant-theme-inputBackground);
 	font-size: 14px;
-	color: var(--jsf-theme-inputText);
+	color: var(--ant-theme-inputText);
 }
 input[type=color] {
 	padding-top: 1px;
@@ -60,35 +60,35 @@ input[type=color] {
 }
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
 input[type=tel]:focus, input[type=number]:focus, input[type=color]:focus, textarea:focus {
-	box-shadow: 0px 0px 8px var(--jsf-theme-shadow);
-	outline-color: var(--jsf-theme-inputBorder);
+	box-shadow: 0px 0px 8px var(--ant-theme-shadow);
+	outline-color: var(--ant-theme-inputBorder);
 }
 input[type=submit], input[type=button], input[type=reset]  {
-	background-color: var(--jsf-theme-buttonBackground);
-	color: var(--jsf-theme-buttonText);
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	padding: 5px 15px 5px 15px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	border: 1px solid var(--jsf-theme-buttonBackground);
+	border: 1px solid var(--ant-theme-buttonBackground);
 	border-radius: 4px;
 	transition: 0.5s;
 	font-size: 16px;
 }
 input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
-	background-color: var(--jsf-theme-buttonBackgroundHover);
+	background-color: var(--ant-theme-buttonBackgroundHover);
 	cursor: pointer;
 	text-decoration: none;
 }
 /* trigger buttons (used usually for modal opening */
-input[type=button].jsf_form-button {
+input[type=button].ant_form-button {
 	width: 100%;
 	padding: 8px 25px 8px 15px;
-	background-color: var(--jsf-theme-inputBackground);
-	color: var(--jsf-theme-inputText);
+	background-color: var(--ant-theme-inputBackground);
+	color: var(--ant-theme-inputText);
 	display: block;
-	border: 1px solid var(--jsf-theme-inputBorder);
+	border: 1px solid var(--ant-theme-inputBorder);
 	border-radius: 4px;
 	text-align: left;
 	overflow: hidden;
@@ -96,11 +96,11 @@ input[type=button].jsf_form-button {
 	font-size: 14px;
 	text-overflow: ellipsis;
 }
-input[type=button].jsf_form-button:hover {
-	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+input[type=button].ant_form-button:hover {
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 }
-input[type=button].jsf_form-button:active {
-	background-color: var(--jsf-theme-inputBackground);
+input[type=button].ant_form-button:active {
+	background-color: var(--ant-theme-inputBackground);
 }
 input[type=checkbox] {
 	display: none;
@@ -109,7 +109,7 @@ input[type=checkbox] + span {
 	position: relative;
 	top: 0px;
 	left: 0px;
-	color: var(--jsf-theme-inputLabel);
+	color: var(--ant-theme-inputLabel);
 	vertical-align: middle;
 }
 input[type=checkbox] + span:before {
@@ -117,7 +117,7 @@ input[type=checkbox] + span:before {
 	font-family: 'Material Icons';
 	font-size: 28px;
 	content : "\e835";
-	color: var(--jsf-theme-inputLabel);
+	color: var(--ant-theme-inputLabel);
 	vertical-align: middle;
 	margin-right: 6px;
 }
@@ -125,21 +125,21 @@ input[type=checkbox]:checked + span:before {
 	content : "\e876";
 }
 /* info type inputs (that are only displaying plain text) */
-.jsf_form-item > span {
-	color: var(--jsf-theme-text);
+.ant_form-item > span {
+	color: var(--ant-theme-text);
 }
 @media only screen and (min-width: 768px) {
-	.jsf_form-item > span {
+	.ant_form-item > span {
 		display: inline-block;
 		padding-top: 8px;
 		padding-bottom: 3px;
 	}
 }
-.jsf_form-label-container > * {
+.ant_form-label-container > * {
 	vertical-align: middle;
 }
 @media only screen and (min-width: 768px) {
-	.jsf_form-label-container {
+	.ant_form-label-container {
 		text-align: right;
 		padding-right: 5px;
 		margin-top: 7px;

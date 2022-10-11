@@ -15,7 +15,7 @@ class File extends AbstractItem {
 		parent::__construct($panel);
 		$this->setIconAltText(Texts::get('FILE'));
 		parent::setIcon(new IconPixelBig('document_empty'));
-		$this->addClass('jsf-file');
+		$this->addClass('ant-file');
 		$this->manualIcon = false;
 	}
 	public function setIcon(IconPixelBig $icon):void {

@@ -9,7 +9,7 @@ use Cosmin\Antheia\Classes\Input\AbstractInput;
  * the input and the other for the input. When the viewport width is too small,
  * the label will be stacked on top of the input.
  * Usually this structure is not directly called by the user.
- * The jsc_panel_input class should be used (that is a panel with this
+ * The PanelInput class should be used (that is a panel with this
  * type of structure already in content)
  * @author Cosmin Staicu
  */
@@ -46,7 +46,7 @@ class WireframeInput extends Wireframe {
 	 * @param string[] $classes (optional) a list of classes to be added to the row
 	 * definition (the rows contains the label of the input and the input)
 	 * @param int $position (optional) the column where the item should be added,
-	 * as a constant like jsc_wireframe_custom_input::COLUMN_##. If it not defined
+	 * as a constant like WireframeInput::COLUMN_##. If it not defined
 	 * then the input will have the label on the left column and the input
 	 * control in the right column
 	 * 
@@ -68,7 +68,7 @@ class WireframeInput extends Wireframe {
 	 * of the right one
 	 * @param HtmlCode $item the item to be addes
 	 * @param integer $position the column where the item should be added,
-	 * as a constant like jsc_wireframe_custom_input::COLUMN_##
+	 * as a constant like WireframeInput::COLUMN_##
 	 * @param string $id (optional) (default '') the id of the row containing
 	 * the item to be added
 	 * @param string[] $classes a list of classes to be added to the row definition
@@ -139,7 +139,7 @@ class WireframeInput extends Wireframe {
 					$cell = $row->addCell();
 					$cell->addWidth('sm', $labelWidth);
 					$code = new Html(
-							'<div class="jsf_form-label-container">');
+							'<div class="ant_form-label-container">');
 					if ($input->getLabelExport()) {
 						$code->addElement($input->getLabel());
 					}

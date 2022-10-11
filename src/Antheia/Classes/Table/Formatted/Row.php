@@ -15,7 +15,7 @@ class Row extends \Cosmin\Antheia\Classes\Table\Plain\Row {
 	 * parameter is not defined then a new cell will be created
 	 * @return Cell the added cell
 	 */
-	public function addCell(?Cell $cell):Cell {
+	public function addCell(Cell $cell = NULL):Cell {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

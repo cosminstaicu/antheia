@@ -1,52 +1,52 @@
-.jsf_permissions {
+.ant_permissions {
 	margin-top: 30px;
 	width: 100%;
 }
-.jsf_permissions > thead > tr > th > p {
+.ant_permissions > thead > tr > th > p {
 	text-align: center;
 }
-.jsf_permissions > tbody > tr:first-child > td > p {
+.ant_permissions > tbody > tr:first-child > td > p {
 	font-weight: bold;
 	text-align: right;
 }
-.jsf_permissions > tbody > tr:not(:first-child) > td:first-child {
+.ant_permissions > tbody > tr:not(:first-child) > td:first-child {
 	text-align: right;
 }
 @media only screen and (max-width: 768px) {
-	.jsf_permissions > tbody > tr:first-child > td > p {
+	.ant_permissions > tbody > tr:first-child > td > p {
 		display: none;
 	}
-	.jsf_permissions > tbody > tr:not(:first-child) > td:first-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:first-child {
 		width: 50%;
 	}
-	.jsf_permissions > tbody > tr:not(:first-child) > td:last-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:last-child {
 		width: 50%;
 	}
 }
 @media only screen and (min-width: 768px) {
-	.jsf_permissions > thead > tr > th > p {
+	.ant_permissions > thead > tr > th > p {
 		display: none;
 	}
-	.jsf_permissions > tbody > tr:not(:first-child) > td:first-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:first-child {
 		width: 35%;
 	}
-	.jsf_permissions > tbody > tr:not(:first-child) > td:last-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:last-child {
 		width: 35%;
 	}
 }
 @media only screen and (min-width: 992px) {
-	.jsf_permissions > tbody > tr:not(:first-child) > td:first-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:first-child {
 		width: 40%;
 	}
-	.jsf_permissions > tbody > tr:not(:first-child) > td:last-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:last-child {
 		width: 40%;
 	}
 }
 @media only screen and (min-width: 992px) {
-	.jsf_permissions > tbody > tr:not(:first-child) > td:first-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:first-child {
 		width: 30%;
 	}
-	.jsf_permissions > tbody > tr:not(:first-child) > td:last-child {
+	.ant_permissions > tbody > tr:not(:first-child) > td:last-child {
 		width: 50%;
 	}
 }

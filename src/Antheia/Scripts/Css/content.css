@@ -1,13 +1,13 @@
-#jsf_content {
+#ant_content {
 	width: 100%;
-	border-top: 1px solid var(--jsf-theme-panelBorder);
+	border-top: 1px solid var(--ant-theme-panelBorder);
 	padding-top: 30px;
 	margin-bottom: 70px;
 }
-body.jsf-has-fixed-buttons #jsf_content {
+body.ant-has-fixed-buttons #ant_content {
 	margin-bottom: 100px;
 }
-div#jsf_content-debug {
+div#ant_content-debug {
 	position: fixed;
 	background-color: white;
 	color: black;

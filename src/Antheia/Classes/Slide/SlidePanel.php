@@ -17,7 +17,7 @@ class SlidePanel extends AbstractClass implements HtmlCode {
 		parent::__construct();
 		$this->initialVisible = [];
 		$this->initialHidden = [];
-		$this->htmlId = 'jsf_panelSlide_'.self::$itemCounter;
+		$this->htmlId = 'ant_panelSlide_'.self::$itemCounter;
 		self::$itemCounter++;
 		$this->control = new SlideTrigger($this);
 	}
@@ -50,7 +50,7 @@ class SlidePanel extends AbstractClass implements HtmlCode {
 		return $this->htmlId;
 	}
 	public function getHtml():string {
-		$code = '<div id="'.$this->htmlId.'" class="jsf_slide">';
+		$code = '<div id="'.$this->htmlId.'" class="ant_slide">';
 		$code .= '<div>';
 		/** @var HtmlCode $element */
 		foreach ($this->initialHidden as $element) {

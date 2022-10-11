@@ -95,10 +95,10 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 		}
 		if (count($this->submenus) === 0) {
 			if ($this->startLoadingAnimation) {
-				$code .= ' onClick="jsf_loading_start()"';
+				$code .= ' onClick="ant_loading_start()"';
 			}
 		} else {
-			$code .= ' onClick="jsf_appMenu_toggleSubmenu(this)"';
+			$code .= ' onClick="ant_appMenu_toggleSubmenu(this)"';
 		}
 		$code .= '><img src="'.$this->icon->getUrl()
 			.'" width="32" height="32" alt="'

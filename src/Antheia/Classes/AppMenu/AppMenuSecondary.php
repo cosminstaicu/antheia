@@ -58,7 +58,7 @@ class AppMenuSecondary extends AbstractClass implements HtmlCode {
 	public function getHtml():string {
 		$cod = '<a href="'.$this->href.'" ';
 		if ($this->startLoadingAnimation) {
-			$cod .= ' onClick="jsf_loading_start()"';
+			$cod .= ' onClick="ant_loading_start()"';
 		}
 		$cod .= '><img src="'.$this->icon->getUrl()
 			.'" width="16" height="16" alt="'.$this->text.'">'

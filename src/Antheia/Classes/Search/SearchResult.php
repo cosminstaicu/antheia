@@ -1,6 +1,7 @@
 <?php
 namespace Cosmin\Antheia\Classes\Search;
 use Cosmin\Antheia\Classes\AbstractClass;
+use Cosmin\Antheia\Classes\Internals;
 /**
  * A search result from a search. The result contains only the raw data of the
  * result. An instance of this class will be later rendered using one of the
@@ -33,7 +34,7 @@ class SearchResult extends AbstractClass {
 		$this->setAccessHref('#');
 		$this->resultId = '';
 		$this->accessText = 'undefined';
-		$this->image = JIGSAW_FRAMEWORK_URL.'/media/logo_default.png';
+		$this->image = Internals::getCacheUrl().'/logo.png';
 		$this->iconInfo = null;
 		$this->buttons = [];
 		$this->imageSize = self::IMAGE_SIZE_MEDIUM;
@@ -43,7 +44,7 @@ class SearchResult extends AbstractClass {
 	/**
 	 * Defines the id of the result. The id is used to identify the items that
 	 * have a selected checkbox. The selected elements are returned by the
-	 * javascript function jsf_getListaElementeSelectate()
+	 * javascript function ant_getListaElementeSelectate()
 	 * @param string $id the id of the result
 	 */
 	public function setItemId(string $id):void {
@@ -52,7 +53,7 @@ class SearchResult extends AbstractClass {
 	/**
 	 * Returns the id of the result. The id is used to identify the items
 	 * that have a selected checkbox. The selected elements are returned
-	 * by the javascript function jsf_getListaElementeSelectate()
+	 * by the javascript function ant_getListaElementeSelectate()
 	 * @return string the id of the result
 	 */
 	public function getItemId():string {
@@ -145,7 +146,7 @@ class SearchResult extends AbstractClass {
 	 * Defines the size of the image to be displayed. It is only used by the
 	 * card render.
 	 * @param string $size the size of the image to be displayed inside
-	 * the card, as a constant like jsc_search_result::IMAGE_SIZE_##
+	 * the card, as a constant like SearchResult::IMAGE_SIZE_##
 	 */
 	public function setImageSize(string $size):void {
 		$this->imageSize = $size;
@@ -154,7 +155,7 @@ class SearchResult extends AbstractClass {
 	 * Returns the size of the image to be displayed. It is only used by the
 	 * card render.
 	 * @return string the size of the image to be displayed inside
-	 * the card, as a constant like jsc_search_result::IMAGE_SIZE_##
+	 * the card, as a constant like SearchResult::IMAGE_SIZE_##
 	 */
 	public function getImageSize():string {
 		return $this->imageSize;
@@ -163,9 +164,9 @@ class SearchResult extends AbstractClass {
 	 * Defines the fill type used for the image area inside a card element.
 	 * @param string $type the fill type for the image area, defined with one of
 	 * the constants:<br>
-	 * - jsc_search_result::IMAGE_AREA_FIT - the entire image will be displayed
+	 * - SearchResult::IMAGE_AREA_FIT - the entire image will be displayed
 	 * but the image area will contain empty zones (fit image to area)<br>
-	 * - jsc_search_result::IMAGE_AREA_FILL - the image will fill the available
+	 * - SearchResult::IMAGE_AREA_FILL - the image will fill the available
 	 * area but some parts of the image will not be visible (fill area with image)
 	 */
 	public function setImageArea(string $type):void {
@@ -175,9 +176,9 @@ class SearchResult extends AbstractClass {
 	 * Returns the fill type used for the image area inside a card element.
 	 * @return string the fill type for the image area, defined with one of
 	 * the constants:<br>
-	 * - jsc_search_result::IMAGE_AREA_FIT - the entire image will be displayed
+	 * - SearchResult::IMAGE_AREA_FIT - the entire image will be displayed
 	 * but the image area will contain empty zones (fit image to area)<br>
-	 * - jsc_search_result::IMAGE_AREA_FILL - the image will fill the available
+	 * - SearchResult::IMAGE_AREA_FILL - the image will fill the available
 	 * area but some parts of the image will not be visible (fill area with image)
 	 */
 	public function getImageArea():string {

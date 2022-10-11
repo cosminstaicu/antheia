@@ -42,12 +42,13 @@ abstract class AbstractPage extends AbstractClass {
 	}
 	/**
 	 * Defines the location for loading external libraries
-	 * (like Material Icons).
-	 * @param bool $onlyLocal if true then the library inside the framework
-	 * will be uses else the internet official location of the library will
-	 * be used
+	 * (like Material Icons). Can be used if the project using this library runs
+	 * without internet connection
+	 * @param bool $onlyLocal (optional) (default true) if true then
+	 * the external libraries used by antheia will be loaded from the local files,
+	 * otherwise the external libraries location will be used.
 	 */
-	public function onlyLocalFiles(bool $onlyLocal):void {
+	public function onlyLocalFiles(bool $onlyLocal = true):void {
 		$this->onlyLocalFiles = $onlyLocal;
 	}
 	/**
@@ -59,16 +60,30 @@ abstract class AbstractPage extends AbstractClass {
 	 * the browser is not compatible. If not defined (or null) the browser will
 	 * be redirected to a standard library page
 	 */
-	public function checkCompatibility(?string $url):void {
+	public function checkCompatibility(string $url = null):void {
 		if ($url === null) {
-			$url = JIGSAW_FRAMEWORK_URL.'/media/invalidBrowser.html';
+			// checking if the invalid browser files are available
+			// inside the cache folder
+			foreach ([
+				'invalidBrowser.css',
+				'invalidBrowser.html',
+				'background.jpg',
+				'chrome.svg',
+				'firefox.svg'
+			] as $fileName) {
+				$cacheFile = Internals::getCachePath($fileName);
+				if (!is_file($cacheFile)) {
+					copy(Internals::getFolder(['Media']).$fileName, $cacheFile);
+				}
+			}
+			$url = Internals::getCacheUrl().'invalidBrowser.html';
 		}
-		$this->addOnLoad('jsf_checkCompatibility()');
+		$this->addOnLoad('ant_checkCompatibility()');
 		$this->addElement(new Html(
-			'<script id="jsf_compatibilityScript">
-				function jsf_checkCompatibility() {
+			'<script id="ant_compatibilityScript">
+				function ant_checkCompatibility() {
 					try {
-						jsf_utils_checkCompatibility();
+						ant_utils_checkCompatibility();
 					} catch (error) {
 						document.location.href="'.$url.'";
 					}
@@ -135,7 +150,7 @@ abstract class AbstractPage extends AbstractClass {
 	 * Returns the page title
 	 * @return string the page title
 	 */
-	public function getTitle():void {
+	public function getTitle():string {
 		return $this->pageTitle;
 	}
 	/**
@@ -203,13 +218,12 @@ abstract class AbstractPage extends AbstractClass {
 	 * @return string the HTML code for the page
 	 */
 	public function getHtml():string {
-		$jsFile = Texts::get('LANGUAGE_ID').'_'.md5(Internals::getVersion()).'.js';
+		$jsFile = Texts::get('LANGUAGE_ID').'_scripts.js';
 		// creating (if necessary) the cache files
 		$jsPath = Internals::getCachePath().$jsFile;
 		if (!is_file($jsPath) || Globals::getDebug()) {
 			// javascript file does not exists, so it will be created
-			$jsRootPath = Internals::getRootPath().DIRECTORY_SEPARATOR
-				.'scripts'.DIRECTORY_SEPARATOR.'javascript'.DIRECTORY_SEPARATOR;
+			$jsRootPath = Internals::getFolder(['Scripts','JavaScript']);
 			$jsPrimaryFiles = [
 				'accordion.js',
 				'alert.js',
@@ -241,9 +255,9 @@ abstract class AbstractPage extends AbstractClass {
 			];
 			// creating the javascript file
 			$file = '"use strict";'."\n";
-			$file .= 'let jsf_text_months = {};'."\n";
+			$file .= 'let ant_text_months = {};'."\n";
 			for ($i = 1; $i <= 12; $i++) {
-				$file .= 'jsf_text_months["';
+				$file .= 'ant_text_months["';
 				if ($i < 10) {
 					$file .= '0';
 				}
@@ -251,21 +265,20 @@ abstract class AbstractPage extends AbstractClass {
 				$file .= Texts::getMonth($i);
 				$file .= '";'."\n";
 			}
-			$file .= 'let jsf_text = {};'."\n";
-			$file .= 'jsf_text["cancel"] = "'.Texts::get('CANCEL').'";'."\n";
-			$file .= 'jsf_text["ok"] = "'.Texts::get('OK').'";'."\n";
-			$file .= 'let jsf_urlJigsawFramework = "'.JIGSAW_FRAMEWORK_URL.'";'."\n";
+			$file .= 'let ant_text = {};'."\n";
+			$file .= 'ant_text["cancel"] = "'.Texts::get('CANCEL').'";'."\n";
+			$file .= 'ant_text["ok"] = "'.Texts::get('OK').'";'."\n";
+			$file .= 'let ant_antheiaCacheUrl = "'.Internals::getCacheUrl().'";'."\n";
 			foreach ($jsPrimaryFiles as $jsPrimaryFile) {
 				$file .= file_get_contents($jsRootPath.$jsPrimaryFile)."\n";
 			}
 			file_put_contents($jsPath, $file);
 		}
-		$cssFile = md5(Internals::getVersion()).'.css';
+		$cssFile = 'styles.css';
 		$cssPath = Internals::getCachePath().$cssFile;
 		if (!is_file($cssPath) || Globals::getDebug()) {
 			// css file does not exists, so it will be created
-			$cssRootPath = Internals::getRootPath().DIRECTORY_SEPARATOR
-					.'scripts'.DIRECTORY_SEPARATOR.'css'.DIRECTORY_SEPARATOR;
+			$cssRootPath = Internals::getFolder(['Scripts','Css']);	
 			$cssPrimaryFiles = [
 					'_var.css',
 					'accordion.css',
@@ -308,6 +321,10 @@ abstract class AbstractPage extends AbstractClass {
 			}
 			file_put_contents($cssPath, $file);
 		}
+		$defaultLogo = Internals::getCachePath('logo.png');
+		if (!is_file($defaultLogo)) {
+			copy(Internals::getFolder(['Media']).'logo.png', $defaultLogo);
+		}
 		$code = '<!DOCTYPE html><html lang="'.Texts::get('LANGUAGE_ID').'"';
 		if (count($this->htmlClasses) !== 0) {
 			$code .= ' class="'.implode(' ', array_unique($this->htmlClasses)).'"';
@@ -321,8 +338,26 @@ abstract class AbstractPage extends AbstractClass {
 		<title>'.$this->getTitle().'</title>
 		<link rel="stylesheet" href="'.Internals::getCacheUrl().$cssFile.'">';
 		if ($this->onlyLocalFiles) {
-			$code .= '<link rel="stylesheet" href="'.JIGSAW_FRAMEWORK_URL
-				.'/library/material-icons/material-icons.css">';
+			$folderCacheMaterialIcons = Internals::getCachePath()
+				.'material-icons'.DIRECTORY_SEPARATOR;
+			if (!is_dir($folderCacheMaterialIcons)) {
+				mkdir($folderCacheMaterialIcons);
+				$sourceDir = Internals::getFolder(['Media','material-icons']);
+				$dirHandle = opendir($sourceDir);
+				while (($file = readdir($dirHandle)) !== FALSE) {
+					if ($file === '.') {
+						continue;
+					}
+					if ($file === '..') {
+						continue;
+					}
+					if (is_file($sourceDir.$file)) {
+						copy($sourceDir.$file, $folderCacheMaterialIcons.$file);
+					}
+				}
+			}
+			$code .= '<link rel="stylesheet" href="'.Internals::getCacheUrl()
+				.'/material-icons/material-icons.css">';
 		} else {
 			$code .= '<link rel="stylesheet" 
 				href="https://fonts.googleapis.com/icon?family=Material+Icons">';
@@ -345,44 +380,44 @@ abstract class AbstractPage extends AbstractClass {
 		// the colors from the theme
 		$code .= '<style>';
 		$code .= ':root {';
-		$code .= ' --jsf-theme-warning: '.$this->theme->getWarning().';';
-		$code .= ' --jsf-theme-valid: '.$this->theme->getValid().';';
-		$code .= ' --jsf-theme-link: '.$this->theme->getLink().';';
-		$code .= ' --jsf-theme-linkHover: '.$this->theme->getLinkHover().';';
-		$code .= ' --jsf-theme-text: '.$this->theme->getText().';';
-		$code .= ' --jsf-theme-topBottomBarText: '.$this->theme->getTopBottomBarText().';';
-		$code .= ' --jsf-theme-topBottomBarBackground: '.$this->theme->getTopBottomBarBackground().';';
-		$code .= ' --jsf-theme-menuText: '.$this->theme->getMenuText().';';
-		$code .= ' --jsf-theme-menuBackground: '.$this->theme->getMenuBackground().';';
+		$code .= ' --ant-theme-warning: '.$this->theme->getWarning().';';
+		$code .= ' --ant-theme-valid: '.$this->theme->getValid().';';
+		$code .= ' --ant-theme-link: '.$this->theme->getLink().';';
+		$code .= ' --ant-theme-linkHover: '.$this->theme->getLinkHover().';';
+		$code .= ' --ant-theme-text: '.$this->theme->getText().';';
+		$code .= ' --ant-theme-topBottomBarText: '.$this->theme->getTopBottomBarText().';';
+		$code .= ' --ant-theme-topBottomBarBackground: '.$this->theme->getTopBottomBarBackground().';';
+		$code .= ' --ant-theme-menuText: '.$this->theme->getMenuText().';';
+		$code .= ' --ant-theme-menuBackground: '.$this->theme->getMenuBackground().';';
 		$hover = $this->theme->getMenuText('decimal');
-		$code .= ' --jsf-theme-menuBackgroundHover: rgba('.$hover[0].','.$hover[1].','.$hover[2].',0.5);';
-		$code .= ' --jsf-theme-headerText: '.$this->theme->getHeaderText().';';
-		$code .= ' --jsf-theme-headerBackground: '.$this->theme->getHeaderBackground().';';
-		$code .= ' --jsf-theme-tabText: '.$this->theme->getTabText().';';
-		$code .= ' --jsf-theme-tabBackground: '.$this->theme->getTabBackground().';';
-		$code .= ' --jsf-theme-background: '.$this->theme->getBackground().';';
-		$code .= ' --jsf-theme-panelBorder: '.$this->theme->getPanelBorder().';';
-		$code .= ' --jsf-theme-panelTitle: '.$this->theme->getPanelTitle().';';
-		$code .= ' --jsf-theme-panelBackground: '.$this->theme->getPanelBackground().';';
-		$code .= ' --jsf-theme-panelSecondaryBackground: '.$this->theme->getPanelSecondaryBackground().';';
-		$code .= ' --jsf-theme-inputBorder: '.$this->theme->getInputBorder().';';
-		$code .= ' --jsf-theme-inputIcon: '.$this->theme->getInputIcon().';';
-		$code .= ' --jsf-theme-inputBackground: '.$this->theme->getInputBackground().';';
-		$code .= ' --jsf-theme-inputText: '.$this->theme->getInputText().';';
-		$code .= ' --jsf-theme-inputLabel: '.$this->theme->getInputLabel().';';
-		$code .= ' --jsf-theme-buttonBackground: '.$this->theme->getButtonBackground().';';
-		$code .= ' --jsf-theme-buttonBackgroundHover: '.$this->theme->getButtonBackgroundHover().';';
-		$code .= ' --jsf-theme-buttonText: '.$this->theme->getButtonText().';';
-		$code .= ' --jsf-theme-loadingA: '.$this->theme->getLoadingA().';';
-		$code .= ' --jsf-theme-loadingB: '.$this->theme->getLoadingB().';';
-		$code .= ' --jsf-theme-loadingStepBackground: '.$this->theme->getLoadingStepBackground().';';
-		$code .= ' --jsf-theme-loadingStepBorder: '.$this->theme->getLoadingStepBorder().';';
-		$code .= ' --jsf-theme-loadingStepText: '.$this->theme->getLoadingStepText().';';
-		$code .= ' --jsf-theme-loadingProgressLeft: '.$this->theme->getLoadingProgressLeft().';';
-		$code .= ' --jsf-theme-loadingProgressRight: '.$this->theme->getLoadingProgressRight().';';
+		$code .= ' --ant-theme-menuBackgroundHover: rgba('.$hover[0].','.$hover[1].','.$hover[2].',0.5);';
+		$code .= ' --ant-theme-headerText: '.$this->theme->getHeaderText().';';
+		$code .= ' --ant-theme-headerBackground: '.$this->theme->getHeaderBackground().';';
+		$code .= ' --ant-theme-tabText: '.$this->theme->getTabText().';';
+		$code .= ' --ant-theme-tabBackground: '.$this->theme->getTabBackground().';';
+		$code .= ' --ant-theme-background: '.$this->theme->getBackground().';';
+		$code .= ' --ant-theme-panelBorder: '.$this->theme->getPanelBorder().';';
+		$code .= ' --ant-theme-panelTitle: '.$this->theme->getPanelTitle().';';
+		$code .= ' --ant-theme-panelBackground: '.$this->theme->getPanelBackground().';';
+		$code .= ' --ant-theme-panelSecondaryBackground: '.$this->theme->getPanelSecondaryBackground().';';
+		$code .= ' --ant-theme-inputBorder: '.$this->theme->getInputBorder().';';
+		$code .= ' --ant-theme-inputIcon: '.$this->theme->getInputIcon().';';
+		$code .= ' --ant-theme-inputBackground: '.$this->theme->getInputBackground().';';
+		$code .= ' --ant-theme-inputText: '.$this->theme->getInputText().';';
+		$code .= ' --ant-theme-inputLabel: '.$this->theme->getInputLabel().';';
+		$code .= ' --ant-theme-buttonBackground: '.$this->theme->getButtonBackground().';';
+		$code .= ' --ant-theme-buttonBackgroundHover: '.$this->theme->getButtonBackgroundHover().';';
+		$code .= ' --ant-theme-buttonText: '.$this->theme->getButtonText().';';
+		$code .= ' --ant-theme-loadingA: '.$this->theme->getLoadingA().';';
+		$code .= ' --ant-theme-loadingB: '.$this->theme->getLoadingB().';';
+		$code .= ' --ant-theme-loadingStepBackground: '.$this->theme->getLoadingStepBackground().';';
+		$code .= ' --ant-theme-loadingStepBorder: '.$this->theme->getLoadingStepBorder().';';
+		$code .= ' --ant-theme-loadingStepText: '.$this->theme->getLoadingStepText().';';
+		$code .= ' --ant-theme-loadingProgressLeft: '.$this->theme->getLoadingProgressLeft().';';
+		$code .= ' --ant-theme-loadingProgressRight: '.$this->theme->getLoadingProgressRight().';';
 		$over = $this->theme->getMenuBackground('decimal');
-		$code .= ' --jsf-theme-overlay: rgba('.$over[0].','.$over[1].','.$over[2].',0.5);';
-		$code .= ' --jsf-theme-shadow: '.$this->theme->getShadow().';';
+		$code .= ' --ant-theme-overlay: rgba('.$over[0].','.$over[1].','.$over[2].',0.5);';
+		$code .= ' --ant-theme-shadow: '.$this->theme->getShadow().';';
 		$code .= '}';
 		$code .= $this->headCss.'</style>';
 		if ($this->headJavascript !== '') {
@@ -390,7 +425,7 @@ abstract class AbstractPage extends AbstractClass {
 				$this->headJavascript .= '; ';
 			}
 		}
-		$this->headJavascript .= 'let jsf_theme_backdrop = "'
+		$this->headJavascript .= 'let ant_theme_backdrop = "'
 				.$this->theme->getLoadingBackdrop().'";';
 		$code .= '<script>'.$this->headJavascript.'</script>';
 		$code .= '</head><body';
@@ -406,7 +441,7 @@ abstract class AbstractPage extends AbstractClass {
 			$code .= $item->getHtml();
 		}
 		if (Globals::getDebug()) {
-			$code .= '<div id="jsf_content-debug">JSF debug mode enabled</div>';
+			$code .= '<div id="ant_content-debug">Antheia debug mode enabled</div>';
 		}
 		$code .= '</body></html>';
 		$lines = preg_split("/\r\n|\n|\r/", $code);

@@ -11,9 +11,12 @@
 	"authors" : [{
 			"name" : "Cosmin Staicu",
 			"email" : "cosminstaicu@gmail.com",
-			"role" : "Main Developer"
+			"role" : "Developer"
 		}
 	],
+	"config" : {
+		"sort-packages" : true
+	},
 	"require" : {
 		"php" : "^7.2 || ^8.0",
 		"ext-gd" : "*",
@@ -23,5 +26,6 @@
 	"keywords" : [
 		"frontend",
 		"dark mode"
-	]
+	],
+	"homepage" : "https://github.com/cosminstaicu/antheia"
 }

@@ -1,15 +1,15 @@
-.jsf_inlineHelp {
+.ant_inlineHelp {
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
-	color: var(--jsf-theme-buttonBackground);
+	color: var(--ant-theme-buttonBackground);
 	line-height: 20px;
 }
-.jsf_inlineHelp > span {
+.ant_inlineHelp > span {
 	display: none;
 	width: 160px;
-	background-color: var(--jsf-theme-buttonBackground);
-	color: var(--jsf-theme-buttonText);
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	text-align: center;
 	font-size: 14px;
 	font-weight: normal;
@@ -21,7 +21,7 @@
 	left: 50%;
 	margin-left: -80px;
 }
-.jsf_inlineHelp > span::after {
+.ant_inlineHelp > span::after {
 	content: "";
 	position: absolute;
 	top: 100%;
@@ -29,8 +29,8 @@
 	margin-left: -5px;
 	border-width: 5px;
 	border-style: solid;
-	border-color: var(--jsf-theme-buttonBackground) transparent transparent transparent;
+	border-color: var(--ant-theme-buttonBackground) transparent transparent transparent;
 }
-.jsf_inlineHelp.jsf-visible > span {
+.ant_inlineHelp.ant-visible > span {
 	display: block;
 }

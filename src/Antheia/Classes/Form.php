@@ -21,7 +21,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		parent::__construct();
 		$this->action = '';
 		$this->method = self::METHOD_POST;
-		$this->onSubmit = 'jsf_loading_start(true)';
+		$this->onSubmit = 'ant_loading_start(true)';
 		$this->items = [];
 		$this->htmlId = '';
 		$this->fileMode = false;
@@ -33,7 +33,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	 * height (100%)
 	 */
 	public function setFullHeight():void {
-		$this->addClass('jsf-max-height');
+		$this->addClass('ant-max-height');
 	}
 	/**
 	 * Adds a class to the html tag definition
@@ -71,7 +71,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	/**
 	 * Defines the method used for submitting data
 	 * @param integer $method the method used for submitting data, using
-	 * a constant like jsc_form::METHOD_##
+	 * a constant like Form::METHOD_##
 	 */
 	public function setMethod(string $method):void {
 		$this->method = $method;

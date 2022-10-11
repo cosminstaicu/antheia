@@ -53,7 +53,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->uniqueCounter = AbstractInput::$counter;
 		AbstractInput::$counter++;
 		$this->attributes = [];
-		$this->containerClasses = ['jsf_form-item'];
+		$this->containerClasses = ['ant_form-item'];
 		$this->onClick = '';
 	}
 	public final function addAttribute(string $name, string $value):void {
@@ -111,13 +111,13 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	protected function checkHtmlId():void {
 		if ($this->getValidation() === '') {
 			// no validation function is defined, so no html id is required
-			return false;
+			return;
 		}
 		if ($this->getHtmlId() !== '') {
-			return false;
+			return;
 		}
 		// the input needs an html id, but the user has not defined one
-		$this->setHtmlId('jsf_input_'.$this->uniqid().$this->uniqueCounter);
+		$this->setHtmlId('ant_input_'.$this->uniqid().$this->uniqueCounter);
 	}
 	/**
 	 * The method returns true if the javascript code, inserted after the element
@@ -158,10 +158,10 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Returns the inline help object attached to the input
-	 * @return null | jsc_inlineHelp_abstract the inline help object attached
+	 * @return null | AbstractInlineHelp the inline help object attached
 	 * to the input or null if no inline help object is defined
 	 */
-	public function getInlineHelp():void {
+	public function getInlineHelp():?AbstractInlineHelp {
 		return $this->labelTag->getInlineHelp();
 	}
 	/**
@@ -343,8 +343,8 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function getDefaultValue():?string {
 		return $this->defaultValue;
 	}
-	public function setHtmlId(string $idUnic) {
-		$this->htmlId = $idUnic;
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
 	}
 	/**
 	 * Defines the name and the html id for the element in a single method
@@ -382,7 +382,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		// then that function will be called just after the element is inserted
 		if ($this->getValidation() !== '') {
 			if ($this->getJavascriptExport() && $this->exportJavascript()) {
-				$code .= '<script>jsf_forms_updateStatus("'
+				$code .= '<script>ant_forms_updateStatus("'
 					.$this->getHtmlId().'");</script>';
 			}
 		}

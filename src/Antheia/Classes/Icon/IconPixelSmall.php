@@ -18,7 +18,7 @@ class IconPixelSmall extends AbstractPixelIcon {
 		return self::imageExistsInZip($name, 16);
 	}
 	public function getUrl():string {
-		$file = '16px_'.md5($this->getIcon()).'.png';
+		$file = '16px_'.$this->getIcon().'.png';
 		$cachePath = Internals::getCachePath().$file;
 		if (!is_file($cachePath)) {
 			$result = $this->getTransparentImage(16,16);

@@ -20,7 +20,7 @@ class PanelFileBrowser extends AbstractPanel {
 		$this->emptyText = Texts::get('NO_ITEMS_FOUND');
 		$this->files = [];
 		$this->folders = [];
-		$this->addClass('jsf-fileBrowser');
+		$this->addClass('ant-fileBrowser');
 	}
 	/**
 	 * Adds a new folder to the list. If no folder object is provided as a parameter
@@ -30,7 +30,7 @@ class PanelFileBrowser extends AbstractPanel {
 	 * will be created
 	 * @return Folder the added folder
 	 */
-	public function addFolder(?Folder $folder):Folder {
+	public function addFolder(Folder $folder = null):Folder {
 		if ($folder === null) {
 			$folder = new Folder($this);
 		}
@@ -45,7 +45,7 @@ class PanelFileBrowser extends AbstractPanel {
 	 * will be created
 	 * @return File the added file
 	 */
-	public function addFile(?File $file):File {
+	public function addFile(File $file = null):File {
 		if ($file === null) {
 			$file = new File($this);
 		}

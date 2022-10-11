@@ -30,8 +30,8 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		$this->attributes = [];
 		$this->onClick = '';
 	}
-	public function setHtmlId(string $idUnic):void {
-		$this->htmlId = $idUnic;
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
 	}
 	/**
 	 * Adds a css definition into the tag, using the style attribute
@@ -77,7 +77,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	/**
 	 * Defines the icon for the menu item
 	 * @param int $icon the displayed icon as a constant like
-	 * jsc_element_icon::ICON_##
+	 * IconVector::ICON_##
 	 */
 	public function setIcon(int $icon):void {
 		$this->icon->setIcon($icon);
@@ -86,7 +86,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		if ($this->text === '') {
 			throw new Exception('Name is not defined');
 		}
-		$cod = '<a href="'.$this->href.'" class="jsf_menu-button"';
+		$cod = '<a href="'.$this->href.'" class="ant_menu-button"';
 		if ($this->cssCode !== '') {
 			$cod .= ' style="'.$this->cssCode.'"';
 		}

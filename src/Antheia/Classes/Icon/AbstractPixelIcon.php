@@ -9,6 +9,7 @@ use Cosmin\Antheia\Classes\Internals;
  * @author Cosmin Staicu
  */
 abstract class AbstractPixelIcon {
+	private static $imageFileList = [16 => NULL, 32 => NULL];
 	private $icon;
 	/**
 	 * The class constructor with the name of the main image inside the icon
@@ -33,7 +34,7 @@ abstract class AbstractPixelIcon {
 	 * @return string the name of the main image used for generating the icon
 	 * without any extension
 	 */
-	protected function getIcon():void {
+	protected function getIcon():string {
 		return $this->icon;
 	}
 	/**
@@ -42,7 +43,7 @@ abstract class AbstractPixelIcon {
 	 * @param integer $height the height of the resulting image
 	 * @return resource the generated image
 	 */
-	protected function getTransparentImage(int $width, int $height):void {
+	protected function getTransparentImage(int $width, int $height) {
 		$image = imagecreatetruecolor($width, $height);
 		imagesavealpha($image, true);
 		$color = imagecolorallocatealpha($image, 0, 0, 0, 127);
@@ -59,7 +60,7 @@ abstract class AbstractPixelIcon {
 	 * @return resource the generated image
 	 * @throws Exception if the image can not be generated
 	 */
-	protected function getLibraryImage(string $name, int $size):void {
+	protected function getLibraryImage(string $name, int $size) {
 		switch ($size) {
 			case 16:
 			case 32:
@@ -67,10 +68,7 @@ abstract class AbstractPixelIcon {
 			default:
 				throw new Exception('Incorect value: '.$size);
 		}
-		$zipPath = Internals::getRootPath()
-				.DIRECTORY_SEPARATOR.'media'
-				.DIRECTORY_SEPARATOR.'icons'
-				.DIRECTORY_SEPARATOR.$size.'x'.$size.'.zip';
+		$zipPath = Internals::getFolder(['Media','Icons']).$size.'.zip';
 		if (!is_file($zipPath)) {
 			throw new Exception('ZIP file is missing from media/icons');
 		}
@@ -110,37 +108,37 @@ abstract class AbstractPixelIcon {
 		if (($size !== 16) && ($size !== 32)) {
 			throw new Exception('Unknown image size '.$size);
 		}
-		$imageFile = 'icons_'.$size.'_'.md5(Internals::getVersion()).'.csv';
+		$imageFile = 'icons_'.$size.'.csv';
 		$imageListFile = Internals::getCachePath().$imageFile;
-		if (!is_file($imageListFile)) {
-			// creating a list with all png files inside the library
-			// so no zip extract is needed at each function call
-			$zipPath = Internals::getRootPath()
-					.DIRECTORY_SEPARATOR.'media'
-					.DIRECTORY_SEPARATOR.'icons'
-					.DIRECTORY_SEPARATOR.$size.'x'.$size.'.zip';
-			if (!is_file($zipPath)) {
-				throw new Exception('ZIP file is missing from media/icons');
-			}
-			$csvFileContent = '';
-			$archive = new \ZipArchive();
-			if ($archive->open($zipPath)) {
-				for ($i = 0; $i < $archive->numFiles; $i++) {
-					$fileName = basename($archive->statIndex($i)['name']);
-					if (substr($fileName, -4) !== '.png') {
-						continue;
-					}
-					if ($csvFileContent !== '') {
-						$csvFileContent .= ',';
-					}
-					$csvFileContent .= substr($fileName, 0, -4);
+		if (self::$imageFileList[$size] === NULL) {
+			if (!is_file($imageListFile)) {
+				// creating a list with all png files inside the library
+				// so no zip extract is needed at each function call
+				$zipPath = Internals::getFolder(['Media','Icons']).$size.'.zip';
+				if (!is_file($zipPath)) {
+					throw new Exception('ZIP file is missing: '.$zipPath);
 				}
-				file_put_contents($imageListFile, $csvFileContent);
-			} else {
-				throw new Exception('Unable to process zip file in media/icons');
+				$csvFileContent = '';
+				$archive = new \ZipArchive();
+				if ($archive->open($zipPath)) {
+					for ($i = 0; $i < $archive->numFiles; $i++) {
+						$fileName = basename($archive->statIndex($i)['name']);
+						if (substr($fileName, -4) !== '.png') {
+							continue;
+						}
+						if ($csvFileContent !== '') {
+							$csvFileContent .= ',';
+						}
+						$csvFileContent .= substr($fileName, 0, -4);
+					}
+					file_put_contents($imageListFile, $csvFileContent);
+				} else {
+					throw new Exception('Unable to process zip file in media/icons');
+				}
 			}
+			self::$imageFileList[$size] = explode(',', file_get_contents($imageListFile));
 		}
-		if (in_array($name, explode(',', file_get_contents($imageListFile)))) {
+		if (in_array($name, self::$imageFileList[$size])) {
 			return true;
 		}
 		return false;

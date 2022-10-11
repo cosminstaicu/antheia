@@ -5,6 +5,7 @@ use Cosmin\Antheia\Classes\Globals;
 use Cosmin\Antheia\Classes\Texts;
 use Cosmin\Antheia\Classes\Icon\IconVector;
 use Cosmin\Antheia\Classes\Input\Raw\InputRawCustomButton;
+use Cosmin\Antheia\Classes\Internals;
 /**
  * An input to select a date
  * @author Cosmin Staicu
@@ -53,7 +54,7 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 	public function getHtml():string {
 		$this->checkHtmlId();
 		$button = new InputRawCustomButton();
-		$button->addAttribute('data-jsf-type', 'date');
+		$button->addAttribute('data-ant-type', 'date');
 		$button->setHiddenInputHtmlId($this->getHtmlId());
 		$button->setHiddenInputName($this->getName());
 		$button->setHiddenInputValue($this->getValue());
@@ -65,7 +66,7 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 		}
 		$button->setText(Texts::formatDate($this->getValue()));
 		$button->setIcon(IconVector::ICON_DATE);
-		$button->setOnClick('jsf_inputDate_start(this)');
+		$button->setOnClick('ant_inputDate_start(this)');
 		$button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		$button->addAttribute('data-label', $this->getLabelText());
 		$button->addAttribute('data-today', self::$todayValue);
@@ -89,6 +90,14 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 			$button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		}
 		$this->setHtmlCode($button->getHtml());
+		// checking if the destination file exists in cache
+		$ajaxFile = Internals::getCachePath('date.php');
+		// unlink($ajaxFile);
+		if (!is_file($ajaxFile)) {
+			// destination file does not exists
+			$content = '<?php require_once(\''.dirname(__DIR__, 2).'/Scripts/Ajax/date.php\'); ?>';
+			file_put_contents($ajaxFile, $content);
+		}
 		return parent::getHtml();
 	}
 }

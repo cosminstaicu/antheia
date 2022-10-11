@@ -44,7 +44,7 @@ class Header implements HtmlCode {
 		$this->tabs[] = $tab;
 	}
 	public function getHtml():string {
-		$code = '<div id="jsf_header">';
+		$code = '<div id="ant_header">';
 		if ($this->titleContainer !== null) {
 			$this->titleContainer->setVisible(new Html(
 					'<h1>'.htmlspecialchars($this->title).'</h1>'
@@ -55,7 +55,7 @@ class Header implements HtmlCode {
 		}
 		$code .= '</div>';
 		if (count($this->tabs) > 0) {
-			$code .= '<div id="jsf_header-tabs">';
+			$code .= '<div id="ant_header-tabs">';
 			/** @var HeaderTab $element */
 			foreach ($this->tabs as $tab) {
 				$code .= $tab->getHtml();

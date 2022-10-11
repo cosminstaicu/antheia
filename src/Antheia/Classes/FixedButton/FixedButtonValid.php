@@ -11,7 +11,7 @@ class FixedButtonValid extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon(IconVector::ICON_VALID);
 		$this->setTitle(Texts::get('SUBMIT'));
-		$this->addClass('jsf-valid');
+		$this->addClass('ant-valid');
 	}
 }
 ?>

@@ -5,7 +5,7 @@ use Cosmin\Antheia\Interfaces\HtmlCode;
 use Cosmin\Antheia\Classes\Texts;
 /**
  * The response from a server search. The class is just a list containing
- * jsc_input_searchResponse_item instances
+ * SearchResponseItem instances
  * @author Cosmin Staicu
  */
 class SearchResponseList extends AbstractClass implements HtmlCode {

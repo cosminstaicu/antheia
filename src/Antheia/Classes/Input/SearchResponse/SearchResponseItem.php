@@ -5,7 +5,7 @@ use Cosmin\Antheia\Interfaces\HtmlCode;
 use Cosmin\Antheia\Classes\Exception;
 /**
  * The class defines an element resulted from a search input. This type 
- * of element will be added to a jsc_input_searchResponse_list instance.
+ * of element will be added to a SearchResponseList instance.
  * @author Cosmin Staicu
  */
 class SearchResponseItem extends AbstractClass implements HtmlCode {
@@ -34,7 +34,7 @@ class SearchResponseItem extends AbstractClass implements HtmlCode {
 			throw new Exception('Value is not defined');
 		}
 		return '<a href="javascript:void(0)" data-value="'.$this->value
-			.'" onClick="jsf_inputSearch_selectItem(this)">'
+			.'" onClick="ant_inputSearch_selectItem(this)">'
 			.$this->name.'</a>';
 	}
 }

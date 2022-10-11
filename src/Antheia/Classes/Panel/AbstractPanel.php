@@ -45,7 +45,7 @@ implements HtmlCode, HtmlId {
 	 * Sets the panel to be rendered directly with a loading animation started
 	 */
 	public function setLoadingAnimation():void {
-		$this->addClass('jsf-loading');
+		$this->addClass('ant-loading');
 	}
 	/**
 	 * Defines if the panel will have the full available height or just enough
@@ -56,8 +56,8 @@ implements HtmlCode, HtmlId {
 	public function setFullHeight(bool $status = true):void {
 		$this->maxHeight = $status;
 	}
-	public function setHtmlId(string $idUnic) {
-		$this->htmlId = $idUnic;
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
 	}
 	/**
 	 * Defines the title of the panel.
@@ -117,9 +117,9 @@ implements HtmlCode, HtmlId {
 		$this->content[] = new Html($text);
 	}
 	public function getHtml():string {
-		$this->addClass('jsf_panel');
+		$this->addClass('ant_panel');
 		if ($this->maxHeight) {
-			$this->addClass('jsf-max-height');
+			$this->addClass('ant-max-height');
 		}
 		$code = '<div class="';
 		$code .= implode(' ', array_unique($this->classes));
@@ -129,7 +129,7 @@ implements HtmlCode, HtmlId {
 		}
 		$code .= '>';
 		if ($this->showHeader) {
-			$code .= '<div class="jsf-header">';
+			$code .= '<div class="ant-header">';
 			if ($this->menu === null) {
 				$code .= $this->title->getHtml();
 			} else {
@@ -138,14 +138,14 @@ implements HtmlCode, HtmlId {
 			}
 			$code .= '</div>';
 		}
-		$code .= '<div class="jsf-content">';
+		$code .= '<div class="ant-content">';
 		/** @var HtmlCode $item */
 		foreach ($this->content as $item) {
 			$code .= $item->getHtml();
 		}
 		$code .= '</div>';
 		if (count($this->footerItems) > 0) {
-			$code .= '<div class="jsf-footer">';
+			$code .= '<div class="ant-footer">';
 			foreach ($this->footerItems as $item) {
 				$code .= $item->getHtml();
 			}

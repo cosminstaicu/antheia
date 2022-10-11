@@ -115,7 +115,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	/**
 	 * Defines the icon to be displayed on the right side of the button
 	 * @param integer $icon the icon to be displayed on the right side
-	 * of the button, as a constant like jsc_element_icon::ICON_##
+	 * of the button, as a constant like IconVector::ICON_##
 	 */
 	public function setIcon(int $icon):void {
 		$this->icon->setIcon($icon);
@@ -125,7 +125,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 			throw new Exception('onClick function is not defined');
 		}
 		$code = '';
-		$code .= '<input type="button" class="jsf_form-button"'
+		$code .= '<input type="button" class="ant_form-button"'
 				.' value="'.htmlspecialchars($this->text)
 				.'" onClick="'.$this->onClick.'"';
 		if ($this->htmlId !== '') {

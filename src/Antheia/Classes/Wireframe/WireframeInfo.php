@@ -7,7 +7,7 @@ use Cosmin\Antheia\Classes\Html;
  * The wireframe is responsive. On smaller screens only one column is displayed
  * with each label on top of its value.
  * Usually this structure is not directly called by the user.
- * The jsc_panel_info class should be used (that is a panel with this
+ * The PanelInfo class should be used (that is a panel with this
  * type of structure already in content)
  * @author Cosmin Staicu
  */
@@ -27,7 +27,7 @@ class WireframeInfo extends Wireframe {
 		$cell->addWidth('sm', 4);
 		$cell->setVerticalPadding(false);
 		$cell->addElement(new Html(
-			'<div class="jsf_info-name">'.$label.'</div>'
+			'<div class="ant_info-name">'.$label.'</div>'
 		));
 		$cell = $row->addCell();
 		$cell->addWidth('sm', 8);
@@ -36,7 +36,7 @@ class WireframeInfo extends Wireframe {
 			$value = '&nbsp;';
 		}
 		$cell->addElement(new Html(
-				'<div class="jsf_info-value">'.$value.'</div>'
+				'<div class="ant_info-value">'.$value.'</div>'
 		));
 	}
 	/**
@@ -50,7 +50,7 @@ class WireframeInfo extends Wireframe {
 		$cell->addWidth('sm', 12);
 		$cell->setVerticalPadding(false);
 		$cell->addElement(new Html(
-			'<div class="jsf_info-only-value">'.$text.'</div>'
+			'<div class="ant_info-only-value">'.$text.'</div>'
 		));
 	}
 	/**

@@ -17,7 +17,7 @@ class InputFile extends AbstractInput {
 		$this->button = new InputRawCustomButton();
 		$this->button->setText(Texts::get('SELECT_A_FILE'));
 		$this->button->setIcon(IconVector::ICON_FILE);
-		$this->button->setOnClick('jsf_inputFile_start(this)');
+		$this->button->setOnClick('ant_inputFile_start(this)');
 		$this->onChange = '';
 	}
 	/**
@@ -54,7 +54,7 @@ class InputFile extends AbstractInput {
 		if (count($this->extensionList) > 0) {
 			$code .= ' accept="'.implode(',', $this->extensionList).'" ';
 		}
-		$code .= ' onChange="jsf_inputFile_update(this)';
+		$code .= ' onChange="ant_inputFile_update(this)';
 		if ($this->onChange !== '') {
 			$code .= ';'.$this->onChange;
 		}

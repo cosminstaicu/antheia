@@ -23,7 +23,7 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
-		$this->button->addAttribute('data-jsf-type', 'search');
+		$this->button->addAttribute('data-ant-type', 'search');
 		$this->exportForAttributeInLabel(false);
 		$this->displayUndefined = false;
 		$this->initialText = null;
@@ -104,7 +104,7 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 		foreach ($this->getAttributeList() as $attr) {
 			$this->button->addHiddenInputAttribute($attr['name'], $attr['value']);
 		}
-		$this->button->setOnClick('jsf_inputSearch_start(this)');
+		$this->button->setOnClick('ant_inputSearch_start(this)');
 		$this->button->addAttribute('data-label', $this->getLabelText());
 		$this->button->addAttribute('data-url', $this->url);
 		$this->button->addAttribute('data-initial', $this->searchInputInitialValue);

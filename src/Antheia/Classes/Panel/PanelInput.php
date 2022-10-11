@@ -23,7 +23,7 @@ class PanelInput extends Panel {
 	 * @param string[] $classes (optional) a list of html classes to be added to the
 	 * row html tag of the wireframe
 	 * @param int $position (optional) the column where the item should be added,
-	 * as a constant like jsc_wireframe_custom_input::COLUMN_##. If it not defined
+	 * as a constant like WireframeInput::COLUMN_##. If it not defined
 	 * then the input will have the label on the left column and the input
 	 * control in the right column
 	 */

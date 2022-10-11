@@ -1,27 +1,27 @@
-.jsf_inputFileDrop {
-	border: 1px dashed var(--jsf-theme-inputBorder);
+.ant_inputFileDrop {
+	border: 1px dashed var(--ant-theme-inputBorder);
 	border-radius: 4px;
-	background-color: var(--jsf-theme-inputBackground);
+	background-color: var(--ant-theme-inputBackground);
 	padding: 15px;
 	text-align: center;
 	transition: background-color .5s;
 }
-.jsf_inputFileDrop.jsf-active {
+.ant_inputFileDrop.ant-active {
 	border-style: solid;
-	background-color: var(--jsf-theme-panelSecondaryBackground);
+	background-color: var(--ant-theme-panelSecondaryBackground);
 }
-.jsf_inputFileDrop > i {
+.ant_inputFileDrop > i {
 	opacity: .5;
 	transition: opacity .5s;
 }
-.jsf_inputFileDrop.jsf-active > i {
+.ant_inputFileDrop.ant-active > i {
 	opacity: 1;
 }
-.jsf_inputFileDrop > p {
+.ant_inputFileDrop > p {
 	font-size: 12px;
 	margin-top: 0px;
 	margin-bottom: 5px;
 }
-.jsf_inputFileDrop > input[type=file] {
+.ant_inputFileDrop > input[type=file] {
 	display: none;
 }

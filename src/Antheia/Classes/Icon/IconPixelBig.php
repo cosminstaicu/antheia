@@ -31,7 +31,11 @@ class IconPixelBig extends AbstractPixelIcon {
 		$this->addon = $name;
 	}
 	public function getUrl():string {
-		$file = '32px_'.md5($this->getIcon().$this->addon).'.png';
+		$file = '32px_'.$this->getIcon();
+		if ($this->addon !== '') {
+			$file .= '-'.$this->addon;
+		}
+		$file .= '.png';
 		$cachePath = Internals::getCachePath().$file;
 		if (!is_file($cachePath)) {
 			$result = $this->getTransparentImage(32,32);
@@ -54,6 +58,8 @@ class IconPixelBig extends AbstractPixelIcon {
 	}
 	/**
 	 * Returns the html code for the icon
+	 * @param string $altText (optional) the alternative text to be inserted
+	 * into the img tag
 	 * @return string the html code for the icon
 	 */
 	public function getHtml(string $altText = ''):string {

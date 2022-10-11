@@ -32,7 +32,7 @@ class PageSearch extends PageEmpty {
 		$cell->addElement($this->panel);
 		$this->form->addElement($wireframe);
 		parent::addElement($this->form);
-		$this->setOnSubmit('jsf_loading_start(true)');
+		$this->setOnSubmit('ant_loading_start(true)');
 	}
 	/**
 	 * Adds a search filter (a for input) to the page

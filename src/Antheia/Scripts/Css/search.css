@@ -1,13 +1,13 @@
-#jsf_search-filter-expand-control {
-	border-bottom: 1px solid var(--jsf-theme-panelBorder);
+#ant_search-filter-expand-control {
+	border-bottom: 1px solid var(--ant-theme-panelBorder);
 	padding-bottom: 10px;
 	margin-top: 7px;
 }
-#jsf_search-sort-label {
+#ant_search-sort-label {
 	margin-top: 15px;
 }
-#jsf_search-sort-order {
-	color: var(--jsf-theme-link);
+#ant_search-sort-order {
+	color: var(--ant-theme-link);
 	margin-right: auto;
 	margin-left: 10px;
 	padding-top: 5px;
@@ -15,19 +15,19 @@
 	width: 50px;
 	float: right;
 }
-#jsf_search-sort-order:hover {
+#ant_search-sort-order:hover {
 	text-decoration: none;
-	color: var(--jsf-theme-linkHover);
+	color: var(--ant-theme-linkHover);
 }
-#jsf_search-options {
+#ant_search-options {
 	margin-bottom: 15px;
 }
-#jsf_search-options td:first-child {
+#ant_search-options td:first-child {
 	padding-top: 5px;
 	padding-bottom: 5px;
 }
 /* options buttons wrapper*/
-#jsf_search-options td:last-child > div {
+#ant_search-options td:last-child > div {
 	position: relative;
 	text-align: right;
 	overflow: hidden;
@@ -36,82 +36,82 @@
 	top: -20px;
 	height: 0px;
 }	
-#jsf_search-options.jsf-show-buttons td:last-child > div {
+#ant_search-options.ant-show-buttons td:last-child > div {
 	opacity: 1;
 	top: 0px;
 	height: auto;
 }
 @media only screen and (min-width: 768px) {
-	#jsf_search-sort-label {
+	#ant_search-sort-label {
 		text-align: right;
 		float: right;
 	}
-	#jsf_search-filter-expand-control {
+	#ant_search-filter-expand-control {
 		border-bottom: none;
 		padding-bottom: 0px;
 	}
 }
 /******************************************************************** FILTERS */
-.jsf_search-active-filter {
+.ant_search-active-filter {
 	position: relative;
 	display: inline-block;
-	background-color: var(--jsf-theme-buttonBackground);
-	color: var(--jsf-theme-buttonText);
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	padding: 5px 30px 5px 10px;
 	border-radius: 5px;
 	margin: 5px;
 	font-size: 14px;
 }
-.jsf_search-active-filter > a {
+.ant_search-active-filter > a {
 	position: absolute;
 	top: 1px;
 	right: 5px;
-	color: var(--jsf-theme-buttonText);
+	color: var(--ant-theme-buttonText);
 }
-#jsf_search-reset {
-	background-color: var(--jsf-theme-buttonText);
-	color: var(--jsf-theme-buttonBackground);
+#ant_search-reset {
+	background-color: var(--ant-theme-buttonText);
+	color: var(--ant-theme-buttonBackground);
 }
 /*************************************************************** PAGE CONTROL */
-#jsf_search-pages {
+#ant_search-pages {
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
 	width: 100%;
 	height: 50px;
 	text-align: center;
-	background-color: var(--jsf-theme-topBottomBarBackground);
-	color: var(--jsf-theme-topBottomBarText);
+	background-color: var(--ant-theme-topBottomBarBackground);
+	color: var(--ant-theme-topBottomBarText);
 	padding-top: 5px;
 }
-#jsf_search-pages > table {
+#ant_search-pages > table {
 	 margin-left: auto;
 	 margin-right: auto;
 }
-#jsf_search-pages > table td:first-child, #jsf_search-pages > table td:last-child {
+#ant_search-pages > table td:first-child, #ant_search-pages > table td:last-child {
 	 width: 80px;
 }
-#jsf_search-pages button {
+#ant_search-pages button {
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
-	background-color: var(--jsf-theme-buttonText);
-	color: var(--jsf-theme-buttonBackground);
+	background-color: var(--ant-theme-buttonText);
+	color: var(--ant-theme-buttonBackground);
 	border: none;
 	border-radius: 10px;
 	padding: 1px 15px 1px 15px;
 	cursor: pointer;
 	transition: 0.5s;
 }
-#jsf_search-pages button.jsf-back:hover {
+#ant_search-pages button.ant-back:hover {
 	padding-left: 10px;
 	padding-right: 20px;
 }
-#jsf_search-pages button.jsf-forward:hover {
+#ant_search-pages button.ant-forward:hover {
 	padding-left: 20px;
 	padding-right: 10px;
 }
-#jsf_search-input-page {
+#ant_search-input-page {
 	width: 60px;
 	padding: 5px;
 	text-align: center;

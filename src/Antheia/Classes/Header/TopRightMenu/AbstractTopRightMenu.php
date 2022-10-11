@@ -71,7 +71,7 @@ abstract class AbstractTopRightMenu extends AbstractClass implements HtmlCode {
 		}
 		$code = '<a href="'.$this->href.'"';
 		if ($this->startLoadingAnimationOnClick) {
-			$code .= ' onClick="jsf_loading_start()"';
+			$code .= ' onClick="ant_loading_start()"';
 		}
 		if ($this->targetBlank) {
 			$code .= ' target="_blank" ';

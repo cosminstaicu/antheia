@@ -1,73 +1,73 @@
-body.jsf_message-active {
+body.ant_message-active {
 	visibility: hidden;
 }
-body.jsf_tags_bottom-bar.jsf_message-active {
-	background: var(--jsf-theme-background);
+body.ant_tags_bottom-bar.ant_message-active {
+	background: var(--ant-theme-background);
 }
-#jsf_message-text-container {
+#ant_message-text-container {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
 }
-.jsf_message-text {
+.ant_message-text {
 	margin: 5px;
 	min-width: 250px;
-	background-color: var(--jsf-theme-text);
-	color: var(--jsf-theme-panelBackground);
+	background-color: var(--ant-theme-text);
+	color: var(--ant-theme-panelBackground);
 	text-align: center;
-	border: 1px solid var(--jsf-theme-panelBorder);
+	border: 1px solid var(--ant-theme-panelBorder);
 	border-radius: 2px;
 	padding: 16px;
 	transition: all .5s;
 	opacity: 1;
 }
-.jsf_message-text.jsf-pre-visible {
+.ant_message-text.ant-pre-visible {
 	opacity: 0;
 	transform: translateX(100%);
 }
-.jsf_message-text.jsf-slide-out-mode {
+.ant_message-text.ant-slide-out-mode {
 	position: fixed;
 	bottom: 20px;
 	right: 20px;
 }
-.jsf_message-text.jsf-slide-out-mode.jsf-end-slide {
+.ant_message-text.ant-slide-out-mode.ant-end-slide {
 	opacity: 0;
 	transform: translateY(100%);
 }
-.jsf-slide-down-placeholder {
+.ant-slide-down-placeholder {
 	transition: all .5s;
 	width: 10px;
 }
-.jsf_message-image {
+.ant_message-image {
 	position: fixed;
 	top:0px;
 	left: 0px;
 	width: 100%;
 	height: 100%;
-	background-color: var(--jsf-theme-menuBackground);
+	background-color: var(--ant-theme-menuBackground);
 	background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
 }
-.jsf_message-image.jsf-close-on-click:after {
+.ant_message-image.ant-close-on-click:after {
 	position: absolute;
 	content: '\2716';
 	font-size: 24px;
 	right: 50px;
 	top: 50px;
-	background-color: var(--jsf-theme-menuBackground);
+	background-color: var(--ant-theme-menuBackground);
 	color: white;
 	padding: 10px 30px;
 	border-radius: 5px;
 	cursor: pointer;
 	opacity: .8;
 }
-.jsf_message-image > p {
+.ant_message-image > p {
 	position: absolute;
 	bottom: 200px;
 	display: block;
 	opacity: 0.8;
-	background-color: var(--jsf-theme-menuBackground);
+	background-color: var(--ant-theme-menuBackground);
 	padding-top: 30px;
 	padding-bottom: 30px;
 	padding-right: 10vw;
@@ -78,18 +78,18 @@ body.jsf_tags_bottom-bar.jsf_message-active {
 	left: 0px;
 	color: transparent;
 }
-.jsf_message-image.jsf-visible > p {
+.ant_message-image.ant-visible > p {
 	padding-right: 30vw;
 	color: white;
 	transition: 3s;
 	transition-timing-function: liniar;
 }
-.jsf_message-image.jsf-finish {
+.ant_message-image.ant-finish {
 	opacity: 0;
 	transition: 1s;
 }
-.jsf_message-image.jsf-finish > p {
+.ant_message-image.ant-finish > p {
 	padding-right: 50vw;
 	transition: 1s;
-	color:  var(--jsf-theme-menuText);
+	color:  var(--ant-theme-menuText);
 }

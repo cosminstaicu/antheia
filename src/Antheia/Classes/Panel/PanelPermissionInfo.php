@@ -32,7 +32,7 @@ class PanelPermissionInfo extends Panel {
 		foreach ($this->list as $panel) {
 			$list = $panel->getList();
 			$table = new Table();
-			$table->addClass('jsf_permissions');
+			$table->addClass('ant_permissions');
 			$table->setAlternateRows();
 			$cell = $table->addRow()->addCell();
 			$cell->setColspan(3);

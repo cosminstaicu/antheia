@@ -1,11 +1,11 @@
 <?php
 namespace Cosmin\Antheia\Scripts\Ajax;
-include '../../Classes/Globals.php';
+include __DIR__.'/../../Classes/Globals.php';
 use Cosmin\Antheia\Classes\Globals;
-include '../../Classes/Texts.php';
-require_once '../../Classes/Texts/AbstractText.php';
-require_once '../../Classes/Texts/English.php';
-require_once '../../Classes/Texts/Romana.php';
+include __DIR__.'/../../Classes/Texts.php';
+require_once __DIR__.'/../../Classes/Language/AbstractLanguage.php';
+require_once __DIR__.'/../../Classes/Language/English.php';
+require_once __DIR__.'/../../Classes/Language/Romana.php';
 use Cosmin\Antheia\Classes\Texts;
 /**
  * The script is requested by the date input, when selecting a value
@@ -30,17 +30,17 @@ $today = date('Ymd');
 $monthText = Texts::getMonth($curentMonth);
 // ********************************************************************* BUTTONS
 $code = '<div>'
-	.'<input type="button" value="<" onClick="jsf_inputDate_changeMonth('
+	.'<input type="button" value="<" onClick="ant_inputDate_changeMonth('
 	.$previousMonth.','.$previousYear.')"><input type="button" value="'
-	.$monthText.'" onClick="jsf_inputDate_showMonths()">'
+	.$monthText.'" onClick="ant_inputDate_showMonths()">'
 	.'<input type="button" value="'
-	.$curentYear.'" onClick="jsf_inputDate_clickYear(this)">'
-	.'<input type="button" value=">" onClick="jsf_inputDate_changeMonth('
+	.$curentYear.'" onClick="ant_inputDate_clickYear(this)">'
+	.'<input type="button" value=">" onClick="ant_inputDate_changeMonth('
 	.$nextMonth.','.$nextYear.')">'
 	.'</div>'
 	.'<div>'
-	.'<input type="button" value="<" onClick="jsf_inputDate_changeYears(this)">'
-	.'<input type="button" value=">" onClick="jsf_inputDate_changeYears(this)">'
+	.'<input type="button" value="<" onClick="ant_inputDate_changeYears(this)">'
+	.'<input type="button" value=">" onClick="ant_inputDate_changeYears(this)">'
 	.'</div>'
 	.'<table>';
 // ***************************************************************** MONTH TABLE	
@@ -80,9 +80,9 @@ for ($i = 1; $i <= $daysInMonth; $i ++) {
 	$inputValue .= $i;
 	$code .= '<td><a href="javascript:void(0)" data-value="'.$inputValue.'"'
 		.'data-text="'.$i.' '.$monthText.' '.$curentYear.'" '
-		.'onClick="jsf_inputDate_select(this)"';
+		.'onClick="ant_inputDate_select(this)"';
 	if ($today === $inputValue) {
-		$code .= ' class="jsf_today"';
+		$code .= ' class="ant_today"';
 	}
 	$code .='>'.$i.'</a></td>';
 	$currentColumn ++;
@@ -96,7 +96,7 @@ $code .= '</tr></tbody></table>';
 $code .= '<div>';
 for ($i = 1; $i <= 12; $i++) {
 	$code .= '<input type="button" value="'.Texts::getMonth($i)
-		.'" onClick="jsf_inputDate_changeMonth('.$i.')">';
+		.'" onClick="ant_inputDate_changeMonth('.$i.')">';
 }
 $code .='</div>';
 // ************************************************************** YEAR SELECTION

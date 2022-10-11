@@ -1,4 +1,4 @@
-#jsf_loading {
+#ant_loading {
 	position: fixed;
 	display: flex;
 	left: 0px;
@@ -7,67 +7,67 @@
 	height: 100vh;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--jsf-theme-overlay);
+	background-color: var(--ant-theme-overlay);
 }
-#jsf_loading.jsf-blur {
+#ant_loading.ant-blur {
 	backdrop-filter: blur(2px);
 }
-#jsf_loading.jsf-simple::after {
+#ant_loading.ant-simple::after {
 	content: '';
-	border: 16px solid var(--jsf-theme-loadingA);
-	border-top-color: var(--jsf-theme-loadingB);
-	border-bottom-color: var(--jsf-theme-loadingB);
+	border: 16px solid var(--ant-theme-loadingA);
+	border-top-color: var(--ant-theme-loadingB);
+	border-bottom-color: var(--ant-theme-loadingB);
 	border-radius: 50%;
 	width: 120px;
 	height: 120px;
-	animation: jsf_loading-spin 2s linear infinite;
+	animation: ant_loading-spin 2s linear infinite;
 }
-#jsf_loading > table {
+#ant_loading > table {
 	position: relative;
 	top:0px;
 	left: 0px;
 	width: 400px;
-	color: var(--jsf-theme-loadingStepText);
-	background-color: var(--jsf-theme-loadingStepBackground);
+	color: var(--ant-theme-loadingStepText);
+	background-color: var(--ant-theme-loadingStepBackground);
 	padding: 180px 15px 15px 15px;
 	border-radius: 5px;
-	border: 1px solid var(--jsf-theme-loadingStepBorder);
+	border: 1px solid var(--ant-theme-loadingStepBorder);
 	border-collapse: separate;
     border-spacing: 0 4px;
 }
-#jsf_loading > table::before {
+#ant_loading > table::before {
 	position: absolute;
 	top: 35px;
 	left: calc(50% - 56px);
 	display: block;
 	content: '';
-	background-color: var(--jsf-theme-loadingStepBackground);
-	border: 16px solid var(--jsf-theme-loadingA);
-	border-top-color: var(--jsf-theme-loadingB);
-	border-bottom-color: var(--jsf-theme-loadingB);
+	background-color: var(--ant-theme-loadingStepBackground);
+	border: 16px solid var(--ant-theme-loadingA);
+	border-top-color: var(--ant-theme-loadingB);
+	border-bottom-color: var(--ant-theme-loadingB);
 	border-radius: 50%;
 	width: 80px;
 	height: 80px;
-	animation: jsf_loading-spin 2s linear infinite;
-	box-shadow: 0px 0px 4px var(--jsf-theme-shadow);
+	animation: ant_loading-spin 2s linear infinite;
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 }
-#jsf_loading > table > tr > td {
+#ant_loading > table > tr > td {
 	padding: 5px;
-	box-shadow: 0px 0px 1px var(--jsf-theme-shadow);
+	box-shadow: 0px 0px 1px var(--ant-theme-shadow);
 }
-#jsf_loading > table > tr > td:first-child {
-	border-left: 6px solid var(--jsf-theme-loadingStepBorder);
+#ant_loading > table > tr > td:first-child {
+	border-left: 6px solid var(--ant-theme-loadingStepBorder);
 }
-#jsf_loading > table > tr.jsf-running > td:first-child {
-	border-left: 6px solid var(--jsf-theme-loadingStepBorder);
+#ant_loading > table > tr.ant-running > td:first-child {
+	border-left: 6px solid var(--ant-theme-loadingStepBorder);
 }
-#jsf_loading > table > tr > td:nth-of-type(2) {
+#ant_loading > table > tr > td:nth-of-type(2) {
 	width: 100%;
 }
-#jsf_loading > table > tr.jsf-completed > td:nth-of-type(3) > i.material-icons {
-	color: var(--jsf-theme-valid);
+#ant_loading > table > tr.ant-completed > td:nth-of-type(3) > i.material-icons {
+	color: var(--ant-theme-valid);
 }
-@keyframes jsf_loading-spin {
+@keyframes ant_loading-spin {
 	0% { transform: rotate(0deg); }
 	100% { transform: rotate(360deg); }
 }

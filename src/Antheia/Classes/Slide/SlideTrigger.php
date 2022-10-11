@@ -66,9 +66,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->name = $text;
 	}
 	public function getHtml():string {
-		$code = '<a href="javascript:void(0)" class="jsf_slide-button';
+		$code = '<a href="javascript:void(0)" class="ant_slide-button';
 		if ($this->displayIcon) {
-			$code .= ' jsf-icon';
+			$code .= ' ant-icon';
 		}
 		$code .= '" data-container="'.$this->panel->getHtmlId().'"';
 		if ($this->htmlId != '') {
@@ -80,7 +80,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		if ($this->postCallback !== '') {
 			$code .= ' data-post="'.$this->postCallback.'"';
 		}
-		$code .= ' onClick="jsf_slide_click(this)">';
+		$code .= ' onClick="ant_slide_click(this)">';
 		if ($this->name !== '') {
 			$code .= $this->name;
 		}

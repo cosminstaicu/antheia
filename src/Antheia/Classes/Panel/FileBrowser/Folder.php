@@ -14,7 +14,7 @@ class Folder extends AbstractItem {
 		parent::__construct($panel);
 		$this->setIconAltText(Texts::get('FOLDER'));
 		$this->setIcon(new IconPixelBig('folder'));
-		$this->addClass('jsf-folder');
+		$this->addClass('ant-folder');
 	}
 }
 ?>

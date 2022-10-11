@@ -33,8 +33,8 @@ class SearchOptionBar extends AbstractClass implements HtmlCode {
 		$row = $table->addRow();
 		$cell = $row->addCell();
 		$checkbox = new InputRawCheckbox();
-		$checkbox->setHtmlId('jsf_selectAll');
-		$checkbox->setOnClick('jsf_search_toogleSelectAll()');
+		$checkbox->setHtmlId('ant_selectAll');
+		$checkbox->setOnClick('ant_search_toogleSelectAll()');
 		$checkbox->setLabel(Texts::get('SELECT_ALL'));
 		$cell->addElement($checkbox);
 		$code = '<div>';
@@ -45,7 +45,7 @@ class SearchOptionBar extends AbstractClass implements HtmlCode {
 		$cell = $row->addCell();
 		$cell->addElement(new Html($code));
 		$container = new Panel();
-		$container->setHtmlId('jsf_search-options');
+		$container->setHtmlId('ant_search-options');
 		$container->addElement($table);
 		return $container->getHtml();
 	}

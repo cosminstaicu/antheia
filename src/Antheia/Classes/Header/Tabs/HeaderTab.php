@@ -68,8 +68,8 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 	/**
 	 * Defines the status of the tab (default or selected)
 	 * @param integer $status the status of the tab, as one of the constants:
-	 * - jsc_header_tabs_tab::STATUS_DEFAULT
-	 * - jsc_header_tabs_tab::STATUS_SELECTED
+	 * - HeaderTab::STATUS_DEFAULT
+	 * - HeaderTab::STATUS_SELECTED
 	 */
 	public function setStatus(string $status):void {
 		$this->status = $status;
@@ -93,10 +93,10 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 	}
 	public function getHtml():string {
 		if ($this->status == self::STATUS_SELECTED) {
-			$this->addClass('jsf-selected');
+			$this->addClass('ant-selected');
 		}
 		if ($this->accent) {
-			$this->addClass('jsf-accent');
+			$this->addClass('ant-accent');
 		}
 		$code = '<div';
 		if (count($this->classList) > 0) {
@@ -107,7 +107,7 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 		}
 		$code .= '><a href="'.$this->href.'"';
 		if ($this->startLoadOnClick) {
-			$code .= ' onclick="jsf_loading_start()"';
+			$code .= ' onclick="ant_loading_start()"';
 		}
 		$code .= '>'.$this->title.'</a>';
 		if ($this->hrefClose !== '') {

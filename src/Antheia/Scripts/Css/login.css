@@ -1,5 +1,5 @@
-body.jsf_login {
-	background-color: var(--jsf-theme-panelBorder);
+body.ant_login {
+	background-color: var(--ant-theme-panelBorder);
 	height: 100%;
 	display:flex;
 	align-items: center;
@@ -7,28 +7,28 @@ body.jsf_login {
 	padding-left: 20px;
 	padding-right: 20px;
 }
-body.jsf_login.jsf-hasRecaptcha {
+body.ant_login.ant-hasRecaptcha {
 	padding-left: 0px;
 	padding-right: 0px;
 }
-body.jsf_login input {
+body.ant_login input {
 	margin-bottom: 14px;
 }
-body.jsf_login form {
+body.ant_login form {
     display: flex;
     align-items: stretch;
     flex-direction: column;
     justify-content: center;
     margin-top: 10px;
 }
-#jsf_login-submit {
+#ant_login-submit {
 	width: 150px;
 }
-#jsf_login-submit:disabled, #jsf_login-submit:disabled:hover {
-	color: var(--jsf-theme-buttonBackground);
-	background-color: var(--jsf-theme-buttonText);
+#ant_login-submit:disabled, #ant_login-submit:disabled:hover {
+	color: var(--ant-theme-buttonBackground);
+	background-color: var(--ant-theme-buttonText);
 }
-#jsf_login-action {
+#ant_login-action {
 	position: relative;
 	top: 0px;
 	left: 0px;
@@ -36,26 +36,26 @@ body.jsf_login form {
 	min-width: 310px;
 	min-height: 80px;
 }
-#jsf_login-action > * {
+#ant_login-action > * {
 	transition: left 0.6s;
 }
-#jsf_login-action > *:not(#jsf_login-recaptcha) {
+#ant_login-action > *:not(#ant_login-recaptcha) {
 	position: relative;
 	top:0px;
 	left: 0%;
 }
-#jsf_login-action > #jsf_login-recaptcha {
+#ant_login-action > #ant_login-recaptcha {
 	position: absolute;
 	top:0px;
 	left: -100%;
 }
 
-#jsf_login-action.jsf_login-wait-recaptcha > *:not(#jsf_login-recaptcha) {
+#ant_login-action.ant_login-wait-recaptcha > *:not(#ant_login-recaptcha) {
 	position: relative;
 	top:0px;
 	left: -100%;
 }
-#jsf_login-action.jsf_login-wait-recaptcha > #jsf_login-recaptcha {
+#ant_login-action.ant_login-wait-recaptcha > #ant_login-recaptcha {
 	position: absolute;
 	top:0px;
 	left: 0%;

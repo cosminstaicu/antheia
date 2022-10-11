@@ -31,7 +31,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->setType(self::TYPE_FLUID);
 		$this->htmlId = '';
 		$this->align = self::ALIGN_LEFT;
-		$this->classes = ['jsf_wireframe'];
+		$this->classes = ['ant_wireframe'];
 		$this->attributes = [];
 	}
 	/**
@@ -89,14 +89,14 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 			$code .= ' id="'.$this->htmlId.'" ';
 		}
 		if ($this->type === self::TYPE_FLUID) {
-			$this->addClass('jsf-fluid');
+			$this->addClass('ant-fluid');
 		}
 		switch ($this->align) {
 			case self::ALIGN_LEFT:
-				$this->addClass('jsf-left');
+				$this->addClass('ant-left');
 				break;
 			case self::ALIGN_CENTER:
-				$this->addClass('jsf-center');
+				$this->addClass('ant-center');
 				break;
 			default:
 				throw new Exception();

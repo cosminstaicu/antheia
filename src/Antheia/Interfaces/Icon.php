@@ -1,5 +1,6 @@
 <?php
 namespace Cosmin\Antheia\Interfaces;
+
 /**
  * Defines the methods used in classes defining vector based icons, like
  * Matrial Icons.
@@ -9,13 +10,13 @@ interface Icon extends HtmlCode {
 	/**
 	 * Defines the size of the icon
 	 * @param integer $size the size of the icon using a constant
-	 * like jsc_element_icon::SIZE_##
+	 * like IconVector::SIZE_##
 	 */
 	public function setSize(int $size):void;
 	/**
 	 * Defines the icon to be displayed
 	 * @param string $name the icon bo be displayed
-	 * (a constant lik jsc_element_icon::ICON_##)
+	 * (a constant lik IconVector::ICON_##)
 	 */
 	public function setIcon(string $name):void;
 	/**

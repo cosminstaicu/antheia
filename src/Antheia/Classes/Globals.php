@@ -7,14 +7,24 @@ namespace Cosmin\Antheia\Classes;
 class Globals {
 	// the LANGUAGE_## is used as a file name for the class that contains
 	// the texts for the language
-	const LANGUAGE_ENGLISH = '\\Cosmin\\Antheia\\Language\\English';
-	const LANGUAGE_ROMANA = '\\Cosmin\\Antheia\\Language\\Romana';
+	const LANGUAGE_ENGLISH = '\\Cosmin\\Antheia\\Classes\\Language\\English';
+	const LANGUAGE_ROMANA = '\\Cosmin\\Antheia\\Classes\\Language\\Romana';
 	private static $logoUrl = NULL;
 	private static $appName = 'Antheia';
 	private static $undefinedDate = '00000000';
 	private static $undefinedTime = '9999';
 	private static $language = self::LANGUAGE_ENGLISH;
 	private static $debugMode = false;
+	/**
+	 * Defines the location of the cache folder for the library
+	 * @param string $url the url of the cache folder (probably an absolute
+	 * location, relative to the root of the web server)
+	 * @param string $path the path of the cache folder (probably an absolute
+	 * location on the file system)
+	 */
+	public static function setCache(string $url, string $path):void {
+		Internals::setCache($url, $path);
+	}
 	/**
 	 * Defines if the library runs in debugging mode. If debuggin mode
 	 * is enabled then the css and js files in the cache folder are always

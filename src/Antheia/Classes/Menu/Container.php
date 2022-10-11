@@ -40,8 +40,8 @@ class Container extends AbstractClass implements HtmlCode {
 		if (count($this->items) === 0) {
 			throw new Exception('No menu items defined');
 		}
-		$code = '<div class="jsf_menu">';
-		$code .= '<a href="javascript:void(0);" onClick="jsf_menu_toogle(this)">'
+		$code = '<div class="ant_menu">';
+		$code .= '<a href="javascript:void(0);" onClick="ant_menu_toogle(this)">'
 			.'<div></div><div></div><div></div></a><div>';
 			$code .= $this->visible->getHtml();
 		$code .= '</div><div>';

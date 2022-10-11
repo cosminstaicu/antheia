@@ -1,4 +1,4 @@
-#jsf_fixedButton {
+#ant_fixedButton {
 	position: fixed;
 	display: block;
 	bottom: 30px;
@@ -8,27 +8,27 @@
 	text-align: right;
 	white-space: nowrap;
 }
-#jsf_fixedButton.jsf-enabled {
+#ant_fixedButton.ant-enabled {
 	right: 30px;
 	opacity: 1;
 }
-#jsf_fixedButton > a {
+#ant_fixedButton > a {
 	display: inline-block;
 	padding: 12px;
 	margin-right: 15px;
 	border-radius: 50%;
-	box-shadow: 0px 0px 5px var(--jsf-theme-shadow);
+	box-shadow: 0px 0px 5px var(--ant-theme-shadow);
 	transition: 0.4s;
-	color: var(--jsf-theme-panelBorder);
-	background-color: var(--jsf-theme-panelBackground);
+	color: var(--ant-theme-panelBorder);
+	background-color: var(--ant-theme-panelBackground);
 }
-#jsf_fixedButton > a:hover {
-	box-shadow: 0px 0px 5px var(--jsf-theme-shadow);
+#ant_fixedButton > a:hover {
+	box-shadow: 0px 0px 5px var(--ant-theme-shadow);
 	padding: 20px;
 }
-#jsf_fixedButton > a.jsf-valid {
-	color: var(--jsf-theme-valid);
+#ant_fixedButton > a.ant-valid {
+	color: var(--ant-theme-valid);
 }
-#jsf_fixedButton > a.jsf-warning {
-	color: var(--jsf-theme-warning);
+#ant_fixedButton > a.ant-warning {
+	color: var(--ant-theme-warning);
 }

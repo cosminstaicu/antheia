@@ -45,7 +45,7 @@ abstract class AbstractInputText extends AbstractInput {
 	/**
 	 * Defines the symbol displayed on the right side of the input.
 	 * @param integer $icon the icon to be displayed, as a constant like
-	 * jsc_element_icon::ICON_## or null if no symbol will be displayed
+	 * IconVector::ICON_## or null if no symbol will be displayed
 	 */
 	public function setIcon(int $icon):void {
 		if ($icon !== null) {
@@ -58,7 +58,7 @@ abstract class AbstractInputText extends AbstractInput {
 	/**
 	 * Defines the input type.
 	 * @param integer $type input type as a constant like
-	 * jsc_input_abstractText::TIP_##
+	 * AbstractInputText::TIP_##
 	 */
 	protected function setType(int $type):void {
 		$this->type = $type;
@@ -104,7 +104,7 @@ abstract class AbstractInputText extends AbstractInput {
 		$code .= $this->getAttributesAsText();
 		if ($this->getValidation() !== '') {
 			$code .= ' data-validate="'.$this->getValidation().'"';
-			$function = 'jsf_forms_updateStatus(\''.$this->getHtmlId().'\')';
+			$function = 'ant_forms_updateStatus(\''.$this->getHtmlId().'\')';
 			$code .= ' onchange = "'.$function.'"'
 					.' onkeyup = "'.$function.'"'
 					.' onblur = "'.$function.'"';

@@ -37,7 +37,7 @@ abstract class AbstractInlineHelp extends AbstractClass implements HtmlCode, Htm
 		return $this->icon;
 	}
 	public function getHtml():string {
-		$code = '<div class="jsf_inlineHelp" onClick="jsf_inlineHelp(this)"';
+		$code = '<div class="ant_inlineHelp" onClick="ant_inlineHelp(this)"';
 		if ($this->htmlId != '') {
 			$code .= ' id="'.$this->htmlId.'"';
 		}

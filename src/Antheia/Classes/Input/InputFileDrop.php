@@ -110,7 +110,7 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 			throw new Exception('AfterCallback function is not defined');
 		}
 		$this->checkHtmlId();
-		$code = '<div class="jsf_inputFileDrop"';
+		$code = '<div class="ant_inputFileDrop"';
 		$this->addAttribute('data-name', $this->getName());
 		$this->addAttribute('data-max-files', $this->maximumFiles);
 		$this->addAttribute('data-max-file-size', $this->maximumFileSize);
@@ -146,7 +146,7 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 			}
 			$button->getButton()->setText(Texts::get('OR_JUST_BROWSE'));
 			$button->setLabelExport(false);
-			$button->setOnChange('jsf_inputFileDrop_fileSelected(this)');
+			$button->setOnChange('ant_inputFileDrop_fileSelected(this)');
 			$code .= $button->getHtml();
 		}
 		$code .= '</div>';

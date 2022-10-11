@@ -1,49 +1,49 @@
-.jsf_inputTime input[type=number] {
+.ant_inputTime input[type=number] {
 	padding-right: 0px;
 }
 
-div#jsf_inputTime-hours, div#jsf_inputTime-minutes {
+div#ant_inputTime-hours, div#ant_inputTime-minutes {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
 }
-div#jsf_inputTime-hours > p, div#jsf_inputTime-minutes > p {
+div#ant_inputTime-hours > p, div#ant_inputTime-minutes > p {
 	width: 100%;
 	display: block;
 	border-bottom: 1px solid black;
     padding-bottom: 10px;
 }
-div#jsf_inputTime-hours > a, div#jsf_inputTime-minutes > a {
+div#ant_inputTime-hours > a, div#ant_inputTime-minutes > a {
 	display: block;
-	background-color: var(--jsf-theme-buttonText);
-	color: var(--jsf-theme-buttonBackground);
+	background-color: var(--ant-theme-buttonText);
+	color: var(--ant-theme-buttonBackground);
 	padding: 10px 20px 10px 20px;
 	text-align: center;
 	text-decoration: none;
 	font-size: 16px;
-	border: 1px solid var(--jsf-theme-buttonBackground);
+	border: 1px solid var(--ant-theme-buttonBackground);
 	border-radius: 4px;
 	transition: 0.5s;
 	font-size: 16px;
 	margin: 5px;
 }
-div#jsf_inputTime-hours > a:hover, div#jsf_inputTime-minutes > a:hover {
-	background-color: var(--jsf-theme-buttonBackground);
-	color: var(--jsf-theme-buttonText);
+div#ant_inputTime-hours > a:hover, div#ant_inputTime-minutes > a:hover {
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	text-decoration: none;
 }
 @media only screen and (min-width: 768px) {
-	.jsf_inputTime > .jsf_panel {
+	.ant_inputTime > .ant_panel {
 		text-align: center;
 	}
-	.jsf_inputTime label {
+	.ant_inputTime label {
 		display: inline;
 		margin-right: 5px;
 	}
-	.jsf_inputTime label:last-of-type {
+	.ant_inputTime label:last-of-type {
 		margin-left: 15px;
 	}
-	.jsf_inputTime input[type=number] {
+	.ant_inputTime input[type=number] {
 		display: inline-block;
 		width: 70px;
 	}

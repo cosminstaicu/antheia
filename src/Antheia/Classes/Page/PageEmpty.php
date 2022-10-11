@@ -14,7 +14,7 @@ use Cosmin\Antheia\Classes\Texts;
 use Cosmin\Antheia\Classes\Globals;
 
 /**
- * An empty page, with a menu. jsi_code instances can be added to the class
+ * An empty page, with a menu. HtmlCode instances can be added to the class
  * @author Cosmin Staicu
  */
 class PageEmpty extends PageBlank {
@@ -93,10 +93,16 @@ class PageEmpty extends PageBlank {
 	}
 	/**
 	 * Adds a tab to the page
-	 * @param HeaderTab $tab the tab to be added
+	 * @param HeaderTab $tab (optional) the tab to be added (if the parameter
+	 * is not defined, then a new tab will be instantiated and added to the page)
+	 * @return HeaderTab the added tab
 	 */
-	public function addTab(HeaderTab $tab):void {
+	public function addTab(HeaderTab $tab = NULL):HeaderTab {
+		if ($tab === NULL) {
+			$tab = new HeaderTab();
+		}
 		$this->header->addTab($tab);
+		return $tab;
 	}
 	public function addElement(HtmlCode $codHtml):void {
 		$this->codeElements[] = $codHtml;
@@ -104,8 +110,8 @@ class PageEmpty extends PageBlank {
 	/**
 	 * Adds a new wireframe to the page and returns the new wireframe instance
 	 * @string $type (optional) (default Wireframe::TYPE_FIXED)
-	 * the wireframe type, as a constant like jsc_wireframe_default::TYPE_XXXX
-	 * @return Wireframe the added wireframe
+	 * the wireframe type, as a constant like Wireframe::TYPE_XXXX
+	 * @return \Cosmin\Antheia\Classes\Wireframe\Wireframe the added wireframe
 	 */
 	public function addWireframe(string $type = Wireframe::TYPE_FIXED):Wireframe {
 		$wireframe = new Wireframe();
@@ -115,19 +121,19 @@ class PageEmpty extends PageBlank {
 	}
 	public function getHtml():string {
 		// ***************************************************** JAVASCRIPT HEAD
-		$this->addHtmlClass('jsf_tags_bottom-bar');
-		$this->addBodyClass('jsf_tags_bottom-bar');
+		$this->addHtmlClass('ant_tags_bottom-bar');
+		$this->addBodyClass('ant_tags_bottom-bar');
 		if ($this->infoTextBackgroundImage !== null) {
-			$this->addBodyClass('jsf_message-active');
+			$this->addBodyClass('ant_message-active');
 		}
 		if (count($this->fixedButtons) > 0) {
-			$this->addBodyClass('jsf-has-fixed-buttons');
+			$this->addBodyClass('ant-has-fixed-buttons');
 		}
 		// *********************************************************** UPPER BAR
 		$upperBar = new Html();
-		$upperBar->addRawCode('<div id="jsf_topBar">');
+		$upperBar->addRawCode('<div id="ant_topBar">');
 		$upperBar->addRawCode(
-			'<a href="javascript:void(0)" onClick="jsf_appMenu_toggle()">'
+			'<a href="javascript:void(0)" onClick="ant_appMenu_toggle()">'
 		);
 		$menuButton = new IconVector();
 		$menuButton->setIcon(IconVector::ICON_MENU);
@@ -148,7 +154,7 @@ class PageEmpty extends PageBlank {
 		$this->header->setTitle($this->getTitle());
 		parent::addElement($this->header);
 		// ************************************************************* CONTENT
-		$code = '<div id="jsf_content">';
+		$code = '<div id="ant_content">';
 		parent::addElement(new Html($code));
 		foreach ($this->codeElements as $item) {
 			parent::addElement($item);
@@ -156,24 +162,24 @@ class PageEmpty extends PageBlank {
 		$code = '</div>';
 		// ******************************************************* FIXED BUTTONS
 		if (count($this->fixedButtons) > 0) {
-			$code .= '<div id="jsf_fixedButton">';
+			$code .= '<div id="ant_fixedButton">';
 			/** @var AbstractFixedButton $element */
 			foreach ($this->fixedButtons as $item) {
 				$code .= $item->getHtml();
 			}
 			$code .= '</div>';
-			$code .= '<script id="jsf_fixedButtonScript">
+			$code .= '<script id="ant_fixedButtonScript">
 				setTimeout(() => {
-					document.getElementById("jsf_fixedButton").classList.add("jsf-enabled");
-					document.getElementById("jsf_fixedButtonScript").remove();
+					document.getElementById("ant_fixedButton").classList.add("ant-enabled");
+					document.getElementById("ant_fixedButtonScript").remove();
 				}, 1000);
 			</script>';
 		}
 		parent::addElement(new Html($code));
 		// main menu
 		$code = '
-			<div id="jsf_appMenu">
-			<div onClick="jsf_appMenu_toggle()"></div>
+			<div id="ant_appMenu">
+			<div onClick="ant_appMenu_toggle()"></div>
 			<nav>
 			<img src="'.Globals::getLogo()
 			.'" width="150" height="150" alt="Logo">';
@@ -187,7 +193,7 @@ class PageEmpty extends PageBlank {
 		$code .= '</nav></div>';
 		parent::addElement(new Html($code));
 		if ($this->infoText !== '') {
-			$showMessageCode = 'jsf_message("'.$this->infoText.'"';
+			$showMessageCode = 'ant_message("'.$this->infoText.'"';
 			if ($this->infoTextBackgroundImage !== NULL) {
 				$showMessageCode .= ',"'.$this->infoTextBackgroundImage.'"';
 				if ($this->closeFullPageMessageOnClick) {
@@ -196,9 +202,9 @@ class PageEmpty extends PageBlank {
 			}
 			$showMessageCode .= ');
 			setTimeout(() => {
-				document.getElementById("jsf-messageOnLoadScript").remove();
+				document.getElementById("ant-messageOnLoadScript").remove();
 			}, 500);';
-			parent::addJavascriptBody($showMessageCode, 'jsf-messageOnLoadScript');
+			parent::addJavascriptBody($showMessageCode, 'ant-messageOnLoadScript');
 		}
 		return parent::getHtml();
 	}

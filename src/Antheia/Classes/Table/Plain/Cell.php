@@ -41,8 +41,8 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		$this->htmlId = '';
 		$this->attributes = [];
 	}	
-	public function setHtmlId(string $idUnic):void {
-		$this->htmlId = $idUnic;
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
 	}
 	/**
 	 * Adds a CSS class to the class attribute of the tag
@@ -71,7 +71,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	/**
 	 * Defines the cell content alignment
 	 * @param integer $align the content alignment using a constant like
-	 * de tipul jsc_table_cell::ALIGN_##
+	 * de tipul Cell::ALIGN_##
 	 */
 	public function setAlign(int $align):void {
 		$this->align = $align;
