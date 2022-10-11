@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCustomButton;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawHidden;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
+use Antheia\Antheia\Classes\Input\Raw\InputRawHidden;
 /**
  * A custom button, to be displayed inside a form. The button has a hidden
  * input attached to it, that can be used for sending values with a form.

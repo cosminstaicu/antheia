@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel\Permission;
+namespace Antheia\Antheia\Classes\Panel\Permission;
 /**
  * A group of permission for the app. For example, you can have a clients group
  * that can contain all the permissions for clients: add, edit, view etc.

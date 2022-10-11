@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Panel\Permission\PermissionEditGroup;
+namespace Antheia\Antheia\Classes\Panel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Panel\Permission\PermissionEditGroup;
 /**
  * A panel with permission, displayed in groups, as inputs.
  * Can be used for setting the permission for a user, inside the app.

@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\InlineHelp;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\InlineHelp;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Class to be extended by all classes defining an inline help feature.
  * @author Cosmin Staicu

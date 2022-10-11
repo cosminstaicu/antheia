@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes;
+namespace Antheia\Antheia\Classes;
 /**
  * A class that is used for various operations inside the library
  * @author Cosmin Staicu
@@ -7,8 +7,8 @@ namespace Cosmin\Antheia\Classes;
 class Globals {
 	// the LANGUAGE_## is used as a file name for the class that contains
 	// the texts for the language
-	const LANGUAGE_ENGLISH = '\\Cosmin\\Antheia\\Classes\\Language\\English';
-	const LANGUAGE_ROMANA = '\\Cosmin\\Antheia\\Classes\\Language\\Romana';
+	const LANGUAGE_ENGLISH = '\\Antheia\\Antheia\\Classes\\Language\\English';
+	const LANGUAGE_ROMANA = '\\Antheia\\Antheia\\Classes\\Language\\Romana';
 	private static $logoUrl = NULL;
 	private static $appName = 'Antheia';
 	private static $undefinedDate = '00000000';

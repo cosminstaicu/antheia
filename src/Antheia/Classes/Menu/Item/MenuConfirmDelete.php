@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Menu\Item;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Menu\Item;
+use Antheia\Antheia\Classes\Exception;
 /**
  * The class defines a button that, when pressed, asks for a delete confirmation
  * before initiating a (delete) action

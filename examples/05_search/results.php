@@ -1,10 +1,10 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageSearchResult;
-use Cosmin\Antheia\Classes\Search\SearchOptionBarButton;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Input\InputText;
-use Cosmin\Antheia\Classes\Input\InputSelect;
-use Cosmin\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Classes\Page\PageSearchResult;
+use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Search\SearchResult;
 // init.php is used for initializing the framework
 require '../utils/init.php';
 $page = new PageSearchResult();

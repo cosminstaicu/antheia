@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel\FileBrowser;
-use Cosmin\Antheia\Classes\Panel\PanelFileBrowser;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Icon\IconPixelBig;
+namespace Antheia\Antheia\Classes\Panel\FileBrowser;
+use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
 /**
  * A folder from the file browser list. The class should not be called
  * by the end user. The method addFolder from the fileBrowser panel should be used

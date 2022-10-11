@@ -1,14 +1,14 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page\Login;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Form;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Input\InputText;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Input\InputPassword;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Input\InputCheckbox;
-use Cosmin\Antheia\Classes\Input\InputSubmit;
+namespace Antheia\Antheia\Classes\Page\Login;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Form;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\InputPassword;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Input\InputCheckbox;
+use Antheia\Antheia\Classes\Input\InputSubmit;
 /**
  * A page for entering credentials, to login to an app
  * @author Cosmin Staicu

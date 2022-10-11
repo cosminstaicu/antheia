@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Interfaces;
+namespace Antheia\Antheia\Interfaces;
 /**
  * An html element that can have custom attributes
  * @author Cosmin Staicu

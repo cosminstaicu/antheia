@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel;
+namespace Antheia\Antheia\Classes\Panel;
 /**
  * The default panel for the framework.
  * @author Cosmin Staicu

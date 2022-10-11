@@ -1,7 +1,7 @@
 <?php 
-namespace Cosmin\Antheia\Classes\Accordion;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
+namespace Antheia\Antheia\Classes\Accordion;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * The class defines a list of stack items that will display some content when clicked
  * @author Cosmin Staicu

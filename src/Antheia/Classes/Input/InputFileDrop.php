@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Interfaces\BeforeAfterCallback;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Defines an area where the user can drag and drop single or multiple files
  * to be uploaded to the server

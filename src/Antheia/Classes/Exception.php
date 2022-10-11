@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes;
+namespace Antheia\Antheia\Classes;
 /**
  * The general exception for the entire library
  * @author Cosmin Staicu

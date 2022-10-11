@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Menu;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Menu\Item\AbstractMenu;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Menu;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Classes\Exception;
 /**
  * A container with a visible container that can have a menu (default hidden)
  * with one ore more items. The menu items can be toggled from the button places

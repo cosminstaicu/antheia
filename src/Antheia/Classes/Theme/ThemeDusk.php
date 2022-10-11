@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Theme;
+namespace Antheia\Antheia\Classes\Theme;
 /**
  * Dusk theme
  * https://www.schemecolor.com/gradient-at-dusk.php

@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search\Views;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Search\SearchResult;
+namespace Antheia\Antheia\Classes\Search\Views;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Search\SearchResult;
 /**
  * Abstract class to be extended by all classed defining renders for displaying
  * search results

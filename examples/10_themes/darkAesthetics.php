@@ -1,6 +1,6 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageEmpty;
-use Cosmin\Antheia\Classes\Theme\ThemeDarkAesthetics;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Theme\ThemeDarkAesthetics;
 // init.php is used for initializing the framework
 require '../utils/init.php';
 $page = new PageEmpty();

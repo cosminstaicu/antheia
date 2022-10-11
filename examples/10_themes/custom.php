@@ -1,5 +1,5 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageEditTheme;
+use Antheia\Antheia\Classes\Page\PageEditTheme;
 // init.php is used for initializing the framework
 require '../utils/init.php';
 $page = new PageEditTheme();

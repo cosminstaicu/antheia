@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\AppMenu;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Classes\Icon\IconPixelBig;
+namespace Antheia\Antheia\Classes\AppMenu;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
 /**
  * A menu item from the main menu of the page (the sliding one on the left
  * side of the page)

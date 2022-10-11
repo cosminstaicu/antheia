@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Interfaces;
+namespace Antheia\Antheia\Interfaces;
 /**
  * A class containing HTML code that can be added to a page or to another
  * html element

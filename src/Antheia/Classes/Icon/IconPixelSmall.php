@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Icon;
-use Cosmin\Antheia\Classes\Internals;
+namespace Antheia\Antheia\Classes\Icon;
+use Antheia\Antheia\Classes\Internals;
 /**
  * An square image icon with a 32px side
  * @author Cosmin Staicu

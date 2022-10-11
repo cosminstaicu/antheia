@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
+namespace Antheia\Antheia\Classes\Input;
 /**
  * A regular text type input
  * @author Cosmin Staicu

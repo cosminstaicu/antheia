@@ -1,16 +1,16 @@
 <?php
-use Cosmin\Antheia\Classes\Globals;
-use Cosmin\Antheia\Classes\Internals;
-use Cosmin\Antheia\Classes\Page\AbstractPage;
-use Cosmin\Antheia\Classes\Theme\ThemeRetroOrangeGray;
-use Cosmin\Antheia\Classes\Theme\ThemeDefault;
-use Cosmin\Antheia\Classes\Theme\ThemeDarkAesthetics;
-use Cosmin\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
-use Cosmin\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
-use Cosmin\Antheia\Classes\AppMenu\AppMenuPrimary;
-use Cosmin\Antheia\Classes\AppMenu\AppMenuSecondary;
-use Cosmin\Antheia\Classes\Page\PageEmpty;
-use Cosmin\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Internals;
+use Antheia\Antheia\Classes\Page\AbstractPage;
+use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
+use Antheia\Antheia\Classes\Theme\ThemeDefault;
+use Antheia\Antheia\Classes\Theme\ThemeDarkAesthetics;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
+use Antheia\Antheia\Classes\AppMenu\AppMenuSecondary;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Html;
 require_once 
 	__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
 		.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';

@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel;
-use Cosmin\Antheia\Classes\Wireframe\WireframeInput;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Input\AbstractInput;
+namespace Antheia\Antheia\Classes\Panel;
+use Antheia\Antheia\Classes\Wireframe\WireframeInput;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Input\AbstractInput;
 /**
  * A panel that contains form inputs, vertically stacked. It is best used
  * when editing data, since all the positioning is done automatically

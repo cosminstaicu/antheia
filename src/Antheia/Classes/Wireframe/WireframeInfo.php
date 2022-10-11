@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Wireframe;
-use Cosmin\Antheia\Classes\Html;
+namespace Antheia\Antheia\Classes\Wireframe;
+use Antheia\Antheia\Classes\Html;
 /**
  * A wireframe with two columns for displaying name=value pairs. One column
  * contains a label, the other contains the value for that label.

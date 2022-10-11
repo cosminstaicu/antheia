@@ -1,7 +1,7 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageSearch;
-use Cosmin\Antheia\Classes\Input\InputText;
-use Cosmin\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Page\PageSearch;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\InputSelect;
 require '../utils/init.php';
 $page = new PageSearch();
 // this function is defined inside utils/init.php required file

@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Icon\VectorSet;
-use Cosmin\Antheia\Interfaces\Icon;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Icon\VectorSet;
+use Antheia\Antheia\Interfaces\Icon;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * An vector based icon from the material design set (Google)
  * Warning! This class should not be instanced by the user. A class of

@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Table;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Table\Formatted\Row;
+namespace Antheia\Antheia\Classes\Table;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Table\Formatted\Row;
 /**
  * The code for a default table (formatted according to the current theme)
  * @author Cosmin Staicu
@@ -33,9 +33,9 @@ class Table extends TablePlain {
 		if ($row === null) {
 			$row = new Row();
 		}
-		if (!is_a($row, 'Cosmin\Antheia\Classes\Table\Formatted\Row')) {
+		if (!is_a($row, 'Antheia\Antheia\Classes\Table\Formatted\Row')) {
 			throw new Exception(
-				'Only Cosmin\Antheia\Classes\Table\Formatted\Row instances allowed'
+				'Only Antheia\Antheia\Classes\Table\Formatted\Row instances allowed'
 			);
 		}
 		return parent::addRow($row);

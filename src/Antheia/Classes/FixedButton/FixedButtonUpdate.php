@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\FixedButton;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Texts;
+namespace Antheia\Antheia\Classes\FixedButton;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Texts;
 /**
  * A fixed button with the refresh symbol
  * @author Cosmin Staicu

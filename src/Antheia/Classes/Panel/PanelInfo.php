@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel;
-use Cosmin\Antheia\Classes\Wireframe\WireframeInfo;
+namespace Antheia\Antheia\Classes\Panel;
+use Antheia\Antheia\Classes\Wireframe\WireframeInfo;
 /**
  * A pannel for displaying name value pairs. This type of panel is best used when
  * showing info about an entity in an app (for example, info about a user:

@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\Form;
-use Cosmin\Antheia\Classes\Panel\PanelInput;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Input\InputSubmit;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Input\AbstractInput;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Form;
+use Antheia\Antheia\Classes\Panel\PanelInput;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Input\InputSubmit;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Input\AbstractInput;
 
 /**
  * The template of a page for starting a search. The user can add inputs to the

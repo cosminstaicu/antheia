@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Exception;
 /**
  * Abstract class to be extended by all types of buttons
  * @author Cosmin Staicu

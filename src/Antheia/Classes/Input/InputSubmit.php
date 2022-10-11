@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Classes\Texts;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Texts;
 /**
  * A submit button that can be inserted into a form
  * @author Cosmin Staicu

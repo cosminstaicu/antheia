@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Header\Tabs;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Header\Tabs;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A tab with no title, but a symbol for adding an item
  * @author Cosmin Staicu

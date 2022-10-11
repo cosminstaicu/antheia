@@ -1,11 +1,11 @@
 {
-	"name" : "cosmin/antheia",
+	"name" : "antheia/antheia",
 	"description" : "Frontend library optimised for web based applications.",
 	"type" : "library",
 	"license" : "Apache-2.0",
 	"autoload" : {
 		"psr-4" : {
-			"Cosmin\\Antheia\\" : "src/Antheia"
+			"Antheia\\Antheia\\" : "src/Antheia"
 		}
 	},
 	"authors" : [{

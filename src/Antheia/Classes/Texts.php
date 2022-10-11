@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes;
+namespace Antheia\Antheia\Classes;
 /**
  * Manages the texts used by the library, according to the selected language.
  * @author Cosmin Staicu

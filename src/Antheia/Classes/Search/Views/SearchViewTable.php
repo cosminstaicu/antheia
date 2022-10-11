@@ -1,10 +1,10 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search\Views;
-use Cosmin\Antheia\Classes\Table\TablePlain;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Search\SearchResult;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCheckbox;
-use Cosmin\Antheia\Classes\Panel\Panel;
+namespace Antheia\Antheia\Classes\Search\Views;
+use Antheia\Antheia\Classes\Table\TablePlain;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
+use Antheia\Antheia\Classes\Panel\Panel;
 /**
  * A search result render that displays the results as a table
  * @author Cosmin Staicu

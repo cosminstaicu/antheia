@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Panel\Panel;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Panel\Panel;
 /**
  * A page with a message in the center
  * @author Cosmin Staicu

@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes;
+namespace Antheia\Antheia\Classes;
 /**
  * Main extending class for the library
  * @author Cosmin Staicu

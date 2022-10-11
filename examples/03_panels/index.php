@@ -1,19 +1,19 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageEmpty;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Panel\Panel;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Panel\PanelInput;
-use Cosmin\Antheia\Classes\Menu\Item\MenuEdit;
-use Cosmin\Antheia\Classes\Menu\Item\MenuConfirmDelete;
-use Cosmin\Antheia\Classes\Input\InputInfo;
-use Cosmin\Antheia\Classes\Input\InputText;
-use Cosmin\Antheia\Classes\Input\InputPhone;
-use Cosmin\Antheia\Classes\Input\InputSelect;
-use Cosmin\Antheia\Classes\Accordion\Accordion;
-use Cosmin\Antheia\Classes\Menu\Item\MenuDelete;
-use Cosmin\Antheia\Classes\Input\InputButton;
-use Cosmin\Antheia\Classes\Panel\PanelInfo;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Panel\PanelInput;
+use Antheia\Antheia\Classes\Menu\Item\MenuEdit;
+use Antheia\Antheia\Classes\Menu\Item\MenuConfirmDelete;
+use Antheia\Antheia\Classes\Input\InputInfo;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\InputPhone;
+use Antheia\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Accordion\Accordion;
+use Antheia\Antheia\Classes\Menu\Item\MenuDelete;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Panel\PanelInfo;
 // init.php is used for initializing the framework
 require '../utils/init.php';
 $page = new PageEmpty();

@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Theme;
+namespace Antheia\Antheia\Classes\Theme;
 /**
  * Default framework theme
  * @author Cosmin Staicu

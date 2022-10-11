@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\FixedButton;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\FixedButton;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Defines a fixed button to be displayed on the bottom-right side of the page
  * @author Cosmin Staicu

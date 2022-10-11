@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Menu\Item;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Menu\Item;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A menu with the info icon
  * @author Cosmin Staicu

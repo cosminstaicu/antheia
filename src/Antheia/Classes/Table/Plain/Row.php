@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Table\Plain;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Interfaces\HtmlAttribute;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Table\Plain;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Exception;
 /**
  * Defines a regular row, from a table. The row (just like the table)
  * has no special formatting
@@ -83,9 +83,9 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		if ($cell === null) {
 			$cell = new Cell();
 		}
-		if (!is_a($cell, 'Cosmin\Antheia\Classes\Table\Plain\Cell')) {
+		if (!is_a($cell, 'Antheia\Antheia\Classes\Table\Plain\Cell')) {
 			throw new Exception(
-				'Only Cosmin\Antheia\Classes\Table\Plain\Cell instances allowed'
+				'Only Antheia\Antheia\Classes\Table\Plain\Cell instances allowed'
 			);
 		}
 		$this->cells[] = $cell;

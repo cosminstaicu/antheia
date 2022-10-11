@@ -1,6 +1,6 @@
 <?php
-use Cosmin\Antheia\Classes\Input\SearchResponse\SearchResponseList;
-use Cosmin\Antheia\Classes\Input\SearchResponse\SearchResponseItem;
+use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseList;
+use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseItem;
 
 /**
  * This script will not be accessed directly by the user. The script is 

@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Table\Formatted;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Table\Formatted;
+use Antheia\Antheia\Classes\Exception;
 /**
  * A row from the default table
  * @author Cosmin Staicu
  */
-class Row extends \Cosmin\Antheia\Classes\Table\Plain\Row {
+class Row extends \Antheia\Antheia\Classes\Table\Plain\Row {
 	public function __construct() {
 		parent::__construct();
 	}
@@ -19,9 +19,9 @@ class Row extends \Cosmin\Antheia\Classes\Table\Plain\Row {
 		if ($cell === null) {
 			$cell = new Cell();
 		}
-		if (!is_a($cell, 'Cosmin\Antheia\Classes\Table\Formatted\Cell')) {
+		if (!is_a($cell, 'Antheia\Antheia\Classes\Table\Formatted\Cell')) {
 			throw new Exception(
-				'Only Cosmin\Antheia\Classes\Table\Formatted\Cell instances allowed'
+				'Only Antheia\Antheia\Classes\Table\Formatted\Cell instances allowed'
 			);
 		}
 		return parent::addCell($cell);

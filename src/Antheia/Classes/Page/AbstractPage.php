@@ -1,13 +1,13 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Classes\Globals;
-use Cosmin\Antheia\Classes\Theme\ThemeDefault;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Theme\AbstractTheme;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Internals;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Theme\ThemeDefault;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Theme\AbstractTheme;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Internals;
 /**
  * Abstract class to be extended by all pages
  * @author Cosmin Staicu

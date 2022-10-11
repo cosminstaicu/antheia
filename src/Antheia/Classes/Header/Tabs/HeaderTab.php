@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Header\Tabs;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Header\Tabs;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Defines a tab to be displayed below the header section of the page
  * @author Cosmin Staicu

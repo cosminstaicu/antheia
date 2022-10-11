@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Interfaces\BeforeAfterCallback;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCustomButton;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 /**
  * A select input. On click, the interface will display one ore more options
  * from which the user can select one

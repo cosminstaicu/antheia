@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
+namespace Antheia\Antheia\Classes\Input;
 /**
  * The class defines an info, that can be used to display some information
  * inside a form. The html elemen has no attached data to be sent to the server

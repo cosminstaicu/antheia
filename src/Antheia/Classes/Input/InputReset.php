@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
+namespace Antheia\Antheia\Classes\Input;
 /**
  * A reset form values button
  * @author Cosmin Staicu

@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Interfaces\BeforeAfterCallback;
-use Cosmin\Antheia\Classes\Globals;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCustomButton;
-use Cosmin\Antheia\Classes\Internals;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
+use Antheia\Antheia\Classes\Internals;
 /**
  * An input to select a date
  * @author Cosmin Staicu

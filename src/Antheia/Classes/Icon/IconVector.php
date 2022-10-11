@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Icon;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Icon\VectorSet\MaterialDesign;
+namespace Antheia\Antheia\Classes\Icon;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\VectorSet\MaterialDesign;
 /**
  * A vector based icon, from a selectable set (Google Material Design)
  * @author Cosmin Staicu

@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Table\Plain;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Interfaces\HtmlAttribute;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Html;
+namespace Antheia\Antheia\Classes\Table\Plain;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Html;
 
 /**
  * Defines a regular cell, from a table row. The cell (just like the table)

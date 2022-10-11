@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input\SearchResponse;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Texts;
+namespace Antheia\Antheia\Classes\Input\SearchResponse;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Texts;
 /**
  * The response from a server search. The class is just a list containing
  * SearchResponseItem instances

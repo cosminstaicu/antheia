@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel\Permission;
-use Cosmin\Antheia\Classes\Panel\Panel;
-use Cosmin\Antheia\Classes\Wireframe\WireframeInput;
-use Cosmin\Antheia\Classes\Panel\AbstractPanel;
-use Cosmin\Antheia\Classes\Input\InputSelect;
+namespace Antheia\Antheia\Classes\Panel\Permission;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Wireframe\WireframeInput;
+use Antheia\Antheia\Classes\Panel\AbstractPanel;
+use Antheia\Antheia\Classes\Input\InputSelect;
 /**
  * A group of permissions for the app, as inputs. For example, you can have a 
  * clients group that can contain all the permissions for clients: add, edit, 

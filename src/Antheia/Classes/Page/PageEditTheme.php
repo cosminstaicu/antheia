@@ -1,22 +1,22 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\Header\Tabs\HeaderTab;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Theme\AbstractTheme;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Menu\Item\MenuUpdate;
-use Cosmin\Antheia\Classes\Input\InputSelect;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Input\InputTextarea;
-use Cosmin\Antheia\Classes\Input\InputColor;
-use Cosmin\Antheia\Classes\Input\InputButton;
-use Cosmin\Antheia\Classes\Accordion\Accordion;
-use Cosmin\Antheia\Classes\Input\InputInfo;
-use Cosmin\Antheia\Classes\Input\InputText;
-use Cosmin\Antheia\Classes\Input\InputDate;
-use Cosmin\Antheia\Classes\Input\InputTime;
-use Cosmin\Antheia\Classes\Input\InputCustomButton;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Theme\AbstractTheme;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Menu\Item\MenuUpdate;
+use Antheia\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Input\InputTextarea;
+use Antheia\Antheia\Classes\Input\InputColor;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Accordion\Accordion;
+use Antheia\Antheia\Classes\Input\InputInfo;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\InputDate;
+use Antheia\Antheia\Classes\Input\InputTime;
+use Antheia\Antheia\Classes\Input\InputCustomButton;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Defines a page to edit a framework theme
  * @author Cosmin Staicu
@@ -40,7 +40,7 @@ class PageEditTheme extends PageEmpty {
 		$this->addTab($tab);
 		$this->templates = [];
 		foreach (AbstractTheme::getThemes() as $name) {
-			$className = '\Cosmin\Antheia\Classes\Theme\Theme'.$name;
+			$className = '\Antheia\Antheia\Classes\Theme\Theme'.$name;
 			$this->templates[] = new $className();
 		}
 	}

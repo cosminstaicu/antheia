@@ -1,12 +1,12 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Table\TablePlain;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCheckbox;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Panel\Panel;
+namespace Antheia\Antheia\Classes\Search;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Table\TablePlain;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Panel\Panel;
 /**
  * Defines a panel that can be displayed above the list with the search
  * results. Using the panel options, the selected items can be managed.

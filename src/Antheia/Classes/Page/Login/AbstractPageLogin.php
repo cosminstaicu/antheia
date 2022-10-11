@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page\Login;
-use Cosmin\Antheia\Classes\Page\AbstractPage;
-use Cosmin\Antheia\Classes\Wireframe\Cell;
-use Cosmin\Antheia\Classes\Panel\Panel;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Globals;
+namespace Antheia\Antheia\Classes\Page\Login;
+use Antheia\Antheia\Classes\Page\AbstractPage;
+use Antheia\Antheia\Classes\Wireframe\Cell;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Globals;
 /**
  * Class to be extende by all pages used by the authentication process
  * @author Cosmin Staicu

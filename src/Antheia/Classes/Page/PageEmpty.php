@@ -1,17 +1,17 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\Header\Header;
-use Cosmin\Antheia\Classes\FixedButton\AbstractFixedButton;
-use Cosmin\Antheia\Classes\Header\TopRightMenu\AbstractTopRightMenu;
-use Cosmin\Antheia\Classes\AppMenu\AppMenuPrimary;
-use Cosmin\Antheia\Classes\Menu\Item\AbstractMenu;
-use Cosmin\Antheia\Classes\Header\Tabs\HeaderTab;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Globals;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Header\Header;
+use Antheia\Antheia\Classes\FixedButton\AbstractFixedButton;
+use Antheia\Antheia\Classes\Header\TopRightMenu\AbstractTopRightMenu;
+use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Globals;
 
 /**
  * An empty page, with a menu. HtmlCode instances can be added to the class
@@ -111,7 +111,7 @@ class PageEmpty extends PageBlank {
 	 * Adds a new wireframe to the page and returns the new wireframe instance
 	 * @string $type (optional) (default Wireframe::TYPE_FIXED)
 	 * the wireframe type, as a constant like Wireframe::TYPE_XXXX
-	 * @return \Cosmin\Antheia\Classes\Wireframe\Wireframe the added wireframe
+	 * @return \Antheia\Antheia\Classes\Wireframe\Wireframe the added wireframe
 	 */
 	public function addWireframe(string $type = Wireframe::TYPE_FIXED):Wireframe {
 		$wireframe = new Wireframe();

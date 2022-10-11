@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes;
+namespace Antheia\Antheia\Classes;
 /**
  * This class is only used by the library and does not need to be called
  * by the user

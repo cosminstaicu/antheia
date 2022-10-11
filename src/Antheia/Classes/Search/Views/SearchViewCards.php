@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search\Views;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Search\SearchResult;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCheckbox;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Html;
+namespace Antheia\Antheia\Classes\Search\Views;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Html;
 /**
  * A search result render that displays the results as cards. The card has
  * an image being displayed that can slide to reveal additional info.

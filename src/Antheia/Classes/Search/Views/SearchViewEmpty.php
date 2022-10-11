@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search\Views;
-use Cosmin\Antheia\Classes\Panel\Panel;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Html;
+namespace Antheia\Antheia\Classes\Search\Views;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Html;
 /**
  * The HTML code that is displayed when no items are available, as a search result
  * @author Cosmin Staicu

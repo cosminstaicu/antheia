@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\InlineHelp;
+namespace Antheia\Antheia\Classes\InlineHelp;
 /**
  * The default inline help feature.
  * @author Cosmin Staicu

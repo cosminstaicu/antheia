@@ -1,14 +1,14 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlAttribute;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\InlineHelp\AbstractInlineHelp;
-use Cosmin\Antheia\Classes\InlineHelp\InlineHelp;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawLabel;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\InlineHelp\AbstractInlineHelp;
+use Antheia\Antheia\Classes\InlineHelp\InlineHelp;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Input\Raw\InputRawLabel;
 /**
  * Abstract class to be extended by all classed defining form inputs
  * @author Cosmin Staicu

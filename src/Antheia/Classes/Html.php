@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes;
-use Cosmin\Antheia\Interfaces\HtmlCode;
+namespace Antheia\Antheia\Classes;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * An element that can be added to a HTML page. The element is
  * a container for raw HTML code or some other objects that are implementing

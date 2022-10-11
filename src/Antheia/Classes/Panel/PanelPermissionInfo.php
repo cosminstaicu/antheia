@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Panel\Permission\PermissionInfoGroup;
-use Cosmin\Antheia\Classes\Table\Table;
+namespace Antheia\Antheia\Classes\Panel;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Panel\Permission\PermissionInfoGroup;
+use Antheia\Antheia\Classes\Table\Table;
 /**
  * A panel with permission, displayed in groups.
  * Can be used for viewing the permission for a user, inside the app.

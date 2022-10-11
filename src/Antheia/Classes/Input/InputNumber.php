@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * An input for entering a number
  * @author Cosmin Staicu

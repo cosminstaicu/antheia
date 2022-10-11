@@ -1,10 +1,10 @@
 <?php
-namespace Cosmin\Antheia\Classes\Header;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Header\Tabs\HeaderTab;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Menu\Item\AbstractMenu;
-use Cosmin\Antheia\Classes\Menu\Container;
+namespace Antheia\Antheia\Classes\Header;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Classes\Menu\Container;
 /**
  * The header of the page. The class is controlled internally by the library
  * so no new instances for this class are required

@@ -1,12 +1,12 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input\Raw;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlAttribute;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Input\Raw;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Exception;
 /**
  * The class renders a custom button, to be used by some types of inputs.
  * For example, the select input, the file input, the date input etc.

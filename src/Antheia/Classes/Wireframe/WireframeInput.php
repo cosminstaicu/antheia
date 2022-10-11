@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Wireframe;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Input\AbstractInput;
+namespace Antheia\Antheia\Classes\Wireframe;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Input\AbstractInput;
 /**
  * A custom wireframe for forms. Contains 2 columns, one for the label of
  * the input and the other for the input. When the viewport width is too small,

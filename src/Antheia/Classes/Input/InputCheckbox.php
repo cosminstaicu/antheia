@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCheckbox;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 /**
  * Just a checkbox input
  * @author Cosmin Staicu

@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Interfaces;
+namespace Antheia\Antheia\Interfaces;
 
 /**
  * Defines the methods used in classes defining vector based icons, like

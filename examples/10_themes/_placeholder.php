@@ -1,15 +1,15 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageEmpty;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Input\InputButton;
-use Cosmin\Antheia\Classes\Menu\Item\MenuEdit;
-use Cosmin\Antheia\Classes\Menu\Item\MenuConfirmDelete;
-use Cosmin\Antheia\Classes\Input\InputInfo;
-use Cosmin\Antheia\Classes\Input\InputText;
-use Cosmin\Antheia\Classes\Input\InputPhone;
-use Cosmin\Antheia\Classes\Input\InputSelect;
-use Cosmin\Antheia\Classes\Accordion\Accordion;
-use Cosmin\Antheia\Classes\Menu\Item\MenuDelete;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Menu\Item\MenuEdit;
+use Antheia\Antheia\Classes\Menu\Item\MenuConfirmDelete;
+use Antheia\Antheia\Classes\Input\InputInfo;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\InputPhone;
+use Antheia\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Accordion\Accordion;
+use Antheia\Antheia\Classes\Menu\Item\MenuDelete;
 /**
  * Just a placeholder file, to be rendered using different themes.
  * The file should not be accessed directly by the browser, but included from one

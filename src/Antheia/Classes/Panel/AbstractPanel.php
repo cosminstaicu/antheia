@@ -1,11 +1,11 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Menu\Item\AbstractMenu;
-use Cosmin\Antheia\Classes\Menu\Container;
+namespace Antheia\Antheia\Classes\Panel;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Classes\Menu\Container;
 /**
  * Abstract class to be extended by all panels defined in the library
  * @author Cosmin Staicu

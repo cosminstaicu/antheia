@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Language;
+namespace Antheia\Antheia\Classes\Language;
 /**
  * The texts used by the framework when it is displayed in Romanian
  * @author Cosmin Staicu

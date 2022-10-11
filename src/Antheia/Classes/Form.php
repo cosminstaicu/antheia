@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
+namespace Antheia\Antheia\Classes;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * A regular form tag
  * @author Cosmin Staicu

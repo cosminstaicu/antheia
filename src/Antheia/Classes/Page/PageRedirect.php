@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\Form;
-use Cosmin\Antheia\Classes\Html;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Form;
+use Antheia\Antheia\Classes\Html;
 /**
  * A page that redirects the user to another page. It uses a html form, that
  * can have parameters. After the page has been loaded, the form is auto submitted.

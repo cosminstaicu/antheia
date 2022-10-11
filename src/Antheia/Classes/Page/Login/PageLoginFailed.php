@@ -1,10 +1,10 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page\Login;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Wireframe\Cell;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Input\InputButton;
+namespace Antheia\Antheia\Classes\Page\Login;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Wireframe\Cell;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Input\InputButton;
 
 /**
  * A page that shows an "authentication failed" message,

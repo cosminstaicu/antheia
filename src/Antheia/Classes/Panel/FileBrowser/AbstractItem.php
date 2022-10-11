@@ -1,13 +1,13 @@
 <?php
-namespace Cosmin\Antheia\Classes\Panel\FileBrowser;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\BeforeAfterCallback;
-use Cosmin\Antheia\Interfaces\HtmlAttribute;
-use Cosmin\Antheia\Classes\Panel\PanelFileBrowser;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Icon\IconPixelBig;
-use Cosmin\Antheia\Classes\Texts;
+namespace Antheia\Antheia\Classes\Panel\FileBrowser;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
+use Antheia\Antheia\Classes\Texts;
 /**
  * An item from the file browser list (a file or a folder)
  * @author Cosmin Staicu

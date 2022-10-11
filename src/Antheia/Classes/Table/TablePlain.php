@@ -1,10 +1,10 @@
 <?php
-namespace Cosmin\Antheia\Classes\Table;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Table\Plain\Row;
+namespace Antheia\Antheia\Classes\Table;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Table\Plain\Row;
 /**
  * A simple table, without any formatting, classes etc.
  * @author Cosmin Staicu
@@ -98,9 +98,9 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 		if ($row === null) {
 			$row = new Row();
 		}
-		if (!is_a($row, 'Cosmin\Antheia\Classes\Table\Plain\Row')) {
+		if (!is_a($row, 'Antheia\Antheia\Classes\Table\Plain\Row')) {
 			throw new Exception(
-				'Only Cosmin\Antheia\Classes\Table\Plain\Row instances allowed'
+				'Only Antheia\Antheia\Classes\Table\Plain\Row instances allowed'
 			);
 		}
 		$this->rows[] = $row;

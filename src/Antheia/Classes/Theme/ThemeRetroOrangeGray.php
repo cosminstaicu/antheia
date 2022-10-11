@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Theme;
+namespace Antheia\Antheia\Classes\Theme;
 /**
  * Retro Orange and Gray theme
  * https://www.schemecolor.com/retro-orange-and-grays.php

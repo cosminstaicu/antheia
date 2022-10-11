@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Input;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Input\Raw\InputRawCustomButton;
+namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 /**
  * An input for selecting a file
  * @author Cosmin Staicu

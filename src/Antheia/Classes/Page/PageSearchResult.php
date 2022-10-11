@@ -1,18 +1,18 @@
 <?php
-namespace Cosmin\Antheia\Classes\Page;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Search\SearchForm;
-use Cosmin\Antheia\Classes\Search\SearchOptionBar;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Search\SearchOptionBarButton;
-use Cosmin\Antheia\Classes\Search\SearchResult;
-use Cosmin\Antheia\Classes\Input\AbstractInput;
-use Cosmin\Antheia\Classes\Search\Views\SearchViewAccordion;
-use Cosmin\Antheia\Classes\Search\Views\SearchViewCards;
-use Cosmin\Antheia\Classes\Search\Views\SearchViewTable;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Html;
+namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Search\SearchForm;
+use Antheia\Antheia\Classes\Search\SearchOptionBar;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
+use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Classes\Input\AbstractInput;
+use Antheia\Antheia\Classes\Search\Views\SearchViewAccordion;
+use Antheia\Antheia\Classes\Search\Views\SearchViewCards;
+use Antheia\Antheia\Classes\Search\Views\SearchViewTable;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Html;
 /**
  * The template for a page that displays the search result, along with the
  * filters, to further refine the search.

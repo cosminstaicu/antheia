@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Header\TopRightMenu;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Texts;
+namespace Antheia\Antheia\Classes\Header\TopRightMenu;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Texts;
 /**
  * A menu with the settings text and symbol
  * @author Cosmin Staicu

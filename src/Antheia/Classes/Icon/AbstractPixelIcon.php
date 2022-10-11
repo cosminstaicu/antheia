@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Icon;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Internals;
+namespace Antheia\Antheia\Classes\Icon;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 /**
  * Class to be extended by all classes defining an image icon.
  * The icon will be first checked in the cache folder and if it is not found there

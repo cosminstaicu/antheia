@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Classes\Internals;
+namespace Antheia\Antheia\Classes\Search;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Internals;
 /**
  * A search result from a search. The result contains only the raw data of the
  * result. An instance of this class will be later rendered using one of the

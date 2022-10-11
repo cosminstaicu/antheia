@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Interfaces;
+namespace Antheia\Antheia\Interfaces;
 /**
  * Interface for setting up a before and after callback function for a input
  * html element

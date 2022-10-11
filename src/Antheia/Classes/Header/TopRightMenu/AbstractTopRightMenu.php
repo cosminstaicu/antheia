@@ -1,9 +1,9 @@
 <?php
-namespace Cosmin\Antheia\Classes\Header\TopRightMenu;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Header\TopRightMenu;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Exception;
 /**
  * Abstract class that is extended by all menu items that can be inserted into
  * the top right menu

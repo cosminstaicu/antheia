@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Theme;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Exception;
+namespace Antheia\Antheia\Classes\Theme;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Exception;
 /**
  * Abstract class to be extended by all classes defining themes
  * @author Cosmin Staicu
@@ -94,7 +94,7 @@ abstract class AbstractTheme {
 	 * Returns the general name for all theme classes defined in the frameworl.
 	 * Each returned item contains the last part of the class name (the full
 	 * class name can be obtained by prefixing the value with the namespace
-	 * "\Cosmin\Antheia\Theme\Theme####")
+	 * "\Antheia\Antheia\Theme\Theme####")
 	 * @return string[] a list with all available classes
 	 */
 	public static function getThemes():array {

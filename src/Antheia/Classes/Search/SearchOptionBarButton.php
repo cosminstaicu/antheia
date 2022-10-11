@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search;
-use Cosmin\Antheia\Classes\Menu\Item\AbstractMenu;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Search;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A button that can be inserted into the search option bar, on the right side
  * @author Cosmin Staicu

@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\Wireframe;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Interfaces\HtmlId;
+namespace Antheia\Antheia\Classes\Wireframe;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * Defines a row from a wireframe. The row can contain one ore more cells.
  * @author Cosmin Staicu

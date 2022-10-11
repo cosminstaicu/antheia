@@ -1,8 +1,8 @@
 <?php
-namespace Cosmin\Antheia\Classes\AppMenu;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
-use Cosmin\Antheia\Classes\Icon\IconPixelSmall;
+namespace Antheia\Antheia\Classes\AppMenu;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Icon\IconPixelSmall;
 /**
  * A submenu item (that will be displayed when the parent menu is clicked)
  * @author Cosmin Staicu

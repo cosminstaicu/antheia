@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Theme;
+namespace Antheia\Antheia\Classes\Theme;
 /**
  * Soft and warm theme
  * https://www.schemecolor.com/soft-and-warm.php

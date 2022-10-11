@@ -1,8 +1,8 @@
 <?php
-use Cosmin\Antheia\Classes\Page\PageEmpty;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Panel\Panel;
-use Cosmin\Antheia\Classes\Menu\Item\MenuAdd;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Menu\Item\MenuAdd;
 /**
  * This is just a simple page with some content, to get a look and feel for
  * the framework. Further details for each component can be found in the next pages.

@@ -1,7 +1,7 @@
 <?php
-namespace Cosmin\Antheia\Classes\Slide;
-use Cosmin\Antheia\Classes\AbstractClass;
-use Cosmin\Antheia\Interfaces\HtmlCode;
+namespace Antheia\Antheia\Classes\Slide;
+use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A panel that contains two containers that can be toggled by the user.
  * @author Cosmin Staicu

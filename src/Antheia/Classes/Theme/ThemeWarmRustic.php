@@ -1,5 +1,5 @@
 <?php
-namespace Cosmin\Antheia\Classes\Theme;
+namespace Antheia\Antheia\Classes\Theme;
 /**
  * Warm Rustic theme
  * https://www.schemecolor.com/warm-rustic-color-palette.php

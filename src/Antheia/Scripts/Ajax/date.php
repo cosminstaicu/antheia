@@ -1,12 +1,12 @@
 <?php
-namespace Cosmin\Antheia\Scripts\Ajax;
+namespace Antheia\Antheia\Scripts\Ajax;
 include __DIR__.'/../../Classes/Globals.php';
-use Cosmin\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Globals;
 include __DIR__.'/../../Classes/Texts.php';
 require_once __DIR__.'/../../Classes/Language/AbstractLanguage.php';
 require_once __DIR__.'/../../Classes/Language/English.php';
 require_once __DIR__.'/../../Classes/Language/Romana.php';
-use Cosmin\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Texts;
 /**
  * The script is requested by the date input, when selecting a value
  * @author Cosmin Staicu

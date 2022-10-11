@@ -1,17 +1,17 @@
 <?php
-namespace Cosmin\Antheia\Classes\Search;
-use Cosmin\Antheia\Classes\Form;
-use Cosmin\Antheia\Classes\Panel\Panel;
-use Cosmin\Antheia\Classes\Wireframe\Wireframe;
-use Cosmin\Antheia\Classes\Input\InputSelect;
-use Cosmin\Antheia\Classes\Input\AbstractInput;
-use Cosmin\Antheia\Classes\Exception;
-use Cosmin\Antheia\Classes\Html;
-use Cosmin\Antheia\Classes\Texts;
-use Cosmin\Antheia\Classes\Icon\IconVector;
-use Cosmin\Antheia\Classes\Input\InputButton;
-use Cosmin\Antheia\Classes\Input\InputSubmit;
-use Cosmin\Antheia\Classes\Slide\SlidePanel;
+namespace Antheia\Antheia\Classes\Search;
+use Antheia\Antheia\Classes\Form;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Input\AbstractInput;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\InputSubmit;
+use Antheia\Antheia\Classes\Slide\SlidePanel;
 /**
  * The class defines a form from a page that contains the results of a search.
  * The class displays the search filters, the sorting options and the pagination.

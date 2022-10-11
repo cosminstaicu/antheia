@@ -1,6 +1,6 @@
 <?php
-namespace Cosmin\Antheia\Classes\Header\TopRightMenu;
-use Cosmin\Antheia\Classes\Icon\IconVector;
+namespace Antheia\Antheia\Classes\Header\TopRightMenu;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A menu with the user symbol
  * @author Cosmin Staicu
