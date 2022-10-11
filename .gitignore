@@ -5,8 +5,6 @@
 .dbeaver/
 # Composer vendor folder
 vendor/
-# Examples cache folder
-examples/cache/
 # Folder for private user usage
 _private/
 # Cache folder content will be ignored inside the repository
