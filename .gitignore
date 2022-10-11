@@ -1,11 +1,15 @@
 # Items used by Eclipse PDT IDE for project management
-/.settings/
+.settings/
 .buildpath
 .project
-/.dbeaver/
+.dbeaver/
 # Composer vendor folder
-/vendor/
+vendor/
 # Examples cache folder
-/examples/cache/
+examples/cache/
 # Folder for private user usage
-/_private/
+_private/
+# Cache folder content will be ignored inside the repository
+examples/cache/*
+# The .gitkeep file will be placed inside the cache folder (so the folder is always empty inside the repository)
+!examples/cache/.gitkeep
