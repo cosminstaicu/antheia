@@ -11,13 +11,24 @@ use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
 use Antheia\Antheia\Classes\AppMenu\AppMenuSecondary;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Html;
-require_once 
-	__DIR__.DIRECTORY_SEPARATOR.'..'.DIRECTORY_SEPARATOR.'..'
-		.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
-Globals::setCache(
-	'/antheia/examples/cache/',
-	dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'cache'
-);
+$autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
+	.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+if (!is_file($autoloadFile)) {
+	// library is not installed using composer
+	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR
+		.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+	require_once $autoloadFile;
+	Globals::setCache(
+		'../cache/',
+		dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'cache'
+	);
+} else {
+	require_once $autoloadFile;
+	Globals::setCache(
+		'/vendor/antheia/antheia/examples/cache/',
+		dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'cache'
+	);
+}
 /**
  * The function configures a page, injecting all the commom elements, like
  * menus, buttons etc

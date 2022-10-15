@@ -18,14 +18,14 @@ class Internals {
 	 */
 	public static function setCache(string $url, string $path):void {
 		$version = NULL;
-		$composerLockPath = dirname(__DIR__, 4).'/composer.lock';
+		$composerLockPath = dirname(__DIR__, 6).'/composer.lock';
 		if (is_file($composerLockPath)) {
 			// the library has been installed using composer
 			// the library version will be read from the composer.lock file
 			$packages = json_decode(file_get_contents($composerLockPath), true);
 			if (isset($packages['packages'])) {
 				foreach ($packages['packages'] as $package) {
-					if ($package['name'] === 'cosmin/antheia') {
+					if ($package['name'] === 'antheia/antheia') {
 						$version = $package['version'];
 					}
 				}
