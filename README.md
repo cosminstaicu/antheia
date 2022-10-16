@@ -5,6 +5,8 @@ Responsive web interface for web apps, written in PHP.
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cosminstaicu/antheia?display_name=tag)
 ![Website](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fantheia.voipit.ro)
 
+![03](https://user-images.githubusercontent.com/25685804/196055946-53d4f73d-f524-465d-adee-c9c762bb61a1.png)
+
 A live example of the interface can be checked at [antheia.voipit.ro](https://antheia.voipit.ro). There you can find the content of the `_examples` folder.
 
 The main project using this library is the Cloud PBX Service, called Accolades and provided by [VoIPIT Romania](https://www.voipit.ro).
@@ -17,6 +19,8 @@ Use [composer](https://getcomposer.org) to install Antheia into your project:
 composer require antheia/antheia
 ```
 
+After the installation you need to set up a cache folder for the library. This folder must have a corresponding URL path and the library needs to have write permission on it. The folder can be set up, at runtime using the dedicated method: `Globals::setCache(string $url, string $path)`.
+
 ## Documentation
 
 All code is documented using the PHPDoc standard, so fell free to use content assist, depending of your IDE (the framework is written using Eclipse PDT). Also, the javascript files are documented using the JSDoc standard.
@@ -25,9 +29,9 @@ All code is documented using the PHPDoc standard, so fell free to use content as
 
 Icons used by the framework are provided freely by [IO Broker icons](https://github.com/ioBroker/ioBroker.icons-fatcow-hosting).
 
-Color schemes for the predefined themes are provided freely by [Scheme Color](https://www.schemecolor.com/).
+Color schemes for the predefined themes are provided freely by [Scheme Color](https://www.schemecolor.com).
 
-Images used by the framework are provided freely by (Unsplash)[https://unsplash.com/].
+Images used by the framework are provided freely by [Unsplash](https://unsplash.com).
 
 # Licence
 
