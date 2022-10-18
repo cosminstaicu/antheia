@@ -7,7 +7,9 @@ Responsive web interface for web apps, written in PHP.
 
 ![03](https://user-images.githubusercontent.com/25685804/196055946-53d4f73d-f524-465d-adee-c9c762bb61a1.png)
 
-A live example of the interface can be checked at [antheia.voipit.ro](https://antheia.voipit.ro). There you can find the content of the `_examples` folder.
+A live example of the interface can be checked at [antheia.voipit.ro](https://antheia.voipit.ro). There you can find the content of the `examples` folder.
+
+Please check the [project wiki](https://github.com/cosminstaicu/antheia/wiki) for more details about the library.
 
 The main project using this library is the Cloud PBX Service, called Accolades and provided by [VoIPIT Romania](https://www.voipit.ro).
 
