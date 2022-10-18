@@ -27,6 +27,8 @@ After the installation you need to set up a cache folder for the library. This f
 
 All code is documented using the PHPDoc standard, so fell free to use content assist, depending of your IDE (the framework is written using Eclipse PDT). Also, the javascript files are documented using the JSDoc standard.
 
+The examples (inside the example folder) are explained inside the [project wiki](https://github.com/cosminstaicu/antheia/wiki).
+
 ## Credits
 
 Icons used by the framework are provided freely by [IO Broker icons](https://github.com/ioBroker/ioBroker.icons-fatcow-hosting).
