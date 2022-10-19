@@ -5,6 +5,7 @@ use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Table\Plain\Row;
+use Antheia\Antheia\Interfaces\TableRow;
 /**
  * A simple table, without any formatting, classes etc.
  * @author Cosmin Staicu
@@ -90,11 +91,11 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a row to the table
-	 * @param Row $row (optional) the row to be added. If the
+	 * @param TableRow $row (optional) the row to be added. If the
 	 * parameter is not defined then a new row will be created
-	 * @return Row the added row
+	 * @return TableRow the added row
 	 */
-	public function addRow(Row $row = NULL):Row {
+	public function addRow(TableRow $row = NULL):TableRow {
 		if ($row === null) {
 			$row = new Row();
 		}

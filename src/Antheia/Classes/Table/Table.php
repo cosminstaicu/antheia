@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Table;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Table\Formatted\Row;
+use Antheia\Antheia\Interfaces\TableRow;
 /**
  * The code for a default table (formatted according to the current theme)
  * @author Cosmin Staicu
@@ -25,12 +26,12 @@ class Table extends TablePlain {
 	}
 	/**
 	 * Adds a row to the table.
-	 * @param \Antheia\Antheia\Classes\Table\Formatted\Row $row (optional) 
+	 * @param TableRow $row (optional) 
 	 * the row to be added. If the parameter is not defined then a new row will
 	 * be created
-	 * @return \Antheia\Antheia\Classes\Table\Formatted\Row the added row
+	 * @return TableRow the added row
 	 */
-	public function addRow(\Antheia\Antheia\Classes\Table\Plain\Row $row = NULL):Row {
+	public function addRow(TableRow $row = NULL):TableRow {
 		if ($row === null) {
 			$row = new Row();
 		}
