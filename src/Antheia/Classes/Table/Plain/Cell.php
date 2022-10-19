@@ -71,7 +71,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	/**
 	 * Defines the cell content alignment
 	 * @param integer $align the content alignment using a constant like
-	 * de tipul Cell::ALIGN_##
+	 * Cell::ALIGN_##
 	 */
 	public function setAlign(int $align):void {
 		$this->align = $align;
@@ -92,7 +92,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	}
 	/**
 	 * Calling the method will render the cell as a title cell
-	 * WARNING The method is automatically called bu the framework. The user does
+	 * WARNING The method is automatically called by the library. The user does
 	 * not need to manage it
 	 */
 	public function formatAsTitle():void {

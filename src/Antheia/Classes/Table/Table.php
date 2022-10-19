@@ -25,11 +25,12 @@ class Table extends TablePlain {
 	}
 	/**
 	 * Adds a row to the table.
-	 * @param Row $row (optional) the rows to be added.
-	 * If the parameter is not defined then a new row will be created
-	 * @return Row the added row
+	 * @param \Antheia\Antheia\Classes\Table\Formatted\Row $row (optional) 
+	 * the row to be added. If the parameter is not defined then a new row will
+	 * be created
+	 * @return \Antheia\Antheia\Classes\Table\Formatted\Row the added row
 	 */
-	public function addRow(Row $row = NULL):Row {
+	public function addRow(\Antheia\Antheia\Classes\Table\Plain\Row $row = NULL):Row {
 		if ($row === null) {
 			$row = new Row();
 		}

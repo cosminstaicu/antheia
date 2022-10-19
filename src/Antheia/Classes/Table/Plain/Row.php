@@ -79,7 +79,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	 * parameter is not defined then a new cell will be created.
 	 * @return Cell the new added cell
 	 */
-	public function addCell(Cell $cell = NULL):Cell {
+	public function addCell($cell = NULL) {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

@@ -15,7 +15,7 @@ class Row extends \Antheia\Antheia\Classes\Table\Plain\Row {
 	 * parameter is not defined then a new cell will be created
 	 * @return Cell the added cell
 	 */
-	public function addCell(Cell $cell = NULL):Cell {
+	public function addCell($cell = NULL) {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

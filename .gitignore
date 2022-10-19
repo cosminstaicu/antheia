@@ -8,6 +8,6 @@ vendor/
 # Folder for private user usage
 _private/
 # Cache folder content will be ignored inside the repository
-examples/cache/*
+examples/_cache/*
 # The .gitkeep file will be placed inside the cache folder (so the folder is always empty inside the repository)
-!examples/cache/.gitkeep
+!examples/_cache/.gitkeep
