@@ -1,18 +1,17 @@
 <?php
 namespace Antheia\Antheia\Classes\Table\Plain;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Interfaces\TableRow;
+use Antheia\Antheia\Interfaces\TableCell;
 /**
  * Defines a regular row, from a table. The row (just like the table)
  * has no special formatting
  * @author Cosmin Staicu
  */
 class Row extends AbstractClass
-implements HtmlCode, HtmlId, HtmlAttribute {
+implements TableRow {
 	private $cells;
 	private $classes;
 	private $inlineCss;
@@ -33,7 +32,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	}
 	/**
 	 * Calling the method will render the row as a title row
-	 * WARNING The method is automatically called bu the framework. The user does
+	 * WARNING The method is automatically called by the framework. The user does
 	 * not need to manage it
 	 */
 	public function formatAsTitle():void {
@@ -60,10 +59,6 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		}
 		$this->inlineCss[] = $css;
 	}
-	/**
-	 * Adds a CSS class to the class attribute of the tag
-	 * @param string $class the name of the class to be added
-	 */
 	public function addClass(string $class):void {
 		$this->classes[] = $class;
 	}	
@@ -73,13 +68,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	public function addTextAttribute(string $name, string $value):void {
 		$this->addAttribute('data-text-'.$name, Texts::get($value));
 	}
-	/**
-	 * Adds a cell to the current row.
-	 * @param Cell $cell (optional) the cell to be added. If the
-	 * parameter is not defined then a new cell will be created.
-	 * @return Cell the new added cell
-	 */
-	public function addCell($cell = NULL) {
+	public function addCell(TableCell $cell = NULL):TableCell {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

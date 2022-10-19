@@ -1,6 +1,5 @@
 <?php
 namespace Antheia\Antheia\Interfaces;
-
 /**
  * Defines the methods used in classes defining vector based icons, like
  * Matrial Icons.

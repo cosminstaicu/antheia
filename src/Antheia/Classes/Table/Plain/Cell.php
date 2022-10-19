@@ -2,18 +2,15 @@
 namespace Antheia\Antheia\Classes\Table\Plain;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Html;
-
+use Antheia\Antheia\Interfaces\TableCell;
 /**
  * Defines a regular cell, from a table row. The cell (just like the table)
  * has no special formatting
  * @author Cosmin Staicu
  */
-class Cell extends AbstractClass
-implements HtmlCode, HtmlId, HtmlAttribute {
+class Cell extends AbstractClass implements TableCell {
 	const ALIGN_UNDEFINED = 1;
 	const ALIGN_LEFT = 2;
 	const ALIGN_CENTER = 3;
@@ -44,10 +41,6 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
-	/**
-	 * Adds a CSS class to the class attribute of the tag
-	 * @param string $class the name of the class to be added
-	 */
 	public function addClass(string $class):void {
 		$this->classes[] = $class;
 	}
@@ -68,25 +61,12 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		}
 		$this->inlineCss[] = $css;
 	}
-	/**
-	 * Defines the cell content alignment
-	 * @param integer $align the content alignment using a constant like
-	 * Cell::ALIGN_##
-	 */
 	public function setAlign(int $align):void {
 		$this->align = $align;
 	}
-	/**
-	 * Defines the cell colspan
-	 * @param integer $colspan the cell colspan
-	 */
 	public function setColspan(int $colspan):void {
 		$this->colspan = $colspan;
 	}
-	/**
-	 * Defines the cell colspan
-	 * @param integer $rowspan the cell colspan
-	 */
 	public function setRowspan(int $rowspan):void {
 		$this->rowspan = $rowspan;
 	}
@@ -108,24 +88,12 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	public function isTitle():bool {
 		return $this->titleCell;
 	}
-	/**
-	 * Defines the cell width
-	 * @param string $width the cell width, in a css format
-	 */
 	public function setWidth(string $width):void {
 		$this->width = $width;
 	}
-	/**
-	 * Adds a text to the cell
-	 * @param string $text the text to be added to the cell
-	 */
 	public function addText(string $text):void {
 		$this->addElement(new Html($text));
 	}
-	/**
-	 * Adds a html element to the cell content
-	 * @param HtmlCode $code the element to be addes
-	 */
 	public function addElement(HtmlCode $code):void {
 		$this->content[] = $code;
 	}

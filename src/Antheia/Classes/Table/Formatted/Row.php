@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Table\Formatted;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Interfaces\TableCell;
 /**
  * A row from the default table
  * @author Cosmin Staicu
@@ -11,11 +12,11 @@ class Row extends \Antheia\Antheia\Classes\Table\Plain\Row {
 	}
 	/**
 	 * Adds a cell to the current row.
-	 * @param Cell $cell (optional) the cell to be added. If the
+	 * @param TableCell $cell (optional) the cell to be added. If the
 	 * parameter is not defined then a new cell will be created
-	 * @return Cell the added cell
+	 * @return TableCell the added cell
 	 */
-	public function addCell($cell = NULL) {
+	public function addCell(TableCell $cell = NULL):TableCell {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

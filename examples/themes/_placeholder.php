@@ -162,6 +162,9 @@ $file->addHiddenItem($deleteButton);
 // the function is defined inside the utils/init.php file
 $fileName = lcfirst(str_replace(' ', '', ucwords($page->getTheme()->getName())));
 $fileName = str_replace('And', '', $fileName);
+if ($fileName === 'justBlue') {
+	$fileName = 'default';
+}
 init_insertPageSource($page, 'themes', [[
 	'name' => $fileName.'.php',
 	'info' => 'main'	
