@@ -1,10 +1,7 @@
 <?php
 use Antheia\Antheia\Classes\Globals;
-use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Page\AbstractPage;
 use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
-use Antheia\Antheia\Classes\Theme\ThemeDefault;
-use Antheia\Antheia\Classes\Theme\ThemeDarkAesthetics;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
 use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
@@ -38,9 +35,7 @@ function init_configurePage(AbstractPage $page):void {
 	// set the app logo
 	Globals::setLogo('../utils/logo.svg');
 	//******************************************************************** THEME
-	//$page->setTheme(new ThemeDefault());
 	$page->setTheme(new ThemeRetroOrangeGray());
-	//$page->setTheme(new ThemeDarkAesthetics());
 	//******************************************************** TOP RIGHT OPTIONS
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();

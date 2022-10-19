@@ -1,8 +1,6 @@
 <?php
 use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Input\InputButton;
-
 // init.php is used for initializing the framework
 require '../utils/init.php';
 $page = new PageEmpty();
