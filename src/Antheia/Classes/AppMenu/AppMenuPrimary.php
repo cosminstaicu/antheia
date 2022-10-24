@@ -8,7 +8,6 @@ use Antheia\Antheia\Classes\Icon\IconPixelBig;
  * A menu item from the main menu of the page (the sliding one on the left
  * side of the page)
  * @author Cosmin Staicu
- *
  */
 class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 	private $icon;
@@ -59,7 +58,7 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 	 * @param AppMenuSecondary $submenu the submenu item to be added
 	 * to the menu
 	 */
-	public function addSubmeniu(AppMenuSecondary $submenu):void {
+	public function addSubmenu(AppMenuSecondary $submenu):void {
 		$this->submenus[] = $submenu;
 	}
 	/**

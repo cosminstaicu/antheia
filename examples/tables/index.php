@@ -68,7 +68,7 @@ $container->addElement($table);
 // the function is defined inside the utils/init.php file
 init_insertPageSource($page, 'tables', [
 		['name' => 'index.php', 'info' => 'main']
-], 'Example%3A-Table');
+], 'Example%3A-Tables');
 // page export
 echo $page->getHtml();
 ?>
