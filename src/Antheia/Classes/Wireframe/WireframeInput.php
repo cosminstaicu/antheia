@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Wireframe;
-use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Input\AbstractInput;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A custom wireframe for forms. Contains 2 columns, one for the label of
  * the input and the other for the input. When the viewport width is too small,

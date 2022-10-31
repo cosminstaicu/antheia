@@ -1,10 +1,10 @@
 <?php
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlAttribute;
-use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * A simple checkbox
  * @author Cosmin Staicu

@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\TopRightMenu;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * Abstract class that is extended by all menu items that can be inserted into
  * the top right menu

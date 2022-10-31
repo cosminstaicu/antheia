@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Panel;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Panel\Permission\PermissionEditGroup;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * A panel with permission, displayed in groups, as inputs.
  * Can be used for setting the permission for a user, inside the app.

@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\FixedButton;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * Defines a fixed button to be displayed on the bottom-right side of the page
  * @author Cosmin Staicu

@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Interfaces\BeforeAfterCallback;
-use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
  * A button that can perform a search on the server and returns a list of values.
  * The user can click on a value that will be updated to the original input

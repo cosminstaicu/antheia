@@ -1,14 +1,14 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlAttribute;
-use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\InlineHelp\AbstractInlineHelp;
 use Antheia\Antheia\Classes\InlineHelp\InlineHelp;
-use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Input\Raw\InputRawLabel;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * Abstract class to be extended by all classed defining form inputs
  * @author Cosmin Staicu
@@ -34,7 +34,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
-		$this->label = 'Undefined';
+		$this->label = Texts::get('UNDEFINED');
 		$this->labelTag = new InputRawLabel();
 		$this->labelTag->setInput($this);
 		$this->exportLabel = true;

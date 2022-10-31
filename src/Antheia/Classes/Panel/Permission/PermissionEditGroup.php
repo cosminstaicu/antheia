@@ -1,9 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\Panel\Permission;
+use Antheia\Antheia\Classes\Input\InputSelect;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Wireframe\WireframeInput;
-use Antheia\Antheia\Classes\Panel\AbstractPanel;
-use Antheia\Antheia\Classes\Input\InputSelect;
 /**
  * A group of permissions for the app, as inputs. For example, you can have a 
  * clients group that can contain all the permissions for clients: add, edit, 
@@ -20,7 +19,7 @@ class PermissionEditGroup extends Panel {
 		$this->addElement($this->wireframe);
 	}
 	/**
-	 * @see AbstractPanel::setTitle()
+	 * @see \Antheia\Antheia\Classes\Panel\AbstractPanel::setTitle()
 	 */
 	public function setTitle(string $title, bool $smallFont = true):void {
 		parent::setTitle($title, $smallFont);

@@ -1,19 +1,13 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Panel\PanelInput;
-use Antheia\Antheia\Classes\Menu\Item\MenuEdit;
-use Antheia\Antheia\Classes\Menu\Item\MenuConfirmDelete;
-use Antheia\Antheia\Classes\Input\InputInfo;
-use Antheia\Antheia\Classes\Input\InputText;
-use Antheia\Antheia\Classes\Input\InputPhone;
-use Antheia\Antheia\Classes\Input\InputSelect;
 use Antheia\Antheia\Classes\Accordion\Accordion;
-use Antheia\Antheia\Classes\Menu\Item\MenuDelete;
-use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\NewInput;
+use Antheia\Antheia\Classes\Menu\Item\NewMenu;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Panel\PanelInfo;
+use Antheia\Antheia\Classes\Panel\PanelInput;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();
@@ -50,7 +44,7 @@ $panel->setHtmlId('panelWithActions');
 $panel->addText('<p>This panel has the height forced to 100% of the available space</p>');
 $panel->addElement(new Html('<p>If the method setFullHeight is removed,
 	then the panel height will NOT match the height of the panel to the left.</p>'));
-$button = new InputButton();
+$button = NewInput::button();
 $button->setText('Loading animation (3 sec)');
 $button->setOnClick('startPanelLoadingAnimation()');
 $panel->addFooterElement($button);
@@ -66,13 +60,13 @@ $panel = new PanelInfo();
 $panel->setTitle('Panel for entity info (ex: user info)');
 // first, the menu items are defined
 // an edit button
-$button = new MenuEdit();
+$button = NewMenu::edit();
 $button->setHref("javascript:alert('some code here')");
 $panel->addMenu($button);
 // a delete confirmation
 // if the user types DELETE in the input then a http request
 // will be initiated, to the defined url, with the defined id as a parameter
-$button = new MenuConfirmDelete();
+$button = NewMenu::confirmDelete();
 $button->setUrl('/url/for/request');
 $button->setItemId('14');
 $button->setFormTarget('_blank'); // could be in iframe
@@ -101,12 +95,12 @@ $cell->addWidth('md', 6);
 $panel = new PanelInput();
 $panel->setTitle('Panel for forms');
 // info type input
-$input = new InputInfo();
+$input = NewInput::info();
 $input->setLabel('Info');
 $input->setValue('A detailed description for forms can be found on the FORM example');
 $panel->addInput($input);
 // text input element
-$input = new InputText();
+$input = NewInput::text();
 $input->setLabel('Text field');
 $input->setName('textFieldName');
 $input->setPlaceholder('a placeholder text');
@@ -114,13 +108,13 @@ $panel->addInput($input);
 // divider
 $panel->addDivider();
 // phone input element
-$input = new InputPhone();
+$input = NewInput::phone();
 $input->setLabel('Phone number');
 $input->setPlaceholder('here you can type a phone number');
 $input->setName('phone');
 $panel->addInput($input);
 // select element
-$input = new InputSelect();
+$input = NewInput::select();
 $input->setLabel('Select element');
 $input->setName('selectElementName');
 $input->addOption('Value 1', 'v1', false, 'info about the first value');
@@ -160,26 +154,26 @@ $folder = $panel->addFolder();
 $folder->setName('Second folder');
 // adding a file
 $file = $panel->addFile();
-$deleteButton = new MenuDelete();
+$deleteButton = NewMenu::delete();
 $deleteButton->setOnClick("console.log('delete it')");
 $file->addHiddenItem($deleteButton);
 $file->setName('a pdf file.pdf');
 // adding another file
 $file = $panel->addFile();
 $file->setName('Second file.JpG');
-$deleteButton = new MenuDelete();
+$deleteButton = NewMenu::delete();
 $deleteButton->setOnClick("console.log('delete it')");
 $file->addHiddenItem($deleteButton);
 // adding a file with multiple extension (last one will be used by the render
 $file = $panel->addFile();
 $file->setName('Third file.jpg.pdf');
-$deleteButton = new MenuDelete();
+$deleteButton = NewMenu::delete();
 $deleteButton->setOnClick("console.log('delete it')");
 $file->addHiddenItem($deleteButton);
 // the last file has no extension
 $file = $panel->addFile();
 $file->setName('Fourth file');
-$deleteButton = new MenuDelete();
+$deleteButton = NewMenu::delete();
 $deleteButton->setOnClick("console.log('delete it')");
 $file->addHiddenItem($deleteButton);
 // ******************************************** ADDING THE WIREFRAME TO THE PAGE

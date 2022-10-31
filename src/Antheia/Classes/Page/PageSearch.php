@@ -1,12 +1,11 @@
 <?php
 namespace Antheia\Antheia\Classes\Page;
 use Antheia\Antheia\Classes\Form;
-use Antheia\Antheia\Classes\Panel\PanelInput;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Input\InputSubmit;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Input\AbstractInput;
-
+use Antheia\Antheia\Classes\Input\InputSubmit;
+use Antheia\Antheia\Classes\Panel\PanelInput;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * The template of a page for starting a search. The user can add inputs to the
  * page that will be sent to the redirect target.

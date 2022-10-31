@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Table\Plain;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\TableCell;
 /**
  * Defines a regular cell, from a table row. The cell (just like the table)

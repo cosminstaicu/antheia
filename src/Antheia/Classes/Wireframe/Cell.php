@@ -2,12 +2,12 @@
 namespace Antheia\Antheia\Classes\Wireframe;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
 use Antheia\Antheia\Classes\Panel\PanelInfo;
 use Antheia\Antheia\Classes\Panel\PanelInput;
-use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * A cell in one of the rows from a wireframe. The cells can be set up to
  * have different widths, according to the viewport width (responsive feature).

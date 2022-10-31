@@ -1,13 +1,13 @@
 <?php
 namespace Antheia\Antheia\Classes\Panel\FileBrowser;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
+use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
-use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
-use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Icon\IconPixelBig;
-use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * An item from the file browser list (a file or a folder)
  * @author Cosmin Staicu

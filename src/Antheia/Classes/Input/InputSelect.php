@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Interfaces\BeforeAfterCallback;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
  * A select input. On click, the interface will display one ore more options
  * from which the user can select one

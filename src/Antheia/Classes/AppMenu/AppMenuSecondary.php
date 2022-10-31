@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\AppMenu;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Icon\IconPixelSmall;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A submenu item (that will be displayed when the parent menu is clicked)
  * @author Cosmin Staicu

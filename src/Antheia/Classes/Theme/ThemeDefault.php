@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Theme;
 /**
- * Default framework theme
+ * Default library theme
  * @author Cosmin Staicu
  */
 class ThemeDefault extends AbstractTheme {

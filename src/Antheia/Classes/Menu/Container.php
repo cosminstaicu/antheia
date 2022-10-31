@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Menu;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A container with a visible container that can have a menu (default hidden)
  * with one ore more items. The menu items can be toggled from the button places

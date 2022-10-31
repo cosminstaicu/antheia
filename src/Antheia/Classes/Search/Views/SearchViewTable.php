@@ -1,10 +1,10 @@
 <?php
 namespace Antheia\Antheia\Classes\Search\Views;
-use Antheia\Antheia\Classes\Table\TablePlain;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Classes\Table\TablePlain;
 /**
  * A search result render that displays the results as a table
  * @author Cosmin Staicu

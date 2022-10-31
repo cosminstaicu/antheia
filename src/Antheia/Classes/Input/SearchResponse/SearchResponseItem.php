@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\Input\SearchResponse;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * The class defines an element resulted from a search input. This type 
  * of element will be added to a SearchResponseList instance.

@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\Icon;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\VectorSet\MaterialDesign;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A vector based icon, from a selectable set (Google Material Design)
  * @author Cosmin Staicu

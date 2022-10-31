@@ -1,13 +1,13 @@
 <?php
 namespace Antheia\Antheia\Classes\Search\Views;
-use Antheia\Antheia\Classes\Search\SearchResult;
-use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Slide\SlidePanel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * A search result render that displays the results as an accordion
  * (only the name of the item is displayed, when clicked the panel will expand,

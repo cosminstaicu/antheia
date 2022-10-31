@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Abstract class to be extended by all text type inputs
  * (text, password, phone, numbers etc.)

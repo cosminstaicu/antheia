@@ -1,17 +1,17 @@
 <?php
 namespace Antheia\Antheia\Classes\Search;
-use Antheia\Antheia\Classes\Form;
-use Antheia\Antheia\Classes\Panel\Panel;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Input\InputSelect;
-use Antheia\Antheia\Classes\Input\AbstractInput;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Form;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\AbstractInput;
 use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\InputSelect;
 use Antheia\Antheia\Classes\Input\InputSubmit;
+use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Slide\SlidePanel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * The class defines a form from a page that contains the results of a search.
  * The class displays the search filters, the sorting options and the pagination.

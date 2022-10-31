@@ -1,10 +1,10 @@
 <?php
 namespace Antheia\Antheia\Classes\Table\Plain;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Interfaces\TableRow;
+use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\TableCell;
+use Antheia\Antheia\Interfaces\TableRow;
 /**
  * Defines a regular row, from a table. The row (just like the table)
  * has no special formatting

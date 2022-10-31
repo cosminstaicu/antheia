@@ -60,21 +60,21 @@
 	div#ant_header-tabs  {
 		text-align: center;
 	}
-	#ant_header {
+	#ant_header.ant-fixed {
 		padding-left: calc(calc(100vw - 710px) / 2);
 		padding-right: calc(calc(100vw - 710px) / 2);
 	}
 }
 /************************************************************* MD DEFINITIONS */
 @media only screen and (min-width: 992px) {
-	#ant_header {
+	#ant_header.ant-fixed {
 		padding-left: calc(calc(100vw - 930px) / 2);
 		padding-right: calc(calc(100vw - 930px) / 2);
 	}
 }
 /************************************************************* LG DEFINITIONS */
 @media only screen and (min-width: 1200px) {
-	#ant_header {
+	#ant_header.ant-fixed {
 		padding-left: calc(calc(100vw - 1130px) / 2);
 		padding-right: calc(calc(100vw - 1130px) / 2);
 	}

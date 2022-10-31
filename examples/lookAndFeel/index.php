@@ -1,8 +1,8 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Menu\Item\MenuAdd;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * This is just a simple page with some content, to get a look and feel of the
  * library. Further details for each component can be found in the next pages.

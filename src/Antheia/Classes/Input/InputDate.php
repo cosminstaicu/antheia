@@ -1,11 +1,11 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
-use Antheia\Antheia\Classes\Internals;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
  * An input to select a date
  * @author Cosmin Staicu

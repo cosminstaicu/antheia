@@ -1,18 +1,17 @@
 <?php
 namespace Antheia\Antheia\Classes\Page;
-use Antheia\Antheia\Classes\Header\Header;
-use Antheia\Antheia\Classes\FixedButton\AbstractFixedButton;
-use Antheia\Antheia\Classes\Header\TopRightMenu\AbstractTopRightMenu;
-use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
-use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
-use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Icon\IconVector;
-use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Globals;
-
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
+use Antheia\Antheia\Classes\FixedButton\AbstractFixedButton;
+use Antheia\Antheia\Classes\Header\Header;
+use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
+use Antheia\Antheia\Classes\Header\TopRightMenu\AbstractTopRightMenu;
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * An empty page, with a menu. HtmlCode instances can be added to the class
  * @author Cosmin Staicu
@@ -43,6 +42,20 @@ class PageEmpty extends PageBlank {
 	 */
 	public function displayAppName(bool $status):void {
 		$this->displayTitle = $status;
+	}
+	/**
+	 * Defines the width of the header.
+	 * @param string $type one of the constants: 
+	 * \Antheia\Antheia\Classes\Header\Header::TYPE_FIXED (default)
+	 * the page title, along with the page manu (if available) will align with
+	 * a fixed wireframe
+	 * \Antheia\Antheia\Classes\Header\Header::FLUID the page title will always
+	 * be on the left edge of the document
+	 * @see \Antheia\Antheia\Classes\Header\Header::setType()
+	 * @param string $type
+	 */
+	public function setHeaderType(string $type):void {
+		$this->header->setType($type);
 	}
 	/**
 	 * Sets up a message to be displayed after the page has been loaded.

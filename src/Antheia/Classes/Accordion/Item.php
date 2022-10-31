@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Accordion;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * The class defines an accordion item. The item can be clicked, to be expanded
  * and show some content

@@ -1,11 +1,11 @@
 <?php
 namespace Antheia\Antheia\Classes\Page\Login;
-use Antheia\Antheia\Classes\Page\AbstractPage;
-use Antheia\Antheia\Classes\Wireframe\Cell;
-use Antheia\Antheia\Classes\Panel\Panel;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Page\AbstractPage;
+use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Wireframe\Cell;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * Class to be extende by all pages used by the authentication process
  * @author Cosmin Staicu

@@ -2,12 +2,12 @@
 namespace Antheia\Antheia\Classes\Page;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Globals;
-use Antheia\Antheia\Classes\Theme\ThemeDefault;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Theme\AbstractTheme;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Internals;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Theme\AbstractTheme;
+use Antheia\Antheia\Classes\Theme\ThemeDefault;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * Abstract class to be extended by all pages
  * @author Cosmin Staicu

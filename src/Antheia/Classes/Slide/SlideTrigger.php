@@ -1,12 +1,11 @@
 <?php
 namespace Antheia\Antheia\Classes\Slide;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlAttribute;
-use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Texts;
-
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * The controller for container toggle in a slide panel. This class should
  * not be directlly called by the user. Instead, the controller should be

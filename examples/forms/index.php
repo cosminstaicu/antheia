@@ -1,28 +1,11 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Form;
-use Antheia\Antheia\Classes\Panel\PanelInput;
-use Antheia\Antheia\Classes\Input\InputInfo;
-use Antheia\Antheia\Classes\Input\InputText;
-use Antheia\Antheia\Classes\Input\InputNumber;
-use Antheia\Antheia\Classes\Input\InputSelect;
-use Antheia\Antheia\Classes\Input\InputPassword;
-use Antheia\Antheia\Classes\Input\InputNewPassword;
-use Antheia\Antheia\Classes\Input\InputSearch;
-use Antheia\Antheia\Classes\Input\InputEmail;
-use Antheia\Antheia\Classes\Input\InputPhone;
-use Antheia\Antheia\Classes\Input\InputDate;
-use Antheia\Antheia\Classes\Input\InputTime;
-use Antheia\Antheia\Classes\Input\InputColor;
-use Antheia\Antheia\Classes\Input\InputCheckbox;
-use Antheia\Antheia\Classes\Input\InputFile;
-use Antheia\Antheia\Classes\Input\InputFileDrop;
-use Antheia\Antheia\Classes\Input\InputTextarea;
-use Antheia\Antheia\Classes\Input\InputButton;
-use Antheia\Antheia\Classes\Input\InputSubmit;
 use Antheia\Antheia\Classes\FixedButton\FixedButtonCancel;
 use Antheia\Antheia\Classes\FixedButton\FixedButtonValid;
+use Antheia\Antheia\Classes\Input\NewInput;
+use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Panel\PanelInput;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();
@@ -51,12 +34,12 @@ $panel->setTitle('A form');
 $form->addHiddenInput('hiddenInputName', 'hiddenInputValue', 'optionalId');
 // ************************************************************************ info
 // just an info text (it will not be sent to the server)
-$input = new InputInfo();
+$input = NewInput::info();
 $input->setLabel('Info field');
 $input->setValue('just a text');
 $panel->addInput($input);
 // ************************************************************************ text
-$input = new InputText();
+$input = NewInput::text();
 $input->setName('textInput');
 if (isset($_POST['textInput'])) {
 	$input->setValue($_POST['textInput']);
@@ -65,7 +48,7 @@ $input->setLabel('Text field');
 $input->setPlaceholder('just a text field');
 $panel->addInput($input);
 // ********************************************************************** number
-$input = new InputNumber();
+$input = NewInput::number();
 $input->setNameId('digitsInput');
 if (isset($_POST['digitsInput'])) {
 	$input->setValue($_POST['digitsInput']);
@@ -75,7 +58,7 @@ $input->setPlaceholder('value');
 $input->setValidation('digitsValidation');
 $panel->addInput($input);
 // ********************************************************************** select
-$input = new InputSelect();
+$input = NewInput::select();
 $input->setName('selectInput');
 $input->setLabel('Select');
 $input->addOption('Item 1', '1');
@@ -86,7 +69,7 @@ if (isset($_POST['selectInput'])) {
 }
 $panel->addInput($input);
 // ******************************************************************** password
-$input = new InputPassword();
+$input = NewInput::password();
 $input->setNameId('passwordInput');
 $input->setLabel('Password');
 $input->addAttribute('autocomplete', 'current-password');
@@ -94,7 +77,7 @@ $input->setInlineHelpText('All input fields can display additional info');
 $input->setPlaceholder('a password can be typed here');
 $panel->addInput($input);
 // **************************************************************** new password
-$input = new InputNewPassword();
+$input = NewInput::newPassword();
 $input->setUsername('antheia');
 $input->setNameId('newPassword');
 $input->setLabel('Define a new password');
@@ -107,7 +90,7 @@ $input->setInitialText('define a new password');
 $input->setFinalText('will be updated');
 $panel->addInput($input);
 // ********************************************************************** search
-$input = new InputSearch();
+$input = NewInput::search();
 $input->setLabel('Search<br>(server query)');
 $input->displayUndefined('No selection', 'noSelection');
 $input->setName('searchInput');
@@ -115,19 +98,19 @@ $input->setUrl('query.php');
 $input->setInitialText('Initial value');
 $panel->addInput($input);
 // *********************************************************************** email
-$input = new InputEmail();
+$input = NewInput::email();
 $input->setName('emailInput');
 $input->addAttribute('autocomplete', 'email');
 $input->setLabel('Email');
 $input->setPlaceholder('type an email here');
 $panel->addInput($input);
 // *********************************************************************** phone
-$input = new InputPhone();
+$input = NewInput::phone();
 $input->setName('phoneInput');
 $input->setLabel('Phone');
 $panel->addInput($input);
 // ************************************************************************ date
-$input = new InputDate();
+$input = NewInput::date();
 $input->setNameId('dateInput');
 $input->setLabel('Date');
 $input->setValue('19900225');
@@ -135,12 +118,12 @@ $input->displayToday();
 $input->displayUndefined();
 $panel->addInput($input, 'dateRow');
 // ************************************************************************ time
-$input = new InputTime();
+$input = NewInput::time();
 $input->setName('timeInput');
 $input->setLabel('Time');
 $panel->addInput($input);
 // ************************************************************* predefined type
-$input = new InputTime();
+$input = NewInput::time();
 $input->setName('timePredefinedInput');
 $input->setLabel('Time (select)');
 $input->setSelectionMode();
@@ -149,27 +132,27 @@ $input->setMinuteSelection(10, 0, 59);
 $input->displayUndefined();
 $panel->addInput($input);
 // *********************************************************************** color
-$input = new InputColor();
+$input = NewInput::color();
 // setNameId defines the name and id in a single statement
 $input->setNameId('colorInput');
 $input->setLabel('Color select');
 $input->setValue('#ff0000');
 $panel->addInput($input);
 // ******************************************************************** checkbox
-$input = new InputCheckbox();
+$input = NewInput::checkbox();
 $input->setName('checkboxInput');
 $input->setLabel('A checkbox');
 $input->setValue('yes');
 $panel->addInput($input);
 // ************************************************************************ file
-$input = new InputFile();
+$input = NewInput::file();
 $input->setName('fileInput');
 $input->setLabel('A file');
 // if no extension is defined then the input accepts any file type
 $input->addExtension('.mp3');
 $panel->addInput($input);
 // ******************************************************************* drop file
-$input = new InputFileDrop();
+$input = NewInput::fileDrop();
 $input->setName('droppedFile');
 $input->setMaxFiles(3);
 $input->setMaxSize(2, 2);
@@ -179,31 +162,31 @@ $input->setAfterCallback('afterDropFileTransfer');
 $input->setDisplayBrowser(false);
 $panel->addInput($input);
 // ******************************************************************** textarea
-$input = new InputTextarea();
+$input = NewInput::textarea();
 $input->setName('textareaInput');
 $input->setLabel('Textarea');
 $panel->addInput($input);
 // **************************************** simple button (hides the date field)
-$input = new InputButton();
+$input = NewInput::button();
 $input->setValue('Hide date');
 $input->setOnClick(
 	"document.getElementById('dateRow').classList.add('display-none')"
 );
 $panel->addInput($input);
 // **************************************** simple button (shows the date field)
-$input = new InputButton();
+$input = NewInput::button();
 $input->setValue('Show date');
 $input->setOnClick(
 	"document.getElementById('dateRow').classList.remove('display-none')"
 );
 $panel->addInput($input);
 // *************************************************************** simple button
-$input = new InputButton();
+$input = NewInput::button();
 $input->setValue('Set date to 20 january 2009');
 $input->setOnClick("ant_forms_updateValue('dateInput','20090120')");
 $panel->addInput($input);
 // *************************************************************** submit button
-$input = new InputSubmit();
+$input = NewInput::submit();
 $panel->addInput($input);
 // add the form to the wireframe cell
 $cell->addElement($form);

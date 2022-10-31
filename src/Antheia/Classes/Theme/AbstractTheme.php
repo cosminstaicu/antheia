@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Theme;
-use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Texts;
 /**
  * Abstract class to be extended by all classes defining themes
  * @author Cosmin Staicu

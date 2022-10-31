@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\Tabs;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * Defines a tab to be displayed below the header section of the page
  * @author Cosmin Staicu

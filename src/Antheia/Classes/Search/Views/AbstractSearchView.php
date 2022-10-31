@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\Search\Views;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * Abstract class to be extended by all classed defining renders for displaying
  * search results

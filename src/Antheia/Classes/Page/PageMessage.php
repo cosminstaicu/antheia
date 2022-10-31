@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Antheia\Classes\Page;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Panel\Panel;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 /**
  * A page with a message in the center
  * @author Cosmin Staicu

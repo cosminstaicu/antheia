@@ -1,10 +1,10 @@
 <?php
 namespace Antheia\Antheia\Classes\Table;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Table\Plain\Row;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Interfaces\TableRow;
 /**
  * A simple table, without any formatting, classes etc.

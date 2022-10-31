@@ -1,12 +1,12 @@
 <?php
 namespace Antheia\Antheia\Classes\Panel;
-use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Panel\FileBrowser\Folder;
+use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Panel\FileBrowser\File;
+use Antheia\Antheia\Classes\Panel\FileBrowser\Folder;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A panel for browsing files and folders
  * @author Cosmin Staicu

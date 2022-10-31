@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
  * A button that, when clicked displays an interface to input a new password.
  * @author Cosmin Staicu

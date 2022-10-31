@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Interfaces\BeforeAfterCallback;
-use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
  * Defines an area where the user can drag and drop single or multiple files
  * to be uploaded to the server

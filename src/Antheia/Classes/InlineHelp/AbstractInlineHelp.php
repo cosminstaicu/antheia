@@ -1,9 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes\InlineHelp;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Class to be extended by all classes defining an inline help feature.
  * @author Cosmin Staicu

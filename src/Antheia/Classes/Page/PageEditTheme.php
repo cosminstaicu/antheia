@@ -1,22 +1,22 @@
 <?php
 namespace Antheia\Antheia\Classes\Page;
-use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
-use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Theme\AbstractTheme;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Menu\Item\MenuUpdate;
-use Antheia\Antheia\Classes\Input\InputSelect;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Input\InputTextarea;
-use Antheia\Antheia\Classes\Input\InputColor;
-use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Accordion\Accordion;
-use Antheia\Antheia\Classes\Input\InputInfo;
-use Antheia\Antheia\Classes\Input\InputText;
-use Antheia\Antheia\Classes\Input\InputDate;
-use Antheia\Antheia\Classes\Input\InputTime;
-use Antheia\Antheia\Classes\Input\InputCustomButton;
+use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\InputColor;
+use Antheia\Antheia\Classes\Input\InputCustomButton;
+use Antheia\Antheia\Classes\Input\InputDate;
+use Antheia\Antheia\Classes\Input\InputInfo;
+use Antheia\Antheia\Classes\Input\InputSelect;
+use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\InputTextarea;
+use Antheia\Antheia\Classes\Input\InputTime;
+use Antheia\Antheia\Classes\Menu\Item\MenuUpdate;
+use Antheia\Antheia\Classes\Theme\AbstractTheme;
 /**
  * Defines a page to edit a framework theme
  * @author Cosmin Staicu

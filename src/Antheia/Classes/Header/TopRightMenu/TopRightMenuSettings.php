@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\TopRightMenu;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Texts;
+use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A menu with the settings text and symbol
  * @author Cosmin Staicu

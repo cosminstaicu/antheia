@@ -1,11 +1,10 @@
 <?php
 namespace Antheia\Antheia\Classes\Page\Login;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Wireframe\Cell;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Input\InputButton;
-
+use Antheia\Antheia\Classes\Wireframe\Cell;
 /**
  * A page that shows an "authentication failed" message,
  * along with a retry button

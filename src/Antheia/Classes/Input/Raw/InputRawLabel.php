@@ -1,11 +1,11 @@
 <?php
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\InlineHelp\AbstractInlineHelp;
 use Antheia\Antheia\Classes\Input\AbstractInput;
-use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * Class for defining a label html tag, used by any input tag
  * @author Cosmin Staicu
