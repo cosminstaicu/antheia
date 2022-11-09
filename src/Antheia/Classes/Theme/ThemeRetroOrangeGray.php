@@ -9,7 +9,9 @@ class ThemeRetroOrangeGray extends AbstractTheme {
 	public function __construct() {
 		parent::__construct();
 		$this->setName('Retro orange and gray');
-		$this->setDescription('');
+		$this->setDescription(
+			'The brightest sunrise, rising from her eyes, in a tantalizing promise.'
+		);
 		$this->setWarning('#ff0000');
 		$this->setLink('#0000ee');
 		$this->setLinkHover('#0000aa');

@@ -9,7 +9,9 @@ class ThemeSoftWarm extends AbstractTheme {
 	public function __construct() {
 		parent::__construct();
 		$this->setName('Soft and warm');
-		$this->setDescription('');
+		$this->setDescription(
+			'The sweetness of a powerful perfume that tempts you in a call of longing.'
+		);
 		$this->setWarning('#ff0000');
 		$this->setLink('#0000ee');
 		$this->setLinkHover('#0000aa');

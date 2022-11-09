@@ -9,7 +9,10 @@ class ThemeDusk extends AbstractTheme {
 	public function __construct() {
 		parent::__construct();
 		$this->setName('Gradient at Dusk');
-		$this->setDescription('');
+		$this->setDescription(
+			'The Dust is speeding towards the West, '
+			.'emptying the sky of birds and clouds, spreading colors from the sun.'
+		);
 		$this->setWarning('#ff0000');
 		$this->setLink('#0000ee');
 		$this->setLinkHover('#0000aa');

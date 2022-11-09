@@ -9,7 +9,10 @@ class ThemeWarmRustic extends AbstractTheme {
 	public function __construct() {
 		parent::__construct();
 		$this->setName('Warm Rustic');
-		$this->setDescription('');
+		$this->setDescription(
+			'Sand washed up on a wounded shore, when all the dust in the air '
+			.'flew away and remained only a carpet of wind and rain.'
+		);
 		$this->setWarning('#fa0000');
 		$this->setLink('#2a3bbb');
 		$this->setLinkHover('#1d2b95');
