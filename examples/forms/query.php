@@ -1,7 +1,6 @@
 <?php
 use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseList;
 use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseItem;
-
 /**
  * This script will not be accessed directly by the user. The script is 
  * automatically requested by the browser when the user is filling the "search"
@@ -12,7 +11,7 @@ $values = [
 	'selectMaria' => 'Maria',
 	'selectAndreea' => 'Andreea',
 	'selectGeorge' => 'George',
-	'selectJojn' => 'John'
+	'selectJohn' => 'John & John'
 ];
 $list = new SearchResponseList();
 foreach ($values as $index => $answer) {
@@ -24,7 +23,7 @@ foreach ($values as $index => $answer) {
 	}
 	if (stripos($answer, $_POST['value']) !== false) {
 		$item = new SearchResponseItem();
-		$item->setNameValue($answer, $index);
+		$item->setNameValue(htmlspecialchars($answer), $index);
 		$list->addItem($item);
 	}
 }

@@ -115,7 +115,7 @@ function ant_inputSearch_start(element) {
  * @param {Element} element the item that has been pressed
  */
 function ant_inputSearch_selectItem(element) {
-	ant_inputSearch_select(element.dataset.value, element.innerHTML);
+	ant_inputSearch_select(element.dataset.value, element.innerText);
 }
 /**
  * Called when a value has been selected (from the server returned list or 
