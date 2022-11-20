@@ -1,12 +1,12 @@
 <?php
 namespace Antheia\Antheia\Scripts\Ajax;
-include __DIR__.'/../../Classes/Globals.php';
 use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Texts;
+include __DIR__.'/../../Classes/Globals.php';
 include __DIR__.'/../../Classes/Texts.php';
 require_once __DIR__.'/../../Classes/Language/AbstractLanguage.php';
 require_once __DIR__.'/../../Classes/Language/English.php';
 require_once __DIR__.'/../../Classes/Language/Romana.php';
-use Antheia\Antheia\Classes\Texts;
 /**
  * The script is requested by the date input, when selecting a value
  * @author Cosmin Staicu
@@ -78,14 +78,14 @@ for ($i = 1; $i <= $daysInMonth; $i ++) {
 		$inputValue .= '0';
 	}
 	$inputValue .= $i;
-	$code .= '<td><a href="javascript:void(0)" data-value="'.$inputValue.'"'
+	$code .= '<td><button data-value="'.$inputValue.'"'
 		.'data-text="'.$i.' '.$monthText.' '.$curentYear.'" '
 		.'onClick="ant_inputDate_select(this)"';
 	if ($today === $inputValue) {
 		$code .= ' class="ant_today"';
 	}
-	$code .='>'.$i.'</a></td>';
-	$currentColumn ++;
+	$code .='>'.$i.'</button></td>';
+	$currentColumn++;
 }
 // if the month does not end on a sunday, empty cells will fill in the days
 for( $i = $currentColumn; $i <= 7; $i ++) {

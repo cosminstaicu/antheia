@@ -85,8 +85,7 @@ function ant_inputSearch_start(element) {
 	});
 	ant_inputSearch_process.modal.appendContent(searchInput);
 	// the button for clearing the input
-	let clearInput = document.createElement("a");
-	clearInput.href = "javascript:void(0)";
+	let clearInput = document.createElement("button");
 	clearInput.innerHTML = "<i class='material-icons'>backspace</i>";
 	clearInput.addEventListener('click', () => {
 		searchInput.value = "";

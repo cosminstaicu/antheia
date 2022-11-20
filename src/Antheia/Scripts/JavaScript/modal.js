@@ -1,5 +1,5 @@
 /**
- * Defines a modal inside the interface
+ * Defines a modal that can be added to the document
  */
 class ant_modal {
 	htmlElement;
@@ -22,15 +22,18 @@ class ant_modal {
 				break;
 			default:
 		}
-		this.htmlElement.onmousedown = (event) => {
+		this.htmlElement.addEventListener("closeOnEsc", () => {
+			this.hide();
+		});
+		this.htmlElement.addEventListener("mousedown", (event) => {
 			event.stopPropagation();
 			this.hide();
-		}
+		});
 		this.panel = document.createElement("DIV");
 		this.panel.classList.add("ant_panel");
-		this.panel.onmousedown = (event) => {
+		this.panel.addEventListener("mousedown", (event) => {
 			event.stopPropagation();
-		}
+		});
 		this.header = null;
 		this.setHeaderAlign('left');
 		this.content = document.createElement("DIV");
@@ -266,3 +269,15 @@ class ant_modal {
 		this.htmlElement.classList.add("ant-hidden");
 	}
 }
+// adding an global listener for the ESC key, that will close the last opened
+// modal (if it exists)
+addEventListener("keyup", (event) => {
+	if (event.key !== "Escape") {
+		return;
+	}
+	let modals = document.querySelectorAll("div.ant_modal");
+	if (modals.length === 0) {
+		return;
+	}
+	modals[modals.length - 1].dispatchEvent(new CustomEvent("closeOnEsc"));
+});

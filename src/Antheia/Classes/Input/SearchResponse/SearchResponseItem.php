@@ -33,9 +33,9 @@ class SearchResponseItem extends AbstractClass implements HtmlCode {
 		if ( $this->value === NULL ) {
 			throw new Exception('Value is not defined');
 		}
-		return '<a href="javascript:void(0)" data-value="'.$this->value
+		return '<button data-value="'.$this->value
 			.'" onClick="ant_inputSearch_selectItem(this)">'
-			.$this->name.'</a>';
+			.$this->name.'</button>';
 	}
 }
 ?>

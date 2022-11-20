@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Shows a simple modal
  */
@@ -26,11 +27,11 @@ function contentUpdateModal() {
 		let button = document.createElement('INPUT');
 		button.type = "button";
 		button.value = "Close it?";
-		button.onclick = () => {
+		button.addEventListener("click", () => {
 			ant_confirm.quick("Close the modal?", () => {
 				modal.hide();
 			});
-		}
+		});
 		modal.setFooter(button);
 	}, 4000);
 }
@@ -57,11 +58,11 @@ function loadingModal() {
 		let button = document.createElement('INPUT');
 		button.type = "button";
 		button.value = "Close it?";
-		button.onclick = () => {
+		button.addEventListener("click", () => {
 			ant_confirm.quick("Close the modal?", () => {
 				modal.hide();
 			});
-		}
+		});
 		modal.setFooter(button);
 	}, 3000);
 	// after 4 seconds stop the animation to show the new content

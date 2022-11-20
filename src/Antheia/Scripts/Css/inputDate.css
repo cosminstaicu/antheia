@@ -66,8 +66,8 @@
 .ant_inputDate > table > tbody td {
 	text-align: center;
 }
-.ant_inputDate > table a {
-	display: block;
+.ant_inputDate > table > tbody button {
+	width: calc(100% - 10px);
 	margin: 5px;
 	padding: 5px;
 	background-color: var(--ant-theme-inputBackground);
@@ -75,16 +75,20 @@
 	border-radius: 4px;
 	transition: .2s;
 	color: var(--ant-theme-inputText);
+	font-size: 16px;
+	cursor: pointer;
 }
-.ant_inputDate > table a.ant_today {
+.ant_inputDate > table > tbody button.ant_today {
 	border-style: dashed;
 }
-.ant_inputDate > table a:hover {
+.ant_inputDate > table > tbody button:hover {
 	text-decoration: none;
-	padding: 10px;
-	margin: 0px;
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
+	padding-top: 10px;
+	padding-bottom: 10px;
+	margin-top: 0px;
+	margin-bottom: 0px;
 }
 /* select day status */
 .ant_inputDate.ant-day > div:nth-of-type(2) {

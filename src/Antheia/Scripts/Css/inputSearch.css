@@ -3,10 +3,13 @@
 	width: calc(100% - 50px);
 }
 /* clear all button */
-.ant_inputSearch > a:first-of-type {
+.ant_inputSearch > button {
 	color: var(--ant-theme-warning);
 	margin-left: 10px;
 	vertical-align: middle;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
 }
 /* search result panel */
 .ant_inputSearch > div {
@@ -27,8 +30,9 @@
 	animation: ant_loading-spin 2s linear infinite;
 }
 /* search result list */
-.ant_inputSearch > div > a {
+.ant_inputSearch > div > button {
 	display: block;
+	width: calc(100% - 60px);
 	font-size: 20px;
 	text-align: left;
 	padding: 10px;
@@ -40,18 +44,20 @@
 	border-left: 10px solid var(--ant-theme-panelBorder);
 	color: var(--ant-theme-inputText);
 	background-color: var(--ant-theme-panelSecondaryBackground);
+	cursor: pointer;
 }
-.ant_inputSearch > div > a:first-child {
+.ant_inputSearch > div > button:first-child {
 	margin-top: 10px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
-.ant_inputSearch > div > a:last-child {
+.ant_inputSearch > div > button:last-child {
 	margin-bottom: 10px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-.ant_inputSearch > div > a:hover {
+.ant_inputSearch > div > button:hover {
+	width: calc(100% - 10px);
 	text-decoration: none;
 	padding: 10px;
 	margin-left: 5px;

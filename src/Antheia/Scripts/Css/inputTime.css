@@ -13,7 +13,7 @@ div#ant_inputTime-hours > p, div#ant_inputTime-minutes > p {
 	border-bottom: 1px solid black;
     padding-bottom: 10px;
 }
-div#ant_inputTime-hours > a, div#ant_inputTime-minutes > a {
+div#ant_inputTime-hours > button, div#ant_inputTime-minutes > button {
 	display: block;
 	background-color: var(--ant-theme-buttonText);
 	color: var(--ant-theme-buttonBackground);
@@ -26,8 +26,9 @@ div#ant_inputTime-hours > a, div#ant_inputTime-minutes > a {
 	transition: 0.5s;
 	font-size: 16px;
 	margin: 5px;
+	cursor: pointer;
 }
-div#ant_inputTime-hours > a:hover, div#ant_inputTime-minutes > a:hover {
+div#ant_inputTime-hours > button:hover, div#ant_inputTime-minutes > button:hover {
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
 	text-decoration: none;

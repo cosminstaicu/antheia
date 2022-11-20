@@ -1,5 +1,5 @@
 <?php
-use Antheia\Antheia\Classes\Menu\Item\MenuAdd;
+use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
@@ -7,7 +7,7 @@ use Antheia\Antheia\Classes\Wireframe\Wireframe;
  * This is just a simple page with some content, to get a look and feel of the
  * library. Further details for each component can be found in the next pages.
  */
-// init.php is used for initializing the framework
+// init.php is used for initializing the library
 require '../_utils/init.php';
 $page = new PageEmpty();
 // checking the framework compatibility with the user browser
@@ -16,6 +16,17 @@ $page->checkCompatibility();
 init_configurePage($page);
 // defining the page title
 $page->setTitle('Look and feel');
+// the page menu
+$pageMenu = NewMenu::add();
+$pageMenu->setHref("javascript:alert('some action here')");
+$page->addPageMenu($pageMenu);
+$pageMenu = NewMenu::info();
+$pageMenu->setRender($pageMenu::BUTTON);
+$pageMenu->setOnClick("alert('some action here')");
+$page->addPageMenu($pageMenu);
+$pageMenu = NewMenu::delete();
+$pageMenu->setHref("javascript:alert('some action here')");
+$page->addPageMenu($pageMenu);
 // defining a responsive wireframe that will be inserted into the page
 $wireframe = new Wireframe();
 // the wireframe will have a fixed width, depending on the width of the window
@@ -31,7 +42,7 @@ $panel = new Panel();
 $panel->setTitle('What is Antheia Frontend');
 $panel->addText('<p>Antheia is a frontend library for web apps, written in PHP,
 fully compatible with mobile devices (responsive). It is designed to be
-used by web apps as it contains featues designed mainly for cloud services.</p>
+used by web apps as it contains features designed mainly for cloud services.</p>
 <p>The library is hosted on
 <a href="https://github.com/cosminstaicu/antheia" target="_blank">GitHub</a>.</p>
 <p>The main project using this library is the Cloud PBX Service, called
@@ -49,11 +60,17 @@ $cell->addWidth('md', 6);
 // defining a panel to be displayed inside the wireframe
 $panel = new Panel();
 $panel->setTitle('Panel title');
-// defining a button to be later inserted into the panel menu
-$addMenu = new MenuAdd();
-$addMenu->setHref("javascript:alert('some action here')");
-// adding the button to the panel menu
-$panel->addMenu($addMenu);
+// defining the menu for the panel
+$panelMenu = NewMenu::add();
+$panelMenu->setHref("javascript:alert('some action here')");
+$panel->addMenu($panelMenu);
+$panelMenu = NewMenu::info();
+$panelMenu->setHref("javascript:alert('some action here')");
+$panel->addMenu($panelMenu);
+$panelMenu = NewMenu::delete();
+$panelMenu->setRender($panelMenu::BUTTON);
+$panelMenu->setOnClick("alert('some action here')");
+$panel->addMenu($panelMenu);
 $panel->addText('This is a panel with a menu');
 // adding the container to the cell of the wireframe
 $cell->addElement($panel);

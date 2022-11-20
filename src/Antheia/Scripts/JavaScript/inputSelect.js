@@ -13,10 +13,9 @@ function ant_inputSelect_start(element) {
 	modal.addContentClass("ant_inputSelect");
 	let options = inputHidden.options;
 	for (i = 0; i < options.length; i++) {
-		option = document.createElement("a");
+		option = document.createElement("button");
 		option.ant_option = options[i];
 		option.innerHTML = options[i].text;
-		option.href="javascript:void(0)";
 		option.onclick = function () {
 			element.value = this.ant_option.text;
 			inputHidden.value = this.ant_option.value;

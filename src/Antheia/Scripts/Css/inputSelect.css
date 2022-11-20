@@ -6,8 +6,9 @@
 .ant_form-item > select + div.ant-hidden {
 	display: none;
 }
-.ant_inputSelect > a {
+.ant_inputSelect > button {
 	display: block;
+	width: calc(100% - 60px);
 	font-size: 20px;
 	text-align: left;
 	padding: 10px;
@@ -19,22 +20,24 @@
 	color: var(--ant-theme-inputText);
 	border: 1px solid var(--ant-theme-inputBorder);
 	border-left: 10px solid var(--ant-theme-panelBorder);
+	cursor: pointer;
 }
-.ant_inputSelect > a:first-of-type {
+.ant_inputSelect > button:first-of-type {
 	margin-top: 30px;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 }
-.ant_inputSelect > a:last-of-type {
+.ant_inputSelect > button:last-of-type {
 	margin-bottom: 30px;
 	border-bottom-left-radius: 5px;
 	border-bottom-right-radius: 5px;
 }
-.ant_inputSelect > a:hover {
+.ant_inputSelect > button:hover {
 	text-decoration: none;
 	padding: 10px;
 	margin-left: 5px;
 	margin-right: 5px;
+	width: calc(100% - 10px);
 	background-color: var(--ant-theme-inputBackground);
 	box-shadow: 0px 0px 5px var(--ant-theme-shadow);
 }

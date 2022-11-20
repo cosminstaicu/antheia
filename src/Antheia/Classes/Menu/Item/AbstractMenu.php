@@ -1,18 +1,20 @@
 <?php
 namespace Antheia\Antheia\Classes\Menu\Item;
 use Antheia\Antheia\Classes\AbstractClass;
-use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Interfaces\HtmlAttribute;
+use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * Abstract class to be extended by all menu buttons
  * @author Cosmin Staicu
  */
 abstract class AbstractMenu extends AbstractClass 
 implements HtmlCode, HtmlId, HtmlAttribute {
+	const LINK = 'link';
+	const BUTTON = 'button';
 	private $text;
 	private $href;
 	private $icon;
@@ -20,6 +22,7 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	private $htmlId;
 	private $attributes;
 	private $onClick;
+	private $renderType;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -29,9 +32,21 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		$this->htmlId = '';
 		$this->attributes = [];
 		$this->onClick = '';
+		$this->renderType = self::LINK;
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	/**
+	 * Defines the render to be used by the menu. It can be a button or a link
+	 * @param string $type the render type for the menu, as one of the constants:
+	 * <dl>
+	 * <dt>AbstractMenu::LINK</dt><dd>the menu will be rendered as a link</dd>
+	 * <dt>AbstractMenu::BUTTON</dt><dd>the menu will be rendered as a button</dd>
+	 * </dl>
+	 */
+	public function setRender(string $type):void {
+		$this->renderType = $type;
 	}
 	/**
 	 * Adds a css definition into the tag, using the style attribute
@@ -59,8 +74,10 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		$this->text = $text;
 	}
 	/**
-	 * Defines the href for the link of the menu item. If the method is not
-	 * called then 'javascript:void(0)' text will be used
+	 * Defines the href for the link of the menu item. It is only used if the
+	 * button is rendered as a link. For buttons, the method has no effect.
+	 * If the method is not called then 'javascript:void(0)' text will be used
+	 * for the items rendered as links.
 	 * @param string $href the href for the link of the menu item
 	 */
 	public function setHref(string $href):void {
@@ -86,22 +103,43 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 		if ($this->text === '') {
 			throw new Exception('Name is not defined');
 		}
-		$cod = '<a href="'.$this->href.'" class="ant_menu-button"';
+		$code = '';
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '<a href="'.$this->href.'"';
+				break;
+			case self::BUTTON:
+				$code .= '<button';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
+		}
+		$code .= ' class="ant_menu-item"';
 		if ($this->cssCode !== '') {
-			$cod .= ' style="'.$this->cssCode.'"';
+			$code .= ' style="'.$this->cssCode.'"';
 		}
 		if ($this->onClick !== '') {
-			$cod .= ' onClick="'.$this->onClick.'" ';
+			$code .= ' onClick="'.$this->onClick.'" ';
 		}
 		if ($this->htmlId !== '') {
-			$cod .= ' id="'.$this->htmlId.'" ';
+			$code .= ' id="'.$this->htmlId.'" ';
 		}
 		foreach ($this->attributes as $attr) {
-			$cod .= ' '.$attr['name'].'="'.$attr['value'].'"';
+			$code .= ' '.$attr['name'].'="'.$attr['value'].'"';
 		}
-		$cod .= '>'.$this->icon->getHtml();
-		$cod .='<span>'.$this->text.'</span></a>';
-		return $cod;
+		$code .= '>'.$this->icon->getHtml();
+		$code .='<span>'.$this->text.'</span>';
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '</a>';
+				break;
+			case self::BUTTON:
+				$code .= '</button>';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
+		}
+		return $code;
 	}
 }
 ?>

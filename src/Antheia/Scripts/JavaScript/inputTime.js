@@ -36,8 +36,7 @@ function ant_inputTime_start(element) {
 		let option = null;
 		hourDiv.id = "ant_inputTime-hours";
 		for (i = start; i <= stop; i += step) {
-			option = document.createElement("a");
-			option.href = 'javascript:void(0)';
+			option = document.createElement("button");
 			if (i < 10) {
 				option.innerHTML = "<b>0" + i + "</b>:--";
 			} else {
@@ -68,8 +67,7 @@ function ant_inputTime_start(element) {
 				let stop = parseInt(ant_inputTime_process.trigger.dataset.minuteMax);
 				let step = parseInt(ant_inputTime_process.trigger.dataset.minuteStep);
 				for (i = start; i <= stop; i += step) {
-					option = document.createElement("a");
-					option.href = 'javascript:void(0)';
+					option = document.createElement("button");
 					if (i < 10) {
 						option.innerHTML = hourText + "0" + i + "</b>";
 					} else {

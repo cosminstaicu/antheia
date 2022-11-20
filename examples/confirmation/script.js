@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Shows an info type alert message
  */

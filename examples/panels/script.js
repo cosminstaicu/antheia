@@ -1,3 +1,4 @@
+"use strict";
 /**
  * Starts a loading animation for 3 seconds then ends it
  */
