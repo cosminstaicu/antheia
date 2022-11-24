@@ -3,11 +3,11 @@ button.ant_inlineButton {
 	text-align: left;
 }
 button.ant_inlineButton.ant-high, button.ant_inlineButton.ant-medium {
-	font-size: 14px;
 	border-radius: 4px;
 	margin-bottom: 3px;
 }
 button.ant_inlineButton.ant-high {
+	font-size: 14px;
 	padding: 4px 6px 4px 6px;
 	border: 1px solid var(--ant-theme-buttonBackground);
 	background-color: var(--ant-theme-buttonBackground);
@@ -15,11 +15,12 @@ button.ant_inlineButton.ant-high {
 	transition: 0.5s;
 }
 button.ant_inlineButton.ant-medium {
-	padding: 4px 12px 4px 0px;
+	font-size: 16px;
+	padding: 0px 12px 8px 0px;
 	border: 1px solid transparent;
 	background-color: transparent;
 	color: var(--ant-theme-inputText);
-	transition: 0.5s;
+	transition: 0.2s;
 }
 button.ant_inlineButton.ant-low {
 	border: 1px solid transparent;
