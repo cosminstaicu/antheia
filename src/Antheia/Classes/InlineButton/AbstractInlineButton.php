@@ -14,6 +14,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	private $classes;
 	private $onClick;
 	private $icon;
+	private $title;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -21,6 +22,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		$this->classes = ['ant_inlineButton'];
 		$this->onClick = 'void(0)';
 		$this->icon = NULL;
+		$this->title = NULL;
 	}
 	/**
 	 * Adds a class to the button
@@ -36,6 +38,14 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	 */
 	public function setText(string $text):void {
 		$this->text = $text;
+	}
+	/**
+	 * Defines a title for the button
+	 * @param string|NULL $title the title for the button or null if no title
+	 * is required
+	 */
+	public function setTitle(?string $title):void {
+		$this->title = $title;
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
@@ -67,6 +77,9 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		$code .='"';
 		if ($this->htmlId != '') {
 			$code .= ' id="'.$this->htmlId.'"';
+		}
+		if ($this->title !== NULL) {
+			$code .= ' title="'.$this->title.'"';
 		}
 		$code .= ' onClick="'.$this->onClick.'">';
 		if ($this->icon !== NULL) {

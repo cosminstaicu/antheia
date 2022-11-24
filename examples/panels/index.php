@@ -85,10 +85,16 @@ $panel->addNameValue(
 	'<a href="mailto:john.doe@example.com">john.doe@example.com</a>'
 );
 $panel->addNameValue('Height', '173 cm');
-// inserting a button
+// inserting a button with an image
 $button = new InlineButton();
 $button->setIcon('user');
-$button->setText('An action for the user');
+$button->setText('Inline button with image');
+$button->setOnClick('alert(\'on click action\')');
+$button->setTitle('Button title');
+$panel->addNameElement('An action', $button);
+// inserting a button without an image
+$button = new InlineButton();
+$button->setText('Inline button without an image');
 $button->setOnClick('alert(\'on click action\')');
 $panel->addNameElement('An action', $button);
 $panel->addValue(

@@ -1,19 +1,20 @@
 .ant_inlineButton {
-	border: 1px solid var(--ant-theme-panelBorder);
-	background-color: var(--ant-theme-panelBackground);
-	color: var(--ant-theme-text);
+	border: 1px solid var(--ant-theme-buttonBackground);
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
 	padding: 4px 6px 4px 6px;
 	display: inline;
 	border-radius: 4px;
 	font-size: 14px;
 	transition: 0.5s;
+	text-align: left;
 }
 .ant_inlineButton:focus {
 	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
-	outline-color: var(--ant-theme-inputBorder);
+	outline-color: var(--ant-theme-buttonBackground);
 }
 .ant_inlineButton:hover {
-	background-color: var(--ant-theme-panelSecondaryBackground);
+	background-color: var(--ant-theme-buttonBackgroundHover);
 	cursor: pointer;
 }
 .ant_inlineButton > img {
