@@ -1,6 +1,7 @@
 <?php
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Accordion\Accordion;
+use Antheia\Antheia\Classes\InlineButton\InlineButton;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Page\PageEmpty;
@@ -84,6 +85,12 @@ $panel->addNameValue(
 	'<a href="mailto:john.doe@example.com">john.doe@example.com</a>'
 );
 $panel->addNameValue('Height', '173 cm');
+// inserting a button
+$button = new InlineButton();
+$button->setIcon('user');
+$button->setText('An action for the user');
+$button->setOnClick('alert(\'on click action\')');
+$panel->addNameElement('An action', $button);
 $panel->addValue(
 	'Some remarks can be shown using the entire panel width.
 	Check the DELETE option in the panel menu, for a delete confirmation template.'

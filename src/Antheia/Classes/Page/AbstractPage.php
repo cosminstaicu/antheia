@@ -288,6 +288,7 @@ abstract class AbstractPage extends AbstractClass {
 					'form.css',
 					'header.css',
 					'info.css',
+					'inlineButton.css',
 					'inlineHelp.css',
 					'inputDate.css',
 					'inputFile.css',

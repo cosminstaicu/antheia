@@ -1,0 +1,23 @@
+.ant_inlineButton {
+	border: 1px solid var(--ant-theme-panelBorder);
+	background-color: var(--ant-theme-panelBackground);
+	color: var(--ant-theme-text);
+	padding: 4px 6px 4px 6px;
+	display: inline;
+	border-radius: 4px;
+	font-size: 14px;
+	transition: 0.5s;
+}
+.ant_inlineButton:focus {
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
+	outline-color: var(--ant-theme-inputBorder);
+}
+.ant_inlineButton:hover {
+	background-color: var(--ant-theme-panelSecondaryBackground);
+	cursor: pointer;
+}
+.ant_inlineButton > img {
+	vertical-align: text-bottom;
+	margin-left: 0px;
+	margin-right: 3px;
+}

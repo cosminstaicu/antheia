@@ -14,7 +14,7 @@ class MenuConfirmDelete extends MenuDelete {
 	private $beforeCallback;
 	public function __construct() {
 		parent::__construct();
-		$this->setHref('javascript:void(0)');
+		$this->setRender(self::BUTTON);
 		$this->setOnClick('ant_deleteConfirmation(this)');
 		$this->paramName = 'id';
 		$this->formTarget = '';

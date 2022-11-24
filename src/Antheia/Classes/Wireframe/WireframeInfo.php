@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Wireframe;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * A wireframe with two columns for displaying name=value pairs. One column
  * contains a label, the other contains the value for that label.
@@ -22,22 +23,27 @@ class WireframeInfo extends Wireframe {
 	 * @param string $value the value being displayed
 	 */
 	public function addNameValue(string $label, string $value):void {
+		$this->addNameElement($label, new Html($value));	
+	}
+	/**
+	 * Adds name-value pair to be displayed inside the wireframe
+	 * @param string $label the label of the value to be displayed
+	 * @param HtmlCode $element the element to be displayed
+	 */
+	public function addNameElement(string $label, HtmlCode $element):void {
 		$row = $this->addRow();
 		$cell = $row->addCell();
 		$cell->addWidth('sm', 4);
 		$cell->setVerticalPadding(false);
 		$cell->addElement(new Html(
-			'<div class="ant_info-name">'.$label.'</div>'
-		));
+				'<div class="ant_info-name">'.$label.'</div>'
+				));
 		$cell = $row->addCell();
 		$cell->addWidth('sm', 8);
 		$cell->setVerticalPadding(false);
-		if (trim($value) == '') {
-			$value = '&nbsp;';
-		}
-		$cell->addElement(new Html(
-				'<div class="ant_info-value">'.$value.'</div>'
-		));
+		$cell->addElement(new Html('<div class="ant_info-value">'));
+		$cell->addElement($element);
+		$cell->addElement(new Html('</div>'));
 	}
 	/**
 	 * Adds just a value to the wireframe, that will span over 2 columns (a value
