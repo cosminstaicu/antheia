@@ -1,23 +1,52 @@
-.ant_inlineButton {
+button.ant_inlineButton {
+	display: inline;
+	text-align: left;
+}
+button.ant_inlineButton.ant-high, button.ant_inlineButton.ant-medium {
+	font-size: 14px;
+	border-radius: 4px;
+	margin-bottom: 3px;
+}
+button.ant_inlineButton.ant-high {
+	padding: 4px 6px 4px 6px;
 	border: 1px solid var(--ant-theme-buttonBackground);
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
-	padding: 4px 6px 4px 6px;
-	display: inline;
-	border-radius: 4px;
-	font-size: 14px;
 	transition: 0.5s;
-	text-align: left;
 }
-.ant_inlineButton:focus {
+button.ant_inlineButton.ant-medium {
+	padding: 4px 12px 4px 0px;
+	border: 1px solid transparent;
+	background-color: transparent;
+	color: var(--ant-theme-inputText);
+	transition: 0.5s;
+}
+button.ant_inlineButton.ant-low {
+	border: 1px solid transparent;
+	background-color: transparent;
+	color: var(--ant-theme-link);
+	font-size: 16px;
+	margin: 0;
+	padding: 0;
+}
+button.ant_inlineButton:hover {
+	cursor: pointer;
+}
+button.ant_inlineButton.ant-high:hover {
+	background-color: var(--ant-theme-buttonBackgroundHover);
+}
+button.ant_inlineButton.ant-medium:hover {
+	padding: 4px 6px 4px 6px;
+	border: 1px solid var(--ant-theme-inputBorder);
+}
+button.ant_inlineButton.ant-low:hover {
+	text-decoration: underline;
+}
+button.ant_inlineButton:focus {
 	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 	outline-color: var(--ant-theme-buttonBackground);
 }
-.ant_inlineButton:hover {
-	background-color: var(--ant-theme-buttonBackgroundHover);
-	cursor: pointer;
-}
-.ant_inlineButton > img {
+button.ant_inlineButton > img {
 	vertical-align: text-bottom;
 	margin-left: 0px;
 	margin-right: 3px;

@@ -4,17 +4,22 @@ use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Classes\Icon\IconPixelSmall;
+use Antheia\Antheia\Classes\Exception;
 /**
  * Class to be extended by all classes defining an inline button.
  * @author Cosmin Staicu
  */
 abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, HtmlId {
+	const HIGH = 'high';
+	const MEDIUM = 'medium';
+	const LOW = 'low';
 	private $text;
 	private $htmlId;
 	private $classes;
 	private $onClick;
 	private $icon;
 	private $title;
+	private $intensity;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -23,6 +28,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		$this->onClick = 'void(0)';
 		$this->icon = NULL;
 		$this->title = NULL;
+		$this->intensity = self::MEDIUM;
 	}
 	/**
 	 * Adds a class to the button
@@ -71,7 +77,22 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	public function setIcon(?string $icon):void {
 		$this->icon = $icon;
 	}
+	/**
+	 * Defines the intensity for the button (how much constrast will be between
+	 * the button and the regular text
+	 * @param string $intensity the intensity for the button, as one of the
+	 * constants: AbstractInlineButton::LOW, AbstractInlineButton::MEDIUM,
+	 * AbstractInlineButton::HIGH
+	 * @throws Exception if the value is not valid
+	 */
+	public function setIntensity(string $intensity):void {
+		if (!in_array($intensity, [self::LOW, self::MEDIUM, self::HIGH])) {
+			throw new Exception('Intensity is not valid '.$intensity);
+		}
+		$this->intensity = $intensity;
+	}
 	public function getHtml():string {
+		$this->addClass('ant-'.$this->intensity);
 		$code = '<button class="';
 		$code .= implode(' ', array_unique($this->classes));
 		$code .='"';

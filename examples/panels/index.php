@@ -32,7 +32,7 @@ $codHtml->addRawCode('<li>just like this list is placed</li>');
 $codHtml->addRawCode('</ul>');
 $panel->addElement($codHtml);
 $panel->addElement(new Html('<p>Inside the panel you can add text or
-	other PHP classes that are implementing the HtmlCode interface</p>'));
+	other PHP classes that are implementing the HtmlCode interface.'));
 $panel->setFullHeight();
 $cell->addElement($panel);
 // ******************************************* a panel WITH A TITLE AND A FOOTER
@@ -88,15 +88,24 @@ $panel->addNameValue('Height', '173 cm');
 // inserting a button with an image
 $button = new InlineButton();
 $button->setIcon('user');
-$button->setText('Inline button with image');
+$button->setText('High contrast button (with image)');
+$button->setIntensity($button::HIGH);
 $button->setOnClick('alert(\'on click action\')');
 $button->setTitle('Button title');
-$panel->addNameElement('An action', $button);
+$panel->addNameElement('High contrast button', $button);
 // inserting a button without an image
 $button = new InlineButton();
-$button->setText('Inline button without an image');
+$button->setText('Medium contrast button (with image)');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('user');
 $button->setOnClick('alert(\'on click action\')');
-$panel->addNameElement('An action', $button);
+$panel->addNameElement('Medium contrast button', $button);
+// low constract button
+$button = new InlineButton();
+$button->setText('Low contrast button (no image)');
+$button->setIntensity($button::LOW);
+$button->setOnClick('alert(\'on click action\')');
+$panel->addNameElement('Low contrast button', $button);
 $panel->addValue(
 	'Some remarks can be shown using the entire panel width.
 	Check the DELETE option in the panel menu, for a delete confirmation template.'
