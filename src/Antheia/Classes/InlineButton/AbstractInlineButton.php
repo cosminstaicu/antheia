@@ -20,6 +20,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	private $icon;
 	private $title;
 	private $intensity;
+	private $multipleRows;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -29,6 +30,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		$this->icon = NULL;
 		$this->title = NULL;
 		$this->intensity = self::MEDIUM;
+		$this->multipleRows = false;
 	}
 	/**
 	 * Adds a class to the button
@@ -46,7 +48,8 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		$this->text = $text;
 	}
 	/**
-	 * Defines a title for the button
+	 * Defines a title for the button. The title is escapes automatically (with
+	 * addSlashes
 	 * @param string|NULL $title the title for the button or null if no title
 	 * is required
 	 */
@@ -55,6 +58,16 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	/**
+	 * Defines if the content of the button is allowed to span over multiple
+	 * rows or if only one row is allowd (in that case the text is trimmed and
+	 * and "..." suffix is added.
+	 * @param bool $status (optional) (default true) true if multiple rows are
+	 * allowed, false if not
+	 */
+	public function allowMultipleRows(bool $status = true):void {
+		$this->multipleRows = $status;
 	}
 	/**
 	 * Defines the javascript code that will be triggered when the user clicks
@@ -93,6 +106,9 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	}
 	public function getHtml():string {
 		$this->addClass('ant-'.$this->intensity);
+		if (!$this->multipleRows) {
+			$this->addClass('ant-single-row');
+		}
 		$code = '<button class="';
 		$code .= implode(' ', array_unique($this->classes));
 		$code .='"';
@@ -100,7 +116,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 			$code .= ' id="'.$this->htmlId.'"';
 		}
 		if ($this->title !== NULL) {
-			$code .= ' title="'.$this->title.'"';
+			$code .= ' title="'.addslashes($this->title).'"';
 		}
 		$code .= ' onClick="'.$this->onClick.'">';
 		if ($this->icon !== NULL) {

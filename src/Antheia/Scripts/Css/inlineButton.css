@@ -2,6 +2,11 @@ button.ant_inlineButton {
 	display: inline;
 	text-align: left;
 }
+button.ant_inlineButton.ant-single-row {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
 button.ant_inlineButton.ant-high, button.ant_inlineButton.ant-medium {
 	border-radius: 4px;
 	margin-bottom: 3px;
