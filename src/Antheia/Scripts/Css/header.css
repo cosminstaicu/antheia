@@ -6,7 +6,25 @@
 	padding-right: 40px;
 	padding-bottom: 30px;
 }
-#ant_header-tabs {
+@media only screen and (min-width: 768px) {
+	#ant_header.ant-fixed {
+		padding-left: calc(calc(100vw - 710px) / 2);
+		padding-right: calc(calc(100vw - 710px) / 2);
+	}
+}
+@media only screen and (min-width: 992px) {
+	#ant_header.ant-fixed {
+		padding-left: calc(calc(100vw - 930px) / 2);
+		padding-right: calc(calc(100vw - 930px) / 2);
+	}
+}
+@media only screen and (min-width: 1200px) {
+	#ant_header.ant-fixed {
+		padding-left: calc(calc(100vw - 1130px) / 2);
+		padding-right: calc(calc(100vw - 1130px) / 2);
+	}
+}
+div#ant_header-tabs {
 	overflow-x: auto;
 	width: 100%;
 	padding: 0px 30px 1px 30px;
@@ -16,66 +34,55 @@
 #ant_header-tabs.ant-hidden {
 	display: none;
 }
+@media only screen and (min-width: 768px) {
+	div#ant_header-tabs  {
+		text-align: center;
+	}
+}
 #ant_header-tabs > div {
 	display: inline-block;
 	text-align: right;
 	border: 1px solid var(--ant-theme-tabText);
 	border-radius: 6px 6px 0px 0px;
-	padding: 5px 5px 5px 5px;
-	margin-right: 5px;
-	font-size: 12px;
+	margin-left: 5px;
 	text-align: left;
 	white-space: nowrap;
 	background-color: var(--ant-theme-tabBackground);
-	vertical-align: bottom;
+	padding: 3px 7px 3px 7px;
 }
 #ant_header-tabs > div.ant-hidden {
 	display: none;
 }
-#ant_header-tabs > div > a {
+#ant_header-tabs > div > a,
+#ant_header-tabs > div > button {
+	font-size: var(--ant_var-rem12px);
+	display: inline-block;
+	width: auto;
+	height: auto;
+	background-color: var(--ant-theme-tabBackground);
 	color: var(--ant-theme-tabText);
+	cursor: pointer;
+	border: none;
+	border-radius: 6px 6px 0px 0px;
+	padding: 0;
 }
-#ant_header-tabs > div > a:first-child {
-	padding: 5px;
-	line-height: 18px;
-}
-#ant_header-tabs > div > a:nth-of-type(2) {
-	line-height: 6px;
-	vertical-align: bottom;
+#ant_header-tabs > div > a:nth-child(2)
+#ant_header-tabs > div > button:nth-child(2) {
+	margin-left: 7px;
 }
 #ant_header-tabs > div > a:hover {
 	text-decoration: none;
 }
 #ant_header-tabs > div.ant-selected {
+	color: var(--ant-theme-tabBackground);
 	background-color: var(--ant-theme-tabText);
 }
-#ant_header-tabs > div.ant-selected > a {
+#ant_header-tabs > div.ant-selected > a,
+#ant_header-tabs > div.ant-selected > button {
 	color: var(--ant-theme-tabBackground);
+	background-color: var(--ant-theme-tabText);
 }
-#ant_header-tabs > div.ant-accent > a {
+#ant_header-tabs > div.ant-accent > a,
+#ant_header-tabs > div.ant-accent > button {
 	font-weight: bold;
-}
-/************************************************************* SM DEFINITIONS */
-@media only screen and (min-width: 768px) {
-	div#ant_header-tabs  {
-		text-align: center;
-	}
-	#ant_header.ant-fixed {
-		padding-left: calc(calc(100vw - 710px) / 2);
-		padding-right: calc(calc(100vw - 710px) / 2);
-	}
-}
-/************************************************************* MD DEFINITIONS */
-@media only screen and (min-width: 992px) {
-	#ant_header.ant-fixed {
-		padding-left: calc(calc(100vw - 930px) / 2);
-		padding-right: calc(calc(100vw - 930px) / 2);
-	}
-}
-/************************************************************* LG DEFINITIONS */
-@media only screen and (min-width: 1200px) {
-	#ant_header.ant-fixed {
-		padding-left: calc(calc(100vw - 1130px) / 2);
-		padding-right: calc(calc(100vw - 1130px) / 2);
-	}
 }

@@ -11,6 +11,11 @@ button.ant_inlineButton.ant-high, button.ant_inlineButton.ant-medium {
 	border-radius: 4px;
 	margin-bottom: 3px;
 }
+button.ant_inlineButton.ant-high > img,
+button.ant_inlineButton.ant-medium > img {
+	width: var(--ant_var-rem16px);
+	height: var(--ant_var-rem16px);
+}
 button.ant_inlineButton.ant-high {
 	font-size: calc(1em - 2px);
 	padding: 4px 6px 4px 6px;

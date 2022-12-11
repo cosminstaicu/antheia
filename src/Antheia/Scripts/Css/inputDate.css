@@ -14,7 +14,7 @@
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: var(--ant_var-rem16px);
 	border: 1px solid var(--ant-theme-buttonBackground);
 	transition: 0.4s;
 	padding-top: 5px;
@@ -42,17 +42,17 @@
 }
 /* button for current month and year (fixed width) */
 .ant_inputDate:first-of-type > div:first-of-type > input[type=button]:nth-of-type(2) {
-	width: 110px;
+	width: calc(var(--ant_var-rem10px) * 11);
 }
 .ant_inputDate:first-of-type > div:first-of-type > input[type=button]:nth-of-type(3) {
-	width: 70px;
+	width: calc(var(--ant_var-rem10px) * 7);
 }
 /* buttons with month name and year name */
 .ant_inputDate > div:nth-of-type(3) > input[type=button],
 .ant_inputDate > div:nth-of-type(4) > input[type=button] {
 	border-radius: 0px 0px 0px 0px;
 	margin: 5px;
-	width: 150px;
+	width: calc(var(--ant_var-rem10px) * 15);
 }
 /* table with days */
 .ant_inputDate > table {
@@ -75,7 +75,7 @@
 	border-radius: 4px;
 	transition: .2s;
 	color: var(--ant-theme-inputText);
-	font-size: 16px;
+	font-size: var(--ant_var-rem16px);
 	cursor: pointer;
 }
 .ant_inputDate > table > tbody button.ant_today {

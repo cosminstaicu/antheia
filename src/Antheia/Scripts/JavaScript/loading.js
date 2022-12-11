@@ -84,7 +84,8 @@ class ant_loading_step {
 		this.row.classList.remove("ant-waiting");
 		this.row.classList.remove("ant-running");
 		this.row.classList.remove("ant-completed");
-		this.statusCell.innerHTML = '<i class="material-icons">' + icon + '</i>';
+		this.statusCell.innerHTML = '<i class="material-icons" '
+			+'style="font-size: var(--ant_var-rem24px)">' + icon + '</i>';
 		this.row.classList.add(cssClass);
 	}
 	/**
@@ -102,7 +103,8 @@ class ant_loading_step {
 	 * @param {String} icon the name of the icon, as a material icon value
 	 */
 	setIcon(icon) {
-		this.iconCell.innerHTML = '<i class="material-icons">' + icon + '</i>';
+		this.iconCell.innerHTML = '<i class="material-icons" '
+			+'style="font-size: var(--ant_var-rem24px)">' + icon + '</i>';
 	}
 }
 /**

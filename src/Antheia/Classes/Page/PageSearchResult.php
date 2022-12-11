@@ -210,8 +210,8 @@ class PageSearchResult extends PageEmpty {
 			<td><input id="ant_search-input-page" type="number" min="1"
 			value="'.$this->currentPage.'"
 			onkeypress="ant_search_pageInputUpdated(event,'
-			.$this->pages.')"></td><td>'.Texts::get('OF').' </td>
-			<td> '.$this->pages.'</td><td>';
+			.$this->pages.')"></td><td>'.Texts::get('OF').'&nbsp;</td>
+			<td>'.$this->pages.'</td><td>';
 		if ($this->currentPage < $this->pages) {
 			$code .= '<button class="ant-forward" onClick="ant_search_changePage('
 			.($this->currentPage+1).')">'.$nextIcon->getHtml().'</button>';

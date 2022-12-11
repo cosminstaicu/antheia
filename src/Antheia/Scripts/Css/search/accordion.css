@@ -15,7 +15,12 @@
 /* if a div is present in the header, that is the selection checkbox */
 /* so I will push the trigger to the right */
 #ant_search_accordion .ant_panel > .ant-header > div:first-child + * {
-	margin-left: 30px;
+	margin-left: var(--ant_var-rem30px);
+}
+/* the image left to the name of the item */
+#ant_search_accordion .ant_panel > .ant-header > img {
+	width: var(--ant_var-rem32px);
+	height: var(--ant_var-rem32px);
 }
 #ant_search_accordion .ant_panel > .ant-header > a {
 	color: var(--ant-theme-link);
@@ -41,13 +46,13 @@
 }
 #ant_search_accordion .ant_panel > .ant-header a:last-child.ant-visible {
 	opacity: 1;
-	bottom: -20px;
-	right: -20px;
-	width: 40px;
-	height: 40px;
+	bottom: var(--ant_var-rem20px-);
+	right: var(--ant_var-rem20px-);
+	width: var(--ant_var-rem40px);
+	height: var(--ant_var-rem40px);
 	color: var(--ant-theme-buttonText);
-	padding-top: 8px;
-	font-size: 20px;
+	padding-top: var(--ant_var-rem8px);
+	font-size: var(--ant_var-rem20px);
 }
 #ant_search_accordion .ant_panel > .ant-header a:last-child.ant-visible:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
@@ -61,8 +66,8 @@
 #ant_search_accordion div.ant_panel.ant-selected {
 	background-color: var(--ant-theme-panelBackground);
 	border-color: var(--ant-theme-warning);
-	border-left-width: 10px;
-	border-right-width: 10px;
+	border-left-width: var(--ant_var-rem10px);
+	border-right-width: var(--ant_var-rem10px);
 }
 /* The optional buttons (menu) */
 #ant_search_accordion .ant-buttons-row > div {
@@ -75,13 +80,13 @@
 }
 /* the container properties (the name is the first child, the value is the last child) */
 #ant_search_accordion .ant-properties-row > div > div:first-child {
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 	font-weight: bold;
 	display: block;
 	padding-top: 5px;
 }
 #ant_search_accordion .ant-properties-row > div > div:last-child {
-	font-size: 18px;
+	font-size: var(--ant_var-rem18px);
 	display: block;
 	border-bottom: 1px solid var(--ant-theme-panelBorder);
 	padding-top: 5px;

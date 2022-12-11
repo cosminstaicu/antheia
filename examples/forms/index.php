@@ -4,7 +4,6 @@ use Antheia\Antheia\Classes\FixedButton\FixedButtonCancel;
 use Antheia\Antheia\Classes\FixedButton\FixedButtonValid;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Panel\PanelInput;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
@@ -26,9 +25,7 @@ $form->setMethod($form::METHOD_POST);
 // the next method enables the file transfer (because we use a input file field)
 $form->setFileMode();
 // defining the panel that will be attached to the form
-$panel = new PanelInput();
-// adding the panel to the form
-$form->addElement($panel);
+$panel = $form->addInputPanel();
 $panel->setTitle('A form');
 // ********************************************************************** hidden
 $form->addHiddenInput('hiddenInputName', 'hiddenInputValue', 'optionalId');
@@ -197,6 +194,7 @@ $cancelButton = new FixedButtonCancel();
 $cancelButton->setOnClick("alert('Cancel action')");
 $page->addFixedButton($cancelButton);
 $validButton = new FixedButtonValid();
+$validButton->setRender($validButton::LINK);
 $validButton->setOnClick("alert('Valid action')");
 $page->addFixedButton($validButton);
 // adding a panel to display page source info

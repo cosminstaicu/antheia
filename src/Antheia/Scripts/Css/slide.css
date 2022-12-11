@@ -8,10 +8,10 @@
 }
 .ant_slide-button.ant-icon:before {
 	font-family: "Material Icons";
-	font-size: 24px;
+	font-size: var(--ant_var-rem24px);
 	content: "arrow_downward";
 	position: relative;
-	top: 6px;
+	top: var(--ant_var-rem6px);
 }
 .ant_slide-button.ant-icon.ant-enabled:before {
 	content: "close";

@@ -4,4 +4,35 @@
 	It has to be an even number (so it can be divided by 2)
 	*/
 	--ant_var-wireframe-padding: 14px;
+	/*
+	Size definitions relative to default font size of the browser.
+	The digits inside the property name are the values for when the user
+	has set up the browser to use the default font size (1rem = 16px)
+	Variables ending with a dash (-) contain a negative value
+	*/
+	--ant_var-rem10px: 0.625rem;
+	--ant_var-rem10px-: -0.625rem;
+	--ant_var-rem5px: calc(var(--ant_var-rem10px) * .5);
+	--ant_var-rem5px-: calc(var(--ant_var-rem10px-) * .5);
+	--ant_var-rem6px: calc(var(--ant_var-rem10px) * .6);
+	--ant_var-rem8px: calc(var(--ant_var-rem10px) * .8);
+	--ant_var-rem8px-: calc(var(--ant_var-rem10px-) * .8);
+	--ant_var-rem12px: calc(var(--ant_var-rem10px) * 1.2);
+	--ant_var-rem14px: calc(var(--ant_var-rem10px) * 1.4);
+	--ant_var-rem15px: calc(var(--ant_var-rem10px) * 1.5);
+	--ant_var-rem16px: calc(var(--ant_var-rem10px) * 1.6);
+	--ant_var-rem18px: calc(var(--ant_var-rem10px) * 1.8);
+	--ant_var-rem20px: calc(var(--ant_var-rem10px) * 2);
+	--ant_var-rem20px-: calc(var(--ant_var-rem10px-) * 2);
+	--ant_var-rem24px: calc(var(--ant_var-rem10px) * 2.4);
+	--ant_var-rem25px: calc(var(--ant_var-rem10px) * 2.5);
+	--ant_var-rem28px: calc(var(--ant_var-rem10px) * 2.8);
+	--ant_var-rem30px: calc(var(--ant_var-rem10px) * 3);
+	--ant_var-rem32px: calc(var(--ant_var-rem10px) * 3.2);
+	--ant_var-rem33px: calc(var(--ant_var-rem10px) * 3.3);
+	--ant_var-rem34px: calc(var(--ant_var-rem10px) * 3.4);
+	--ant_var-rem36px: calc(var(--ant_var-rem10px) * 3.6);
+	--ant_var-rem40px: calc(var(--ant_var-rem10px) * 4);
+	--ant_var-rem48px: calc(var(--ant_var-rem10px) * 4.8);
+	--ant_var-rem50px: calc(var(--ant_var-rem10px) * 5);
 }

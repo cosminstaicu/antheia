@@ -88,18 +88,18 @@ $panel->addNameValue('Height', '173 cm');
 // inserting a button with an image
 $button = new InlineButton();
 $button->setIcon('user');
-$button->setText('High contrast button (with image)');
+$button->setText('High contrast (with image)');
 $button->setIntensity($button::HIGH);
 $button->setOnClick('alert(\'on click action\')');
 $button->setTitle('Button title');
-$panel->addNameElement('High contrast button', $button);
+$panel->addNameElement('High contrast', $button);
 // inserting a button without an image
 $button = new InlineButton();
-$button->setText('Medium contrast button (with image)');
+$button->setText('Medium contrast (with image)');
 $button->setIntensity($button::MEDIUM);
 $button->setIcon('user');
 $button->setOnClick('alert(\'on click action\')');
-$panel->addNameElement('Medium contrast button', $button);
+$panel->addNameElement('Medium contrast', $button);
 // low constract button
 $button = new InlineButton();
 $button->setText('Low contrast button (no image)');

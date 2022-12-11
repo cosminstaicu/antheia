@@ -90,10 +90,11 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	public function getHtml():string {
 		$code = '';
-		if (count($this->submenus) > 0) {
-			$this->href = 'javascript:void(0)';
+		if (count($this->submenus) === 0) {
+			$code .= '<a href="'.$this->href.'" ';
+		} else {
+			$code .= '<button';
 		}
-		$code .= '<a href="'.$this->href.'" ';
 		if ($this->htmlId !== '') {
 			$code .= ' id="'.$this->htmlId.'"';
 		}
@@ -107,9 +108,11 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 		$code .= '><img src="'.$this->icon->getUrl()
 			.'" width="32" height="32" alt="'
 			.htmlspecialchars($this->text).'"> '
-			.htmlspecialchars($this->text).'</a>';
-		if (count($this->submenus) > 0) {
-			$code .= '<div>';
+			.htmlspecialchars($this->text);
+		if (count($this->submenus) === 0) {
+			$code .= '</a>';
+		} else {
+			$code .= '</button><div>';
 			/** @var AppMenuSecondary $item */
 			foreach ($this->submenus as $item) {
 				$code .= $item->getHtml();

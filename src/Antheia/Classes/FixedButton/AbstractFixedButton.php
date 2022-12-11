@@ -1,18 +1,22 @@
 <?php
 namespace Antheia\Antheia\Classes\FixedButton;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Defines a fixed button to be displayed on the bottom-right side of the page
  * @author Cosmin Staicu
  */
-abstract class AbstractFixedButton extends AbstractClass implements HtmlCode {
+abstract class AbstractFixedButton extends AbstractClass
+implements HtmlCode, LinkButtonRender {
 	private $href;
 	private $onClick;
 	private $icon;
 	private $title;
 	private $classes;
+	private $renderType;
 	public function __construct() {
 		parent::__construct();
 		$this->href = 'javascript:void(0)';
@@ -21,14 +25,13 @@ abstract class AbstractFixedButton extends AbstractClass implements HtmlCode {
 		$this->icon->setSize(IconVector::SIZE_XL);
 		$this->title = '';
 		$this->classes = [];
+		$this->renderType = self::BUTTON;
 	}
-	/**
-	 * The onClick script to be executed when the button is clicked
-	 * @param string $code Javascript code to be executed when the button
-	 * is clicked
-	 */
 	public function setOnClick(string $code):void {
 		$this->onClick = $code;
+	}
+	public function setRender(string $type):void {
+		$this->renderType = $type;
 	}
 	/**
 	 * The icon to be displayed on the button
@@ -52,28 +55,40 @@ abstract class AbstractFixedButton extends AbstractClass implements HtmlCode {
 	public function addClass(string $class):void  {
 		$this->classes[] = $class;
 	}
-	/**
-	 * The html code to be inserted into the href attribute
-	 * If the code is not defined then the href attribute will be set up to
-	 * javascript:void(0)
-	 * @param string $href the code to be inserted into the href attribute.
-	 * If the parameter is not defined then "javascript:void(0)" value
-	 * will be used
-	 */
 	public function setHref(string $href = 'javascript:void(0)'):void  {
 		$this->href = $href;
 	}
 	public function getHtml():string {
-		$code = '<a class="'.implode(',', $this->classes).'"';
+		$code = '';
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '<a href="'.$this->href.'" ';
+				break;
+			case self::BUTTON:
+				$code .= '<button ';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
+		}
+		$code .= 'class="'.implode(',', $this->classes).'"';
 		if ($this->title != '') {
 			$code .= ' title="'.$this->title.'"';
 		}
 		if ($this->onClick != '') {
 			$code .= ' onClick="'.$this->onClick.'"';
 		}
-		$code .= ' href="'.$this->href.'">';
+		$code .= '>';
 		$code .= $this->icon->getHtml();
-		$code .= '</a>';
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '</a>';
+				break;
+			case self::BUTTON:
+				$code .= '</button>';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
+		}
 		return $code;
 	}
 }

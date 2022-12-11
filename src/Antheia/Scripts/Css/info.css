@@ -1,27 +1,27 @@
 /* definitions for a wireframe that displayes key - value pairs */
 /* used by WireframeInfo php class*/
 .ant_info-name {
-	font-size: 12px;
+	font-size: var(--ant_var-rem12px);
 	font-weight: bold;
-}
-.ant_info-value {
-	font-size: 16px;
-	padding-bottom: 5px;
-	margin-bottom: 5px;
-}
-.ant_info-only-value {
-	text-align: center;
-	font-size: 16px;
-	padding-bottom: 5px;
-	margin-bottom: 5px;
 }
 @media only screen and (min-width: 768px) {
 	.ant_info-name {
-		font-size: 16px;
+		font-size: var(--ant_var-rem16px);
 		font-weight: normal;
 		text-align:right;
 		padding-bottom: 5px;
 		margin-bottom: 5px;
 		opacity: .7;
 	}
+}
+.ant_info-value {
+	font-size: var(--ant_var-rem16px);
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+.ant_info-only-value {
+	text-align: center;
+	font-size: var(--ant_var-rem16px);
+	padding-bottom: 5px;
+	margin-bottom: 5px;
 }

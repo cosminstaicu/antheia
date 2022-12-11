@@ -28,22 +28,22 @@
 	opacity: 0;
 }
 #ant_appMenu.ant-enabled > div {
-	left: 280px;
+	left: calc(var(--ant_var-rem10px) * 28);
 	opacity: 1;
 }
 /* the left container */
 #ant_appMenu > nav {
 	position: absolute;
-	left: -280px;
+	left: calc(var(--ant_var-rem10px-) * 28);
 	top:0px;
 	background-color: var(--ant-theme-menuBackground);
-	width: 280px;
+	width: calc(var(--ant_var-rem10px) * 28);
 	height: 100%;
 	text-align: center;
 	padding-left: 20px;
 	padding-right: 20px;
 	overflow-y: auto;
-	padding-bottom: 50px;
+	padding-bottom: var(--ant_var-rem50px);
 	transition: left 0.5s;
 	transition-delay: 0.2s;
 }
@@ -52,36 +52,45 @@
 }
 /* app logo */
 #ant_appMenu > nav > img {
+	width: calc(var(--ant_var-rem10px) * 15);
+	height : calc(var(--ant_var-rem10px) * 15);
 	margin-top: 30px;
 }
 /* app name */
 #ant_appMenu > nav > p {
 	color: var(--ant-theme-menuText);
-	font-size: 18px;
+	font-size: var(--ant_var-rem18px);
 }
 /* a menu and a submenu item */
-#ant_appMenu a {
+#ant_appMenu a,
+#ant_appMenu button {
 	color: var(--ant-theme-menuText);
 	display: block;
 	width: 100%;
-	padding-top: 7px;
-	padding-bottom: 7px;
-	padding-right: 30px;
+	padding: 7px 30px 7px 0px;
 	text-align: left;
+	border: none;
 	border-bottom: 1px solid var(--ant-theme-menuText);
 	text-decoration: none;
+	background: none;
+	font-size: var(--ant_var-rem16px);
 }
-#ant_appMenu a > img {
-	margin-right: 5px;
+#ant_appMenu a > img,
+#ant_appMenu button > img {
+	margin-right: var(--ant_var-rem5px);
 }
-#ant_appMenu a:hover {
+#ant_appMenu a:hover,
+#ant_appMenu button:hover {
+	cursor: pointer;
 	background-color: var(--ant-theme-menuBackground);
 	background: linear-gradient(to right, var(--ant-theme-menuBackground) 60%, var(--ant-theme-menuBackgroundHover));
 }
-#ant_appMenu a:hover > img {
+#ant_appMenu a:hover > img,
+#ant_appMenu button:hover > img {
 	filter: brightness(120%);
 }
-#ant_appMenu a > * {
+#ant_appMenu a > *,
+#ant_appMenu button > * {
 	vertical-align: middle;
 }
 /* submenu item */
@@ -92,11 +101,23 @@
 	overflow: hidden;
 	height: 0;
 }
-#ant_appMenu a.ant-selected + div {
+#ant_appMenu .ant-selected + div {
 	opacity: 1;
 	height: auto;
 }
-#ant_appMenu > nav > div > a {
+#ant_appMenu > nav > div > a,
+#ant_appMenu > nav > div > button {
 	border-left: 1px solid var(--ant-theme-menuText);
 	padding-left: 7px;
+}
+/* size for images left to menu and submenu items */
+#ant_appMenu > nav > a > img,
+#ant_appMenu > nav > button > img {
+	width: var(--ant_var-rem32px);
+	height: var(--ant_var-rem32px);
+}
+#ant_appMenu > nav > div > a > img,
+#ant_appMenu > nav > div > button > img {
+	width: var(--ant_var-rem16px);
+	height: var(--ant_var-rem16px);
 }

@@ -4,22 +4,30 @@
 	justify-content: space-between;
 	background-color: var(--ant-theme-topBottomBarBackground);
 }
-#ant_topBar a {
+#ant_topBar a,
+#ant_topBar button {
 	color: var(--ant-theme-topBottomBarText);
-	white-space:nowrap;
-	font-size: 16px;
+	white-space: nowrap;
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
 }
-#ant_topBar a > span {
+#ant_topBar a > span,
+#ant_topBar button > span {
 	display: none;
+	font-size: var(--ant_var-rem16px);
 }
-#ant_topBar a > * {
+#ant_topBar a > *,
+#ant_topBar button > * {
 	vertical-align: middle;
 }
-#ant_topBar a > i {
-	font-size: 24px;
+#ant_topBar a > i,
+#ant_topBar button > i {
 	margin-right: 1px;
 }
-#ant_topBar a:hover {
+#ant_topBar a:hover,
+#ant_topBar button:hover {
 	text-decoration: none;
 	text-shadow: 0px 0px 8px var(--ant-theme-topBottomBarText);
 }
@@ -34,7 +42,8 @@
 	display: inline;
 }
 @media only screen and (min-width: 768px) {
-	#ant_topBar a > span {
+	#ant_topBar a > span,
+	#ant_topBar button > span {
 		display: inline;
 	}
 }

@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Panel\PanelInput;
 /**
  * A regular form tag
  * @author Cosmin Staicu
@@ -92,6 +93,15 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	 */
 	public function addElement(HtmlCode $item):void {
 		$this->items[] = $item;
+	}
+	/**
+	 * Adds a new PanelInput to the form and returns it
+	 * @return PanelInput the panel that was added to the form
+	 */
+	public function addInputPanel():PanelInput {
+		$panel = new PanelInput();
+		$this->addElement($panel);
+		return $panel;
 	}
 	/**
 	 * Adds a hidden input to the form

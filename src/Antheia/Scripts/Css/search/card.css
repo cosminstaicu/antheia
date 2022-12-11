@@ -22,7 +22,7 @@ div.ant_search_card-checkbox:before {
 	left: 0px;
 	top: 0px;
 	display: block;
-	width: 30px;
+	width: var(--ant_var-rem30px);
 	height: 100%;
 	background-color: var(--ant-theme-panelBackground);
 	opacity: .8;
@@ -33,8 +33,8 @@ div.ant_search_card.ant-selected div.ant_search_card-checkbox:before {
 }
 div.ant_search_card-checkbox {
 	position: absolute;
-	left: 5px;
-	top: 5px;
+	left: var(--ant_var-rem5px);
+	top: var(--ant_var-rem5px);
 }
 /* main image */
 div.ant_search_card img {
@@ -63,12 +63,13 @@ div.ant_search_card > a.ant_search_card-imageLink:hover > img {
 }
 /* item name */
 div.ant_search_card > p:first-of-type {
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 	font-weight: bold;
+	margin-top: .7em;
 }
 /* item description */
 div.ant_search_card > p:nth-of-type(2) {
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 }
 /* details page access button */
 div.ant_search_card > a.ant_search_card-access {
@@ -78,10 +79,9 @@ div.ant_search_card > a.ant_search_card-access {
 	text-align: center;
 	text-decoration: none;
 	display: block;
-	font-size: 16px;
+	font-size: var(--ant_var-rem16px);
 	border-radius: 4px;
 	transition: 0.5s;
-	font-size: 16px;
 	position: absolute;
 	bottom: 10px;
 	left: 30px;
@@ -97,9 +97,9 @@ div.ant_search_card > a:last-of-type {
 	position: absolute;
 	top: 20px;
 	right: 20px;
-	width: 34px;
-	height: 34px;
-	padding-top: 4px;
+	width: var(--ant_var-rem34px);
+	height: var(--ant_var-rem34px);
+	padding-top: calc(var(--ant_var-rem10px) * .4);
 	border-radius: 50%;
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
@@ -107,7 +107,7 @@ div.ant_search_card > a:last-of-type {
 }
 div.ant_search_card > a:last-of-type:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
-	padding-top: 2px;
+	padding-top: calc(var(--ant_var-rem10px) * .2);
 }
 /* the additional info container */
 div.ant_search_card > div:last-of-type {
@@ -125,19 +125,19 @@ div.ant_search_card.ant-details > div:last-of-type {
 	opacity: 1;
 }
 div.ant_search_card > div > p {
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 	font-weight: bold;
 	padding-bottom: 10px;
 	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
 div.ant_search_card > div:last-of-type > dl > dt {
-	font-size: 12px;
+	font-size: var(--ant_var-rem12px);
 	font-weight: bold;
 	text-align: left;
 	margin-left: 15px;
 }
 div.ant_search_card > div:last-of-type > dl > dd {
-	font-size: 12px;
+	font-size: var(--ant_var-rem12px);
 	text-align: left;
 	margin-left: 15px;
 	margin-bottom: 5px;
@@ -150,7 +150,7 @@ div.ant_search_card > div:last-of-type > a {
 	color: var(--ant-theme-text);
 	text-decoration: none;
 	display: block;
-	font-size: 16px;
+	font-size: var(--ant_var-rem16px);
 	transition: 0.5s;
 }
 div.ant_search_card > div:last-of-type > a:hover {

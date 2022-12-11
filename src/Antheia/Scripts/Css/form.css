@@ -11,14 +11,14 @@ form.ant-max-height {
 	padding: 2px;
 }
 .ant_form-item.ant-status {
-	padding-right: 30px;
+	padding-right: var(--ant_var-rem30px);
 }
 .ant_form-item.ant-status:after {
 	position: absolute;
 	top: 3px;
 	right: 0px;
 	font-family: 'Material Icons';
-	font-size: 24px;
+	font-size: var(--ant_var-rem24px);
 }
 .ant_form-item.ant-valid:after {
 	content: "\e876";
@@ -39,7 +39,7 @@ form.ant-max-height {
 	display: none;
 }
 .ant_form-item.ant-status > i {
-	right: 33px;
+	right: var(--ant_var-rem33px);
 }
 input[type=text], input[type=password], input[type=email],
 input[type=tel], input[type=number], input[type=color], textarea {
@@ -50,13 +50,13 @@ input[type=tel], input[type=number], input[type=color], textarea {
 	border: 1px solid var(--ant-theme-inputBorder);
 	border-radius: 4px;
 	background-color: var(--ant-theme-inputBackground);
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 	color: var(--ant-theme-inputText);
 }
 input[type=color] {
 	padding-top: 1px;
 	padding-bottom: 1px;
-	min-height: 32px;
+	min-height: var(--ant_var-rem32px);
 }
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus,
 input[type=tel]:focus, input[type=number]:focus, input[type=color]:focus,
@@ -71,11 +71,10 @@ input[type=submit], input[type=button], input[type=reset]  {
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: var(--ant_var-rem16px);
 	border: 1px solid var(--ant-theme-buttonBackground);
 	border-radius: 4px;
 	transition: 0.5s;
-	font-size: 16px;
 }
 input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
@@ -94,7 +93,7 @@ input[type=button].ant_form-button {
 	text-align: left;
 	overflow: hidden;
 	outline:0;
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 	text-overflow: ellipsis;
 	transition: border-width 0s, padding 0s;
 }
@@ -121,7 +120,7 @@ input[type=checkbox] + span {
 input[type=checkbox] + span:before {
 	position: relative;
 	font-family: 'Material Icons';
-	font-size: 28px;
+	font-size: var(--ant_var-rem28px);
 	content : "\e835";
 	color: var(--ant-theme-inputLabel);
 	vertical-align: middle;
@@ -149,6 +148,6 @@ input[type=checkbox]:checked + span:before {
 		text-align: right;
 		padding-right: 5px;
 		margin-top: 7px;
-		line-height: 15px;
+		line-height: var(--ant_var-rem15px);
 	}
 }

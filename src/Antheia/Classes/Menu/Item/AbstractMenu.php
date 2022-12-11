@@ -7,14 +7,13 @@ use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Abstract class to be extended by all menu buttons
  * @author Cosmin Staicu
  */
 abstract class AbstractMenu extends AbstractClass 
-implements HtmlCode, HtmlId, HtmlAttribute {
-	const LINK = 'link';
-	const BUTTON = 'button';
+implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	private $text;
 	private $href;
 	private $icon;
@@ -37,14 +36,6 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
-	/**
-	 * Defines the render to be used by the menu. It can be a button or a link
-	 * @param string $type the render type for the menu, as one of the constants:
-	 * <dl>
-	 * <dt>AbstractMenu::LINK</dt><dd>the menu will be rendered as a link</dd>
-	 * <dt>AbstractMenu::BUTTON</dt><dd>the menu will be rendered as a button</dd>
-	 * </dl>
-	 */
 	public function setRender(string $type):void {
 		$this->renderType = $type;
 	}
@@ -73,21 +64,9 @@ implements HtmlCode, HtmlId, HtmlAttribute {
 	public function setText(string $text):void {
 		$this->text = $text;
 	}
-	/**
-	 * Defines the href for the link of the menu item. It is only used if the
-	 * button is rendered as a link. For buttons, the method has no effect.
-	 * If the method is not called then 'javascript:void(0)' text will be used
-	 * for the items rendered as links.
-	 * @param string $href the href for the link of the menu item
-	 */
 	public function setHref(string $href):void {
 		$this->href = $href;
 	}
-	/**
-	 * Defines the script to be inserted into the onClick attribute of the link
-	 * @param string $onClick the script to be inserted into the onClick 
-	 * attribute of the link
-	 */
 	public function setOnClick(string $onClick):void {
 		$this->onClick = $onClick;
 	}

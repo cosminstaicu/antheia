@@ -18,7 +18,7 @@
 	opacity: 1;
 }
 .ant_inputFileDrop > p {
-	font-size: 12px;
+	font-size: var(--ant_var-rem12px);
 	margin-top: 0px;
 	margin-bottom: 5px;
 }

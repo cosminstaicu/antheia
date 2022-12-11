@@ -1,33 +1,39 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\Tabs;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Defines a tab to be displayed below the header section of the page
  * @author Cosmin Staicu
  */
-class HeaderTab extends AbstractClass implements HtmlCode {
+class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 	const STATUS_DEFAULT = 1;
 	const STATUS_SELECTED = 2;
 	private $title;
 	private $href;
-	private $hrefClose;
+	private $onClick;
+	private $onClickClose;
 	private $status;
 	private $htmlId;
 	private $startLoadOnClick;
 	private $accent;
 	private $classList;
+	private $renderType;
 	public function __construct() {
 		parent::__construct();
 		$this->title = '';
 		$this->href = '';
-		$this->hrefClose = '';
+		$this->onClick = '';
+		$this->onClickClose = '';
 		$this->status = self::STATUS_DEFAULT;
 		$this->htmlId = '';
 		$this->startLoadOnClick = false;
 		$this->accent = false;
 		$this->classList = [];
+		$this->renderType = self::LINK;
 	}
 	/**
 	 * Adds a class to the tab html class list
@@ -35,6 +41,9 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 	 */
 	public function addClass(string $className):void {
 		$this->classList[] = $className;
+	}
+	public function setRender(string $type):void {
+		$this->renderType = $type;
 	}
 	/**
 	 * Enables the loading animation when the tab is clicked
@@ -57,13 +66,11 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 	public function setTitle(string $title):void {
 		$this->title = $title;
 	}
-	/**
-	 * Defines the href attribute for the link of the tab (the action that
-	 * will be triggered when the user clicks on the tab)
-	 * @param string $href the href attribute for the link of the tab.
-	 */
 	public function setHref(string $href):void {
 		$this->href = $href;
+	}
+	public function setOnClick(string $code):void {
+		$this->onClick = $code;
 	}
 	/**
 	 * Defines the status of the tab (default or selected)
@@ -84,12 +91,12 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 	/**
 	 * Defines if a close option will be rendered to the tab and the action
 	 * for the close event
-	 * @param string $href the code to be inserted into the href attribute
-	 * for the close link. If an empty string is provided then no close link
+	 * @param string $code the code to be inserted into the onClick attribute
+	 * for the close button. If an empty string is provided then no close link
 	 * will be rendered
 	 */
-	public function setHrefClose(string $href):void {
-		$this->hrefClose = $href;
+	public function setOnClickClose(string $code):void {
+		$this->onClickClose = $code;
 	}
 	public function getHtml():string {
 		if ($this->status == self::STATUS_SELECTED) {
@@ -105,16 +112,44 @@ class HeaderTab extends AbstractClass implements HtmlCode {
 		if ($this->htmlId !== '') {
 			$code .= ' id="'.$this->htmlId.'"';
 		}
-		$code .= '><a href="'.$this->href.'"';
-		if ($this->startLoadOnClick) {
-			$code .= ' onclick="ant_loading_start()"';
+		$code .= '>';
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '<a href="'.$this->href.'" ';
+				break;
+			case self::BUTTON:
+				$code .= '<button ';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
 		}
-		$code .= '>'.$this->title.'</a>';
-		if ($this->hrefClose !== '') {
+		
+		if ($this->startLoadOnClick || ($this->onClick !== '')) {
+			$onClick = '';
+			if ($this->startLoadOnClick) {
+				$onClick .= 'ant_loading_start();';
+			}
+			if ($this->onClick !== '') {
+				$onClick .= $this->onClick;
+			}
+			$code .= ' onclick="'.$onClick.'"';
+		}
+		$code .= '>'.$this->title;
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '</a>';
+				break;
+			case self::BUTTON:
+				$code .= '</button>';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
+		}
+		if ($this->onClickClose !== '') {
 			$icon = new IconVector();
 			$icon->setIcon(IconVector::ICON_CLOSE);
 			$icon->setSize(IconVector::SIZE_SMALL);
-			$code .= '<a href="'.$this->hrefClose.'">'.$icon->getHtml().'</a>';
+			$code .= '<button onclick="'.$this->onClickClose.'">'.$icon->getHtml().'</button>';
 		}
 		$code .= '</div>';
 		return $code;

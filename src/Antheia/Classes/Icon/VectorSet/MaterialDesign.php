@@ -194,13 +194,8 @@ class MaterialDesign implements Icon {
 	}
 	public function getHtml():string {
 		$code = '<i class="material-icons"';
-		$css = '';
-		if ($this->size !== 24) {
-			$css .= 'font-size: '.$this->size.'px;';
-		}
-		if ($css !== '') {
-			$code .= ' style="'.$css.'" ';
-		}
+		$css = 'font-size: var(--ant_var-rem'.$this->size.'px);';
+		$code .= ' style="'.$css.'" ';
 		$code .= '>'.$this->icon.'</i>';
 		return $code;
 	}

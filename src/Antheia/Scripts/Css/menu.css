@@ -12,8 +12,8 @@ div.ant_menu > a {
 }
 /* the lines from the button */
 div.ant_menu > a > div {
-	width: 36px;
-	height: 5px;
+	width: var(--ant_var-rem36px);
+	height: var(--ant_var-rem5px);
 	background-color: var(--ant-theme-buttonBackground);
 	transition: 0.4s;
 }
@@ -21,22 +21,22 @@ div.ant_menu > a:hover > div {
 	background-color: var(--ant-theme-buttonBackgroundHover);
 }
 div.ant_menu > a > div:nth-child(2) {
-	margin-top: 6px;
+	margin-top: var(--ant_var-rem6px);
 }
 div.ant_menu > a > div:nth-child(3) {
-	margin-top: 6px;
+	margin-top: var(--ant_var-rem6px);
 }
 div.ant_menu > div:first-of-type {
 	opacity: 1;
 	position: relative;
 	top: 0px;
-	margin-left: 40px;
+	margin-left: var(--ant_var-rem40px);
 	transition: 0.4s;
 }
 div.ant_menu > div:last-of-type {
 	position: absolute;
 	top: -3px;
-	left: 40px;
+	left: var(--ant_var-rem40px);
 	display: none;
 }
 .ant_menu-item {
@@ -45,7 +45,7 @@ div.ant_menu > div:last-of-type {
 	border-radius: 4px;
 	border: none;
 	display: inline-block;
-	font-size: 16px;
+	font-size: var(--ant_var-rem16px);
 	padding: 4px 8px 4px 8px;
 	margin-right: 5px;
 	transition: 0.4s;
@@ -65,14 +65,19 @@ div.ant_menu > div:last-of-type {
 .ant_menu-item > span {
 	display: none;
 }
+@media only screen and (min-width: 500px) {
+	.ant_menu-item > span {
+		display: inline;
+	}
+}
 div.ant_menu.ant-active > a > div:nth-child(1) {
-	transform: rotate(-45deg) translate(-8px, 6px);
+	transform: rotate(-45deg) translate(var(--ant_var-rem8px-), var(--ant_var-rem6px));
 }
 div.ant_menu.ant-active > a > div:nth-child(2) {
 	opacity: 0;
 }
 div.ant_menu.ant-active > a > div:nth-child(3) {
-	transform: rotate(45deg) translate(-8px, -8px) ;
+	transform: rotate(45deg) translate(var(--ant_var-rem8px-), var(--ant_var-rem8px-)) ;
 }
 div.ant_menu.ant-active > div:first-of-type {
 	top: -30px;
@@ -80,9 +85,4 @@ div.ant_menu.ant-active > div:first-of-type {
 }
 div.ant_menu.ant-active > div:last-of-type {
 	display: block;
-}
-@media only screen and (min-width: 500px) {
-	.ant_menu-item > span {
-		display: inline;
-	}
 }

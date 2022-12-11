@@ -4,28 +4,41 @@ use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Abstract class that is extended by all menu items that can be inserted into
  * the top right menu
  * @author Cosmin Staicu
  */
-abstract class AbstractTopRightMenu extends AbstractClass implements HtmlCode {
+abstract class AbstractTopRightMenu extends AbstractClass
+implements HtmlCode, LinkButtonRender {
 	private $href;
+	private $onClick;
 	private $name;
 	private $icon;
 	private $startLoadingAnimationOnClick;
 	private $targetBlank;
+	private $renderType;
 	public function __construct() {
 		parent::__construct();
 		$this->href = '';
+		$this->onClick = '';
 		$this->name = '';
 		$this->icon = new IconVector();
 		$this->startLoadingAnimationOnClick = false;
 		$this->targetBlank = false;
+		$this->renderType = self::LINK;
+	}
+	public function setOnClick(string $code):void {
+		$this->onClick = $code;
+	}
+	public function setRender(string $type):void {
+		$this->renderType = $type;
 	}
 	/**
 	 * Defines if the action is executed in a new browser window or not
-	 * (If a a target=_blank attribute will be inserted into the html tag)
+	 * (if a a target=_blank attribute will be inserted into the html tag).
+	 * Only used if the render type is set to LINK
 	 * @param boolean $status (optional) (default true) if true then a new
 	 * browser window will be opened on click
 	 */
@@ -39,11 +52,6 @@ abstract class AbstractTopRightMenu extends AbstractClass implements HtmlCode {
 	public function setName(string $name):void {
 		$this->name = $name;
 	}
-	/**
-	 * Defines the value that will be used for the href attribute
-	 * @param string $href the href of the link (the action to be performed when
-	 * the menu is pressed)
-	 */
 	public function setHref(string $href):void {
 		$this->href = $href;
 	}
@@ -66,19 +74,46 @@ abstract class AbstractTopRightMenu extends AbstractClass implements HtmlCode {
 		if ($this->name == '') {
 			throw new Exception('Name is not defined');
 		}
-		if ($this->href == '') {
-			throw new Exception('Href is not defined');
+		$code = '';
+		switch ($this->renderType) {
+			case self::LINK:
+				if ($this->href === '') {
+					$this->href = 'javascript:void(0)';
+				}
+				$code .= '<a href="'.$this->href.'" ';
+				if ($this->targetBlank) {
+					$code .= ' target="_blank" ';
+				}
+				break;
+			case self::BUTTON:
+				$code .= '<button ';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
 		}
-		$code = '<a href="'.$this->href.'"';
+		$onClick = '';
 		if ($this->startLoadingAnimationOnClick) {
-			$code .= ' onClick="ant_loading_start()"';
+			$onClick .= 'ant_loading_start();';
 		}
-		if ($this->targetBlank) {
-			$code .= ' target="_blank" ';
+		if ($this->onClick !== '') {
+			$onClick .= $this->onClick;
+		}
+		if ($onClick !== '') {
+			$code .= ' onClick="'.$onClick.'"';
 		}
 		$code .= '>';
 		$code .= $this->icon->getHtml();
-		$code .= '<span>'.$this->name.'</span></a>';
+		$code .= '<span>'.$this->name.'</span>';
+		switch ($this->renderType) {
+			case self::LINK:
+				$code .= '</a>';
+				break;
+			case self::BUTTON:
+				$code .= '</button>';
+				break;
+			default:
+				throw new Exception('Invalid type '.$this->renderType);
+		}
 		return $code;
 	}
 }

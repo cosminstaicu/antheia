@@ -1,7 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Input\InputButton;
-
+use Antheia\Antheia\Classes\Page\PageEmpty;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();
@@ -10,22 +9,31 @@ init_configurePage($page);
 $page->setTitle('Page tabs');
 // the first tab (selected)
 $tab = $page->addTab();
-$tab->setTitle('First tab');
+$tab->setTitle('Link with close');
 $tab->setStatus($tab::STATUS_SELECTED);
 $tab->setHtmlId('tab1');
 $tab->setHref("javascript:alert('click on 1')");
-$tab->setHrefClose("javascript:alert('close action')");
+$tab->setOnClickClose("alert('close action for 1')");
 // the second tab
 $tab = $page->addTab();
-$tab->setTitle('Second tab');
+$tab->setTitle('Link without close');
 $tab->setHtmlId('tab2');
 $tab->setHref("javascript:alert('click on 2')");
 // the third tab
 $tab = $page->addTab();
-$tab->setTitle('Third tab');
+$tab->setTitle('Button with close');
 $tab->setHtmlId('tab3');
+$tab->setRender($tab::BUTTON);
+// $tab->setAccent();
+$tab->setOnClick("alert('click on 3')");
+$tab->setOnClickClose("alert('close action for 3')");
+// the 4th tab
+$tab = $page->addTab();
+$tab->setTitle('Button without close');
+$tab->setHtmlId('tab4');
+$tab->setRender($tab::BUTTON);
 $tab->setAccent();
-$tab->setHref("javascript:alert('click on 3')");
+$tab->setOnClick("alert('click on 3')");
 // define a wireframe to add a panel with controls
 $wireframe = $page->addWireframe();
 $row = $wireframe->addRow();

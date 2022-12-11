@@ -8,6 +8,8 @@ use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
 use Antheia\Antheia\Classes\Page\AbstractPage;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuHelp;
+use Antheia\Antheia\Classes\Theme\ThemeDarkAesthetics;
 $autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
 	.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {
@@ -41,6 +43,12 @@ function init_configurePage(AbstractPage $page):void {
 	$option = new TopRightMenuUser();
 	$option->setName('User name here');
 	$option->setHref('../lookAndFeel');
+	$page->addTopRightMenu($option);
+	// a menu redered like a button
+	$option = new TopRightMenuHelp();
+	$option->setName('Button type menu');
+	$option->setOnClick('alert()');
+	$option->setRender($option::BUTTON);
 	$page->addTopRightMenu($option);
 	// this can be a link for the user to logout
 	$option = new TopRightMenuExit();

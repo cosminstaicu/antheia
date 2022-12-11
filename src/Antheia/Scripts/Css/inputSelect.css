@@ -1,6 +1,6 @@
 .ant_form-item > select + div {
 	padding-top: 5px;
-	font-size: 14px;
+	font-size: var(--ant_var-rem14px);
 	font-style: italic;
 }
 .ant_form-item > select + div.ant-hidden {
@@ -9,7 +9,7 @@
 .ant_inputSelect > button {
 	display: block;
 	width: calc(100% - 60px);
-	font-size: 20px;
+	font-size: var(--ant_var-rem20px);
 	text-align: left;
 	padding: 10px;
 	margin-bottom: 2px;
