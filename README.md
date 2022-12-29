@@ -4,6 +4,7 @@ Responsive web interface for web apps, written in PHP.
 ![GitHub](https://img.shields.io/github/license/cosminstaicu/antheia)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cosminstaicu/antheia?display_name=tag)
 ![Website](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fantheia.voipit.ro)
+![Website](https://img.shields.io/packagist/dependency-v/antheia/antheia/php)
 
 ![03](https://user-images.githubusercontent.com/25685804/196055946-53d4f73d-f524-465d-adee-c9c762bb61a1.png)
 
