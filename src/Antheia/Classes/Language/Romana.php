@@ -66,6 +66,7 @@ abstract class Romana extends AbstractLanguage {
 	const FOLDER = 'Folder';
 	const FORM_EXAMPLE = 'Exemplu formular';
 	const FORMS = 'Formulare';
+	const FORWARD = 'Înainte';
 	const HEADER_BACKGROUND = 'Fundal antet';
 	const HELP = 'Ajutor';
 	const HOUR = 'Ora';

@@ -72,6 +72,12 @@ $button->setUrl('/url/for/request');
 $button->setItemId('14');
 $button->setFormTarget('_blank'); // could be in iframe
 $panel->addMenu($button);
+// a delete confirmation that will trigger a javascript function
+// if the user types DELETE in the input
+$button = NewMenu::confirmDelete();
+$button->setAfterCallback('deleteConfirmed');
+$button->setItemId('14');
+$panel->addMenu($button);
 // the name-value pairs are added tot the panel
 $panel->addNameValue('Given name', 'John');
 $panel->addNameValue('Family name', 'Doe');

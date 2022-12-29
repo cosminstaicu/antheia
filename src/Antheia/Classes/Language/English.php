@@ -65,6 +65,7 @@ abstract class English extends AbstractLanguage {
 	const FOLDER = 'Folder';
 	const FORM_EXAMPLE = 'Form example';
 	const FORMS = 'Forms';
+	const FORWARD = 'Forward';
 	const HEADER_BACKGROUND = 'Header background';
 	const HELP = 'Help';
 	const HOUR = 'Hour';

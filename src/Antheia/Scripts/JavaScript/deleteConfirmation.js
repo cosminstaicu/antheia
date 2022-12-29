@@ -5,6 +5,13 @@
  * @param {Element} element the button that has been pressed
  */
 function ant_deleteConfirmation(element) {
+	if ((element.dataset.url === '') && (element.dataset.post === '')) {
+		throw new Error('URL not defined, afterCallback not defined.');
+	}
+	if ((element.dataset.url !== '') && (element.dataset.post !== '')) {
+		throw new Error('Both URL and afterCallback are defined.');
+	}
+
 	let modal = new ant_modal();
 	modal.setHeader(element.dataset.textInfo);
 	// the visible input
@@ -29,22 +36,28 @@ function ant_deleteConfirmation(element) {
 		}
 		// checking if a presubmit action is requested
 		ant_utils_preCallback(element);
-		// creating the form for submitting the request
-		let form = document.createElement("form");
-		if (element.dataset.target !== "") {
-			form.target = element.dataset.target;
+		if (element.dataset.url !== '') {
+			// creating the form for submitting the request
+			let form = document.createElement("form");
+			if (element.dataset.target !== "") {
+				form.target = element.dataset.target;
+			}
+			form.action = element.dataset.url;
+			form.method = "post";
+			let inputHidden = document.createElement("input");
+			inputHidden.type = "hidden";
+			inputHidden.name = element.dataset.inputName;
+			inputHidden.value = element.dataset.inputValue;
+			form.appendChild(inputHidden);
+			document.body.appendChild(form);
+			modal.hide();
+			ant_loading_start();
+			form.submit();
 		}
-		form.action = element.dataset.url;
-		form.method = "post";
-		let inputHidden = document.createElement("input");
-		inputHidden.type = "hidden";
-		inputHidden.name = element.dataset.inputName;
-		inputHidden.value = element.dataset.inputValue;
-		form.appendChild(inputHidden);
-		document.body.appendChild(form);
-		modal.hide();
-		ant_loading_start();
-		form.submit();
+		if (element.dataset.post !== '') {
+			modal.hide();
+			ant_utils_postCallback(element);
+		}
 	}
 	modal.appendFooter(submit);
 	modal.show();
