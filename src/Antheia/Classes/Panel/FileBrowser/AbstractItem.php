@@ -103,11 +103,10 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 			$code .= ' '.$attribute[0].'="'.$attribute[1].'"';
 		}
 		$code .='>';
-		$code .= '<a href="javascript:void(0)" ';
-		$code .= ' onclick="ant_panel_fileBrowserItemClick(this)">';
+		$code .= '<button onclick="ant_panel_fileBrowserItemClick(this)">';
 		$code .= $this->icon->getHtml($this->iconAltText);
 		$code .= ' '.$this->name;
-		$code .= '</a>';
+		$code .= '</button>';
 		if (count($this->hiddenItems) > 0) {
 			$code .= '<div>';
 			/** @var HtmlCode $item */

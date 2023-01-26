@@ -58,6 +58,13 @@ class PageEmpty extends PageBlank {
 		$this->header->setType($type);
 	}
 	/**
+	 * Returns the header of the page
+	 * @return Header the header of the page, for further set up
+	 */
+	public function getHeader():Header {
+		return $this->header;
+	}
+	/**
 	 * Sets up a message to be displayed after the page has been loaded.
 	 * @param string $text the text to be displayed or an empty string if
 	 * no message is needed

@@ -15,6 +15,10 @@ $page = new PageEmpty();
 // this function is defined inside utils/init.php required file
 init_configurePage($page);
 $page->setTitle('Panels');
+// a background image for the header
+$page->getHeader()->setBackgroundImage('../headerImage.jpg');
+// if the following line is enables then the title will not have a background
+//$page->getHeader()->disableTitleBackground();
 $page->addJavascriptFile('script.js');
 $wireframe = new Wireframe();
 $wireframe->setType($wireframe::TYPE_FIXED);
@@ -33,6 +37,15 @@ $codHtml->addRawCode('</ul>');
 $panel->addElement($codHtml);
 $panel->addElement(new Html('<p>Inside the panel you can add text or
 	other PHP classes that are implementing the HtmlCode interface.'));
+$panel->addText(
+		'<p><a href="https://unsplash.com/photos/2xU7rYxsTiM">Header background photo</a>'
+		.' by <a href="https://unsplash.com/@skabrera?utm_source=unsplash&'
+		.'utm_medium=referral&utm_content=creditCopyText">'
+		.'Sergi Kabrera</a>'
+		.' on <a href="https://unsplash.com/photos/2xU7rYxsTiM?'
+		.'utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">'
+		.'Unsplash</a>.</p>'
+);
 $panel->setFullHeight();
 $cell->addElement($panel);
 // ******************************************* a panel WITH A TITLE AND A FOOTER

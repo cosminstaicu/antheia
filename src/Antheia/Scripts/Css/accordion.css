@@ -8,34 +8,40 @@
 	border-right: 1px solid var(--ant-theme-panelBorder);
 }
 /* the always visible link */
-.ant_accordion > a {
+.ant_accordion > button {
 	position: relative;
 	display: block;
 	width: 100%;
 	background-color: var(--ant-theme-panelSecondaryBackground);
+	border: none;
 	border-top: 1px solid var(--ant-theme-panelBorder);
+	margin: 0;
 	padding: 14px 80px 14px 10px;
 	transition: 0.5s;
+	cursor: pointer;
+	text-align: left;
+	color: var(--ant-theme-link);
+	font-size: var(--ant_var-rem16px);
 }
-.ant_accordion > a:hover {
+.ant_accordion > button:hover {
 	text-decoration: none;
 	padding-left: 35px;
 }
 /* up and down arrows */
-.ant_accordion > a:hover span {
+.ant_accordion > button:hover span {
 	opacity: 1;
 }
-.ant_accordion > a span {
+.ant_accordion > button span {
 	position: absolute;
 	top: 10px;
 	left: 2px;
 	opacity: 0;
 	transition: 0.5s;
 }
-.ant_accordion > a span:first-child {
+.ant_accordion > button span:first-child {
 	display: block;
 }
-.ant_accordion > a span:last-child {
+.ant_accordion > button span:last-child {
 	display: none;
 }
 /* the sliding container */
@@ -50,16 +56,16 @@
 	overflow: hidden;
 }
 /* definitions for the active item */
-.ant_accordion > a.ant-selected {
+.ant_accordion > button.ant-selected {
 	box-shadow: 0px 3px 3px var(--ant-theme-shadow);
 }
-.ant_accordion > a.ant-selected span:first-child {
+.ant_accordion > button.ant-selected span:first-child {
 	display: none;
 }
-.ant_accordion > a.ant-selected span:last-child {
+.ant_accordion > button.ant-selected span:last-child {
 	display: block;
 }
-.ant_accordion > a.ant-selected+div {
+.ant_accordion > button.ant-selected+div {
 	padding-top: 10px;
 	padding-left: 10px;
 	padding-right: 10px;

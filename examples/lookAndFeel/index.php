@@ -14,6 +14,10 @@ $page = new PageEmpty();
 $page->checkCompatibility();
 // this function is defined inside utils/init.php required file
 init_configurePage($page);
+// a background image for the header
+$page->getHeader()->setBackgroundImage('../headerImage.jpg');
+// if the following line is enables then the title will not have a background
+// $page->getHeader()->disableTitleBackground();
 // defining the page title
 $page->setTitle('Look and feel');
 // the page menu
@@ -79,7 +83,16 @@ $cell = $row->addCell();
 $cell->addWidth('md', 6);
 // a panel can be directly instantiated from the cell that will host it
 $panel = $cell->addPanel();
-$panel->addText('another panel, with no menu or title');
+$panel->addText('<p>another panel, with no menu or title</p>');
+$panel->addText(
+	'<p><a href="https://unsplash.com/photos/2xU7rYxsTiM">Header background photo</a>'
+		.' by <a href="https://unsplash.com/@skabrera?utm_source=unsplash&'
+		.'utm_medium=referral&utm_content=creditCopyText">'
+		.'Sergi Kabrera</a>'
+		.' on <a href="https://unsplash.com/photos/2xU7rYxsTiM?'
+		.'utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">'
+		.'Unsplash</a>.</p>'
+);
 // adding the wireframe to the page
 $page->addElement($wireframe);
 // adding a panel to display page source info

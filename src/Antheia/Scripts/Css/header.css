@@ -6,6 +6,47 @@
 	padding-right: 40px;
 	padding-bottom: 30px;
 }
+/** start background image position and size */
+#ant_header.ant-background-enabled > * {
+	background-color: var(--ant-theme-panelBackground);
+	border: 8px solid var(--ant-theme-panelBackground);
+	border-radius: 5px;
+}
+#ant_header.ant-fill {
+	background-size: cover;
+}
+#ant_header.ant-fit {
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+#ant_header.ant-center {
+	background-position: center;
+}
+#ant_header.ant-n {
+	background-position: top;
+}
+#ant_header.ant-s {
+	background-position: bottom;
+}
+#ant_header.ant-e {
+	background-position: right;
+}
+#ant_header.ant-w {
+	background-position: left;
+}
+#ant_header.ant-ne {
+	background-position: top right;
+}
+#ant_header.ant-nw {
+	background-position: top left;
+}
+#ant_header.ant-se {
+	background-position: bottom right;
+}
+#ant_header.ant-sw {
+	background-position: bottom left;
+}
+/** stop background image position and size */
 @media only screen and (min-width: 768px) {
 	#ant_header.ant-fixed {
 		padding-left: calc(calc(100vw - 710px) / 2);

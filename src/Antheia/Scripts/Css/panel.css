@@ -87,19 +87,25 @@
 .ant_panel.ant-fileBrowser > .ant-content > div:last-child {
 	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
-.ant_panel.ant-fileBrowser > .ant-content > div > a {
+.ant_panel.ant-fileBrowser > .ant-content > div > button {
 	display: block;
 	width: 100%;
 	background-color: var(--ant-theme-panelSecondaryBackground);
+	border: none;
+	margin: 0;
 	border-top: 1px solid var(--ant-theme-panelBorder);
 	border-left: 0px solid var(--ant-theme-panelBorder);
 	padding: 10px;
 	transition: 0.5s;
+	cursor: pointer;
+	text-align: left;
+	color: var(--ant-theme-link);
+	font-size: var(--ant_var-rem16px);
 }
-.ant_panel.ant-fileBrowser > .ant-content > div > a > * {
+.ant_panel.ant-fileBrowser > .ant-content > div > button > * {
 	vertical-align: middle;
 }
-.ant_panel.ant-fileBrowser > .ant-content > div > a:hover {
+.ant_panel.ant-fileBrowser > .ant-content > div > button:hover {
 	text-decoration: none;
 	border-left: 10px solid var(--ant-theme-panelBorder);
 }
