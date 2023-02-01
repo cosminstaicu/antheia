@@ -86,7 +86,7 @@ implements HtmlCode, LinkButtonRender {
 				}
 				break;
 			case self::BUTTON:
-				$code .= '<button ';
+				$code .= '<button type="button" ';
 				break;
 			default:
 				throw new Exception('Invalid type '.$this->renderType);

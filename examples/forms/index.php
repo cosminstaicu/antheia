@@ -5,6 +5,7 @@ use Antheia\Antheia\Classes\FixedButton\FixedButtonValid;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();
@@ -26,6 +27,10 @@ $form->setMethod($form::METHOD_POST);
 $form->setFileMode();
 // defining the panel that will be attached to the form
 $panel = $form->addInputPanel();
+// placing some buttons to the panel menu
+$infoMenu = NewMenu::info();
+$infoMenu->setOnClick('alert()');
+$panel->addMenu($infoMenu);
 $panel->setTitle('A form');
 // ********************************************************************** hidden
 $form->addHiddenInput('hiddenInputName', 'hiddenInputValue', 'optionalId');

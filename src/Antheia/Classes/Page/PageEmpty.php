@@ -153,7 +153,7 @@ class PageEmpty extends PageBlank {
 		$upperBar = new Html();
 		$upperBar->addRawCode('<div id="ant_topBar">');
 		$upperBar->addRawCode(
-			'<button onClick="ant_appMenu_toggle()">'
+			'<button onClick="ant_appMenu_toggle()" type="button">'
 		);
 		$menuButton = new IconVector();
 		$menuButton->setIcon(IconVector::ICON_MENU);

@@ -53,7 +53,7 @@ class Item extends AbstractClass implements HtmlCode {
 		$close = new IconVector();
 		$close->setIcon(IconVector::ICON_UP);
 		// start head
-		$code = '<button onClick="ant_accordion_click(this)">';
+		$code = '<button onClick="ant_accordion_click(this)" type="button">';
 		$code .= '<span>'.$open->getHtml().'</span>';
 		$code .= '<span>'.$close->getHtml().'</span>';
 		$code .= $this->title.'</button>';

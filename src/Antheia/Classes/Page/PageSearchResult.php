@@ -203,7 +203,8 @@ class PageSearchResult extends PageEmpty {
 		$code = '<div id="ant_search-pages"><table><tr><td>';
 		if ($this->currentPage > 1) {
 			$code .= '<button class="ant-back" onClick="ant_search_changePage('
-			.($this->currentPage-1).')">'.$previousIcon->getHtml().'</button>';
+				.($this->currentPage-1).')" type="button">'
+				.$previousIcon->getHtml().'</button>';
 		}
 		$code .= '
 			</td><td>'.Texts::get('PAGE').' </td>
@@ -214,7 +215,8 @@ class PageSearchResult extends PageEmpty {
 			<td>'.$this->pages.'</td><td>';
 		if ($this->currentPage < $this->pages) {
 			$code .= '<button class="ant-forward" onClick="ant_search_changePage('
-			.($this->currentPage+1).')">'.$nextIcon->getHtml().'</button>';
+				.($this->currentPage+1).')" type="button">'
+				.$nextIcon->getHtml().'</button>';
 		}
 		$code .= '</td></tr></table></div>';
 		parent::addElement(new Html($code));

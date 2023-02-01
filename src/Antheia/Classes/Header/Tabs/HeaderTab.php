@@ -118,7 +118,7 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 				$code .= '<a href="'.$this->href.'" ';
 				break;
 			case self::BUTTON:
-				$code .= '<button ';
+				$code .= '<button type="button" ';
 				break;
 			default:
 				throw new Exception('Invalid type '.$this->renderType);
@@ -149,7 +149,8 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 			$icon = new IconVector();
 			$icon->setIcon(IconVector::ICON_CLOSE);
 			$icon->setSize(IconVector::SIZE_SMALL);
-			$code .= '<button onclick="'.$this->onClickClose.'">'.$icon->getHtml().'</button>';
+			$code .= '<button type="button" onclick="'
+					.$this->onClickClose.'">'.$icon->getHtml().'</button>';
 		}
 		$code .= '</div>';
 		return $code;

@@ -93,7 +93,7 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 		if (count($this->submenus) === 0) {
 			$code .= '<a href="'.$this->href.'" ';
 		} else {
-			$code .= '<button';
+			$code .= '<button type="button"';
 		}
 		if ($this->htmlId !== '') {
 			$code .= ' id="'.$this->htmlId.'"';

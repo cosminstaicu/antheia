@@ -109,7 +109,7 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		if (!$this->multipleRows) {
 			$this->addClass('ant-single-row');
 		}
-		$code = '<button class="';
+		$code = '<button type="button" class="';
 		$code .= implode(' ', array_unique($this->classes));
 		$code .='"';
 		if ($this->htmlId != '') {

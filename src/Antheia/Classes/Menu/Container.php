@@ -41,7 +41,7 @@ class Container extends AbstractClass implements HtmlCode {
 			throw new Exception('No menu items defined');
 		}
 		$code = '<div class="ant_menu">';
-		$code .= '<button onClick="ant_menu_toogle(this)">'
+		$code .= '<button onClick="ant_menu_toogle(this)" type="button">'
 			.'<div></div><div></div><div></div></button><div>';
 			$code .= $this->visible->getHtml();
 		$code .= '</div><div>';
