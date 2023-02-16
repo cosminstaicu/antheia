@@ -7,6 +7,7 @@ $page = new PageEmpty();
 // this function is defined inside utils/init.php required file
 init_configurePage($page);
 $page->addJavascriptFile('script.js');
+$page->setFixedTopMenu();
 $page->setTitle('Loading animation');
 $wireframe = $page->addWireframe();
 $row = $wireframe->addRow();

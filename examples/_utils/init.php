@@ -4,12 +4,11 @@ use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
 use Antheia\Antheia\Classes\AppMenu\AppMenuSecondary;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuHelp;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
 use Antheia\Antheia\Classes\Page\AbstractPage;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuHelp;
-use Antheia\Antheia\Classes\Theme\ThemeDarkAesthetics;
 $autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
 	.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {

@@ -26,6 +26,7 @@ class PageEmpty extends PageBlank {
 	private $closeFullPageMessageOnClick;
 	private $topRightItems;
 	private $menu;
+	private $fixedTopMenu;
 	public function __construct() {
 		parent::__construct();
 		$this->codeElements = [];
@@ -35,6 +36,19 @@ class PageEmpty extends PageBlank {
 		$this->topRightItems = [];
 		$this->displayTitle = true;
 		$this->menu = [];
+		$this->fixedTopMenu = false;
+	}
+	/**
+	 * Defines if the top bar of the page (with the main menu toogle button
+	 * and the right side buttons) is fixed to the viewport (always visible) or
+	 * fixed to the body of the page (visible only when the upper part of the
+	 * page is visible)
+	 * @param bool $status true if the top menu should be always visible, false
+	 * if the top menu should be visible only when the top part of the page is
+	 * visible (0 scroll)
+	 */
+	public function setFixedTopMenu(bool $status = true):void {
+		$this->fixedTopMenu = $status;
 	}
 	/**
 	 * Defines if the app name is displayed under the logo, or not
@@ -140,6 +154,10 @@ class PageEmpty extends PageBlank {
 		return $wireframe;
 	}
 	public function getHtml():string {
+		// body tab setup
+		if ($this->fixedTopMenu) {
+			$this->addBodyClass('ant_topBarFixed');
+		}
 		// ***************************************************** JAVASCRIPT HEAD
 		$this->addHtmlClass('ant_tags_bottom-bar');
 		$this->addBodyClass('ant_tags_bottom-bar');

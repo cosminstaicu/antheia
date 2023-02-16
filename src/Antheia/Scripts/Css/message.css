@@ -9,6 +9,10 @@ body.ant_tags_bottom-bar.ant_message-active {
 	bottom: 20px;
 	right: 20px;
 }
+/* if the page has fixed buttons then the message container is placed above them */
+body.ant-has-fixed-buttons > #ant_message-text-container {
+	bottom: 125px;
+}
 .ant_message-text {
 	margin: 5px;
 	min-width: 250px;
@@ -20,6 +24,7 @@ body.ant_tags_bottom-bar.ant_message-active {
 	padding: 16px;
 	transition: all .5s;
 	opacity: 1;
+	z-index: var(--ant_layers_text-message);
 }
 .ant_message-text.ant-pre-visible {
 	opacity: 0;
@@ -30,9 +35,16 @@ body.ant_tags_bottom-bar.ant_message-active {
 	bottom: 20px;
 	right: 20px;
 }
+/* if the page has fixed buttons then the message container is placed above them */
+body.ant-has-fixed-buttons .ant_message-text.ant-slide-out-mode {
+	bottom: 125px;
+}
 .ant_message-text.ant-slide-out-mode.ant-end-slide {
 	opacity: 0;
 	transform: translateY(100%);
+}
+body.ant-has-fixed-buttons .ant_message-text.ant-slide-out-mode.ant-end-slide {
+	transform: translateY(200%);
 }
 .ant-slide-down-placeholder {
 	transition: all .5s;
@@ -48,6 +60,7 @@ body.ant_tags_bottom-bar.ant_message-active {
 	background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    z-index: var(--ant_layers_fullPageMessage);
 }
 .ant_message-image.ant-close-on-click:after {
 	position: absolute;

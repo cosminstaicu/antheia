@@ -6,6 +6,10 @@
 	padding-right: 40px;
 	padding-bottom: 30px;
 }
+body.ant_topBarFixed > #ant_header {
+	/* height of the font with 15px margin top and bottom and 6px text shadow*/
+	margin-top: calc(var(--ant_var-rem16px) + 36px);
+}
 /** start background image position and size */
 #ant_header.ant-background-enabled > * {
 	background-color: var(--ant-theme-panelBackground);

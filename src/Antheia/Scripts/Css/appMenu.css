@@ -9,6 +9,7 @@
 	transition: width 0s;
 	transition-delay: 0.5s;
 	transition-timing-function: linear;
+	z-index: var(--ant_layers_appMenu);
 }
 #ant_appMenu.ant-enabled {
 	width: 100%;

@@ -280,6 +280,7 @@ abstract class AbstractPage extends AbstractClass {
 			// css file does not exists, so it will be created
 			$cssRootPath = Internals::getFolder(['Scripts','Css']);	
 			$cssPrimaryFiles = [
+					'_layers.css',
 					'_var.css',
 					'accordion.css',
 					'appMenu.css',

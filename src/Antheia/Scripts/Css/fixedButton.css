@@ -7,6 +7,7 @@
 	opacity: 0;
 	text-align: right;
 	white-space: nowrap;
+	z-index: var(--ant_layers_fixed-buttons);
 }
 #ant_fixedButton.ant-enabled {
 	right: 30px;

@@ -15,6 +15,8 @@ $page = new PageEmpty();
 // this function is defined inside utils/init.php required file
 init_configurePage($page);
 $page->setTitle('Panels');
+// the top menu will have a fixed position (will not scroll with the page)
+$page->setFixedTopMenu();
 // a background image for the header
 $page->getHeader()->setBackgroundImage('../headerImage.jpg');
 // if the following line is enables then the title will not have a background

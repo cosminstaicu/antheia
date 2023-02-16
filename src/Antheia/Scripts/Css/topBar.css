@@ -1,8 +1,16 @@
 #ant_topBar {
+	position: relative;
 	display: flex;
 	padding: 15px 15px 15px 15px;
 	justify-content: space-between;
 	background-color: var(--ant-theme-topBottomBarBackground);
+	z-index: var(--ant_layers_topBar);
+}
+body.ant_topBarFixed > #ant_topBar {
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	width: 100%;
 }
 #ant_topBar a,
 #ant_topBar button {

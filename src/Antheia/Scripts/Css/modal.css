@@ -11,6 +11,7 @@
 	background-color: var(--ant-theme-overlay);
 	opacity: 1;
 	transition: opacity 0.5s;
+	z-index: var(--ant_layers_modal);
 }
 .ant_modal.ant-blur {
 	backdrop-filter: blur(2px);

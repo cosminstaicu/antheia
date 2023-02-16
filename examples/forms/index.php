@@ -6,6 +6,7 @@ use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Menu\Item\NewMenu;
+use Antheia\Antheia\Classes\Globals;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();
@@ -181,6 +182,11 @@ $input->setValue('Show date');
 $input->setOnClick(
 	"document.getElementById('dateRow').classList.remove('display-none')"
 );
+$panel->addInput($input);
+// ********************************** simple button (shows a toast notification)
+$input = NewInput::button();
+$input->setValue('Show notification');
+$input->setOnClick("ant_message('A notification')");
 $panel->addInput($input);
 // *************************************************************** simple button
 $input = NewInput::button();
