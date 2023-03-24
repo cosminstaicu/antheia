@@ -6,12 +6,15 @@
 	padding-right: 40px;
 	padding-bottom: 30px;
 }
+#ant_header.ant-tabs {
+	padding-bottom: 0;
+}
 body.ant_topBarFixed > #ant_header {
 	/* height of the font with 15px margin top and bottom and 6px text shadow*/
 	margin-top: calc(var(--ant_var-rem16px) + 36px);
 }
 /** start background image position and size */
-#ant_header.ant-background-enabled > * {
+#ant_header.ant-background-enabled > *:first-child {
 	background-color: var(--ant-theme-panelBackground);
 	border: 8px solid var(--ant-theme-panelBackground);
 	border-radius: 5px;
@@ -72,9 +75,8 @@ body.ant_topBarFixed > #ant_header {
 div#ant_header-tabs {
 	overflow-x: auto;
 	width: 100%;
-	padding: 0px 30px 1px 30px;
+	padding: 20px 30px 0px 30px;
 	white-space: nowrap;
-	background-color: var(--ant-theme-headerBackground);
 }
 #ant_header-tabs.ant-hidden {
 	display: none;
@@ -88,6 +90,7 @@ div#ant_header-tabs {
 	display: inline-block;
 	text-align: right;
 	border: 1px solid var(--ant-theme-tabText);
+	border-bottom: none;
 	border-radius: 6px 6px 0px 0px;
 	margin-left: 5px;
 	text-align: left;

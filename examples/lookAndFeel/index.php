@@ -15,7 +15,7 @@ $page->checkCompatibility();
 // this function is defined inside utils/init.php required file
 init_configurePage($page);
 // a background image for the header
-$page->getHeader()->setBackgroundImage('../headerImage.jpg');
+$page->setHeaderBackgroundImage('../headerImage.jpg');
 // if the following line is enables then the title will not have a background
 // $page->getHeader()->disableTitleBackground();
 // defining the page title
@@ -31,6 +31,14 @@ $page->addPageMenu($pageMenu);
 $pageMenu = NewMenu::delete();
 $pageMenu->setHref("javascript:alert('some action here')");
 $page->addPageMenu($pageMenu);
+// some tabs
+$tab = $page->addTab();
+$tab->setTitle('Selected tab');
+$tab->setHref('javascript:alert(1)');
+$tab->setStatus($tab::STATUS_SELECTED);
+$tab = $page->addTab();
+$tab->setTitle('Another tab');
+$tab->setHref('javascript:alert(2)');
 // defining a responsive wireframe that will be inserted into the page
 $wireframe = new Wireframe();
 // the wireframe will have a fixed width, depending on the width of the window

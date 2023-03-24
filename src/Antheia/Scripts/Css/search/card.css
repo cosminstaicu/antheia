@@ -72,7 +72,7 @@ div.ant_search_card > p:nth-of-type(2) {
 	font-size: var(--ant_var-rem14px);
 }
 /* details page access button */
-div.ant_search_card > a.ant_search_card-access {
+div.ant_search_card > .ant_search_card-access {
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
 	padding: 5px 15px 5px 15px;
@@ -86,26 +86,32 @@ div.ant_search_card > a.ant_search_card-access {
 	bottom: 10px;
 	left: 30px;
 	width: calc(100% - 60px);
+	cursor: pointer;
+	border: none;
 }
-div.ant_search_card > a.ant_search_card-access:hover {
+div.ant_search_card > .ant_search_card-access:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
 	cursor: pointer;
 	text-decoration: none;
 }
 /* additional info trigger button */
-div.ant_search_card > a:last-of-type {
+div.ant_search_card > button:last-of-type {
 	position: absolute;
 	top: 20px;
 	right: 20px;
 	width: var(--ant_var-rem34px);
 	height: var(--ant_var-rem34px);
+	padding: 0;
+	margin: 0;
 	padding-top: calc(var(--ant_var-rem10px) * .4);
 	border-radius: 50%;
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
 	transition: 0.5s;
+	cursor: pointer;
+	border: none;
 }
-div.ant_search_card > a:last-of-type:hover {
+div.ant_search_card > button:last-of-type:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
 	padding-top: calc(var(--ant_var-rem10px) * .2);
 }
@@ -143,7 +149,7 @@ div.ant_search_card > div:last-of-type > dl > dd {
 	margin-bottom: 5px;
 }
 /* close additional info button */
-div.ant_search_card > div:last-of-type > a {
+div.ant_search_card > div:last-of-type > button {
 	position: absolute;
 	top: 5px;
 	right: 5px;
@@ -152,9 +158,13 @@ div.ant_search_card > div:last-of-type > a {
 	display: block;
 	font-size: var(--ant_var-rem16px);
 	transition: 0.5s;
-}
-div.ant_search_card > div:last-of-type > a:hover {
-	color: var(--ant-theme-link);
+	margin: 0;
+	padding: 0;
+	border: none;
+	background-color: transparent;
 	cursor: pointer;
+}
+div.ant_search_card > div:last-of-type > button:hover {
+	color: var(--ant-theme-link);
 	text-decoration: none;
 }

@@ -14,10 +14,14 @@ class SearchResult extends AbstractClass {
 	const IMAGE_SIZE_MAXIMUM = 'maximum';
 	const IMAGE_AREA_FIT = 'fit';
 	const IMAGE_AREA_FILL = 'fill';
+	const LINK = 'link';
+	const BUTTON = 'button';
 	private $name;
 	private $description;
 	private $accessText;
 	private $accessHref;
+	private $accessOnClick;
+	private $accessRender;
 	private $properties;
 	private $resultId;
 	private $image;
@@ -32,8 +36,10 @@ class SearchResult extends AbstractClass {
 		$this->description = '';
 		$this->properties = [];
 		$this->setAccessHref('#');
+		$this->accessText = '';
+		$this->accessOnClick = '';
+		$this->accessRender = self::LINK;
 		$this->resultId = '';
-		$this->accessText = 'undefined';
 		$this->image = Internals::getCacheUrl().'/logo.png';
 		$this->iconInfo = null;
 		$this->buttons = [];
@@ -44,7 +50,7 @@ class SearchResult extends AbstractClass {
 	/**
 	 * Defines the id of the result. The id is used to identify the items that
 	 * have a selected checkbox. The selected elements are returned by the
-	 * javascript function ant_getListaElementeSelectate()
+	 * javascript function ant_search_getSelected()
 	 * @param string $id the id of the result
 	 */
 	public function setItemId(string $id):void {
@@ -53,11 +59,32 @@ class SearchResult extends AbstractClass {
 	/**
 	 * Returns the id of the result. The id is used to identify the items
 	 * that have a selected checkbox. The selected elements are returned
-	 * by the javascript function ant_getListaElementeSelectate()
+	 * by the javascript function ant_search_getSelected()
 	 * @return string the id of the result
 	 */
 	public function getItemId():string {
 		return $this->resultId;
+	}
+	/**
+	 * Defines the render to be used for the access button.
+	 * The access button is displayed by the accordion and card render.
+	 * @param string $render the render to be used as one of the constants:
+	 * \Antheia\Antheia\Classes\Search\SearchResult::LINK
+	 * \Antheia\Antheia\Classes\Search\SearchResult::BUTTON
+	 */
+	public function setAccessRender(string $render):void {
+		$this->accessRender = $render;
+	}
+	/**
+	 * Returns the render type to be used for the access button.
+	 * The access button is displayed by the accordion and card render.
+	 * @return string the render to be used for the access button, as one
+	 * of the constants:
+	 * \Antheia\Antheia\Classes\Search\SearchResult::LINK
+	 * \Antheia\Antheia\Classes\Search\SearchResult::BUTTON
+	 */
+	public function getAccessRender():string {
+		return $this->accessRender;
 	}
 	/**
 	 * Defines the href (the url) for the access button, used for accesing the
@@ -80,22 +107,29 @@ class SearchResult extends AbstractClass {
 		return $this->accessHref;
 	}
 	/**
-	 * Defines the name of the item
-	 * @param string $name the name of the item
+	 * Defines the on click script for the access button, used for accesing the
+	 * entity details page.
+	 * The access button is displayed by the accordion and card render.
+	 * @param string $javascript the script for the access button, used for
+	 * accesing the entity details page.
 	 */
-	public function setName(string $name):void {
-		$this->name = $name;
+	public function setAccessOnClick(string $javascript):void {
+		$this->accessOnClick = $javascript;
 	}
 	/**
-	 * Returns the name of the item
-	 * @return string the name of the item
+	 * Returns the on click script for the access button, used for accesing the
+	 * entity details page.
+	 * The access button is displayed by the accordion and card render
+	 * @return string on click script for the access button, used for
+	 * accesing the entity details page.
 	 */
-	public function getName():string {
-		return $this->name;
+	public function getAccessOnClick():string {
+		return $this->accessOnClick;
 	}
 	/**
-	 * Defines the text placed on the access button. It is used only by the
-	 * card render.
+	 * Defines the text placed on the access button. It is used by the
+	 * card view (text shown on the access button) and by the accordion view
+	 * (title of the access button).
 	 * @param string $text the text placed on the access button
 	 */
 	public function setAccessText(string $text):void {
@@ -109,6 +143,20 @@ class SearchResult extends AbstractClass {
 	 */
 	public function getAccessText():string {
 		return $this->accessText;
+	}
+	/**
+	 * Defines the name of the item
+	 * @param string $name the name of the item
+	 */
+	public function setName(string $name):void {
+		$this->name = $name;
+	}
+	/**
+	 * Returns the name of the item
+	 * @return string the name of the item
+	 */
+	public function getName():string {
+		return $this->name;
 	}
 	/**
 	 * Defines a short description of the item. It is only used by the card

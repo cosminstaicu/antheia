@@ -125,12 +125,19 @@ class PageSearchResult extends PageEmpty {
 		$this->currentPage = $current;
 	}
 	/**
+	 * Defines the sort by list
+	 * @param string[] $list a list having the value send to the
+	 * server as an index and the visible text as a value
+	 * @param string $elementSelectat the index of the selected element from
+	 * the list defined in the previous parameter
 	 * @see SearchForm::setSortBy
 	 */
 	public function setSortBy(array $list, string $selected):void {
 		$this->form->setSortBy($list, $selected);
 	}
 	/**
+	 * Defines the order of the displayed elements
+	 * @param string $order a constant like Form::SORT::##
 	 * @see SearchForm::setOrder
 	 */
 	public function setOrder(string $order):void {

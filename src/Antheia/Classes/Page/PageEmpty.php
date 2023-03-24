@@ -63,13 +63,21 @@ class PageEmpty extends PageBlank {
 	 * \Antheia\Antheia\Classes\Header\Header::TYPE_FIXED (default)
 	 * the page title, along with the page manu (if available) will align with
 	 * a fixed wireframe
-	 * \Antheia\Antheia\Classes\Header\Header::FLUID the page title will always
+	 * \Antheia\Antheia\Classes\Header\Header::TYPE_FLUID the page title will always
 	 * be on the left edge of the document
 	 * @see \Antheia\Antheia\Classes\Header\Header::setType()
 	 * @param string $type
 	 */
 	public function setHeaderType(string $type):void {
 		$this->header->setType($type);
+	}
+	/**
+	 * Defines the url to be used for the header background image
+	 * @param string $url the url to be used for the header background image
+	 * @see \Antheia\Antheia\Classes\Header\Header::setBackgroundImage()
+	 */
+	public function setHeaderBackgroundImage(string $url):void {
+		$this->header->setBackgroundImage($url);
 	}
 	/**
 	 * Returns the header of the page

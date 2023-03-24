@@ -65,7 +65,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->name = $text;
 	}
 	public function getHtml():string {
-		$code = '<a href="javascript:void(0)" class="ant_slide-button';
+		$code = '<button type="button" class="ant_slide-button';
 		if ($this->displayIcon) {
 			$code .= ' ant-icon';
 		}
@@ -83,7 +83,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		if ($this->name !== '') {
 			$code .= $this->name;
 		}
-		$code .= '</a>';
+		$code .= '</button>';
 		return $code;
 	}
 }

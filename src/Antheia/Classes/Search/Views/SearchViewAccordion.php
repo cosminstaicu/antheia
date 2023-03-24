@@ -1,5 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Search\Views;
+use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
@@ -63,9 +64,29 @@ class SearchViewAccordion extends AbstractSearchView {
 			// access button
 			$icon = new IconVector();
 			$icon->setIcon(IconVector::ICON_RIGHT);
-			$titleCode->addRawCode(
-				'<a href="'.$result->getAccessHref().'">'.$icon->getHtml().'</a>'
-			);
+			$title = $result->getAccessText();
+			if ($title !== '') {
+				$title = ' title="'.$title.'"';
+			}
+			$onClick = $result->getAccessOnClick();
+			if ($onClick !== '') {
+				$onClick = ' onclick="'.$onClick.'"';
+			}
+			$buttonCode = '';
+			switch ($result->getAccessRender()) {
+				case $result::LINK:
+					$buttonCode = '<a href="'.$result->getAccessHref()
+						.'"'.$title.$onClick.'>'
+						.$icon->getHtml().'</a>';
+					break;
+				case $result::BUTTON:
+					$buttonCode = '<button type="button" '.$title.$onClick.'>'
+							.$icon->getHtml().'</button>';
+					break;
+				default:
+					throw new Exception('Invalid render '.$result->getAccessRender());
+			}
+			$titleCode->addRawCode($buttonCode);
 			$panel->setHtmlTitle($titleCode);
 			$wireframe = new Wireframe();
 			// additional buttons

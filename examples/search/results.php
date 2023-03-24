@@ -1,9 +1,8 @@
 <?php
+use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageSearchResult;
 use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
-use Antheia\Antheia\Classes\Icon\IconVector;
-use Antheia\Antheia\Classes\Input\InputText;
-use Antheia\Antheia\Classes\Input\InputSelect;
 use Antheia\Antheia\Classes\Search\SearchResult;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
@@ -18,7 +17,7 @@ $selectedItemsAction->setText('Delete');
 $selectedItemsAction->setHref('javascript:alert()');
 $page->addSelectButton($selectedItemsAction);
 // adding the filters (they are the same as the ones inside the startSearch page)
-$filter = new InputText();
+$filter = NewInput::text();
 $filter->setLabel('Given name');
 $filter->setPlaceholder('given name');
 $filter->setName('givenName');
@@ -28,7 +27,7 @@ if (isset($_POST['givenName'])) {
 }
 $page->addInput($filter);
 // adding a text filter
-$filter = new InputText();
+$filter = NewInput::text();
 $filter->setLabel('Family name');
 $filter->setPlaceholder('family name');
 $filter->setNameId('familyName');
@@ -38,7 +37,7 @@ if (isset($_POST['familyName'])) {
 }
 $page->addInput($filter);
 // adding a select filter
-$filter = new InputSelect();
+$filter = NewInput::select();
 $filter->setLabel('Status');
 $filter->setNameId('status');
 $filter->addOption('Does not matter', 'doesNotMatter', true);
@@ -48,6 +47,12 @@ $filter->setDefaultValue('doesNotMatter');
 if (isset($_POST['status'])) {
 	$filter->setValue($_POST['status']);
 }
+// adding the search sorting options
+$page->setSortBy([
+		'name' => 'Name',
+		'date' => 'Date of issue',
+		'size' => 'Size of the item'
+], 'date');
 $page->addInput($filter);
 // defining the total number of pages and the current page
 if (isset($_POST['page'])) {
@@ -63,7 +68,7 @@ for ($i = 0; $i < 5; $i++) {
 	$element->addProperty('Property 1', 'Value 1');
 	$element->addProperty('Property 2', 'Value 2');
 	$element->addProperty('Property 3', '<a href="javascript:alert()">A link</a>');
-	$element->setImageLink('javascript:alert()');
+	$element->setImageLink('javascript:alert(\'click on image\')');
 	// used only by LIST_TYPE_ACCORDION
 	if ($i === 1) {
 		$element->setIcon('user');
@@ -88,6 +93,8 @@ for ($i = 0; $i < 5; $i++) {
 	if ($i === 2 || $i === 4) {
 		$element->setImageSize($element::IMAGE_SIZE_MAXIMUM);
 		$element->setImageArea($element::IMAGE_AREA_FILL);
+		$element->setAccessRender($element::BUTTON);
+		$element->setAccessOnClick('alert()');
 	}
 	$page->addResult($element);
 }

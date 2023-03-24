@@ -6,9 +6,7 @@ use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\AbstractInput;
-use Antheia\Antheia\Classes\Input\InputButton;
-use Antheia\Antheia\Classes\Input\InputSelect;
-use Antheia\Antheia\Classes\Input\InputSubmit;
+use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Slide\SlidePanel;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
@@ -50,7 +48,7 @@ class SearchForm extends Form {
 		$this->addElement($this->panel);
 		$this->wireframe = new Wireframe();
 		$this->panel->addElement($this->wireframe);
-		$this->sortByInput = new InputSelect();
+		$this->sortByInput = NewInput::select();
 		$this->displayResetButton = true;
 		$this->code = '';
 	}
@@ -147,7 +145,6 @@ class SearchForm extends Form {
 		if ($this->displayFilters) {
 			$slideControl = $slide->getController();
 			$slideControl->setText($textFromTo);
-			$slideControl->setHtmlId('ant_search-filter-expand-control');
 			$code .= $slideControl->getHtml();
 		} else {
 			$code .= '<div style="margin-top: 15px">'.$textFromTo.'</div>';
@@ -169,8 +166,8 @@ class SearchForm extends Form {
 		$sortArrow = new IconVector();
 		$sortCode = '<input type="hidden" name="sortOrder" 
 			id="ant_sort-order" value="'.$this->order
-			.'"><a id="ant_search-sort-order"
-			href="javascript:ant_search_changeSortOrder(\''.$sortBy.'\')">';
+			.'"><button type="button" id="ant_search-sort-order"
+			onclick="ant_search_changeSortOrder(\''.$sortBy.'\')">';
 		switch ($this->order) {
 			case self::SORT_ASC:
 				$sortArrow->setIcon(IconVector::ICON_SORT_ASC);
@@ -183,7 +180,7 @@ class SearchForm extends Form {
 		}
 		$sortCode .= $orderBy->getHtml();
 		$sortCode .= $sortArrow->getHtml();
-		$sortCode .= '</a>';
+		$sortCode .= '</button>';
 		if ($displaySortBy) {
 			$this->sortByInput->setLabel(Texts::get('SORT_BY'));
 			$this->sortByInput->setName('sortBy');
@@ -272,14 +269,14 @@ class SearchForm extends Form {
 			<tr><td>'
 		);
 		if ($this->displayResetButton) {
-			$butonReset = new InputButton();
+			$butonReset = NewInput::button();
 			$butonReset->setHtmlId('ant_search-reset');
 			$butonReset->setOnClick('ant_search_reset(this)');
 			$butonReset->setValue(Texts::get('RESET'));
 			$table->addElement($butonReset);
 			$table->addRawCode('</td><td>');
 		}
-		$butonSubmit = new InputSubmit();
+		$butonSubmit = NewInput::submit();
 		$butonSubmit->setValue(Texts::get('SEARCH'));
 		$table->addElement($butonSubmit);
 		$table->addRawCode('</td></tr></table>');

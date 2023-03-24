@@ -1,22 +1,18 @@
-#ant_search-filter-expand-control {
-	border-bottom: 1px solid var(--ant-theme-panelBorder);
-	padding-bottom: 10px;
-	margin-top: 7px;
-}
 #ant_search-sort-label {
 	margin-top: 15px;
 }
 #ant_search-sort-order {
 	color: var(--ant-theme-link);
-	margin-right: auto;
-	margin-left: 10px;
-	padding-top: 5px;
-	display: block;
+	margin: 0 auto 0 10px;
+	padding: 5px 0 0 0;
 	width: var(--ant_var-rem50px);
+	border: 0;
+	background-color: transparent;
+	cursor: pointer;
+	display: block;
 	float: right;
 }
 #ant_search-sort-order:hover {
-	text-decoration: none;
 	color: var(--ant-theme-linkHover);
 }
 #ant_search-options {
@@ -45,10 +41,6 @@
 	#ant_search-sort-label {
 		text-align: right;
 		float: right;
-	}
-	#ant_search-filter-expand-control {
-		border-bottom: none;
-		padding-bottom: 0px;
 	}
 }
 /******************************************************************** FILTERS */

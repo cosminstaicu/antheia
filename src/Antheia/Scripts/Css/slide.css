@@ -1,6 +1,12 @@
 .ant_slide-button {
 	text-decoration: none;
 	color: var(--ant-theme-link);
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+	padding: 0;
+	margin: 0;
+	font-size: var(--ant_var-rem16px);
 }
 .ant_slide-button:hover {
 	text-decoration: none;

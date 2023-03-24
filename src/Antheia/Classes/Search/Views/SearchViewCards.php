@@ -83,13 +83,28 @@ class SearchViewCards extends AbstractSearchView {
 			if ($result->getImageSize() === SearchResult::IMAGE_SIZE_MEDIUM) {
 				$code .= '<p>'.htmlspecialchars($result->getDescription()).'</p>';
 			}
-			$code .= '<a href="'.$result->getAccessHref().'"
-				class="ant_search_card-access">'
-				.htmlspecialchars($result->getAccessText())
-				.'</a>';
-			$code .= '<a href="javascript:void(0)"
+			$onClick = $result->getAccessOnClick();
+			if ($onClick !== '') {
+				$onClick = ' onclick="'.$onClick.'"';
+			}
+			switch ($result->getAccessRender()) {
+				case $result::LINK:
+					$code .= '<a href="'.$result->getAccessHref().'"
+						class="ant_search_card-access"'.$onClick.'>'
+						.htmlspecialchars($result->getAccessText())
+						.'</a>';
+					break;
+				case $result::BUTTON:
+					$code .= '<button type="button" class="ant_search_card-access"'
+						.$onClick.'>'.htmlspecialchars($result->getAccessText())
+						.'</button>';
+					break;
+				default:
+					throw new Exception('Invalid render '.$result->getAccessRender());
+			}
+			$code .= '<button type="button"
 					onclick="ant_search_card_toggleInfo(this.parentElement)">'
-					.$slideIcon->getHtml().'</a>';
+					.$slideIcon->getHtml().'</button>';
 			// the hidden container
 			$code .= '<div>';
 			$code .= '<p>'.htmlspecialchars($result->getName()).'</p>';
@@ -100,9 +115,9 @@ class SearchViewCards extends AbstractSearchView {
 				$code .= '<dd>'.$property['value'].'</dd>';
 			}
 			$code .= '</dl>';
-			$code .= '<a href="javascript:void(0)"
+			$code .= '<button type="button"
 				onclick="ant_search_card_toggleInfo(this.parentElement.parentElement)">'
-				.$closeIcon->getHtml().'</a>';
+				.$closeIcon->getHtml().'</button>';
 			$code .= '</div>';
 			$code .= '</div>';
 			$cell->addElement(new Html($code));

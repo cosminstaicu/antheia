@@ -161,6 +161,9 @@ class Header implements HtmlCode {
 					throw new Exception('Unknown position: '.$this->backgroundPosition);
 			}
 		}
+		if (count($this->tabs) > 0) {
+			$code .= ' ant-tabs';
+		}
 		$code .='"';
 		if ($this->backgroundUrl !== NULL) {
 			$code .= ' style="background-image: url('.$this->backgroundUrl.');"';
@@ -174,7 +177,6 @@ class Header implements HtmlCode {
 		} else {
 			$code .= '<h1>'.htmlspecialchars($this->title).'</h1>';
 		}
-		$code .= '</div>';
 		if (count($this->tabs) > 0) {
 			$code .= '<div id="ant_header-tabs">';
 			/** @var HeaderTab $element */
@@ -183,6 +185,7 @@ class Header implements HtmlCode {
 			}
 			$code .= '</div>';
 		}
+		$code .= '</div>';
 		return $code;
 	}
 }
