@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Header\TopRightMenu;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\LinkButtonRender;
@@ -28,6 +29,7 @@ implements HtmlCode, LinkButtonRender {
 		$this->startLoadingAnimationOnClick = false;
 		$this->targetBlank = false;
 		$this->renderType = self::LINK;
+		$this->setName(Texts::get('UNDEFINED'));
 	}
 	public function setOnClick(string $code):void {
 		$this->onClick = $code;
@@ -71,9 +73,6 @@ implements HtmlCode, LinkButtonRender {
 		$this->startLoadingAnimationOnClick = true;
 	}
 	public function getHtml():string {
-		if ($this->name == '') {
-			throw new Exception('Name is not defined');
-		}
 		$code = '';
 		switch ($this->renderType) {
 			case self::LINK:
