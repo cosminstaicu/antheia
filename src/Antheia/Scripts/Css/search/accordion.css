@@ -22,7 +22,8 @@
 	width: var(--ant_var-rem32px);
 	height: var(--ant_var-rem32px);
 }
-#ant_search_accordion .ant_panel > .ant-header > a {
+#ant_search_accordion .ant_panel > .ant-header > a,
+#ant_search_accordion .ant_panel > .ant-header > button {
 	color: var(--ant-theme-link);
 	margin-left: 5px;
 }
