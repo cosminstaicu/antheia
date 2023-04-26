@@ -1,4 +1,22 @@
 let ant_inputTime_process = null;
+
+/**
+ * Removes important html characters (angular brackets) from a text and returns it.
+ * It is used for texts that should not contain any HTML characters (like dataset
+ * attributes defined in the php script).
+ * @param {String} inputText the text to be escaped
+ * @returns {String} the text with the html entities removed
+ */
+function ant_inputTime_innerHtmlSafe(inputText) {
+	let map = {
+		'&': '',
+		'<': '',
+		'>': '',
+		'"': '',
+		"'": ''
+	};
+	return inputText.replace(/[&<>"']/g, (m) => { return map[m]; });
+}
 /**
  * Called when the user presses the button to select or input a time value
  * @param {Element} element the button pressed by the user
@@ -47,7 +65,7 @@ function ant_inputTime_start(element) {
 				// the user clicked on a hour
 				let i = 0;
 				let option = null;
-				let hourText = this.dataset.value;
+				let hourText = ant_inputTime_innerHtmlSafe(this.dataset.value);
 				if (this.dataset.value < 10) {
 					hourText = "0" + this.dataset.value;
 				}

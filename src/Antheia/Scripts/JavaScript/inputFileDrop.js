@@ -9,6 +9,22 @@ function ant_inputFileDrop_fileSelected(button) {
 	);
 }
 /**
+ * Removes important html characters from a text and returns it. It is used
+ * for the filenames that are inserted into tags as innerHTML
+ * @param {String} inputText the text to be escaped
+ * @returns {String} the text with the html entities removed
+ */
+function ant_inputFileDrop_innerHtmlSafe(inputText) {
+	let map = {
+		'&': '',
+		'<': '',
+		'>': '',
+		'"': '',
+		"'": ''
+	};
+	return inputText.replace(/[&<>"']/g, (m) => { return map[m]; });
+}
+/**
  * Called after a selection of files has been made (either by dropping or by
  * selecting a file using the file browser)
  * @param {HTMLElement} dropArea the file drop element that triggered
@@ -18,7 +34,7 @@ function ant_inputFileDrop_fileSelected(button) {
 function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 	// checking the files against the rules
 	if (fileList.length === 0) {
-		return false;
+		return;
 	}
 	if (dropArea.dataset.maxFiles != 0) {
 		if (fileList.length > dropArea.dataset.maxFiles) {
@@ -26,7 +42,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 				dropArea.dataset.textTotalFiles + " (max "
 				+ dropArea.dataset.maxFiles
 				+ ")");
-			return false;
+			return;
 		}
 	}
 	let i = 0;
@@ -43,25 +59,27 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 		extensions = dropArea.dataset.extensions.split(',');
 	}
 	dropArea.ant_fileList = [];
+	// validating the extension and file size
 	for (i = 0; i < fileList.length; i++) {
+		fileName = ant_inputFileDrop_innerHtmlSafe(fileList[i].name);
 		if (extensions.length > 0) {
 			extension = "." + fileList[i].name.split('.').pop().toLowerCase();
 			if (extensions.indexOf(extension) === -1) {
 				ant_alert.quickError(
-					dropArea.dataset.textExtension + " (" + fileList[i].name + ")"
+					dropArea.dataset.textExtension + " (" + fileName + ")"
 				);
 				dropArea.ant_fileList = [];
-				return false;
+				return;
 			}
 		}
 		fileSizeKb = Math.round(fileList[i].size / 1024);
 		if (maxFileSizeKb != 0) {
 			if (fileSizeKb > maxFileSizeKb) {
 				ant_alert.quickError(
-					dropArea.dataset.textFileSize + " (" + fileList[i].name + ")"
+					dropArea.dataset.textFileSize + " (" + fileName + ")"
 				);
 				dropArea.ant_fileList = [];
-				return false;
+				return;
 			}
 		}
 		totalSizeKb += fileSizeKb;
@@ -72,7 +90,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 					+ " (max " + dropArea.dataset.maxTotalSize + " MB)"
 				);
 				dropArea.ant_fileList = [];
-				return false;
+				return;
 			}
 		}
 		dropArea.ant_fileList.push({
@@ -82,14 +100,14 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 	if (dropArea.dataset.pre !== undefined) {
 		if (dropArea.dataset.pre !== '') {
 			if (window[dropArea.dataset.pre](dropArea) !== true) {
-				return false;
+				return;
 			}
 		}
 	}
 	// creating the loading interface
 	ant_loading_step.reset();
 	for (i = 0; i < fileList.length; i++) {
-		fileName = fileList[i].name;
+		fileName = ant_inputFileDrop_innerHtmlSafe(fileList[i].name);
 		if (fileName.length > 20) {
 			fileName = fileName.slice(0, 18) + "...";
 		}

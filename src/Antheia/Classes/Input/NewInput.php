@@ -7,9 +7,7 @@ namespace Antheia\Antheia\Classes\Input;
  * @author Cosmin Staicu
  */
 abstract class NewInput {
-	private function __constructor() {
-		// singleton class
-	}
+	private function __constructor() {}
 	/**
 	 * Creates a button and returns it
 	 * @see \Antheia\Antheia\Classes\Input\InputButton

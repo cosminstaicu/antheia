@@ -100,6 +100,12 @@ function init_configurePage(AbstractPage $page):void {
 	$submenu->setHref('../search/results.php');
 	$menu->addSubmenu($submenu);
 	$page->addNavigationMenu($menu);
+	// message
+	$menu = new AppMenuPrimary();
+	$menu->setText('Message');
+	$menu->setHref('../message');
+	$menu->setIcon('calendar_view_day');
+	$page->addNavigationMenu($menu);
 	// confirmation messages
 	$menu = new AppMenuPrimary();
 	$menu->setText('Confirm messages');

@@ -3,7 +3,7 @@ namespace Antheia\Antheia\Classes\FixedButton;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 /**
- * A fixed button with the add symbol
+ * A fixed button with a forward (right arrow) symbol
  * @author Cosmin Staicu
  */
 class FixedButtonForward extends AbstractFixedButton {

@@ -7,6 +7,7 @@ use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\FixedButton\NewFixedButton;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();
@@ -200,11 +201,13 @@ $panel->addInput($input);
 $cell->addElement($form);
 // *********************************************** ADD THE WIREFRAME TO THE PAGE
 $page->addElement($wireframe);
-// fixed buttons
+// ******************************************* ADD THE FIXED BUTTONS TO THE PAGE
+// the cancel button is added by calling the constructor on the class
 $cancelButton = new FixedButtonCancel();
 $cancelButton->setOnClick("alert('Cancel action')");
 $page->addFixedButton($cancelButton);
-$validButton = new FixedButtonValid();
+// the valid button is added using the shortcut abstract class
+$validButton = NewFixedButton::valid();
 $validButton->setRender($validButton::LINK);
 $validButton->setOnClick("alert('Valid action')");
 $page->addFixedButton($validButton);

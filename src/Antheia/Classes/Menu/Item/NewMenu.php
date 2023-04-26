@@ -7,9 +7,7 @@ namespace Antheia\Antheia\Classes\Menu\Item;
  * @author Cosmin Staicu
  */
 abstract class NewMenu {
-	private function __constructor() {
-		// singleton class
-	}
+	private function __constructor() {}
 	/**
 	 * Creates an add menu and returns it
 	 * @see \Antheia\Antheia\Classes\Menu\Item\MenuAdd
