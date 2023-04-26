@@ -67,7 +67,7 @@ function ant_inputTime_start(element) {
 				let option = null;
 				let hourText = ant_inputTime_innerHtmlSafe(this.dataset.value);
 				if (this.dataset.value < 10) {
-					hourText = "0" + this.dataset.value;
+					hourText = "0" + hourText;
 				}
 				hourText += ":<b>";
 				if (this.dataset.value < 10) {
