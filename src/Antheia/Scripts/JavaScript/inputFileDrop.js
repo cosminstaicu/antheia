@@ -1,12 +1,16 @@
+let ant_inputFileDrop_fullPageMode = false;
 /**
  * Called after the user selected a file from the browse button
  * @param {HTMLInputElement} button the browse button
  */
 function ant_inputFileDrop_fileSelected(button) {
-	ant_inputFileDrop_selectionFinished(
-		button.parentElement.parentElement,
-		button.files
-	);
+	let dropArea = null;
+	if (ant_inputFileDrop_fullPageMode) {
+		dropArea = button.previousElementSibling;
+	} else {
+		dropArea = button.parentElement.parentElement;
+	}
+	ant_inputFileDrop_selectionFinished(dropArea, button.files);
 }
 /**
  * Removes important html characters from a text and returns it. It is used
@@ -155,27 +159,58 @@ function ant_inputFileDrop_uploadFile(dropArea, fileList, loadingSteps, index) {
 	};
 	req.send(formData);
 }
+/**
+ * Called after the html code for a full page drop input
+ */
+function ant_inputFileDrop_enableFullPageDrop() {
+	ant_inputFileDrop_fullPageMode = true;
+}
+let ant_inputFileDrop_timeoutLeave = null;
 // sets the required listeners after the DOM has been loaded
 document.addEventListener("DOMContentLoaded", () => {
 	let elements = document.getElementsByClassName("ant_inputFileDrop");
-	let i = 0;
-	for (i = 0; i < elements.length; i++) {
-		elements[i].addEventListener("dragenter", function (event) {
-			this.classList.add("ant-active");
+	if (ant_inputFileDrop_fullPageMode) {
+		document.body.addEventListener('dragenter', (event) => {
+			document.body.classList.add('ant_inputFileDrop-dragActive');
+			clearTimeout(ant_inputFileDrop_timeoutLeave);
 			event.preventDefault();
 		});
-		elements[i].addEventListener("dragover", function (event) {
-			this.classList.add("ant-active");
+		document.body.addEventListener('dragover', (event) => {
+			document.body.classList.add('ant_inputFileDrop-dragActive');
+			clearTimeout(ant_inputFileDrop_timeoutLeave);
 			event.preventDefault();
 		});
-		elements[i].addEventListener("dragleave", function (event) {
-			this.classList.remove("ant-active");
-			event.preventDefault();
+		document.body.addEventListener('dragleave', () => {
+			ant_inputFileDrop_timeoutLeave = setTimeout(() => {
+				document.body.classList.remove('ant_inputFileDrop-dragActive');
+			}, 1000);
 		});
-		elements[i].addEventListener("drop", function (event) {
-			this.classList.remove("ant-active");
+		elements[0].addEventListener("drop", function (event) {
+			document.body.classList.remove('ant_inputFileDrop-dragActive');
 			event.preventDefault();
 			ant_inputFileDrop_selectionFinished(this, event.dataTransfer.files);
 		});
+	} else {
+		let i = 0;
+		for (i = 0; i < elements.length; i++) {
+			elements[i].addEventListener("dragenter", function (event) {
+				this.classList.add("ant-active");
+				event.preventDefault();
+			});
+			elements[i].addEventListener("dragover", function (event) {
+				this.classList.add("ant-active");
+				event.preventDefault();
+			});
+			elements[i].addEventListener("dragleave", function (event) {
+				this.classList.remove("ant-active");
+				event.preventDefault();
+			});
+			elements[i].addEventListener("drop", function (event) {
+				this.classList.remove("ant-active");
+				event.preventDefault();
+				ant_inputFileDrop_selectionFinished(this, event.dataTransfer.files);
+			});
+		}
 	}
+
 });

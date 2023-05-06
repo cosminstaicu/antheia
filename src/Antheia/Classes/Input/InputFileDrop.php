@@ -18,7 +18,10 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 	private $maximumTotalSize;
 	private $maximumFileSize;
 	private $infoText;
+	private $browserButton;
 	private $displayBrowser;
+	private $fullPageDrop;
+	private static $totalItems = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->beforeCallback = '';
@@ -30,7 +33,13 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$this->maximumFileSize = 0;
 		$this->setLabelExport(false);
 		$this->infoText = Texts::get('DROP_FILE_HERE');
+		$this->browserButton = new InputFile();
+		$this->browserButton->setLabelExport(false);
+		$this->browserButton->setOnChange(
+			'ant_inputFileDrop_fileSelected(this)'
+		);
 		$this->displayBrowser = true;
+		$this->fullPageDrop = false;
 	}
 	/**
 	 * Defines the text to be displayed inside the drop area, below the
@@ -44,11 +53,28 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 	/**
 	 * Defines if a file select button will be displayed inside the drop area.
 	 * When clicked, the button will display a file browser from where the user
-	 * can select a file that will be uploaded to the server
+	 * can select a file that will be uploaded to the server.
 	 * @param bool $status true if the button should be displayed, false if not
 	 */
 	public function setDisplayBrowser(bool $status):void {
 		$this->displayBrowser = $status;
+	}
+	/**
+	 * Defines if the drop area should be limited (and displayed) or full page
+	 * drop is enabled (and no specific drop area is displayed)
+	 * @param bool $status (optional) (default true) true if full page drop is
+	 * enabled, false if a defined area for drop should be rendered.
+	 */
+	public function setFullPageDrop(bool $status = true):void {
+		$this->fullPageDrop = $status;
+	}
+	/**
+	 * Returns the file select button. The button visibility (default visible)
+	 * can be set using the setDisplayBrowser method
+	 * @return InputFile the file browser button
+	 */
+	public function getBrowserButton():InputFile {
+		return $this->browserButton;
 	}
 	/**
 	 * Defines the upload size limit. If one of the limits is exceeded then no
@@ -109,8 +135,22 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		if ($this->afterCallback === '') {
 			throw new Exception('AfterCallback function is not defined');
 		}
+		if ($this->fullPageDrop) {
+			if (self::$totalItems !== 0) {
+				throw new Exception(
+					'Multiple file drops not allowed when full page drop is enabled'
+				);
+			}
+			self::$totalItems++;
+		}
 		$this->checkHtmlId();
-		$code = '<div class="ant_inputFileDrop"';
+		$code = '<div class="ant_inputFileDrop';
+		if ($this->fullPageDrop) {
+			$code .= ' ant_fullPage';
+		} else {
+			$code .= ' ant_local';
+		}
+		$code .= '"';
 		$this->addAttribute('data-name', $this->getName());
 		$this->addAttribute('data-max-files', $this->maximumFiles);
 		$this->addAttribute('data-max-file-size', $this->maximumFileSize);
@@ -135,21 +175,37 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$icon = new IconVector();
 		$icon->setIcon($icon::ICON_UPLOAD);
 		$icon->setSize($icon::SIZE_XL);
-		$code .= $icon->getHtml();
-		if ($this->infoText !== '') {
-			$code .= '<p>'.$this->infoText.'</p>';
+		if ($this->fullPageDrop) {
+			$code .= '<p>';
+			$code .= $icon->getHtml();
+			if ($this->infoText !== '') {
+				$code .= '<br>'.$this->infoText;
+			}
+			$code .= '</p>';
+		} else {
+			$code .= $icon->getHtml();
+			if ($this->infoText !== '') {
+				$code .= '<p>'.$this->infoText.'</p>';
+			}
 		}
 		if ($this->displayBrowser) {
-			$button = new InputFile();
+			// file select button is enabled
 			foreach ($this->extensionList as $extension) {
-				$button->addExtension($extension);
+				$this->browserButton->addExtension($extension);
 			}
-			$button->getButton()->setText(Texts::get('OR_JUST_BROWSE'));
-			$button->setLabelExport(false);
-			$button->setOnChange('ant_inputFileDrop_fileSelected(this)');
-			$code .= $button->getHtml();
+		}
+		if (($this->displayBrowser) && (!$this->fullPageDrop)) {
+			$this->browserButton->getButton()->setText(Texts::get('OR_JUST_BROWSE'));
+			$code .= $this->browserButton->getHtml();
 		}
 		$code .= '</div>';
+		if ($this->fullPageDrop) {
+			if ($this->displayBrowser) {
+				$code .= $this->browserButton->getHtmlHiddenFileInput();
+				$code .= $this->browserButton->getButton()->getHtml();
+			}
+			$code .= '<script>ant_inputFileDrop_enableFullPageDrop();</script>';
+		}
 		parent::setHtmlCode($code);
 		return parent::getHtml();
 	}

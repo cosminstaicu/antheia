@@ -18,6 +18,7 @@ class InputFile extends AbstractInput {
 		$this->button->setText(Texts::get('SELECT_A_FILE'));
 		$this->button->setIcon(IconVector::ICON_FILE);
 		$this->button->setOnClick('ant_inputFile_start(this)');
+		$this->button->disableHiddenInputExport();
 		$this->onChange = '';
 	}
 	/**
@@ -45,8 +46,12 @@ class InputFile extends AbstractInput {
 		}
 		$this->extensionList[] = $extension;
 	}
-	public function getHtml():string {
-		$this->checkHtmlId();
+	/**
+	 * Returns the html code used for the hidden file input used by the input.
+	 * Probably the end user will not use this method
+	 * @return string the html code used for the hidden file input used by the input
+	 */
+	public function getHtmlHiddenFileInput():string {
 		$code = '<input type="file" name="'.$this->getName().'"';
 		if ($this->getHtmlId() !== '') {
 			$code .= 'id="'.$this->getHtmlId().'"';
@@ -64,7 +69,12 @@ class InputFile extends AbstractInput {
 		}
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
-		$this->button->disableHiddenInputExport();
+		return $code;
+	}
+	public function getHtml():string {
+		$this->checkHtmlId();
+		$code = '';
+		$code .= $this->getHtmlHiddenFileInput();
 		$code .= $this->button->getHtml();
 		parent::setHtmlCode($code);
 		return parent::getHtml();

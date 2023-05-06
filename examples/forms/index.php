@@ -157,13 +157,14 @@ $input->addExtension('.mp3');
 $panel->addInput($input);
 // ******************************************************************* drop file
 $input = NewInput::fileDrop();
+// $input->setFullPageDrop();
 $input->setName('droppedFile');
 $input->setMaxFiles(3);
 $input->setMaxSize(2, 2);
 $input->addExtension('wav');
 $input->setUrl('dragDropUpload.php');
 $input->setAfterCallback('afterDropFileTransfer');
-$input->setDisplayBrowser(false);
+// $input->setDisplayBrowser(false);
 $panel->addInput($input);
 // ******************************************************************** textarea
 $input = NewInput::textarea();

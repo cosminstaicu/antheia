@@ -59,7 +59,7 @@ abstract class English extends AbstractLanguage {
 	const EDIT = 'Edit';
 	const EMPTY_SEARCH = 'No items have been found!';
 	const EXAMPLE = 'Example';
-	const EXTENSION_NOT_ALLOWED = 'Extenstion not allowed';
+	const EXTENSION_NOT_ALLOWED = 'Extension not allowed';
 	const FILE = 'File';
 	const FILE_SIZE_ERROR = 'File size error';
 	const FOLDER = 'Folder';

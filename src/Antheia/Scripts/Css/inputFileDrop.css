@@ -1,4 +1,5 @@
-.ant_inputFileDrop {
+/** local drop area */
+.ant_inputFileDrop.ant_local {
 	border: 1px dashed var(--ant-theme-inputBorder);
 	border-radius: 4px;
 	background-color: var(--ant-theme-inputBackground);
@@ -6,22 +7,42 @@
 	text-align: center;
 	transition: background-color .5s;
 }
-.ant_inputFileDrop.ant-active {
+.ant_inputFileDrop.ant_local.ant-active {
 	border-style: solid;
 	background-color: var(--ant-theme-panelSecondaryBackground);
 }
-.ant_inputFileDrop > i {
+.ant_inputFileDrop.ant_local > i {
 	opacity: .5;
 	transition: opacity .5s;
 }
-.ant_inputFileDrop.ant-active > i {
+.ant_inputFileDrop.ant_local.ant-active > i {
 	opacity: 1;
 }
-.ant_inputFileDrop > p {
+.ant_inputFileDrop.ant_local > p {
 	font-size: var(--ant_var-rem12px);
 	margin-top: 0px;
 	margin-bottom: 5px;
 }
-.ant_inputFileDrop > input[type=file] {
+.ant_inputFileDrop.ant_local > input[type=file] {
 	display: none;
+}
+/** full page drop area */
+.ant_inputFileDrop.ant_fullPage {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	background-color: var(--ant-theme-loadingProgressLeft);
+	text-align: center;
+	color: var(--ant-theme-loadingStepText);
+	z-index: var(--ant_layers_inputFileDropHover);
+	font-size: var(--ant_var-rem36px);
+	opacity: .8;
+}
+body.ant_inputFileDrop-dragActive .ant_inputFileDrop.ant_fullPage {
+	display: flex;
 }

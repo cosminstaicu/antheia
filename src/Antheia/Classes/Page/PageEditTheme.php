@@ -4,19 +4,11 @@ use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Accordion\Accordion;
-use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
 use Antheia\Antheia\Classes\Icon\IconVector;
-use Antheia\Antheia\Classes\Input\InputButton;
-use Antheia\Antheia\Classes\Input\InputColor;
-use Antheia\Antheia\Classes\Input\InputCustomButton;
-use Antheia\Antheia\Classes\Input\InputDate;
-use Antheia\Antheia\Classes\Input\InputInfo;
-use Antheia\Antheia\Classes\Input\InputSelect;
-use Antheia\Antheia\Classes\Input\InputText;
-use Antheia\Antheia\Classes\Input\InputTextarea;
-use Antheia\Antheia\Classes\Input\InputTime;
-use Antheia\Antheia\Classes\Menu\Item\MenuUpdate;
+use Antheia\Antheia\Classes\Input\NewInput;
+use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Theme\AbstractTheme;
+use Antheia\Antheia\Classes\InlineButton\InlineButton;
 /**
  * Defines a page to edit a framework theme
  * @author Cosmin Staicu
@@ -27,17 +19,17 @@ class PageEditTheme extends PageEmpty {
 	public function __construct() {
 		parent::__construct();
 		$this->theme = null;
-		$tab = new HeaderTab();
+		$tab = $this->addTab();
 		$tab->setTitle(Texts::get('SETTINGS'));
 		$tab->setStatus($tab::STATUS_SELECTED);
 		$tab->setHtmlId('ant-tab-edit');
-		$tab->setHref('javascript:ant_theme_showSettingsTab()');
-		$this->addTab($tab);
-		$tab = new HeaderTab();
+		$tab->setRender($tab::BUTTON);
+		$tab->setOnClick('ant_theme_showSettingsTab()');
+		$tab = $this->addTab();
 		$tab->setTitle(Texts::get('PREVIEW'));
+		$tab->setRender($tab::BUTTON);
 		$tab->setHtmlId('ant-tab-view');
-		$tab->setHref('javascript:ant_theme_showViewTab()');
-		$this->addTab($tab);
+		$tab->setOnClick('ant_theme_showViewTab()');
 		$this->templates = [];
 		foreach (AbstractTheme::getThemes() as $name) {
 			$className = '\Antheia\Antheia\Classes\Theme\Theme'.$name;
@@ -63,11 +55,11 @@ class PageEditTheme extends PageEmpty {
 			throw new Exception('setTheme');
 		}
 		$this->setTitle($this->theme->getName());
-		$exampleMenu = new MenuUpdate();
+		$exampleMenu = NewMenu::update();
 		$exampleMenu->setText(Texts::get('LOAD_THEME'));
 		$exampleMenu->setHref('javascript:ant_theme_showAvailableThemes()');
 		$this->addPageMenu($exampleMenu);
-		$selectTheme = new InputSelect();
+		$selectTheme = NewInput::select();
 		$selectTheme->setLabel(Texts::get('THEME'));
 		$selectTheme->setNameId('ant-load-theme');
 		$selectTheme->getButton()->setHtmlId('ant-theme-select');
@@ -102,7 +94,7 @@ class PageEditTheme extends PageEmpty {
 		$panel = $cell->addInputPanel();
 		$panel->setTitle(Texts::get('THEME_INFORMATION'));
 		// name
-		$input = new InputText();
+		$input = NewInput::text();
 		$input->setLabel(Texts::get('NAME'));
 		$input->setPlaceholder(Texts::getLc('NAME'));
 		$input->setNameId('ant_theme_name');
@@ -110,7 +102,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setValidation('ant_theme_validateName');
 		$panel->addInput($input);
 		// description
-		$input = new InputTextarea();
+		$input = NewInput::textarea();
 		$input->setLabel(Texts::get('DESCRIPTION'));
 		$input->setPlaceholder(Texts::getLc('DESCRIPTION'));
 		$input->setNameId('ant_theme_description');
@@ -124,7 +116,7 @@ class PageEditTheme extends PageEmpty {
 		$panel->setTitle(Texts::get('INTERFACE'));
 		$panel->setFullHeight();
 		// top bottom bar text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('TOP_BOTTOM_BAR_TEXT'));
 		$input->setPlaceholder(Texts::getLc('TOP_BOTTOM_BAR_TEXT'));
 		$input->setNameId('ant_theme_topBottomBarText');
@@ -132,7 +124,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// top bottom bar background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('TOP_BOTTOM_BAR_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('TOP_BOTTOM_BAR_BACKGROUND'));
 		$input->setNameId('ant_theme_topBottomBarBackground');
@@ -140,7 +132,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// menu text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('MENU_TEXT'));
 		$input->setPlaceholder(Texts::getLc('MENU_TEXT'));
 		$input->setNameId('ant_theme_menuText');
@@ -148,7 +140,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// menu background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('MENU_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('MENU_BACKGROUND'));
 		$input->setNameId('ant_theme_menuBackground');
@@ -156,7 +148,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// page title
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('PAGE_TITLE'));
 		$input->setPlaceholder(Texts::getLc('PAGE_TITLE'));
 		$input->setNameId('ant_theme_headerText');
@@ -164,7 +156,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// header background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('HEADER_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('HEADER_BACKGROUND'));
 		$input->setNameId('ant_theme_headerBackground');
@@ -172,7 +164,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// tab text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('TAB_TEXT'));
 		$input->setPlaceholder(Texts::getLc('TAB_TEXT'));
 		$input->setNameId('ant_theme_tabText');
@@ -180,7 +172,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// tab background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('TAB_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('TAB_BACKGROUND'));
 		$input->setNameId('ant_theme_tabBackground');
@@ -188,7 +180,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('BACKGROUND'));
 		$input->setNameId('ant_theme_background');
@@ -196,7 +188,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('TEXT'));
 		$input->setPlaceholder(Texts::getLc('TEXT'));
 		$input->setNameId('ant_theme_text');
@@ -211,7 +203,7 @@ class PageEditTheme extends PageEmpty {
 		$panel->setTitle(Texts::get('PANEL'));
 		$panel->setFullHeight();
 		// title
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('TITLE'));
 		$input->setPlaceholder(Texts::getLc('TITLE'));
 		$input->setNameId('ant_theme_panelTitle');
@@ -219,7 +211,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// main background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('BACKGROUND'));
 		$input->setNameId('ant_theme_panelBackground');
@@ -227,7 +219,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// secondary background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('SECONDARY_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('SECONDARY_BACKGROUND'));
 		$input->setNameId('ant_theme_panelSecondaryBackground');
@@ -235,7 +227,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// border
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('BORDER'));
 		$input->setPlaceholder(Texts::getLc('BACKGROUND'));
 		$input->setNameId('ant_theme_panelBorder');
@@ -250,7 +242,7 @@ class PageEditTheme extends PageEmpty {
 		$panel->setTitle(Texts::get('FORMS'));
 		$panel->setFullHeight();
 		// input border
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('INPUT_BORDER'));
 		$input->setPlaceholder(Texts::getLc('INPUT_BORDER'));
 		$input->setNameId('ant_theme_inputBorder');
@@ -258,7 +250,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// input icon
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('INPUT_ICON'));
 		$input->setPlaceholder(Texts::getLc('INPUT_ICON'));
 		$input->setNameId('ant_theme_inputIcon');
@@ -266,7 +258,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// input background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('INPUT_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('INPUT_BACKGROUND'));
 		$input->setNameId('ant_theme_inputBackground');
@@ -274,7 +266,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// input text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('INPUT_TEXT'));
 		$input->setPlaceholder(Texts::getLc('INPUT_TEXT'));
 		$input->setNameId('ant_theme_inputText');
@@ -282,7 +274,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// label text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('INPUT_LABEL'));
 		$input->setPlaceholder(Texts::getLc('INPUT_LABEL'));
 		$input->setNameId('ant_theme_inputLabel');
@@ -290,7 +282,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// button background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('BUTTON_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('BUTTON_BACKGROUND'));
 		$input->setNameId('ant_theme_buttonBackground');
@@ -298,7 +290,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// button hover
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('BUTTON_HOVER_BACKGROUND'));
 		$input->setPlaceholder(Texts::getLc('BUTTON_HOVER_BACKGROUND'));
 		$input->setNameId('ant_theme_buttonBackgroundHover');
@@ -306,7 +298,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// button text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('BUTTON_TEXT'));
 		$input->setPlaceholder(Texts::getLc('BUTTON_TEXT'));
 		$input->setNameId('ant_theme_buttonText');
@@ -321,7 +313,7 @@ class PageEditTheme extends PageEmpty {
 		$panel->setFullHeight();
 		$panel->setTitle(Texts::get('LOADING'));
 		// background effect
-		$input = new InputSelect();
+		$input = NewInput::select();
 		$input->setLabel(Texts::get('BACKGROUND_EFFECT'));
 		$input->setNameId('ant_theme_loadingBackdrop');
 		$input->addOption(
@@ -337,7 +329,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setAfterCallback('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// loading A
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('LOADING').' A');
 		$input->setPlaceholder(Texts::getLc('LOADING').' A');
 		$input->setNameId('ant_theme_loadingA');
@@ -345,7 +337,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// loading B
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('LOADING').' B');
 		$input->setPlaceholder(Texts::getLc('LOADING').' A');
 		$input->setNameId('ant_theme_loadingB');
@@ -353,7 +345,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps background
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(
 			Texts::get('STEPS').': '.Texts::get('BACKGROUND')
 		);
@@ -365,7 +357,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps border
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(
 				Texts::get('STEPS').': '.Texts::get('BORDER')
 		);
@@ -377,7 +369,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps text
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(
 			Texts::get('STEPS').': '.Texts::get('TEXT')
 		);
@@ -389,7 +381,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps left progress
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('STEPS_PROGRESS_LEFT'));
 		$input->setPlaceholder(Texts::getLc('STEPS_PROGRESS_LEFT'));
 		$input->setNameId('ant_theme_loadingProgressLeft');
@@ -397,7 +389,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps right progress
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('STEPS_PROGRESS_RIGHT'));
 		$input->setPlaceholder(Texts::getLc('STEPS_PROGRESS_RIGHT'));
 		$input->setNameId('ant_theme_loadingProgressRight');
@@ -405,12 +397,12 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// simple loading preview
-		$input = new InputButton();
+		$input = NewInput::button();
 		$input->setValue(Texts::get('LOADING_3_SEC'));
 		$input->setOnClick('ant_theme_simpleLoadingAnimation()');
 		$panel->addInput($input);
 		// loading steps preview
-		$input = new InputButton();
+		$input = NewInput::button();
 		$input->setValue(Texts::get('LOADING_STEPS'));
 		$input->setOnClick('ant_theme_stepsLoadingAnimation()');
 		$panel->addInput($input);
@@ -421,7 +413,7 @@ class PageEditTheme extends PageEmpty {
 		$panel->setFullHeight();
 		$panel->setTitle(Texts::get('OTHER_COLORS'));
 		// link
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('LINK'));
 		$input->setPlaceholder(Texts::getLc('LINK'));
 		$input->setNameId('ant_theme_link');
@@ -429,7 +421,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// link hover
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('LINK_HOVER'));
 		$input->setPlaceholder(Texts::getLc('LINK_HOVER'));
 		$input->setNameId('ant_theme_linkHover');
@@ -437,7 +429,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// valid
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('VALID'));
 		$input->setPlaceholder(Texts::getLc('VALID'));
 		$input->setNameId('ant_theme_valid');
@@ -445,7 +437,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// warning
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('WARNING'));
 		$input->setPlaceholder(Texts::getLc('WARNING'));
 		$input->setNameId('ant_theme_warning');
@@ -453,7 +445,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// shadows
-		$input = new InputColor();
+		$input = NewInput::color();
 		$input->setLabel(Texts::get('SHADOWS'));
 		$input->setPlaceholder(Texts::getLc('SHADOWS'));
 		$input->setNameId('ant_theme_shadow');
@@ -473,7 +465,7 @@ class PageEditTheme extends PageEmpty {
 		$cell->addWidth('md', 6);
 		$panel = $cell->addInfoPanel();
 		$panel->setFullHeight();
-		$exampleButton = new MenuUpdate();
+		$exampleButton = NewMenu::update();
 		$exampleButton->setText(Texts::getLc('EXAMPLE'));
 		$exampleButton->setHref('javascript:void(0)');
 		$panel->addMenu($exampleButton);
@@ -481,6 +473,24 @@ class PageEditTheme extends PageEmpty {
 		$panel->addNameValue(
 				'Lorem ipsum dolor', 
 				'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+		);
+		$lcInlineButton = new InlineButton();
+		$lcInlineButton->setIcon('bell');
+		$lcInlineButton->setIntensity($lcInlineButton::LOW);
+		$lcInlineButton->setText('Low contrast button');
+		$mcInlineButton = new InlineButton();
+		$mcInlineButton->setIcon('bell');
+		$mcInlineButton->setIntensity($mcInlineButton::MEDIUM);
+		$mcInlineButton->setText('Medium contrast button');
+		$hcInlineButton = new InlineButton();
+		$hcInlineButton->setIcon('bell');
+		$hcInlineButton->setIntensity($hcInlineButton::HIGH);
+		$hcInlineButton->setText('High contrast button');
+		$panel->addNameValue(
+				'Inline button',
+				$lcInlineButton->getHtml()
+				.'<br>'.$mcInlineButton->getHtml()
+				.'<br>'.$hcInlineButton->getHtml()
 		);
 		$acordeon = new Accordion();
 		$listaTexte = [
@@ -507,12 +517,12 @@ class PageEditTheme extends PageEmpty {
 		$panel->setFullHeight();
 		$panel->setTitle(Texts::get('FORM_EXAMPLE'));
 		// info
-		$input = new InputInfo();
+		$input = NewInput::info();
 		$input->setLabel(Texts::get('EXAMPLE'));
 		$input->setValue(Texts::get('COLOR_INPUT_EXAMPLE'));
 		$panel->addInput($input);
 		// text
-		$input = new InputText();
+		$input = NewInput::text();
 		$input->setLabel(Texts::get('INVALID_INPUT'));
 		$input->setPlaceholder(Texts::get('INVALID_INPUT_INFO'));
 		$input->setValue(Texts::get('INVALID_INPUT_INFO'));
@@ -520,31 +530,31 @@ class PageEditTheme extends PageEmpty {
 		$input->setInlineHelpText(Texts::get('INVALID_INPUT_INFO'));
 		$panel->addInput($input);
 		// date
-		$input = new InputDate();
+		$input = NewInput::date();
 		$input->setLabel(Texts::get('VALID_INPUT'));
 		$input->setValue(date('Ymd'));
 		$input->setInlineHelpText(Texts::get('VALID_INPUT_INFO'));
 		$input->setValidation('ant_theme_valid');
 		$panel->addInput($input);
 		// time - text
-		$input = new InputTime();
+		$input = NewInput::time();
 		$input->setLabel(Texts::get('TIME'));
 		$input->setValue(date('H:i'));
 		$panel->addInput($input);
 		// time - select
-		$input = new InputTime();
+		$input = NewInput::time();
 		$input->setLabel(Texts::get('TIME').' ('.Texts::get('SELECT').')');
 		$input->setSelectionMode();
 		$input->setValue(date('H:i'));
 		$panel->addInput($input);
 		// select
-		$input = new InputSelect();
+		$input = NewInput::select();
 		$input->setLabel(Texts::get('SELECT'));
 		for ($counter = 1; $counter < 5; $counter++) {
 			$input->addOption(Texts::get('VALUE').' '.$counter, $counter);
 		}
 		$panel->addInput($input);
-		$input = new InputButton();
+		$input = NewInput::button();
 		$input->setText(Texts::get('BUTTON'));
 		$input->setOnClick('ant_theme_getPhpCode()');
 		$panel->addInput($input);
@@ -554,14 +564,14 @@ class PageEditTheme extends PageEmpty {
 		$panel = $cell->addInputPanel();
 		$panel->setTitle(Texts::get('ANIMATIONS'));
 		// loading simple
-		$input = new InputCustomButton();
+		$input = NewInput::customButton();
 		$input->setIcon(IconVector::ICON_UPDATE);
 		$input->setLabel(Texts::get('LOADING_3_SEC'));
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_simpleLoadingAnimation()');
 		$panel->addInput($input);
 		// loading with steps
-		$input = new InputCustomButton();
+		$input = NewInput::customButton();
 		$input->addAttribute('data-pasul', Texts::get('STEP'));
 		$input->setHtmlId('butonSeIncarcaEtape');
 		$input->setIcon(IconVector::ICON_UPDATE);
@@ -570,14 +580,14 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnClick('ant_theme_stepsLoadingAnimation()');
 		$panel->addInput($input);
 		// large confirmation message
-		$input = new InputCustomButton();
+		$input = NewInput::customButton();
 		$input->setIcon(IconVector::ICON_VALID);
 		$input->setLabel(Texts::get('LARGE_MESSAGE'));
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_largeMessageAnimation(\'Lorem ipsum dolor\')');
 		$panel->addInput($input);
 		// discreet confirmation message
-		$input = new InputCustomButton();
+		$input = NewInput::customButton();
 		$input->setIcon(IconVector::ICON_ON_OFF);
 		$input->setLabel(Texts::get('SMALL_MESSAGE'));
 		$input->setValue(Texts::get('START_ANIMATION'));
