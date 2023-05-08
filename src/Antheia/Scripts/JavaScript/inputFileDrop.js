@@ -170,17 +170,17 @@ let ant_inputFileDrop_timeoutLeave = null;
 document.addEventListener("DOMContentLoaded", () => {
 	let elements = document.getElementsByClassName("ant_inputFileDrop");
 	if (ant_inputFileDrop_fullPageMode) {
-		document.body.addEventListener('dragenter', (event) => {
+		document.addEventListener('dragenter', (event) => {
 			document.body.classList.add('ant_inputFileDrop-dragActive');
 			clearTimeout(ant_inputFileDrop_timeoutLeave);
 			event.preventDefault();
 		});
-		document.body.addEventListener('dragover', (event) => {
+		document.addEventListener('dragover', (event) => {
 			document.body.classList.add('ant_inputFileDrop-dragActive');
 			clearTimeout(ant_inputFileDrop_timeoutLeave);
 			event.preventDefault();
 		});
-		document.body.addEventListener('dragleave', () => {
+		document.addEventListener('dragleave', () => {
 			ant_inputFileDrop_timeoutLeave = setTimeout(() => {
 				document.body.classList.remove('ant_inputFileDrop-dragActive');
 			}, 1000);
