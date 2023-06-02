@@ -51,6 +51,16 @@ if (isset($_POST['textInput'])) {
 $input->setLabel('Text field');
 $input->setPlaceholder('just a text field');
 $panel->addInput($input);
+// ******************************************************* text with suggestions
+$input = NewInput::text();
+$input->setSuggestion(2,'suggestions.php');
+$input->setName('textInput');
+if (isset($_POST['textInput'])) {
+	$input->setValue($_POST['textInput']);
+}
+$input->setLabel('Server suggestions<br>(try &quot;an&quot; or &quot;li&quot;)');
+$input->setPlaceholder('type an or li for examples');
+$panel->addInput($input);
 // ********************************************************************** number
 $input = NewInput::number();
 $input->setNameId('digitsInput');

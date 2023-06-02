@@ -1,11 +1,12 @@
 :root {
 	--ant_layers_inlineHelp : 10;
-	--ant_layers_topBar : 20;
-	--ant_layers_modal : 30;
-	--ant_layers_text-message : 40;
-	--ant_layers_fixed-buttons : 50;
-	--ant_layers_appMenu : 60;
-	--ant_layers_loading : 70;
-	--ant_layers_fullPageMessage : 80;
-	--ant_layers_inputFileDropHover : 90;
+	--ant_layers_inputSuggestions : 20;
+	--ant_layers_topBar : 30;
+	--ant_layers_modal : 40;
+	--ant_layers_text-message : 50;
+	--ant_layers_fixed-buttons : 60;
+	--ant_layers_appMenu : 70;
+	--ant_layers_loading : 80;
+	--ant_layers_fullPageMessage : 90;
+	--ant_layers_inputFileDropHover : 100;
 }

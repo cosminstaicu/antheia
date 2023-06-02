@@ -1,0 +1,66 @@
+div.ant_inputText_suggestions {
+	position: absolute;
+	width: calc(100% - 30px);
+	left: 15px;
+	z-index: var(--ant_layers_inputSuggestions);
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0ms 200ms;
+	margin-top: 3px;
+	background-color: var(--ant-theme-panelBackground);
+}
+div.ant_inputText_suggestions > div {
+	overflow-y: auto;
+	width: 100%;
+	max-height: 200px;
+}
+input:focus ~ div.ant_inputText_suggestions.ant-active {
+	grid-template-rows: 1fr;
+}
+input:focus ~ div.ant_inputText_suggestions.ant-active:not(.ant-loading) {
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
+}
+div.ant_inputText_suggestions > div > button {
+	display: block;
+	cursor: pointer;
+	background-color: var(--ant-theme-panelSecondaryBackground);
+	color: var(--ant-theme-inputText);
+	border-top: none;
+	border-left: 3px solid var(--ant-theme-inputBorder);
+	border-bottom: 1px solid var(--ant-theme-inputBorder);
+	border-right: 1px solid var(--ant-theme-inputBorder);
+	font-size: var(--ant_var-rem14px);
+	width: 100%;
+	text-align: left;
+	padding-top: 5px;
+	padding-left: 10px;
+	padding-bottom: 5px;
+	padding-right: 5px;
+}
+div.ant_inputText_suggestions > div > button:hover {
+	background-color: var(--ant-theme-panelBackground);
+	border-left: 6px solid var(--ant-theme-inputBorder);
+	padding-right: 2px;
+}
+div.ant_inputText_suggestions.ant-loading > div > button {
+	display: none;
+}
+div.ant_inputText_suggestions button.ant-selected {
+	border-left: 6px solid var(--ant-theme-inputBorder);
+	padding-right: 2px;
+	font-weight: bold;
+}
+div.ant_inputText_suggestions button.ant-inactive {
+	display: none;
+}
+div.ant_inputText_suggestions.ant-loading:before {
+	content: "";
+	width: var(--ant_var-rem14px);
+	height: var(--ant_var-rem14px);
+	display: block;
+	border: 3px solid var(--ant-theme-loadingA);
+	border-top-color: var(--ant-theme-loadingB);
+	border-bottom-color: var(--ant-theme-loadingB);
+	border-radius: 50%;
+	animation: ant_loading-spin 2s linear infinite;
+}

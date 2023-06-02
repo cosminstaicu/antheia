@@ -13,12 +13,12 @@ require '../_utils/init.php';
 $page = new PageEmpty();
 // checking the framework compatibility with the user browser
 $page->checkCompatibility();
-
 // adding an alert top right menu, as the first item,
 // before the ones inside the init_configurePage() function
 $alertMenu = new TopRightMenuAlert();
 $alertMenu->setRender($alertMenu::BUTTON);
 $alertMenu->setOnClick('alert()');
+$alertMenu->setName('An alert');
 $page->addTopRightMenu($alertMenu);
 // this function is defined inside utils/init.php required file
 init_configurePage($page);

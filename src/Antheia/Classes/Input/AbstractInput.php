@@ -107,11 +107,16 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 * the script checks if an html id exists.
 	 * If no id has been already defined by the user, then the script will
 	 * generate an unique id automatically.
+	 * @param boolean $forceGeneration (optional) (default false) if true then
+	 * the input must have an id, regardless of any checks so the method
+	 * will always generate an id if the input does not have one
 	 */
-	protected function checkHtmlId():void {
-		if ($this->getValidation() === '') {
-			// no validation function is defined, so no html id is required
-			return;
+	protected function checkHtmlId(bool $forceGeneration = false):void {
+		if (!$forceGeneration) {
+			if ($this->getValidation() === '') {
+				// no validation function is defined, so no html id is required
+				return;
+			}
 		}
 		if ($this->getHtmlId() !== '') {
 			return;

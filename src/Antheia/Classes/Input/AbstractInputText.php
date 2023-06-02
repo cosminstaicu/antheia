@@ -17,6 +17,8 @@ abstract class AbstractInputText extends AbstractInput {
 	private $type;
 	private $icon;
 	private $maxLength;
+	private $suggestionLimit;
+	private $suggestionUrl;
 	private static $globalMaxLength = 0;
 	public function __construct() {
 		parent::__construct();
@@ -24,6 +26,8 @@ abstract class AbstractInputText extends AbstractInput {
 		$this->icon = null;
 		$this->setPlaceholder('');
 		$this->maxLength = self::$globalMaxLength;
+		$this->suggestionLimit = null;
+		$this->suggestionUrl = null;
 	}
 	/**
 	 * Defines the default maximum length for all text based inputs (passwords,
@@ -71,8 +75,33 @@ abstract class AbstractInputText extends AbstractInput {
 	public function setMaxLength(int $max):void {
 		$this->maxLength = $max;
 	}
+	/**
+	 * Enables (or disables) the suggestions for the input. Suggestions are loaded
+	 * from the server and then cached. The minimum length for showing suggestions
+	 * can be set up using the $limit parameter
+	 * @param integer $limit the limit of the input for the query. If null then
+	 * suggestions are disabled. If a number is provided then the suggestions will
+	 * be enabled when the length of the typed value is egual of greater then
+	 * $limit. A request for suggestion update is sent to the server when the
+	 * first $limit characters are different then the last request.
+	 * @param string $url the url where the request for suggestions will be sent
+	 * of null if the suggestions are disabled.
+	 */
+	public function setSuggestion(?int $limit, string $url = NULL):void {
+		$this->suggestionLimit = $limit;
+		if ($limit === NULL) {
+			if ($url !== NULL) {
+				throw new Exception('If $limit is null then $url must be also null');
+			}
+		}
+		$this->suggestionUrl = $url;
+	}
 	public function getHtml():string {
-		$this->checkHtmlId();
+		if ($this->suggestionLimit === NULL) {
+			$this->checkHtmlId();
+		} else {
+			$this->checkHtmlId(true);
+		}
 		$code = '<input type="';
 		switch ($this->type) {
 			case self::TYPE_TEXT:
@@ -101,13 +130,45 @@ abstract class AbstractInputText extends AbstractInput {
 		if ($this->getDefaultValue() !== NULL) {
 			$code .= ' data-default="'.$this->getDefaultValue().'" ';
 		}
+		if ($this->suggestionLimit !== NULL) {
+			$code .= ' data-suggestion-last-request="'.uniqid().'"';
+			$code .= ' data-suggestion-limit='.$this->suggestionLimit.' ';
+			$code .= ' data-suggestion-url="'.$this->suggestionUrl.'" ';
+		}
 		$code .= $this->getAttributesAsText();
+		$onChange = '';
+		$onFocus = '';
+		$onKeyUp = '';
+		$onKeyDown = '';
+		$onBlur = '';
 		if ($this->getValidation() !== '') {
 			$code .= ' data-validate="'.$this->getValidation().'"';
-			$function = 'ant_forms_updateStatus(\''.$this->getHtmlId().'\')';
-			$code .= ' onchange = "'.$function.'"'
-					.' onkeyup = "'.$function.'"'
-					.' onblur = "'.$function.'"';
+			$function = 'ant_forms_updateStatus(\''.$this->getHtmlId().'\');';
+			$onChange .= $function;
+			$onKeyUp .= $function;
+			$onBlur .= $function;
+		}
+		if ($this->suggestionLimit !== NULL) {
+			$function = 'ant_inputText_updateSuggestions(this);';
+			$onChange .= $function;
+			$onKeyUp .= $function;
+			$onFocus .= $function;
+			$onKeyDown .= 'ant_inputText_keydown(event)';
+		}
+		if ($onChange !== '') {
+			$code .= ' onchange = "'.$onChange.'"';
+		}
+		if ($onKeyUp !== '') {
+			$code .= ' onkeyup = "'.$onKeyUp.'"';
+		}
+		if ($onKeyDown !== '') {
+			$code .= ' onkeydown = "'.$onKeyDown.'"';
+		}
+		if ($onBlur !== '') {
+			$code .= ' onblur = "'.$onBlur.'"';
+		}
+		if ($onFocus !== '') {
+			$code .= ' onfocus = "'.$onFocus.'"';
 		}
 		if ($this->getHtmlId() !== '') {
 			$code .= ' id="'.$this->getHtmlId().'" ';
@@ -115,9 +176,15 @@ abstract class AbstractInputText extends AbstractInput {
 		if ($this->maxLength != 0) {
 			$code .= ' maxlength="'.$this->maxLength.'" ';
 		}
+		if ($this->suggestionLimit !== NULL) {
+			$code .= ' autocomplete="off"';
+		}
 		$code .= '>';
 		if ($this->icon !== null) {
 			$code .= $this->icon->getHtml();
+		}
+		if ($this->suggestionLimit !== NULL) {
+			$code .= '<div class="ant_inputText_suggestions"><div></div></div>';
 		}
 		parent::setHtmlCode($code);
 		return parent::getHtml();
