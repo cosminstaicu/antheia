@@ -91,7 +91,6 @@ $panel->addMenu($button);
 // if the user types DELETE in the input
 $button = NewMenu::confirmDelete();
 $button->setAfterCallback('deleteConfirmed');
-$button->setItemId('14');
 $panel->addMenu($button);
 // the name-value pairs are added tot the panel
 $panel->addNameValue('Given name', 'John');

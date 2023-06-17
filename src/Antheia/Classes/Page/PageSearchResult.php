@@ -13,6 +13,8 @@ use Antheia\Antheia\Classes\Search\Views\SearchViewAccordion;
 use Antheia\Antheia\Classes\Search\Views\SearchViewCards;
 use Antheia\Antheia\Classes\Search\Views\SearchViewTable;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Wireframe\Cell;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * The template for a page that displays the search result, along with the
  * filters, to further refine the search.
@@ -33,17 +35,16 @@ class PageSearchResult extends PageEmpty {
 	private $selectOptions;
 	private $noItemsText;
 	private $uniqueIdCounter;
+	private $beforeFilters;
+	private $afterFilters;
+	private $beforeResults;
+	private $afterResults;
 	public function __construct() {
 		parent::__construct();
 		$this->wireframe = new Wireframe();
 		$this->wireframe->setType(Wireframe::TYPE_FIXED);
-		$row = $this->wireframe->addRow();
-		$cell = $row->addCell();
-		$cell->addWidth('sm', 12);
 		$this->form = new SearchForm();
-		$cell->addElement($this->form);
-		$row = $this->wireframe->addRow();
-		$this->resultsCell = $row->addCell();
+		$this->resultsCell = new Cell();
 		$this->resultsCell->addWidth('sm', 12);
 		$this->setPagination(1, 1);
 		$this->setListType(self::LIST_TYPE_ACCORDION);
@@ -52,7 +53,10 @@ class PageSearchResult extends PageEmpty {
 		$this->selectOptions = new SearchOptionBar();
 		$this->noItemsText = Texts::get('EMPTY_SEARCH');
 		$this->uniqueIdCounter = 0;
-		parent::addElement($this->wireframe);
+		$this->beforeFilters = [];
+		$this->afterFilters = [];
+		$this->beforeResults = [];
+		$this->afterResults = [];
 	}
 	/**
 	 * Defines the text displayed when no items have been found
@@ -174,7 +178,62 @@ class PageSearchResult extends PageEmpty {
 	public function getForm():SearchForm {
 		return $this->form;
 	}
+	/**
+	 * Adds a HTML element before the filters displayed on the page
+	 * @param HtmlCode $element the element to be added
+	 */
+	public function addElementBeforeFilters(HtmlCode $element):void {
+		$this->beforeFilters[] = $element;
+	}
+	/**
+	 * Adds a HTML element after the filters displayed on the page.
+	 * As the page is displayed using a wireframe, all elements added using this
+	 * method will be inserted into a single cell, from a new row added just after
+	 * the row with the filters.
+	 * @param HtmlCode $element the element to be added
+	 */
+	public function addElementAfterFilters(HtmlCode $element):void {
+		$this->afterFilters[] = $element;
+	}
+	/**
+	 * Adds a HTML element before the results displayed on the page
+	 * As the page is displayed using a wireframe, all elements added using this
+	 * method will be inserted into a single cell, from a new row added just before
+	 * the row with the results.
+	 * @param HtmlCode $element the element to be added
+	 */
+	public function addElementBeforeResults(HtmlCode $element):void {
+		$this->beforeResults[] = $element;
+	}
+	/**
+	 * Adds a HTML element after the results displayed on the page
+	 * @param HtmlCode $element the element to be added
+	 */
+	public function addElementAfterResults(HtmlCode $element):void {
+		$this->afterResults[] = $element;
+	}
 	public function getHtml():string {
+		foreach ($this->beforeFilters as $item) {
+			parent::addElement($item);
+		}
+		$this->wireframe->addRow()->addCell()->addElement($this->form);
+		if (count($this->afterFilters) > 0) {
+			$cell = $this->wireframe->addRow()->addCell();
+			foreach ($this->afterFilters as $item) {
+				$cell->addElement($item);
+			}
+		}
+		if (count($this->beforeResults) > 0) {
+			$cell = $this->wireframe->addRow()->addCell();
+			foreach ($this->beforeResults as $item) {
+				$cell->addElement($item);
+			}
+		}
+		$this->wireframe->addRow()->addCell($this->resultsCell);
+		parent::addElement($this->wireframe);
+		foreach ($this->afterResults as $item) {
+			parent::addElement($item);
+		}
 		switch ($this->listType) {
 			case self::LIST_TYPE_ACCORDION:
 				$results = new SearchViewAccordion();

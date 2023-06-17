@@ -91,8 +91,14 @@ class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
 		if ( ($this->url !== '') && ($this->afterCallback !== '') ) {
 			throw new Exception('Both URL and afterCallback are defined, use only one.');
 		}
-		if ($this->paramValue === null) {
+		if (($this->afterCallback === '') && ($this->paramValue === null)) {
 			throw new Exception('Item ID is not defined');
+		}
+		if (($this->afterCallback !== '') && ($this->paramValue === null)) {
+			// param value is set with an empty string as it is not used
+			// because the menu will trigger the javascript afterCallback
+			// method
+			$this->paramValue = '';
 		}
 		$this->addAttribute('data-url', $this->url);
 		$this->addAttribute('data-input-value', $this->paramValue);

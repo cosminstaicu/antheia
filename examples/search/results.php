@@ -4,6 +4,7 @@ use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageSearchResult;
 use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
 use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Antheia\Classes\Html;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageSearchResult();
