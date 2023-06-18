@@ -35,10 +35,12 @@ class PageSearchResult extends PageEmpty {
 	private $selectOptions;
 	private $noItemsText;
 	private $uniqueIdCounter;
+	private $beforeContent;
 	private $beforeFilters;
 	private $afterFilters;
 	private $beforeResults;
 	private $afterResults;
+	private $afterContent;
 	public function __construct() {
 		parent::__construct();
 		$this->wireframe = new Wireframe();
@@ -53,10 +55,12 @@ class PageSearchResult extends PageEmpty {
 		$this->selectOptions = new SearchOptionBar();
 		$this->noItemsText = Texts::get('EMPTY_SEARCH');
 		$this->uniqueIdCounter = 0;
+		$this->beforeContent = [];
 		$this->beforeFilters = [];
 		$this->afterFilters = [];
 		$this->beforeResults = [];
 		$this->afterResults = [];
+		$this->afterContent = [];
 	}
 	/**
 	 * Defines the text displayed when no items have been found
@@ -179,42 +183,70 @@ class PageSearchResult extends PageEmpty {
 		return $this->form;
 	}
 	/**
-	 * Adds a HTML element before the filters displayed on the page
-	 * @param HtmlCode $element the element to be added
+	 * Adds a HTML element before the content of the page
+	 * (before the main wireframe)
+	 * @param HtmlCode $item the element to be added
 	 */
-	public function addElementBeforeFilters(HtmlCode $element):void {
-		$this->beforeFilters[] = $element;
+	public function addItemBeforeContent(HtmlCode $item):void {
+		$this->beforeContent[] = $item;
+	}
+	/**
+	 * Adds a HTML element after the content of the page
+	 * (after the main wireframe)
+	 * @param HtmlCode $item the element to be added
+	 */
+	public function addItemAfterContent(HtmlCode $item):void {
+		$this->afterContent[] = $item;
+	}
+	/**
+	 * Adds a HTML element before the filters displayed on the page
+	 * As the page is displayed using a wireframe, all elements added using this
+	 * method will be inserted into a single cell, from a new row added just before
+	 * the row with the filters.
+	 * @param HtmlCode $item the element to be added
+	 */
+	public function addItemBeforeFilters(HtmlCode $item):void {
+		$this->beforeFilters[] = $item;
 	}
 	/**
 	 * Adds a HTML element after the filters displayed on the page.
 	 * As the page is displayed using a wireframe, all elements added using this
 	 * method will be inserted into a single cell, from a new row added just after
 	 * the row with the filters.
-	 * @param HtmlCode $element the element to be added
+	 * @param HtmlCode $item the element to be added
 	 */
-	public function addElementAfterFilters(HtmlCode $element):void {
-		$this->afterFilters[] = $element;
+	public function addItemAfterFilters(HtmlCode $item):void {
+		$this->afterFilters[] = $item;
 	}
 	/**
 	 * Adds a HTML element before the results displayed on the page
 	 * As the page is displayed using a wireframe, all elements added using this
 	 * method will be inserted into a single cell, from a new row added just before
 	 * the row with the results.
-	 * @param HtmlCode $element the element to be added
+	 * @param HtmlCode $item the element to be added
 	 */
-	public function addElementBeforeResults(HtmlCode $element):void {
-		$this->beforeResults[] = $element;
+	public function addItemBeforeResults(HtmlCode $item):void {
+		$this->beforeResults[] = $item;
 	}
 	/**
 	 * Adds a HTML element after the results displayed on the page
-	 * @param HtmlCode $element the element to be added
+	 * As the page is displayed using a wireframe, all elements added using this
+	 * method will be inserted into a single cell, from a new row added just after
+	 * the row with the results.
+	 * @param HtmlCode $item the element to be added
 	 */
-	public function addElementAfterResults(HtmlCode $element):void {
-		$this->afterResults[] = $element;
+	public function addItemAfterResults(HtmlCode $item):void {
+		$this->afterResults[] = $item;
 	}
 	public function getHtml():string {
-		foreach ($this->beforeFilters as $item) {
+		foreach ($this->beforeContent as $item) {
 			parent::addElement($item);
+		}
+		if (count($this->beforeFilters) > 0) {
+			$cell = $this->wireframe->addRow()->addCell();
+			foreach ($this->beforeFilters as $item) {
+				$cell->addElement($item);
+			}
 		}
 		$this->wireframe->addRow()->addCell()->addElement($this->form);
 		if (count($this->afterFilters) > 0) {
@@ -230,8 +262,15 @@ class PageSearchResult extends PageEmpty {
 			}
 		}
 		$this->wireframe->addRow()->addCell($this->resultsCell);
+		
+		if (count($this->afterResults) > 0) {
+			$cell = $this->wireframe->addRow()->addCell();
+			foreach ($this->afterResults as $item) {
+				$cell->addElement($item);
+			}
+		}
 		parent::addElement($this->wireframe);
-		foreach ($this->afterResults as $item) {
+		foreach ($this->afterContent as $item) {
 			parent::addElement($item);
 		}
 		switch ($this->listType) {
