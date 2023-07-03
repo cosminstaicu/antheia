@@ -11,6 +11,7 @@ use Antheia\Antheia\Interfaces\BeforeAfterCallback;
  * @author Cosmin Staicu
  */
 class InputDate extends AbstractInput implements BeforeAfterCallback {
+	private $button;
 	private $displayUndefined;
 	private $displayToday;
 	private $beforeCallback;
@@ -18,6 +19,7 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 	private static $todayValue = '0';
 	public function __construct() {
 		parent::__construct();
+		$this->button = new InputRawCustomButton();
 		$this->displayToday = false;
 		$this->displayUndefined = false;
 		$this->exportForAttributeInLabel(false);
@@ -27,6 +29,13 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 		}
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+	}
+	/**
+	 * Returns the button that manages the input
+	 * @return InputRawCustomButton the visible button
+	 */
+	public function getButton():InputRawCustomButton {
+		return $this->button;
 	}
 	/**
 	 * Defines if a button with TODAY value shoud be available
@@ -53,43 +62,42 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 	}
 	public function getHtml():string {
 		$this->checkHtmlId();
-		$button = new InputRawCustomButton();
-		$button->addAttribute('data-ant-type', 'date');
-		$button->setHiddenInputHtmlId($this->getHtmlId());
-		$button->setHiddenInputName($this->getName());
-		$button->setHiddenInputValue($this->getValue());
+		$this->button->addAttribute('data-ant-type', 'date');
+		$this->button->setHiddenInputHtmlId($this->getHtmlId());
+		$this->button->setHiddenInputName($this->getName());
+		$this->button->setHiddenInputValue($this->getValue());
 		if ($this->getDefaultValue() !== NULL) {
-			$button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
+			$this->button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
 		}
 		foreach ($this->getAttributeList() as $info) {
-			$button->addHiddenInputAttribute($info['name'], $info['value']);
+			$this->button->addHiddenInputAttribute($info['name'], $info['value']);
 		}
-		$button->setText(Texts::formatDate($this->getValue()));
-		$button->setIcon(IconVector::ICON_DATE);
-		$button->setOnClick('ant_inputDate_start(this)');
-		$button->addHiddenInputAttribute('data-validate', $this->getValidation());
-		$button->addAttribute('data-label', $this->getLabelText());
-		$button->addAttribute('data-today', self::$todayValue);
-		$button->addTextAttribute('today', 'TODAY');
-		$button->addAttribute('data-language', Globals::getLanguage());
+		$this->button->setText(Texts::formatDate($this->getValue()));
+		$this->button->setIcon(IconVector::ICON_DATE);
+		$this->button->setOnClick('ant_inputDate_start(this)');
+		$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
+		$this->button->addAttribute('data-label', $this->getLabelText());
+		$this->button->addAttribute('data-today', self::$todayValue);
+		$this->button->addTextAttribute('today', 'TODAY');
+		$this->button->addAttribute('data-language', Globals::getLanguage());
 		if ($this->displayToday) {
-			$button->addAttribute('data-show-today', 'yes');
+			$this->button->addAttribute('data-show-today', 'yes');
 		} else {
-			$button->addAttribute('data-show-today', 'no');
+			$this->button->addAttribute('data-show-today', 'no');
 		}
-		$button->addAttribute('data-undefined-date', Globals::getUndefinedDate());
-		$button->addTextAttribute('undefined', 'DOES_NOT_MATTER');
+		$this->button->addAttribute('data-undefined-date', Globals::getUndefinedDate());
+		$this->button->addTextAttribute('undefined', 'DOES_NOT_MATTER');
 		if ($this->displayUndefined) {
-			$button->addAttribute('data-show-undefined', 'yes');
+			$this->button->addAttribute('data-show-undefined', 'yes');
 		} else {
-			$button->addAttribute('data-show-undefined', 'no');
+			$this->button->addAttribute('data-show-undefined', 'no');
 		}
-		$button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
-		$button->addHiddenInputAttribute('data-post', $this->afterCallback);
+		$this->button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
+		$this->button->addHiddenInputAttribute('data-post', $this->afterCallback);
 		if ($this->exportJavascript()) {
-			$button->addHiddenInputAttribute('data-validate', $this->getValidation());
+			$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		}
-		$this->setHtmlCode($button->getHtml());
+		$this->setHtmlCode($this->button->getHtml());
 		// checking if the destination file exists in cache
 		$ajaxFile = Internals::getCachePath('date.php');
 		// unlink($ajaxFile);

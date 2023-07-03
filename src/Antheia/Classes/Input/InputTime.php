@@ -12,6 +12,7 @@ use Antheia\Antheia\Interfaces\BeforeAfterCallback;
  * @author Cosmin Staicu
  */
 class InputTime extends AbstractInput implements BeforeAfterCallback {
+	private $button;
 	private $selectMode;
 	private $hourMin;
 	private $hourMax;
@@ -24,6 +25,7 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 	private $afterCallback;
 	public function __construct() {
 		parent::__construct();
+		$this->button = new InputRawCustomButton();
 		$this->selectMode = false;
 		$this->hourMin = 0;
 		$this->hourMax = 23;
@@ -36,6 +38,13 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		$this->setValue(Globals::getUndefinedTime());
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+	}
+	/**
+	 * Returns the button that manages the input
+	 * @return InputRawCustomButton the visible button
+	 */
+	public function getButton():InputRawCustomButton {
+		return $this->button;
 	}
 	/**
 	 * Calling the method sets the selection mode for the input. If selection mode
@@ -105,47 +114,46 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 	}
 	public function getHtml():string {
 		$this->checkHtmlId();
-		$button = new InputRawCustomButton();
-		$button->addAttribute('data-ant-type', 'time');
-		$button->setText(Texts::formatTime($this->getValue()));
-		$button->setIcon(IconVector::ICON_TIME);
-		$button->setHiddenInputHtmlId($this->getHtmlId());
-		$button->setHiddenInputName($this->getName());
-		$button->setHiddenInputValue($this->getValue());
+		$this->button->addAttribute('data-ant-type', 'time');
+		$this->button->setText(Texts::formatTime($this->getValue()));
+		$this->button->setIcon(IconVector::ICON_TIME);
+		$this->button->setHiddenInputHtmlId($this->getHtmlId());
+		$this->button->setHiddenInputName($this->getName());
+		$this->button->setHiddenInputValue($this->getValue());
 		if ($this->getDefaultValue() !== NULL) {
-			$button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
+			$this->button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
 		}
-		$button->setOnClick('ant_inputTime_start(this)');
-		$button->addHiddenInputAttribute('data-validate', $this->getValidation());
+		$this->button->setOnClick('ant_inputTime_start(this)');
+		$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		if ($this->selectMode) {
-			$button->addAttribute('data-select', 'active');
+			$this->button->addAttribute('data-select', 'active');
 		} else {
-			$button->addAttribute('data-select', 'inactive');
+			$this->button->addAttribute('data-select', 'inactive');
 		}
-		$button->addAttribute('data-hour-step', $this->hourStep);
-		$button->addAttribute('data-hour-min', $this->hourMin);
-		$button->addAttribute('data-hour-max', $this->hourMax);
-		$button->addAttribute('data-minute-step', $this->minuteStep);
-		$button->addAttribute('data-minute-min', $this->minuteMin);
-		$button->addAttribute('data-minute-max', $this->minuteMax);
-		$button->addAttribute('data-label', $this->getLabelText());
-		$button->addTextAttribute('undefined', 'DOES_NOT_MATTER');
-		$button->addAttribute('data-undefined-value', Globals::getUndefinedTime());
-		$button->addTextAttribute('hour', 'HOUR');
-		$button->addTextAttribute('minute', 'MINUTE');
-		$button->addTextAttribute('error', 'SELECTED_VALUE_INVALID');
-		$button->addTextAttribute('submit', 'SUBMIT');
-		$button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
-		$button->addHiddenInputAttribute('data-post', $this->afterCallback);
+		$this->button->addAttribute('data-hour-step', $this->hourStep);
+		$this->button->addAttribute('data-hour-min', $this->hourMin);
+		$this->button->addAttribute('data-hour-max', $this->hourMax);
+		$this->button->addAttribute('data-minute-step', $this->minuteStep);
+		$this->button->addAttribute('data-minute-min', $this->minuteMin);
+		$this->button->addAttribute('data-minute-max', $this->minuteMax);
+		$this->button->addAttribute('data-label', $this->getLabelText());
+		$this->button->addTextAttribute('undefined', 'DOES_NOT_MATTER');
+		$this->button->addAttribute('data-undefined-value', Globals::getUndefinedTime());
+		$this->button->addTextAttribute('hour', 'HOUR');
+		$this->button->addTextAttribute('minute', 'MINUTE');
+		$this->button->addTextAttribute('error', 'SELECTED_VALUE_INVALID');
+		$this->button->addTextAttribute('submit', 'SUBMIT');
+		$this->button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
+		$this->button->addHiddenInputAttribute('data-post', $this->afterCallback);
 		if ($this->displayUndefined) {
-			$button->addAttribute('data-show-undefined', 'yes');
+			$this->button->addAttribute('data-show-undefined', 'yes');
 		} else {
-			$button->addAttribute('data-show-undefined', 'no');
+			$this->button->addAttribute('data-show-undefined', 'no');
 		}
 		foreach ($this->getAttributeList() as $info) {
-			$button->addHiddenInputAttribute($info['name'], $info['value']);
+			$this->button->addHiddenInputAttribute($info['name'], $info['value']);
 		}
-		$this->setHtmlCode($button->getHtml());
+		$this->setHtmlCode($this->button->getHtml());
 		return parent::getHtml();
 	}
 }
