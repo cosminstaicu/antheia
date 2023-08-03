@@ -40,6 +40,7 @@ $row = $wireframe->addRow();
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
 $panel = $cell->addPanel();
+$panel->setFullHeight();
 $panel->setTitle('Loading animation');
 $panel->addText(
 	'<p>A simple modal that starts a loading animation after 2 seconds. The animation
@@ -48,7 +49,20 @@ $panel->addText(
 $button = new InputButton();
 $button->setText('Show modal');
 $button->setOnClick('loadingModal()');
-$panel->addElement($button);
+$panel->addFooterElement($button);
+// a modal with options (an option with an icon, a title and a description)
+$cell = $row->addCell();
+$cell->addWidth('md', 6);
+$panel = $cell->addPanel();
+$panel->setFullHeight();
+$panel->setTitle('A menu inside a modal');
+$panel->addText(
+	'<p>A modal having some options. Each option is a button, having a javascript
+	function attached to the click event.</p>');
+$button = new InputButton();
+$button->setText('Show modal');
+$button->setOnClick('modalWithOptions()');
+$panel->addFooterElement($button);
 // adding a panel to display page source info
 // the function is defined inside the utils/init.php file
 init_insertPageSource($page, 'modal', [

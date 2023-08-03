@@ -70,3 +70,35 @@ function loadingModal() {
 		modal.stopLoading();
 	}, 4000);
 }
+/**
+ * Constructs and shows a modal with options
+ */
+function modalWithOptions() {
+	let modal = new ant_modalMenu();
+	modal.addMenuOption({
+		title : "First option",
+		description : "This is a description for the first button with close on click",
+		icon : "user"
+	}).addEventListener("click", () => {
+		console.log("click on 1");
+		modal.hide();
+	});
+	modal.addMenuOption({
+		title : "Second option",
+		description : "This is a description for the second button in the list with close on click",
+		icon : "phone",
+		iconAddon : "user"
+	}).addEventListener("click", () => {
+		console.log("click on 2");
+		modal.hide();
+	});
+	modal.addMenuOption({
+		title : "Third option",
+		description : "This is a description for the third button in the list, no close on click",
+		icon : "default"
+	}).addEventListener("click", () => {
+		console.log("click on 3");
+	});
+	modal.setHeader("A modal with menu items");
+	modal.show();
+}

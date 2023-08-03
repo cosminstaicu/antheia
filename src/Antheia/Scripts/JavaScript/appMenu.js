@@ -6,7 +6,7 @@ function ant_appMenu_toggle() {
 }
 /**
  * Toggles the submenu list from a menu.
- * @param {Element} element the menu that contains the submenu
+ * @param {HTMLButtonElement} element the menu that contains the submenu
  */
 function ant_appMenu_toggleSubmenu(element) {
 	let i = 0;

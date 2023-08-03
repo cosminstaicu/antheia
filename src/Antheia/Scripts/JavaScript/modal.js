@@ -2,52 +2,60 @@
  * Defines a modal that can be added to the document
  */
 class ant_modal {
-	htmlElement;
-	panel;
-	header;
-	headerAlign;
-	content;
-	footer;
-	footerAlign;
-	onClose;
+	/** @type {HTMLDivElement} */
+	#content;
+	/** @type {HTMLDivElement|null} */
+	#footer;
+	/** @type {"left"|"center"|"right"} */
+	#footerAlign;
+	/** @type {HTMLDivElement} */
+	#header;
+	/** @type {"left"|"center"|"right"} */
+	#headerAlign;
+	/** @type {HTMLDivElement} */
+	#htmlElement;
+	/** @type {CallableFunction|null} */
+	#onClose;
+	/** @type {HTMLDivElement} */
+	#panel;
 	constructor () {
-		this.htmlElement = document.createElement("DIV");
-		this.htmlElement.classList.add('ant_modal');
+		this.#htmlElement = document.createElement("DIV");
+		this.#htmlElement.classList.add('ant_modal');
 		switch (ant_theme_backdrop) {
 			case "simple":
-				this.htmlElement.classList.remove("ant-blur");
+				this.#htmlElement.classList.remove("ant-blur");
 				break;
 			case "blur":
-				this.htmlElement.classList.add("ant-blur");
+				this.#htmlElement.classList.add("ant-blur");
 				break;
 			default:
 		}
-		this.htmlElement.addEventListener("closeOnEsc", () => {
+		this.#htmlElement.addEventListener("closeOnEsc", () => {
 			this.hide();
 		});
-		this.htmlElement.addEventListener("mousedown", (event) => {
+		this.#htmlElement.addEventListener("mousedown", (event) => {
 			event.stopPropagation();
 			this.hide();
 		});
-		this.panel = document.createElement("DIV");
-		this.panel.classList.add("ant_panel");
-		this.panel.addEventListener("mousedown", (event) => {
+		this.#panel = document.createElement("DIV");
+		this.#panel.classList.add("ant_panel");
+		this.#panel.addEventListener("mousedown", (event) => {
 			event.stopPropagation();
 		});
-		this.header = null;
+		this.#header = null;
 		this.setHeaderAlign('left');
-		this.content = document.createElement("DIV");
-		this.content.classList.add("ant_modal-content");
-		this.panel.append(this.content);	
-		this.footer = null;
+		this.#content = document.createElement("DIV");
+		this.#content.classList.add("ant_modal-content");
+		this.#panel.append(this.#content);	
+		this.#footer = null;
 		this.setFooterAlign('right');
-		this.htmlElement.append(this.panel);
-		this.onClose = null;
+		this.#htmlElement.append(this.#panel);
+		this.#onClose = null;
 	}
 	/**
 	 * Sets an element align, by setting a class name
 	 * @param {HTMLElement} element the element to be aligned
-	 * @param {String} align the align to be set as: left, center, right
+	 * @param {"left"|"center"|"right"} align the align to be set as: left, center, right
 	 */
 	#setElementAlign(element, align) {
 		element.classList.remove('ant-left');
@@ -69,35 +77,36 @@ class ant_modal {
 	setHeader(headerCode) {
 		if (headerCode === null) {
 			// the current header should be remove, if it exists
-			if (this.header !== null) {
-				this.header.remove();
+			if (this.#header !== null) {
+				this.#header.remove();
 			}
-			this.header = null;
+			this.#header = null;
 			return false;
 		}
 		// the header must exists
-		if (this.header === null) {
-			this.header = document.createElement("DIV");
-			this.header.classList.add("ant_modal-header");
-			this.panel.prepend(this.header);
-			this.setHeaderAlign(this.headerAlign);
+		if (this.#header === null) {
+			this.#header = document.createElement("DIV");
+			this.#header.classList.add("ant_modal-header");
+			this.#panel.prepend(this.#header);
+			this.setHeaderAlign(this.#headerAlign);
 		}
 		if (typeof headerCode === "string") {
-			this.header.innerHTML = headerCode;
+			this.#header.innerHTML = headerCode;
 			return false;
 		}
-		this.header.innerHTML = '';
-		this.header.append(headerCode);
+		this.#header.innerHTML = '';
+		this.#header.append(headerCode);
 	}
 	/**
 	 * Sets the alignment of the header elements.
-	 * @param {String} align the alignment of the header as: left, center, right.
+	 * @param {"left"|"center"|"right"} align the alignment of the header as:
+	 * left, center, right.
 	 */
 	setHeaderAlign(align) {
-		if (this.header !== null) {
-			this.#setElementAlign(this.header, align);
+		if (this.#header !== null) {
+			this.#setElementAlign(this.#header, align);
 		}
-		this.headerAlign = align;
+		this.#headerAlign = align;
 	}
 	/**
 	 * Sets the html code for the content of the modal
@@ -110,11 +119,11 @@ class ant_modal {
 	 */
 	setContent(contentCode) {
 		if (typeof contentCode === "string") {
-			this.content.innerHTML = contentCode;
+			this.#content.innerHTML = contentCode;
 			return false;
 		}
-		this.content.innerHTML = '';
-		this.content.appendChild(contentCode);
+		this.#content.innerHTML = '';
+		this.#content.appendChild(contentCode);
 	}
 	/**
 	 * Adds a HTMLElement to the content of the modal. Existing elements will
@@ -123,21 +132,22 @@ class ant_modal {
 	 * content of the modal
 	 */
 	appendContent(htmlElement) {
-		this.content.appendChild(htmlElement);
+		this.#content.appendChild(htmlElement);
 	}
 	/**
 	 * Sets the alignment of the content elements.
-	 * @param {String} align the alignment of the content as: left, center, right.
+	 * @param {"left"|"center"|"right"} align the alignment of the content as:
+	 * left, center, right.
 	 */
 	setContentAlign(align) {
-		this.#setElementAlign(this.content, align);
+		this.#setElementAlign(this.#content, align);
 	}
 	/**
 	 * Adds a class to the main content container
 	 * @param {String} className the class to be added
 	 */
 	addContentClass(className) {
-		this.content.classList.add(className);
+		this.#content.classList.add(className);
 	}
 	/**
 	 * Sets the html code for the footer of the modal
@@ -153,25 +163,25 @@ class ant_modal {
 	setFooter(footerCode) {
 		if (footerCode === null) {
 			// the current footer should be remove, if it exists
-			if (this.footer !== null) {
-				this.footer.remove();
+			if (this.#footer !== null) {
+				this.#footer.remove();
 			}
-			this.footer = null;
+			this.#footer = null;
 			return false;
 		}
 		// the footer must exists
-		if (this.footer === null) {
-			this.footer = document.createElement("DIV");
-			this.footer.classList.add("ant_modal-footer");
-			this.panel.append(this.footer);
-			this.setFooterAlign(this.footerAlign);
+		if (this.#footer === null) {
+			this.#footer = document.createElement("DIV");
+			this.#footer.classList.add("ant_modal-footer");
+			this.#panel.append(this.#footer);
+			this.setFooterAlign(this.#footerAlign);
 		}
 		if (typeof footerCode === "string") {
-			this.footer.innerHTML = footerCode;
+			this.#footer.innerHTML = footerCode;
 			return false;
 		}
-		this.footer.innerHTML = '';
-		this.footer.append(footerCode);
+		this.#footer.innerHTML = '';
+		this.#footer.append(footerCode);
 	}
 	/**
 	 * Adds a HTMLElement to the footer of the modal. Existing elements will
@@ -180,23 +190,24 @@ class ant_modal {
 	 * footer of the modal
 	 */
 	appendFooter(htmlElement) {
-		if (this.footer === null) {
-			this.footer = document.createElement("DIV");
-			this.footer.classList.add("ant_modal-footer");
-			this.panel.append(this.footer);
-			this.setFooterAlign(this.footerAlign);
+		if (this.#footer === null) {
+			this.#footer = document.createElement("DIV");
+			this.#footer.classList.add("ant_modal-footer");
+			this.#panel.append(this.#footer);
+			this.setFooterAlign(this.#footerAlign);
 		}
-		this.footer.append(htmlElement);
+		this.#footer.append(htmlElement);
 	}
 	/**
 	 * Sets the alignment of the footer elements.
-	 * @param {String} align the alignment of the footer as: left, center, right.
+	 * @param {"left"|"center"|"right"} align the alignment of the footer as:
+	 * left, center, right.
 	 */
 	setFooterAlign(align) {
-		if (this.footer !== null) {
-			this.#setElementAlign(this.footer, align);
+		if (this.#footer !== null) {
+			this.#setElementAlign(this.#footer, align);
 		}
-		this.footerAlign = align;
+		this.#footerAlign = align;
 	}
 	/**
 	 * Defines the function to be called when the modal is closed.
@@ -204,16 +215,16 @@ class ant_modal {
 	 * the modal is closed or null if no callback is needed
 	 */
 	setOnClose(callback) {
-		this.onClose = callback;
+		this.#onClose = callback;
 	}
 	/**
 	 * Shows the modal (inserts the html code into the body of the page)
 	 */
 	show() {
-		this.htmlElement.classList.add("ant-hidden");
-		document.body.append(this.htmlElement);
+		this.#htmlElement.classList.add("ant-hidden");
+		document.body.append(this.#htmlElement);
 		setTimeout(() => {
-			this.htmlElement.classList.remove("ant-hidden");
+			this.#htmlElement.classList.remove("ant-hidden");
 		}, 50);
 	}
 	/**
@@ -237,36 +248,36 @@ class ant_modal {
 				hideFooter = params.hideFooter;
 			}
 		}
-		this.panel.classList.add("ant-loading");
+		this.#panel.classList.add("ant-loading");
 		if (hideHeader) {
-			this.panel.classList.add("ant-no-header");
+			this.#panel.classList.add("ant-no-header");
 		}
 		if (hideFooter) {
-			this.panel.classList.add("ant-no-footer");
+			this.#panel.classList.add("ant-no-footer");
 		}
 	}
 	/**
 	 * Stops any loading animation inside the modal
 	 */
 	stopLoading() {
-		this.panel.classList.remove("ant-loading");
-		this.panel.classList.remove("ant-no-header");
-		this.panel.classList.remove("ant-no-footer");
+		this.#panel.classList.remove("ant-loading");
+		this.#panel.classList.remove("ant-no-header");
+		this.#panel.classList.remove("ant-no-footer");
 	}
 	/**
 	 * Removes the html element from the body of the page
 	 */
 	hide() {
-		if (this.htmlElement.classList.contains("ant-hidden")) {
+		if (this.#htmlElement.classList.contains("ant-hidden")) {
 			return false;
 		}
-		if (this.onClose !== null) {
-			this.onClose();
+		if (this.#onClose !== null) {
+			this.#onClose();
 		}
 		setTimeout(() => {
-			this.htmlElement.remove();
+			this.#htmlElement.remove();
 		}, 500);
-		this.htmlElement.classList.add("ant-hidden");
+		this.#htmlElement.classList.add("ant-hidden");
 	}
 }
 // adding an global listener for the ESC key, that will close the last opened

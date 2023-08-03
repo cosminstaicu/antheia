@@ -3,22 +3,31 @@
  * A loading screen can have multiple steps.
  */
 class ant_loading_step {
+	/** @type {HTMLTableCellElement} */
+	#iconCell;
+	/** @type {HTMLTableCellElement} */
+	#labelCell;
+	/** @type {HTMLTableRowElement} */
+	#row;
+	/** @type {HTMLTableCellElement} */
+	#statusCell;
+	/** @type {HTMLTableElement} */
 	static stepsContainer = null;
 	constructor () {
-		this.row = document.createElement("tr");
-		this.iconCell = document.createElement("td");
-		this.row.appendChild(this.iconCell);
-		this.labelCell = document.createElement("td");
-		this.row.appendChild(this.labelCell);
-		this.statusCell = document.createElement("td");
-		this.row.appendChild(this.statusCell);
+		this.#row = document.createElement("tr");
+		this.#iconCell = document.createElement("td");
+		this.#row.appendChild(this.#iconCell);
+		this.#labelCell = document.createElement("td");
+		this.#row.appendChild(this.#labelCell);
+		this.#statusCell = document.createElement("td");
+		this.#row.appendChild(this.#statusCell);
 		this.setIcon("info");
 		this.setLabel("---");
 		this.setProgress(null);
 		if (ant_loading_step.stepsContainer === null) {
 			ant_loading_step.stepsContainer = document.createElement("table");
 		}
-		ant_loading_step.stepsContainer.appendChild(this.row);
+		ant_loading_step.stepsContainer.appendChild(this.#row);
 	}
 	/**
 	 * Resets (removes) all existing steps from memory. The method will not
@@ -33,7 +42,7 @@ class ant_loading_step {
 	 * @param {String} label the label of the step, as it will be displayed
 	 */
 	setLabel(label) {
-		this.labelCell.innerHTML = label;
+		this.#labelCell.innerHTML = label;
 	}
 	/**
 	 * Defines the completed percent of the step, as a number between 0 and 100,
@@ -63,14 +72,14 @@ class ant_loading_step {
 				icon = "schedule";
 				background = "var(--ant-theme-loadingProgressRight)";
 				cssClass = 'ant-waiting';
-				this.labelCell.removeAttribute("title");
+				this.#labelCell.removeAttribute("title");
 				break;
 			case 100:
 				// the step is completed
 				icon = "done";
 				background = "var(--ant-theme-loadingProgressLeft)";
 				cssClass = 'ant-completed';
-				this.labelCell.removeAttribute("title");
+				this.#labelCell.removeAttribute("title");
 				break;
 			default:
 				// the step is in progress
@@ -78,15 +87,15 @@ class ant_loading_step {
 				background = "linear-gradient(to right, var(--ant-theme-loadingProgressLeft) " 
 					+ percent + "%, var(--ant-theme-loadingProgressRight) " + percent + "%)";
 				cssClass = 'ant-running';
-				this.labelCell.title = percent + '%';
+				this.#labelCell.title = percent + '%';
 		}
-		this.row.style.background = background;
-		this.row.classList.remove("ant-waiting");
-		this.row.classList.remove("ant-running");
-		this.row.classList.remove("ant-completed");
-		this.statusCell.innerHTML = '<i class="material-icons" '
+		this.#row.style.background = background;
+		this.#row.classList.remove("ant-waiting");
+		this.#row.classList.remove("ant-running");
+		this.#row.classList.remove("ant-completed");
+		this.#statusCell.innerHTML = '<i class="material-icons" '
 			+'style="font-size: var(--ant_var-rem24px)">' + icon + '</i>';
-		this.row.classList.add(cssClass);
+		this.#row.classList.add(cssClass);
 	}
 	/**
 	 * Computes the completion percent based on a total value and a completed
@@ -103,7 +112,7 @@ class ant_loading_step {
 	 * @param {String} icon the name of the icon, as a material icon value
 	 */
 	setIcon(icon) {
-		this.iconCell.innerHTML = '<i class="material-icons" '
+		this.#iconCell.innerHTML = '<i class="material-icons" '
 			+'style="font-size: var(--ant_var-rem24px)">' + icon + '</i>';
 	}
 }

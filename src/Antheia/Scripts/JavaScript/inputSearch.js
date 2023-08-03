@@ -2,7 +2,7 @@ let ant_inputSearch_process = null;
 /**
  * The function is called when the user presses a button for a server side
  * search input
- * @param {Element} element the button pressed by the user
+ * @param {HTMLButtonElement} element the button pressed by the user
  */
 function ant_inputSearch_start(element) {
 	ant_inputSearch_process = {
@@ -111,7 +111,7 @@ function ant_inputSearch_start(element) {
 }
 /**
  * Called when the user presses on an item from the list returned by the server
- * @param {Element} element the item that has been pressed
+ * @param {HTMLButtonElement} element the item that has been pressed
  */
 function ant_inputSearch_selectItem(element) {
 	ant_inputSearch_select(element.dataset.value, element.innerText);

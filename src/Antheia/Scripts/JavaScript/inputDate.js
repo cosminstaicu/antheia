@@ -2,7 +2,7 @@ let ant_inputDate_process = null;
 /**
  * Displays the interface for selecting a date, after the user has pressed
  * a date input button
- * @param {Element} element the button that has been pressed by the user
+ * @param {HTMLButtonElement} element the button that has been pressed by the user
  */
 function ant_inputDate_start(element) {
 	let processId = Date.now();
@@ -126,7 +126,7 @@ function ant_inputDate_showMonths() {
 }
 /**
  * Change the displayed month
- * @param {Element} element the button pressed by the user
+ * @param {HTMLButtonElement} element the button pressed by the user
  * @param {Number} month the id of the month (1=january)
  * @param {Number|null} year the year containing the month or null if the
  * current year is preserved
@@ -144,14 +144,14 @@ function ant_inputDate_changeMonth(month, year = null) {
 }
 /**
  * Called when the user presses the button with the curent year
- * @param {Element} element the button that has been pressed
+ * @param {HTMLButtonElement} element the button that has been pressed
  */
 function ant_inputDate_clickYear(element) {
 	ant_inputDate_updateYears(parseInt(element.value));
 }
 /**
  * Called when the user changes the selected years interval
- * @param {Element} element the button pressed
+ * @param {HTMLButtonElement} element the button pressed
  */
 function ant_inputDate_changeYears(element) {
 	ant_inputDate_updateYears(parseInt(element.dataset.middle));
@@ -193,7 +193,7 @@ function ant_inputDate_updateYears(middle) {
 /**
  * Called when the user selects a value. The hidden input will be updated,
  * the trigger button text will be updated and the interface will be deleted
- * @param {Element} element the button that the user has pressed
+ * @param {HTMLButtonElement} element the button that the user has pressed
  */
 function ant_inputDate_select(element) {
 	if (ant_inputDate_process === null) {

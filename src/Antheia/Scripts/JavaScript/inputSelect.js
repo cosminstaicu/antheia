@@ -1,7 +1,7 @@
 /**
  * Displays the options list from a select input. The user can click on a value
  * to select it
- * @param {Element} element the button clicked by the user
+ * @param {HTMLButtonElement} element the button clicked by the user
  */
 function ant_inputSelect_start(element) {
 	let i = 0;

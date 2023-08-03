@@ -220,6 +220,14 @@ abstract class AbstractPage extends AbstractClass {
 	public function getHtml():string {
 		$jsFile = Texts::get('LANGUAGE_ID').'_scripts.js';
 		// creating (if necessary) the cache files
+		$icon32Path = Internals::getCachePath().'iconPixel32.php';
+		if (!is_file($icon32Path)) {
+			$content = '<?php
+				$cachePath = dirname(__DIR__, 1).DIRECTORY_SEPARATOR;
+				require_once(\''.dirname(__DIR__, 2).'/Scripts/Media/iconPixel32.php\');
+			?>';
+			file_put_contents($icon32Path, $content);
+		}
 		$jsPath = Internals::getCachePath().$jsFile;
 		if (!is_file($jsPath) || Globals::getDebug()) {
 			// javascript file does not exists, so it will be created
@@ -244,6 +252,7 @@ abstract class AbstractPage extends AbstractClass {
 				'menu.js',
 				'message.js',
 				'modal.js',
+				'modalMenu.js',
 				'panel.js',
 				'search.js',
 				'slide.js',
@@ -305,6 +314,7 @@ abstract class AbstractPage extends AbstractClass {
 					'menu.css',
 					'message.css',
 					'modal.css',
+					'modalMenu.css',
 					'panel.css',
 					'permissions.css',
 					'search.css',

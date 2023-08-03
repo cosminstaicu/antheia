@@ -44,7 +44,7 @@ function ant_panel_hideMenu(panelId) {
 }
 /**
  * Called when the user clicks on an item in a file browser panel
- * @param {HTMLElement} item the item that was clicked
+ * @param {HTMLButtonElement} item the item that was clicked
  */
 function ant_panel_fileBrowserItemClick(item) {
 	ant_utils_preCallback(item.parentElement);

@@ -72,7 +72,7 @@ function ant_theme_showAvailableThemes() {
 }
 /**
  * Called after the user has selected a theme, to be loaded as a template
- * @param {Element} element the button where the selection has been made
+ * @param {HTMLButtonElement} element the button where the selection has been made
  */
 function ant_theme_predefinedThemeSelected(element) {
 	for (let name in ant_theme_templates[element.value]) {

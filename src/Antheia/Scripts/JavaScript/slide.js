@@ -1,6 +1,6 @@
 /**
  * Toogles a slide between expanded and condensed status
- * @param {Element} element the button pressed by the user
+ * @param {HTMLButtonElement} element the button pressed by the user
  */
 function ant_slide_click(element) {
 	if (element.classList.contains("ant-enabled")) {

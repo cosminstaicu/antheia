@@ -2,7 +2,7 @@
  * The function is called after the user has pressed a button for a delete
  * confirmation. The interface will require a confirmation from the user and
  * then will init the delete process.
- * @param {Element} element the button that has been pressed
+ * @param {HTMLButtonElement} element the button that has been pressed
  */
 function ant_deleteConfirmation(element) {
 	if ((element.dataset.url === '') && (element.dataset.post === '')) {

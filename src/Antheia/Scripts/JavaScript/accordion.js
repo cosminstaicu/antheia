@@ -1,6 +1,6 @@
 /**
- * Tooglex the accordion item being clicked and collapse all other items
- * @param {Element} element the item that has been selected to be expanded
+ * Toogles the accordion item being clicked and collapse all other items
+ * @param {HTMLButtonElement} element the item that has been selected to be expanded
  */
 function ant_accordion_click(element) {
 	let i = 0;

@@ -1,7 +1,7 @@
 /**
  * The function is called when the user has pressed a button for inputting
  * a new password
- * @param {Element} element the button that has been pressed
+ * @param {HTMLButtonElement} element the button that has been pressed
  */
 function ant_inputNewPassword_start(element) {
 	ant_utils_preCallback(element.nextElementSibling.nextElementSibling);
@@ -159,10 +159,10 @@ function ant_inputNewPassword_start(element) {
 /**
  * Updates the interface with the defined rules status
  * @param {Object} items the items used by the process
- * @param {HTMLElement} items.trigger the button that triggered the modal
+ * @param {HTMLButtonElement} items.trigger the button that triggered the modal
  * @param {Object} items.rules the rules used for complexity validation
- * @param {HTMLElement} items.inputNew the input with the password
- * @param {HTMLElement} items.inputRepeat the input with the retyped password
+ * @param {HTMLInputElement} items.inputNew the input with the password
+ * @param {HTMLInputElement} items.inputRepeat the input with the retyped password
  * @returns {Boolean} true if the password complies will all defined rules,
  * false if not
  */

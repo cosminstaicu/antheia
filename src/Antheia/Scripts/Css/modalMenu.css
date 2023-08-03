@@ -1,0 +1,39 @@
+div.ant_modalMenu {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+}
+div.ant_modalMenu > button {
+	width: calc(var(--ant_var-rem10px) * 15);
+	min-height: calc(var(--ant_var-rem10px) * 20);
+	cursor: pointer;
+	margin: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid var(--ant-theme-panelBorder);
+	background-color: var(--ant-theme-panelSecondaryBackground);
+	color: var(--ant-theme-text);
+	border-radius: 4px;
+	transition: 0.5s;
+}
+div.ant_modalMenu > button:hover {
+	background-color: var(--ant-theme-buttonBackgroundHover);
+	color: var(--ant-theme-buttonText);
+}
+div.ant_modalMenu > button > img {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+div.ant_modalMenu > button > p {
+	width: 100%;
+	min-height: 35px;
+	text-align: center;
+	margin: 3px;
+	font-size: var(--ant_var-rem14px);
+}
+div.ant_modalMenu > button > p:first-of-type {
+	font-size: var(--ant_var-rem16px);
+	font-weight: bold;
+}

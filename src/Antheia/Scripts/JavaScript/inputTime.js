@@ -19,7 +19,7 @@ function ant_inputTime_innerHtmlSafe(inputText) {
 }
 /**
  * Called when the user presses the button to select or input a time value
- * @param {Element} element the button pressed by the user
+ * @param {HTMLButtonElement} element the button pressed by the user
  */
 function ant_inputTime_start(element) {
 	ant_inputTime_process = {
