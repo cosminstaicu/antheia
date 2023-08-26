@@ -6,6 +6,12 @@ p.ant_form-text-label {
 	font-size: var(--ant_var-rem14px);
 	font-weight: bold;
 	color: var(--ant-theme-inputLabel);
+	margin: 0;
+}
+@media only screen and (min-width: 768px) {
+	p.ant_form-text-label {
+		margin-top: var(--ant_var-rem12px);
+	}
 }
 .ant_form-item {
 	position: relative;
