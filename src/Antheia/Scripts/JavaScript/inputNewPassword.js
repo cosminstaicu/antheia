@@ -103,7 +103,7 @@ function ant_inputNewPassword_start(element) {
 	// type password input
 	label = document.createElement("label");
 	label.innerHTML = element.dataset.textNewPassword;
-	label.for = "ant_inputNewPassword_new";
+	label.htmlFor = "ant_inputNewPassword_new";
 	form.appendChild(label);
 	div = document.createElement("div");
 	div.classList.add("ant_form-item");
@@ -125,7 +125,7 @@ function ant_inputNewPassword_start(element) {
 	// retype password input
 	label = document.createElement("label");
 	label.innerHTML = element.dataset.textRetype;
-	label.for = "ant_inputNewPassword_repeat";
+	label.htmlFor = "ant_inputNewPassword_repeat";
 	form.appendChild(label);
 	div = document.createElement("div");
 	div.classList.add("ant_form-item");

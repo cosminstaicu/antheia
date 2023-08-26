@@ -65,6 +65,7 @@ a:hover {
 	color: var(--ant-theme-linkHover);
 	text-decoration: underline;
 }
+/** If label is modified then the p.ant_form-text-label definition should be updated also*/
 label {
 	font-size: var(--ant_var-rem14px);
 	font-weight: bold;

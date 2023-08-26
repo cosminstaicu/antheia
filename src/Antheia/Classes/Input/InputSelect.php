@@ -14,14 +14,18 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 	private $beforeCallback;
 	private $afterCallback;
 	private $button;
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
 		$this->button->setIcon(IconVector::ICON_MENU);
-		$this->exportForAttributeInLabel(false);
+		self::setUniqueHtmlId($this->button);
 		$this->options = [];
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
 	}
 	/**
 	 * Returns the button for selection control
@@ -106,7 +110,6 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		if (count($this->options) == 0) {
 			throw new Exception('No options defined');
 		}
-		$this->checkHtmlId();
 		$selectedText = $this->options[0]['name'];
 		$selectedValue = $this->options[0]['value'];
 		$helpText = $this->options[0]['helpText'];

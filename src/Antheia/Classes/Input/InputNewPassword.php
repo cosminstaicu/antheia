@@ -22,12 +22,14 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 	private $symbols;
 	private $initialText;
 	private $finalText;
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
 		$this->button = new InputRawCustomButton();
 		$this->button->addAttribute('data-ant-type', 'newPassword');
+		self::setUniqueHtmlId($this->button);
 		$this->username = '';
 		$this->minLength = 3;
 		$this->maxLength = 30;
@@ -38,6 +40,9 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		$this->symbols = 'no';
 		$this->initialText = '---';
 		$this->finalText = '******';
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
 	}
 	/**
 	 * Defines the text initially displayed on the button
@@ -144,7 +149,6 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 				);
 			}
 		}
-		$this->checkHtmlId();
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setHiddenInputValue($this->getValue());

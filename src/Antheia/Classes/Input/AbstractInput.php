@@ -15,6 +15,12 @@ use Antheia\Antheia\Interfaces\HtmlId;
  */
 abstract class AbstractInput extends AbstractClass
 implements HtmlCode, HtmlAttribute, HtmlId {
+	/** No label will be generated for this input */
+	const LABEL_NONE = 'none';
+	/** A normal label tag will be generated for this input */
+	const LABEL_NORMAL = 'normal';
+	/** The label will be exported just like a regular text (no LABEL tag) */
+	const LABEL_TEXT = 'text';
 	private $label;
 	private $name;
 	private $value;
@@ -29,7 +35,6 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $onClick;
 	private $codHtml;
 	private $exportJavascript;
-	private $uniqueCounter;
 	private $attributes;
 	static private $counter = 0;
 	public function __construct() {
@@ -37,9 +42,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->label = Texts::get('UNDEFINED');
 		$this->labelTag = new InputRawLabel();
 		$this->labelTag->setInput($this);
-		$this->exportLabel = true;
+		$this->exportLabel = self::LABEL_NORMAL;
 		$this->exportJavascript = true;
-		$this->htmlId = '';
+		self::setUniqueHtmlId($this);
 		$this->containerHtmlId = '';
 		$this->setName('undefined');
 		$this->setValue('');
@@ -49,12 +54,19 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		// so the validation property is set directly, without calling the method
 		$this->validation = '';
 		$this->setHtmlCode('');
-		$this->exportForAttributeInLabel(true);
-		$this->uniqueCounter = AbstractInput::$counter;
-		AbstractInput::$counter++;
 		$this->attributes = [];
 		$this->containerClasses = ['ant_form-item'];
 		$this->onClick = '';
+	}
+	/**
+	 * Sets an unique html id for an html element. The id is unique per session
+	 * and it will change on the next session.
+	 * @param HtmlId $element the element that will be set up
+	 */
+	protected static function setUniqueHtmlId(HtmlId $element):void {
+		$element->setHtmlId(
+			'ant_input_'.AbstractClass::uniqid().'_'.AbstractInput::$counter++
+		);
 	}
 	public final function addAttribute(string $name, string $value):void {
 		$this->attributes[] = ['name'=>$name, 'value'=>$value];
@@ -101,28 +113,6 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	public function addContainerClass(string $class):void {
 		$this->containerClasses[] = $class;
-	}
-	/**
-	 * The method checks if the input needs an unique id. If so, then
-	 * the script checks if an html id exists.
-	 * If no id has been already defined by the user, then the script will
-	 * generate an unique id automatically.
-	 * @param boolean $forceGeneration (optional) (default false) if true then
-	 * the input must have an id, regardless of any checks so the method
-	 * will always generate an id if the input does not have one
-	 */
-	protected function checkHtmlId(bool $forceGeneration = false):void {
-		if (!$forceGeneration) {
-			if ($this->getValidation() === '') {
-				// no validation function is defined, so no html id is required
-				return;
-			}
-		}
-		if ($this->getHtmlId() !== '') {
-			return;
-		}
-		// the input needs an html id, but the user has not defined one
-		$this->setHtmlId('ant_input_'.$this->uniqid().$this->uniqueCounter);
 	}
 	/**
 	 * The method returns true if the javascript code, inserted after the element
@@ -193,16 +183,6 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->setInlineHelp($inlineHelp);
 	}
 	/**
-	 * Defines if the label generated for the input will contain the FOR attribute,
-	 * pointing to the id of the input. Ussualy all inputs have this attribure
-	 * pointing to the id of the input, except the radio buttons and checkboxes.
-	 * @param boolean $status true if the FOR attribute will be
-	 * generated, false if not
-	 */
-	protected function exportForAttributeInLabel(bool $status):void {
-		$this->labelTag->setExportAtributFor($status);
-	}
-	/**
 	 * Defines the label of the input
 	 * @param string $label the label of the input
 	 */
@@ -215,6 +195,41 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	public function getLabelText():string {
 		return $this->label;
+	}
+	/**
+	 * Returns the id that will be used by the label tag as a value for the
+	 * "for" attribute. Usually it is the id of the element, with some exceptions,
+	 * like inputs using buttons and 
+	 * @return string the value that will be used for the "for" attribute of
+	 * the label
+	 */
+	public function getIdForLabel():string {
+		return $this->getHtmlId();
+	}
+	/**
+	 * Defines if a label for the input will be exported along with the input
+	 * @param string $status the method used for exporting the label, as one
+	 * of the constants: AbstractInput::LABEL_NONE,
+	 * AbstractInput::LABEL_NORMAL, AbstractInput::LABEL_TEXT
+	 */
+	public function setLabelExport(string $status):void {
+		$this->exportLabel = $status;
+	}
+	/**
+	 * Returns true if a label for the input needs to be exported, false if not
+	 * @return string the method used for exporting the label, as one
+	 * of the constants: AbstractInput::LABEL_NONE,
+	 * AbstractInput::LABEL_NORMAL, AbstractInput::LABEL_TEXT
+	 */
+	public function getLabelExport():string {
+		return $this->exportLabel;
+	}
+	/**
+	 * Returns the label element for the input
+	 * @return InputRawLabel the label element for the input
+	 */
+	public function getLabel():InputRawLabel {
+		return $this->labelTag;
 	}
 	/**
 	 * Defines the javascript code that will be triggered when the user clicks
@@ -267,27 +282,6 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	protected function getValidation():string {
 		return $this->validation;
-	}
-	/**
-	 * Defines if a label for the input will be exported along with the input
-	 * @param boolean $status true if a label will be exported, false if not
-	 */
-	public function setLabelExport(bool $status):void {
-		$this->exportLabel = $status;
-	}
-	/**
-	 * Returns true if a label for the input needs to be exported, false if not
-	 * @return boolean true daca a fost selectat exportul etichetei, false daca nu
-	 */
-	public function getLabelExport():bool {
-		return $this->exportLabel;
-	}
-	/**
-	 * Returns the label element for the input
-	 * @return InputRawLabel the label element for the input
-	 */
-	public function getLabel():InputRawLabel {
-		return $this->labelTag;
 	}
 	/**
 	 * Defines the name of the element (the name attribute)
@@ -373,7 +367,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 			throw new Exception('setHtmlCode');
 		}
 		$code = '';
-		if ($this->exportLabel) {
+		if ($this->exportLabel !== self::LABEL_NONE) {
 			$code .= $this->labelTag->getHtml();
 		}
 		// the inputs have to be wrapped in a div because the input tag

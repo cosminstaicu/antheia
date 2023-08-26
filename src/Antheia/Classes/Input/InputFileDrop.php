@@ -31,10 +31,10 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$this->url = '';
 		$this->maximumTotalSize = 0;
 		$this->maximumFileSize = 0;
-		$this->setLabelExport(false);
+		$this->setLabelExport(self::LABEL_NONE);
 		$this->infoText = Texts::get('DROP_FILE_HERE');
 		$this->browserButton = new InputFile();
-		$this->browserButton->setLabelExport(false);
+		$this->browserButton->setLabelExport(self::LABEL_NONE);
 		$this->browserButton->setOnChange(
 			'ant_inputFileDrop_fileSelected(this)'
 		);
@@ -143,7 +143,6 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 			}
 			self::$totalItems++;
 		}
-		$this->checkHtmlId();
 		$code = '<div class="ant_inputFileDrop';
 		if ($this->fullPageDrop) {
 			$code .= ' ant_fullPage';

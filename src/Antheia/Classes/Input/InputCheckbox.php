@@ -9,7 +9,7 @@ class InputCheckbox extends AbstractInput {
 	private $checkbox;
 	public function __construct() {
 		parent::__construct();
-		$this->setLabelExport(false);
+		$this->setLabelExport(self::LABEL_NONE);
 		$this->checkbox = new InputRawCheckbox();
 	}
 	/**

@@ -185,7 +185,7 @@ class SearchForm extends Form {
 			$this->sortByInput->setLabel(Texts::get('SORT_BY'));
 			$this->sortByInput->setName('sortBy');
 			$this->sortByInput->setAfterCallback('ant_search_submit');
-			$this->sortByInput->setLabelExport(false);
+			$this->sortByInput->setLabelExport($this->sortByInput::LABEL_NONE);
 			foreach ($this->sortByList as $index => $name) {
 				$selected = false;
 				if ($index == $this->selectedSortBy) {

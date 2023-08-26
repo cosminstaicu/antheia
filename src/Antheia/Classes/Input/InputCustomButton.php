@@ -9,11 +9,22 @@ use Antheia\Antheia\Classes\Input\Raw\InputRawHidden;
  */
 class InputCustomButton extends AbstractInput {
 	private $button;
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
+		self::setUniqueHtmlId($this->button);
 		$this->button->addAttribute('data-ant-type', 'custom');
-		$this->exportForAttributeInLabel(false);
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
+	}
+	/**
+	 * Returns the button that manages the input
+	 * @return InputRawCustomButton the visible button
+	 */
+	public function getButton():InputRawCustomButton {
+		return $this->button;
 	}
 	/**
 	 * Defines the javascript code to be executed when the user clicks
@@ -54,7 +65,6 @@ class InputCustomButton extends AbstractInput {
 		return $this->button->getHiddenInput();
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setText($this->getValue());

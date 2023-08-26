@@ -1,6 +1,12 @@
 form.ant-max-height {
 	height: 100%;
 }
+/** If the definition below is modified then the label definition should be updated also*/
+p.ant_form-text-label {
+	font-size: var(--ant_var-rem14px);
+	font-weight: bold;
+	color: var(--ant-theme-inputLabel);
+}
 .ant_form-item {
 	position: relative;
 	top: 0px;

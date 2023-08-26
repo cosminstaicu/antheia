@@ -46,7 +46,6 @@ class InputTextarea extends AbstractInput {
 		$this->maxLength = $max;
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		$code = '';
 		$code .= '<textarea name="'.$this->getName().'" ';
 		if ($this->placeholder != '') {

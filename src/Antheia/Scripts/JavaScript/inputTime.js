@@ -110,7 +110,7 @@ function ant_inputTime_start(element) {
 	} else {
 		// hour label
 		let hourLabel = document.createElement("label");
-		hourLabel.for = "ant_inputTime_ora";
+		hourLabel.htmlFor = "ant_inputTime_ora";
 		hourLabel.innerHTML = element.dataset.textHour;
 		ant_inputTime_process.modal.appendContent(hourLabel);
 		// hour input
@@ -125,7 +125,7 @@ function ant_inputTime_start(element) {
 		ant_inputTime_process.modal.appendContent(hourInput);
 		// minute label
 		let minuteLabel = document.createElement("label");
-		minuteLabel.for = "ant_inputTime_minut";
+		minuteLabel.htmlFor = "ant_inputTime_minut";
 		minuteLabel.innerHTML = element.dataset.textMinute;
 		ant_inputTime_process.modal.appendContent(minuteLabel);
 		// minute input

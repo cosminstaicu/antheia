@@ -140,11 +140,11 @@ class WireframeInput extends Wireframe {
 					$cell->addWidth('sm', $labelWidth);
 					$code = new Html(
 							'<div class="ant_form-label-container">');
-					if ($input->getLabelExport()) {
-						$code->addElement($input->getLabel());
+					if ($input->getLabelExport() !== $input::LABEL_NONE) {
+						$code->addRawCode($input->getLabel()->getHtml());
 					}
 					$code->addRawCode('</div>');	
-					$input->setLabelExport(false);
+					$input->setLabelExport($input::LABEL_NONE);
 					$cell->addElement($code);
 					$cell = $row->addCell();
 					$cell->addWidth('sm', $valuesWidth);

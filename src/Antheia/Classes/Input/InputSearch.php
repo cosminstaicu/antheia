@@ -20,11 +20,12 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 	private $beforeCallback;
 	private $afterCallback;
 	private $button;
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
 		$this->button->addAttribute('data-ant-type', 'search');
-		$this->exportForAttributeInLabel(false);
+		self::setUniqueHtmlId($this->button);
 		$this->displayUndefined = false;
 		$this->initialText = null;
 		$this->searchInputInitialValue = '';
@@ -33,6 +34,9 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 		$this->undefinedValue = '';
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
 	}
 	/**
 	 * Returns the button controlling the input
@@ -84,7 +88,6 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 		$this->undefinedValue = $value;
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		if ($this->initialText === null) {
 			throw new Exception('Initial text is undefined');
 		}

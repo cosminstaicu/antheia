@@ -31,7 +31,6 @@ class InputColor extends AbstractInput {
 		$this->placeholder = $text;
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		$code = '<input type="color" name="'.$this->getName().'" value="';
 		$code .= htmlspecialchars($this->getValue()).'"';
 		if ($this->placeholder != '') {

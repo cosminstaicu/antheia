@@ -11,6 +11,7 @@ class InputFile extends AbstractInput {
 	private $extensionList;
 	private $button;
 	private $onChange;
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->extensionList = [];
@@ -19,7 +20,11 @@ class InputFile extends AbstractInput {
 		$this->button->setIcon(IconVector::ICON_FILE);
 		$this->button->setOnClick('ant_inputFile_start(this)');
 		$this->button->disableHiddenInputExport();
+		self::setUniqueHtmlId($this->button);
 		$this->onChange = '';
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
 	}
 	/**
 	 * Defines javascript code to be executed when the input is changed
@@ -72,7 +77,6 @@ class InputFile extends AbstractInput {
 		return $code;
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		$code = '';
 		$code .= $this->getHtmlHiddenFileInput();
 		$code .= $this->button->getHtml();

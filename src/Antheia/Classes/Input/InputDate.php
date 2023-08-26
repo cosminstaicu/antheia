@@ -16,19 +16,23 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 	private $displayToday;
 	private $beforeCallback;
 	private $afterCallback;
-	private static $todayValue = '0';
+	static private $todayValue = '0';
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
 		$this->displayToday = false;
 		$this->displayUndefined = false;
-		$this->exportForAttributeInLabel(false);
 		$this->setValue(Globals::getUndefinedDate());
 		if (self::$todayValue == '0') {
 			self::$todayValue = date('Ymd');
 		}
+		self::setUniqueHtmlId($this->button);
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
 	}
 	/**
 	 * Returns the button that manages the input
@@ -61,7 +65,6 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 		$this->afterCallback = $name;
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		$this->button->addAttribute('data-ant-type', 'date');
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());

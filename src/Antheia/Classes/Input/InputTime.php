@@ -23,9 +23,11 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 	private $displayUndefined;
 	private $beforeCallback;
 	private $afterCallback;
+	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->button = new InputRawCustomButton();
+		self::setUniqueHtmlId($this->button);
 		$this->selectMode = false;
 		$this->hourMin = 0;
 		$this->hourMax = 23;
@@ -34,10 +36,12 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		$this->minuteMax = 59;
 		$this->minuteStep = 1;
 		$this->displayUndefined = false;
-		$this->exportForAttributeInLabel(false);
 		$this->setValue(Globals::getUndefinedTime());
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+	}
+	public function getIdForLabel():string {
+		return $this->button->getHtmlId();
 	}
 	/**
 	 * Returns the button that manages the input
@@ -113,7 +117,6 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		$this->afterCallback = $functionName;
 	}
 	public function getHtml():string {
-		$this->checkHtmlId();
 		$this->button->addAttribute('data-ant-type', 'time');
 		$this->button->setText(Texts::formatTime($this->getValue()));
 		$this->button->setIcon(IconVector::ICON_TIME);

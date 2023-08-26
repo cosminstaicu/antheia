@@ -8,7 +8,7 @@ namespace Antheia\Antheia\Classes\Input;
 class InputInfo extends AbstractInput {
 	public function __construct() {
 		parent::__construct();
-		$this->exportForAttributeInLabel(false);
+		$this->setLabelExport(self::LABEL_TEXT);
 	}
 	public function getHtml():string {
 		$code = '<span';

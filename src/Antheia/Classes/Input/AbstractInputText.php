@@ -97,11 +97,6 @@ abstract class AbstractInputText extends AbstractInput {
 		$this->suggestionUrl = $url;
 	}
 	public function getHtml():string {
-		if ($this->suggestionLimit === NULL) {
-			$this->checkHtmlId();
-		} else {
-			$this->checkHtmlId(true);
-		}
 		$code = '<input type="';
 		switch ($this->type) {
 			case self::TYPE_TEXT:

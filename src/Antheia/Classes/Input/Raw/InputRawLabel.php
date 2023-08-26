@@ -12,12 +12,10 @@ use Antheia\Antheia\Interfaces\HtmlId;
  */
 class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 	private $input;
-	private $exportForAttribute;
 	private $htmlId;
 	private $inlineHelp;
 	public function __construct() {
 		$this->input = null;
-		$this->setExportAtributFor(true);
 		$this->htmlId = '';
 		$this->inlineHelp = null;
 	}
@@ -43,15 +41,6 @@ class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 		$this->htmlId = $id;
 	}
 	/**
-	 * Defines if the tag should include a "for" attribute, indicating the
-	 * id of the input that is linked to the labes
-	 * @param boolean $exportAtribut true if a for attribute will be generated,
-	 * false if not
-	 */
-	public function setExportAtributFor(bool $export):void {
-		$this->exportForAttribute = $export;
-	}
-	/**
 	 * Defines the input that the label is generated for
 	 * @param AbstractInput $input the input that the label is generated for
 	 */
@@ -62,17 +51,34 @@ class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 		if ($this->input === null) {
 			throw new Exception('Input element is undefined');
 		}
-		$code = '<label ';
-		if ($this->exportForAttribute) {
-			$code .= 'for="'.$this->input->getHtmlId().'" ';
-		}
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
-		$code .= '>'.$this->input->getLabelText();
-		$code .= '</label>';
-		if ($this->inlineHelp != null) {
-			$code .= ' '.$this->inlineHelp->getHtml();
+		$code = '';
+		switch ($this->input->getLabelExport()) {
+			case $this->input::LABEL_NONE:
+				break;
+			case $this->input::LABEL_NORMAL:
+				$code .= '<label ';
+				if ($this->input->getIdForLabel() !== '') {
+					$code .= 'for="'.$this->input->getIdForLabel().'" ';
+				}
+				if ($this->htmlId !== '') {
+					$code .= ' id="'.$this->htmlId.'" ';
+				}
+				$code .= '>'.$this->input->getLabelText();
+				$code .= '</label>';
+				if ($this->inlineHelp != null) {
+					$code .= ' '.$this->inlineHelp->getHtml();
+				}
+				break;
+			case $this->input::LABEL_TEXT:
+				$code .= '<p class="ant_form-text-label">'
+					.$this->input->getLabelText()
+					.'</p>';
+				if ($this->inlineHelp != null) {
+					$code .= ' '.$this->inlineHelp->getHtml();
+				}
+				break;
+			default:
+				throw new Exception('Invalid value: '.$this->input->getLabelExport());
 		}
 		return $code;
 	}

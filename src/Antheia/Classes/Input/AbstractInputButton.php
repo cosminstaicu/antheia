@@ -12,7 +12,7 @@ abstract class AbstractInputButton extends AbstractInput {
 	private $buttonType;
 	public function __construct() {
 		parent::__construct();
-		$this->setLabelExport(false);
+		$this->setLabelExport(self::LABEL_NONE);
 		$this->buttonType = self::TYPE_SUBMIT;
 	}
 	/**
