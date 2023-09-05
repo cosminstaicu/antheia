@@ -193,7 +193,8 @@ $folder = $panel->addFolder();
 $folder->setName('First folder');
 // adding a second folder
 $folder = $panel->addFolder();
-$folder->setName('Second folder');
+$folder->setName('Second folder (with onclick event)');
+$folder->setOnClick("alert('clicked')");
 // adding a file
 $file = $panel->addFile();
 $deleteButton = NewMenu::delete();

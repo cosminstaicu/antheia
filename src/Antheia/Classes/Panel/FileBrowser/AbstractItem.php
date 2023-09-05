@@ -23,6 +23,7 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 	private $pre;
 	private $post;
 	private $hiddenItems;
+	private $onClick;
 	public function __construct(?PanelFileBrowser $panel) {
 		parent::__construct();
 		if ($panel === null) {
@@ -36,6 +37,7 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 		$this->pre = '';
 		$this->post = '';
 		$this->hiddenItems = [];
+		$this->onClick = null;
 	}
 	/**
 	 * Defines the name of the item
@@ -79,6 +81,15 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 		$this->post = $functionName;
 	}
 	/**
+	 * Defines the javascript code to be called by the onClick event
+	 * @param string|null $onClick the code to be called by the onClick event or
+	 * NULL if the default script should be used (the script that slides the
+	 * hidden content into view)
+	 */
+	public function setOnClick(?string $onClick = null):void {
+		$this->onClick = $onClick;
+	}
+	/**
 	 * Adds a hidden item that will be visible only when the item is selected
 	 * @param HtmlCode $item the item that will be visible only when the
 	 * item is selected
@@ -103,7 +114,13 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 			$code .= ' '.$attribute[0].'="'.$attribute[1].'"';
 		}
 		$code .='>';
-		$code .= '<button onclick="ant_panel_fileBrowserItemClick(this)" type="button">';
+		$code .= '<button onclick="';
+		if ($this->onClick === null) {
+			$code .= 'ant_panel_fileBrowserItemClick(this)';
+		} else {
+			$code .= $this->onClick;
+		}
+		$code .= '" type="button">';
 		$code .= $this->icon->getHtml($this->iconAltText);
 		$code .= ' '.$this->name;
 		$code .= '</button>';
