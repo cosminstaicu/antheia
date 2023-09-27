@@ -21,17 +21,33 @@ class WireframeInfo extends Wireframe {
 	 * Adds a name-value pair to be displayed inside the wireframe
 	 * @param string $label the label of the value displayed
 	 * @param string $value the value being displayed
+	 * @param string $id (optional) (default '') the html id of the
+	 * entire row (in the wireframe) containing the input
+	 * @param string[] $classes (optional) a list of html classes to be added to the
+	 * row html tag of the wireframe
 	 */
-	public function addNameValue(string $label, string $value):void {
-		$this->addNameElement($label, new Html($value));	
+	public function addNameValue(string $label, string $value,
+			string $id = '', array $classes = []):void {
+		$this->addNameElement($label, new Html($value), $id, $classes);	
 	}
 	/**
 	 * Adds name-value pair to be displayed inside the wireframe
 	 * @param string $label the label of the value to be displayed
 	 * @param HtmlCode $element the element to be displayed
+	 * @param string $id (optional) (default '') the html id of the
+	 * entire row (in the wireframe) containing the input
+	 * @param string[] $classes (optional) a list of html classes to be added to the
+	 * row html tag of the wireframe
 	 */
-	public function addNameElement(string $label, HtmlCode $element):void {
+	public function addNameElement(string $label, HtmlCode $element,
+			string $id = '', array $classes = []):void {
 		$row = $this->addRow();
+		if ($id !== '') {
+			$row->setHtmlId($id);
+		}
+		foreach ($classes as $className) {
+			$row->addClass($className);
+		}
 		$cell = $row->addCell();
 		$cell->addWidth('sm', 4);
 		$cell->setVerticalPadding(false);
@@ -49,9 +65,19 @@ class WireframeInfo extends Wireframe {
 	 * Adds just a value to the wireframe, that will span over 2 columns (a value
 	 * without a label, spanning over the label column)
 	 * @param string $text the text to be added
+	 * @param string $id (optional) (default '') the html id of the
+	 * entire row (in the wireframe) containing the input
+	 * @param string[] $classes (optional) a list of html classes to be added to the
+	 * row html tag of the wireframe
 	 */
-	public function addValue(string $text):void {
+	public function addValue(string $text, string $id = '', array $classes = []):void {
 		$row = $this->addRow();
+		if ($id !== '') {
+			$row->setHtmlId($id);
+		}
+		foreach ($classes as $className) {
+			$row->addClass($className);
+		}
 		$cell = $row->addCell();
 		$cell->addWidth('sm', 12);
 		$cell->setVerticalPadding(false);

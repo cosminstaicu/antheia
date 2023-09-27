@@ -20,25 +20,40 @@ class PanelInfo extends Panel {
 	 * @param string $name the name of the value
 	 * @param string $value the value to be added (can contain HTML code,
 	 * as text is not escaped)
+	 * @param string $id (optional) (default '') the html id of the
+	 * entire row (in the wireframe) containing the input
+	 * @param string[] $classes (optional) a list of html classes to be added to the
+	 * row html tag of the wireframe
 	 */
-	public function addNameValue(string $name, string $value):void {
-		$this->wireframe->addNameValue($name, $value);
+	public function addNameValue(string $name, string $value, 
+			string $id = '', array $classes = []):void {
+		$this->wireframe->addNameValue($name, $value, $id, $classes);
 	}
 	/**
 	 * Adds name-value pair to the content of the panel
 	 * @param string $name the name of the value to be displayed
 	 * @param HtmlCode $element the element to be displayed
+	 * @param string $id (optional) (default '') the html id of the
+	 * entire row (in the wireframe) containing the input
+	 * @param string[] $classes (optional) a list of html classes to be added to the
+	 * row html tag of the wireframe
 	 */
-	public function addNameElement(string $name, HtmlCode $element):void {
-		$this->wireframe->addNameElement($name, $element);
+	public function addNameElement(string $name, HtmlCode $element,
+			string $id = '', array $classes = []):void {
+		$this->wireframe->addNameElement($name, $element, $id, $classes);
 	}
 	/**
 	 * Adds a text to be displayed on the full width of the panel
 	 * @param string $text the added text (can contain HTML code,
 	 * as text is not escapes)
+	 * @param string $id (optional) (default '') the html id of the
+	 * entire row (in the wireframe) containing the input
+	 * @param string[] $classes (optional) a list of html classes to be added to the
+	 * row html tag of the wireframe
 	 */
-	public function addValue(string $text):void {
-		$this->wireframe->addValue($text);
+	public function addValue(string $text,
+			string $id = '', array $classes = []):void {
+		$this->wireframe->addValue($text, $id, $classes);
 	}
 	/**
 	 * Adds a divider (a horizontal line) spanning the entire width of the

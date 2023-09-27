@@ -93,8 +93,8 @@ $button = NewMenu::confirmDelete();
 $button->setAfterCallback('deleteConfirmed');
 $panel->addMenu($button);
 // the name-value pairs are added tot the panel
-$panel->addNameValue('Given name', 'John');
-$panel->addNameValue('Family name', 'Doe');
+$panel->addNameValue('Given name', 'John', 'idForRow', ['rowClassOne','rowClassTwo']);
+$panel->addNameValue('Family name', 'Doe', '', ['rowClassOne']);
 $panel->addDivider();
 $panel->addNameValue(
 	'website',
