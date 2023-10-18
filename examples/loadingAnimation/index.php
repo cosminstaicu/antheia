@@ -22,6 +22,10 @@ $button = new InputButton();
 $button->setText('Load (steps with progress)');
 $button->setOnClick('loadSteps()');
 $panel->addElement($button);
+$button = new InputButton();
+$button->setText('Load (steps and cancel button)');
+$button->setOnClick('loadStepsWithCancelButton()');
+$panel->addElement($button);
 // adding a panel to display page source info
 // the function is defined inside the utils/init.php file
 init_insertPageSource($page, 'loadingAnimation', [

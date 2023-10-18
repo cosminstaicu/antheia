@@ -45,14 +45,16 @@ class SearchViewAccordion extends AbstractSearchView {
 				$titleCode->addElement($check);
 			}
 			// left side icon
-			$iconInfo = $result->getInfo();
+			$iconInfo = $result->getIcon();
 			if ($iconInfo !== null) {
 				$icon = new IconPixelBig($iconInfo['icon']);
 				if ($iconInfo['addon'] != '') {
 					$icon->setBottomRightIcon($iconInfo['addon']);
 				}
 				$titleCode->addRawCode(
-					'<img src="'.$icon->getUrl().'" width="32" height="32" alt="Logo")">'
+					'<img src="'.$icon->getUrl()
+					.'" width="32" height="32" class="ant-icon" alt="'
+					.str_replace(['"',"'","\\"], ['','',''], $result->getName()).'">'
 				);
 			}
 			// slide trigger

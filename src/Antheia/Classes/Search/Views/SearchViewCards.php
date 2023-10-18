@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Search\Views;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Search\SearchResult;
@@ -37,7 +38,19 @@ class SearchViewCards extends AbstractSearchView {
 			$cell->addWidth('lg', 3);
 			$cell->addWidth('md', 4);
 			$cell->addWidth('sm', 6);
-			$code = '<div id="ant_search_card_item_'.$index.'" class="ant_search_card">';
+			$divClass = 'ant_search_card';
+			switch ($result->getImageSize()) {
+				case SearchResult::IMAGE_SIZE_MAXIMUM:
+					$divClass .= ' ant-image-maximum';
+					break;
+				case SearchResult::IMAGE_SIZE_MEDIUM:
+					$divClass .= ' ant-image-medium';
+					break;
+				default:
+					throw new Exception($result->getImageSize());
+			}
+			
+			$code = '<div id="ant_search_card_item_'.$index.'" class="'.$divClass.'">';
 			// selection checkbox
 			if ($this->getSelectionStatus()) {
 				$code .= '<div class="ant_search_card-checkbox">';
@@ -48,23 +61,13 @@ class SearchViewCards extends AbstractSearchView {
 				$code .= $check->getHtml();
 				$code .= '</div>';
 			}
-			$imageClass = '';
-			switch ($result->getImageSize()) {
-				case SearchResult::IMAGE_SIZE_MAXIMUM:
-					$imageClass .= 'maximum';
-					break;
-				case SearchResult::IMAGE_SIZE_MEDIUM:
-					$imageClass .= 'medium';
-					break;
-				default:
-					throw new Exception($result->getImageSize());
-			}
+			$imageClass = 'ant-main';
 			switch ($result->getImageArea()) {
 				case SearchResult::IMAGE_AREA_FILL:
-					$imageClass .= ' fill';
+					$imageClass .= ' ant-fill';
 					break;
 				case SearchResult::IMAGE_AREA_FIT:
-					$imageClass .= ' fit';
+					$imageClass .= ' ant-fit';
 					break;
 				default:
 					throw new Exception($result->getImageArea());
@@ -79,6 +82,18 @@ class SearchViewCards extends AbstractSearchView {
 			if ($result->getImageLink() !== '') {
 				$code .= '</a>';
 			}
+			if ($result->getIcon() !== NULL) {
+				$icon = new IconPixelBig($result->getIcon()['icon']);
+				if ($result->getIcon()['addon'] != '') {
+					$icon->setBottomRightIcon($result->getIcon()['addon']);
+				}
+				$code .= '<div class="ant-icon"><img src="'.$icon->getUrl()
+					.'" width="32" height="32" alt="'
+					.str_replace(['"',"'","\\"], ['','',''], $result->getName())
+					.'"></div>';
+			}
+			
+			
 			$code .= '<p>'.htmlspecialchars($result->getName()).'</p>';
 			if ($result->getImageSize() === SearchResult::IMAGE_SIZE_MEDIUM) {
 				$code .= '<p>'.htmlspecialchars($result->getDescription()).'</p>';

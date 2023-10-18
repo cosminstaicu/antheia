@@ -249,7 +249,7 @@ class SearchResult extends AbstractClass {
 		return $this->imageLink;
 	}
 	/**
-	 * Defines the icon properties, used by the accordion render.
+	 * Defines the icon properties, used by the accordion and card renders.
 	 * @param string $name the name of the file (without the extension) from 
 	 * the 32x32 media folder
 	 * @param string $addon (optional) the name of a file (without extension) used
@@ -260,13 +260,13 @@ class SearchResult extends AbstractClass {
 		$this->iconInfo = ['icon'=>$name, 'addon'=>$addon];
 	}
 	/**
-	 * Returns the icon properties, used by the accordion render.
+	 * Returns the icon properties, used by the accordion and card renders.
 	 * @return NULL|string[] an array with 2 properties: "icon" (the name of the
 	 * main icon) and "addon" (the name of the bottom right addon) for the
 	 * icon used by the accordion render. If no icon is defined, then NULL is
 	 * returned
 	 */
-	public function getInfo():?array {
+	public function getIcon():?array {
 		return $this->iconInfo;
 	}
 	/**

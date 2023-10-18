@@ -17,7 +17,9 @@ function loadSteps() {
 	secondStep.setLabel("Second step");
 	secondStep.setIcon("swap_vertical_circle");
 	// showing the loading animation (steps are both in a waiting state)
-	ant_loading_start();
+	setTimeout(() => {
+		ant_loading_start();
+	}, 50);
 	// running the first step (setProgress defines the percent completed)
 	setTimeout(() => {
 		firstStep.setProgress(20);
@@ -49,4 +51,20 @@ function loadSteps() {
 		ant_loading_stop();
 		ant_loading_step.reset();
 	}, 4300);
+}
+/**
+ * Example function that will be triggered if the user presses the cancel button
+ */
+function cancelAction() {
+	console.log('cancel action triggered');
+	ant_loading_stop();
+	ant_loading_step.reset()
+}
+function loadStepsWithCancelButton() {
+	loadSteps();
+	setTimeout(() => {
+		ant_loading_step.setCancelButton({
+			function : "cancelAction"
+		});
+	}, 1000);
 }

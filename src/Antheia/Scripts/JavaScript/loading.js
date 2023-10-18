@@ -11,8 +11,12 @@ class ant_loading_step {
 	#row;
 	/** @type {HTMLTableCellElement} */
 	#statusCell;
+	/** @type {HTMLDivElement} */
+	static loadingContainer = null;
 	/** @type {HTMLTableElement} */
 	static stepsContainer = null;
+	/** @type {HTMLDivElement} */
+	static cancelButtonContainer = document.createElement("div");
 	constructor () {
 		this.#row = document.createElement("tr");
 		this.#iconCell = document.createElement("td");
@@ -24,8 +28,14 @@ class ant_loading_step {
 		this.setIcon("info");
 		this.setLabel("---");
 		this.setProgress(null);
-		if (ant_loading_step.stepsContainer === null) {
+		if (ant_loading_step.loadingContainer === null) {
+			ant_loading_step.loadingContainer = document.createElement("div");
+			// adding the steps container
 			ant_loading_step.stepsContainer = document.createElement("table");
+			ant_loading_step.loadingContainer.appendChild(ant_loading_step.stepsContainer);
+			// adding the cancel button container
+			ant_loading_step.cancelButtonContainer = document.createElement("div");
+			ant_loading_step.loadingContainer.appendChild(ant_loading_step.cancelButtonContainer);
 		}
 		ant_loading_step.stepsContainer.appendChild(this.#row);
 	}
@@ -35,7 +45,39 @@ class ant_loading_step {
 	 * calling ant_loading_start() method
 	 */
 	static reset() {
-		this.stepsContainer = null;
+		this.loadingContainer = null;
+	}
+	/**
+	 * Enables (or disables) a cancel button that will be displayed below the
+	 * loading steps
+	 * @param {{text:String, function:String}|null} buttonData info about
+	 * the cancel button or null or undefined if the cancel button should be removed
+	 * @param {String} buttonData.text the text to be displayed
+	 * on the cancel button. If no text is provided then the "Cancel" value
+	 * will be used
+	 * @param {String} buttonData.function the function that will be called
+	 * when the user pressed on the cancel button 
+	 */
+	static setCancelButton(buttonData) {
+		if (buttonData === undefined) {
+			buttonData = null;
+		}
+		ant_loading_step.cancelButtonContainer.innerHTML = '';
+		if (buttonData === null) {
+			return;
+		}
+		if (buttonData.text === undefined) {
+			buttonData.text = "Cancel";
+		}
+		if (buttonData.function === undefined) {
+			throw new Error("No function name defined inside the cancel button");
+		}
+		let cancelButton = document.createElement('button');
+		cancelButton.innerText = buttonData.text;
+		cancelButton.addEventListener("click", () => {
+			window[buttonData.function]();
+		});
+		ant_loading_step.cancelButtonContainer.appendChild(cancelButton);
 	}
 	/**
 	 * Defines the label of the step
@@ -142,7 +184,7 @@ function ant_loading_start(formMode) {
 			break;
 		default:
 	}
-	if (ant_loading_step.stepsContainer === null) {
+	if (ant_loading_step.loadingContainer === null) {
 		// plain animation, with no steps
 		element.classList.add("ant-simple");
 		if (formMode) {
@@ -151,7 +193,7 @@ function ant_loading_start(formMode) {
 	} else {
 		// animation with steps
 		element.classList.remove("ant-simple");
-		element.appendChild(ant_loading_step.stepsContainer);
+		element.appendChild(ant_loading_step.loadingContainer);
 	}
 }
 /**

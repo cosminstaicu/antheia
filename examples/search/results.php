@@ -5,6 +5,7 @@ use Antheia\Antheia\Classes\Page\PageSearchResult;
 use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
 use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\InlineButton\InlineButton;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageSearchResult();
@@ -97,6 +98,11 @@ for ($i = 0; $i < 5; $i++) {
 		$element->setAccessRender($element::BUTTON);
 		$element->setAccessOnClick('alert()');
 	}
+	$inlineButton = new InlineButton();
+	$inlineButton->setText('Inline button');
+	$inlineButton->setOnClick("alert('clicked')");
+	$inlineButton->setIcon('warning');
+	$element->addProperty('Inline button', $inlineButton->getHtml());
 	$page->addResult($element);
 }
 // defining the current and total number of results

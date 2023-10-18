@@ -37,29 +37,52 @@ div.ant_search_card-checkbox {
 	top: var(--ant_var-rem5px);
 }
 /* main image */
-div.ant_search_card img {
+div.ant_search_card img.ant-main {
 	width: 100%;
 	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
-div.ant_search_card img.maximum {
+div.ant_search_card.ant-image-maximum img.ant-main {
 	height: 300px;
 }
-div.ant_search_card img.medium {
+div.ant_search_card.ant-image-medium img.ant-main {
 	height: 150px;
 }
-div.ant_search_card img.fill {
+div.ant_search_card img.ant-main.ant-fill {
 	object-fit : cover;
 }
-div.ant_search_card img.fit {
+div.ant_search_card img.ant-main.ant-fit {
 	object-fit : contain;
 }
 /* main image link, if present */
-div.ant_search_card > a.ant_search_card-imageLink > img {
+div.ant_search_card > a.ant_search_card-imageLink > img.ant-main {
 	outline: none;
 	outline-offset: -2px;
 }
-div.ant_search_card > a.ant_search_card-imageLink:hover > img {
+div.ant_search_card > a.ant_search_card-imageLink:hover > img.ant-main {
 	outline: 2px solid var(--ant-theme-panelBorder);
+}
+/* icon image */
+div.ant_search_card div.ant-icon {
+	position:absolute;
+	right: 20px;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 1px solid var(--ant-theme-panelBorder);
+	background-color: var(--ant-theme-panelBackground);
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+}
+div.ant_search_card.ant-image-maximum div.ant-icon {
+	top: 270px;
+}
+div.ant_search_card.ant-image-medium div.ant-icon {
+	top: 120px;
+}
+div.ant_search_card div.ant-icon > img {
+	position: absolute;
+	left: 4px;
+	top: 4px;
 }
 /* item name */
 div.ant_search_card > p:first-of-type {
