@@ -92,11 +92,9 @@ class SearchViewCards extends AbstractSearchView {
 					.str_replace(['"',"'","\\"], ['','',''], $result->getName())
 					.'"></div>';
 			}
-			
-			
-			$code .= '<p>'.htmlspecialchars($result->getName()).'</p>';
+			$code .= '<p>'.$result->getName().'</p>';
 			if ($result->getImageSize() === SearchResult::IMAGE_SIZE_MEDIUM) {
-				$code .= '<p>'.htmlspecialchars($result->getDescription()).'</p>';
+				$code .= '<p>'.$result->getDescription().'</p>';
 			}
 			$onClick = $result->getAccessOnClick();
 			if ($onClick !== '') {
