@@ -120,7 +120,7 @@ class SearchViewCards extends AbstractSearchView {
 					.$slideIcon->getHtml().'</button>';
 			// the hidden container
 			$code .= '<div>';
-			$code .= '<p>'.htmlspecialchars($result->getName()).'</p>';
+			$code .= '<p>'.$result->getName().'</p>';
 			$properties = $result->getProperties();
 			$code .= '<dl>';
 			foreach ($properties as $property) {
