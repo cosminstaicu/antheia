@@ -63,25 +63,25 @@ div.ant_search_card > a.ant_search_card-imageLink:hover > img.ant-main {
 }
 /* icon image */
 div.ant_search_card div.ant-icon {
-	position:absolute;
+	position: absolute;
 	right: 20px;
-	overflow: hidden;
-	border-radius: 50%;
-	border: 1px solid var(--ant-theme-panelBorder);
-	background-color: var(--ant-theme-panelBackground);
-	width: 40px;
+	width: 36px;
 	height: 40px;
-	overflow: hidden;
+	background: linear-gradient(
+		rgba(255,255,255,0) 0,
+		rgba(255, 255, 255, .8) 25% 75%, 
+		rgba(255,255,255,0) 100%
+	);
 }
 div.ant_search_card.ant-image-maximum div.ant-icon {
-	top: 270px;
+	top: 280px;
 }
 div.ant_search_card.ant-image-medium div.ant-icon {
-	top: 120px;
+	top: 130px;
 }
 div.ant_search_card div.ant-icon > img {
 	position: absolute;
-	left: 4px;
+	left: 2px;
 	top: 4px;
 }
 /* item name */

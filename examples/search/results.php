@@ -66,7 +66,14 @@ $page->setPagination($currentPage, 5);
 // adding some results to the list
 for ($i = 0; $i < 5; $i++) {
 	$element = new SearchResult();
-	$element->setName('Result '.($i + 1));
+	switch ($i) {
+		case 2:
+		case 3:
+			$element->setName('Result<br> number'.($i + 1));
+			break;
+		default:
+			$element->setName('Result '.($i + 1));
+	}
 	$element->addProperty('Property 1', 'Value 1');
 	$element->addProperty('Property 2', 'Value 2');
 	$element->addProperty('Property 3', '<a href="javascript:alert()">A link</a>');

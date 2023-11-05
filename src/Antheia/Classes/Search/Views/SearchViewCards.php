@@ -49,7 +49,6 @@ class SearchViewCards extends AbstractSearchView {
 				default:
 					throw new Exception($result->getImageSize());
 			}
-			
 			$code = '<div id="ant_search_card_item_'.$index.'" class="'.$divClass.'">';
 			// selection checkbox
 			if ($this->getSelectionStatus()) {
@@ -75,7 +74,7 @@ class SearchViewCards extends AbstractSearchView {
 			if ($result->getImageLink() !== '') {
 				$code .= '<a href="'.$result->getImageLink().'"
 					class="ant_search_card-imageLink" title="'
-					.htmlspecialchars($result->getName()).'">';
+					.htmlspecialchars(strip_tags($result->getName())).'">';
 			}
 			$code .= '<img src="'.$result->getImageUrl().'" class="'
 					.$imageClass.'" alt="Thumbnail">';
