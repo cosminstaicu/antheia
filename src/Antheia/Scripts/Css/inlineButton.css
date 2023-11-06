@@ -17,6 +17,7 @@ button.ant_inlineButton.ant-high, button.ant_inlineButton.ant-medium {
 div.ant_search_card.ant-details button.ant_inlineButton.ant-high,
 div.ant_search_card.ant-details button.ant_inlineButton.ant-medium {
 	font-size: 1em;
+	max-width: 100%;
 }
 button.ant_inlineButton.ant-high > img,
 button.ant_inlineButton.ant-medium > img {

@@ -169,6 +169,7 @@ div.ant_search_card > div:last-of-type > dl > dd {
 	font-size: var(--ant_var-rem12px);
 	text-align: left;
 	margin-left: 15px;
+	margin-right: 15px;
 	margin-bottom: 5px;
 }
 /* close additional info button */

@@ -106,7 +106,11 @@ for ($i = 0; $i < 5; $i++) {
 		$element->setAccessOnClick('alert()');
 	}
 	$inlineButton = new InlineButton();
-	$inlineButton->setText('Inline button');
+	if ($i === 3) {
+		$inlineButton->setText('This is a really long name for a button, so long that it needs to be trimmed');
+	} else {
+		$inlineButton->setText('Inline button');
+	}
 	$inlineButton->setOnClick("alert('clicked')");
 	$inlineButton->setIcon('warning');
 	$element->addProperty('Inline button', $inlineButton->getHtml());
