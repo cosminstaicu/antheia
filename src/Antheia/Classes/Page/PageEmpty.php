@@ -1,5 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Page;
+use Antheia\Antheia\Classes\Form;
 use Antheia\Antheia\Classes\Globals;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
@@ -160,6 +161,15 @@ class PageEmpty extends PageBlank {
 		$wireframe->setType($type);
 		$this->addElement($wireframe);
 		return $wireframe;
+	}
+	/**
+	 * Adds a form to the page and returns the new form instance
+	 * @return Form the added form instance
+	 */
+	public function addForm():Form {
+		$form = new Form();
+		$this->addElement($form);
+		return $form;
 	}
 	public function getHtml():string {
 		// body tab setup

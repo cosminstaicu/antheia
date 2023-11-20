@@ -120,7 +120,7 @@ $button->setIntensity($button::MEDIUM);
 $button->setIcon('user');
 $button->setOnClick('alert(\'on click action\')');
 $panel->addNameElement('Medium contrast', $button);
-// low constract button
+// low contrast button
 $button = new InlineButton();
 $button->setText('Low contrast button (no image)');
 $button->setIntensity($button::LOW);
@@ -130,6 +130,13 @@ $panel->addValue(
 	'Some remarks can be shown using the entire panel width.
 	Check the DELETE option in the panel menu, for a delete confirmation template.'
 );
+// inserting a button with a long text
+$button = new InlineButton();
+$button->setText('Medium contrast (with image) and a really long text, that should be handled by the render');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('user');
+$button->setOnClick('alert(\'on click action\')');
+$panel->addNameElement('Medium contrast (long text)', $button);
 $cell->addElement($panel);
 // ************************************************** a panel WITH FORM ELEMENTS
 $cell = $row->addCell();

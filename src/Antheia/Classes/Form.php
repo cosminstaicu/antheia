@@ -1,8 +1,9 @@
 <?php
 namespace Antheia\Antheia\Classes;
+use Antheia\Antheia\Classes\Panel\PanelInput;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Classes\Panel\PanelInput;
 /**
  * A regular form tag
  * @author Cosmin Staicu
@@ -102,6 +103,18 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		$panel = new PanelInput();
 		$this->addElement($panel);
 		return $panel;
+	}
+	/**
+	 * Adds a new wireframe to the form and returns the new wireframe instance
+	 * @string $type (optional) (default Wireframe::TYPE_FIXED)
+	 * the wireframe type, as a constant like Wireframe::TYPE_XXXX
+	 * @return Wireframe the added wireframe
+	 */
+	public function addWireframe(string $type = Wireframe::TYPE_FIXED):Wireframe {
+		$wireframe = new Wireframe();
+		$wireframe->setType($type);
+		$this->addElement($wireframe);
+		return $wireframe;
 	}
 	/**
 	 * Adds a hidden input to the form
