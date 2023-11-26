@@ -6,14 +6,27 @@ use Antheia\Antheia\Classes\Exception;
  * @author Cosmin Staicu
  */
 abstract class AbstractInputButton extends AbstractInput {
+	const LOW_CONTRAST = 'low';
+	const NORMAL = 'normal';
+	const WARNING = 'warning';
 	const TYPE_BUTTON = 1;
 	const TYPE_SUBMIT = 2;
 	const TYPE_RESET = 3;
 	private $buttonType;
+	private $appearance;
 	public function __construct() {
 		parent::__construct();
 		$this->setLabelExport(self::LABEL_NONE);
 		$this->buttonType = self::TYPE_SUBMIT;
+		$this->appearance = self::NORMAL;
+	}
+	/**
+	* Defines the appearance of the menu, as normal, low contrast or warning
+	* @param string $appearance the appearance as one of the constants
+	* AbstractMenu::LOW_CONTRAST, AbstractMenu::NORMAL, AbstractMenu::WARNING
+	*/
+	public function setAppearance(string $appearance):void {
+		$this->appearance = $appearance;
 	}
 	/**
 	 * Defines the text to be displayed on the button. Alias for setValue()
@@ -50,7 +63,21 @@ abstract class AbstractInputButton extends AbstractInput {
 			default:
 				throw new Exception('Unknown button type: '.$this->buttonType);
 		}
-		$code .= '" value="'.$this->getValue().'" ';
+		$code .= '" value="'.$this->getValue().'" class="';
+		switch ($this->appearance) {
+			case self::LOW_CONTRAST:
+				$code .= 'low-contrast';
+				break;
+			case self::NORMAL:
+				$code .= 'normal';
+				break;
+			case self::WARNING:
+				$code .= 'warning';
+				break;
+			default:
+				throw new Exception('Invalid value '.$this->appearance);
+		}
+		$code .= '"';
 		if ($this->getOnClick() !== '') {
 			$code .= ' onClick="'.$this->getOnClick().'" ';
 		}

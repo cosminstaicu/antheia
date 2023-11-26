@@ -84,6 +84,7 @@ $panel->addMenu($button);
 // will be initiated, to the defined url, with the defined id as a parameter
 $button = NewMenu::confirmDelete();
 $button->setUrl('/url/for/request');
+$button->setAppearance($button::WARNING);
 $button->setItemId('14');
 $button->setFormTarget('_blank'); // could be in iframe
 $panel->addMenu($button);
@@ -91,6 +92,11 @@ $panel->addMenu($button);
 // if the user types DELETE in the input
 $button = NewMenu::confirmDelete();
 $button->setAfterCallback('deleteConfirmed');
+$panel->addMenu($button);
+// a low contrast menu
+$button = NewMenu::close();
+$button->setAppearance($button::LOW_CONTRAST);
+$button->setHref("javascript:alert('some code here')");
 $panel->addMenu($button);
 // the name-value pairs are added tot the panel
 $panel->addNameValue('Given name', 'John', 'idForRow', ['rowClassOne','rowClassTwo']);
@@ -118,7 +124,8 @@ $button = new InlineButton();
 $button->setText('Medium contrast (with image)');
 $button->setIntensity($button::MEDIUM);
 $button->setIcon('user');
-$button->setOnClick('alert(\'on click action\')');
+$button->setHref('javascript:alert(\'href action\')');
+$button->setRender($button::LINK);
 $panel->addNameElement('Medium contrast', $button);
 // low contrast button
 $button = new InlineButton();
@@ -172,6 +179,21 @@ $input->addOption('Value 3', 'v3');
 $input->addOption('Value 4', 'v4', false, 'info about the forth value');
 $input->setValue('v2'); // default value can be set
 $panel->addInput($input);
+// low contrast button
+$button = NewInput::button();
+$button->setAppearance($button::LOW_CONTRAST);
+$button->setText('Low contrast');
+$panel->addInput($button);
+// normal button
+$button = NewInput::button();
+$button->setAppearance($button::NORMAL); // this line is optional
+$button->setText('Normal contrast');
+$panel->addInput($button);
+// warning button
+$button = NewInput::button();
+$button->setAppearance($button::WARNING);
+$button->setText('Warning button');
+$panel->addInput($button);
 // adding the panel to the wireframe cell
 $cell->addElement($panel);
 // *************************************************** a panel WITH AN ACCORDION

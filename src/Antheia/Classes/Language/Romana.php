@@ -92,6 +92,7 @@ abstract class Romana extends AbstractLanguage {
 	const LOGIN = 'Autentificare';
 	const LOGIN_FAILED = 'Autentificare nereușită';
 	const LOGOUT = 'Ieșire';
+	const LOW_CONTRAST = 'Contrast scăzut';
 	const MAXIMUM = 'Maximum';
 	const MAXIMUM_UPLOAD_SIZE_ERROR = 'Dimensiunea totală a fost depășită';
 	const MENU = 'Meniu';

@@ -269,16 +269,16 @@ class SearchForm extends Form {
 			<tr><td>'
 		);
 		if ($this->displayResetButton) {
-			$butonReset = NewInput::button();
-			$butonReset->setHtmlId('ant_search-reset');
-			$butonReset->setOnClick('ant_search_reset(this)');
-			$butonReset->setValue(Texts::get('RESET'));
-			$table->addElement($butonReset);
+			$resetButton = NewInput::button();
+			$resetButton->setAppearance($resetButton::LOW_CONTRAST);
+			$resetButton->setOnClick('ant_search_reset(this)');
+			$resetButton->setValue(Texts::get('RESET'));
+			$table->addElement($resetButton);
 			$table->addRawCode('</td><td>');
 		}
-		$butonSubmit = NewInput::submit();
-		$butonSubmit->setValue(Texts::get('SEARCH'));
-		$table->addElement($butonSubmit);
+		$submitButton = NewInput::submit();
+		$submitButton->setValue(Texts::get('SEARCH'));
+		$table->addElement($submitButton);
 		$table->addRawCode('</td></tr></table>');
 		$cell->addElement($table);
 		$slide->addHidden($wireframe);

@@ -465,10 +465,20 @@ class PageEditTheme extends PageEmpty {
 		$cell->addWidth('md', 6);
 		$panel = $cell->addInfoPanel();
 		$panel->setFullHeight();
-		$exampleButton = NewMenu::update();
-		$exampleButton->setText(Texts::getLc('EXAMPLE'));
-		$exampleButton->setHref('javascript:void(0)');
-		$panel->addMenu($exampleButton);
+		$normalButton = NewMenu::update();
+		$normalButton->setText(Texts::get('EXAMPLE'));
+		$normalButton->setHref('javascript:void(0)');
+		$panel->addMenu($normalButton);
+		$lowContrastButton = NewMenu::close();
+		$lowContrastButton->setAppearance($lowContrastButton::LOW_CONTRAST);
+		$lowContrastButton->setText(Texts::get('LOW_CONTRAST'));
+		$lowContrastButton->setHref('javascript:void(0)');
+		$panel->addMenu($lowContrastButton);
+		$warningButton = NewMenu::delete();
+		$warningButton->setAppearance($lowContrastButton::WARNING);
+		$warningButton->setText(Texts::get('WARNING'));
+		$warningButton->setHref('javascript:void(0)');
+		$panel->addMenu($warningButton);
 		$panel->setTitle(Texts::get('INFORMATION'));
 		$panel->addNameValue(
 				'Lorem ipsum dolor', 
@@ -556,6 +566,16 @@ class PageEditTheme extends PageEmpty {
 		$panel->addInput($input);
 		$input = NewInput::button();
 		$input->setText(Texts::get('BUTTON'));
+		$input->setOnClick('ant_theme_getPhpCode()');
+		$panel->addInput($input);
+		$input = NewInput::button();
+		$input->setText(Texts::get('LOW_CONTRAST'));
+		$input->setAppearance($input::LOW_CONTRAST);
+		$input->setOnClick('ant_theme_getPhpCode()');
+		$panel->addInput($input);
+		$input = NewInput::button();
+		$input->setText(Texts::get('WARNING'));
+		$input->setAppearance($input::WARNING);
 		$input->setOnClick('ant_theme_getPhpCode()');
 		$panel->addInput($input);
 		// ******************************************************** action panel

@@ -14,8 +14,6 @@ use Antheia\Antheia\Interfaces\BeforeAfterCallback;
  * @author Cosmin Staicu
  */
 class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
-	const SUBMIT_FORM = 'submitForm';
-	const JAVASCRIPT_FUNCTION = 'submitForm';
 	private $url;
 	private $paramValue;
 	private $paramName;

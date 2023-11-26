@@ -77,21 +77,43 @@ textarea:focus, input[type=button].ant_form-button:focus {
 	outline-color: var(--ant-theme-inputBorder);
 }
 input[type=submit], input[type=button], input[type=reset]  {
-	background-color: var(--ant-theme-buttonBackground);
-	color: var(--ant-theme-buttonText);
 	padding: 5px 15px 5px 15px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: var(--ant_var-rem16px);
-	border: 1px solid var(--ant-theme-buttonBackground);
 	border-radius: 4px;
 	transition: 0.5s;
 }
 input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover {
-	background-color: var(--ant-theme-buttonBackgroundHover);
 	cursor: pointer;
 	text-decoration: none;
+}
+input.low-contrast[type=submit], input.low-contrast[type=button], input.low-contrast[type=reset]  {
+	background-color: var(--ant-theme-buttonText);
+	color: var(--ant-theme-buttonBackground);
+	border: 1px solid var(--ant-theme-buttonBackground);
+}
+input.low-contrast[type=submit]:hover, input.low-contrast[type=button]:hover, input.low-contrast[type=reset]:hover {
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
+	background-color: var(--ant-theme-buttonBackgroundHover);
+}
+input.normal[type=submit], input.normal[type=button], input.normal[type=reset]  {
+	background-color: var(--ant-theme-buttonBackground);
+	color: var(--ant-theme-buttonText);
+	border: 1px solid var(--ant-theme-buttonBackground);
+}
+input.normal[type=submit]:hover, input.normal[type=button]:hover, input.normal[type=reset]:hover {
+	background-color: var(--ant-theme-buttonBackgroundHover);
+}
+input.warning[type=submit], input.warning[type=button], input.warning[type=reset]  {
+	background-color: var(--ant-theme-warning);
+	color: var(--ant-theme-buttonText);
+	border: 1px solid var(--ant-theme-warning);
+}
+input.warning[type=submit]:hover, input.warning[type=button]:hover, input.warning[type=reset]:hover {
+	background-color: var(--ant-theme-buttonBackgroundHover);
 }
 /* trigger buttons (used usually for modal opening */
 input[type=button].ant_form-button {

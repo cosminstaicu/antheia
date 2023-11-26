@@ -14,6 +14,9 @@ use Antheia\Antheia\Interfaces\LinkButtonRender;
  */
 abstract class AbstractMenu extends AbstractClass 
 implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
+	const LOW_CONTRAST = 'low';
+	const NORMAL = 'normal';
+	const WARNING = 'warning';
 	private $text;
 	private $href;
 	private $icon;
@@ -22,6 +25,7 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	private $attributes;
 	private $onClick;
 	private $renderType;
+	private $appearance;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -32,6 +36,15 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 		$this->attributes = [];
 		$this->onClick = '';
 		$this->renderType = self::LINK;
+		$this->appearance = self::NORMAL;
+	}
+	/**
+	 * Defines the appearance of the menu, as normal, low contrast or warning
+	 * @param string $appearance the appearance as one of the constants
+	 * AbstractMenu::LOW_CONTRAST, AbstractMenu::NORMAL, AbstractMenu::WARNING
+	 */
+	public function setAppearance(string $appearance):void {
+		$this->appearance = $appearance;
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
@@ -93,7 +106,21 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 			default:
 				throw new Exception('Invalid type '.$this->renderType);
 		}
-		$code .= ' class="ant_menu-item"';
+		$code .= ' class="ant_menu-item ';
+		switch ($this->appearance) {
+			case self::LOW_CONTRAST:
+				$code .= ' low-contrast';
+				break;
+			case self::NORMAL:
+				$code .= ' normal';
+				break;
+			case self::WARNING:
+				$code .= ' warning';
+				break;
+			default:
+				throw new Exception('Invalid value '.$this->appearance);
+		}
+		$code .= '"';
 		if ($this->cssCode !== '') {
 			$code .= ' style="'.$this->cssCode.'"';
 		}

@@ -91,6 +91,7 @@ abstract class English extends AbstractLanguage {
 	const LOGIN = 'Login';
 	const LOGIN_FAILED = 'Login process failed';
 	const LOGOUT = 'Logout';
+	const LOW_CONTRAST = 'Low contrast';
 	const MAXIMUM = 'Maximum';
 	const MAXIMUM_UPLOAD_SIZE_ERROR = 'Maximum upload size exceeded';
 	const MENU = 'Menu';

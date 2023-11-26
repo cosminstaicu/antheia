@@ -1,15 +1,17 @@
 <?php
 namespace Antheia\Antheia\Classes\InlineButton;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\IconPixelSmall;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Classes\Icon\IconPixelSmall;
-use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Class to be extended by all classes defining an inline button.
  * @author Cosmin Staicu
  */
-abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, HtmlId {
+abstract class AbstractInlineButton extends AbstractClass
+implements HtmlCode, HtmlId, LinkButtonRender {
 	const HIGH = 'high';
 	const MEDIUM = 'medium';
 	const LOW = 'low';
@@ -17,20 +19,30 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 	private $htmlId;
 	private $classes;
 	private $onClick;
+	private $href;
 	private $icon;
 	private $title;
 	private $intensity;
 	private $multipleRows;
+	private $renderType;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
 		$this->htmlId = '';
 		$this->classes = ['ant_inlineButton'];
-		$this->onClick = 'void(0)';
+		$this->onClick = '';
+		$this->href='javascript:void(0)';
 		$this->icon = NULL;
 		$this->title = NULL;
 		$this->intensity = self::MEDIUM;
 		$this->multipleRows = false;
+		$this->renderType = self::BUTTON;
+	}
+	public function setRender(string $type):void {
+		$this->renderType = $type;
+	}
+	public function setHref(string $href):void {
+		$this->href = $href;
 	}
 	/**
 	 * Adds a class to the button
@@ -109,7 +121,18 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		if (!$this->multipleRows) {
 			$this->addClass('ant-single-row');
 		}
-		$code = '<button type="button" class="';
+		$code = '';
+		switch ($this->renderType) {
+			case self::BUTTON:
+				$code .= '<button type="button"';
+				break;
+			case self::LINK:
+				$code .= '<a href="'.$this->href.'"';
+				break;
+			default:
+				throw new Exception('Invalid render '.$this->renderType);
+		}
+		$code .= ' class="';
 		$code .= implode(' ', array_unique($this->classes));
 		$code .='"';
 		if ($this->htmlId != '') {
@@ -118,13 +141,27 @@ abstract class AbstractInlineButton extends AbstractClass implements HtmlCode, H
 		if ($this->title !== NULL) {
 			$code .= ' title="'.addslashes($this->title).'"';
 		}
-		$code .= ' onClick="'.$this->onClick.'">';
+		if ($this->onClick !== '') {
+			$code .= ' onClick="'.$this->onClick.'"';
+		}
+		$code .= ' >';
 		if ($this->icon !== NULL) {
 			$icon = new IconPixelSmall($this->icon);
 			$code .= '<img src="'.$icon->getUrl()
 				.'" width="16" height="16" alt="'.addslashes($this->text).'">';
 		}
-		$code .= htmlspecialchars($this->text).'</button>';
+		$code .= htmlspecialchars($this->text);
+		switch ($this->renderType) {
+			case self::BUTTON:
+				$code .= '</button>';
+				break;
+			case self::LINK:
+				$code .= '</a>';
+				break;
+			default:
+				throw new Exception('Invalid render '.$this->renderType);
+		}
+		
 		return $code;
 	}
 }

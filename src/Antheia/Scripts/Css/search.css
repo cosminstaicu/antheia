@@ -60,10 +60,6 @@
 	right: 5px;
 	color: var(--ant-theme-buttonText);
 }
-#ant_search-reset {
-	background-color: var(--ant-theme-buttonText);
-	color: var(--ant-theme-buttonBackground);
-}
 /*************************************************************** PAGE CONTROL */
 #ant_search-pages {
 	position: fixed;
