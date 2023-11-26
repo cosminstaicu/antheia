@@ -63,21 +63,20 @@ abstract class AbstractInputButton extends AbstractInput {
 			default:
 				throw new Exception('Unknown button type: '.$this->buttonType);
 		}
-		$code .= '" value="'.$this->getValue().'" class="';
-		switch ($this->appearance) {
-			case self::LOW_CONTRAST:
-				$code .= 'low-contrast';
-				break;
-			case self::NORMAL:
-				$code .= 'normal';
-				break;
-			case self::WARNING:
-				$code .= 'warning';
-				break;
-			default:
-				throw new Exception('Invalid value '.$this->appearance);
+		$code .= '" value="'.$this->getValue().'"';
+		if ($this->appearance !== self::NORMAL) {
+			$code .= ' class="';
+			switch ($this->appearance) {
+				case self::LOW_CONTRAST:
+					$code .= 'low-contrast';
+					break;
+				case self::WARNING:
+					$code .= 'warning';
+					break;
+				default:
+			}
+			$code .= '"';
 		}
-		$code .= '"';
 		if ($this->getOnClick() !== '') {
 			$code .= ' onClick="'.$this->getOnClick().'" ';
 		}
