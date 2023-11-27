@@ -8,12 +8,13 @@ use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * An item from the file browser list (a file or a folder)
  * @author Cosmin Staicu
  */
-abstract class AbstractItem
-extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
+abstract class AbstractItem extends AbstractClass
+implements HtmlCode, BeforeAfterCallback, HtmlAttribute, LinkButtonRender {
 	private $panel;
 	private $name;
 	private $attributes;
@@ -24,6 +25,8 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 	private $post;
 	private $hiddenItems;
 	private $onClick;
+	private $href;
+	private $renderType;
 	public function __construct(?PanelFileBrowser $panel) {
 		parent::__construct();
 		if ($panel === null) {
@@ -37,7 +40,9 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 		$this->pre = '';
 		$this->post = '';
 		$this->hiddenItems = [];
-		$this->onClick = null;
+		$this->onClick = '';
+		$this->href='javascript:void(0)';
+		$this->renderType = self::BUTTON;
 	}
 	/**
 	 * Defines the name of the item
@@ -80,13 +85,13 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 	public function setAfterCallback(string $functionName):void {
 		$this->post = $functionName;
 	}
-	/**
-	 * Defines the javascript code to be called by the onClick event
-	 * @param string|null $onClick the code to be called by the onClick event or
-	 * NULL if the default script should be used (the script that slides the
-	 * hidden content into view)
-	 */
-	public function setOnClick(?string $onClick = null):void {
+	public function setRender(string $type):void {
+		$this->renderType = $type;
+	}
+	public function setHref(string $href):void {
+		$this->href = $href;
+	}
+	public function setOnClick(string $onClick):void {
 		$this->onClick = $onClick;
 	}
 	/**
@@ -98,6 +103,11 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 		$this->hiddenItems[] = $item;
 	}
 	public function getHtml():string {
+		if ($this->renderType === self::LINK) {
+			if (count($this->hiddenItems) > 0) {
+				throw new Exception('Link render unavailable with hidden items.');
+			}
+		}
 		if ($this->icon === null) {
 			$this->setIcon(new IconPixelBig('document_empty'));
 		}
@@ -114,16 +124,42 @@ extends AbstractClass implements HtmlCode, BeforeAfterCallback, HtmlAttribute {
 			$code .= ' '.$attribute[0].'="'.$attribute[1].'"';
 		}
 		$code .='>';
-		$code .= '<button onclick="';
-		if ($this->onClick === null) {
-			$code .= 'ant_panel_fileBrowserItemClick(this)';
-		} else {
-			$code .= $this->onClick;
+		switch ($this->renderType) {
+			case self::BUTTON:
+				$code .= '<button';
+				break;
+			case self::LINK:
+				$code .= '<a href="'.$this->href.'"';
+				break;
+			default:
+				throw new Exception('Invalid render '.$this->renderType);
 		}
-		$code .= '" type="button">';
+		if ($this->renderType === self::BUTTON) {
+			$code .= ' onclick="';
+			if ($this->onClick === '') {
+				$code .= 'ant_panel_fileBrowserItemClick(this)';
+			} else {
+				$code .= $this->onClick;
+			}
+			$code .= '" type="button">';
+		} else {
+			if ($this->onClick !== '') {
+				$code .= ' onclick="'.$this->onClick.'"';
+			}
+			$code .= '>';
+		}
 		$code .= $this->icon->getHtml($this->iconAltText);
 		$code .= ' '.$this->name;
-		$code .= '</button>';
+		switch ($this->renderType) {
+			case self::BUTTON:
+				$code .= '</button>';
+				break;
+			case self::LINK:
+				$code .= '</a>';
+				break;
+			default:
+				throw new Exception('Invalid render '.$this->renderType);
+		}
 		if (count($this->hiddenItems) > 0) {
 			$code .= '<div>';
 			/** @var HtmlCode $item */

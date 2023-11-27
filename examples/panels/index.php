@@ -222,7 +222,12 @@ $folder = $panel->addFolder();
 $folder->setName('First folder');
 // adding a second folder
 $folder = $panel->addFolder();
-$folder->setName('Second folder (with onclick event)');
+$folder->setRender($folder::LINK);
+$folder->setHref('javascript:alert(\'an alert from href\')');
+$folder->setName('Second folder, rendered as a link');
+// adding a third folder
+$folder = $panel->addFolder();
+$folder->setName('Third folder (with onclick event)');
 $folder->setOnClick("alert('clicked')");
 // adding a file
 $file = $panel->addFile();

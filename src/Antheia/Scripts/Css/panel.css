@@ -87,7 +87,8 @@
 .ant_panel.ant-fileBrowser > .ant-content > div:last-child {
 	border-bottom: 1px solid var(--ant-theme-panelBorder);
 }
-.ant_panel.ant-fileBrowser > .ant-content > div > button {
+.ant_panel.ant-fileBrowser > .ant-content > div > button,
+.ant_panel.ant-fileBrowser > .ant-content > div > a {
 	display: block;
 	width: 100%;
 	background-color: var(--ant-theme-panelSecondaryBackground);
@@ -102,10 +103,12 @@
 	color: var(--ant-theme-link);
 	font-size: var(--ant_var-rem16px);
 }
-.ant_panel.ant-fileBrowser > .ant-content > div > button > * {
+.ant_panel.ant-fileBrowser > .ant-content > div > button > *,
+.ant_panel.ant-fileBrowser > .ant-content > div > a > * {
 	vertical-align: middle;
 }
-.ant_panel.ant-fileBrowser > .ant-content > div > button:hover {
+.ant_panel.ant-fileBrowser > .ant-content > div > button:hover,
+.ant_panel.ant-fileBrowser > .ant-content > div > a:hover {
 	text-decoration: none;
 	border-left: 10px solid var(--ant-theme-panelBorder);
 }

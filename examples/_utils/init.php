@@ -35,7 +35,6 @@ if (!is_file($autoloadFile)) {
 function init_configurePage(AbstractPage $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
-	Globals::setDebug();
 	//******************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	//******************************************************** TOP RIGHT OPTIONS
