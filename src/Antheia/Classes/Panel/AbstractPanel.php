@@ -23,6 +23,7 @@ implements HtmlCode, HtmlId {
 	private $htmlId;
 	private $maxHeight;
 	private $classes;
+	private $tabs;
 	public function __construct() {
 		parent::__construct();
 		$this->content = [];
@@ -33,6 +34,7 @@ implements HtmlCode, HtmlId {
 		$this->maxHeight = false;
 		$this->classes = [];
 		$this->setHtmlId('');
+		$this->tabs = [];
 	}
 	/**
 	 * Adds a class to the container html tag
@@ -116,6 +118,19 @@ implements HtmlCode, HtmlId {
 	public function addText(string $text):void {
 		$this->content[] = new Html($text);
 	}
+	/**
+	 * Adds a tab to the tab list of the panel
+	 * @param Tab $tab (optional) the tab to be added to the panel.
+	 * If no tab is provided, a new one will be created
+	 * @return Tab the added tab
+	 */
+	public function addTab(?Tab $tab = NULL):Tab {
+		if ($tab === NULL) {
+			$tab = new Tab();
+		}
+		$this->tabs[] = $tab;
+		return $tab;
+	}
 	public function getHtml():string {
 		$this->addClass('ant_panel');
 		if ($this->maxHeight) {
@@ -138,6 +153,11 @@ implements HtmlCode, HtmlId {
 			}
 			$code .= '</div>';
 		}
+		$code .= '<div class="ant-tabs">';
+		foreach ($this->tabs as $tab) {
+			$code .= $tab->getHtml();
+		}
+		$code .= '</div>';
 		$code .= '<div class="ant-content">';
 		/** @var HtmlCode $item */
 		foreach ($this->content as $item) {

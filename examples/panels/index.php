@@ -73,6 +73,25 @@ $cell->addWidth('md', 6);
 // a panel with a title and a menu
 // the panel is optimised for showing name-value pairs
 $panel = new PanelInfo();
+$tab = $panel->addTab();
+$tab->setTitle('Tab 1');
+$tab->setRender($tab::BUTTON);
+$tab->setOnClick('alert()');
+$tab = $panel->addTab();
+$tab->setTitle('Tab 2');
+$tab->setRender($tab::LINK);
+$tab->setOnClick('alert()');
+$tab = $panel->addTab();
+$tab->setStatus($tab::STATUS_SELECTED);
+$tab->setTitle('Tab 3');
+$tab->setRender($tab::BUTTON);
+$tab->setAccent();
+$tab->setOnClick('alert()');
+$tab = $panel->addTab();
+$tab->setTitle('Tab 4');
+$tab->setRender($tab::LINK);
+$tab->setAccent();
+$tab->setOnClick('alert()');
 $panel->setTitle('Panel for entity info (ex: user info)');
 // first, the menu items are defined
 // an edit button
@@ -196,11 +215,80 @@ $button->setText('Warning button');
 $panel->addInput($button);
 // adding the panel to the wireframe cell
 $cell->addElement($panel);
-// *************************************************** a panel WITH AN ACCORDION
+// *********************************** a panel WITH AN ACCORDION AND TAB CONTROL
 $cell = $row->addCell();
 $cell->addWidth('xs', 12);
 $panel = $cell->addPanel();
-$panel->setTitle('Panel with an accordion');
+$panel->setTitle('Panel with an accordion and tab control');
+$panel->setHtmlId('panelWithTabs');
+$tab = $panel->addTab();
+$tab->setTitle('Tab 1');
+$tab->setRender($tab::BUTTON);
+$tab->setOnClick('alert()');
+$tab = $panel->addTab();
+$tab->setTitle('Tab 2');
+$tab->setRender($tab::LINK);
+$tab->setOnClick('alert()');
+$tab = $panel->addTab();
+$tab->setStatus($tab::STATUS_SELECTED);
+$tab->setTitle('Tab 3');
+$tab->setRender($tab::BUTTON);
+$tab->setAccent();
+$tab->setOnClick('alert()');
+$tab = $panel->addTab();
+$tab->setTitle('Tab 4');
+$tab->setRender($tab::LINK);
+$tab->setAccent();
+$tab->setOnClick('alert()');
+// add new tab
+$button = new InlineButton();
+$button->setText('Add new tab');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('plus_button');
+$button->setOnClick('addNewTab()');
+$panel->addElement($button);
+// delete tab
+$button = new InlineButton();
+$button->setText('Delete first tab');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('delete');
+$button->setOnClick('deleteFirstTab()');
+$panel->addElement($button);
+// select tab
+$button = new InlineButton();
+$button->setText('Select second tab');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('tick_button');
+$button->setOnClick('selectSecondTab()');
+$panel->addElement($button);
+// accent tab
+$button = new InlineButton();
+$button->setText('Accent first tab');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('check_box');
+$button->setOnClick('accentFirstTab()');
+$panel->addElement($button);
+// remove accent
+$button = new InlineButton();
+$button->setText('Remove first tab accent');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('check_box_uncheck');
+$button->setOnClick('noAccentFirstTab()');
+$panel->addElement($button);
+// hide tabs
+$button = new InlineButton();
+$button->setText('Hide tab bar');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('tab_delete');
+$button->setOnClick('hideTabBar()');
+$panel->addElement($button);
+// show tabs
+$button = new InlineButton();
+$button->setText('Show tab bar');
+$button->setIntensity($button::MEDIUM);
+$button->setIcon('tab_add');
+$button->setOnClick('showTabBar()');
+$panel->addElement($button);
 $accordion = new Accordion();
 $accordionItem = $accordion->getNewItem();
 $accordionItem->setTitle('First accordion item');

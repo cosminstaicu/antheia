@@ -2,6 +2,9 @@
 	display: inline;
 	text-align: left;
 }
+.ant_inlineButton:has(+ .ant_inlineButton) {
+	margin-right: calc(1em / 2);
+}
 .ant_inlineButton.ant-single-row {
 	overflow: hidden;
 	white-space: nowrap;
