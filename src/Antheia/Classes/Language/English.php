@@ -119,6 +119,7 @@ abstract class English extends AbstractLanguage {
 	const PASSWORD_ONLY_DIGITS = 'Can only contain digits';
 	const PASSWORD_SPECIAL = 'Must have at least one special character';
 	const PASSWORD_UPPERCASE = 'Must have at least one uppercase letter';
+	const PLAYBACK = 'Playback';
 	const PREVIEW = 'Preview';
 	const PRODUCTS = 'Products';
 	const REFRESH = 'Refresh';

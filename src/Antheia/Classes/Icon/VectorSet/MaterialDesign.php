@@ -134,6 +134,9 @@ class MaterialDesign implements Icon {
 			case IconVector::ICON_PHONE:
 				$this->icon = 'phone';
 				break;
+			case IconVector::ICON_PLAY:
+				$this->icon = 'play_arrow';
+				break;
 			case IconVector::ICON_RIGHT:
 				$this->icon = 'arrow_forward';
 				break;

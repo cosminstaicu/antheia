@@ -99,7 +99,7 @@ function ant_panel_tabsGet(panel) {
 /**
  * Creates a new tab (to be attached later to a container) and returns it
  * @param {String} label the label of the tab (the text displayed on it)
- * @param {"link"|"button"} [tabType] the type of tab to be created: link (a "A"
+ * @param {"link"|"button"} tabType the type of tab to be created: link (a "A"
  * tag will be created) or "button" (a "BUTTON" tag will be created)
  * @returns {HTMLDivElement} the new tab
  */

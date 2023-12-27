@@ -120,6 +120,7 @@ abstract class Romana extends AbstractLanguage {
 	const PASSWORD_ONLY_DIGITS = 'Să conțină doar cifre';
 	const PASSWORD_SPECIAL = 'Să conțină cel puțin un caracter special';
 	const PASSWORD_UPPERCASE = 'Să conțină cel puțin o literă mare';
+	const PLAYBACK = 'Redare';
 	const PREVIEW = 'Vizualizare';
 	const PRODUCTS = 'Produse';
 	const REFRESH = 'Actualizare';

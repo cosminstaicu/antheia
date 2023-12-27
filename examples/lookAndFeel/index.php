@@ -91,6 +91,10 @@ $panelMenu = NewMenu::delete();
 $panelMenu->setRender($panelMenu::BUTTON);
 $panelMenu->setOnClick("alert('some action here')");
 $panel->addMenu($panelMenu);
+$playbackMenu = NewMenu::play();
+$playbackMenu->setRender($panelMenu::BUTTON);
+$playbackMenu->setOnClick("alert('some action here')");
+$panel->addMenu($playbackMenu);
 $panel->addText('This is a panel with a menu');
 // adding the container to the cell of the wireframe
 $cell->addElement($panel);

@@ -81,6 +81,14 @@ abstract class NewMenu {
 		return new MenuInfo();
 	}
 	/**
+	 * Creates a playback menu and returns it
+	 * @see \Antheia\Antheia\Classes\Menu\Item\MenuPlay
+	 * @return MenuShopping the new input that has been created
+	 */
+	public static function play():MenuPlay {
+		return new MenuPlay();
+	}
+	/**
 	 * Creates a shopping menu and returns it
 	 * @see \Antheia\Antheia\Classes\Menu\Item\MenuShopping
 	 * @return MenuShopping the new input that has been created
