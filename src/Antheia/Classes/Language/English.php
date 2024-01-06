@@ -79,6 +79,7 @@ abstract class English extends AbstractLanguage {
 	const INPUT_TEXT = 'Input text';
 	const INTERFACE = 'Interface';
 	const INVALID_INPUT = 'Invalid input';
+	const INVALID_INPUT_VALUE = 'Invalid input value';
 	const INVALID_INPUT_INFO = 'This input is always invalid';
 	const LANGUAGE = 'Language';
 	const LARGE_MESSAGE = 'Large message';

@@ -103,6 +103,11 @@
 	show() {
 		this.#optionSelected = false;
 		this.#modal.show();
+		if (document.activeElement !== undefined) {
+			if (document.activeElement !== null) {
+				document.activeElement.blur();
+			}
+		}
 	}
 	/**
 	 * A quick static method for showing a confirmation dialog

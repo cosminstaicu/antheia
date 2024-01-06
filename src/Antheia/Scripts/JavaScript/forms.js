@@ -2,22 +2,23 @@
  * Updates the status of an input. The status is displayed as an icon
  * to the right of the input (a valid or an invalid icon). The input has to
  * have a function for the validation process, already defined
- * @param {String} id the id of the input to be updated
+ * @param {HTMLElement|String} inputOrId the input or the id of the input
+ * to be updated
  */
-function ant_forms_updateStatus(id) {
-	if (id === "") {
-		// no id defined
-		return false;
-	}
-	let input = document.getElementById(id);
-	if (input === null) {
-		throw new Error("Unknown ID: " + id);
+function ant_forms_updateStatus(inputOrId) {
+	/** @type {HTMLElement} */
+	let input = inputOrId;
+	if (typeof input === "string") {
+		input = document.getElementById(inputOrId);
+		if (input === null) {
+			throw new Error('Unknown input id ' + inputOrId);
+		}
 	}
 	if (window[input.dataset.validate] === undefined) {
-		return false;
+		return;
 	}
 	if (window[input.dataset.validate] === "") {
-		return false;
+		return;
 	}
 	let statusIcon = input.parentElement;
 	let i = 0;
@@ -51,7 +52,8 @@ function ant_forms_updateStatus(id) {
 /**
  * Updates the value of an input element. Will also update the status
  * (validates the input) if the input has such a function defined
- * @param {String} id the id of the input to be updated
+ * @param {HTMLElement|String} inputOrId the input or the id of the input
+ * to be updated
  * @param {String} value the new value of the input
  * @param {String} readableValue (optional) the value that will be
  * displayed to the user, if it is different than the input value. It is
@@ -59,11 +61,15 @@ function ant_forms_updateStatus(id) {
  * required by the input, but undefined in the function call then the
  * value of the second parameter will be used.
  */
-function ant_forms_updateValue(id, value, readableValue) {
+function ant_forms_updateValue(inputOrId, value, readableValue) {
 	let button = null;
-	let element = document.getElementById(id);
-	if (element === null) {
-		throw new Error("The id can not be found: " + id);
+	/** @type {HTMLElement} */
+	let element = inputOrId;
+	if (typeof element === "string") {
+		element = document.getElementById(inputOrId);
+		if (element === null) {
+			throw new Error('Unknown input id ' + inputOrId);
+		}
 	}
 	let inputType = element.tagName.toLowerCase();
 	if (inputType === "input") {
@@ -89,8 +95,8 @@ function ant_forms_updateValue(id, value, readableValue) {
 		case "input-hidden-custom":
 			button = element.previousElementSibling.previousElementSibling;
 			element.value = value;
-			if (value == button.dataset.nespecificatValoare) {
-				button.value = button.dataset.nespecificatText;
+			if (value == button.dataset.undefinedValue) {
+				button.value = button.dataset.textUndefined;
 			} else {
 				button.value = readableValue;
 			}
@@ -118,8 +124,8 @@ function ant_forms_updateValue(id, value, readableValue) {
 			}
 			button = element.previousElementSibling.previousElementSibling;
 			element.value = value;
-			if (value == button.dataset.nespecificatValoare) {
-				button.value = button.dataset.nespecificatText;
+			if (value == button.dataset.undefinedValue) {
+				button.value = button.dataset.textUndefined;
 			} else {
 				button.value = readableValue;
 			}
@@ -127,8 +133,8 @@ function ant_forms_updateValue(id, value, readableValue) {
 		case "input-hidden-time":
 			button = element.previousElementSibling.previousElementSibling;
 			element.value = value;
-			if (value == button.dataset.nespecificatValoare) {
-				button.value = button.dataset.nespecificatText;
+			if (value == button.dataset.undefinedValue) {
+				button.value = button.dataset.textUndefined;
 			} else {
 				button.value = readableValue;
 			}
@@ -163,7 +169,95 @@ function ant_forms_updateValue(id, value, readableValue) {
 			element.innerHTML = value;
 			break;
 		default:
-			throw new Error("Unknown type: " + inputType + ", ID: " + id);
+			throw new Error("Unknown type: " + inputType + ", ID: " + inputOrId);
 	}
-	ant_forms_updateStatus(id);
+	ant_forms_updateStatus(element);
+}
+/**
+ * Shows an error alert that contains the label of the input. After the user
+ * clicks OK, the input is focused, if possible
+ * @param {HTMLElement|String} inputOrId the input or the id of the input
+ */
+function ant_forms_showInputError(inputOrId) {
+	/** @type {HTMLElement} */
+	let element = inputOrId;
+	if (typeof element === "string") {
+		element = document.getElementById(inputOrId);
+		if (element === null) {
+			throw new Error('Unknown input id ' + inputOrId);
+		}
+	}
+	// Will not be null if the input has a button attached to it
+	let inputButton = null;
+	let visibleElementId = element.id;
+	if (element.dataset.visibleElementId !== undefined) {
+		visibleElementId = element.dataset.visibleElementId;
+		inputButton = document.getElementById(element.dataset.visibleElementId);
+	}
+	// selects all label containers, to find the label for the input
+	let labelContainers = document.getElementsByClassName("ant_form-label-container");
+	let labelText = null;
+	for (let i = 0; i < labelContainers.length; i++) {
+		let labels = labelContainers[i].getElementsByTagName('LABEL');
+		if (labels.length === 0) {
+			// containers for info type inputs do not have any labels
+			continue;
+		}
+		let label = labels[0];
+		if (label.getAttribute('for') === visibleElementId) {
+			labelText = label.innerHTML;
+			break;
+		}
+	}
+	if (labelText === null) {
+		throw new Error('No label found for ' + element.id);
+	}
+	let alertModal = new ant_modal();
+	let elementValue = element.value;
+	if (inputButton !== null) {
+		elementValue = inputButton.value;
+	}
+	if (elementValue === '') {
+		elementValue = '---';
+	}
+	alertModal.setHeader(ant_text["invalidInputValue"]);
+	let mainParagraph = document.createElement('P');
+	let okButton = document.createElement("INPUT");
+	mainParagraph.classList.add("ant_form-invalid-input-error");
+	mainParagraph.innerHTML = '<span>' + labelText + '</span>';
+	let sendToInputButton = document.createElement('BUTTON');
+	sendToInputButton.innerHTML = elementValue;
+	sendToInputButton.addEventListener("click", () => {
+		okButton.click();
+	});
+	mainParagraph.appendChild(sendToInputButton);
+	let invalidIcon = document.createElement('I');
+	invalidIcon.innerHTML = 'warning';
+	mainParagraph.appendChild(invalidIcon);
+	okButton.type = "button";
+	okButton.value = ant_text["ok"];
+	okButton.classList.add("ant_modal-footer-button");
+	let focusOnClose = true;
+	if (inputButton !== null) {
+		focusOnClose = false;
+		inputButton.scrollIntoView({behavior: "smooth"});
+	} else {
+		element.scrollIntoView({behavior: "smooth"});
+	}
+	okButton.onclick = () => {
+		if (inputButton !== null) {
+			focusOnClose = false;
+			setTimeout(() => {inputButton.click();}, 300);
+		}
+		alertModal.hide();
+	}
+	alertModal.setOnClose(() => {
+		window.scrollBy({top: -30, behavior: "smooth"});
+		if (focusOnClose) {
+			setTimeout(() => {element.focus();}, 50);
+		}
+	});
+	alertModal.setContent(mainParagraph);
+	alertModal.appendFooter(okButton);
+	alertModal.show();
 }

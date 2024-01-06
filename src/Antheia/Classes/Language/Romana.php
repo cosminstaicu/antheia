@@ -80,6 +80,7 @@ abstract class Romana extends AbstractLanguage {
 	const INPUT_TEXT = 'Text câmp';
 	const INTERFACE = 'Interfață';
 	const INVALID_INPUT = 'Câmp invalid';
+	const INVALID_INPUT_VALUE = 'Valoare incorectă';
 	const INVALID_INPUT_INFO = 'Acest câmp este întotdeauna invalid';
 	const LANGUAGE = 'Limbă';
 	const LARGE_MESSAGE = 'Mesaj confirmare mare';

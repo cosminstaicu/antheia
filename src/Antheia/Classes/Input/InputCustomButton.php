@@ -67,6 +67,9 @@ class InputCustomButton extends AbstractInput {
 	public function getHtml():string {
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
+		$this->button->addHiddenInputAttribute(
+			'data-visible-element-id', $this->button->getHtmlId()
+		);
 		$this->button->setText($this->getValue());
 		foreach ($this->getAttributeList() as $attr) {
 			$this->button->addHiddenInputAttribute($attr['name'], $attr['value']);

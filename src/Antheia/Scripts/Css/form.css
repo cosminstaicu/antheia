@@ -181,3 +181,48 @@ input[type=checkbox]:checked + span:before {
 		line-height: var(--ant_var-rem15px);
 	}
 }
+p.ant_form-invalid-input-error {
+	position: relative;
+	margin-top: var(--ant_var-rem10px);
+	margin-bottom: var(--ant_var-rem5px);
+	display: flex;
+	flex-direction: column;
+}
+p.ant_form-invalid-input-error > span {
+	width: 100%;
+	vertical-align: middle;
+	font-weight: bold;
+	white-space: nowrap;
+	padding-top: 8px;
+	text-align: left;
+}
+p.ant_form-invalid-input-error > button {
+	vertical-align: middle;
+	padding: 8px 15px 8px 15px;
+	margin-left: 0px;
+	margin-top: 5px;
+	display: inline-block;
+	border: 1px solid var(--ant-theme-inputBorder);
+	border-radius: 4px;
+	background-color: var(--ant-theme-inputBackground);
+	font-size: var(--ant_var-rem14px);
+	color: var(--ant-theme-inputText);
+	width: calc(100% - 30px);
+	text-align: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+p.ant_form-invalid-input-error > i {
+	padding-right: var(--ant_var-rem30px);
+	position: absolute;
+	bottom: 3px;
+	right: -30px;
+	font-family: 'Material Icons';
+	font-size: var(--ant_var-rem24px);
+	color: var(--ant-theme-warning);
+	font-style: normal;
+}
+p.ant_form-invalid-input-error > button:hover {
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
+	cursor: pointer;
+}

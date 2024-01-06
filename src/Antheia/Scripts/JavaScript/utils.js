@@ -60,7 +60,7 @@ function ant_utils_postCallback(input) {
  * The function checkes if an input has an callback defined and runs it,
  * if available
  * @param {Element} input the input to be checked
- * @param {String} action the action to be checked. It can be "pre" (before
+ * @param {"pre"|"post"} action the action to be checked. It can be "pre" (before
  * any input interface is displayed) or "post" (the user has selected a value,
  * the input has been updated and the interface has been deleted)
  */

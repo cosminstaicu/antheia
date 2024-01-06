@@ -159,6 +159,9 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		foreach ($this->getAttributeList() as $info) {
 			$this->button->addHiddenInputAttribute($info['name'], $info['value']);
 		}
+		$this->button->addHiddenInputAttribute(
+			'data-visible-element-id', $this->button->getHtmlId()
+		);
 		$this->button->setText($this->initialText);
 		$this->button->setIcon(IconVector::ICON_PASSWORD);
 		$this->button->setOnClick('ant_inputNewPassword_start(this)');

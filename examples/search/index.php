@@ -14,6 +14,8 @@ $filter->setLabel('Given name');
 $filter->setPlaceholder('given name');
 $filter->setName('givenName');
 $page->addInput($filter);
+// this input will get the focus after the page has been loaded
+$page->setAutofocus($filter);
 // adding another text input
 $filter = new InputText();
 $filter->setLabel('Family name');

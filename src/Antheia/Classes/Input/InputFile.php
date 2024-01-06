@@ -72,6 +72,7 @@ class InputFile extends AbstractInput {
 		if ($this->getValidation() !== '') {
 			$code .= ' data-validate="'.$this->getValidation().'"';
 		}
+		$code .= ' data-visible-element-id="'.$this->button->getHtmlId().'"';
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
 		return $code;

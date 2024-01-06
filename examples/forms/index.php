@@ -43,14 +43,14 @@ $input->setLabel('Info field');
 $input->setValue('just a text');
 $panel->addInput($input);
 // ************************************************************************ text
-$input = NewInput::text();
-$input->setName('textInput');
+$textInput = NewInput::text();
+$textInput->setName('textInput');
 if (isset($_POST['textInput'])) {
-	$input->setValue($_POST['textInput']);
+	$textInput->setValue($_POST['textInput']);
 }
-$input->setLabel('Text field');
-$input->setPlaceholder('just a text field');
-$panel->addInput($input);
+$textInput->setLabel('Text field');
+$textInput->setPlaceholder('just a text field');
+$panel->addInput($textInput);
 // ******************************************************* text with suggestions
 $input = NewInput::text();
 $input->setSuggestion(2,'suggestions.php');
@@ -110,6 +110,7 @@ $input->displayUndefined('No selection', 'noSelection');
 $input->setName('searchInput');
 $input->setUrl('query.php');
 $input->setInitialText('Initial value');
+$input->setHtmlId('searchInput');
 $panel->addInput($input);
 // *********************************************************************** email
 $input = NewInput::email();
@@ -160,7 +161,7 @@ $input->setValue('yes');
 $panel->addInput($input);
 // ************************************************************************ file
 $input = NewInput::file();
-$input->setName('fileInput');
+$input->setNameId('fileInput');
 $input->setLabel('A file');
 // if no extension is defined then the input accepts any file type
 $input->addExtension('.mp3');
@@ -204,6 +205,11 @@ $panel->addInput($input);
 $input = NewInput::button();
 $input->setValue('Set date to 20 january 2009');
 $input->setOnClick("ant_forms_updateValue('dateInput','20090120')");
+$panel->addInput($input);
+// *********************************************** trigger an auto error message
+$input = NewInput::button();
+$input->setValue('Auto error for text input');
+$input->setOnClick("ant_forms_showInputError('".$textInput->getHtmlId()."');");
 $panel->addInput($input);
 // *************************************************************** submit button
 $input = NewInput::submit();

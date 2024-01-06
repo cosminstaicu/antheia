@@ -148,6 +148,9 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		$this->button->addTextAttribute('submit', 'SUBMIT');
 		$this->button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
 		$this->button->addHiddenInputAttribute('data-post', $this->afterCallback);
+		$this->button->addHiddenInputAttribute(
+			'data-visible-element-id', $this->button->getHtmlId()
+		);
 		if ($this->displayUndefined) {
 			$this->button->addAttribute('data-show-undefined', 'yes');
 		} else {

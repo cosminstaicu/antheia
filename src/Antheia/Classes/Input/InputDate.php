@@ -95,6 +95,9 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 		} else {
 			$this->button->addAttribute('data-show-undefined', 'no');
 		}
+		$this->button->addHiddenInputAttribute(
+			'data-visible-element-id', $this->button->getHtmlId()
+		);
 		$this->button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
 		$this->button->addHiddenInputAttribute('data-post', $this->afterCallback);
 		if ($this->exportJavascript()) {
@@ -103,7 +106,6 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 		$this->setHtmlCode($this->button->getHtml());
 		// checking if the destination file exists in cache
 		$ajaxFile = Internals::getCachePath('date.php');
-		// unlink($ajaxFile);
 		if (!is_file($ajaxFile)) {
 			// destination file does not exists
 			$content = '<?php require_once(\''.dirname(__DIR__, 2).'/Scripts/Ajax/date.php\'); ?>';

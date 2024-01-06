@@ -56,6 +56,7 @@
 	 */
 	show() {
 		this.#modal.show();
+		this.#okButton.focus();
 	}
 	/**
 	 * A quick static method for showing an alert as an error

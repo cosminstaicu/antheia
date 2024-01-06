@@ -10,14 +10,15 @@ use Antheia\Antheia\Classes\Wireframe\Wireframe;
  * The template of a page for starting a search. The user can add inputs to the
  * page that will be sent to the redirect target.
  * @author Cosmin Staicu
- *
  */
 class PageSearch extends PageEmpty {
 	private $form;
 	private $panel;
+	private $autofocusInput;
 	private $button;
 	public function __construct() {
 		parent::__construct();
+		$this->autofocusInput = NULL;
 		$this->form = new Form();
 		$this->form->setMethod($this->form::METHOD_POST);
 		$this->panel = new PanelInput();
@@ -71,8 +72,43 @@ class PageSearch extends PageEmpty {
 	public function setOnSubmit(string $code):void {
 		$this->form->setOnSubmit($code);
 	}
+	/**
+	 * Returns the form used by the page
+	 * @return \Antheia\Antheia\Classes\Form the form that will be submitted,
+	 * when the user pressed the submit button
+	 */
+	public function getForm():\Antheia\Antheia\Classes\Form {
+		return $this->form;
+	}
+	/**
+	 * Returns the panel used to display inputs
+	 * @return \Antheia\Antheia\Classes\Panel\PanelInput the panel used to
+	 * display inputs
+	 */
+	public function getPanel():\Antheia\Antheia\Classes\Panel\PanelInput {
+		return $this->panel;
+	}
+	/**
+	 * Defines the input that will get focus after the page has been loaded
+	 * @param \Antheia\Antheia\Classes\Input\AbstractInput $input the input
+	 * that will get focus after the page has been loaded or null if no autofocus
+	 * is needed
+	 */
+	public function setAutofocus(
+			?\Antheia\Antheia\Classes\Input\AbstractInput $input):void {
+		$this->autofocusInput = $input;
+	}
 	public function getHtml():string {
 		$this->panel->addInput($this->button);
+		if ($this->autofocusInput !== NULL) {
+			$this->addJavascriptBodyBottom(
+				'document.getElementById("'.$this->autofocusInput->getHtmlId().'").focus();
+				setTimeout(() => {
+					document.getElementById("ant_searchAutofocusScript").remove();
+				}, 1000);',
+				'ant_searchAutofocusScript'
+			);
+		}
 		return parent::getHtml();
 	}
 }

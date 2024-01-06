@@ -16,7 +16,9 @@ abstract class AbstractPage extends AbstractClass {
 	private $pageTitle;
 	private $javascriptFiles;
 	private $cssFiles;
+	private $bodyTopJavascript;
 	private $codeElements;
+	private $bodyBottomJavascript;
 	private $headCss;
 	private $headJavascript;
 	private $headRows;
@@ -30,7 +32,9 @@ abstract class AbstractPage extends AbstractClass {
 		$this->javascriptFiles = [];
 		$this->cssFiles = [];
 		$this->pageTitle = Globals::getAppName();
+		$this->bodyTopJavascript = [];
 		$this->codeElements = [];
+		$this->bodyBottomJavascript = [];
 		$this->headCss = '';
 		$this->headJavascript = '';
 		$this->onLoad = '';
@@ -200,18 +204,46 @@ abstract class AbstractPage extends AbstractClass {
 		$this->codeElements[] = $item;
 	}
 	/**
-	 * Adds javascript code to the body of the document. The code will be
-	 * placed inside a SCRIPT tag pair
-	 * @param string $code the javascript code to be added to the body of the page
+	 * Adds javascript code to the top of the body of the document. The code
+	 * will be placed inside a SCRIPT tag pair
+	 * @param string $code the javascript code to be added to the top of the body
+	 * of the page
 	 * @param string $id (optional) the id of the javascript tag to be added
 	 */
-	public function addJavascriptBody(string $code, ?string $id):void {
+	public function addJavascriptBodyTop(string $code, ?string $id = NULL):void {
 		$finalCode = '<script';
 		if ($id !== null) {
 			$finalCode .= ' id="'.$id.'"';
 		}
 		$finalCode .= '>'.$code.'</script>';
-		$this->codeElements[] = new Html($finalCode);
+		$this->bodyTopJavascript[] = new Html($finalCode);
+	}
+	/**
+	 * Alias for addJavascriptBodyBottom() method.
+	 * Adds javascript code to the bottom of the body of the document. The code
+	 * will be placed inside a SCRIPT tag pair
+	 * @param string $code the javascript code to be added to the bottom of
+	 * the body of the page
+	 * @param string $id (optional) the id of the javascript tag to be added
+	 * @see AbstractPage::addJavascriptBodyBottom()
+	 */
+	public function addJavascriptBody(string $code, ?string $id = NULL):void {
+		$this->addJavascriptBodyBottom($code, $id);
+	}
+	/**
+	 * Adds javascript code to the bottom of the body of the document. The code will be
+	 * placed inside a SCRIPT tag pair
+	 * @param string $code the javascript code to be added to the bottom of the body
+	 * of the page
+	 * @param string $id (optional) the id of the javascript tag to be added
+	 */
+	public function addJavascriptBodyBottom(string $code, ?string $id = NULL):void {
+		$finalCode = '<script';
+		if ($id !== null) {
+			$finalCode .= ' id="'.$id.'"';
+		}
+		$finalCode .= '>'.$code.'</script>';
+		$this->bodyBottomJavascript[] = new Html($finalCode);
 	}
 	/**
 	 * Returns the HTML code for the page
@@ -277,6 +309,7 @@ abstract class AbstractPage extends AbstractClass {
 			}
 			$file .= 'let ant_text = {};'."\n";
 			$file .= 'ant_text["cancel"] = "'.Texts::get('CANCEL').'";'."\n";
+			$file .= 'ant_text["invalidInputValue"] = "'.Texts::get('INVALID_INPUT_VALUE').'";'."\n";
 			$file .= 'ant_text["ok"] = "'.Texts::get('OK').'";'."\n";
 			$file .= 'let ant_antheiaCacheUrl = "'.Internals::getCacheUrl().'";'."\n";
 			foreach ($jsPrimaryFiles as $jsPrimaryFile) {
@@ -451,11 +484,19 @@ abstract class AbstractPage extends AbstractClass {
 		}
 		$code .='>';
 		/** @var HtmlCode $item */
+		foreach ($this->bodyTopJavascript as $item) {
+			$code .= $item->getHtml();
+		}
+		/** @var HtmlCode $item */
 		foreach ($this->codeElements as $item) {
 			$code .= $item->getHtml();
 		}
 		if (Globals::getDebug()) {
 			$code .= '<div id="ant_content-debug">Antheia debug mode enabled</div>';
+		}
+		/** @var HtmlCode $item */
+		foreach ($this->bodyBottomJavascript as $item) {
+			$code .= $item->getHtml();
 		}
 		$code .= '</body></html>';
 		$lines = preg_split("/\r\n|\n|\r/", $code);

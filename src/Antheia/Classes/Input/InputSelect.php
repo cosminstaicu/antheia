@@ -132,6 +132,7 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		if ($this->getDefaultValue() !== NULL) {
 			$code .= ' data-default = "'.$this->getDefaultValue().'"';
 		}
+		$code .= ' data-visible-element-id="'.$this->button->getHtmlId().'"';
 		if ($this->beforeCallback !== '') {
 			$code .= ' data-pre = "'.$this->beforeCallback.'"';
 		}
