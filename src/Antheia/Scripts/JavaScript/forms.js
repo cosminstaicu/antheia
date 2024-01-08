@@ -175,8 +175,11 @@ function ant_forms_updateValue(inputOrId, value, readableValue) {
 }
 /**
  * Shows an error alert that contains the label of the input. After the user
- * clicks OK, the input is focused, if possible
+ * clicks OK, the input is focused, if possible. The method always return false,
+ * as it wil be probably used inside onSubmit form functions and this method
+ * will be the last in the function.
  * @param {HTMLElement|String} inputOrId the input or the id of the input
+ * @returns {Boolean} always false, so it can be used inside form validation functions 
  */
 function ant_forms_showInputError(inputOrId) {
 	/** @type {HTMLElement} */
@@ -260,4 +263,5 @@ function ant_forms_showInputError(inputOrId) {
 	alertModal.setContent(mainParagraph);
 	alertModal.appendFooter(okButton);
 	alertModal.show();
+	return false;
 }
