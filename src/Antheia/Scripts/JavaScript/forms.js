@@ -198,17 +198,11 @@ function ant_forms_showInputError(inputOrId) {
 		inputButton = document.getElementById(element.dataset.visibleElementId);
 	}
 	// selects all label containers, to find the label for the input
-	let labelContainers = document.getElementsByClassName("ant_form-label-container");
+	let labels = document.getElementsByTagName("LABEL");
 	let labelText = null;
-	for (let i = 0; i < labelContainers.length; i++) {
-		let labels = labelContainers[i].getElementsByTagName('LABEL');
-		if (labels.length === 0) {
-			// containers for info type inputs do not have any labels
-			continue;
-		}
-		let label = labels[0];
-		if (label.getAttribute('for') === visibleElementId) {
-			labelText = label.innerHTML;
+	for (let i = 0; i < labels.length; i++) {
+		if (labels[i].getAttribute('for') === visibleElementId) {
+			labelText = labels[i].innerHTML;
 			break;
 		}
 	}
@@ -220,7 +214,7 @@ function ant_forms_showInputError(inputOrId) {
 	if (inputButton !== null) {
 		elementValue = inputButton.value;
 	}
-	if (elementValue === '') {
+	if (elementValue.trim() === '') {
 		elementValue = '---';
 	}
 	alertModal.setHeader(ant_text["invalidInputValue"]);
@@ -229,7 +223,7 @@ function ant_forms_showInputError(inputOrId) {
 	mainParagraph.classList.add("ant_form-invalid-input-error");
 	mainParagraph.innerHTML = '<span>' + labelText + '</span>';
 	let sendToInputButton = document.createElement('BUTTON');
-	sendToInputButton.innerHTML = elementValue;
+	sendToInputButton.innerText = elementValue;
 	sendToInputButton.addEventListener("click", () => {
 		okButton.click();
 	});
@@ -263,5 +257,6 @@ function ant_forms_showInputError(inputOrId) {
 	alertModal.setContent(mainParagraph);
 	alertModal.appendFooter(okButton);
 	alertModal.show();
+	okButton.focus();
 	return false;
 }
