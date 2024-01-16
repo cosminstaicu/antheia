@@ -21,6 +21,8 @@ class ThemeDusk extends AbstractTheme {
 		$this->setValid('#009900');
 		$this->setTopBottomBarText('#fdf7ec');
 		$this->setTopBottomBarBackground('#3d3157');
+		$this->setThreeLineButton('#78496d');
+		$this->setThreeLineButtonHover('#3d3157');
 		$this->setMenuText('#ffeccc');
 		$this->setMenuBackground('#29203c');
 		$this->setHeaderText('#3d3157');

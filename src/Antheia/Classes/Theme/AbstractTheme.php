@@ -35,6 +35,8 @@ abstract class AbstractTheme {
 	private $auto_inputBackground;
 	private $auto_inputText;
 	private $auto_inputLabel;
+	private $auto_threeLineButton;
+	private $auto_threeLineButtonHover;
 	private $auto_buttonBackground;
 	private $auto_buttonBackgroundHover;
 	private $auto_buttonText;
@@ -56,6 +58,8 @@ abstract class AbstractTheme {
 		$this->auto_menuBackground = '#192d3e';
 		$this->auto_headerText = '#000000';
 		$this->auto_headerBackground = '#ffffff';
+		$this->auto_threeLineButton = '#337ab7';
+		$this->auto_threeLineButtonHover = '#1e5d94';
 		$this->auto_tabText = '#3e719a';
 		$this->auto_tabBackground = '#baffff';
 		$this->auto_background = '#7ce2ff';
@@ -99,12 +103,13 @@ abstract class AbstractTheme {
 	 */
 	public static function getThemes():array {
 		return [
-				'Default',
-				'Dusk',
-				'WarmRustic',
-				'SoftWarm',
-				'RetroOrangeGray',
-				'DarkAesthetics'
+			'Default',
+			'DarkAesthetics',
+			'Dusk',
+			'TheRaven',
+			'RetroOrangeGray',
+			'SoftWarm',
+			'WarmRustic'
 		];
 	}
 	/**
@@ -290,6 +295,38 @@ abstract class AbstractTheme {
 	 */
 	public function getHeaderBackground(string $format = 'rgb') {
 		return $this->getColorByFormat($this->auto_headerBackground, $format);
+	}
+	/**
+	 * Defines the color of the 3 line button, used for menu toggle
+	 * @param string $color the HTML color value (#RRGGBB)
+	 */
+	public function setThreeLineButton(string $color):void {
+		$this->auto_threeLineButton = $color;
+	}
+	/**
+	 * Returns the color of the 3 line button, used for menu toggle
+	 * @param string $format (optional) (default rgb) the format used
+	 * for returning the color (rgb, decimal)
+	 * @return string|number[] the returned color value in the defined format
+	 */
+	public function getThreeLineButton(string $format = 'rgb') {
+		return $this->getColorByFormat($this->auto_threeLineButton, $format);
+	}
+	/**
+	 * Defines the color of the 3 line button on hover, used for menu toggle
+	 * @param string $color the HTML color value (#RRGGBB)
+	 */
+	public function setThreeLineButtonHover(string $color):void {
+		$this->auto_threeLineButtonHover = $color;
+	}
+	/**
+	 * Returns the color of the 3 line button on hover, used for menu toggle
+	 * @param string $format (optional) (default rgb) the format used
+	 * for returning the color (rgb, decimal)
+	 * @return string|number[] the returned color value in the defined format
+	 */
+	public function getThreeLineButtonHover(string $format = 'rgb') {
+		return $this->getColorByFormat($this->auto_threeLineButtonHover, $format);
 	}
 	/**
 	 * Defines the text color of the tabs

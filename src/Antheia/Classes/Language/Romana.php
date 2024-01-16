@@ -151,6 +151,8 @@ abstract class Romana extends AbstractLanguage {
 	const TAB_TEXT = 'Text tab';
 	const TEXT = 'Text';
 	const THEME = 'Temă';
+	const THREE_LINE_BUTTON = 'Buton cu 3 linii';
+	const THREE_LINE_BUTTON_HOVER = 'Buton cu 3 linii (selectat)';
 	const THEME_INFORMATION = 'Informații temă';
 	const TIME = 'Timp';
 	const TITLE = 'Titlu';

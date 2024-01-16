@@ -440,6 +440,8 @@ abstract class AbstractPage extends AbstractClass {
 		$code .= ' --ant-theme-menuBackgroundHover: rgba('.$hover[0].','.$hover[1].','.$hover[2].',0.5);';
 		$code .= ' --ant-theme-headerText: '.$this->theme->getHeaderText().';';
 		$code .= ' --ant-theme-headerBackground: '.$this->theme->getHeaderBackground().';';
+		$code .= ' --ant-theme-threeLineButton: '.$this->theme->getThreeLineButton().';';
+		$code .= ' --ant-theme-threeLineButtonHover: '.$this->theme->getThreeLineButtonHover().';';
 		$code .= ' --ant-theme-tabText: '.$this->theme->getTabText().';';
 		$code .= ' --ant-theme-tabBackground: '.$this->theme->getTabBackground().';';
 		$code .= ' --ant-theme-background: '.$this->theme->getBackground().';';

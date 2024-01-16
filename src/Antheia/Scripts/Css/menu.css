@@ -19,11 +19,11 @@ div.ant_menu > button {
 div.ant_menu > button > div {
 	width: var(--ant_var-rem36px);
 	height: var(--ant_var-rem5px);
-	background-color: var(--ant-theme-buttonBackground);
+	background-color: var(--ant-theme-threeLineButton);
 	transition: 0.4s;
 }
 div.ant_menu > button:hover > div {
-	background-color: var(--ant-theme-buttonBackgroundHover);
+	background-color: var(--ant-theme-threeLineButtonHover);
 }
 div.ant_menu > button > div:nth-child(2) {
 	margin-top: var(--ant_var-rem6px);

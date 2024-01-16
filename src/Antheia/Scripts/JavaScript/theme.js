@@ -3,7 +3,7 @@
  * @param {Object} theme an object that contains the theme properties
  */
 function ant_theme_update(theme) {
-	ant_theme_properties.forEach(function (p) {
+	ant_theme_properties.forEach((p) => {
 		document.querySelector(':root').style.setProperty('--ant-theme-' + p, theme[p]);
 	});
 }
@@ -18,6 +18,8 @@ let ant_theme_properties = [
 	"buttonText",
 	"headerBackground",
 	"headerText",
+	"threeLineButton",
+	"threeLineButtonHover",
 	"inputBackground",
 	"inputBorder",
 	"inputIcon",
@@ -59,7 +61,7 @@ function ant_theme_getProperties() {
 		'name' : document.getElementById("ant_theme_name").value,
 		'description' : document.getElementById("ant_theme_description").value
 	};
-	ant_theme_properties.forEach(function (element) {
+	ant_theme_properties.forEach((element) => {
 		themeInfo[element] = document.getElementById("ant_theme_" + element).value;
 	});
 	return themeInfo;
@@ -147,15 +149,15 @@ function ant_theme_simpleLoadingAnimation() {
  */
 function ant_theme_stepsLoadingAnimation() {
 	ant_loading_step.reset();
-	let textPas = document.getElementById("butonSeIncarcaEtape").dataset.pasul;
+	let stepText = document.getElementById("stepLoadingButton").dataset.step;
 	ant_theme_step1 = new ant_loading_step();
-	ant_theme_step1.setLabel(textPas + " 1");
+	ant_theme_step1.setLabel(stepText + " 1");
 	ant_theme_step1.setIcon("lock_open");
 	ant_theme_step2 = new ant_loading_step();
-	ant_theme_step2.setLabel(textPas + " 2");
+	ant_theme_step2.setLabel(stepText + " 2");
 	ant_theme_step2.setIcon("language");
 	ant_theme_step3 = new ant_loading_step();
-	ant_theme_step3.setLabel(textPas + " 3");
+	ant_theme_step3.setLabel(stepText + " 3");
 	ant_theme_step3.setIcon("system_update_alt");
 	ant_loading_start();
 	setTimeout(() => {ant_theme_step1.setProgress(20);}, 300);
@@ -178,7 +180,7 @@ function ant_theme_stepsLoadingAnimation() {
  * @param {String} message the message to be displayed
  */
 function ant_theme_largeMessageAnimation(message) {
-	ant_message(message, ant_antheiaCacheUrl + "/background.jpg");
+	ant_message(message, ant_antheiaCacheUrl + "background.jpg");
 }
 /**
  * Starts a small message animation
@@ -188,7 +190,9 @@ function ant_theme_smallMessageAnimation(message) {
 	ant_message(message);
 }
 /**
- * Populates the clipboard with the php code that contains all the theme definition
+ * Populates the clipboard with the php code that contains all the theme definition.
+ * Triggered when the user clicks on one of the 3 buttons: button, low contrast,
+ * warning
  */
 function ant_theme_getPhpCode() {
 	let content = "";

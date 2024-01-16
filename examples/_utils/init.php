@@ -151,6 +151,11 @@ function init_configurePage(AbstractPage $page):void {
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
 	$submenu->setIcon('color_swatches');
+	$submenu->setText('The Raven');
+	$submenu->setHref('../themes/theRaven.php');
+	$menu->addSubmenu($submenu);
+	$submenu = new AppMenuSecondary();
+	$submenu->setIcon('color_swatches');
 	$submenu->setText('Retro Orange Gray');
 	$submenu->setHref('../themes/retroOrangeGray.php');
 	$menu->addSubmenu($submenu);

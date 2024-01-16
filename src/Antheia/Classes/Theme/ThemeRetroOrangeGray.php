@@ -20,6 +20,8 @@ class ThemeRetroOrangeGray extends AbstractTheme {
 		$this->setValid('#009900');
 		$this->setTopBottomBarText('#ffffff');
 		$this->setTopBottomBarBackground('#404040');
+		$this->setThreeLineButton('#555555');
+		$this->setThreeLineButtonHover('#9c351c');
 		$this->setMenuText('#ffffff');
 		$this->setMenuBackground('#404040');
 		$this->setHeaderText('#000000');

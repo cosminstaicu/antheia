@@ -21,6 +21,8 @@ class ThemeDarkAesthetics extends AbstractTheme {
 		$this->setValid('#00d600');
 		$this->setTopBottomBarText('#ffffff');
 		$this->setTopBottomBarBackground('#172c27');
+		$this->setThreeLineButton('#725937');
+		$this->setThreeLineButtonHover('#7e643e');
 		$this->setMenuText('#ffffff');
 		$this->setMenuBackground('#44302e');
 		$this->setHeaderText('#ffffff');

@@ -1,5 +1,5 @@
 #ant_header {
-	padding-top: 100px;
+	padding-top: 30px;
 	background-color: var(--ant-theme-headerBackground);
 	width: 100%;
 	padding-bottom: 30px;
@@ -16,6 +16,9 @@ body.ant_topBarFixed > #ant_header {
 	margin-top: calc(var(--ant_var-rem16px) + 36px);
 }
 /** start background image position and size */
+#ant_header.ant-background-enabled {
+	padding-top: 100px;
+}
 #ant_header.ant-background-enabled > *:first-child {
 	background-color: var(--ant-theme-panelBackground);
 	border: 8px solid var(--ant-theme-panelBackground);

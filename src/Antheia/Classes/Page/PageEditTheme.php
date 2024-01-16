@@ -9,8 +9,9 @@ use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Theme\AbstractTheme;
 use Antheia\Antheia\Classes\InlineButton\InlineButton;
+use Antheia\Antheia\Classes\Internals;
 /**
- * Defines a page to edit a framework theme
+ * Defines a page to edit a library theme
  * @author Cosmin Staicu
  */
 class PageEditTheme extends PageEmpty {
@@ -54,30 +55,29 @@ class PageEditTheme extends PageEmpty {
 		if ($this->theme === null) {
 			throw new Exception('setTheme');
 		}
+		// check if the background image exists in cache
+		$backgroundFile = Internals::getCachePath().'background.jpg';
+		if (!is_file($backgroundFile)) {
+			copy(Internals::getFolder(['Media']).'background.jpg', $backgroundFile);
+		}
 		$this->setTitle($this->theme->getName());
 		$exampleMenu = NewMenu::update();
 		$exampleMenu->setText(Texts::get('LOAD_THEME'));
-		$exampleMenu->setHref('javascript:ant_theme_showAvailableThemes()');
+		$exampleMenu->setRender($exampleMenu::BUTTON);
+		$exampleMenu->setOnClick('ant_theme_showAvailableThemes()');
 		$this->addPageMenu($exampleMenu);
 		$selectTheme = NewInput::select();
 		$selectTheme->setLabel(Texts::get('THEME'));
 		$selectTheme->setNameId('ant-load-theme');
 		$selectTheme->getButton()->setHtmlId('ant-theme-select');
 		$selectTheme->setAfterCallback('ant_theme_predefinedThemeSelected');
-		$javascript = "var ant_theme_templates = [];";
+		$javascript = "let ant_theme_templates = [];";
 		/**
 		 * @var AbstractTheme $theme
 		 */
 		foreach ($this->templates as $index => $theme) {
 			$selectTheme->addOption($theme->getName(), $index);
-			$properties = '';
-			foreach ($theme->exportArray() as $property => $value) {
-				if ($properties !== '') {
-					$properties .= ',';
-				}
-				$properties .= $property.':"'.$value.'"';
-			}
-			$javascript .= 'ant_theme_templates.push({'.$properties.'});';
+			$javascript .= 'ant_theme_templates.push('.json_encode($theme->exportArray()).');';
 		}
 		$this->addJavascript($javascript);
 		$this->addElement(new Html('<div style="display:none">'));
@@ -129,6 +129,22 @@ class PageEditTheme extends PageEmpty {
 		$input->setPlaceholder(Texts::getLc('TOP_BOTTOM_BAR_BACKGROUND'));
 		$input->setNameId('ant_theme_topBottomBarBackground');
 		$input->setValue($this->theme->getTopBottomBarBackground());
+		$input->setOnChange('ant_theme_updateThemeFromInputs');
+		$panel->addInput($input);
+		// three line button
+		$input = NewInput::color();
+		$input->setLabel(Texts::get('THREE_LINE_BUTTON'));
+		$input->setPlaceholder(Texts::getLc('THREE_LINE_BUTTON'));
+		$input->setNameId('ant_theme_threeLineButton');
+		$input->setValue($this->theme->getThreeLineButton());
+		$input->setOnChange('ant_theme_updateThemeFromInputs');
+		$panel->addInput($input);
+		// three line button hover
+		$input = NewInput::color();
+		$input->setLabel(Texts::get('THREE_LINE_BUTTON_HOVER'));
+		$input->setPlaceholder(Texts::getLc('THREE_LINE_BUTTON_HOVER'));
+		$input->setNameId('ant_theme_threeLineButtonHover');
+		$input->setValue($this->theme->getThreeLineButtonHover());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// menu text
@@ -346,36 +362,24 @@ class PageEditTheme extends PageEmpty {
 		$panel->addInput($input);
 		// steps background
 		$input = NewInput::color();
-		$input->setLabel(
-			Texts::get('STEPS').': '.Texts::get('BACKGROUND')
-		);
-		$input->setPlaceholder(
-			Texts::getLc('STEPS').': '.Texts::getLc('BACKGROUND')
-		);
+		$input->setLabel(Texts::get('STEPS').': '.Texts::get('BACKGROUND'));
+		$input->setPlaceholder(Texts::getLc('STEPS').': '.Texts::getLc('BACKGROUND'));
 		$input->setNameId('ant_theme_loadingStepBackground');
 		$input->setValue($this->theme->getLoadingStepBackground());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps border
 		$input = NewInput::color();
-		$input->setLabel(
-				Texts::get('STEPS').': '.Texts::get('BORDER')
-		);
-		$input->setPlaceholder(
-				Texts::getLc('STEPS').': '.Texts::getLc('BORDER')
-		);
+		$input->setLabel(Texts::get('STEPS').': '.Texts::get('BORDER'));
+		$input->setPlaceholder(Texts::getLc('STEPS').': '.Texts::getLc('BORDER'));
 		$input->setNameId('ant_theme_loadingStepBorder');
 		$input->setValue($this->theme->getLoadingStepBorder());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
 		// steps text
 		$input = NewInput::color();
-		$input->setLabel(
-			Texts::get('STEPS').': '.Texts::get('TEXT')
-		);
-		$input->setPlaceholder(
-			Texts::get('STEPS').': '.Texts::get('TEXT')
-		);
+		$input->setLabel(Texts::get('STEPS').': '.Texts::get('TEXT'));
+		$input->setPlaceholder(Texts::get('STEPS').': '.Texts::get('TEXT'));
 		$input->setNameId('ant_theme_loadingStepText');
 		$input->setValue($this->theme->getLoadingStepText());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
@@ -592,8 +596,8 @@ class PageEditTheme extends PageEmpty {
 		$panel->addInput($input);
 		// loading with steps
 		$input = NewInput::customButton();
-		$input->addAttribute('data-pasul', Texts::get('STEP'));
-		$input->setHtmlId('butonSeIncarcaEtape');
+		$input->addAttribute('data-step', Texts::get('STEP'));
+		$input->setHtmlId('stepLoadingButton');
 		$input->setIcon(IconVector::ICON_UPDATE);
 		$input->setLabel(Texts::get('LOADING_STEPS'));
 		$input->setValue(Texts::get('START_ANIMATION'));
@@ -614,9 +618,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setOnClick('ant_theme_smallMessageAnimation(\'Lorem ipsum dolor\')');
 		$panel->addInput($input);
 		// ************************************************* enable theme script
-		$this->addElement(new Html(
-				'<script>ant_theme_updateThemeFromInputs()</script>'
-				));
+		$this->addJavascriptBodyBottom('ant_theme_updateThemeFromInputs()');
 		return parent::getHtml();
 	}
 }

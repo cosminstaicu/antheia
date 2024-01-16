@@ -151,6 +151,8 @@ abstract class English extends AbstractLanguage {
 	const TEXT = 'Text';
 	const THEME = 'Theme';
 	const THEME_INFORMATION = 'Theme information';
+	const THREE_LINE_BUTTON = 'Three line button';
+	const THREE_LINE_BUTTON_HOVER = 'Three line button (hover)';
 	const TIME = 'Time';
 	const TITLE = 'Title';
 	const TODAY = 'Today';

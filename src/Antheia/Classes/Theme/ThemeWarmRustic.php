@@ -21,6 +21,8 @@ class ThemeWarmRustic extends AbstractTheme {
 		$this->setValid('#028000');
 		$this->setTopBottomBarText('#ffffff');
 		$this->setTopBottomBarBackground('#885e4b');
+		$this->setThreeLineButton('#934c47');
+		$this->setThreeLineButtonHover('#a96e6c');
 		$this->setMenuText('#ffffff');
 		$this->setMenuBackground('#654639');
 		$this->setHeaderText('#000000');

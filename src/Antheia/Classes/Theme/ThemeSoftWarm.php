@@ -20,6 +20,8 @@ class ThemeSoftWarm extends AbstractTheme {
 		$this->setValid('#009900');
 		$this->setTopBottomBarText('#fffdf2');
 		$this->setTopBottomBarBackground('#6e5753');
+		$this->setThreeLineButton('#a27d76');
+		$this->setThreeLineButtonHover('#6e5753');
 		$this->setMenuText('#ffffff');
 		$this->setMenuBackground('#6e5753');
 		$this->setHeaderText('#000000');
