@@ -41,6 +41,7 @@ function init_configurePage(AbstractPage $page):void {
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();
 	$option->setName('User name here');
+	$option->setHtmlId('topMenuUserName');
 	$option->setHref('../lookAndFeel');
 	$page->addTopRightMenu($option);
 	// a menu redered like a button

@@ -5,6 +5,7 @@ use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Abstract class that is extended by all menu items that can be inserted into
@@ -12,7 +13,7 @@ use Antheia\Antheia\Interfaces\LinkButtonRender;
  * @author Cosmin Staicu
  */
 abstract class AbstractTopRightMenu extends AbstractClass
-implements HtmlCode, LinkButtonRender {
+implements HtmlCode, LinkButtonRender, HtmlId {
 	private $href;
 	private $onClick;
 	private $name;
@@ -20,11 +21,13 @@ implements HtmlCode, LinkButtonRender {
 	private $startLoadingAnimationOnClick;
 	private $targetBlank;
 	private $renderType;
+	private $htmlId;
 	public function __construct() {
 		parent::__construct();
 		$this->href = '';
 		$this->onClick = '';
 		$this->name = '';
+		$this->htmlId = '';
 		$this->icon = new IconVector();
 		$this->startLoadingAnimationOnClick = false;
 		$this->targetBlank = false;
@@ -72,6 +75,9 @@ implements HtmlCode, LinkButtonRender {
 	public function startLoadingOnClick():void {
 		$this->startLoadingAnimationOnClick = true;
 	}
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
+	}
 	public function getHtml():string {
 		$code = '';
 		switch ($this->renderType) {
@@ -89,6 +95,9 @@ implements HtmlCode, LinkButtonRender {
 				break;
 			default:
 				throw new Exception('Invalid type '.$this->renderType);
+		}
+		if ($this->htmlId !== '') {
+			$code .= 'id="'.$this->htmlId.'" ';
 		}
 		$onClick = '';
 		if ($this->startLoadingAnimationOnClick) {
