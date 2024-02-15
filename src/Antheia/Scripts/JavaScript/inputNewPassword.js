@@ -20,11 +20,14 @@ function ant_inputNewPassword_start(element) {
 		if (!ant_inputNewPassword_check(items)) {
 			return false;
 		}
-		inputHidden.value = items.inputNew.value;
-		element.value = element.dataset.textFinal;
+		// can be deleted after 2024 04 01
+		// inputHidden.value = items.inputNew.value;
+		// element.value = element.dataset.textFinal;
+		ant_forms_updateValue(inputHidden, items.inputNew.value, element.dataset.textFinal);
 		modal.hide();
-		ant_forms_updateStatus(inputHidden.id);
-		ant_utils_postCallback(inputHidden);
+		// can be deleted after 2024 04 01
+		// ant_forms_updateStatus(inputHidden.id);
+		// ant_utils_postCallback(inputHidden);
 		return false;
 	};
 	let label = null;

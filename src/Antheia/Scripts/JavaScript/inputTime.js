@@ -229,8 +229,10 @@ function ant_inputTime_start(element) {
 function ant_inputTime_update(value) {
 	if (ant_inputTime_process === null) {
 		// the user closed the modal
-		return false;
+		return;
 	}
+	// can be deleted after 2024 04 01
+	/*
 	let hiddenInput = ant_inputTime_process.hiddenInput;
 	if (value === ant_inputTime_process.trigger.dataset.undefinedValue) {
 		ant_inputTime_process.trigger.value 
@@ -240,6 +242,9 @@ function ant_inputTime_update(value) {
 	}
 	hiddenInput.value = value;
 	ant_forms_updateStatus(hiddenInput.id);
+	*/
+	ant_forms_updateValue(ant_inputTime_process.hiddenInput, value);
 	ant_inputTime_process.modal.hide();
-	ant_utils_postCallback(hiddenInput);
+	// can be deleted after 2024 04 01
+	// ant_utils_postCallback(hiddenInput);
 }

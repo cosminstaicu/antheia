@@ -200,10 +200,15 @@ function ant_inputDate_select(element) {
 		// the modal has been closed during the call
 		return false;
 	}
+	/*
+	// can be deleted after 2024 04 01
 	let inputHidden = ant_inputDate_process.inputHidden;
 	ant_inputDate_process.trigger.value = element.dataset.text;
 	inputHidden.value = element.dataset.value;
+	*/
+	ant_forms_updateValue(ant_inputDate_process.inputHidden, element.dataset.value);
 	ant_inputDate_process.modal.hide();
-	ant_forms_updateStatus(inputHidden.id);
-	ant_utils_postCallback(inputHidden);
+	// can be deleted after 2024 04 01
+	// ant_forms_updateStatus(inputHidden.id);
+	// ant_utils_postCallback(inputHidden);
 }

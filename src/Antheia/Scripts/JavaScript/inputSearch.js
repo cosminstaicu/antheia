@@ -124,10 +124,13 @@ function ant_inputSearch_selectItem(element) {
  * button
  */
 function ant_inputSearch_select(value, readableText) {
-	ant_inputSearch_process.trigger.value = readableText;
-	let hiddenInput = ant_inputSearch_process.hiddenInput;
-	hiddenInput.value = value;
-	ant_forms_updateStatus(hiddenInput.id);
+	// can be deleted after 2024 04 01
+	// ant_inputSearch_process.trigger.value = readableText;
+	// let hiddenInput = ant_inputSearch_process.hiddenInput;
+	// hiddenInput.value = value;
+	// ant_forms_updateStatus(hiddenInput.id);
+	ant_forms_updateValue(ant_inputSearch_process.hiddenInput, value, readableText);
 	ant_inputSearch_process.modal.hide();
-	ant_utils_postCallback(hiddenInput);
+	// can be deleted after 2024 04 01
+	// ant_utils_postCallback(hiddenInput);
 }

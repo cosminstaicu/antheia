@@ -119,9 +119,6 @@ function ant_forms_updateValue(inputOrId, value, readableValue) {
 			button.value = readableValue;
 			break;
 		case "input-hidden-search":
-			if (readableValue === undefined) {
-				readableValue = value;
-			}
 			button = element.previousElementSibling.previousElementSibling;
 			element.value = value;
 			if (value == button.dataset.undefinedValue) {
@@ -172,6 +169,20 @@ function ant_forms_updateValue(inputOrId, value, readableValue) {
 			throw new Error("Unknown type: " + inputType + ", ID: " + inputOrId);
 	}
 	ant_forms_updateStatus(element);
+	switch (inputType) {
+		case "input-hidden-date":
+		case "input-hidden-newPassword":
+		case "input-hidden-search":
+		case "select":
+		case "input-hidden-time":
+			// setting a timeout to allow all processes to end
+			setTimeout(() => {
+				ant_utils_postCallback(element);
+			}, 50);
+			break;
+		default:
+			// this type does not support post callback
+	}
 }
 /**
  * Shows an error alert that contains the label of the input. After the user

@@ -73,7 +73,7 @@ $input->setValidation('digitsValidation');
 $panel->addInput($input);
 // ********************************************************************** select
 $input = NewInput::select();
-$input->setName('selectInput');
+$input->setNameId('selectInput');
 $input->setLabel('Select');
 $input->addOption('Item 1', '1');
 $input->addOption('Item 2', '2', false, 'Item 2 selected');
@@ -102,6 +102,7 @@ $input->mustContainUppercase();
 $input->mustContainSymbols();
 $input->setInitialText('define a new password');
 $input->setFinalText('will be updated');
+$input->setValidation('newPasswordValidation');
 $panel->addInput($input);
 // ********************************************************************** search
 $input = NewInput::search();
@@ -111,6 +112,7 @@ $input->setName('searchInput');
 $input->setUrl('query.php');
 $input->setInitialText('Initial value');
 $input->setHtmlId('searchInput');
+$input->setValidation('searchValidation');
 $panel->addInput($input);
 // *********************************************************************** email
 $input = NewInput::email();
@@ -131,15 +133,16 @@ $input->setLabel('Date');
 $input->setValue('19900225');
 $input->displayToday();
 $input->displayUndefined();
+$input->setValidation('dateValidation');
 $panel->addInput($input, 'dateRow');
 // ************************************************************************ time
 $input = NewInput::time();
-$input->setName('timeInput');
+$input->setNameId('timeInput');
 $input->setLabel('Time');
 $panel->addInput($input);
 // ************************************************************* predefined type
 $input = NewInput::time();
-$input->setName('timePredefinedInput');
+$input->setNameId('timePredefinedInput');
 $input->setLabel('Time (select)');
 $input->setSelectionMode();
 $input->setHourSelection(1, 8, 16);
