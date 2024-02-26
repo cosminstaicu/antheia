@@ -55,13 +55,19 @@ function ant_forms_updateStatus(inputOrId) {
  * @param {HTMLElement|String} inputOrId the input or the id of the input
  * to be updated
  * @param {String} value the new value of the input
- * @param {String} readableValue (optional) the value that will be
+ * @param {String} [readableValue=null] (optional) the value that will be
  * displayed to the user, if it is different than the input value. It is
  * used by date, search, custom buttons type of inputs. If the value is
- * required by the input, but undefined in the function call then the
+ * required by the input, but undefined or null in the function call then the
  * value of the second parameter will be used.
+ * @param {Boolean} [triggerPostFunction=true] (optional, default true) if is false
+ * then any function that the input should trigger after a value update is
+ * ignored. If true or undefined then anu post function is triggered
+ * @returns {Promise} a promise that will be resolved after any post update
+ * function has been triggered. If no post update function is defined, then
+ * a resolved promise is returned, still
  */
-function ant_forms_updateValue(inputOrId, value, readableValue) {
+function ant_forms_updateValue(inputOrId, value, readableValue, triggerPostFunction) {
 	let button = null;
 	/** @type {HTMLElement} */
 	let element = inputOrId;
@@ -76,7 +82,13 @@ function ant_forms_updateValue(inputOrId, value, readableValue) {
 		inputType += "-" + element.type;
 	}
 	if (readableValue === undefined) {
+		readableValue = null;
+	}
+	if (readableValue === null) {
 		readableValue = value;
+	}
+	if (triggerPostFunction === undefined) {
+		triggerPostFunction = true;
 	}
 	if (inputType === "input-hidden") {
 		// because the input is hidden I will check if the input is special
@@ -169,6 +181,9 @@ function ant_forms_updateValue(inputOrId, value, readableValue) {
 			throw new Error("Unknown type: " + inputType + ", ID: " + inputOrId);
 	}
 	ant_forms_updateStatus(element);
+	if (triggerPostFunction !== true) {
+		return Promise.resolve();
+	}
 	switch (inputType) {
 		case "input-hidden-date":
 		case "input-hidden-newPassword":
@@ -176,12 +191,15 @@ function ant_forms_updateValue(inputOrId, value, readableValue) {
 		case "select":
 		case "input-hidden-time":
 			// setting a timeout to allow all processes to end
-			setTimeout(() => {
-				ant_utils_postCallback(element);
-			}, 50);
-			break;
+			return new Promise((resolve) => {
+				setTimeout(() => {
+					ant_utils_postCallback(element);
+					resolve();
+				}, 50);
+			});
 		default:
 			// this type does not support post callback
+			return Promise.resolve();
 	}
 }
 /**

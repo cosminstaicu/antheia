@@ -108,7 +108,7 @@ $panel->addInput($input);
 $input = NewInput::search();
 $input->setLabel('Search<br>(server query)');
 $input->displayUndefined('No selection', 'noSelection');
-$input->setName('searchInput');
+$input->setNameId('searchInput');
 $input->setUrl('query.php');
 $input->setInitialText('Initial value');
 $input->setHtmlId('searchInput');
