@@ -160,7 +160,7 @@ function ant_forms_updateValue(inputOrId, value, readableValue, triggerPostFunct
 			ant_inputSelect_updateInfo(element);
 			break;
 		case "textarea":
-			element.innerHTML = value;
+			element.textContent = value;
 			element.value = value;
 			break;
 		case "input-color":
@@ -175,7 +175,7 @@ function ant_forms_updateValue(inputOrId, value, readableValue, triggerPostFunct
 			throw new Error("File type inputs can not be updated from javascript");
 		case "span":
 			// an info type element
-			element.innerHTML = value;
+			element.textContent = value;
 			break;
 		default:
 			throw new Error("Unknown type: " + inputType + ", ID: " + inputOrId);
