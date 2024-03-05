@@ -3,7 +3,7 @@ namespace Antheia\Antheia\Classes\Page\Login;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Wireframe\Cell;
 /**
  * A page that shows an "authentication failed" message,
@@ -28,16 +28,22 @@ class PageLoginFailed extends AbstractPageLogin {
 			throw new Exception('Retry URL is not defined');
 		}
 		$this->addJavascript(
-			'function retry() {document.location.href="'.$this->url.'";}'
+			'
+			function retry() {
+				document.getElementById("loadingButton").remove();
+				document.getElementById("info-text").innerHTML += "<br><br>'.Texts::get('LOADING').'...";
+				setTimeout(() => {document.location.href="'.$this->url.'";}, 1000);
+			}'
 		);
 		$content = $this->getContent();
 		$content->setAlign(Cell::ALIGN_CENTER);
 		$cod = new Html();
 		$cod->addRawCode(
-			'<p style="font-weight:bold; margin-top: 30px; margin-bottom: 30px;">
+			'<p style="font-weight:bold; margin-top: 30px; margin-bottom: 30px;" id="info-text">
 			'.Texts::get('LOGIN_FAILED').'</p>');
 		$content->addElement($cod);
-		$buton = new InputButton();
+		$buton = NewInput::button();
+		$buton->setHtmlId('loadingButton');
 		$buton->setValue(Texts::get('RETRY'));
 		$buton->setOnClick('retry()');
 		$content->addElement($buton);

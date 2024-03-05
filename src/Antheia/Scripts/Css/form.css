@@ -111,7 +111,7 @@ input.warning[type=submit], input.warning[type=button], input.warning[type=reset
 input.warning[type=submit]:hover, input.warning[type=button]:hover, input.warning[type=reset]:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
 }
-/* trigger buttons (used usually for modal opening */
+/* trigger buttons (used usually for modal opening) */
 input[type=button].ant_form-button {
 	width: 100%;
 	padding: 8px 25px 8px 15px;
