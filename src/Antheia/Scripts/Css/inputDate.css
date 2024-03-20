@@ -77,9 +77,11 @@
 	color: var(--ant-theme-inputText);
 	font-size: var(--ant_var-rem16px);
 	cursor: pointer;
+	border-style: dashed;
 }
 .ant_inputDate > table > tbody button.ant_today {
-	border-style: dashed;
+	border-style: solid;
+	border-width: 2px;
 }
 .ant_inputDate > table > tbody button:hover {
 	text-decoration: none;
