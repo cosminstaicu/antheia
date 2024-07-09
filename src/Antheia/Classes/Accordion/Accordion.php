@@ -17,7 +17,7 @@ class Accordion extends AbstractClass implements HtmlCode {
 	 * @return Item the added item
 	 */
 	public function getNewItem():Item {
-		$item = new Item($this);
+		$item = new Item();
 		$this->items[] = $item;
 		return $item;
 	}
