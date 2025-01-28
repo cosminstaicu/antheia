@@ -6,6 +6,7 @@ use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
 use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\InlineButton\InlineButton;
+use Antheia\Antheia\Classes\FixedButton\NewFixedButton;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageSearchResult();
@@ -107,7 +108,9 @@ for ($i = 0; $i < 5; $i++) {
 	}
 	$inlineButton = new InlineButton();
 	if ($i === 3) {
-		$inlineButton->setText('This is a really long name for a button, so long that it needs to be trimmed');
+		$inlineButton->setText(
+			'This is a really long name for a button, so long that it needs to be trimmed'
+		);
 	} else {
 		$inlineButton->setText('Inline button');
 	}

@@ -41,13 +41,40 @@ body.ant_topBarFixed > #ant_topBar {
 }
 #ant_topBar > ul {
 	list-style-type: none;
-	display: inline;
+	display: flex;
 	padding: 0px 0px 0px 0px;
 	margin: 0px 0px 0px 0px;
 }
 #ant_topBar > ul > li {
 	margin-left: 15px;
-	display: inline;
+	display: flex;
+	align-items: center;
+}
+#ant_topBar > form {
+	position: relative;
+	top: 0;
+	left: 0;
+	flex-grow: 1;
+	text-align: right;
+	padding-left: 5px;
+	padding-right: 5px;
+}
+#ant_topBar > form > input {
+	width: 30%;
+	min-width: 150px;
+	max-width: 300px;
+	transition: 0.4s;
+}
+#ant_topBar > form > i {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	color: var(--ant-theme-inputIcon);
+	pointer-events: none;
+}
+#ant_topBar > form > input.ant_topBar_focus-animation:focus {
+	max-width: 100%;
+	width: 90%;
 }
 @media only screen and (min-width: 768px) {
 	#ant_topBar a > span,

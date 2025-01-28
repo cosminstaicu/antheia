@@ -13,6 +13,14 @@
 	right: 30px;
 	opacity: 1;
 }
+/** If the screen is narrow and the page has search pages then the fixed buttons
+ * will be raised, to show the page navigation
+ */
+@media only screen and (max-width: 768px) {
+	body:has( > div#ant_content > div#ant_search-pages) > div#ant_fixedButton {
+		bottom: 45px;
+	}
+}
 #ant_fixedButton > a,
 #ant_fixedButton > button {
 	display: inline-block;

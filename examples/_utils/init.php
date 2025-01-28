@@ -100,6 +100,11 @@ function init_configurePage(AbstractPage $page):void {
 	$submenu->setText('Results');
 	$submenu->setHref('../search/results.php');
 	$menu->addSubmenu($submenu);
+	$submenu = new AppMenuSecondary();
+	$submenu->setIcon('search_field');
+	$submenu->setText('Global search');
+	$submenu->setHref('../search/topBarSearch.php');
+	$menu->addSubmenu($submenu);
 	$page->addNavigationMenu($menu);
 	// message
 	$menu = new AppMenuPrimary();
@@ -179,7 +184,7 @@ function init_configurePage(AbstractPage $page):void {
 }
 /**
  * Adds source info about the current page.
- * @param PageEmpty $page the page  where the panel will be inserted
+ * @param PageEmpty $page the page where the panel will be inserted
  * @param string $rootSource the name of the folder (on github) that contains
  * all source files for the page
  * @param array[] $sources a list with all page sources (hosted on github)

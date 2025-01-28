@@ -50,6 +50,7 @@ if (isset($_POST['textInput'])) {
 }
 $textInput->setLabel('Text field');
 $textInput->setPlaceholder('just a text field');
+$textInput->addClass('css-custom-class');
 $panel->addInput($textInput);
 // ******************************************************* text with suggestions
 $input = NewInput::text();
@@ -69,6 +70,8 @@ if (isset($_POST['digitsInput'])) {
 }
 $input->setLabel('Number with validation (min 3)');
 $input->setPlaceholder('value');
+$input->addClass('css-custom-class');
+$input->addClass('another-css-custom-class');
 $input->setValidation('digitsValidation');
 $panel->addInput($input);
 // ********************************************************************** select

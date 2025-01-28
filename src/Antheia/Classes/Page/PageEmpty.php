@@ -13,6 +13,7 @@ use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Header\Search\TopSearch;
 /**
  * An empty page, with a menu. HtmlCode instances can be added to the class
  * @author Cosmin Staicu
@@ -28,6 +29,7 @@ class PageEmpty extends PageBlank {
 	private $topRightItems;
 	private $menu;
 	private $fixedTopMenu;
+	private $topSearch;
 	public function __construct() {
 		parent::__construct();
 		$this->codeElements = [];
@@ -38,6 +40,17 @@ class PageEmpty extends PageBlank {
 		$this->displayTitle = true;
 		$this->menu = [];
 		$this->fixedTopMenu = false;
+		$this->topSearch = null;
+	}
+	/**
+	 * Returns the global search object that will be displayed on the top bar.
+	 * If this method is not called, then no top search is displayed
+	 */
+	public function getTopSearchForm():TopSearch {
+		if ($this->topSearch === NULL) {
+			$this->topSearch = new TopSearch();
+		}
+		return $this->topSearch;
 	}
 	/**
 	 * Defines if the top bar of the page (with the main menu toogle button
@@ -186,6 +199,7 @@ class PageEmpty extends PageBlank {
 			$this->addBodyClass('ant-has-fixed-buttons');
 		}
 		// *********************************************************** UPPER BAR
+		
 		$upperBar = new Html();
 		$upperBar->addRawCode('<div id="ant_topBar">');
 		$upperBar->addRawCode(
@@ -195,6 +209,9 @@ class PageEmpty extends PageBlank {
 		$menuButton->setIcon(IconVector::ICON_MENU);
 		$upperBar->addElement($menuButton);
 		$upperBar->addRawCode('<span>'.Texts::get('MENU').'</span></button>');
+		if ($this->topSearch !== NULL) {
+			$upperBar->addElement($this->topSearch);
+		}
 		$upRight = '<ul>';
 		/** @var HtmlCode $element */
 		foreach ($this->topRightItems as $item) {

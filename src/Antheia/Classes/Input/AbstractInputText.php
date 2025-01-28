@@ -19,6 +19,7 @@ abstract class AbstractInputText extends AbstractInput {
 	private $maxLength;
 	private $suggestionLimit;
 	private $suggestionUrl;
+	private $classList;
 	private static $globalMaxLength = 0;
 	public function __construct() {
 		parent::__construct();
@@ -28,6 +29,14 @@ abstract class AbstractInputText extends AbstractInput {
 		$this->maxLength = self::$globalMaxLength;
 		$this->suggestionLimit = null;
 		$this->suggestionUrl = null;
+		$this->classList = [];
+	}
+	/**
+	 * Adds a css class to the main input tag
+	 * @param string $class the css class that will be added to the input tag
+	 */
+	public function addClass(string $class):void {
+		$this->classList[] = $class;
 	}
 	/**
 	 * Defines the default maximum length for all text based inputs (passwords,
@@ -119,6 +128,9 @@ abstract class AbstractInputText extends AbstractInput {
 		}
 		$code .= ' name="'.$this->getName().'" value="';
 		$code .= htmlspecialchars($this->getValue()).'"';
+		if (count($this->classList) > 0) {
+			$code .= ' class="'.implode(' ', $this->classList).'"';
+		}
 		if ($this->placeholder !== '') {
 			$code .= ' placeholder="'.$this->placeholder.'"';
 		}
