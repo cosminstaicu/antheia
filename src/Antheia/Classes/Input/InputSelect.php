@@ -14,6 +14,7 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 	private $beforeCallback;
 	private $afterCallback;
 	private $button;
+	private $classList;
 	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
@@ -23,6 +24,14 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		$this->options = [];
 		$this->beforeCallback = '';
 		$this->afterCallback = '';
+		$this->classList = [];
+	}
+	/**
+	 * Adds a css class to the html select tag
+	 * @param string $class the css class that will be added to the html tag
+	 */
+	public function addClass(string $class):void {
+		$this->classList[] = $class;
 	}
 	public function getIdForLabel():string {
 		return $this->button->getHtmlId();
@@ -128,6 +137,9 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		$code .= '<select name="'.$this->getName().'"';
 		if ($this->getHtmlId() !== '') {
 			$code .= ' id="'.$this->getHtmlId().'"';
+		}
+		if (count($this->classList) > 0) {
+			$code .= ' class="'.implode(' ', $this->classList).'"';
 		}
 		if ($this->getDefaultValue() !== NULL) {
 			$code .= ' data-default = "'.$this->getDefaultValue().'"';
