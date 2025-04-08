@@ -26,6 +26,7 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	private $onClick;
 	private $renderType;
 	private $appearance;
+	private $classList;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -37,6 +38,8 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 		$this->onClick = '';
 		$this->renderType = self::LINK;
 		$this->appearance = self::NORMAL;
+		$this->classList = [];
+		$this->addClass('ant_menu-item');
 	}
 	/**
 	 * Defines the appearance of the menu, as normal, low contrast or warning
@@ -63,6 +66,13 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 			$code .= ';';
 		}
 		$this->cssCode .= $code.' ';
+	}
+	/**
+	 * Adds a css class to the tag
+	 * @param string $class the css class that will be added to the tag
+	 */
+	public function addClass(string $class):void {
+		$this->classList[] = $class;
 	}
 	public function addAttribute(string $name, string $value):void {
 		$this->attributes[] = ['name' => $name, 'value' => $value];
@@ -106,21 +116,20 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 			default:
 				throw new Exception('Invalid type '.$this->renderType);
 		}
-		$code .= ' class="ant_menu-item ';
 		switch ($this->appearance) {
 			case self::LOW_CONTRAST:
-				$code .= ' low-contrast';
+				$this->addClass('low-contrast');
 				break;
 			case self::NORMAL:
-				$code .= ' normal';
+				$this->addClass('normal');
 				break;
 			case self::WARNING:
-				$code .= ' warning';
+				$this->addClass('warning');
 				break;
 			default:
 				throw new Exception('Invalid value '.$this->appearance);
 		}
-		$code .= '"';
+		$code .= ' class="'.implode(' ', $this->classList).'"';
 		if ($this->cssCode !== '') {
 			$code .= ' style="'.$this->cssCode.'"';
 		}

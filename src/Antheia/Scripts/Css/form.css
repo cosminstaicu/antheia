@@ -53,6 +53,10 @@ p.ant_form-text-label {
 .ant_form-item.ant-status > i {
 	right: var(--ant_var-rem33px);
 }
+textarea {
+	resize: vertical;
+	min-height: var(--ant_var-rem50px);
+}
 input[type=text], input[type=password], input[type=email],
 input[type=tel], input[type=number], input[type=color], textarea {
 	width: 100%;

@@ -30,6 +30,7 @@ $page->setHeaderBackgroundImage('../headerImage.jpg');
 $page->setTitle('Look and feel');
 // the page menu
 $pageMenu = NewMenu::add();
+$pageMenu->addClass('custom-css-class');
 $pageMenu->setHref("javascript:alert('some action here')");
 $page->addPageMenu($pageMenu);
 $pageMenu = NewMenu::info();
@@ -67,7 +68,7 @@ used by web apps as it contains features designed mainly for cloud services.</p>
 <a href="https://github.com/cosminstaicu/antheia" target="_blank">GitHub</a>.</p>
 <p>The main project using this library is the Cloud PBX Service, called
 Accolades and provided by
-<a href="https://www.voipit.ro" target="_blank">VoIPIT Romania</a>.</p>');
+<a href="https://www.voipit.ro" target="_blank">VoIPIT România</a>.</p>');
 $cell->addElement($panel);
 // adding another row
 $row = $wireframe->addRow();

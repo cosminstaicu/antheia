@@ -35,7 +35,10 @@
 	width: calc(100% - 60px);
 	font-size: var(--ant_var-rem20px);
 	text-align: left;
-	padding: 10px;
+	padding-top: 10px;
+	padding-left: 10px;
+	padding-bottom: 10px;
+	padding-right: 10px;
 	margin-bottom: 2px;
 	margin-left: 30px;
 	margin-right: 30px;
@@ -59,9 +62,10 @@
 .ant_inputSearch > div > button:hover {
 	width: calc(100% - 10px);
 	text-decoration: none;
-	padding: 10px;
 	margin-left: 5px;
+	padding-left: 20px;
 	margin-right: 5px;
+	padding-right: 50px;
 	box-shadow: 0px 0px 5px var(--ant-theme-shadow);
 	background-color: var(--ant-theme-inputBackground);
 }

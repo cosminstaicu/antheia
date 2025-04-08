@@ -8,11 +8,20 @@ class InputTextarea extends AbstractInput {
 	private $placeholder;
 	private $maxLength;
 	private $rows;
+	private $classList;
 	private static $globalMaxLength = 0;
 	public function __construct() {
 		parent::__construct();
 		$this->rows = 5;
 		$this->maxLength = self::$globalMaxLength;
+		$this->classList = [];
+	}
+	/**
+	 * Adds a css class to the textarea input tag
+	 * @param string $class the css class that will be added to the textarea tag
+	 */
+	public function addClass(string $class):void {
+		$this->classList[] = $class;
 	}
 	/**
 	 * Defines the default maximum length for all textarea inputs.
@@ -66,6 +75,9 @@ class InputTextarea extends AbstractInput {
 			$code .= ' onchange = "'.$callback.'"'
 					.' onkeyup = "'.$callback.'"'
 					.' onblur = "'.$callback.'"';
+		}
+		if (count($this->classList) > 0) {
+			$code .= ' class="'.implode(' ', $this->classList).'"';
 		}
 		$code .= $this->getAttributesAsText();
 		$code .= ' rows="'.$this->rows.'">';
