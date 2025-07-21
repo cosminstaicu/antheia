@@ -95,12 +95,18 @@ class WireframeInput extends Wireframe {
 	public function getHtml():string {
 		$labelWidth = $this->labelWidth;
 		$valuesWidth = 12 - $labelWidth;
+		$hasHiddenRows = false;
 		foreach ($this->items as $inputInfo) {
+		    /** @var AbstractInput $input */
 			$input = $inputInfo['input'];
 			$id = $inputInfo['id'];
+			$row = $this->addRow();
+			if ($input->getDefaultHidden()) {
+			    $hasHiddenRows = true;
+			    $row->addClass('input-default-hidden');
+			}
 			switch ($inputInfo['type']) {
 				case self::COLUMN_RIGHT:
-					$row = $this->addRow();
 					if ($id !== '') {
 						$row->setHtmlId($id);
 					}
@@ -111,7 +117,6 @@ class WireframeInput extends Wireframe {
 					$cell->addElement($input);
 					break;
 				case self::COLUMN_LEFT:
-					$row = $this->addRow();
 					if ($id !== '') {
 						$row->setHtmlId($id);
 					}
@@ -122,7 +127,6 @@ class WireframeInput extends Wireframe {
 					$cell->addWidth('sm', $valuesWidth);
 					break;
 				case self::COLUMN_BOTH:
-					$row = $this->addRow();
 					if ($id !== '') {
 						$row->setHtmlId($id);
 					}
@@ -132,7 +136,6 @@ class WireframeInput extends Wireframe {
 					$cell->addElement($input);
 					break;
 				case self::REGULAR_ITEM:
-					$row = $this->addRow();
 					if ($id !== '') {
 						$row->setHtmlId($id);
 					}
@@ -156,6 +159,13 @@ class WireframeInput extends Wireframe {
 			foreach ($inputInfo['classes'] as $class) {
 				$row->addClass($class);
 			}
+		}
+		if ($hasHiddenRows) {
+		    // because the wireframe contains inputs that are hidden by default,
+		    // a button to toggle the visibility for these inputs is inserted
+		    $row = $this->addRow();
+		    $cell = $row->addCell();
+		    $cell->addElement(new Html('toggle more options'));
 		}
 		return parent::getHtml();
 	}

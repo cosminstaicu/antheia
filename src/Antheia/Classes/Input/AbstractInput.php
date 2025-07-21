@@ -36,6 +36,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $codHtml;
 	private $exportJavascript;
 	private $attributes;
+	private $defaultHidden;
 	static private $counter = 0;
 	public function __construct() {
 		parent::__construct();
@@ -57,6 +58,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->attributes = [];
 		$this->containerClasses = ['ant_form-item'];
 		$this->onClick = '';
+		$this->defaultHidden = false;
 	}
 	/**
 	 * Sets an unique html id for an html element. The id is unique per session
@@ -361,6 +363,26 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	public function getHtmlId():string {
 		return $this->htmlId;
+	}
+	/**
+	 * Sets up the default visibility for the input. If set to true, then the
+	 * element will be hidden, by default and a expand button will be available.
+	 * This feature is only available for inputs displayed using a 
+	 * WireframeInput structure (for example inside a PageSearch instance).
+	 * @param bool $status the status for the hidden feature,
+	 */
+	public function setDefaultHidden(bool $status = true):void {
+	    $this->defaultHidden = $status;
+	}
+	/**
+	 * Returns the default visibility for the input. If set to true, then the
+	 * element will be hidden, by default and a expand button will be available.
+	 * This feature is only available for inputs displayed using a 
+	 * WireframeInput structure (for example inside a PageSearch instance).
+	 * @return bool true if the input will be hidden by default
+	 */
+	public function getDefaultHidden():bool {
+	    return $this->defaultHidden;
 	}
 	public function getHtml():string {
 		if ($this->codHtml == '') {

@@ -135,12 +135,12 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		if ($this->justDigits === 'yes') {
 			if ($this->lowercase === 'yes') {
 				throw new Exception(
-					'Invalid rules: only digits - must contain uppercase'
+					'Invalid rules: only digits - must contain lowercase'
 				);
 			}
 			if ($this->uppercase === 'yes') {
 				throw new Exception(
-					'Invalid rules: only digits - must contain lowercase'
+					'Invalid rules: only digits - must contain uppercase'
 				);
 			}
 			if ($this->symbols === 'yes') {
@@ -167,12 +167,12 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		$this->button->setOnClick('ant_inputNewPassword_start(this)');
 		$this->button->addAttribute('data-digits', $this->digits);
 		$this->button->addAttribute('data-label', $this->getLabelText());
-		$this->button->addAttribute('data-lowercase', $this->uppercase);
+		$this->button->addAttribute('data-lowercase', $this->lowercase);
 		$this->button->addAttribute('data-max', $this->maxLength);
 		$this->button->addAttribute('data-min', $this->minLength);
 		$this->button->addAttribute('data-only-digits', $this->justDigits);
 		$this->button->addAttribute('data-symbols', $this->symbols);
-		$this->button->addAttribute('data-uppercase', $this->lowercase);
+		$this->button->addAttribute('data-uppercase', $this->uppercase);
 		$this->button->addAttribute('data-username', $this->username);
 		$this->button->addTextAttribute('chr', 'CHARACTERS');
 		$this->button->addTextAttribute('digits', 'PASSWORD_DIGITS');
