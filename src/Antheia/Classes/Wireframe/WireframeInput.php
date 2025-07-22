@@ -4,6 +4,7 @@ use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Input\AbstractInput;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Texts;
 /**
  * A custom wireframe for forms. Contains 2 columns, one for the label of
  * the input and the other for the input. When the viewport width is too small,
@@ -20,11 +21,13 @@ class WireframeInput extends Wireframe {
 	const COLUMN_BOTH = 4;
 	private $items;
 	private $labelWidth;
+	private $buttonToggleHiddenInputsAdded;
 	public function __construct() {
 		parent::__construct();
 		$this->setType(self::TYPE_FLUID);
 		$this->labelWidth = 4;
 		$this->items = [];
+		$this->buttonToggleHiddenInputsAdded = false;
 	}
 	/**
 	 * Defines the width of the label column. The width of the value column
@@ -92,18 +95,50 @@ class WireframeInput extends Wireframe {
 	public function addDivider():void {
 		$this->addHtml(new Html('<hr>'), self::COLUMN_BOTH);
 	}
+	/**
+	 * Inserts the row that toggles the advanced options. If the method is not
+	 * called then the row will be added at the end of the wireframe
+	 */
+	public function addMoreOptionsToggle():void {
+		$this->addHtml(new Html(
+			'<button type="button" onClick="ant_wireframe_toggleMoreOptions(this)"
+				class="wireframe_button-more-options"><span>&uarr; '
+			.Texts::get('LESS_OPTIONS').' &uarr;</span><span>&darr; '
+			.Texts::get('MORE_OPTIONS').' &darr;</span></button>'
+		), self::COLUMN_RIGHT);
+		$this->buttonToggleHiddenInputsAdded = true;
+	}
 	public function getHtml():string {
 		$labelWidth = $this->labelWidth;
 		$valuesWidth = 12 - $labelWidth;
 		$hasHiddenRows = false;
 		foreach ($this->items as $inputInfo) {
+		    $input = $inputInfo['input'];
+		    if (is_subclass_of($input, "Antheia\Antheia\Classes\Input\AbstractInput")) {
+		        if ($input->getDefaultHidden()) {
+		            $hasHiddenRows = true;
+		            break;
+		        }
+		    }
+		}
+		if ($hasHiddenRows) {
+			$this->addClass('contains-input-hidden-default');
+			$this->addClass('hide-input-hidden-default');
+			if (!$this->buttonToggleHiddenInputsAdded) {
+				// because the wireframe contains inputs that are hidden by default,
+				// a button to toggle the visibility for these inputs is inserted
+				$this->addMoreOptionsToggle();
+			}
+		}
+		foreach ($this->items as $inputInfo) {
 		    /** @var AbstractInput $input */
 			$input = $inputInfo['input'];
 			$id = $inputInfo['id'];
 			$row = $this->addRow();
-			if ($input->getDefaultHidden()) {
-			    $hasHiddenRows = true;
-			    $row->addClass('input-default-hidden');
+			if (is_subclass_of($input, "Antheia\Antheia\Classes\Input\AbstractInput")) {
+			    if ($input->getDefaultHidden()) {
+    			    $row->addClass('input-default-hidden');
+    			}
 			}
 			switch ($inputInfo['type']) {
 				case self::COLUMN_RIGHT:
@@ -159,13 +194,6 @@ class WireframeInput extends Wireframe {
 			foreach ($inputInfo['classes'] as $class) {
 				$row->addClass($class);
 			}
-		}
-		if ($hasHiddenRows) {
-		    // because the wireframe contains inputs that are hidden by default,
-		    // a button to toggle the visibility for these inputs is inserted
-		    $row = $this->addRow();
-		    $cell = $row->addCell();
-		    $cell->addElement(new Html('toggle more options'));
 		}
 		return parent::getHtml();
 	}

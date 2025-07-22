@@ -16,6 +16,13 @@ class PanelInput extends Panel {
 		$this->addElement($this->wireframe);
 	}
 	/**
+	 * Inserts the row that toggles the advanced options. If the method is not
+	 * called then the row will be added at the end of the wireframe
+	 */
+	public function addMoreOptionsToggle():void {
+		$this->wireframe->addMoreOptionsToggle();
+	}
+	/**
 	 * Adds a form input to the panel
 	 * @param AbstractInput $input the input to be added
 	 * @param string $id (optional) (default '') the html id of the

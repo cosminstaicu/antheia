@@ -291,6 +291,7 @@ abstract class AbstractPage extends AbstractClass {
 				'tab.js',
 				'theme.js',
 				'utils.js',
+				'wireframe.js',
 				'search'.DIRECTORY_SEPARATOR.'accordion.js',
 				'search'.DIRECTORY_SEPARATOR.'card.js',
 				'search'.DIRECTORY_SEPARATOR.'table.js'

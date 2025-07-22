@@ -83,6 +83,20 @@ if (isset($_POST['selectInput'])) {
 	$input->setValue($_POST['selectInput']);
 }
 $panel->addInput($input);
+// ******************************************************* select default hidden
+// this item is hidden by default and will be visible after the user
+// clicks on the "more options" button
+$input = NewInput::select();
+$input->setNameId('selectInputDefaultHidden');
+$input->setLabel('Select (default hidden)');
+$input->addOption('Item 1', '1');
+$input->addOption('Item 2', '2', false, 'Item 2 selected');
+$input->addOption('Item 3', '3', false, 'Item 3 selected');
+if (isset($_POST['selectInputDefaultHidden'])) {
+    $input->setValue($_POST['selectInput']);
+}
+$input->setDefaultHidden();
+$panel->addInput($input);
 // ******************************************************************** password
 $input = NewInput::password();
 $input->setNameId('passwordInput');
@@ -127,6 +141,15 @@ $input = NewInput::phone();
 $input->setName('phoneInput');
 $input->setLabel('Phone');
 $panel->addInput($input);
+// ****************************************************** phone (default hidden)
+$input = NewInput::phone();
+$input->setName('phoneInputDefaultHidden');
+$input->setDefaultHidden();
+$input->setLabel('Phone (default hidden)');
+$panel->addInput($input);
+// ******************** adding the button for hidden inputs in a custom location
+$panel->addMoreOptionsToggle();
+$panel->addDivider();
 // ************************************************************************ date
 $input = NewInput::date();
 $input->setNameId('dateInput');

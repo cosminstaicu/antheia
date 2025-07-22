@@ -36,6 +36,50 @@
 	padding-top: calc(var(--ant_var-wireframe-padding) / 2);
 	padding-bottom: calc(var(--ant_var-wireframe-padding) / 2);
 }
+/************************************ WIREFRAME INPUT DEFAULT HIDDEN SETTINGS */
+div.ant_wireframe.hide-input-hidden-default > div.input-default-hidden {
+	overflow: hidden;
+	height: 0px;
+}
+div.ant_wireframe > div.input-default-hidden > div {
+	opacity: 1;
+	top: 0px;
+	transition: .5s;
+}
+div.ant_wireframe.hide-input-hidden-default > div.input-default-hidden > div {
+	top: -15px;
+	opacity: 0;
+}
+button.wireframe_button-more-options {
+	width: 100%;
+	padding: 4px 10px 4px 10px;
+	margin: 0;
+	display: inline-block;
+	border: 1px solid var(--ant-theme-inputBorder);
+	border-radius: 4px;
+	background-color: var(--ant-theme-inputBackground);
+	font-size: var(--ant_var-rem14px);
+	color: var(--ant-theme-inputText);
+}
+button.wireframe_button-more-options:hover {
+	cursor: pointer;
+	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
+}
+div.ant_wireframe > div > div > button.wireframe_button-more-options > span:first-child {
+	display: inline;
+}
+
+div.ant_wireframe > div > div > button.wireframe_button-more-options > span:last-child {
+	display: none;
+}
+
+div.ant_wireframe.hide-input-hidden-default > div > div > button.wireframe_button-more-options > span:first-child {
+	display: none;
+}
+
+div.ant_wireframe.hide-input-hidden-default > div > div > button.wireframe_button-more-options > span:last-child {
+	display: inline;
+}
 /********************************************************** XS (BELOW 768 PX) */
 .ant_wireframe-col-xs-1 {width: 8.33%;}
 .ant_wireframe-col-xs-2 {width: 16.66%;}

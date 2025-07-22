@@ -83,6 +83,7 @@ abstract class English extends AbstractLanguage {
 	const INVALID_INPUT_INFO = 'This input is always invalid';
 	const LANGUAGE = 'Language';
 	const LARGE_MESSAGE = 'Large message';
+	const LESS_OPTIONS = 'Less options';
 	const LINK = 'Link';
 	const LINK_HOVER = 'Link hover';
 	const LOAD_THEME = 'Load theme';
@@ -100,6 +101,7 @@ abstract class English extends AbstractLanguage {
 	const MENU_TEXT = 'Menu text';
 	const MINIMUM = 'Minimum';
 	const MINUTE = 'Minute';
+	const MORE_OPTIONS = 'More options';
 	const NAME = 'Name';
 	const NEW_PASSWORD = 'New password';
 	const NO_RESULTS = 'No results found';

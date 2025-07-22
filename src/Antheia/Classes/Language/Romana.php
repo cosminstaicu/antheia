@@ -84,6 +84,7 @@ abstract class Romana extends AbstractLanguage {
 	const INVALID_INPUT_INFO = 'Acest câmp este întotdeauna invalid';
 	const LANGUAGE = 'Limbă';
 	const LARGE_MESSAGE = 'Mesaj confirmare mare';
+	const LESS_OPTIONS = 'Mai puține opțiuni';
 	const LINK = 'Link';
 	const LINK_HOVER = 'Link selectat';
 	const LOAD_THEME = 'Încarcă temă';
@@ -101,6 +102,7 @@ abstract class Romana extends AbstractLanguage {
 	const MENU_TEXT = 'Text meniu';
 	const MINIMUM = 'Minimum';
 	const MINUTE = 'Minut';
+	const MORE_OPTIONS = 'Mai multe opțiuni';
 	const NAME = 'Denumire';
 	const NEW_PASSWORD = 'Parola nouă';
 	const NO_RESULTS = 'Nu a fost găsit niciun rezultat';
