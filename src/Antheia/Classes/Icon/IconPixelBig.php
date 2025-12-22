@@ -5,16 +5,16 @@ use Antheia\Antheia\Classes\Internals;
  * An square image icon with a 32px side
  * @author Cosmin Staicu
  */
-class IconPixelBig extends AbstractPixelIcon {
+class IconPixelBig extends AbstractIconPixel {
 	private $addon;
 	/**
 	 * The class constructor
-	 * @param string $icon main image of the icon
-	 * @param string $addon (optional) a seconday image, to be places on the
+	 * @param string $icon='default' main image of the icon
+	 * @param string $addon='' a seconday image, to be placed on the
 	 * bottom right side of the main image
-	 * @see AbstractPixelIcon::setIcon()
+	 * @see AbstractIconPixel::setIcon()
 	 */
-	public function __construct(string $icon, string $addon = '') {
+	public function __construct(string $icon = 'default', string $addon = '') {
 		parent::__construct($icon);
 		$this->setBottomRightIcon($addon);
 	}
@@ -25,10 +25,13 @@ class IconPixelBig extends AbstractPixelIcon {
 	 * An addon image that will be places on the bottom right side of the
 	 * main image.
 	 * @param string $name the name of the image used as an addon or an empty
-	 * string if no image is required 
+	 * string if no image is required
 	 */
 	public function setBottomRightIcon(string $name):void {
 		$this->addon = $name;
+	}
+	public function getSize():int {
+		return 32;
 	}
 	public function getUrl():string {
 		$file = '32px_'.$this->getIcon();
@@ -56,16 +59,19 @@ class IconPixelBig extends AbstractPixelIcon {
 		}
 		return Internals::getCacheUrl().$file;
 	}
-	/**
-	 * Returns the html code for the icon
-	 * @param string $altText (optional) the alternative text to be inserted
-	 * into the img tag
-	 * @return string the html code for the icon
-	 */
 	public function getHtml(string $altText = ''):string {
 		$code = '<img src="'.$this->getUrl().'" width="32" height="32"';
 		if ($altText !== '') {
 			$code .= ' alt="'.$altText.'"';
+		}
+		if ($this->getHtmlId() !== '') {
+			$code .= ' id="'.$this->getHtmlId().'"';
+		}
+		if (count($this->getClasses()) > 0) {
+			$code .= ' class="'.implode(" ", array_unique($this->getClasses())).'"';
+		}
+		foreach ($this->getAttributes() as $name => $value) {
+			$code .= ' '.$name.'="'.$value.'"';
 		}
 		$code .= '>';
 		return $code;

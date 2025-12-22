@@ -26,7 +26,6 @@ abstract class AbstractPage extends AbstractClass {
 	private $bodyClasses;
 	private $onLoad;
 	private $theme;
-	private $onlyLocalFiles;
 	public function __construct() {
 		parent::__construct();
 		$this->javascriptFiles = [];
@@ -42,18 +41,6 @@ abstract class AbstractPage extends AbstractClass {
 		$this->theme = new ThemeDefault();
 		$this->htmlClasses = [];
 		$this->bodyClasses = [];
-		$this->onlyLocalFiles = false;
-	}
-	/**
-	 * Defines the location for loading external libraries
-	 * (like Material Icons). Can be used if the project using this library runs
-	 * without internet connection
-	 * @param bool $onlyLocal (optional) (default true) if true then
-	 * the external libraries used by antheia will be loaded from the local files,
-	 * otherwise the external libraries location will be used.
-	 */
-	public function onlyLocalFiles(bool $onlyLocal = true):void {
-		$this->onlyLocalFiles = $onlyLocal;
 	}
 	/**
 	 * Checks if the browser supports the javascript features used by the 
@@ -254,11 +241,19 @@ abstract class AbstractPage extends AbstractClass {
 		// creating (if necessary) the cache files
 		$icon32Path = Internals::getCachePath().'iconPixel32.php';
 		if (!is_file($icon32Path)) {
-			$content = '<?php
-				$cachePath = dirname(__DIR__, 1).DIRECTORY_SEPARATOR;
-				require_once(\''.dirname(__DIR__, 2).'/Scripts/Media/iconPixel32.php\');
-			?>';
+			$content = '<?php'
+				.PHP_EOL.'$cachePath = dirname(__DIR__, 1).DIRECTORY_SEPARATOR;'
+				.PHP_EOL.'require_once(\''.dirname(__DIR__, 2).'/Scripts/Media/iconPixel32.php\');'
+				.PHP_EOL.'?>';
 			file_put_contents($icon32Path, $content);
+		}
+		$iconVector = Internals::getCachePath().'iconVector.php';
+		if (!is_file($iconVector)) {
+			$content = '<?php'
+					.PHP_EOL.'$cachePath = dirname(__DIR__, 1).DIRECTORY_SEPARATOR;'
+					.PHP_EOL.'require_once(\''.dirname(__DIR__, 2).'/Scripts/Media/iconVector.php\');'
+					.PHP_EOL.'?>';
+			file_put_contents($iconVector, $content);
 		}
 		$jsPath = Internals::getCachePath().$jsFile;
 		if (!is_file($jsPath) || Globals::getDebug()) {
@@ -385,31 +380,6 @@ abstract class AbstractPage extends AbstractClass {
 		$code .= '
 		<title>'.$this->getTitle().'</title>
 		<link rel="stylesheet" href="'.Internals::getCacheUrl().$cssFile.'">';
-		if ($this->onlyLocalFiles) {
-			$folderCacheMaterialIcons = Internals::getCachePath()
-				.'material-icons'.DIRECTORY_SEPARATOR;
-			if (!is_dir($folderCacheMaterialIcons)) {
-				mkdir($folderCacheMaterialIcons);
-				$sourceDir = Internals::getFolder(['Media','material-icons']);
-				$dirHandle = opendir($sourceDir);
-				while (($file = readdir($dirHandle)) !== FALSE) {
-					if ($file === '.') {
-						continue;
-					}
-					if ($file === '..') {
-						continue;
-					}
-					if (is_file($sourceDir.$file)) {
-						copy($sourceDir.$file, $folderCacheMaterialIcons.$file);
-					}
-				}
-			}
-			$code .= '<link rel="stylesheet" href="'.Internals::getCacheUrl()
-				.'/material-icons/material-icons.css">';
-		} else {
-			$code .= '<link rel="stylesheet" 
-				href="https://fonts.googleapis.com/icon?family=Material+Icons">';
-		}
 		foreach ($this->cssFiles as $file) {
 			$code .= '<link rel="stylesheet" href="'.$file['url'].'"';
 			if (count($file['attributes']) > 0) {

@@ -42,14 +42,10 @@ class Item extends AbstractClass implements HtmlCode {
 		$this->list[] = $item;
 	}
 	public function getHtml():string {
-		$open = new IconVector();
-		$open->setIcon(IconVector::ICON_DOWN);
-		$close = new IconVector();
-		$close->setIcon(IconVector::ICON_UP);
 		// start head
 		$code = '<button onClick="ant_accordion_click(this)" type="button">';
-		$code .= '<span>'.$open->getHtml().'</span>';
-		$code .= '<span>'.$close->getHtml().'</span>';
+		$code .= '<span>'.(new IconVector('arrow-down'))->getHtml().'</span>';
+		$code .= '<span>'.(new IconVector('arrow-up'))->getHtml().'</span>';
 		$code .= $this->title.'</button>';
 		$code .= '<div>';
 		/** @var HtmlCode $element */

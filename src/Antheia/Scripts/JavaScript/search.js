@@ -49,15 +49,15 @@ function ant_search_pageInputUpdated(event, totalPages) {
 	let value = document.getElementById("ant_search-input-page").value;
 	if (keyCode == 13) {
 		if (isNaN(value)) {
-			ant_alert.quickError("Invalid page!");
+			AntheiaAlert.quickError("Invalid page!");
 			return false;
 		}
 		if ( (value % 1) != 0 ) {
-			ant_alert.quickError("Invalid page!");
+			AntheiaAlert.quickError("Invalid page!");
 			return false;
 		}
 		if (value < 1) {
-			ant_alert.quickError("Invalid page!");
+			AntheiaAlert.quickError("Invalid page!");
 			return false;
 		}
 		if (value > totalPages) {

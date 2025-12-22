@@ -22,7 +22,7 @@ implements HtmlCode, LinkButtonRender {
 		$this->href = 'javascript:void(0)';
 		$this->onClick = '';
 		$this->icon = new IconVector();
-		$this->icon->setSize(IconVector::SIZE_XL);
+		$this->icon->setSize(48);
 		$this->title = '';
 		$this->classes = [];
 		$this->renderType = self::BUTTON;
@@ -36,7 +36,6 @@ implements HtmlCode, LinkButtonRender {
 	/**
 	 * The icon to be displayed on the button
 	 * @param string $name the name of the simbol
-	 * (a constant like IconVector::ICON_##) 
 	 */
 	public function setIcon(string $name):void {
 		$this->icon->setIcon($name);

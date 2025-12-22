@@ -172,8 +172,8 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
 		$icon = new IconVector();
-		$icon->setIcon($icon::ICON_UPLOAD);
-		$icon->setSize($icon::SIZE_XL);
+		$icon->setIcon('cloud-upload');
+		$icon->setSize(48);
 		if ($this->fullPageDrop) {
 			$code .= '<p>';
 			$code .= $icon->getHtml();

@@ -162,7 +162,6 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		if (count($this->classes) > 0) {
 			$code .= ' class="'.implode(" ", array_unique($this->classes)).'" ';
 		}
-		
 		$code .='>';
 		/** @var HtmlCode $element */
 		foreach ($this->items as $element) {

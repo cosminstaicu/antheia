@@ -3,7 +3,6 @@ namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Globals;
 use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
@@ -76,7 +75,7 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 			$this->button->addHiddenInputAttribute($info['name'], $info['value']);
 		}
 		$this->button->setText(Texts::formatDate($this->getValue()));
-		$this->button->setIcon(IconVector::ICON_DATE);
+		$this->button->setIcon('calendar-1');
 		$this->button->setOnClick('ant_inputDate_start(this)');
 		$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		$this->button->addAttribute('data-label', $this->getLabelText());

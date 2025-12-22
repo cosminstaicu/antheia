@@ -147,8 +147,8 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 		}
 		if ($this->onClickClose !== '') {
 			$icon = new IconVector();
-			$icon->setIcon(IconVector::ICON_CLOSE);
-			$icon->setSize(IconVector::SIZE_SMALL);
+			$icon->setIcon('x');
+			$icon->setSize(16);
 			$code .= '<button type="button" onclick="'
 					.$this->onClickClose.'">'.$icon->getHtml().'</button>';
 		}

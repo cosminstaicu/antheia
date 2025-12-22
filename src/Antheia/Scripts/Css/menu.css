@@ -53,6 +53,9 @@ div.ant_menu > div:last-of-type {
 	transition: 0.4s;
 	cursor: pointer;
 }
+.ant_menu-item > svg {
+	margin-right: 3px;
+}
 .ant_menu-item:hover {
 	text-decoration: none;
 }

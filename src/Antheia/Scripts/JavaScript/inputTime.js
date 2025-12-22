@@ -1,5 +1,4 @@
 let ant_inputTime_process = null;
-
 /**
  * Removes important html characters (angular brackets) from a text and returns it.
  * It is used for texts that should not contain any HTML characters (like dataset
@@ -34,7 +33,7 @@ function ant_inputTime_start(element) {
 	let i = 0;
 	let hourInput = null;
 	let minuteInput = null;
-	ant_inputTime_process.modal = new ant_modal();
+	ant_inputTime_process.modal = new AntheiaModal();
 	ant_inputTime_process.modal.setHeader(element.dataset.label);
 	ant_inputTime_process.modal.addContentClass("ant_inputTime");
 	ant_inputTime_process.modal.setOnClose(() => {
@@ -161,7 +160,7 @@ function ant_inputTime_start(element) {
 			let minute = minuteInput.value;
 			let errorText = element.dataset.textError;
 			if (hour === "") {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					hourInput.focus();
 				});
 				return false;
@@ -172,37 +171,37 @@ function ant_inputTime_start(element) {
 			hour = parseInt(hour);
 			minute = parseInt(minute);
 			if (isNaN(hour)) {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					hourInput.focus();
 				});
 				return false;
 			}
 			if (isNaN(minute)) {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					minuteInput.focus();
 				});
 				return false;
 			}
 			if ( (hour % 1) !== 0) {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					hourInput.focus();
 				});
 				return false;
 			}
 			if ( (minute % 1) !== 0) {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					minuteInput.focus();
 				});
 				return false;
 			}
 			if ((hour < 0 ) || (hour > 23)) {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					hourInput.focus();
 				});
 				return false;
 			}
 			if ((minute < 0 ) || (minute > 59)) {
-				ant_alert.quickError(errorText, () => {
+				AntheiaAlert.quickError(errorText, () => {
 					minuteInput.focus();
 				});
 				return false;
@@ -231,20 +230,6 @@ function ant_inputTime_update(value) {
 		// the user closed the modal
 		return;
 	}
-	// can be deleted after 2024 04 01
-	/*
-	let hiddenInput = ant_inputTime_process.hiddenInput;
-	if (value === ant_inputTime_process.trigger.dataset.undefinedValue) {
-		ant_inputTime_process.trigger.value 
-			= ant_inputTime_process.trigger.dataset.textUndefined;
-	} else {
-		ant_inputTime_process.trigger.value = value;
-	}
-	hiddenInput.value = value;
-	ant_forms_updateStatus(hiddenInput.id);
-	*/
 	ant_forms_updateValue(ant_inputTime_process.hiddenInput, value);
 	ant_inputTime_process.modal.hide();
-	// can be deleted after 2024 04 01
-	// ant_utils_postCallback(hiddenInput);
 }

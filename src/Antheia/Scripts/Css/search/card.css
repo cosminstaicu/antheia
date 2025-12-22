@@ -72,17 +72,13 @@ div.ant_search_card div.ant-icon {
 		rgba(255, 255, 255, .8) 25% 75%, 
 		rgba(255,255,255,0) 100%
 	);
+	padding-top: 4px;
 }
 div.ant_search_card.ant-image-maximum div.ant-icon {
 	top: 280px;
 }
 div.ant_search_card.ant-image-medium div.ant-icon {
 	top: 130px;
-}
-div.ant_search_card div.ant-icon > img {
-	position: absolute;
-	left: 2px;
-	top: 4px;
 }
 /* item name */
 div.ant_search_card > p:first-of-type {
@@ -126,7 +122,7 @@ div.ant_search_card > button:last-of-type {
 	height: var(--ant_var-rem34px);
 	padding: 0;
 	margin: 0;
-	padding-top: calc(var(--ant_var-rem10px) * .4);
+	padding-top: var(--ant_var-rem5px);
 	border-radius: 50%;
 	background-color: var(--ant-theme-buttonBackground);
 	color: var(--ant-theme-buttonText);
@@ -136,7 +132,7 @@ div.ant_search_card > button:last-of-type {
 }
 div.ant_search_card > button:last-of-type:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
-	padding-top: calc(var(--ant_var-rem10px) * .2);
+	padding-top: 0;
 }
 /* the additional info container */
 div.ant_search_card > div:last-of-type {

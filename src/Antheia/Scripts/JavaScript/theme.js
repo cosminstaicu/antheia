@@ -138,7 +138,7 @@ function ant_theme_showViewTab() {
  * Starts a 3 second simple loading animation
  */
 function ant_theme_simpleLoadingAnimation() {
-	ant_loading_step.reset();
+	AntheiaLoadingStep.reset();
 	ant_loading_start();
 	setTimeout(() => {
 		ant_loading_stop();
@@ -148,17 +148,17 @@ function ant_theme_simpleLoadingAnimation() {
  * Starts a step based loading animation
  */
 function ant_theme_stepsLoadingAnimation() {
-	ant_loading_step.reset();
+	AntheiaLoadingStep.reset();
 	let stepText = document.getElementById("stepLoadingButton").dataset.step;
-	ant_theme_step1 = new ant_loading_step();
+	ant_theme_step1 = new AntheiaLoadingStep();
 	ant_theme_step1.setLabel(stepText + " 1");
-	ant_theme_step1.setIcon("lock_open");
-	ant_theme_step2 = new ant_loading_step();
+	ant_theme_step1.setIcon("cloud-upload");
+	ant_theme_step2 = new AntheiaLoadingStep();
 	ant_theme_step2.setLabel(stepText + " 2");
-	ant_theme_step2.setIcon("language");
-	ant_theme_step3 = new ant_loading_step();
+	ant_theme_step2.setIcon("settings");
+	ant_theme_step3 = new AntheiaLoadingStep();
 	ant_theme_step3.setLabel(stepText + " 3");
-	ant_theme_step3.setIcon("system_update_alt");
+	ant_theme_step3.setIcon("cloud-upload");
 	ant_loading_start();
 	setTimeout(() => {ant_theme_step1.setProgress(20);}, 300);
 	setTimeout(() => {ant_theme_step1.setProgress(40);}, 600);
@@ -173,7 +173,7 @@ function ant_theme_stepsLoadingAnimation() {
 	setTimeout(() => {ant_theme_step3.setProgress(60);}, 3000);
 	setTimeout(() => {ant_theme_step3.setProgress(90);}, 3300);
 	setTimeout(() => {ant_theme_step3.setProgress(100);}, 3600);
-	setTimeout(() => {ant_loading_stop();ant_loading_step.reset();}, 3900);
+	setTimeout(() => {ant_loading_stop();AntheiaLoadingStep.reset();}, 3900);
 }
 /**
  * Starts a full screen message animation

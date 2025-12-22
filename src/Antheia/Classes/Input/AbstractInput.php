@@ -67,7 +67,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	protected static function setUniqueHtmlId(HtmlId $element):void {
 		$element->setHtmlId(
-			'ant_input_'.AbstractClass::uniqid().'_'.AbstractInput::$counter++
+			'ant_input_'.AbstractClass::uniqid().'_'.self::$counter++
 		);
 	}
 	public final function addAttribute(string $name, string $value):void {
@@ -403,8 +403,15 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		// then that function will be called just after the element is inserted
 		if ($this->getValidation() !== '') {
 			if ($this->getJavascriptExport() && $this->exportJavascript()) {
-				$code .= '<script>ant_forms_updateStatus("'
-					.$this->getHtmlId().'");</script>';
+				$scriptUniqueId = 'ant_input_script_'.AbstractClass::uniqid()
+					.'_'.self::$counter++;
+				
+				$code .= '<script id="'.$scriptUniqueId.'">
+					ant_forms_updateStatus("'.$this->getHtmlId().'");
+					setTimeout(() => {
+						document.getElementById("'.$scriptUniqueId.'").remove();
+					}, 100);
+					</script>';
 			}
 		}
 		$code .= '</div>';

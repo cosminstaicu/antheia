@@ -2,7 +2,9 @@
 namespace Antheia\Antheia\Classes\InlineButton;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\Icon\IconPixelSmall;
+use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Interfaces\LinkButtonRender;
@@ -20,11 +22,13 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 	private $classes;
 	private $onClick;
 	private $href;
+	/** @var ?AbstractIcon $icon */
 	private $icon;
 	private $title;
 	private $intensity;
 	private $multipleRows;
 	private $renderType;
+	private $iconType;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
@@ -96,11 +100,25 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 	}
 	/**
 	 * Defines the icon for the button.
-	 * @param string $icon the icon for the button (the name of the png icon
-	 * located in the 16x16 folder) or null if no item is required
+	 * @param string $icon the icon for the button (the name of the png or svg
+	 * file inside the zip archive in media folder) or null if no item is required
+	 * @param string $type (optional, default AbstractIcon::PIXEL) the icon type
+	 * (pixel or vector) to be used
+	 * @return ?AbstractIcon the instance of the icon or null if no icon provided
 	 */
-	public function setIcon(?string $icon):void {
-		$this->icon = $icon;
+	public function setIcon(?string $icon, string $type = AbstractIcon::PIXEL):?AbstractIcon {
+		if ($icon === null) {
+			$this->icon = null;
+		} else {
+			switch ($type) {
+				case AbstractIcon::PIXEL:
+					$this->icon = new IconPixelSmall($icon);
+					break;
+				case AbstractIcon::VECTOR:
+					$this->icon = new IconVector($icon, 16);
+			}
+		}
+		return $this->icon;
 	}
 	/**
 	 * Defines the intensity for the button (how much constrast will be between
@@ -146,9 +164,7 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 		}
 		$code .= ' >';
 		if ($this->icon !== NULL) {
-			$icon = new IconPixelSmall($this->icon);
-			$code .= '<img src="'.$icon->getUrl()
-				.'" width="16" height="16" alt="'.addslashes($this->text).'">';
+			$code .= $this->icon->getHtml($this->text);	
 		}
 		$code .= htmlspecialchars($this->text);
 		switch ($this->renderType) {

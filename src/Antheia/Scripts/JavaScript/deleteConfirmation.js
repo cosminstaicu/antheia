@@ -12,7 +12,7 @@ function ant_deleteConfirmation(element) {
 		throw new Error('Both URL and afterCallback are defined.');
 	}
 
-	let modal = new ant_modal();
+	let modal = new AntheiaModal();
 	modal.setHeader(element.dataset.textInfo);
 	// the visible input
 	let inputText = document.createElement("input");
@@ -28,7 +28,7 @@ function ant_deleteConfirmation(element) {
 	submit.onclick = () => {
 		let inputValue = inputText.value.toUpperCase();
 		if (inputValue !== element.dataset.textTemplate) {
-			ant_alert.quickError(element.dataset.textError, () => {
+			AntheiaAlert.quickError(element.dataset.textError, () => {
 				inputText.value = "";
 				inputText.focus();
 			});

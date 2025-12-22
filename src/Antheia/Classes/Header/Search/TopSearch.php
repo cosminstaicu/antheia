@@ -207,7 +207,8 @@ class TopSearch implements HtmlCode {
 		}
 		$code .= '>';
 		$icon = new IconVector();
-		$icon->setIcon($icon::ICON_SEARCH);
+		$icon->setIcon('search');
+		$icon->setSize(24);
 		$code .= $icon->getHtml();
 		$code .= '</form>';
 		return $code;

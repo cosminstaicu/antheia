@@ -32,7 +32,9 @@ The examples (inside the example folder) are explained inside the [project wiki]
 
 ## Credits
 
-Icons used by the framework are provided freely by [IO Broker icons](https://github.com/ioBroker/ioBroker.icons-fatcow-hosting).
+Icons used by the framework are provided freely by
+ - [IO Broker icons](https://github.com/ioBroker/ioBroker.icons-fatcow-hosting)
+ - [Lucide Icons](https://github.com/lucide-icons/lucide)
 
 Color schemes for the predefined themes are provided freely by [Scheme Color](https://www.schemecolor.com).
 

@@ -1,4 +1,58 @@
 /**
+ * A cache for svg icons used inside the framework
+ * @type {Object.<string, string>}
+ */
+let ant_utils_svgCache = {};
+/**
+ * Returns the svg content of a file inside the Media/Icons/Vector/icons.zip
+ * archive. The content is cached, so future calls will return the content
+ * from memory. It can be used to preload the icon, for future calls,
+ * as the icon can be used inside the loading steps
+ * @param {String} name the name of the file, without the svg extension
+ * @returns {Promise<string>} the content of the file
+ */
+function ant_utils_getSvgIcon(name) {
+	if (name === undefined) {
+		return Promise.reject('Undefined name');
+	}
+	if (ant_utils_svgCache[name] !== undefined) {
+		return Promise.resolve(ant_utils_svgCache[name]);
+	}
+	return new Promise((resolve, reject) => {
+		fetch(
+			ant_antheiaCacheUrl + 'iconVector.php?i=' + name
+		).then((response) => {
+			if (!response.ok) {
+				return Promise.reject(
+					'Icon request status ' + response.status + ' for ' + name
+				);
+			}
+			return response.text();
+		}).then((svgContent) => {
+			ant_utils_svgCache[name] = svgContent;
+			resolve(svgContent);
+		}).catch((error) => {
+			reject(error)
+		});
+	});
+}
+/**
+ * Returns the content of a svg icon from cache. If the icon is not cached,
+ * null will be returned. To load and get the content from the external zip file
+ * ant_utils_getSvgIcon(name) should be used
+ * @param {String} name the name of the file, without the svg extension
+ * @return {String|null} the content of the svg file (if cached) or null if the
+ * file is not cached
+ */
+function ant_utils_getCachedSvgIcon(name) {
+	if (ant_utils_svgCache[name] !== undefined) {
+		// the svg content is already in cache
+		return ant_utils_svgCache[name];
+	} else {
+		return null;
+	}
+}
+/**
  * Changes the page title (the window title and the header title)
  * @param {String} title the new title of the page
  */
@@ -83,7 +137,7 @@ function ant_utils_inputCallback(input, action) {
  * will redirect the browser to a details page.
  */
 function ant_utils_checkCompatibility() {
-	let newClass = new ant_alert();
+	let newClass = new AntheiaAlert();
 	newClass.setButtonLabel('Just a test');
 	if (document.getElementById('ant_compatibilityScript') !== null) {
 		setTimeout(() => {

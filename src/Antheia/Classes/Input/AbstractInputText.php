@@ -57,12 +57,13 @@ abstract class AbstractInputText extends AbstractInput {
 	}
 	/**
 	 * Defines the symbol displayed on the right side of the input.
-	 * @param integer $icon the icon to be displayed, as a constant like
-	 * IconVector::ICON_## or null if no symbol will be displayed
+	 * @param string $icon the name of the icon to be displayed
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		if ($icon !== null) {
 			$this->icon = new IconVector();
+			$this->icon->setSize(24);
 			$this->icon->setIcon($icon);
 		} else {
 			$this->icon = null;

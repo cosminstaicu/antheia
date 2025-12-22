@@ -17,7 +17,8 @@ abstract class AbstractInlineHelp extends AbstractClass implements HtmlCode, Htm
 		$this->text = '';
 		$this->htmlId = '';
 		$this->icon = new IconVector();
-		$this->icon->setIcon(IconVector::ICON_HELP);
+		$this->icon->setIcon('circle-question-mark');
+		$this->icon->setSize('24');
 	}
 	/**
 	 * Defines the text shown when the item is clicked
@@ -31,7 +32,7 @@ abstract class AbstractInlineHelp extends AbstractClass implements HtmlCode, Htm
 	}
 	/**
 	 * Returns the displayed icon
-	 * @return IconVector
+	 * @return IconVector the displayed icon
 	 */
 	public function getIcon():IconVector {
 		return $this->icon;

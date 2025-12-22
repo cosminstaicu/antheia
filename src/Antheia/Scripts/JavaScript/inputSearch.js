@@ -12,7 +12,7 @@ function ant_inputSearch_start(element) {
 	};
 	ant_utils_preCallback(element.nextElementSibling.nextElementSibling);
 	let ant_inputSearch_timeout = 0;
-	ant_inputSearch_process.modal = new ant_modal();
+	ant_inputSearch_process.modal = new AntheiaModal();
 	ant_inputSearch_process.modal.addContentClass("ant_inputSearch");
 	ant_inputSearch_process.modal.setOnClose(() => {
 		ant_inputSearch_process = null;
@@ -124,13 +124,6 @@ function ant_inputSearch_selectItem(element) {
  * button
  */
 function ant_inputSearch_select(value, readableText) {
-	// can be deleted after 2024 04 01
-	// ant_inputSearch_process.trigger.value = readableText;
-	// let hiddenInput = ant_inputSearch_process.hiddenInput;
-	// hiddenInput.value = value;
-	// ant_forms_updateStatus(hiddenInput.id);
 	ant_forms_updateValue(ant_inputSearch_process.hiddenInput, value, readableText);
 	ant_inputSearch_process.modal.hide();
-	// can be deleted after 2024 04 01
-	// ant_utils_postCallback(hiddenInput);
 }

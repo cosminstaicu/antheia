@@ -1,7 +1,7 @@
 /**
  * Defines an alert message with an ok button
  */
- class ant_alert {
+ class AntheiaAlert {
 	/** @type {ant_modal} */
 	#modal;
 	/** @type {HTMLInputElement} */
@@ -9,7 +9,7 @@
 	/** @type {CallableFunction|null} */
 	#onClose;
 	constructor () {
-		this.#modal = new ant_modal();
+		this.#modal = new AntheiaModal();
 		this.#modal.setContent('---');
 		this.#okButton = document.createElement("INPUT");
 		this.#okButton.type = "button";
@@ -65,7 +65,7 @@
 	 * presses the ok button or the entire modal is closed
 	 */
 	static quickError(infoText, onClose) {
-		let alertModal = new ant_alert();
+		let alertModal = new AntheiaAlert();
 		alertModal.setText(infoText);
 		if (onClose !== undefined) {
 			alertModal.setOnClose(onClose);
@@ -79,7 +79,7 @@
 	 * presses the ok button or the entire modal is closed
 	 */
 	static quickInfo(infoText, onClose) {
-		let alertModal = new ant_alert();
+		let alertModal = new AntheiaAlert();
 		alertModal.setText(infoText);
 		if (onClose !== undefined) {
 			alertModal.setOnClose(onClose);

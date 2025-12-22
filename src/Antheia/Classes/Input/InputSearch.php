@@ -1,7 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
@@ -95,7 +94,7 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 			throw new Exception('Url is undefined');
 		}
 		$this->button->setText($this->initialText);
-		$this->button->setIcon(IconVector::ICON_SEARCH);
+		$this->button->setIcon('search');
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setHiddenInputValue($this->getValue());

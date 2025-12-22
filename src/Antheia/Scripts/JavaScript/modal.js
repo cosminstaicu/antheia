@@ -1,7 +1,7 @@
 /**
  * Defines a modal that can be added to the document
  */
-class ant_modal {
+class AntheiaModal {
 	/** @type {HTMLDivElement} */
 	#content;
 	/** @type {HTMLDivElement|null} */

@@ -2,7 +2,6 @@
 namespace Antheia\Antheia\Classes\Search\Views;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Panel\Panel;
@@ -45,17 +44,15 @@ class SearchViewAccordion extends AbstractSearchView {
 				$titleCode->addElement($check);
 			}
 			// left side icon
-			$iconInfo = $result->getIcon();
-			if ($iconInfo !== null) {
-				$icon = new IconPixelBig($iconInfo['icon']);
-				if ($iconInfo['addon'] != '') {
-					$icon->setBottomRightIcon($iconInfo['addon']);
+			if ($result->getIcon() !== null) {
+				if ($result->getIcon()->getSize() !== 32) {
+					throw new Exception(
+						'Only 32px size icons are valid ('
+						.$result->getIcon()->getSize()
+						.'px is invalid)'
+					);
 				}
-				$titleCode->addRawCode(
-					'<img src="'.$icon->getUrl()
-					.'" width="32" height="32" class="ant-icon" alt="'
-					.str_replace(['"',"'","\\"], ['','',''], $result->getName()).'">'
-				);
+				$titleCode->addElement($result->getIcon());
 			}
 			// slide trigger
 			$button = $slidePanel->getController();
@@ -65,7 +62,8 @@ class SearchViewAccordion extends AbstractSearchView {
 			$titleCode->addElement($button);
 			// access button
 			$icon = new IconVector();
-			$icon->setIcon(IconVector::ICON_RIGHT);
+			$icon->setSize(24);
+			$icon->setIcon('arrow-big-right');
 			$title = $result->getAccessText();
 			if ($title !== '') {
 				$title = ' title="'.$title.'"';

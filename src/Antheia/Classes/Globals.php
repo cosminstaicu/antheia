@@ -17,9 +17,9 @@ class Globals {
 	private static $debugMode = false;
 	/**
 	 * Defines the location of the cache folder for the library
-	 * @param string $url the url of the cache folder (probably an absolute
+	 * @param string $url the url of the cache folder (as an absolute
 	 * location, relative to the root of the web server)
-	 * @param string $path the path of the cache folder (probably an absolute
+	 * @param string $path the path of the cache folder (an absolute
 	 * location on the file system)
 	 */
 	public static function setCache(string $url, string $path):void {

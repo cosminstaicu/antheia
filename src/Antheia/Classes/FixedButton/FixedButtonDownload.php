@@ -1,7 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\FixedButton;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A fixed button with the download symbol
  * @author Cosmin Staicu
@@ -9,7 +8,7 @@ use Antheia\Antheia\Classes\Icon\IconVector;
 class FixedButtonDownload extends AbstractFixedButton {
 	public function __construct() {
 		parent::__construct();
-		$this->setIcon(IconVector::ICON_DOWNLOAD);
+		$this->setIcon('download');
 		$this->setTitle(Texts::get('DOWNLOAD'));
 	}
 }

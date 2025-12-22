@@ -8,7 +8,14 @@ As there is only one main branch, every new release fixes any ongoing issues. So
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 1.x.x   | :white_check_mark: |
+| 2.x.x   | :white_check_mark: |
+| 1.x.x   | :x:|
+
+Version 1.x.x has reached end of life (EOL) and is no longer supported.
+
+Security vulnerabilities reported for 1.x.x will not be fixed.
+
+Users are strongly encouraged to upgrade to the latest 2.x.x release.
 
 ## Reporting a Vulnerability
 
@@ -25,6 +32,8 @@ Please include as much of the information listed below as you can to help me bet
 - Impact of the issue, including how an attacker might exploit the issue
 
 (the above list is a modified version from [GitHub platform samples security policy](https://github.com/github/platform-samples/security/policy))
+
+Only vulnerabilities affecting supported versions (2.x.x) are eligible for security fixes. Reports concerning unsupported versions may be closed without action.
 
 ## Updates
 

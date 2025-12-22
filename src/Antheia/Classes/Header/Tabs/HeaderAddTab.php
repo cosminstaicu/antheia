@@ -10,7 +10,7 @@ class HeaderAddTab extends HeaderTab {
 	public function __construct() {
 		parent::__construct();
 		$icon = new IconVector();
-		$icon->setIcon(IconVector::ICON_ADD);
+		$icon->setIcon('plus');
 		$this->setTitle($icon->getHtml());
 	}
 }

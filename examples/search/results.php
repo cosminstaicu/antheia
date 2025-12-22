@@ -7,6 +7,7 @@ use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\InlineButton\InlineButton;
 use Antheia\Antheia\Classes\FixedButton\NewFixedButton;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageSearchResult();
@@ -15,7 +16,7 @@ init_configurePage($page);
 $page->setTitle('Search results');
 $page->showSelectOptions();
 $selectedItemsAction = new SearchOptionBarButton();
-$selectedItemsAction->setIcon(IconVector::ICON_DELETE);
+$selectedItemsAction->setIcon('x');
 $selectedItemsAction->setText('Delete');
 $selectedItemsAction->setHref('javascript:alert()');
 $page->addSelectButton($selectedItemsAction);
@@ -56,6 +57,9 @@ $page->setSortBy([
 		'date' => 'Date of issue',
 		'size' => 'Size of the item'
 ], 'date');
+if (isset($_POST['sortOrder'])) {
+	$page->setOrder($_POST['sortOrder']);
+}
 $page->addInput($filter);
 // defining the total number of pages and the current page
 if (isset($_POST['page'])) {
@@ -79,15 +83,21 @@ for ($i = 0; $i < 5; $i++) {
 	$element->addProperty('Property 2', 'Value 2');
 	$element->addProperty('Property 3', '<a href="javascript:alert()">A link</a>');
 	$element->setImageLink('javascript:alert(\'click on image\')');
-	// used only by LIST_TYPE_ACCORDION
 	if ($i === 1) {
-		$element->setIcon('user');
+		$icon = new IconVector('user');
+		$element->setIcon($icon);
 	}
 	if ($i === 2) {
-		$element->setIcon('user', 'accept');
+		$icon = new IconPixelBig('user');
+		$element->setIcon($icon);
+		// used only by LIST_TYPE_ACCORDION
 		$element->addButton('A button', "alert('clicked')");
 		$element->addButton('Another button', "alert('clicked')");
 		$element->addButton('The third button', "alert('clicked')");
+	}
+	if ($i === 3) {
+		$icon = new IconPixelBig('user','accept');
+		$element->setIcon($icon);
 	}
 	// a link for accesing the details page for this result can be defined
 	// used when the results are displayed using 
@@ -109,7 +119,7 @@ for ($i = 0; $i < 5; $i++) {
 	$inlineButton = new InlineButton();
 	if ($i === 3) {
 		$inlineButton->setText(
-			'This is a really long name for a button, so long that it needs to be trimmed'
+			'This is a really long name for an item, so long that it needs to be trimmed'
 		);
 	} else {
 		$inlineButton->setText('Inline button');

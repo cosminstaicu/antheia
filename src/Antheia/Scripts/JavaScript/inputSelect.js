@@ -8,7 +8,7 @@ function ant_inputSelect_start(element) {
 	let option = null;
 	let inputHidden = element.nextElementSibling.nextElementSibling;
 	ant_utils_preCallback(inputHidden);
-	let modal = new ant_modal();
+	let modal = new AntheiaModal();
 	modal.setHeader(element.dataset.label);
 	modal.addContentClass("ant_inputSelect");
 	let options = inputHidden.options;
@@ -17,16 +17,8 @@ function ant_inputSelect_start(element) {
 		option.ant_option = options[i];
 		option.innerHTML = options[i].text;
 		option.onclick = function () {
-			// can be deleted after 2024 04 01
-			//element.value = this.ant_option.text;
-			//inputHidden.value = this.ant_option.value;
-			//ant_inputSelect_updateInfo(inputHidden);
-			//if (inputHidden.dataset.validate !== '') {
-			//	ant_forms_updateStatus(inputHidden.id);
-			//}
 			ant_forms_updateValue(inputHidden, this.ant_option.value, this.ant_option.text);
 			modal.hide();
-			//ant_utils_postCallback(inputHidden);
 		}
 		modal.appendContent(option);
 	}

@@ -32,6 +32,7 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 		$this->text = '';
 		$this->href='javascript:void(0)';
 		$this->icon = new IconVector();
+		$this->icon->setSize(22);
 		$this->cssCode = '';
 		$this->htmlId = '';
 		$this->attributes = [];
@@ -95,10 +96,10 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	}
 	/**
 	 * Defines the icon for the menu item
-	 * @param int $icon the displayed icon as a constant like
-	 * IconVector::ICON_##
+	 * @param string $icon the name of the icon attached to the menu
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		$this->icon->setIcon($icon);
 	}
 	public function getHtml():string {

@@ -1,144 +1,124 @@
 <?php
 namespace Antheia\Antheia\Classes\Icon;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Icon\VectorSet\MaterialDesign;
-use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Internals;
 /**
- * A vector based icon, from a selectable set (Google Material Design)
+ * An square vector icon with a default 32px side
  * @author Cosmin Staicu
  */
-class IconVector implements HtmlCode {
-	const TYPE_MATERIAL_DESIGN = 1;
-	// available icons
-	const ICON_ADD = 1;
-	const ICON_ADD_INFO = 2;
-	const ICON_ALERT = 3;
-	const ICON_BACK = 4;
-	const ICON_BUG = 5;
-	const ICON_BUILDING = 6;
-	const ICON_CHECKED = 7;
-	const ICON_CLOSE = 8;
-	const ICON_COLOR = 9;
-	const ICON_COMPONENT = 10;
-	const ICON_COPY = 11;
-	const ICON_DOWN = 12;
-	const ICON_DOWNLOAD = 13;
-	const ICON_DATE = 14;
-	const ICON_DELETE = 15;
-	const ICON_EDIT = 16;
-	const ICON_EMAIL= 17;
-	const ICON_EXIT = 18;
-	const ICON_FILE = 19;
-	const ICON_FOLDER = 20;
-	const ICON_FOLDER_EMPTY = 21;
-	const ICON_HELP = 22;
-	const ICON_INFO = 23;
-	const ICON_LANGUAGE = 24;
-	const ICON_LEFT = 25;
-	const ICON_LOCATION = 26;
-	const ICON_MENU = 27;
-	const ICON_MESSAGE = 28;
-	const ICON_NUMBER = 29;
-	const ICON_ON_OFF = 30;
-	const ICON_PASSWORD = 31;
-	const ICON_PHONE = 32;
-	const ICON_PLAY = 33;
-	const ICON_RIGHT = 34;
-	const ICON_SEARCH = 35;
-	const ICON_SETTINGS = 36;
-	const ICON_SHOPPING = 37;
-	const ICON_SHOPPING_ADD = 38;
-	const ICON_SORT = 39;
-	const ICON_SORT_ASC = 40;
-	const ICON_SORT_DESC = 41;
-	const ICON_STATUS = 42;
-	const ICON_TIME = 43;
-	const ICON_TRANSFER = 44;
-	const ICON_UNCHECKED = 45;
-	const ICON_UP = 46;
-	const ICON_UPDATE = 47;
-	const ICON_UPLOAD = 48;
-	const ICON_USER = 49;
-	const ICON_VALID = 50;
-	// size of the icon
-	const SIZE_SMALL = 1;
-	const SIZE_NORMAL = 2;
-	const SIZE_LARGE = 3;
-	const SIZE_XL = 4;
-	private $iconType;
-	private $icon;
+class IconVector extends AbstractIcon {
+	private static $imageFileList = null;
 	private $size;
-	private $symbol;
-	private static $iconList = null;
-	public function __construct() {
-		$this->iconType = self::TYPE_MATERIAL_DESIGN;
-		$this->icon = null;
-		$this->size = self::SIZE_NORMAL;
-		$this->symbol = self::ICON_ALERT;
-		if (self::$iconList === null) {
-			self::$iconList = [];
-			$classDefinition = new \ReflectionClass(__CLASS__);
-			$constantList = $classDefinition->getConstants();
-			foreach ($constantList as $name => $value) {
-				if (substr($name, 0, 5) == 'ICON_') {
-					self::$iconList[] = $value;
+	/**
+	 * The class constructor
+	 * @param string $icon='flower' main image of the icon
+	 * @param integer $size=32 the size of the icon
+	 * @see AbstractIcon::setIcon()
+	 */
+	public function __construct(string $icon = 'flower', int $size = 32) {
+		parent::__construct($icon);
+		$this->setIconType(self::VECTOR);
+		$this->setSize($size);
+	}
+	public static function imageExists(string $name):bool {
+		return self::imageExistsInZip($name);
+	}
+	/**
+	 * Checks if an image exists inside the icon archive.
+	 * @param string $name the name of the image, without the .svg extension
+	 * @return bool true if the image exists, false if not
+	 */
+	protected static function imageExistsInZip(string $name):bool {
+		$imageListFile = Internals::getCachePath().'icons_vector.csv';
+		if (self::$imageFileList === NULL) {
+			if (!is_file($imageListFile)) {
+				// creating a list with all svg files inside the library
+				// so no zip extract is needed at each function call
+				$zipPath = Internals::getFolder(['Media','Icons','Vector']).'icons.zip';
+				if (!is_file($zipPath)) {
+					throw new Exception('ZIP file is missing: '.$zipPath);
+				}
+				$csvFileContent = '';
+				$archive = new \ZipArchive();
+				if ($archive->open($zipPath)) {
+					for ($i = 0; $i < $archive->numFiles; $i++) {
+						$fileName = basename($archive->statIndex($i)['name']);
+						if (substr($fileName, -4) !== '.svg') {
+							continue;
+						}
+						if ($csvFileContent !== '') {
+							$csvFileContent .= ',';
+						}
+						$csvFileContent .= substr($fileName, 0, -4);
+					}
+					file_put_contents($imageListFile, $csvFileContent);
+				} else {
+					throw new Exception('Unable to process '.$zipPath);
 				}
 			}
+			self::$imageFileList = explode(',', file_get_contents($imageListFile));
 		}
+		if (in_array($name, self::$imageFileList)) {
+			return true;
+		}
+		return false;
 	}
 	/**
-	 * The type of the icon to be displayed (the render)
-	 * @param integer $iconType the icon type, as a constant like
-	 * IconVector::TIP_ICON_###
-	 */
-	public function setIconType(int $iconType):void {
-		$this->iconType = $iconType;
-	}
-	/**
-	 * The size of the icon
-	 * @param integer $size the size of the element, as a constant like
-	 * IconVector::SIZE_##
+	 * The size of the icon (it will be rendered as a square)
+	 * @param int $size the size of the icon, in pixels
 	 */
 	public function setSize(int $size):void {
 		$this->size = $size;
 	}
-	/**
-	 * The icon to be displayed
-	 * @param integer $icon the icon to be displayed, as a constant like
-	 * IconVector::ICON_##
-	 */
-	public function setIcon(int $icon):void {
-		if (!in_array($icon, self::$iconList)) {
-			throw new Exception('Unknown constant');
-		}
-		$this->symbol = $icon;
+	public function getSize():int {
+		return $this->size;
 	}
 	/**
-	 * Returns the name of the icon, as it is defined inside the render
-	 * @return string the name of the icon
+	 * Check if the cache folder contains the image. If not, then the image will
+	 * be extracted from the zip file
 	 */
-	public function getIconName():string {
-		switch ($this->iconType) {
-			case self::TYPE_MATERIAL_DESIGN:
-				$this->icon = new MaterialDesign();
-				$this->icon->setIcon($this->symbol);
-				return $this->icon->getIconName();
-				break;
-			default:
-				throw new Exception($this->iconType);
-		}
+	private function ensureCachedImage():void {
+		$file = 'vector_'.$this->getIcon().'.svg';
+		if (Internals::getFileContentFromCache($file) === NULL) {
+			// file does not exists
+			$zipPath = Internals::getFolder(['Media','Icons','Vector']).'icons.zip';
+			if (!self::imageExistsInZip($this->getIcon())) {
+				throw new Exception(
+					'File not found in '.$zipPath.'#'.$this->getIcon().'.svg'
+				);
+			}
+			$archive = new \ZipArchive();
+			if ($archive->open($zipPath)) {
+				file_put_contents(
+					Internals::getCachePath($file),
+					$archive->getFromName($this->getIcon().'.svg')
+				);
+			} else {
+				throw new Exception('Unable to process '.$zipPath);
+			}
+		}	
+	}
+	public function getUrl():string {
+		$this->ensureCachedImage();
+		return Internals::getCacheUrl().'vector_'.$this->getIcon().'.svg';
 	}
 	public function getHtml():string {
-		switch ($this->iconType) {
-			case self::TYPE_MATERIAL_DESIGN:
-				$this->icon = new MaterialDesign();
-				break;
-			default:
-				throw new Exception($this->iconType);
+		$this->ensureCachedImage();
+		$code = "<svg preserveAspectRatio='xMidYMid meet' viewBox='0 0 24 24' "
+				."width='".$this->size."' height='".$this->size."'";
+		if ($this->getHtmlId() !== '') {
+			$code .= ' id="'.$this->getHtmlId().'"';
 		}
-		$this->icon->setSize($this->size);
-		$this->icon->setIcon($this->symbol);
-		return $this->icon->getHtml();
+		if (count($this->getClasses()) > 0) {
+			$code .= ' class="'.implode(" ", array_unique($this->getClasses())).'" ';
+		}
+		foreach ($this->getAttributes() as $name => $value) {
+			$code .= ' '.$name.'="'.$value.'"';
+		}
+		$code .= '>';
+		$code .= Internals::getFileContentFromCache('vector_'.$this->getIcon().'.svg');
+		$code .= '</svg>';
+		return $code;
 	}
 }
 ?>

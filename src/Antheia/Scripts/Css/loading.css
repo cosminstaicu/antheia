@@ -52,6 +52,10 @@
 	animation: ant_loading-spin 2s linear infinite;
 	box-shadow: 0px 0px 4px var(--ant-theme-shadow);
 }
+.ant_loading_stepPlaceholder {
+	width: 24px;
+	height: 24px;
+}
 #ant_loading > div > table > tr > td {
 	padding: 5px;
 	box-shadow: 0px 0px 1px var(--ant-theme-shadow);

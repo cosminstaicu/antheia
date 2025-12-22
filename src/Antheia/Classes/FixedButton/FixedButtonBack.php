@@ -1,7 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\FixedButton;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A fixed button with the back symbol
  * @author Cosmin Staicu
@@ -9,7 +8,7 @@ use Antheia\Antheia\Classes\Icon\IconVector;
 class FixedButtonBack extends AbstractFixedButton {
 	public function __construct() {
 		parent::__construct();
-		$this->setIcon(IconVector::ICON_BACK);
+		$this->setIcon('arrow-big-left');
 		$this->setTitle(Texts::get('BACK'));
 	}
 }

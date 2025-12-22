@@ -262,7 +262,6 @@ class PageSearchResult extends PageEmpty {
 			}
 		}
 		$this->wireframe->addRow()->addCell($this->resultsCell);
-		
 		if (count($this->afterResults) > 0) {
 			$cell = $this->wireframe->addRow()->addCell();
 			foreach ($this->afterResults as $item) {
@@ -302,9 +301,11 @@ class PageSearchResult extends PageEmpty {
 		}
 		$this->resultsCell->addElement($results);
 		$nextIcon = new IconVector();
-		$nextIcon->setIcon(IconVector::ICON_RIGHT);
+		$nextIcon->setSize(22);
+		$nextIcon->setIcon('arrow-right');
 		$previousIcon = new IconVector();
-		$previousIcon->setIcon(IconVector::ICON_LEFT);
+		$previousIcon->setIcon('arrow-left');
+		$previousIcon->setSize(22);
 		$code = '<div id="ant_search-pages"><table><tr><td>';
 		if ($this->currentPage > 1) {
 			$code .= '<button class="ant-back" onClick="ant_search_changePage('

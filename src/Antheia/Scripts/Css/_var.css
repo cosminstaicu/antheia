@@ -12,6 +12,8 @@
 	*/
 	--ant_var-rem10px: 0.625rem;
 	--ant_var-rem10px-: -0.625rem;
+	--ant_var-rem3px: calc(var(--ant_var-rem10px) * .3);
+	--ant_var-rem3px-: calc(var(--ant_var-rem10px-) * .3);
 	--ant_var-rem5px: calc(var(--ant_var-rem10px) * .5);
 	--ant_var-rem5px-: calc(var(--ant_var-rem10px-) * .5);
 	--ant_var-rem6px: calc(var(--ant_var-rem10px) * .6);

@@ -3,39 +3,21 @@ namespace Antheia\Antheia\Classes\Icon;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Internals;
 /**
- * Class to be extended by all classes defining an image icon.
+ * Class to be extended by all classes defining a pixel (png) image icon.
  * The icon will be first checked in the cache folder and if it is not found there
  * then it will be generated and saved into the cache folder.
  * @author Cosmin Staicu
  */
-abstract class AbstractPixelIcon {
+abstract class AbstractIconPixel extends AbstractIcon {
 	private static $imageFileList = [16 => NULL, 32 => NULL];
-	private $icon;
 	/**
 	 * The class constructor with the name of the main image inside the icon
-	 * @param string $icon the name of the image to be used inside the ocon
-	 * @see AbstractPixelIcon::setIcon()
+	 * @param string $icon the name of the image to be used inside the icon
+	 * @see AbstractIcon::setIcon()
 	 */
 	public function __construct(string $icon) {
-		$this->setIcon($icon);
-	}
-	/**
-	 * Defines the name of the main image, to be used inside the icon. The name
-	 * must have a coresponding .png file inside the .zip library (the folder
-	 * Media/Icons from the library).
-	 * @param string $icon the name of the image from the library file
-	 * (no .png extension required)
-	 */
-	public function setIcon(string $icon):void {
-		$this->icon = $icon;
-	}
-	/**
-	 * Returns the name of the main image used for generating the icon
-	 * @return string the name of the main image used for generating the icon
-	 * without any extension
-	 */
-	protected function getIcon():string {
-		return $this->icon;
+		parent::__construct($icon);
+		parent::setIconType($this::PIXEL);
 	}
 	/**
 	 * Returns a transparent image of a defined size
@@ -52,7 +34,7 @@ abstract class AbstractPixelIcon {
 	}
 	/**
 	 * Returns a generated image based on a .png file from the .zip archive
-	 * inside the media/icons folder
+	 * inside the Media/Icons/Pixel folder
 	 * @param string $name the name of the .png file inside the library
 	 * @param integer $size size of the generated image. It can be
 	 * 16 or 32 (32x32 px or 16x16 px, corresponding to the folder inside the
@@ -68,9 +50,9 @@ abstract class AbstractPixelIcon {
 			default:
 				throw new Exception('Incorect value: '.$size);
 		}
-		$zipPath = Internals::getFolder(['Media','Icons']).$size.'.zip';
+		$zipPath = Internals::getFolder(['Media','Icons','Pixel']).$size.'px.zip';
 		if (!is_file($zipPath)) {
-			throw new Exception('ZIP file is missing from media/icons');
+			throw new Exception('ZIP file is missing from Media/Icons/Pixel');
 		}
 		$archive = new \ZipArchive();
 		if ($archive->open($zipPath)) {
@@ -84,20 +66,9 @@ abstract class AbstractPixelIcon {
 			}
 			return $image;
 		} else {
-			throw new Exception('Unable to process zip file in media/icons');
+			throw new Exception('Unable to process '.$zipPath);
 		}
 	}
-	/**
-	 * Returns the url for the selected image
-	 * @return string the url for the selected image
-	 */
-	abstract public function getUrl():string;
-	/**
-	 * Checks if an image exists inside the icon archive.
-	 * @param string $name the name of the image
-	 * @return bool true if the image exists, false if not
-	 */
-	abstract public static function imageExists(string $name):bool;
 	/**
 	 * Checks if an image exists inside the icon archive.
 	 * @param string $name the name of the image
@@ -108,13 +79,13 @@ abstract class AbstractPixelIcon {
 		if (($size !== 16) && ($size !== 32)) {
 			throw new Exception('Unknown image size '.$size);
 		}
-		$imageFile = 'icons_'.$size.'.csv';
+		$imageFile = 'icons_pixel_'.$size.'.csv';
 		$imageListFile = Internals::getCachePath().$imageFile;
 		if (self::$imageFileList[$size] === NULL) {
 			if (!is_file($imageListFile)) {
 				// creating a list with all png files inside the library
 				// so no zip extract is needed at each function call
-				$zipPath = Internals::getFolder(['Media','Icons']).$size.'.zip';
+				$zipPath = Internals::getFolder(['Media','Icons','Pixel']).$size.'px.zip';
 				if (!is_file($zipPath)) {
 					throw new Exception('ZIP file is missing: '.$zipPath);
 				}
@@ -133,7 +104,7 @@ abstract class AbstractPixelIcon {
 					}
 					file_put_contents($imageListFile, $csvFileContent);
 				} else {
-					throw new Exception('Unable to process zip file in media/icons');
+					throw new Exception('Unable to process '.$zipPath);
 				}
 			}
 			self::$imageFileList[$size] = explode(',', file_get_contents($imageListFile));

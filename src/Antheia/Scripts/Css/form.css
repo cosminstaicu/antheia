@@ -1,7 +1,7 @@
 form.ant-max-height {
 	height: 100%;
 }
-/** If the definition below is modified then the label definition should be updated also*/
+/** If the definition below is modified then the label definition should be updated also */
 p.ant_form-text-label {
 	font-size: var(--ant_var-rem14px);
 	font-weight: bold;
@@ -27,31 +27,30 @@ p.ant_form-text-label {
 }
 .ant_form-item.ant-status:after {
 	position: absolute;
-	top: 3px;
-	right: 0px;
-	font-family: 'Material Icons';
+	top: 0px;
+	right: 3px;
 	font-size: var(--ant_var-rem24px);
 }
 .ant_form-item.ant-valid:after {
-	content: "\e876";
+	content: "✔";
 	color: var(--ant-theme-valid);
 }
 .ant_form-item.ant-invalid:after  {
-	content: "\e002";
+	content: "⚠";
 	color: var(--ant-theme-warning);
 }
-.ant_form-item > i {
+.ant_form-item > svg {
 	position: absolute;
-	top: 5px;
-	right: 5px;
+	top: 6px;
+	right: var(--ant_var-rem8px);
 	color: var(--ant-theme-inputIcon);
 	pointer-events: none;
 }
 .ant_form-item > select {
 	display: none;
 }
-.ant_form-item.ant-status > i {
-	right: var(--ant_var-rem33px);
+.ant_form-item.ant-status > svg {
+	right: var(--ant_var-rem36px);
 }
 textarea {
 	resize: vertical;
@@ -148,20 +147,24 @@ input[type=checkbox] + span {
 	position: relative;
 	top: 0px;
 	left: 0px;
+	padding-left: var(--ant_var-rem28px);
+	padding-top: var(--ant_var-rem12px);
+	padding-bottom: var(--ant_var-rem12px);
 	color: var(--ant-theme-inputLabel);
 	vertical-align: middle;
 }
 input[type=checkbox] + span:before {
-	position: relative;
-	font-family: 'Material Icons';
+	position: absolute;
+	left: 0;
+	top: 0;
 	font-size: var(--ant_var-rem28px);
-	content : "\e835";
+	content : "☐";
 	color: var(--ant-theme-inputLabel);
 	vertical-align: middle;
 	margin-right: 6px;
 }
 input[type=checkbox]:checked + span:before {
-	content : "\e876";
+	content : "✔";
 }
 /* info type inputs (that are only displaying plain text) */
 .ant_form-item > span {
@@ -221,7 +224,6 @@ p.ant_form-invalid-input-error > i {
 	position: absolute;
 	bottom: 3px;
 	right: -30px;
-	font-family: 'Material Icons';
 	font-size: var(--ant_var-rem24px);
 	color: var(--ant-theme-warning);
 	font-style: normal;

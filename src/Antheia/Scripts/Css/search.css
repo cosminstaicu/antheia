@@ -3,9 +3,8 @@
 }
 #ant_search-sort-order {
 	color: var(--ant-theme-link);
-	margin: 0 auto 0 10px;
 	padding: 5px 0 0 0;
-	width: var(--ant_var-rem50px);
+	width: var(--ant_var-rem30px);
 	border: 0;
 	background-color: transparent;
 	cursor: pointer;
@@ -16,11 +15,11 @@
 	color: var(--ant-theme-linkHover);
 }
 #ant_search-options {
-	margin-bottom: 15px;
+	margin-bottom: var(--ant_var-rem15px);
 }
 #ant_search-options td:first-child {
-	padding-top: 5px;
-	padding-bottom: 5px;
+	padding-top: var(--ant_var-rem8px);
+	padding-bottom: var(--ant_var-rem8px);
 }
 /* options buttons wrapper*/
 #ant_search-options td:last-child > div {
@@ -29,7 +28,7 @@
 	overflow: hidden;
 	transition: 0.5s;
 	opacity: 0;
-	top: -20px;
+	top: var(--ant_var-rem20px-);
 	height: 0px;
 }	
 #ant_search-options.ant-show-buttons td:last-child > div {

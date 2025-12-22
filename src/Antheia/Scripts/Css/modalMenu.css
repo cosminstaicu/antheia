@@ -22,7 +22,9 @@ div.ant_modalMenu > button:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
 	color: var(--ant-theme-buttonText);
 }
-div.ant_modalMenu > button > img {
+div.ant_modalMenu > button > img,
+div.ant_modalMenu > button > div.ant_modalMenu_iconPlaceholder,
+div.ant_modalMenu > button > svg {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -36,4 +38,8 @@ div.ant_modalMenu > button > p {
 div.ant_modalMenu > button > p:first-of-type {
 	font-size: var(--ant_var-rem16px);
 	font-weight: bold;
+}
+div.ant_modalMenu_iconPlaceholder {
+	width: var(--ant_var-rem32px);
+	height: var(--ant_var-rem32px);
 }

@@ -2,7 +2,6 @@
 namespace Antheia\Antheia\Classes\Search\Views;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Search\SearchResult;
@@ -21,9 +20,10 @@ class SearchViewCards extends AbstractSearchView {
 	}
 	public function getHtml():string {
 		$slideIcon = new IconVector();
-		$slideIcon->setIcon(IconVector::ICON_UP);
+		$slideIcon->setSize(24);
+		$slideIcon->setIcon('arrow-up');
 		$closeIcon = new IconVector();
-		$closeIcon->setIcon(IconVector::ICON_CLOSE);
+		$closeIcon->setIcon('x');
 		$results = $this->getItems();
 		if (count($results) === 0) {
 			$emptyList = new SearchViewEmpty();
@@ -82,14 +82,16 @@ class SearchViewCards extends AbstractSearchView {
 				$code .= '</a>';
 			}
 			if ($result->getIcon() !== NULL) {
-				$icon = new IconPixelBig($result->getIcon()['icon']);
-				if ($result->getIcon()['addon'] != '') {
-					$icon->setBottomRightIcon($result->getIcon()['addon']);
+				if ($result->getIcon()->getSize() !== 32) {
+					throw new Exception(
+						'Only 32px size icons are valid ('
+						.$result->getIcon()->getSize()
+						.'px is not valid)'
+					);
 				}
-				$code .= '<div class="ant-icon"><img src="'.$icon->getUrl()
-					.'" width="32" height="32" alt="'
-					.str_replace(['"',"'","\\"], ['','',''], $result->getName())
-					.'"></div>';
+				$code .= '<div class="ant-icon">'
+					.$result->getIcon()->getHtml()
+					.'</div>';
 			}
 			$code .= '<p>'.$result->getName().'</p>';
 			if ($result->getImageSize() === SearchResult::IMAGE_SIZE_MEDIUM) {

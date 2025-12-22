@@ -13,14 +13,9 @@
 	position: absolute;
 }
 /* if a div is present in the header, that is the selection checkbox */
-/* so I will push the trigger to the right */
+/* trigger will be pushed to the right */
 #ant_search_accordion .ant_panel > .ant-header > div:first-child + * {
 	margin-left: var(--ant_var-rem30px);
-}
-/* the image left to the name of the item */
-#ant_search_accordion .ant_panel > .ant-header > img {
-	width: var(--ant_var-rem32px);
-	height: var(--ant_var-rem32px);
 }
 #ant_search_accordion .ant_panel > .ant-header > a,
 #ant_search_accordion .ant_panel > .ant-header > button {
@@ -61,6 +56,7 @@
 #ant_search_accordion .ant_panel > .ant-header > *:last-child.ant-visible:hover {
 	background-color: var(--ant-theme-buttonBackgroundHover);
 	box-shadow: 0px 0px 5px var(--ant-theme-shadow);
+	padding-left: var(--ant_var-rem15px);
 }
 #ant_search_accordion > div.ant_panel {
 	border-left-width: 1px;

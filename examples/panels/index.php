@@ -1,6 +1,7 @@
 <?php
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Accordion\Accordion;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\InlineButton\InlineButton;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Menu\Item\NewMenu;
@@ -140,9 +141,10 @@ $button->setTitle('Button title');
 $panel->addNameElement('High contrast', $button);
 // inserting a button without an image
 $button = new InlineButton();
-$button->setText('Medium contrast (with image)');
+$button->setText('Medium contrast (with svg image)');
 $button->setIntensity($button::MEDIUM);
-$button->setIcon('user');
+// an svg icon
+$button->setIcon('user', AbstractIcon::VECTOR);
 $button->setHref('javascript:alert(\'href action\')');
 $button->setRender($button::LINK);
 $panel->addNameElement('Medium contrast', $button);
@@ -244,7 +246,7 @@ $tab->setOnClick('alert()');
 $button = new InlineButton();
 $button->setText('Add new tab');
 $button->setIntensity($button::MEDIUM);
-$button->setIcon('plus_button');
+$button->setIcon('plus', AbstractIcon::VECTOR);
 $button->setOnClick('addNewTab()');
 $panel->addElement($button);
 // delete tab

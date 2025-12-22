@@ -30,9 +30,9 @@ body.ant_topBarFixed > #ant_topBar {
 #ant_topBar button > * {
 	vertical-align: middle;
 }
-#ant_topBar a > i,
-#ant_topBar button > i {
-	margin-right: 1px;
+#ant_topBar a > svg,
+#ant_topBar button > svg {
+	margin-right: 3px;
 }
 #ant_topBar a:hover,
 #ant_topBar button:hover {
@@ -65,7 +65,7 @@ body.ant_topBarFixed > #ant_topBar {
 	max-width: 300px;
 	transition: 0.4s;
 }
-#ant_topBar > form > i {
+#ant_topBar > form > svg {
 	position: absolute;
 	top: 5px;
 	right: 10px;

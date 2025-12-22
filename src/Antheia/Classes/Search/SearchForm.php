@@ -161,24 +161,22 @@ class SearchForm extends Form {
 			default:
 				throw new Exception($this->order);
 		}
-		$orderBy = new IconVector();
-		$orderBy->setIcon(IconVector::ICON_SORT);
 		$sortArrow = new IconVector();
+		$sortArrow->setSize(22);
 		$sortCode = '<input type="hidden" name="sortOrder" 
 			id="ant_sort-order" value="'.$this->order
 			.'"><button type="button" id="ant_search-sort-order"
 			onclick="ant_search_changeSortOrder(\''.$sortBy.'\')">';
 		switch ($this->order) {
 			case self::SORT_ASC:
-				$sortArrow->setIcon(IconVector::ICON_SORT_ASC);
+				$sortArrow->setIcon('arrow-down-a-z');
 				break;
 			case self::SORT_DESC:
-				$sortArrow->setIcon(IconVector::ICON_SORT_DESC);
+				$sortArrow->setIcon('arrow-down-z-a');
 				break;
 			default:
 				throw new Exception($this->order);
 		}
-		$sortCode .= $orderBy->getHtml();
 		$sortCode .= $sortArrow->getHtml();
 		$sortCode .= '</button>';
 		if ($displaySortBy) {
@@ -216,7 +214,7 @@ class SearchForm extends Form {
 		// active filters
 		$activeFilters = new Html();
 		$closeButton = new IconVector();
-		$closeButton->setIcon(IconVector::ICON_CLOSE);
+		$closeButton->setIcon('x');
 		/** @var AbstractInput $filtru */
 		foreach ($this->filters as $index => $filterInfo) {
 			/** @var AbstractInput $input */
@@ -236,8 +234,8 @@ class SearchForm extends Form {
 			$activeFilters->addRawCode(
 				'<div class="ant_search-active-filter">'.$input->getLabelText().': '
 				.htmlspecialchars($input->getReadableValue())
-				.'<a href="javascript:void(0)" onClick="ant_search_resetInput(\''
-				.$input->getHtmlId().'\')">'.$closeButton->getHtml().'</a></div>'
+				.'<button onClick="ant_search_resetInput(\''
+				.$input->getHtmlId().'\')">'.$closeButton->getHtml().'</button></div>'
 			);
 		}
 		if ($this->displayFilters) {

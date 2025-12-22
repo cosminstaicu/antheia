@@ -1,7 +1,7 @@
 /**
  * Defines a confirmation message, with 2 options: ok and cancel
  */
- class ant_confirm {
+ class AntheiaConfirm {
 	 /** @type {HTMLInputElement} */
 	#cancelButton;
 	/** @type {ant_modal} */
@@ -15,7 +15,7 @@
 	/** @type {HTMLInputElement} */
 	#submitButton;
 	constructor () {
-		this.#modal = new ant_modal();
+		this.#modal = new AntheiaModal();
 		this.#modal.setContent('?');
 		this.#cancelButton = document.createElement("INPUT");
 		this.#cancelButton.type = "button";
@@ -118,7 +118,7 @@
 	 * when the user presses the cancel button or just closes the interface
 	 */
 	static quick(infoText, onSubmit, onCancel) {
-		let confirm = new ant_confirm();
+		let confirm = new AntheiaConfirm();
 		confirm.setText(infoText);
 		confirm.setOnSubmit(onSubmit);
 		if (onCancel !== undefined) {

@@ -29,6 +29,7 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 		$this->name = '';
 		$this->htmlId = '';
 		$this->icon = new IconVector();
+		$this->icon->setSize(20);
 		$this->startLoadingAnimationOnClick = false;
 		$this->targetBlank = false;
 		$this->renderType = self::LINK;
@@ -62,10 +63,10 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 	}
 	/**
 	 * Defines the symbol used for the menu
-	 * @param integer $icon the symbol used for the menu, as a constant like
-	 * IconVector::ICON_##
+	 * @param string $icon the  icon used for the menu
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		$this->icon->setIcon($icon);
 	}
 	/**

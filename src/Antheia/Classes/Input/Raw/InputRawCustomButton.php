@@ -28,6 +28,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function __construct() {
 		parent::__construct();
 		$this->icon = new IconVector();
+		$this->icon->setSize(24);
 		$this->setText('');
 		$this->setOnClick('');
 		$this->htmlId = '';
@@ -114,10 +115,11 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Defines the icon to be displayed on the right side of the button
-	 * @param integer $icon the icon to be displayed on the right side
-	 * of the button, as a constant like IconVector::ICON_##
+	 * @param string $icon the name of the icon to be displayed on the right side
+	 * of the button
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		$this->icon->setIcon($icon);
 	}
 	public function getHtml():string {
