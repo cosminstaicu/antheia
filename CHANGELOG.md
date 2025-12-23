@@ -8,18 +8,18 @@ This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [2.0.0] - YYYY-MM-DD
 
 ### Breaking Changes
-- Antheia **2.0.0 is not backward compatible** with 1.x.x.
+- Antheia 2.0.0 is not backward compatible with any 1.x.x release.
 - JavaScript class naming conventions have changed:
   - All classes now use the `Antheia` prefix and follow standard JavaScript class naming
   - Example: `ant_alert` → `AntheiaAlert`
 - Icon handling has been redesigned and is incompatible with previous versions.
 
 ### Changed
-- Icons are implemented using the previous PNG system and a new vector-based SVG assets bundled with the library.
+- The icon system has been redesigned. PNG icons remain supported, and SVG icons have been added as an additional format.
 - JavaScript codebase has been aligned with consistent class naming conventions.
 
 ### Removed
 - Material Icons dependency has been removed.
 
 ### Added
-- This changelog file was introduced starting with version 2.0.0.
+- Introduced a formal changelog following the Keep a Changelog specification.
