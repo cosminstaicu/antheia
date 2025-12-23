@@ -41,7 +41,7 @@ class SearchResult extends AbstractClass {
 		$this->accessOnClick = '';
 		$this->accessRender = self::LINK;
 		$this->resultId = '';
-		$this->image = Internals::getCacheUrl().'/logo.png';
+		$this->image = Internals::getCacheUrl().'/logo.svg';
 		$this->icon = null;
 		$this->buttons = [];
 		$this->imageSize = self::IMAGE_SIZE_MEDIUM;

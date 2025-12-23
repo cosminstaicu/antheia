@@ -36,7 +36,7 @@ if (!is_file($autoloadFile)) {
 	);
 }
 /**
- * The function configures a page, injecting all the commom elements, like
+ * The function configures a page, injecting all the common elements, like
  * menus, buttons etc
  * @param AbstractPage $page the page to be configured
  */

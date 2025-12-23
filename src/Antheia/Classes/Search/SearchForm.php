@@ -124,9 +124,7 @@ class SearchForm extends Form {
 	 */
 	private function createHtml():void {
 		$slide = new SlidePanel();
-		$this->addElement(new Html(
-			'<input type="hidden" name="page" value="'
-			.$this->page.'" id="ant_currentPage">'));
+		$this->addHiddenInput('page', $this->page, 'ant_currentPage');
 		$displaySortBy = false;
 		if (count($this->sortByList) > 0) {
 			$displaySortBy = true;
@@ -214,6 +212,7 @@ class SearchForm extends Form {
 		// active filters
 		$activeFilters = new Html();
 		$closeButton = new IconVector();
+		$closeButton->setSize(24);
 		$closeButton->setIcon('x');
 		/** @var AbstractInput $filtru */
 		foreach ($this->filters as $index => $filterInfo) {

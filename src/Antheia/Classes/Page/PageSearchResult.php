@@ -145,7 +145,7 @@ class PageSearchResult extends PageEmpty {
 	}
 	/**
 	 * Defines the order of the displayed elements
-	 * @param string $order a constant like Form::SORT::##
+	 * @param string $order a constant like SearchForm::SORT::##
 	 * @see SearchForm::setOrder
 	 */
 	public function setOrder(string $order):void {

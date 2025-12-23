@@ -51,6 +51,7 @@ $filter->setDefaultValue('doesNotMatter');
 if (isset($_POST['status'])) {
 	$filter->setValue($_POST['status']);
 }
+$page->addInput($filter);
 // adding the search sorting options
 $page->setSortBy([
 		'name' => 'Name',
@@ -60,7 +61,6 @@ $page->setSortBy([
 if (isset($_POST['sortOrder'])) {
 	$page->setOrder($_POST['sortOrder']);
 }
-$page->addInput($filter);
 // defining the total number of pages and the current page
 if (isset($_POST['page'])) {
 	$currentPage = $_POST['page'];

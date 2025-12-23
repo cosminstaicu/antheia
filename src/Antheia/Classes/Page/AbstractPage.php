@@ -364,9 +364,9 @@ abstract class AbstractPage extends AbstractClass {
 			}
 			file_put_contents($cssPath, $file);
 		}
-		$defaultLogo = Internals::getCachePath('logo.png');
+		$defaultLogo = Internals::getCachePath('logo.svg');
 		if (!is_file($defaultLogo)) {
-			copy(Internals::getFolder(['Media']).'logo.png', $defaultLogo);
+			copy(Internals::getFolder(['Media']).'logo.svg', $defaultLogo);
 		}
 		$code = '<!DOCTYPE html><html lang="'.Texts::get('LANGUAGE_ID').'"';
 		if (count($this->htmlClasses) !== 0) {

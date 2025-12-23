@@ -4,7 +4,7 @@ Thank you for making this library safer.
 
 ## Supported Versions
 
-As there is only one main branch, every new release fixes any ongoing issues. So, as long as you update the library to the latest version, everything should be ok.
+As there is only one main branch, security fixes are applied only to the latest released version. So, as long as you update the library to the latest version, everything should be ok.
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -19,11 +19,11 @@ Users are strongly encouraged to upgrade to the latest 2.x.x release.
 
 ## Reporting a Vulnerability
 
-If you find a security vulnerability, **DO NOT OPEN A PUBLIC ISSUE** but send an email to cosminstaicu[@]gmail.com.
+If you find a security vulnerability, **DO NOT OPEN A PUBLIC ISSUE** but send an email to cosminstaicu[@]gmail.com. I will acknowledge receipt of the report as soon as possible, typically within a few days.
 
 Please include as much of the information listed below as you can to help me better understand and resolve the issue:
 
-- The type of issue (e.g., buffer overflow,  cross-site scripting)
+- The type of issue (e.g., buffer overflow, cross-site scripting)
 - Full paths of source file(s) related to the manifestation of the issue
 - The location of the affected source code (tag/branch/commit or direct URL)
 - Any special configuration required to reproduce the issue
@@ -33,8 +33,10 @@ Please include as much of the information listed below as you can to help me bet
 
 (the above list is a modified version from [GitHub platform samples security policy](https://github.com/github/platform-samples/security/policy))
 
-Only vulnerabilities affecting supported versions (2.x.x) are eligible for security fixes. Reports concerning unsupported versions may be closed without action.
+Only vulnerabilities affecting supported versions (2.x.x) are eligible for security fixes. Issues reported for unsupported versions may be closed without action.
+
+Please do not disclose the vulnerability publicly until a fix has been released.
 
 ## Updates
 
-The library is updated whenever it is required. A vulnerability will be considered high priority and will be fixed as fast as possible.
+Security issues are treated as a priority. Confirmed vulnerabilities affecting supported versions will be addressed as quickly as reasonably possible.

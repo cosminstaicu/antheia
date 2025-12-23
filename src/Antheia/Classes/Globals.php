@@ -127,6 +127,9 @@ class Globals {
 	 * @return string the absolute path for the app logo
 	 */
 	public static function getLogo():string {
+		if (self::$logoUrl === null) {
+			self::setLogo(Internals::getCacheUrl().'logo.svg');
+		}
 		return self::$logoUrl;
 	}
 	/**
