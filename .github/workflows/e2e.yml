@@ -36,9 +36,19 @@ jobs:
 
       - name: Start PHP server
         run: |
-          php -d display_errors=1 -d error_reporting=E_ALL \
-              -S 127.0.0.1:8000 -t .
-        background: true
+          php -d display_errors=1 -d error_reporting=E_ALL -S 127.0.0.1:8000 -t . &
+
+      - name: Wait for PHP server to be ready
+        run: |
+          for i in {1..10}; do
+            if curl -s http://127.0.0.1:8000 > /dev/null; then
+              echo "Server is up"
+              break
+            else
+              echo "Waiting for server..."
+              sleep 2
+            fi
+          done
 
       - name: Run E2E tests
         run: npx playwright test
