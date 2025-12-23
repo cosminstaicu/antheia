@@ -23,8 +23,8 @@ $autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
 	.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {
 	// library is not installed using composer
-	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR
-		.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+	$autoloadFile = dirname(__DIR__, 3).DIRECTORY_SEPARATOR
+		.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';	
 	require_once $autoloadFile;
 	Globals::setCache(
 		'../_cache/',
@@ -37,8 +37,6 @@ if (!is_file($autoloadFile)) {
 		dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'_cache'
 	);
 }
-//TODO should be removed when automatic testing is performed
-Globals::setDebug();
 /**
  * Configures a page (inserts a logo and some menus)
  * @param AbstractPage $page the page to be configured
