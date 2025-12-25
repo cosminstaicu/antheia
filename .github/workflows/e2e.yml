@@ -39,7 +39,7 @@ jobs:
           npm install -D @playwright/test
           npx playwright install --with-deps
 
-      - name: Prepare E2E cache
+      - name: Prepare Antheia cache
         run: |
           mkdir -p tests/e2e/_cache
           chmod -R 777 tests/e2e/_cache
