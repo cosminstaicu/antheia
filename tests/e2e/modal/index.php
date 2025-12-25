@@ -65,7 +65,6 @@ $panel->addText(
 $button = new InputButton();
 $button->setHtmlId('menuModalButton');
 $button->setText('Show modal');
-$button->setHtmlId('withOptionsModalButton');
 $button->setOnClick('modalWithOptions()');
 $panel->addFooterElement($button);
 echo $page->getHtml();
