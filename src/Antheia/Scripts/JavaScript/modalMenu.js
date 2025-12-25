@@ -22,6 +22,7 @@ class AntheiaModalMenu extends AntheiaModal {
 	 * inside the Media/Icons/Vector/icons.zip file)
 	 * @param {String} options.title the title of the menu
 	 * @param {String} options.description the description of the menu
+	 * @param {String} options.id the id of the button or null for no id
 	 * @returns {HTMLButtonElement} the button that will be displayed
 	 */
 	addMenuOption(options) {
@@ -43,7 +44,13 @@ class AntheiaModalMenu extends AntheiaModal {
 		if (options.description === undefined) {
 			options.description = '';
 		}
+		if (options.id === undefined) {
+			options.id = null;
+		}
 		let item = document.createElement('button');
+		if (options.id !== null) {
+			item.id = options.id;
+		}
 		let addonUrl = '';
 		if (options.iconAddon !== '') {
 			addonUrl += "&a=" + options.iconAddon;

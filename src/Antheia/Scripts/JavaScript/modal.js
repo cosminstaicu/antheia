@@ -64,6 +64,18 @@ class AntheiaModal {
 		element.classList.add('ant-' + align);
 	}
 	/**
+	 * Defines the html id for the visible panel (the visible modal)
+	 * @param {String|null} htmlId the html id for the panel or NULL if no html id
+	 * is required 
+	 */
+	setPanelId(htmlId) {
+		if (htmlId === null) {
+			this.#panel.removeAttribute('id');
+		} else {
+			this.#panel.id = htmlId;
+		}
+	}
+	/**
 	 * Sets the html code for the header of the modal
 	 * @param {String|HTMLElement|null} headerCode the code to be inserted into
 	 * into header of the modal. It can be null, a string or a HTMLElement:

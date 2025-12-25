@@ -1,0 +1,22 @@
+{
+  "name": "antheia-test-type-def",
+  "version": "1.0.0",
+  "description": "Only used for type definitions, so the IDE can have content-assist when creating playwright tests.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "antheia",
+    "playright",
+    "tests"
+  ],
+  "author": "Cosmin Staicu",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0"
+  },
+  "dependencies": {
+    "@types/node": "^25.0.3"
+  }
+}
