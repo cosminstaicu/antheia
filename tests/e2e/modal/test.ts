@@ -41,7 +41,7 @@ test(`testing (${folder})`, async ({ page }) => {
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#loadingModal')).toHaveCount(0);
 	// test menu modal
-	await page.click('#loadingModalButton');
+	await page.click('#menuModalButton');
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#menuModal')).toBeVisible();
 	await expect(page.locator('#modalMenuItem1')).toBeVisible();

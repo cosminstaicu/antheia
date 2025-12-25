@@ -63,6 +63,7 @@ $panel->addText(
 	'<p>A modal having some options. Each option is a button, having a javascript
 	function attached to the click event.</p>');
 $button = new InputButton();
+$button->setHtmlId('menuModalButton');
 $button->setText('Show modal');
 $button->setHtmlId('withOptionsModalButton');
 $button->setOnClick('modalWithOptions()');

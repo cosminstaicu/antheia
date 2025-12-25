@@ -24,7 +24,7 @@ $autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
 if (!is_file($autoloadFile)) {
 	// library is not installed using composer
 	$autoloadFile = dirname(__DIR__, 3).DIRECTORY_SEPARATOR
-		.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';	
+		.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 	require_once $autoloadFile;
 	Globals::setCache(
 		'../_cache/',
@@ -44,7 +44,7 @@ if (!is_file($autoloadFile)) {
 function init_configurePage(AbstractPage $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
-	Globals::setDebug();
+	//Globals::setDebug();
 	// inserts some menus
 	$menu = new AppMenuPrimary();
 	$menu->setText('Menu 1');
