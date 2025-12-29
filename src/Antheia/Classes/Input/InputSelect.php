@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
@@ -134,9 +135,7 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 		$this->button->setOnClick('ant_inputSelect_start(this)');
 		$code = $this->button->getHtml();
 		$code .= '<select name="'.$this->getName().'"';
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if (count($this->classList) > 0) {
 			$code .= ' class="'.implode(' ', $this->classList).'"';
 		}

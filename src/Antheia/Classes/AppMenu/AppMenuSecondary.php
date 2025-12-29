@@ -2,15 +2,20 @@
 namespace Antheia\Antheia\Classes\AppMenu;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\Icon\IconPixelSmall;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * A submenu item (that will be displayed when the parent menu is clicked)
  * @author Cosmin Staicu
  */
-class AppMenuSecondary extends AbstractClass implements HtmlCode {
+class AppMenuSecondary extends AbstractClass implements HtmlCode, HtmlId {
+	private $htmlId;
+	private $testId;
 	/** @var AbstractIcon */
 	private $icon;
 	private $text;
@@ -20,7 +25,15 @@ class AppMenuSecondary extends AbstractClass implements HtmlCode {
 		$this->icon = new IconPixelSmall('default');
 		$this->text = 'undefined';
 		$this->href = '#';
-		$this->startLoadingAnimation = true;
+		$this->htmlId = '';
+		$this->testId = '';
+		$this->startLoadingAnimation = Globals::getAppMenuLoadingAnimation();
+	}
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines if a loading animation will be triggered when the user clicks
@@ -84,12 +97,13 @@ class AppMenuSecondary extends AbstractClass implements HtmlCode {
 		$this->text = $text;
 	}
 	public function getHtml():string {
-		$cod = '<a href="'.$this->href.'" ';
+		$code = '<a href="'.$this->href.'"';
 		if ($this->startLoadingAnimation) {
-			$cod .= ' onClick="ant_loading_start()"';
+			$code .= ' onClick="ant_loading_start()"';
 		}
-		$cod .= '>'.$this->icon->getHtml($this->text).' '.htmlspecialchars($this->text).'</a>
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
+		$code .= '>'.$this->icon->getHtml($this->text).' '.htmlspecialchars($this->text).'</a>
 		';
-		return $cod;
+		return $code;
 	}
 }

@@ -64,9 +64,7 @@ class IconPixelBig extends AbstractIconPixel {
 		if ($altText !== '') {
 			$code .= ' alt="'.$altText.'"';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if (count($this->getClasses()) > 0) {
 			$code .= ' class="'.implode(" ", array_unique($this->getClasses())).'"';
 		}

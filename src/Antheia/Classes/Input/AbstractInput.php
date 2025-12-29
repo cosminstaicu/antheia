@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\InlineHelp\AbstractInlineHelp;
 use Antheia\Antheia\Classes\InlineHelp\InlineHelp;
@@ -28,7 +29,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $validation;
 	private $exportForAttribute;
 	private $htmlId;
+	private $testId;
 	private $containerHtmlId;
+	private $containerTestId;
 	private $containerClasses;
 	private $labelTag;
 	private $exportLabel;
@@ -46,7 +49,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->exportLabel = self::LABEL_NORMAL;
 		$this->exportJavascript = true;
 		self::setUniqueHtmlId($this);
+		$this->testId = '';
 		$this->containerHtmlId = '';
+		$this->containerTestId = '';
 		$this->setName('undefined');
 		$this->setValue('');
 		$this->setDefaultValue(NULL);
@@ -106,6 +111,17 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	public function setContainerHtmlId(string $id):void {
 		$this->containerHtmlId = $id;
+	}
+	/**
+	 * Defines a test id for the container containing the input
+	 * (the input, without the label). The container contains the input, along
+	 * sith other elements, like hidden inputs, status icons etc.
+	 * @param string $id the test id for the container or an empty string if
+	 * no test id is required
+	 * @see HtmlId::setTestId
+	 */
+	public function setContainerTestId(string $id):void {
+		$this->containerTestId = $id;
 	}
 	/**
 	 * Adds a class to the container containing the input
@@ -347,6 +363,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	/**
 	 * Defines the name and the html id for the element in a single method
 	 * (the name attribute and the id attribute from the tag)
@@ -363,6 +382,14 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 */
 	public function getHtmlId():string {
 		return $this->htmlId;
+	}
+	/**
+	 * Returns the test id of the element
+	 * @return string the test if of the element or an empty string if no
+	 * test id is defined
+	 */
+	protected function getTestId():string {
+		return $this->testId;
 	}
 	/**
 	 * Sets up the default visibility for the input. If set to true, then the
@@ -385,7 +412,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	    return $this->defaultHidden;
 	}
 	public function getHtml():string {
-		if ($this->codHtml == '') {
+		if ($this->codHtml === '') {
 			throw new Exception('setHtmlCode');
 		}
 		$code = '';
@@ -395,9 +422,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		// the inputs have to be wrapped in a div because the input tag
 		// can not have :before and :after css properties (to display the status)
 		$code .= '<div class="'.implode(' ', $this->containerClasses).'"';
-		if ($this->containerHtmlId !== '') {
-			$code .= ' id="'.$this->containerHtmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->containerHtmlId, $this->containerTestId);
 		$code .='>'.$this->codHtml;
 		// if a validation function is defined
 		// then that function will be called just after the element is inserted

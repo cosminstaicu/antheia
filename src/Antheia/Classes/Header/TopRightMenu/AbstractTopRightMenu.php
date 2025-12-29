@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Header\TopRightMenu;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
@@ -22,12 +23,14 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 	private $targetBlank;
 	private $renderType;
 	private $htmlId;
+	private $testId;
 	public function __construct() {
 		parent::__construct();
 		$this->href = '';
 		$this->onClick = '';
 		$this->name = '';
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->icon = new IconVector();
 		$this->icon->setSize(20);
 		$this->startLoadingAnimationOnClick = false;
@@ -79,6 +82,9 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	public function getHtml():string {
 		$code = '';
 		switch ($this->renderType) {
@@ -97,9 +103,7 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 			default:
 				throw new Exception('Invalid type '.$this->renderType);
 		}
-		if ($this->htmlId !== '') {
-			$code .= 'id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$onClick = '';
 		if ($this->startLoadingAnimationOnClick) {
 			$onClick .= 'ant_loading_start();';

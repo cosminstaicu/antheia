@@ -10,6 +10,8 @@ use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Slide\SlidePanel;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\InputSubmit;
 /**
  * The class defines a form from a page that contains the results of a search.
  * The class displays the search filters, the sorting options and the pagination.
@@ -31,6 +33,8 @@ class SearchForm extends Form {
 	private $order;
 	private $displayFilters;
 	private $sortByInput;
+	private $submitButton;
+	private $resetButton;
 	private $displayResetButton;
 	private $code;
 	public function __construct() {
@@ -51,6 +55,26 @@ class SearchForm extends Form {
 		$this->sortByInput = NewInput::select();
 		$this->displayResetButton = true;
 		$this->code = '';
+		$this->submitButton = NewInput::submit();
+		$this->submitButton->setValue(Texts::get('SEARCH'));
+		$this->resetButton = NewInput::button();
+		$this->resetButton->setAppearance($this->resetButton::LOW_CONTRAST);
+		$this->resetButton->setOnClick('ant_search_reset(this)');
+		$this->resetButton->setValue(Texts::get('RESET'));
+	}
+	/**
+	 * Returns the submit button displayed inside the form
+	 * @return InputSubmit the submit button displayed inside the form
+	 */
+	public function getSubmitButton():InputSubmit {
+		return $this->submitButton;
+	}
+	/**
+	 * Returns the reset button displayed inside the form
+	 * @return InputButton the reset button displayed inside the form
+	 */
+	public function getResetButton():InputButton {
+		return $this->resetButton;
 	}
 	/**
 	 * Hides the button used to reset the search filters
@@ -266,16 +290,10 @@ class SearchForm extends Form {
 			<tr><td>'
 		);
 		if ($this->displayResetButton) {
-			$resetButton = NewInput::button();
-			$resetButton->setAppearance($resetButton::LOW_CONTRAST);
-			$resetButton->setOnClick('ant_search_reset(this)');
-			$resetButton->setValue(Texts::get('RESET'));
-			$table->addElement($resetButton);
+			$table->addElement($this->resetButton);
 			$table->addRawCode('</td><td>');
 		}
-		$submitButton = NewInput::submit();
-		$submitButton->setValue(Texts::get('SEARCH'));
-		$table->addElement($submitButton);
+		$table->addElement($this->submitButton);
 		$table->addRawCode('</td></tr></table>');
 		$cell->addElement($table);
 		$slide->addHidden($wireframe);

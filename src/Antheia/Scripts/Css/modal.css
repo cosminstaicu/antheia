@@ -29,6 +29,15 @@
 	opacity: 1;
 	transition: top 0.5s, opacity 0.5s;
 }
+.ant_modal >.ant_panel.has-icon-attached {
+	padding-left: 100px;
+}
+.ant_modal >.ant_panel > .ant_modal-icon {
+	position: absolute;
+	left: 10px;
+	top: 10px;
+	color: var(--ant-theme-panelBorder);
+}
 .ant_modal.ant-hidden > .ant_panel {
 	top: -50px;
 	opacity: 0;

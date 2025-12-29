@@ -21,6 +21,11 @@
 		this.#cancelButton.type = "button";
 		this.#cancelButton.value = ant_text["cancel"];
 		this.#cancelButton.classList.add("ant_modal-footer-button");
+		this.#cancelButton.classList.add("low-contrast");
+		ant_utils_injectTestAttribute(
+			this.#cancelButton,
+			'ant_confirm_cancelButton'
+		);
 		this.#cancelButton.onclick = () => {
 			this.#optionSelected = true;
 			if (this.#onCancel !== null) {
@@ -32,6 +37,10 @@
 		this.#submitButton.type = "button";
 		this.#submitButton.value = ant_text["ok"];
 		this.#submitButton.classList.add("ant_modal-footer-button");
+		ant_utils_injectTestAttribute(
+			this.#submitButton,
+			'ant_confirm_okButton'
+		);
 		this.#submitButton.onclick = () => {
 			this.#optionSelected = true;
 			if (this.#onSubmit !== null) {
@@ -98,6 +107,13 @@
 		this.#onCancel = callback;
 	}
 	/**
+	 * Returns the modal used to display the confirm dialog
+	 * @returns {AntheiaModal} the modal used to display the confirm dialog
+	 */
+	getModal() {
+		return this.#modal;
+	}
+	/**
 	 * Shows the confirmation modal
 	 */
 	show() {
@@ -121,6 +137,10 @@
 		let confirm = new AntheiaConfirm();
 		confirm.setText(infoText);
 		confirm.setOnSubmit(onSubmit);
+		ant_utils_injectTestAttribute(
+			confirm.getModal().getPanel(),
+			'ant_confirm_confirmModal'
+		);
 		if (onCancel !== undefined) {
 			confirm.setOnCancel(onCancel);
 		}

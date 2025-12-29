@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Panel;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Menu\Container;
 use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
 use Antheia\Antheia\Interfaces\HtmlCode;
@@ -21,6 +22,7 @@ implements HtmlCode, HtmlId {
 	private $title;
 	private $menu;
 	private $htmlId;
+	private $testId;
 	private $maxHeight;
 	private $classes;
 	private $tabs;
@@ -33,7 +35,8 @@ implements HtmlCode, HtmlId {
 		$this->menu = null;
 		$this->maxHeight = false;
 		$this->classes = [];
-		$this->setHtmlId('');
+		$this->htmlId = '';
+		$this->testId = '';
 		$this->tabs = [];
 	}
 	/**
@@ -60,6 +63,9 @@ implements HtmlCode, HtmlId {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines the title of the panel.
@@ -139,9 +145,7 @@ implements HtmlCode, HtmlId {
 		$code = '<div class="';
 		$code .= implode(' ', array_unique($this->classes));
 		$code .='"';
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= '>';
 		if ($this->showHeader) {
 			$code .= '<div class="ant-header">';

@@ -106,9 +106,7 @@ class IconVector extends AbstractIcon {
 		$this->ensureCachedImage();
 		$code = "<svg preserveAspectRatio='xMidYMid meet' viewBox='0 0 24 24' "
 				."width='".$this->size."' height='".$this->size."'";
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if (count($this->getClasses()) > 0) {
 			$code .= ' class="'.implode(" ", array_unique($this->getClasses())).'" ';
 		}

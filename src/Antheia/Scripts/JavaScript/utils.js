@@ -4,6 +4,16 @@
  */
 let ant_utils_svgCache = {};
 /**
+ * Cached info about the status of the test mode.
+ * If the variable is null then test mode has not been checked and cached
+ * @type {{
+ * 	status : Boolean,
+ * 	attributeName : String,
+ * 	useDataset : Boolean
+ * }}
+ */
+let ant_utils_testMode = null;
+/**
  * Returns the svg content of a file inside the Media/Icons/Vector/icons.zip
  * archive. The content is cached, so future calls will return the content
  * from memory. It can be used to preload the icon, for future calls,
@@ -129,6 +139,48 @@ function ant_utils_inputCallback(input, action) {
 		throw new Error(action + " function is undefined: " + input.dataset[action]);
 	}
 	window[input.dataset[action]](input);
+}
+/**
+ * Injects the test attribute (if available) inside an html element.
+ * The attribute is available only if test mode is enabled from php.
+ * If test mode is not active, this function has no effect
+ * @param {HTMLElement} htmlElement the element where the value will be
+ * inserted into
+ * @param {String} testIdValue the value of the testAttribute property 
+ */
+function ant_utils_injectTestAttribute(htmlElement, testIdValue) {
+	if (ant_utils_testMode === null) {
+		// test mode has not been checked yet
+		ant_utils_testMode = {
+			status : false,
+			useDataset : false,
+			attributeName : ''
+		};
+		if (typeof ant_testIdAttribute === 'undefined') {
+			ant_utils_testMode = {
+				status : false
+			};
+		} else {
+			ant_utils_testMode = {
+				status : true
+			};
+			if (ant_testIdAttribute.slice(0, 5) === 'data-') {
+				ant_utils_testMode.useDataset = true;
+				ant_utils_testMode.attributeName = ant_testIdAttribute.slice(5);
+			} else {
+				ant_utils_testMode.useDataset = false;
+				ant_utils_testMode.attributeName = ant_testIdAttribute;
+			}
+		}
+	}
+	if (ant_utils_testMode.status) {
+		// test mode is active, so the property will be inserted into the element
+		if (ant_utils_testMode.useDataset) {
+			htmlElement.dataset[ant_utils_testMode.attributeName] = testIdValue;
+		} else {
+			htmlElement[ant_utils_testMode.attributeName] = testIdValue;
+		}
+	}
 }
 /**
  * Checks if the browser is compatible with the framework. The function checks

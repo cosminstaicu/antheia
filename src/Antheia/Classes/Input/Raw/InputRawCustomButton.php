@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
@@ -22,6 +23,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $icon;
 	private $onClick;
 	private $htmlId;
+	private $testId;
 	private $attributes;
 	private $hiddenInput;
 	private $hiddenInputExport;
@@ -32,6 +34,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->setText('');
 		$this->setOnClick('');
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->attributes = [];
 		$this->hiddenInput = new InputRawHidden();
 		$this->hiddenInputExport = true;
@@ -51,6 +54,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Calling the method will instruct the instance to export the button
@@ -130,9 +136,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$code .= '<input type="button" class="ant_form-button"'
 				.' value="'.htmlspecialchars($this->text)
 				.'" onClick="'.$this->onClick.'"';
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		foreach ($this->attributes as $atribut) {
 			$code .= ' '.$atribut['name'].'="'.$atribut['value'].'"';
 		}

@@ -18,6 +18,7 @@ function ant_message(message, imageUrl, closeMessageOnClick) {
 		}
 		let element = document.createElement("div");
 		element.classList.add("ant_message-text");
+		ant_utils_injectTestAttribute(element, 'ant_message_text');
 		element.innerHTML = message;
 		element.classList.add("ant-pre-visible");
 		let slideDownPlaceholder = null;
@@ -48,6 +49,7 @@ function ant_message(message, imageUrl, closeMessageOnClick) {
 			closeMessageOnClick = false;
 		}
 		let element = document.createElement("div");
+		ant_utils_injectTestAttribute(element, 'ant_message_image');
 		element.classList.add("ant_message-image");
 		element.style.backgroundImage = 'url("' + imageUrl + '")';
 		element.innerHTML = '<p>' + message + '</p>';

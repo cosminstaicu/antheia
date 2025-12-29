@@ -19,7 +19,7 @@ $panel->addText(
 	'<p>A simple modal with no special features. Closes when clicked outside.</p>');
 $button = new InputButton();
 $button->setText('Show modal');
-$button->setHtmlId('simpleModalButton');
+$button->setTestId('simpleModalButton');
 $button->setOnClick('simpleModal()');
 $panel->addElement($button);
 // html elements content and live modal content changes
@@ -33,7 +33,7 @@ $panel->addText(
 	into the footer.</p>');
 $button = new InputButton();
 $button->setText('Show modal');
-$button->setHtmlId('contentUpdateModalButton');
+$button->setTestId('contentUpdateModalButton');
 $button->setOnClick('contentUpdateModal()');
 $panel->addElement($button);
 // loading animation modal
@@ -50,7 +50,7 @@ $panel->addText(
 	finishes, the new content is displayed.</p>');
 $button = new InputButton();
 $button->setText('Show modal');
-$button->setHtmlId('loadingModalButton');
+$button->setTestId('loadingModalButton');
 $button->setOnClick('loadingModal()');
 $panel->addFooterElement($button);
 // a modal with options (an option with an icon, a title and a description)
@@ -63,7 +63,7 @@ $panel->addText(
 	'<p>A modal having some options. Each option is a button, having a javascript
 	function attached to the click event.</p>');
 $button = new InputButton();
-$button->setHtmlId('menuModalButton');
+$button->setTestId('menuModalButton');
 $button->setText('Show modal');
 $button->setOnClick('modalWithOptions()');
 $panel->addFooterElement($button);

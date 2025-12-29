@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 /**
  * Abstract class to be extended by all types of buttons
  * @author Cosmin Staicu
@@ -80,9 +81,7 @@ abstract class AbstractInputButton extends AbstractInput {
 		if ($this->getOnClick() !== '') {
 			$code .= ' onClick="'.$this->getOnClick().'" ';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= 'id="'.$this->getHtmlId().'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
 		parent::setHtmlCode($code);

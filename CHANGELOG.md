@@ -11,7 +11,11 @@ This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - Antheia 2.0.0 is not backward compatible with any 1.x.x release.
 - JavaScript class naming conventions have changed:
   - All classes now use the `Antheia` prefix and follow standard JavaScript class naming
-  - Example: `ant_alert` → `AntheiaAlert`
+  - `ant_alert` → `AntheiaAlert`
+  - `ant_confirm` → `AntheiaConfirm`
+  - `ant_loading_step` → `AntheiaLoadingStep`
+  - `ant_modal` → `AntheiaModal`
+  - `ant_modalMenu` → `AntheiaModalMenu`
 - Icon handling has been redesigned and is incompatible with previous versions.
 
 ### Changed

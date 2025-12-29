@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\InlineHelp;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
@@ -11,11 +12,13 @@ use Antheia\Antheia\Interfaces\HtmlId;
 abstract class AbstractInlineHelp extends AbstractClass implements HtmlCode, HtmlId {
 	private $text;
 	private $htmlId;
+	private $testId;
 	private $icon;
 	public function __construct() {
 		parent::__construct();
 		$this->text = '';
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->icon = new IconVector();
 		$this->icon->setIcon('circle-question-mark');
 		$this->icon->setSize('24');
@@ -30,6 +33,9 @@ abstract class AbstractInlineHelp extends AbstractClass implements HtmlCode, Htm
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	/**
 	 * Returns the displayed icon
 	 * @return IconVector the displayed icon
@@ -39,9 +45,7 @@ abstract class AbstractInlineHelp extends AbstractClass implements HtmlCode, Htm
 	}
 	public function getHtml():string {
 		$code = '<div class="ant_inlineHelp" onClick="ant_inlineHelp(this)"';
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= '><span>'.$this->text.'</span>';
 		$code .= $this->icon->getHtml();
 		$code .= '</div>';

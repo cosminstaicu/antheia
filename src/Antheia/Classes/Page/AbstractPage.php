@@ -447,6 +447,10 @@ abstract class AbstractPage extends AbstractClass {
 		}
 		$this->headJavascript .= 'let ant_theme_backdrop = "'
 				.$this->theme->getLoadingBackdrop().'";';
+		if (Globals::getTestMode()) {
+			$this->headJavascript .= 'let ant_testIdAttribute = "'
+				.Globals::getHtmlTestModeAttribute().'";';
+		}				
 		$code .= '<script>'.$this->headJavascript.'</script>';
 		$code .= '</head><body';
 		if (count($this->bodyClasses) !== 0) {
@@ -464,8 +468,19 @@ abstract class AbstractPage extends AbstractClass {
 		foreach ($this->codeElements as $item) {
 			$code .= $item->getHtml();
 		}
-		if (Globals::getDebug()) {
-			$code .= '<div id="ant_content-debug">Antheia debug mode enabled</div>';
+		if (Globals::getDebug() || Globals::getTestMode()) {
+			$infoCode = '';
+			if (Globals::getDebug()) {
+				$infoCode .= '<div id="ant_content-debugTest">Antheia debug mode';
+			}
+			if (Globals::getTestMode()) {
+				if ($infoCode === '') {
+					$infoCode .= '<div id="ant_content-debugTest">Antheia test mode';
+				} else {
+					$infoCode .= ' and test mode';
+				}
+			}
+			$code .= $infoCode.' enabled</div>';
 		}
 		/** @var HtmlCode $item */
 		foreach ($this->bodyBottomJavascript as $item) {

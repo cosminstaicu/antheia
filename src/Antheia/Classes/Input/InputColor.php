@@ -1,5 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * Class for a color selection input
@@ -56,9 +57,7 @@ class InputColor extends AbstractInput {
 		if ($onChangeCode !== '') {
 			$code .=' onchange = "'.$onChangeCode.'"';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
 		$icon = new IconVector();

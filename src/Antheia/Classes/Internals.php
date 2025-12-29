@@ -11,6 +11,32 @@ class Internals {
 	private static $rootFolder = NULL;
 	private static $fileContentCache = [];
 	/**
+	 * Returns the html code to be inserted into a html tag, for the id and testId
+	 * valued
+	 * @param string $id the id of the element or an empty string if no id
+	 * is required
+	 * @param string [$testId=''] the test id of the item (that will be returned
+	 * only if test mode is enabled, using Globals::setTestMode()
+	 * @return string the string with all required attributes, having a leading
+	 * white space. If no attributes are needed, then an empty string is returned
+	 * @see Globals::setTestMode()
+	 */
+	public static function getHtmlIdCode(string $id, string $testId = ''):string {
+		$code = '';
+		if ($id !== '') {
+			$code .= ' id="'.$id.'"';
+		}
+		if (Globals::getTestMode()) {
+			if (Globals::getHtmlTestModeAttribute() === '') {
+				throw new Exception('Missing test mode attribute');
+			}
+			if ($testId !== '') {
+				$code .= ' '.Globals::getHtmlTestModeAttribute().'="'.$testId.'"';
+			}
+		}
+		return $code;
+	}
+	/**
 	 * Checks if the content of a file (inside the cache folder) has been read
 	 * and saved in RAM. If not, then the file will be loaded.
 	 * Then the file content is returned. The method

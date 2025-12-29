@@ -7,7 +7,6 @@ use Antheia\Antheia\Interfaces\BeforeAfterCallback;
  * A button that can perform a search on the server and returns a list of values.
  * The user can click on a value that will be updated to the original input
  * @author Cosmin Staicu
- *
  */
 class InputSearch extends AbstractInput implements BeforeAfterCallback {
 	private $displayUndefined;

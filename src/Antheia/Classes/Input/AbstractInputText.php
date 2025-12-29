@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Internals;
 /**
  * Abstract class to be extended by all text type inputs
  * (text, password, phone, numbers etc.)
@@ -178,9 +179,7 @@ abstract class AbstractInputText extends AbstractInput {
 		if ($onFocus !== '') {
 			$code .= ' onfocus = "'.$onFocus.'"';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if ($this->maxLength != 0) {
 			$code .= ' maxlength="'.$this->maxLength.'" ';
 		}

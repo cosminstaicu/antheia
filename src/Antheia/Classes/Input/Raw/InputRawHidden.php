@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
@@ -13,17 +14,22 @@ use Antheia\Antheia\Interfaces\HtmlId;
 class InputRawHidden extends AbstractClass 
 implements HtmlCode, HtmlAttribute, HtmlId {
 	private $htmlId;
+	private $testId;
 	private $name;
 	private $value;
 	private $attributes;
 	public function __construct() {
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->name = '';
 		$this->value = '';
 		$this->attributes = [];
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Returns the html id for the input
@@ -67,9 +73,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		}
 		$code = '<input type="hidden" name="'.htmlspecialchars($this->name)
 				.'"	value="'.htmlspecialchars($this->value).'" ';
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.htmlspecialchars($this->htmlId).'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		foreach ($this->attributes as $atribut) {
 			$code .= ' '.$atribut['name'].'="'.$atribut['value'].'"';
 		}

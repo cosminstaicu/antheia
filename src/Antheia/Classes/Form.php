@@ -15,6 +15,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	private $method;
 	private $onSubmit;
 	private $htmlId;
+	private $testId;
 	private $fileMode;
 	private $items;
 	private $target;
@@ -26,6 +27,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		$this->onSubmit = 'ant_loading_start(true)';
 		$this->items = [];
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->fileMode = false;
 		$this->target = '';
 		$this->classes = [];
@@ -62,6 +64,9 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines the location where the form data will be submitted
@@ -153,9 +158,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		if ($this->target != '') {
 			$code .= ' target="'.$this->target.'"';
 		}
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if ($this->fileMode) {
 			$code .= ' enctype="multipart/form-data" ';
 		}

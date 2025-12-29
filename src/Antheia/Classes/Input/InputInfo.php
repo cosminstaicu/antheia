@@ -1,5 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Internals;
 /**
  * The class defines an info, that can be used to display some information
  * inside a form. The html elemen has no attached data to be sent to the server
@@ -12,9 +13,7 @@ class InputInfo extends AbstractInput {
 	}
 	public function getHtml():string {
 		$code = '<span';
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		$code .= $this->getAttributesAsText();
 		$code .= '>'.$this->getValue().'</span>';
 		parent::setHtmlCode($code);

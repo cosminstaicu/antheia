@@ -1,5 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 /**
@@ -57,9 +58,7 @@ class InputFile extends AbstractInput {
 	 */
 	public function getHtmlHiddenFileInput():string {
 		$code = '<input type="file" name="'.$this->getName().'"';
-		if ($this->getHtmlId() !== '') {
-			$code .= 'id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if (count($this->extensionList) > 0) {
 			$code .= ' accept="'.implode(',', $this->extensionList).'" ';
 		}

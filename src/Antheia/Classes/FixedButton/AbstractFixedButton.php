@@ -2,30 +2,42 @@
 namespace Antheia\Antheia\Classes\FixedButton;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\LinkButtonRender;
+use Antheia\Antheia\Interfaces\HtmlId;
 /**
  * Defines a fixed button to be displayed on the bottom-right side of the page
  * @author Cosmin Staicu
  */
 abstract class AbstractFixedButton extends AbstractClass
-implements HtmlCode, LinkButtonRender {
+implements HtmlId, HtmlCode, LinkButtonRender {
 	private $href;
 	private $onClick;
 	private $icon;
 	private $title;
+	private $htmlId;
+	private $testId;
 	private $classes;
 	private $renderType;
 	public function __construct() {
 		parent::__construct();
 		$this->href = 'javascript:void(0)';
+		$this->htmlId = '';
+		$this->testId = '';
 		$this->onClick = '';
 		$this->icon = new IconVector();
 		$this->icon->setSize(48);
 		$this->title = '';
 		$this->classes = [];
 		$this->renderType = self::BUTTON;
+	}
+	public function setHtmlId(string $id):void {
+		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	public function setOnClick(string $code):void {
 		$this->onClick = $code;
@@ -69,6 +81,7 @@ implements HtmlCode, LinkButtonRender {
 			default:
 				throw new Exception('Invalid type '.$this->renderType);
 		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= 'class="'.implode(',', $this->classes).'"';
 		if ($this->title != '') {
 			$code .= ' title="'.$this->title.'"';

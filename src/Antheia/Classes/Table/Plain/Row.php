@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Table\Plain;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\TableCell;
 use Antheia\Antheia\Interfaces\TableRow;
@@ -17,6 +18,7 @@ implements TableRow {
 	private $inlineCss;
 	private $titleRow;
 	private $htmlId;
+	private $testId;
 	private $attributes;
 	public function __construct() {
 		parent::__construct();
@@ -25,10 +27,14 @@ implements TableRow {
 		$this->inlineCss = [];
 		$this->titleRow = false;
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->attributes = [];
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Calling the method will render the row as a title row
@@ -92,9 +98,7 @@ implements TableRow {
 		}
 		$code = '';
 		$code .= '<tr';
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if (count($this->classes) > 0) {
 			$code .= ' class="'.implode(' ', $this->classes).'"';
 		}

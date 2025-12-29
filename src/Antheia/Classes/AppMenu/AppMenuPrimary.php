@@ -2,11 +2,13 @@
 namespace Antheia\Antheia\Classes\AppMenu;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Internals;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Classes\Icon\AbstractIcon;
 /**
  * A menu item from the main menu of the page (the sliding one on the left
  * side of the page)
@@ -20,16 +22,21 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 	private $submenus;
 	private $startLoadingAnimation;
 	private $htmlId;
+	private $testId;
 	public function __construct() {
 		$this->icon = new IconPixelBig();
 		$this->text = 'undefined';
 		$this->setHref('#');
 		$this->submenus = [];
-		$this->startLoadingAnimation = true;
+		$this->startLoadingAnimation = Globals::getAppMenuLoadingAnimation();
 		$this->htmlId = '';
+		$this->testId = '';
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines if a loading animation will be triggered when the user clicks
@@ -83,8 +90,8 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 	 * the symbol, inside the zip file located in the media folder)
 	 * @param string [$type=NULL] the type of the icon, as one of the variables
 	 * AbstractIcon::PIXEL or AbstractIcon::VECTOR. If no type is provided then
-	 * the current icon instance is used. If type is provided then a new instance
-	 * for the icon will be created
+	 * the current icon instance is used (default AbstractIcon::PIXEL).
+	 * If type is provided then a new instance for the icon will be created
 	 */
 	public function setIconName(string $name, string $type = NULL) {
 		if ($type !== NULL) {
@@ -123,9 +130,7 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 		} else {
 			$code .= '<button type="button"';
 		}
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if (count($this->submenus) === 0) {
 			if ($this->startLoadingAnimation) {
 				$code .= ' onClick="ant_loading_start()"';

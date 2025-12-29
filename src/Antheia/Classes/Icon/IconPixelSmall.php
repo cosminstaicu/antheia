@@ -40,9 +40,7 @@ class IconPixelSmall extends AbstractIconPixel {
 		if ($altText !== '') {
 			$code .= ' alt="'.addslashes($altText).'"';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if (count($this->getClasses()) > 0) {
 			$code .= ' class="'.implode(" ", array_unique($this->getClasses())).'" ';
 		}

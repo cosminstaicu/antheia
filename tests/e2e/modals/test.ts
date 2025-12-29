@@ -16,14 +16,14 @@ test(`testing (${folder})`, async ({ page }) => {
 	await expect(page.locator('body')).toBeVisible();
 	await page.waitForTimeout(500);
 	// test the simple modal
-	await page.click('#simpleModalButton');
+	await page.getByTestId('simpleModalButton').click();
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#simpleModal')).toBeVisible();
 	await page.locator('.ant_modal').first().click();
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#simpleModal')).toHaveCount(0);
 	// test the live content update
-	await page.click('#contentUpdateModalButton');
+	await page.getByTestId('contentUpdateModalButton').click();
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#contentUpdateModal')).toBeVisible();
 	await page.waitForTimeout(5000);
@@ -32,7 +32,7 @@ test(`testing (${folder})`, async ({ page }) => {
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#contentUpdateModal')).toHaveCount(0);
 	// test the loading animation
-	await page.click('#loadingModalButton');
+	await page.getByTestId('loadingModalButton').click();
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#loadingModal')).toBeVisible();
 	await page.waitForTimeout(5000);
@@ -41,7 +41,7 @@ test(`testing (${folder})`, async ({ page }) => {
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#loadingModal')).toHaveCount(0);
 	// test menu modal
-	await page.click('#menuModalButton');
+	await page.getByTestId('menuModalButton').click();
 	await page.waitForTimeout(1000);
 	await expect(page.locator('#menuModal')).toBeVisible();
 	await expect(page.locator('#modalMenuItem1')).toBeVisible();

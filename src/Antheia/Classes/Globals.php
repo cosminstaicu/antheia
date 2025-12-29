@@ -11,10 +11,13 @@ class Globals {
 	const LANGUAGE_ROMANA = '\\Antheia\\Antheia\\Classes\\Language\\Romana';
 	private static $logoUrl = NULL;
 	private static $appName = 'Antheia';
+	private static $appMenuLoadingAnimation = true;
 	private static $undefinedDate = '00000000';
 	private static $undefinedTime = '9999';
 	private static $language = self::LANGUAGE_ENGLISH;
 	private static $debugMode = false;
+	private static $testMode = false;
+	private static $testModeAttribute = 'data-testid';
 	/**
 	 * Defines the location of the cache folder for the library
 	 * @param string $url the url of the cache folder (as an absolute
@@ -40,10 +43,52 @@ class Globals {
 	 * is enabled then the css and js files in the cache folder are always
 	 * generated on each run.
 	 * @return boolean true if debugging mode is enabled, false if the
-	 * debugging mode is disables
+	 * debugging mode is disabled
 	 */
 	public static function getDebug():bool {
 		return self::$debugMode;
+	}
+	/**
+	 * Defines the name of the html attribute used when test mode is enabled.
+	 * If test mode is enabled then all components that have a test id (defined
+	 * using HtmlId::setTestId()) will have the attribute inserted into the
+	 * html tag.
+	 * For example, this mechanism is used by playwright testing, when the method
+	 * getByTestId is called
+	 * @param string $name the name of the test attribute
+	 * @see https://playwright.dev/docs/locators#locate-by-test-id
+	 */
+	public static function setHtmlTestModeAttribute(string $name):void {
+		self::$testModeAttribute = $name;
+	}
+	/**
+	 * Returns the name of the html attribute used when test mode is enabled.
+	 * If test mode is enabled then all components that have a test id (defined
+	 * using HtmlId::setTestId()) will have the attribute inserted into the
+	 * html tag.
+	 * For example, this mechanism is used by playwright testing, when the method
+	 * getByTestId is called
+	 * @return string the name of the test attribute (default data-testid)
+	 * @see https://playwright.dev/docs/locators#locate-by-test-id
+	 */
+	public static function getHtmlTestModeAttribute():string {
+		return self::$testModeAttribute;
+	}
+	/**
+	 * Enables or disables the test mode. When test mode is enabled, all tags
+	 * having a testId defined (using HtmlId::setTestId()) will have that
+	 * attribute echoed inside the html tag
+	 * @param bool $mode true if test mode is enabled, false if not
+	 */
+	public static function setTestMode(bool $mode = true):void {
+		self::$testMode = $mode;
+	}
+	/**
+	 * Returns the status of the test mode
+	 * @return bool true if test mode is enabled, false if not
+	 */
+	public static function getTestMode():bool {
+		return self::$testMode;
 	}
 	/**
 	 * Defines the language used by the library
@@ -113,6 +158,24 @@ class Globals {
 	 */
 	public static function getAppName():string {
 		return self::$appName;
+	}
+	/**
+	 * Sets the default onClick animation for future instances of appMenu
+	 * instances (the menus and submenus on the left slider).
+	 * @param bool $status true if the loading animation should start when
+	 * the user clicks on a menu, false if not
+	 */
+	public static function setAppMenuLoadingAnimation(bool $status):void {
+		self::$appMenuLoadingAnimation = $status;
+	}
+	/**
+	 * Returns the default onClick animation for future instances of appMenu
+	 * instances (the menus and submenus on the left slider).
+	 * @return bool true if the loading animation should start when
+	 * the user clicks on a menu, false if not
+	 */
+	public static function getAppMenuLoadingAnimation():bool {
+		return self::$appMenuLoadingAnimation;
 	}
 	/**
 	 * Defines the path to the app logo (used as a URL)

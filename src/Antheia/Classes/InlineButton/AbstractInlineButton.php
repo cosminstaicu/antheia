@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\InlineButton;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\Icon\IconPixelSmall;
 use Antheia\Antheia\Classes\Icon\IconVector;
@@ -19,6 +20,7 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 	const LOW = 'low';
 	private $text;
 	private $htmlId;
+	private $testId;
 	private $classes;
 	private $onClick;
 	private $href;
@@ -33,6 +35,7 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 		parent::__construct();
 		$this->text = '';
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->classes = ['ant_inlineButton'];
 		$this->onClick = '';
 		$this->href='javascript:void(0)';
@@ -74,6 +77,9 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines if the content of the button is allowed to span over multiple
@@ -153,9 +159,7 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 		$code .= ' class="';
 		$code .= implode(' ', array_unique($this->classes));
 		$code .='"';
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if ($this->title !== NULL) {
 			$code .= ' title="'.addslashes($this->title).'"';
 		}

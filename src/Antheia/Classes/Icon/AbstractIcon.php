@@ -22,11 +22,13 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 	private $icon;
 	private $iconType;
 	private $htmlId;
+	private $testId;
 	private $classes;
 	private $attributes;
 	public function __construct(string $icon) {
 		$this->setIcon($icon);
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->classes = [];
 		$this->attributes = [];
 	}
@@ -75,6 +77,17 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 	 */
 	protected function getHtmlId():string {
 		return $this->htmlId;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
+	/**
+	 * Returns the test ID for the tag
+	 * @return string the test id for the tag or an empty string if no testId
+	 * is needed
+	 */
+	protected function getTestId():string {
+		return $this->testId;
 	}
 	public function addClass(string $class):void {
 		$this->classes[] = $class;

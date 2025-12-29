@@ -12,6 +12,7 @@ use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
 use Antheia\Antheia\Classes\Form;
 use Antheia\Antheia\Classes\Search\SearchForm;
 use Antheia\Antheia\Classes\Input\NewInput;
+use Antheia\Antheia\Classes\Page\PageEmpty;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {
@@ -39,23 +40,105 @@ if (!is_file($autoloadFile)) {
 }
 /**
  * Configures a page (inserts a logo and some menus)
- * @param AbstractPage $page the page to be configured
+ * @param PageEmpty $page the page to be configured
  */
-function init_configurePage(AbstractPage $page):void {
+function init_configurePage(PageEmpty $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
-	//Globals::setDebug();
+	Globals::setDebug();
+	Globals::setTestMode();
 	// inserts some menus
+	// ******************************************************************* login
 	$menu = new AppMenuPrimary();
-	$menu->setText('Menu 1');
-	$menu->setHref('index.php');
+	$page->addNavigationMenu($menu);
+	$menu->setText('Login');
+	$menu->setIconName('key-square', AbstractIcon::VECTOR);
+	// login
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Login input');
+	$subMenu->setHref('../login');
+	$subMenu->setIconName('textfield_password');
+	// loginFailed
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Login failed');
+	$subMenu->setHref('../loginFailed');
+	$subMenu->setIconName('exclamation');
+	// ************************************************************** empty page
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Readme example');
+	$menu->setHref('../emptyPage');
+	$menu->setIconName('picture_empty');
+	// ******************************************************************* start
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Start testing');
+	$menu->setHref('../start');
+	$menu->setIconName('control_play');
+	// ************************************************************ confirmation
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Confirmation');
+	$menu->setHref('../confirmation');
+	$menu->setIconName('infocard');
+	// ******************************************************************** form
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Forms');
+	$menu->setHref('../forms');
+	$menu->setIconName('form');
+	// ******************************************************************* modal
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Modals');
+	$menu->setHref('../modals');
+	$menu->setIconName('app-window', AbstractIcon::VECTOR);
+	// ****************************************************************** panels
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Panels');
+	$menu->setHref('../panels');
+	$menu->setIconName('form(2)');
+	// ****************************************************************** search
+	$menu = new AppMenuPrimary();
+	$menu->setText('Search');
 	$menu->setIconName('page');
-	$page->addNavigationMenu($menu);
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Start');
+	$subMenu->setHref('../searchStart');
+	$subMenu->setIconName('page');
+	// searchResultEmpty
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Empty result');
+	$subMenu->setHref('../searchResultEmpty');
+	$subMenu->setIconName('page');
+	// searchResultAccordion
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Accordion');
+	$subMenu->setHref('../searchResultAccordion');
+	$subMenu->setIconName('page');
+	// searchResultCards
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Cards');
+	$subMenu->setHref('../searchResultCards');
+	$subMenu->setIconName('page');
+	// searchResultTable
+	$subMenu = $menu->addSubmenu();
+	$subMenu->setText('Table');
+	$subMenu->setHref('../searchResultTable');
+	$subMenu->setIconName('page');
+	// ******************************************************************** tabs
 	$menu = new AppMenuPrimary();
-	$menu->setText('Menu 2');
-	$menu->setHref('index.php');
-	$menu->setIconName('user', AbstractIcon::VECTOR);
 	$page->addNavigationMenu($menu);
+	$menu->setText('Tabs');
+	$menu->setHref('../tabs');
+	$menu->setIconName('tab');
+	// *************************************************************** wireframe
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Wireframe');
+	$menu->setHref('../wireframe');
+	$menu->setIconName('page');
 }
 /**
  * Configure a search result page. Defines some filters and insert items into

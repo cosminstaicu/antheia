@@ -10,7 +10,10 @@
 	},
 	"archive" : {
 		"exclude" : [
-			"/tests"
+			"/tests",
+			"/package.json",
+			"/package-lock.json",
+			"/playwright.config.ts"
 		]
 	},
 	"authors" : [{

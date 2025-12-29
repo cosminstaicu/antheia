@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Header\Search;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Classes\Form;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Input\AbstractInputText;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
@@ -15,10 +16,12 @@ class TopSearch implements HtmlCode {
 	private $formClasses;
 	private $formOnSubmit;
 	private $formId;
+	private $formTestId;
 	private $formAttributes;
 	private $formTarget;
 	private $inputName;
 	private $inputId;
+	private $inputTestId;
 	private $inputClasses;
 	private $inputType;
 	private $inputPlaceholderText;
@@ -28,12 +31,14 @@ class TopSearch implements HtmlCode {
 		$this->formMethod = Form::METHOD_GET;
 		$this->formClasses = [];
 		$this->formOnSubmit = '';
-		$this->formId = NULL;
+		$this->formId = '';
+		$this->formTestId = '';
 		$this->formAttributes = [];
 		$this->formTarget = NULL;
 		$this->inputType = AbstractInputText::TYPE_TEXT;
 		$this->inputName = 'search';
-		$this->inputId = NULL;
+		$this->inputId = '';
+		$this->inputTestId = '';
 		$this->inputClasses = [];
 		$this->inputPlaceholderText = '';
 		$this->focusAnimation = true;
@@ -86,10 +91,19 @@ class TopSearch implements HtmlCode {
 	}
 	/**
 	 * Defines the search form id
-	 * @param string $id the id for the search form or NULL if no id is needed
+	 * @param string $id the id for the search form or en empty string
+	 * if no id is needed
 	 */
-	public function setFormId(?string $id):void {
+	public function setFormId(string $id):void {
 		$this->formId = $id;
+	}
+	/**
+	 * Defines the search form test id
+	 * @param string $id the test id for the search form or en empty string
+	 * if no test id is needed
+	 */
+	public function setFormTestId(string $id):void {
+		$this->formTestId = $id;
 	}
 	/**
 	 * Adds an name=value attribute to the form tag
@@ -109,10 +123,19 @@ class TopSearch implements HtmlCode {
 	}
 	/**
 	 * Defines the search input id
-	 * @param string $id the id for the search input or NULL if no id is needed
+	 * @param string $id the id for the search input or an empty string
+	 * if no id is needed
 	 */
 	public function setInputId(string $id):void {
 		$this->inputId = $id;
+	}
+	/**
+	 * Defines the search input test id
+	 * @param string $id the test id for the search input or an empty string
+	 * if no id is needed
+	 */
+	public function setInputTestId(string $id):void {
+		$this->inputTestId = $id;
 	}
 	/**
 	 * Adds a css class to the search input tag
@@ -156,9 +179,7 @@ class TopSearch implements HtmlCode {
 		if (count($this->formClasses) > 0) {
 			$code .= ' class="'.implode(' ', $this->formClasses).'"';
 		}
-		if ($this->formId !== NULL) {
-			$code .= ' id="'.$this->formId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->formId, $this->formTestId);
 		if ($this->formTarget !== NULL) {
 			$code .= ' target="'.$this->formTarget.'"';
 		}
@@ -196,9 +217,7 @@ class TopSearch implements HtmlCode {
 			throw new Exception('Invalid input name');
 		}
 		$code .= ' name="'.$this->inputName.'"';
-		if ($this->inputId !== NULL) {
-			$code .= ' id="'.$this->inputId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->inputId, $this->inputTestId);
 		if ($this->inputPlaceholderText !== '') {
 			$code .= ' placeholder="'.$this->inputPlaceholderText.'"';
 		}

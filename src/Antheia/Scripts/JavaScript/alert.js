@@ -2,7 +2,7 @@
  * Defines an alert message with an ok button
  */
  class AntheiaAlert {
-	/** @type {ant_modal} */
+	/** @type {AntheiaModal} */
 	#modal;
 	/** @type {HTMLInputElement} */
 	#okButton;
@@ -18,6 +18,7 @@
 		this.#okButton.onclick = () => {
 			this.#modal.hide();
 		}
+		ant_utils_injectTestAttribute(this.#okButton, 'ant_alert_okButton');
 		this.#modal.setOnClose(() => {
 			if (this.#onClose !== null) {
 				this.#onClose();
@@ -52,6 +53,13 @@
 		this.#onClose = callback;
 	}
 	/**
+	 * Returns the modal used to display the alert
+	 * @returns {AntheiaModal} the modal used to display the alert
+	 */
+	getModal() {
+		return this.#modal;
+	}
+	/**
 	 * Shows the confirmation modal
 	 */
 	show() {
@@ -67,9 +75,14 @@
 	static quickError(infoText, onClose) {
 		let alertModal = new AntheiaAlert();
 		alertModal.setText(infoText);
+		alertModal.getModal().setIcon('triangle-alert');
 		if (onClose !== undefined) {
 			alertModal.setOnClose(onClose);
 		}
+		ant_utils_injectTestAttribute(
+			alertModal.getModal().getPanel(),
+			'ant_alert_errorModal'
+		);
 		alertModal.show();
 	}
 	/**
@@ -84,6 +97,10 @@
 		if (onClose !== undefined) {
 			alertModal.setOnClose(onClose);
 		}
+		ant_utils_injectTestAttribute(
+			alertModal.getModal().getPanel(),
+			'ant_alert_infoModal'
+		);
 		alertModal.show();
 	}
 }
