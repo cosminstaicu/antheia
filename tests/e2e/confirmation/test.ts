@@ -55,7 +55,7 @@ test(`testing (${folder})`, async ({ page }) => {
 	await page.waitForTimeout(1000);
 	await expect(page.getByTestId('ant_modal')).toHaveCount(0);
 	// click confirmation
-	await page.locator('#buttonErrorAlert').click();
+	await page.locator('#buttonConfirm').click();
 	await page.waitForTimeout(500);
 	await expect(page.getByTestId('ant_confirm_confirmModal')).toBeVisible();
 	// confirmation yes
@@ -63,7 +63,7 @@ test(`testing (${folder})`, async ({ page }) => {
 	await page.waitForTimeout(1000);
 	await expect(page.getByTestId('ant_modal')).toHaveCount(0);
 	// click confirmation
-	await page.locator('#buttonErrorAlert').click();
+	await page.locator('#buttonConfirm').click();
 	await page.waitForTimeout(500);
 	await expect(page.getByTestId('ant_confirm_confirmModal')).toBeVisible();
 	// confirmation no
