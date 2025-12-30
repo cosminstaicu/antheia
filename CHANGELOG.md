@@ -5,7 +5,7 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.0] - YYYY-MM-DD
+## [2.0.0] - 2025-12-30
 
 ### Breaking Changes
 - Antheia 2.0.0 is not backward compatible with any 1.x.x release.
