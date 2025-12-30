@@ -111,7 +111,7 @@ abstract class AbstractPage extends AbstractClass {
 		$this->bodyClasses[] = $class;
 	}
 	/**
-	 * Adds a row to the head of the page. Used for adding meta like data.
+	 * Adds a row to the head of the page. Used for adding "meta like" data.
 	 * Each call of the method will add a new row
 	 * @param string $row the added text
 	 */

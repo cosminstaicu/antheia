@@ -13,6 +13,8 @@ use Antheia\Antheia\Classes\Form;
 use Antheia\Antheia\Classes\Search\SearchForm;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageEmpty;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {
@@ -45,10 +47,20 @@ if (!is_file($autoloadFile)) {
 function init_configurePage(PageEmpty $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
-	Globals::setDebug();
+	$page->addHeadText(
+		'<link rel="icon" type="image/png" href="../_utils/favicon.png">'
+	);
 	Globals::setTestMode();
+	// inserts menus into the header bar, on the right
+	$userMenu = new TopRightMenuUser();
+	$userMenu->setRender($userMenu::BUTTON);
+	$userMenu->setName('Username');
+	$page->addTopRightMenu($userMenu);
+	$exitMenu = new TopRightMenuExit();
+	$exitMenu->setRender($exitMenu::LINK);
+	$page->addTopRightMenu($exitMenu);
 	// inserts some menus
-	// ******************************************************************* login
+	// *************************************************************** login
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Login');
@@ -63,43 +75,43 @@ function init_configurePage(PageEmpty $page):void {
 	$subMenu->setText('Login failed');
 	$subMenu->setHref('../loginFailed');
 	$subMenu->setIconName('exclamation');
-	// ************************************************************** empty page
+	// ********************************************************** empty page
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Readme example');
 	$menu->setHref('../emptyPage');
 	$menu->setIconName('picture_empty');
-	// ******************************************************************* start
+	// *************************************************************** start
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Start testing');
 	$menu->setHref('../start');
 	$menu->setIconName('control_play');
-	// ************************************************************ confirmation
+	// ******************************************************** confirmation
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Confirmation');
 	$menu->setHref('../confirmation');
 	$menu->setIconName('infocard');
-	// ******************************************************************** form
+	// **************************************************************** form
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Forms');
 	$menu->setHref('../forms');
 	$menu->setIconName('form');
-	// ******************************************************************* modal
+	// *************************************************************** modal
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Modals');
 	$menu->setHref('../modals');
 	$menu->setIconName('app-window', AbstractIcon::VECTOR);
-	// ****************************************************************** panels
+	// ************************************************************** panels
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Panels');
 	$menu->setHref('../panels');
 	$menu->setIconName('form(2)');
-	// ****************************************************************** search
+	// ************************************************************** search
 	$menu = new AppMenuPrimary();
 	$menu->setText('Search');
 	$menu->setIconName('page');
@@ -127,13 +139,13 @@ function init_configurePage(PageEmpty $page):void {
 	$subMenu->setText('Table');
 	$subMenu->setHref('../searchResultTable');
 	$subMenu->setIconName('page');
-	// ******************************************************************** tabs
+	// **************************************************************** tabs
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Tabs');
 	$menu->setHref('../tabs');
 	$menu->setIconName('tab');
-	// *************************************************************** wireframe
+	// *********************************************************** wireframe
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Wireframe');

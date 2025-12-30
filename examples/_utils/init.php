@@ -45,6 +45,7 @@ function init_configurePage(AbstractPage $page):void {
 	Globals::setLogo('../_utils/logo.svg');
 	//******************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
+	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');
 	//******************************************************** TOP RIGHT OPTIONS
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();
