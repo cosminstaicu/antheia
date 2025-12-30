@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
@@ -17,6 +18,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $onClick;
 	private $checked;
 	private $htmlId;
+	private $testId;
 	private $attributes;
 	public function __construct() {
 		parent::__construct();
@@ -26,10 +28,14 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->checked = false;
 		$this->onClick = '';
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->attributes = [];
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines the name of the parameter that will be send, for the checkbox
@@ -78,9 +84,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function getHtml():string {
 		$code = '<label>';
 		$code .='<input type="checkbox"';
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if ($this->onClick !== '') {
 			$code .= ' onClick="'.$this->onClick.'" ';
 		}

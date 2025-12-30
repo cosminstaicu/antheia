@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Wireframe;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
 /**
@@ -10,11 +11,13 @@ use Antheia\Antheia\Interfaces\HtmlId;
 class Row extends AbstractClass implements HtmlCode, HtmlId {
 	private $content;
 	private $htmlId;
+	private $testId;
 	private $classes;
 	public function __construct() {
 		parent::__construct();
 		$this->content = [];
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->classes = [];
 	}
 	/**
@@ -33,6 +36,9 @@ class Row extends AbstractClass implements HtmlCode, HtmlId {
 	public function setHtmlId(string $uniqueId):void {
 		$this->htmlId = $uniqueId;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	/**
 	 * Adds a CSS class to the row definition
 	 * @param string $class the css class to be added to the row definition
@@ -45,9 +51,7 @@ class Row extends AbstractClass implements HtmlCode, HtmlId {
 		if (count($this->classes) > 0) {
 			$code .= ' class="'.implode(' ', array_unique($this->classes)).'"';
 		}
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= '>';
 		/** @var HtmlCode $cell */
 		foreach ($this->content as $cell) {

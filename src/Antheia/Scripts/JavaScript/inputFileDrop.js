@@ -42,7 +42,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 	}
 	if (dropArea.dataset.maxFiles != 0) {
 		if (fileList.length > dropArea.dataset.maxFiles) {
-			ant_alert.quickError(
+			AntheiaAlert.quickError(
 				dropArea.dataset.textTotalFiles + " (max "
 				+ dropArea.dataset.maxFiles
 				+ ")");
@@ -69,7 +69,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 		if (extensions.length > 0) {
 			extension = "." + fileList[i].name.split('.').pop().toLowerCase();
 			if (extensions.indexOf(extension) === -1) {
-				ant_alert.quickError(
+				AntheiaAlert.quickError(
 					dropArea.dataset.textExtension + " (" + fileName + ")"
 				);
 				dropArea.ant_fileList = [];
@@ -79,7 +79,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 		fileSizeKb = Math.round(fileList[i].size / 1024);
 		if (maxFileSizeKb != 0) {
 			if (fileSizeKb > maxFileSizeKb) {
-				ant_alert.quickError(
+				AntheiaAlert.quickError(
 					dropArea.dataset.textFileSize + " (" + fileName + ")"
 				);
 				dropArea.ant_fileList = [];
@@ -89,7 +89,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 		totalSizeKb += fileSizeKb;
 		if (maxTotalSizeKb != 0) {
 			if (totalSizeKb > maxTotalSizeKb) {
-				ant_alert.quickError(
+				AntheiaAlert.quickError(
 					dropArea.dataset.textTotalSize 
 					+ " (max " + dropArea.dataset.maxTotalSize + " MB)"
 				);
@@ -109,15 +109,15 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
 		}
 	}
 	// creating the loading interface
-	ant_loading_step.reset();
+	AntheiaLoadingStep.reset();
 	for (i = 0; i < fileList.length; i++) {
 		fileName = ant_inputFileDrop_innerHtmlSafe(fileList[i].name);
 		if (fileName.length > 20) {
 			fileName = fileName.slice(0, 18) + "...";
 		}
-		loadingStep = new ant_loading_step();
+		loadingStep = new AntheiaLoadingStep();
 		loadingStep.setLabel(fileName);
-		loadingStep.setIcon("file_upload");
+		loadingStep.setIcon("cloud-upload");
 		loadingSteps.push(loadingStep);
 	}
 	ant_loading_start();
@@ -129,7 +129,7 @@ function ant_inputFileDrop_selectionFinished(dropArea, fileList) {
  * @param {HTMLElement} dropArea the file drop element that triggered
  * the actions
  * @param {FileList} fileList the list of files to be uploaded
- * @param {ant_loading_step[]} loadingSteps a list with all rendered steps
+ * @param {AntheiaLoadingStep[]} loadingSteps a list with all rendered steps
  * inside the interface
  * @param {Number} index the index of the file (from the fileList parameter)
  * to be uploaded

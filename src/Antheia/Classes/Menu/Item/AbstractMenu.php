@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Menu\Item;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
@@ -22,6 +23,7 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	private $icon;
 	private $cssCode;
 	private $htmlId;
+	private $testId;
 	private $attributes;
 	private $onClick;
 	private $renderType;
@@ -32,8 +34,10 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 		$this->text = '';
 		$this->href='javascript:void(0)';
 		$this->icon = new IconVector();
+		$this->icon->setSize(22);
 		$this->cssCode = '';
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->attributes = [];
 		$this->onClick = '';
 		$this->renderType = self::LINK;
@@ -51,6 +55,9 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	public function setRender(string $type):void {
 		$this->renderType = $type;
@@ -95,10 +102,10 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 	}
 	/**
 	 * Defines the icon for the menu item
-	 * @param int $icon the displayed icon as a constant like
-	 * IconVector::ICON_##
+	 * @param string $icon the name of the icon attached to the menu
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		$this->icon->setIcon($icon);
 	}
 	public function getHtml():string {
@@ -136,9 +143,7 @@ implements HtmlCode, HtmlId, HtmlAttribute, LinkButtonRender {
 		if ($this->onClick !== '') {
 			$code .= ' onClick="'.$this->onClick.'" ';
 		}
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		foreach ($this->attributes as $attr) {
 			$code .= ' '.$attr['name'].'="'.$attr['value'].'"';
 		}

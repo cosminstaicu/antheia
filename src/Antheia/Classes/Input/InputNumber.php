@@ -1,6 +1,5 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
-use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * An input for entering a number
  * @author Cosmin Staicu
@@ -12,7 +11,7 @@ class InputNumber extends AbstractInputText {
 	public function __construct() {
 		parent::__construct();
 		$this->setType(self::TYPE_NUMBER);
-		$this->setIcon(IconVector::ICON_NUMBER);
+		$this->setIcon('binary');
 		$this->step = null;
 		$this->minimum = null;
 		$this->maximum = null;

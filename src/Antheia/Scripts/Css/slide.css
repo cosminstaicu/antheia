@@ -12,15 +12,20 @@
 	text-decoration: none;
 	color: var(--ant-theme-linkHover);
 }
+.ant_slide-button.ant-icon {
+	padding-left: var(--ant_var-rem16px);
+}
 .ant_slide-button.ant-icon:before {
-	font-family: "Material Icons";
 	font-size: var(--ant_var-rem24px);
-	content: "arrow_downward";
-	position: relative;
-	top: var(--ant_var-rem6px);
+	content: "↓";
+	position: absolute;
+	top: 0;
+	left: var(--ant_var-rem5px);
 }
 .ant_slide-button.ant-icon.ant-enabled:before {
-	content: "close";
+	top: var(--ant_var-rem3px-);
+	left: 0;
+	content: "🗙";
 }
 .ant_slide {
 	overflow: hidden;

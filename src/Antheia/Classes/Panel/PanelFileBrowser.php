@@ -66,8 +66,8 @@ class PanelFileBrowser extends AbstractPanel {
 		$code = '';
 		if ((count($this->folders) === 0) && (count($this->files) === 0)) {
 			$icon = new IconVector();
-			$icon->setIcon($icon::ICON_FOLDER_EMPTY);
-			$icon->setSize($icon::SIZE_LARGE);
+			$icon->setIcon('folder-open');
+			$icon->setSize('48');
 			$code .= '<p>'.$icon->getHtml();
 			$code .= '<br>'.$this->emptyText.'</p>';
 		}

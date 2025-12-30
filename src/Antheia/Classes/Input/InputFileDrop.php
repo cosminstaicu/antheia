@@ -1,6 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
@@ -159,9 +160,7 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$this->addTextAttribute('total-size', 'MAXIMUM_UPLOAD_SIZE_ERROR');
 		$this->addTextAttribute('total-files', 'TOO_MANY_FILES');
 		$this->addTextAttribute('file-size', 'FILE_SIZE_ERROR');
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if ($this->beforeCallback !== '') {
 			$this->addAttribute('data-pre', $this->beforeCallback);
 		}
@@ -172,8 +171,8 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
 		$icon = new IconVector();
-		$icon->setIcon($icon::ICON_UPLOAD);
-		$icon->setSize($icon::SIZE_XL);
+		$icon->setIcon('cloud-upload');
+		$icon->setSize(48);
 		if ($this->fullPageDrop) {
 			$code .= '<p>';
 			$code .= $icon->getHtml();

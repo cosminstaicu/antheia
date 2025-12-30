@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Internals;
 /**
  * Abstract class to be extended by all text type inputs
  * (text, password, phone, numbers etc.)
@@ -57,12 +58,13 @@ abstract class AbstractInputText extends AbstractInput {
 	}
 	/**
 	 * Defines the symbol displayed on the right side of the input.
-	 * @param integer $icon the icon to be displayed, as a constant like
-	 * IconVector::ICON_## or null if no symbol will be displayed
+	 * @param string $icon the name of the icon to be displayed
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		if ($icon !== null) {
 			$this->icon = new IconVector();
+			$this->icon->setSize(24);
 			$this->icon->setIcon($icon);
 		} else {
 			$this->icon = null;
@@ -177,9 +179,7 @@ abstract class AbstractInputText extends AbstractInput {
 		if ($onFocus !== '') {
 			$code .= ' onfocus = "'.$onFocus.'"';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if ($this->maxLength != 0) {
 			$code .= ' maxlength="'.$this->maxLength.'" ';
 		}

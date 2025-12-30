@@ -20,7 +20,7 @@ function ant_inputDate_start(element) {
 		updateContent : null
 	};
 	ant_utils_preCallback(ant_inputDate_process.inputHidden);
-	ant_inputDate_process.modal = new ant_modal();
+	ant_inputDate_process.modal = new AntheiaModal();
 	ant_inputDate_process.modal.setHeader(element.dataset.label);
 	ant_inputDate_process.modal.setOnClose(() => {
 		ant_inputDate_process = null;
@@ -200,15 +200,6 @@ function ant_inputDate_select(element) {
 		// the modal has been closed during the call
 		return false;
 	}
-	/*
-	// can be deleted after 2024 04 01
-	let inputHidden = ant_inputDate_process.inputHidden;
-	ant_inputDate_process.trigger.value = element.dataset.text;
-	inputHidden.value = element.dataset.value;
-	*/
 	ant_forms_updateValue(ant_inputDate_process.inputHidden, element.dataset.value);
 	ant_inputDate_process.modal.hide();
-	// can be deleted after 2024 04 01
-	// ant_forms_updateStatus(inputHidden.id);
-	// ant_utils_postCallback(inputHidden);
 }

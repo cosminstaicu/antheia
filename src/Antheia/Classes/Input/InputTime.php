@@ -3,7 +3,6 @@ namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Globals;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
@@ -119,7 +118,7 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 	public function getHtml():string {
 		$this->button->addAttribute('data-ant-type', 'time');
 		$this->button->setText(Texts::formatTime($this->getValue()));
-		$this->button->setIcon(IconVector::ICON_TIME);
+		$this->button->setIcon('clock');
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setHiddenInputValue($this->getValue());

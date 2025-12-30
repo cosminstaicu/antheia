@@ -38,9 +38,9 @@ class InputCustomButton extends AbstractInput {
 	}
 	/**
 	 * Defines the icon displayed on the right side of the button
-	 * @param integer $icon the icon, as a constant like IconVector::ICON_##
+	 * @param string $icon the name of the icon
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		$this->button->setIcon($icon);
 	}
 	/**

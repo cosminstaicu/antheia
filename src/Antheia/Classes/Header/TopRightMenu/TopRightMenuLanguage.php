@@ -1,7 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\TopRightMenu;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A menu with the language text and symbol
  * @author Cosmin Staicu
@@ -9,7 +8,7 @@ use Antheia\Antheia\Classes\Icon\IconVector;
 class TopRightMenuLanguage extends AbstractTopRightMenu {
 	public function __construct() {
 		parent::__construct();
-		$this->setIcon(IconVector::ICON_LANGUAGE);
+		$this->setIcon('languages');
 		$this->setName(Texts::get('LANGUAGE'));
 	}
 }

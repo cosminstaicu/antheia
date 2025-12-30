@@ -1,5 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
+
+use Antheia\Antheia\Classes\Internals;
 /**
  * A textarea input
  * @author Cosmin Staicu
@@ -63,9 +65,7 @@ class InputTextarea extends AbstractInput {
 		if ($this->getDefaultValue() !== NULL) {
 			$code .= ' data-default="'.$this->getDefaultValue().'"';
 		}
-		if ($this->getHtmlId() !== '') {
-			$code .= ' id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if ($this->maxLength != 0) {
 			$code .= ' maxlength="'.$this->maxLength.'" ';
 		}

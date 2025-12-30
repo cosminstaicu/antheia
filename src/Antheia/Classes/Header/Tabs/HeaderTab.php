@@ -2,14 +2,16 @@
 namespace Antheia\Antheia\Classes\Header\Tabs;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Interfaces\HtmlId;
 use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Defines a tab to be displayed below the header section of the page
  * @author Cosmin Staicu
  */
-class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
+class HeaderTab extends AbstractClass implements HtmlId, HtmlCode, LinkButtonRender {
 	const STATUS_DEFAULT = 1;
 	const STATUS_SELECTED = 2;
 	private $title;
@@ -18,6 +20,7 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 	private $onClickClose;
 	private $status;
 	private $htmlId;
+	private $testId;
 	private $startLoadOnClick;
 	private $accent;
 	private $classList;
@@ -30,6 +33,7 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 		$this->onClickClose = '';
 		$this->status = self::STATUS_DEFAULT;
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->startLoadOnClick = false;
 		$this->accent = false;
 		$this->classList = [];
@@ -51,13 +55,11 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 	public function startLoadOnClick():void {
 		$this->startLoadOnClick = true;
 	}
-	/**
-	 * Defines the id for the HTML element (the attribute from the tag).
-	 * @param string $id the id for the HTML element or an empty string if no
-	 * id is required
-	 */
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines the title for the tab (the text that is displayed)
@@ -109,9 +111,7 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 		if (count($this->classList) > 0) {
 			$code .= ' class="'.implode(' ', array_unique($this->classList)).'"';
 		}
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= '>';
 		switch ($this->renderType) {
 			case self::LINK:
@@ -147,8 +147,8 @@ class HeaderTab extends AbstractClass implements HtmlCode, LinkButtonRender {
 		}
 		if ($this->onClickClose !== '') {
 			$icon = new IconVector();
-			$icon->setIcon(IconVector::ICON_CLOSE);
-			$icon->setSize(IconVector::SIZE_SMALL);
+			$icon->setIcon('x');
+			$icon->setSize(16);
 			$code .= '<button type="button" onclick="'
 					.$this->onClickClose.'">'.$icon->getHtml().'</button>';
 		}

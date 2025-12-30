@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Wireframe;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Panel\PanelFileBrowser;
 use Antheia\Antheia\Classes\Panel\PanelInfo;
@@ -18,6 +19,7 @@ use Antheia\Antheia\Interfaces\HtmlId;
 class Cell extends AbstractClass implements HtmlCode, HtmlId {
 	private $elements;
 	private $htmlId;
+	private $testId;
 	private $widthIsDefined;
 	private $classes;
 	private $horizontalPadding;
@@ -29,6 +31,7 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 		parent::__construct();
 		$this->elements = [];
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->classes = [];
 		$this->widthIsDefined = false;
 		$this->horizontalPadding = true;
@@ -52,6 +55,9 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Adds a width for a type of screen. The width will be used for the
@@ -153,9 +159,7 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 			$this->addClass('ant_v-padding');
 		}
 		$code = '<div class="'.implode(' ', array_unique($this->classes)).'"';
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= '>';
 		/** @var HtmlCode $element */
 		foreach ($this->elements as $element) {

@@ -238,7 +238,7 @@ function ant_forms_showInputError(inputOrId) {
 	if (labelText === null) {
 		throw new Error('No label found for ' + element.id);
 	}
-	let alertModal = new ant_modal();
+	let alertModal = new AntheiaModal();
 	let elementValue = element.value;
 	if (inputButton !== null) {
 		elementValue = inputButton.value;
@@ -257,8 +257,8 @@ function ant_forms_showInputError(inputOrId) {
 		okButton.click();
 	});
 	mainParagraph.appendChild(sendToInputButton);
-	let invalidIcon = document.createElement('I');
-	invalidIcon.innerHTML = 'warning';
+	let invalidIcon = document.createElement('i');
+	invalidIcon.innerHTML = '⚠';
 	mainParagraph.appendChild(invalidIcon);
 	okButton.type = "button";
 	okButton.value = ant_text["ok"];

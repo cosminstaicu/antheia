@@ -1,7 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\TopRightMenu;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 /**
  * A menu with the shopping text and symbol
  * @author Cosmin Staicu
@@ -9,7 +8,7 @@ use Antheia\Antheia\Classes\Icon\IconVector;
 class TopRightMenuShopping extends AbstractTopRightMenu {
 	public function __construct() {
 		parent::__construct();
-		$this->setIcon(IconVector::ICON_SHOPPING);
+		$this->setIcon('shopping-basket');
 		$this->setName(Texts::get('SHOPPING_CART'));
 	}
 }

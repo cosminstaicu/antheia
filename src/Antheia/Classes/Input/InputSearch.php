@@ -1,14 +1,12 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
  * A button that can perform a search on the server and returns a list of values.
  * The user can click on a value that will be updated to the original input
  * @author Cosmin Staicu
- *
  */
 class InputSearch extends AbstractInput implements BeforeAfterCallback {
 	private $displayUndefined;
@@ -95,7 +93,7 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 			throw new Exception('Url is undefined');
 		}
 		$this->button->setText($this->initialText);
-		$this->button->setIcon(IconVector::ICON_SEARCH);
+		$this->button->setIcon('search');
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setHiddenInputValue($this->getValue());

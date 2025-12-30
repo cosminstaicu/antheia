@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Search;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Internals;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
 /**
  * A search result from a search. The result contains only the raw data of the
  * result. An instance of this class will be later rendered using one of the
@@ -25,7 +26,7 @@ class SearchResult extends AbstractClass {
 	private $properties;
 	private $resultId;
 	private $image;
-	private $iconInfo;
+	private $icon;
 	private $buttons;
 	private $imageSize;
 	private $imageArea;
@@ -40,8 +41,8 @@ class SearchResult extends AbstractClass {
 		$this->accessOnClick = '';
 		$this->accessRender = self::LINK;
 		$this->resultId = '';
-		$this->image = Internals::getCacheUrl().'/logo.png';
-		$this->iconInfo = null;
+		$this->image = Internals::getCacheUrl().'/logo.svg';
+		$this->icon = null;
 		$this->buttons = [];
 		$this->imageSize = self::IMAGE_SIZE_MEDIUM;
 		$this->imageArea = self::IMAGE_AREA_FIT;
@@ -249,25 +250,20 @@ class SearchResult extends AbstractClass {
 		return $this->imageLink;
 	}
 	/**
-	 * Defines the icon properties, used by the accordion and card renders.
-	 * @param string $name the name of the file (without the extension) from 
-	 * the 32x32 media folder
-	 * @param string $addon (optional) the name of a file (without extension) used
-	 * for a addon on the bottom right side of the icon (the file is located
-	 * inside the 16x16 media folder)
+	 * Defines the icon, used by the accordion and card renders.
+	 * @param AbstractIcon $icon the icon used to render the result or null if
+	 * no icon available
 	 */
-	public function setIcon(string $name, string $addon = ''):void {
-		$this->iconInfo = ['icon'=>$name, 'addon'=>$addon];
+	public function setIcon(?AbstractIcon $icon):void {
+		$this->icon = $icon;
 	}
 	/**
-	 * Returns the icon properties, used by the accordion and card renders.
-	 * @return NULL|string[] an array with 2 properties: "icon" (the name of the
-	 * main icon) and "addon" (the name of the bottom right addon) for the
-	 * icon used by the accordion render. If no icon is defined, then NULL is
-	 * returned
+	 * Returns the icon used by the accordion and card renders.
+	 * @return NULL|AbstractIcon the icon used by the render or null if no icon
+	 * is defined
 	 */
-	public function getIcon():?array {
-		return $this->iconInfo;
+	public function getIcon():?AbstractIcon {
+		return $this->icon;
 	}
 	/**
 	 * Adds a property for the item (a property that will be displayed inside

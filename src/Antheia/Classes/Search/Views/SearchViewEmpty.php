@@ -26,8 +26,8 @@ class SearchViewEmpty extends Panel {
 			throw new Exception('Text is not defined');
 		}
 		$icon = new IconVector();
-		$icon->setSize(IconVector::SIZE_XL);
-		$icon->setIcon(IconVector::ICON_ALERT);
+		$icon->setSize(48);
+		$icon->setIcon('triangle-alert');
 		$code = '<p style="font-weight: bold; text-align: center">';
 		$code .= $icon->getHtml().'<br>'.$this->text.'</p>';
 		$this->addElement(new Html($code));

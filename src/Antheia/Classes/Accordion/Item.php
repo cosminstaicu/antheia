@@ -4,6 +4,8 @@ use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Internals;
 /**
  * The class defines an accordion item. The item can be clicked, to be expanded
  * and show some content
@@ -13,6 +15,10 @@ use Antheia\Antheia\Interfaces\HtmlCode;
  *
  */
 class Item extends AbstractClass implements HtmlCode {
+	private $triggerId;
+	private $triggerTestId;
+	private $contentId;
+	private $contentTestId;
 	private $title;
 	private $list;
 	/**
@@ -22,8 +28,46 @@ class Item extends AbstractClass implements HtmlCode {
 	 */
 	public function __construct() {
 		parent::__construct();
+		$this->triggerId = '';
+		$this->triggerTestId = '';
+		$this->contentId = '';
+		$this->contentTestId = '';
 		$this->title = 'Undefined';
 		$this->list = [];
+	}
+	/**
+	 * Defines the html id for the trigger (the button that toogles the content)
+	 * @param string $id the html id for the trigger or an empty string
+	 * if no id is required
+	 */
+	public function setTriggerHtmlId(string $id):void {
+		$this->triggerId = $id;
+	}
+	/**
+	 * Defines the html test id for the trigger (the button that toogles the content)
+	 * @param string $id the html test id for the trigger or an empty string
+	 * if no id is required
+	 * @see Globals::setTestMode();
+	 */
+	public function setTriggerHtmlTestId(string $id):void {
+		$this->triggerTestId = $id;
+	}
+	/**
+	 * Defines the html id for the content
+	 * @param string $id the html id for the content or an empty string
+	 * if no id is required
+	 */
+	public function setContentHtmlId(string $id):void {
+		$this->contentId = $id;
+	}
+	/**
+	 * Defines the html test id for the content
+	 * @param string $id the html test id for the content or an empty string
+	 * if no id is required
+	 * @see Globals::setTestMode();
+	 */
+	public function setContentHtmlTestId(string $id):void {
+		$this->contentTestId = $id;
 	}
 	/**
 	 * Defines the title of the item. The title can contain html code, as it
@@ -42,16 +86,16 @@ class Item extends AbstractClass implements HtmlCode {
 		$this->list[] = $item;
 	}
 	public function getHtml():string {
-		$open = new IconVector();
-		$open->setIcon(IconVector::ICON_DOWN);
-		$close = new IconVector();
-		$close->setIcon(IconVector::ICON_UP);
 		// start head
-		$code = '<button onClick="ant_accordion_click(this)" type="button">';
-		$code .= '<span>'.$open->getHtml().'</span>';
-		$code .= '<span>'.$close->getHtml().'</span>';
+		$code = '<button onClick="ant_accordion_click(this)" type="button"'
+			.Internals::getHtmlIdCode($this->triggerId, $this->triggerTestId)
+			.'>';
+		$code .= '<span>'.(new IconVector('arrow-down'))->getHtml().'</span>';
+		$code .= '<span>'.(new IconVector('arrow-up'))->getHtml().'</span>';
 		$code .= $this->title.'</button>';
-		$code .= '<div>';
+		$code .= '<div'
+			.Internals::getHtmlIdCode($this->contentId, $this->contentTestId)
+			.'>';
 		/** @var HtmlCode $element */
 		foreach ($this->list as $item) {
 			$code .= $item->getHtml();

@@ -10,6 +10,8 @@ use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Slide\SlidePanel;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\InputSubmit;
 /**
  * The class defines a form from a page that contains the results of a search.
  * The class displays the search filters, the sorting options and the pagination.
@@ -31,6 +33,8 @@ class SearchForm extends Form {
 	private $order;
 	private $displayFilters;
 	private $sortByInput;
+	private $submitButton;
+	private $resetButton;
 	private $displayResetButton;
 	private $code;
 	public function __construct() {
@@ -51,6 +55,26 @@ class SearchForm extends Form {
 		$this->sortByInput = NewInput::select();
 		$this->displayResetButton = true;
 		$this->code = '';
+		$this->submitButton = NewInput::submit();
+		$this->submitButton->setValue(Texts::get('SEARCH'));
+		$this->resetButton = NewInput::button();
+		$this->resetButton->setAppearance($this->resetButton::LOW_CONTRAST);
+		$this->resetButton->setOnClick('ant_search_reset(this)');
+		$this->resetButton->setValue(Texts::get('RESET'));
+	}
+	/**
+	 * Returns the submit button displayed inside the form
+	 * @return InputSubmit the submit button displayed inside the form
+	 */
+	public function getSubmitButton():InputSubmit {
+		return $this->submitButton;
+	}
+	/**
+	 * Returns the reset button displayed inside the form
+	 * @return InputButton the reset button displayed inside the form
+	 */
+	public function getResetButton():InputButton {
+		return $this->resetButton;
 	}
 	/**
 	 * Hides the button used to reset the search filters
@@ -124,9 +148,7 @@ class SearchForm extends Form {
 	 */
 	private function createHtml():void {
 		$slide = new SlidePanel();
-		$this->addElement(new Html(
-			'<input type="hidden" name="page" value="'
-			.$this->page.'" id="ant_currentPage">'));
+		$this->addHiddenInput('page', $this->page, 'ant_currentPage');
 		$displaySortBy = false;
 		if (count($this->sortByList) > 0) {
 			$displaySortBy = true;
@@ -161,24 +183,22 @@ class SearchForm extends Form {
 			default:
 				throw new Exception($this->order);
 		}
-		$orderBy = new IconVector();
-		$orderBy->setIcon(IconVector::ICON_SORT);
 		$sortArrow = new IconVector();
+		$sortArrow->setSize(22);
 		$sortCode = '<input type="hidden" name="sortOrder" 
 			id="ant_sort-order" value="'.$this->order
 			.'"><button type="button" id="ant_search-sort-order"
 			onclick="ant_search_changeSortOrder(\''.$sortBy.'\')">';
 		switch ($this->order) {
 			case self::SORT_ASC:
-				$sortArrow->setIcon(IconVector::ICON_SORT_ASC);
+				$sortArrow->setIcon('arrow-down-a-z');
 				break;
 			case self::SORT_DESC:
-				$sortArrow->setIcon(IconVector::ICON_SORT_DESC);
+				$sortArrow->setIcon('arrow-down-z-a');
 				break;
 			default:
 				throw new Exception($this->order);
 		}
-		$sortCode .= $orderBy->getHtml();
 		$sortCode .= $sortArrow->getHtml();
 		$sortCode .= '</button>';
 		if ($displaySortBy) {
@@ -216,7 +236,8 @@ class SearchForm extends Form {
 		// active filters
 		$activeFilters = new Html();
 		$closeButton = new IconVector();
-		$closeButton->setIcon(IconVector::ICON_CLOSE);
+		$closeButton->setSize(24);
+		$closeButton->setIcon('x');
 		/** @var AbstractInput $filtru */
 		foreach ($this->filters as $index => $filterInfo) {
 			/** @var AbstractInput $input */
@@ -236,8 +257,8 @@ class SearchForm extends Form {
 			$activeFilters->addRawCode(
 				'<div class="ant_search-active-filter">'.$input->getLabelText().': '
 				.htmlspecialchars($input->getReadableValue())
-				.'<a href="javascript:void(0)" onClick="ant_search_resetInput(\''
-				.$input->getHtmlId().'\')">'.$closeButton->getHtml().'</a></div>'
+				.'<button onClick="ant_search_resetInput(\''
+				.$input->getHtmlId().'\')">'.$closeButton->getHtml().'</button></div>'
 			);
 		}
 		if ($this->displayFilters) {
@@ -269,16 +290,10 @@ class SearchForm extends Form {
 			<tr><td>'
 		);
 		if ($this->displayResetButton) {
-			$resetButton = NewInput::button();
-			$resetButton->setAppearance($resetButton::LOW_CONTRAST);
-			$resetButton->setOnClick('ant_search_reset(this)');
-			$resetButton->setValue(Texts::get('RESET'));
-			$table->addElement($resetButton);
+			$table->addElement($this->resetButton);
 			$table->addRawCode('</td><td>');
 		}
-		$submitButton = NewInput::submit();
-		$submitButton->setValue(Texts::get('SEARCH'));
-		$table->addElement($submitButton);
+		$table->addElement($this->submitButton);
 		$table->addRawCode('</td></tr></table>');
 		$cell->addElement($table);
 		$slide->addHidden($wireframe);

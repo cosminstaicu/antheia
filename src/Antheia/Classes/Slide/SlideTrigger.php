@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Slide;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
@@ -15,6 +16,7 @@ use Antheia\Antheia\Interfaces\HtmlId;
 class SlideTrigger extends AbstractClass 
 implements HtmlCode, HtmlAttribute, HtmlId {
 	private $htmlId;
+	private $testId;
 	private $name;
 	private $panel;
 	private $displayIcon;
@@ -26,7 +28,8 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 			throw new Exception('No container defined');
 		}
 		$this->setText('');
-		$this->setHtmlId('');
+		$this->htmlId = '';
+		$this->testId = '';
 		$this->setDisplayIcon(true);
 		$this->panel = $container;
 		$this->attributes = [];
@@ -57,6 +60,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function setHtmlId($id):void {
 		$this->htmlId = $id;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	/**
 	 * Defines the text on the trigger
 	 * @param string $text the text displayed on the trigger
@@ -70,9 +76,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 			$code .= ' ant-icon';
 		}
 		$code .= '" data-container="'.$this->panel->getHtmlId().'"';
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		foreach ($this->attributes as $name => $value) {
 			$code .= ' '.$name.'="'.$value.'"';
 		}

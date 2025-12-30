@@ -2,14 +2,13 @@
 namespace Antheia\Antheia\Classes\Page;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Accordion\Accordion;
-use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\InlineButton\InlineButton;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Theme\AbstractTheme;
-use Antheia\Antheia\Classes\InlineButton\InlineButton;
-use Antheia\Antheia\Classes\Internals;
 /**
  * Defines a page to edit a library theme
  * @author Cosmin Staicu
@@ -589,7 +588,7 @@ class PageEditTheme extends PageEmpty {
 		$panel->setTitle(Texts::get('ANIMATIONS'));
 		// loading simple
 		$input = NewInput::customButton();
-		$input->setIcon(IconVector::ICON_UPDATE);
+		$input->setIcon('refresh-ccw');
 		$input->setLabel(Texts::get('LOADING_3_SEC'));
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_simpleLoadingAnimation()');
@@ -598,21 +597,21 @@ class PageEditTheme extends PageEmpty {
 		$input = NewInput::customButton();
 		$input->addAttribute('data-step', Texts::get('STEP'));
 		$input->setHtmlId('stepLoadingButton');
-		$input->setIcon(IconVector::ICON_UPDATE);
+		$input->setIcon('refresh-ccw');
 		$input->setLabel(Texts::get('LOADING_STEPS'));
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_stepsLoadingAnimation()');
 		$panel->addInput($input);
 		// large confirmation message
 		$input = NewInput::customButton();
-		$input->setIcon(IconVector::ICON_VALID);
+		$input->setIcon('check');
 		$input->setLabel(Texts::get('LARGE_MESSAGE'));
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_largeMessageAnimation(\'Lorem ipsum dolor\')');
 		$panel->addInput($input);
 		// discreet confirmation message
 		$input = NewInput::customButton();
-		$input->setIcon(IconVector::ICON_ON_OFF);
+		$input->setIcon('power');
 		$input->setLabel(Texts::get('SMALL_MESSAGE'));
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_smallMessageAnimation(\'Lorem ipsum dolor\')');

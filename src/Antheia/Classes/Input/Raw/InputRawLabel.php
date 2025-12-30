@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\InlineHelp\AbstractInlineHelp;
 use Antheia\Antheia\Classes\Input\AbstractInput;
 use Antheia\Antheia\Interfaces\HtmlCode;
@@ -13,10 +14,12 @@ use Antheia\Antheia\Interfaces\HtmlId;
 class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 	private $input;
 	private $htmlId;
+	private $testId;
 	private $inlineHelp;
 	public function __construct() {
 		$this->input = null;
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->inlineHelp = null;
 	}
 	/**
@@ -40,6 +43,9 @@ class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	/**
 	 * Defines the input that the label is generated for
 	 * @param AbstractInput $input the input that the label is generated for
@@ -60,9 +66,7 @@ class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 				if ($this->input->getIdForLabel() !== '') {
 					$code .= 'for="'.$this->input->getIdForLabel().'" ';
 				}
-				if ($this->htmlId !== '') {
-					$code .= ' id="'.$this->htmlId.'" ';
-				}
+				$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 				$code .= '>'.$this->input->getLabelText();
 				$code .= '</label>';
 				if ($this->inlineHelp != null) {

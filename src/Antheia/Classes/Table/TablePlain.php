@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Table;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Table\Plain\Row;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
@@ -18,6 +19,7 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 	private $displayTitle;
 	private $horizontalScroll;
 	private $htmlId;
+	private $testId;
 	public function __construct() {
 		parent::__construct();
 		$this->rows = [];
@@ -27,9 +29,13 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 		$this->displayTitle = false;
 		$this->horizontalScroll = false;
 		$this->htmlId = '';
+		$this->testId = '';
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines if a horizontal scroll should be displayed when the table is
@@ -127,9 +133,7 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 			$code .= implode(' ', $this->inlineCss);
 			$code .= '"';
 		}
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		$code .= '>';
 		if ($this->displayTitle) {
 			$code .= '<thead>';

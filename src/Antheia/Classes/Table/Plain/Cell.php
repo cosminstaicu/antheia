@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Table\Plain;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\TableCell;
@@ -24,6 +25,7 @@ class Cell extends AbstractClass implements TableCell {
 	private $inlineCss;
 	private $classes;
 	private $htmlId;
+	private $testId;
 	private $attributes;
 	public function __construct() {
 		parent::__construct();
@@ -36,10 +38,14 @@ class Cell extends AbstractClass implements TableCell {
 		$this->inlineCss = [];
 		$this->classes = [];
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->attributes = [];
 	}	
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	public function addClass(string $class):void {
 		$this->classes[] = $class;
@@ -104,9 +110,7 @@ class Cell extends AbstractClass implements TableCell {
 		} else {
 			$code .= '<td ';
 		}
-		if ($this->htmlId != '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if (count($this->classes) > 0) {
 			$code .= ' class="'.implode(' ', $this->classes).'"';
 		}

@@ -1,4 +1,9 @@
 "use strict";
+
+// the images for the loading steps can be preloaded (but it is optional)
+ant_utils_getCachedSvgIcon("delete");
+ant_utils_getCachedSvgIcon("component");
+
 function load3seconds() {
 	ant_loading_start();
 	setTimeout(() => {
@@ -7,15 +12,15 @@ function load3seconds() {
 }
 function loadSteps() {
 	// reset the steps
-	ant_loading_step.reset();
+	AntheiaLoadingStep.reset();
 	// define the first step
-	let firstStep = new ant_loading_step();
+	let firstStep = new AntheiaLoadingStep();
 	firstStep.setLabel("First step");
-	firstStep.setIcon("delete");
+	firstStep.setIcon("cloud-upload");
 	// define the second step
-	let secondStep = new ant_loading_step();
+	let secondStep = new AntheiaLoadingStep();
 	secondStep.setLabel("Second step");
-	secondStep.setIcon("swap_vertical_circle");
+	secondStep.setIcon("component");
 	// showing the loading animation (steps are both in a waiting state)
 	setTimeout(() => {
 		ant_loading_start();
@@ -49,7 +54,7 @@ function loadSteps() {
 	}, 4000);
 	setTimeout(() => {
 		ant_loading_stop();
-		ant_loading_step.reset();
+		AntheiaLoadingStep.reset();
 	}, 4300);
 }
 /**
@@ -58,12 +63,12 @@ function loadSteps() {
 function cancelAction() {
 	console.log('cancel action triggered');
 	ant_loading_stop();
-	ant_loading_step.reset()
+	AntheiaLoadingStep.reset()
 }
 function loadStepsWithCancelButton() {
 	loadSteps();
 	setTimeout(() => {
-		ant_loading_step.setCancelButton({
+		AntheiaLoadingStep.setCancelButton({
 			function : "cancelAction"
 		});
 	}, 1000);

@@ -3,7 +3,7 @@
  * Shows a simple modal
  */
  function simpleModal() {
-	let modal = new ant_modal();
+	let modal = new AntheiaModal();
 	modal.setHeader('Simple modal');
 	modal.setContent('content html code here');
 	modal.setFooter('Footer text');
@@ -13,7 +13,7 @@
  * A modal that updates the content after it has been displayed
  */
 function contentUpdateModal() {
-	let modal = new ant_modal();
+	let modal = new AntheiaModal();
 	modal.setHeader('Content update modal');
 	modal.setContent('Wait 2 seconds for the content to be updated');
 	modal.setFooter('A button will be placed here');
@@ -28,7 +28,7 @@ function contentUpdateModal() {
 		button.type = "button";
 		button.value = "Close it?";
 		button.addEventListener("click", () => {
-			ant_confirm.quick("Close the modal?", () => {
+			AntheiaConfirm.quick("Close the modal?", () => {
 				modal.hide();
 			});
 		});
@@ -41,7 +41,7 @@ function contentUpdateModal() {
  * animation, to show the content
  */
 function loadingModal() {
-	let modal = new ant_modal();
+	let modal = new AntheiaModal();
 	modal.setHeader('Animation modal');
 	modal.setContent('The animation starts in 2 seconds');
 	modal.show();
@@ -59,7 +59,7 @@ function loadingModal() {
 		button.type = "button";
 		button.value = "Close it?";
 		button.addEventListener("click", () => {
-			ant_confirm.quick("Close the modal?", () => {
+			AntheiaConfirm.quick("Close the modal?", () => {
 				modal.hide();
 			});
 		});
@@ -74,7 +74,7 @@ function loadingModal() {
  * Constructs and shows a modal with options
  */
 function modalWithOptions() {
-	let modal = new ant_modalMenu();
+	let modal = new AntheiaModalMenu();
 	modal.addMenuOption({
 		title : "First option",
 		description : "This is a description for the first button with close on click",
@@ -87,7 +87,8 @@ function modalWithOptions() {
 		title : "Second option",
 		description : "This is a description for the second button in the list with close on click",
 		icon : "phone",
-		iconAddon : "user"
+		iconAddon : "user",
+		iconType : 'vector'
 	}).addEventListener("click", () => {
 		console.log("click on 2");
 		modal.hide();

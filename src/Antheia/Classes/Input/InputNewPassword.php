@@ -1,7 +1,6 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
 use Antheia\Antheia\Classes\Exception;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 use Antheia\Antheia\Interfaces\BeforeAfterCallback;
 /**
@@ -163,7 +162,7 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 			'data-visible-element-id', $this->button->getHtmlId()
 		);
 		$this->button->setText($this->initialText);
-		$this->button->setIcon(IconVector::ICON_PASSWORD);
+		$this->button->setIcon('key-round');
 		$this->button->setOnClick('ant_inputNewPassword_start(this)');
 		$this->button->addAttribute('data-digits', $this->digits);
 		$this->button->addAttribute('data-label', $this->getLabelText());

@@ -7,13 +7,13 @@ use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
 use Antheia\Antheia\Classes\FixedButton\AbstractFixedButton;
 use Antheia\Antheia\Classes\Header\Header;
+use Antheia\Antheia\Classes\Header\Search\TopSearch;
 use Antheia\Antheia\Classes\Header\Tabs\HeaderTab;
 use Antheia\Antheia\Classes\Header\TopRightMenu\AbstractTopRightMenu;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Menu\Item\AbstractMenu;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Header\Search\TopSearch;
 /**
  * An empty page, with a menu. HtmlCode instances can be added to the class
  * @author Cosmin Staicu
@@ -206,7 +206,8 @@ class PageEmpty extends PageBlank {
 			'<button onClick="ant_appMenu_toggle()" type="button">'
 		);
 		$menuButton = new IconVector();
-		$menuButton->setIcon(IconVector::ICON_MENU);
+		$menuButton->setIcon('menu');
+		$menuButton->setSize(24);
 		$upperBar->addElement($menuButton);
 		$upperBar->addRawCode('<span>'.Texts::get('MENU').'</span></button>');
 		if ($this->topSearch !== NULL) {

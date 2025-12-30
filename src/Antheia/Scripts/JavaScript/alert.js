@@ -1,15 +1,15 @@
 /**
  * Defines an alert message with an ok button
  */
- class ant_alert {
-	/** @type {ant_modal} */
+ class AntheiaAlert {
+	/** @type {AntheiaModal} */
 	#modal;
 	/** @type {HTMLInputElement} */
 	#okButton;
 	/** @type {CallableFunction|null} */
 	#onClose;
 	constructor () {
-		this.#modal = new ant_modal();
+		this.#modal = new AntheiaModal();
 		this.#modal.setContent('---');
 		this.#okButton = document.createElement("INPUT");
 		this.#okButton.type = "button";
@@ -18,6 +18,7 @@
 		this.#okButton.onclick = () => {
 			this.#modal.hide();
 		}
+		ant_utils_injectTestAttribute(this.#okButton, 'ant_alert_okButton');
 		this.#modal.setOnClose(() => {
 			if (this.#onClose !== null) {
 				this.#onClose();
@@ -52,6 +53,13 @@
 		this.#onClose = callback;
 	}
 	/**
+	 * Returns the modal used to display the alert
+	 * @returns {AntheiaModal} the modal used to display the alert
+	 */
+	getModal() {
+		return this.#modal;
+	}
+	/**
 	 * Shows the confirmation modal
 	 */
 	show() {
@@ -65,11 +73,16 @@
 	 * presses the ok button or the entire modal is closed
 	 */
 	static quickError(infoText, onClose) {
-		let alertModal = new ant_alert();
+		let alertModal = new AntheiaAlert();
 		alertModal.setText(infoText);
+		alertModal.getModal().setIcon('triangle-alert');
 		if (onClose !== undefined) {
 			alertModal.setOnClose(onClose);
 		}
+		ant_utils_injectTestAttribute(
+			alertModal.getModal().getPanel(),
+			'ant_alert_errorModal'
+		);
 		alertModal.show();
 	}
 	/**
@@ -79,11 +92,15 @@
 	 * presses the ok button or the entire modal is closed
 	 */
 	static quickInfo(infoText, onClose) {
-		let alertModal = new ant_alert();
+		let alertModal = new AntheiaAlert();
 		alertModal.setText(infoText);
 		if (onClose !== undefined) {
 			alertModal.setOnClose(onClose);
 		}
+		ant_utils_injectTestAttribute(
+			alertModal.getModal().getPanel(),
+			'ant_alert_infoModal'
+		);
 		alertModal.show();
 	}
 }

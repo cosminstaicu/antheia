@@ -1,7 +1,7 @@
 /**
  * Defines a modal that can be added to the document
  */
-class ant_modal {
+class AntheiaModal {
 	/** @type {HTMLDivElement} */
 	#content;
 	/** @type {HTMLDivElement|null} */
@@ -18,9 +18,12 @@ class ant_modal {
 	#onClose;
 	/** @type {HTMLDivElement} */
 	#panel;
+	/** @type {HTMLDivElement} */
+	#icon;
 	constructor () {
 		this.#htmlElement = document.createElement("DIV");
 		this.#htmlElement.classList.add('ant_modal');
+		ant_utils_injectTestAttribute(this.#htmlElement, 'ant_modal');
 		switch (ant_theme_backdrop) {
 			case "simple":
 				this.#htmlElement.classList.remove("ant-blur");
@@ -44,6 +47,7 @@ class ant_modal {
 		});
 		this.#header = null;
 		this.setHeaderAlign('left');
+		this.#icon = null;	
 		this.#content = document.createElement("DIV");
 		this.#content.classList.add("ant_modal-content");
 		this.#panel.append(this.#content);	
@@ -62,6 +66,56 @@ class ant_modal {
 		element.classList.remove('ant-center');
 		element.classList.remove('ant-right');
 		element.classList.add('ant-' + align);
+	}
+	/**
+	 * Defines the html id for the visible panel (the visible modal)
+	 * @param {String|null} htmlId the html id for the panel or NULL if no html id
+	 * is required 
+	 */
+	setPanelId(htmlId) {
+		if (htmlId === null) {
+			this.#panel.removeAttribute('id');
+		} else {
+			this.#panel.id = htmlId;
+		}
+	}
+	/**
+	 * Returns the panel containing the modal visible content
+	 * @returns {HTMLDivElement} the panel containing the visible content
+	 */
+	getPanel() {
+		return this.#panel;
+	}
+	/**
+	 * Defines the name of the svg icon to be shown on the left side of the modal
+	 * @param {?String} iconName the name of the svg icon to be shown on the left
+	 * side of the modal or NULL if no icon should be shown.
+	 * The available icons are stored in the zip file, inside the Media/Icons/Vector
+	 */
+	setIcon(iconName) {
+		if (iconName === null) {
+			// the current icon should be remove, if it exists
+			if (this.#icon !== null) {
+				this.#icon.remove();
+			}
+			this.#icon = null;
+			this.#panel.classList.remove('has-icon-attached');
+			return false;
+		}
+		// the icon must exists
+		if (this.#icon === null) {
+			this.#icon = document.createElement("DIV");
+			this.#icon.classList.add("ant_modal-icon");
+			this.#panel.append(this.#icon);
+			this.#panel.classList.add('has-icon-attached');
+		}
+		ant_utils_getSvgIcon(iconName).then((svgContent) => {
+			this.#icon.innerHTML = '<svg preserveAspectRatio="xMidYMid meet" '
+				+ 'viewBox="0 0 24 24" width="80" height="80">'
+				+ svgContent + '</svg>';
+		}).catch((error) => {
+			throw error;
+		});
 	}
 	/**
 	 * Sets the html code for the header of the modal

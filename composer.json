@@ -8,6 +8,14 @@
 			"Antheia\\Antheia\\" : "src/Antheia"
 		}
 	},
+	"archive" : {
+		"exclude" : [
+			"/tests",
+			"/package.json",
+			"/package-lock.json",
+			"/playwright.config.ts"
+		]
+	},
 	"authors" : [{
 			"name" : "Cosmin Staicu",
 			"email" : "cosminstaicu@gmail.com",

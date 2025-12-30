@@ -9,6 +9,14 @@ use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
 use Antheia\Antheia\Classes\Page\AbstractPage;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
+// setting an exception handler to send a 500 http status on exceptions
+set_exception_handler(function ($exception) {
+	if (!headers_sent()) {
+		http_response_code(500);
+	}
+	throw $exception;
+});
 $autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
 	.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {
@@ -28,7 +36,7 @@ if (!is_file($autoloadFile)) {
 	);
 }
 /**
- * The function configures a page, injecting all the commom elements, like
+ * The function configures a page, injecting all the common elements, like
  * menus, buttons etc
  * @param AbstractPage $page the page to be configured
  */
@@ -37,6 +45,7 @@ function init_configurePage(AbstractPage $page):void {
 	Globals::setLogo('../_utils/logo.svg');
 	//******************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
+	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');
 	//******************************************************** TOP RIGHT OPTIONS
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();
@@ -60,48 +69,49 @@ function init_configurePage(AbstractPage $page):void {
 	$menu = new AppMenuPrimary();
 	$menu->setText('Look and feel');
 	$menu->setHref('../lookAndFeel');
-	$menu->setIcon('page');
+	$menu->setIconName('page');
+	$menu->getIcon()->setBottomRightIcon('accept');
 	$page->addNavigationMenu($menu);
 	// positioning elements responsive
 	$menu = new AppMenuPrimary();
 	$menu->setText('Wireframes');
 	$menu->setHref('../wireframe');
-	$menu->setIcon('layouts_4');
+	$menu->setIconName('layouts_4');
 	$page->addNavigationMenu($menu);
 	// panels
 	$menu = new AppMenuPrimary();
 	$menu->setText('Panels');
 	$menu->setHref('../panels');
-	$menu->setIcon('new_window');
+	$menu->setIconName('new_window');
 	$page->addNavigationMenu($menu);
 	// forms
 	$menu = new AppMenuPrimary();
 	$menu->setText('Form');
 	$menu->setHref('../forms');
-	$menu->setIcon('application_form');
+	$menu->setIconName('application_form');
 	$page->addNavigationMenu($menu);
 	// tables
 	$menu = new AppMenuPrimary();
 	$menu->setText('Tables');
 	$menu->setHref('../tables');
-	$menu->setIcon('table');
+	$menu->setIconName('table');
 	$page->addNavigationMenu($menu);
 	// searches (with 2 submenus)
 	$menu = new AppMenuPrimary();
 	$menu->setText('Search');
-	$menu->setIcon('magnifier');
+	$menu->setIconName('user', AbstractIcon::VECTOR);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('search_field');
+	$submenu->setIconName('search_field');
 	$submenu->setText('Start');
 	$submenu->setHref('../search');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('text_list_bullets');
+	$submenu->setIconName('text_list_bullets');
 	$submenu->setText('Results');
 	$submenu->setHref('../search/results.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('search_field');
+	$submenu->setIconName('search_field');
 	$submenu->setText('Global search');
 	$submenu->setHref('../search/topBarSearch.php');
 	$menu->addSubmenu($submenu);
@@ -110,73 +120,73 @@ function init_configurePage(AbstractPage $page):void {
 	$menu = new AppMenuPrimary();
 	$menu->setText('Message');
 	$menu->setHref('../message');
-	$menu->setIcon('calendar_view_day');
+	$menu->setIconName('calendar_view_day');
 	$page->addNavigationMenu($menu);
 	// confirmation messages
 	$menu = new AppMenuPrimary();
 	$menu->setText('Confirm messages');
 	$menu->setHref('../confirmation');
-	$menu->setIcon('tooltip');
+	$menu->setIconName('tooltip');
 	$page->addNavigationMenu($menu);
 	// loading animations
 	$menu = new AppMenuPrimary();
 	$menu->setText('Loading');
 	$menu->setHref('../loadingAnimation');
-	$menu->setIcon('clock_select_remain');
+	$menu->setIconName('clock_select_remain');
 	$page->addNavigationMenu($menu);
 	// tabs
 	$menu = new AppMenuPrimary();
 	$menu->setText('Tabs');
 	$menu->setHref('../tabs');
-	$menu->setIcon('tab');
+	$menu->setIconName('tab');
 	$page->addNavigationMenu($menu);
 	// modal
 	$menu = new AppMenuPrimary();
 	$menu->setText('Modal');
 	$menu->setHref('../modal');
-	$menu->setIcon('new_data');
+	$menu->setIconName('new_data');
 	$page->addNavigationMenu($menu);
 	// themes
 	$menu = new AppMenuPrimary();
 	$menu->setText('Themes');
-	$menu->setIcon('color_wheel');
+	$menu->setIconName('color_wheel');
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Default');
 	$submenu->setHref('../themes/default.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Dark aesthetics');
 	$submenu->setHref('../themes/darkAesthetics.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Dusk');
 	$submenu->setHref('../themes/dusk.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('The Raven');
 	$submenu->setHref('../themes/theRaven.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Retro Orange Gray');
 	$submenu->setHref('../themes/retroOrangeGray.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Soft Warm');
 	$submenu->setHref('../themes/softWarm.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Warm Rustic');
 	$submenu->setHref('../themes/warmRustic.php');
 	$menu->addSubmenu($submenu);
 	$submenu = new AppMenuSecondary();
-	$submenu->setIcon('color_swatches');
+	$submenu->setIconName('color_swatches');
 	$submenu->setText('Custom');
 	$submenu->setHref('../themes/custom.php');
 	$menu->addSubmenu($submenu);

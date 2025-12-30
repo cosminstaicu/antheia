@@ -2,7 +2,7 @@
 namespace Antheia\Antheia\Interfaces;
 /**
  * Defines the methods used in classes defining vector based icons, like
- * Matrial Icons.
+ * Material Icons.
  * @author Cosmin Staicu
  */
 interface Icon extends HtmlCode {

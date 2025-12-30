@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Input\Raw;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
@@ -22,15 +23,18 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $icon;
 	private $onClick;
 	private $htmlId;
+	private $testId;
 	private $attributes;
 	private $hiddenInput;
 	private $hiddenInputExport;
 	public function __construct() {
 		parent::__construct();
 		$this->icon = new IconVector();
+		$this->icon->setSize(24);
 		$this->setText('');
 		$this->setOnClick('');
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->attributes = [];
 		$this->hiddenInput = new InputRawHidden();
 		$this->hiddenInputExport = true;
@@ -50,6 +54,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Calling the method will instruct the instance to export the button
@@ -114,10 +121,11 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Defines the icon to be displayed on the right side of the button
-	 * @param integer $icon the icon to be displayed on the right side
-	 * of the button, as a constant like IconVector::ICON_##
+	 * @param string $icon the name of the icon to be displayed on the right side
+	 * of the button
+	 * @see IconVector::setIcon()
 	 */
-	public function setIcon(int $icon):void {
+	public function setIcon(string $icon):void {
 		$this->icon->setIcon($icon);
 	}
 	public function getHtml():string {
@@ -128,9 +136,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$code .= '<input type="button" class="ant_form-button"'
 				.' value="'.htmlspecialchars($this->text)
 				.'" onClick="'.$this->onClick.'"';
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		foreach ($this->attributes as $atribut) {
 			$code .= ' '.$atribut['name'].'="'.$atribut['value'].'"';
 		}

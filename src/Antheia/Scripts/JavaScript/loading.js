@@ -2,7 +2,7 @@
  * A loading step, that includes a progress bar.
  * A loading screen can have multiple steps.
  */
-class ant_loading_step {
+class AntheiaLoadingStep {
 	/** @type {HTMLTableCellElement} */
 	#iconCell;
 	/** @type {HTMLTableCellElement} */
@@ -20,24 +20,24 @@ class ant_loading_step {
 	constructor () {
 		this.#row = document.createElement("tr");
 		this.#iconCell = document.createElement("td");
+		this.#iconCell.innerHTML = '<div class="ant_loading_stepPlaceholder"></div>';
 		this.#row.appendChild(this.#iconCell);
 		this.#labelCell = document.createElement("td");
 		this.#row.appendChild(this.#labelCell);
 		this.#statusCell = document.createElement("td");
 		this.#row.appendChild(this.#statusCell);
-		this.setIcon("info");
 		this.setLabel("---");
 		this.setProgress(null);
-		if (ant_loading_step.loadingContainer === null) {
-			ant_loading_step.loadingContainer = document.createElement("div");
+		if (AntheiaLoadingStep.loadingContainer === null) {
+			AntheiaLoadingStep.loadingContainer = document.createElement("div");
 			// adding the steps container
-			ant_loading_step.stepsContainer = document.createElement("table");
-			ant_loading_step.loadingContainer.appendChild(ant_loading_step.stepsContainer);
+			AntheiaLoadingStep.stepsContainer = document.createElement("table");
+			AntheiaLoadingStep.loadingContainer.appendChild(AntheiaLoadingStep.stepsContainer);
 			// adding the cancel button container
-			ant_loading_step.cancelButtonContainer = document.createElement("div");
-			ant_loading_step.loadingContainer.appendChild(ant_loading_step.cancelButtonContainer);
+			AntheiaLoadingStep.cancelButtonContainer = document.createElement("div");
+			AntheiaLoadingStep.loadingContainer.appendChild(AntheiaLoadingStep.cancelButtonContainer);
 		}
-		ant_loading_step.stepsContainer.appendChild(this.#row);
+		AntheiaLoadingStep.stepsContainer.appendChild(this.#row);
 	}
 	/**
 	 * Resets (removes) all existing steps from memory. The method will not
@@ -62,7 +62,7 @@ class ant_loading_step {
 		if (buttonData === undefined) {
 			buttonData = null;
 		}
-		ant_loading_step.cancelButtonContainer.innerHTML = '';
+		AntheiaLoadingStep.cancelButtonContainer.innerHTML = '';
 		if (buttonData === null) {
 			return;
 		}
@@ -77,7 +77,7 @@ class ant_loading_step {
 		cancelButton.addEventListener("click", () => {
 			window[buttonData.function]();
 		});
-		ant_loading_step.cancelButtonContainer.appendChild(cancelButton);
+		AntheiaLoadingStep.cancelButtonContainer.appendChild(cancelButton);
 	}
 	/**
 	 * Defines the label of the step
@@ -111,21 +111,21 @@ class ant_loading_step {
 		switch (percent) {
 			case null:
 				// the step is waiting to be started
-				icon = "schedule";
+				icon = "clock";
 				background = "var(--ant-theme-loadingProgressRight)";
 				cssClass = 'ant-waiting';
 				this.#labelCell.removeAttribute("title");
 				break;
 			case 100:
 				// the step is completed
-				icon = "done";
+				icon = "check";
 				background = "var(--ant-theme-loadingProgressLeft)";
 				cssClass = 'ant-completed';
 				this.#labelCell.removeAttribute("title");
 				break;
 			default:
 				// the step is in progress
-				icon = "hourglass_empty";
+				icon = "hourglass";
 				background = "linear-gradient(to right, var(--ant-theme-loadingProgressLeft) " 
 					+ percent + "%, var(--ant-theme-loadingProgressRight) " + percent + "%)";
 				cssClass = 'ant-running';
@@ -135,8 +135,19 @@ class ant_loading_step {
 		this.#row.classList.remove("ant-waiting");
 		this.#row.classList.remove("ant-running");
 		this.#row.classList.remove("ant-completed");
-		this.#statusCell.innerHTML = '<i class="material-icons" '
-			+'style="font-size: var(--ant_var-rem24px)">' + icon + '</i>';
+		if (ant_utils_getCachedSvgIcon(icon) !== null) {
+			// the svg content is already in cache
+			this.#statusCell.innerHTML = ant_utils_getCachedSvgIcon(icon);
+		} else {
+			// first a placeholder will be inserted
+			this.#statusCell.innerHTML = '<div class="ant_loading_stepPlaceholder"></div>';
+			// then the content will be requested from the cache
+			ant_utils_getSvgIcon(icon).then((svgContent) => {
+				this.#statusCell.innerHTML = svgContent;
+			}).catch((error) => {
+				throw error;
+			});
+		}	
 		this.#row.classList.add(cssClass);
 	}
 	/**
@@ -151,11 +162,23 @@ class ant_loading_step {
 	}
 	/**
 	 * Defines the icon of the step, displayed near the step label
-	 * @param {String} icon the name of the icon, as a material icon value
+	 * @param {String} iconName the name of the icon, (a svg file, without the
+	 * extension, from the Media/Icons/Vector/icons.zip file)
 	 */
-	setIcon(icon) {
-		this.#iconCell.innerHTML = '<i class="material-icons" '
-			+'style="font-size: var(--ant_var-rem24px)">' + icon + '</i>';
+	setIcon(iconName) {
+		if (ant_utils_getCachedSvgIcon(iconName) !== null) {
+			// the svg content is already in cache
+			this.#iconCell.innerHTML = ant_utils_getCachedSvgIcon(iconName);
+		} else {
+			// first a placeholder will be inserted
+			this.#iconCell.innerHTML = '<div class="ant_loading_stepPlaceholder"></div>';
+			// then the content will be requested from the cache
+			ant_utils_getSvgIcon(iconName).then((svgContent) => {
+				this.#iconCell.innerHTML = svgContent;
+			}).catch((error) => {
+				throw error;
+			});
+		}	
 	}
 }
 /**
@@ -184,7 +207,7 @@ function ant_loading_start(formMode) {
 			break;
 		default:
 	}
-	if (ant_loading_step.loadingContainer === null) {
+	if (AntheiaLoadingStep.loadingContainer === null) {
 		// plain animation, with no steps
 		element.classList.add("ant-simple");
 		if (formMode) {
@@ -193,7 +216,7 @@ function ant_loading_start(formMode) {
 	} else {
 		// animation with steps
 		element.classList.remove("ant-simple");
-		element.appendChild(ant_loading_step.loadingContainer);
+		element.appendChild(AntheiaLoadingStep.loadingContainer);
 	}
 }
 /**

@@ -4,11 +4,7 @@ use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Form;
 use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
-use Antheia\Antheia\Classes\Input\InputCheckbox;
-use Antheia\Antheia\Classes\Input\InputPassword;
-use Antheia\Antheia\Classes\Input\InputSubmit;
-use Antheia\Antheia\Classes\Input\InputText;
+use Antheia\Antheia\Classes\Input\NewInput;
 /**
  * A page for entering credentials, to login to an app
  * @author Cosmin Staicu
@@ -67,20 +63,20 @@ class PageLogin extends AbstractPageLogin {
 		}
 		function formValidation() {
 			if (!usernameValid()) {
-				ant_alert.quickError("'.Texts::get('USERNAME_3_CHARACTERS').'", () => {
+				AntheiaAlert.quickError("'.Texts::get('USERNAME_3_CHARACTERS').'", () => {
 					document.getElementById("username").focus();
 				});
 				return false;
 			}
 			if (!passwordValid()) {
-				ant_alert.quickError("'.Texts::get('PASSWORD_3_CHARACTERS').'", () => {
+				AntheiaAlert.quickError("'.Texts::get('PASSWORD_3_CHARACTERS').'", () => {
 					document.getElementById("password").focus();
 				});
 				return false;
 			}
 			if (document.getElementById("ant_recaptha-answer") !== null) {
 				if (document.getElementById("ant_recaptha-answer").value === "") {
-					ant_alert.quickError("Recaptcha error");
+					AntheiaAlert.quickError("Recaptcha error");
 					return false;
 				}
 			}
@@ -101,15 +97,15 @@ class PageLogin extends AbstractPageLogin {
 		$form->setAction($this->url);
 		$form->setOnSubmit('formValidation();');
 		// username
-		$username = new InputText();
+		$username = NewInput::text();
 		$username->addAttribute('autocomplete', 'username');
-		$username->setIcon(IconVector::ICON_USER);
+		$username->setIcon('user');
 		$username->setNameId('username');
 		$username->setLabel(Texts::get('USERNAME'));
 		$username->setPlaceholder('username');
 		$form->addElement($username);
-		// parola
-		$password = new InputPassword();
+		// password
+		$password = NewInput::password();
 		$password->addAttribute('autocomplete', 'current-password');
 		$password->setPlaceholder(Texts::getLc('PASSWORD'));
 		$password->setNameId('password');
@@ -122,15 +118,15 @@ class PageLogin extends AbstractPageLogin {
 		}
 		$actionDiv->addRawCode('>');
 		if ($this->rememberLogin) {
-			$remember = new InputCheckbox();
+			$remember = NewInput::checkbox();
 			$remember->setNameId('autologin');
 			$remember->setValue('ok');
 			$remember->setLabel(Texts::get('REMEMBER_LOGIN'));
 			$remember->setChecked();
 			$actionDiv->addElement($remember);
 		}
-		// buton submit
-		$submit = new InputSubmit();
+		// submit button
+		$submit = NewInput::submit();
 		$submit->setHtmlId('ant_login-submit');
 		$submit->setValue(Texts::get('LOGIN'));
 		$actionDiv->addElement($submit);

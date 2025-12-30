@@ -7,7 +7,7 @@
 body.ant-has-fixed-buttons #ant_content {
 	margin-bottom: 100px;
 }
-div#ant_content-debug {
+div#ant_content-debugTest {
 	position: fixed;
 	background-color: white;
 	color: black;

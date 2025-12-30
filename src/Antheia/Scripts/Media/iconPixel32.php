@@ -1,12 +1,16 @@
 <?php
 namespace Antheia\Antheia\Scripts\Media;
 use Antheia\Antheia\Classes\Icon\IconPixelBig;
-use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Globals;
+include __DIR__.'/../../Interfaces/HtmlCode.php';
+include __DIR__.'/../../Interfaces/HtmlId.php';
+include __DIR__.'/../../Interfaces/HtmlAttribute.php';
+include __DIR__.'/../../Interfaces/HtmlClass.php';
 include __DIR__.'/../../Classes/Exception.php';
 include __DIR__.'/../../Classes/Globals.php';
 include __DIR__.'/../../Classes/Internals.php';
-include __DIR__.'/../../Classes/Icon/AbstractPixelIcon.php';
+include __DIR__.'/../../Classes/Icon/AbstractIcon.php';
+include __DIR__.'/../../Classes/Icon/AbstractIconPixel.php';
 include __DIR__.'/../../Classes/Icon/IconPixelBig.php';
 /**
  * @var string $cachePath the path of the cache folder, defined inside
@@ -14,16 +18,24 @@ include __DIR__.'/../../Classes/Icon/IconPixelBig.php';
  */
 Globals::setCache('', $cachePath);
 if (!isset($_GET['i'])) {
-	throw new Exception('Missing parameter');
+	http_response_code(400);
+	echo 'Missing parameter';
+	exit;
+}
+if (!IconPixelBig::imageExists($_GET['i'])) {
+	http_response_code(400);
+	echo 'Image not found';
+	exit();
 }
 $addon = '';
 if (isset($_GET['a'])) {
 	$addon = $_GET['a'];
 }
 $icon = new IconPixelBig($_GET['i'], $addon);
-$absolutePath = $cachePath.$icon->getUrl();
+$absolutePath = $cachePath.substr($icon->getUrl(), 1);
 header("Content-type: image/png");
-header('Expires: 0');
-header('Content-Length: ' . filesize($absolutePath));
+header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT');
+header('Cache-Control: public, max-age=31536000, immutable');
 readfile($absolutePath);
+
 ?>

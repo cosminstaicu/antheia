@@ -1,7 +1,12 @@
 <?php
 namespace Antheia\Antheia\Classes\AppMenu;
 use Antheia\Antheia\Classes\AbstractClass;
+use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Internals;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\Icon\IconPixelBig;
+use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
 /**
@@ -10,22 +15,28 @@ use Antheia\Antheia\Interfaces\HtmlId;
  * @author Cosmin Staicu
  */
 class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
+	/** @var AbstractIcon */
 	private $icon;
 	private $text;
 	private $href;
 	private $submenus;
 	private $startLoadingAnimation;
 	private $htmlId;
+	private $testId;
 	public function __construct() {
-		$this->icon = new IconPixelBig('default');
+		$this->icon = new IconPixelBig();
 		$this->text = 'undefined';
 		$this->setHref('#');
 		$this->submenus = [];
-		$this->startLoadingAnimation = true;
+		$this->startLoadingAnimation = Globals::getAppMenuLoadingAnimation();
 		$this->htmlId = '';
+		$this->testId = '';
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
+	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
 	}
 	/**
 	 * Defines if a loading animation will be triggered when the user clicks
@@ -68,17 +79,41 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Defines the icon for the menu.
-	 * @param string $icon the icon for the menu (the name of the png icon
-	 * located in the 32x32 folder
+	 * @param AbstractIcon $icon the icon for the menu
 	 */
-	public function setIcon(string $icon):void {
-		$this->icon->setIcon($icon);
+	public function setIcon(AbstractIcon $icon):void {
+		$this->icon = $icon;
+	}
+	/**
+	 * Defines the name of the icon for the menu (and, optionally, the icon type)
+	 * @param string $name the name of the icon for the menu (the filename of
+	 * the symbol, inside the zip file located in the media folder)
+	 * @param string [$type=NULL] the type of the icon, as one of the variables
+	 * AbstractIcon::PIXEL or AbstractIcon::VECTOR. If no type is provided then
+	 * the current icon instance is used (default AbstractIcon::PIXEL).
+	 * If type is provided then a new instance for the icon will be created
+	 */
+	public function setIconName(string $name, string $type = NULL) {
+		if ($type !== NULL) {
+			switch ($type) {
+				case AbstractIcon::PIXEL:
+					$this->setIcon(new IconPixelBig($name));
+					break;
+				case AbstractIcon::VECTOR:
+					$this->setIcon(new IconVector($name));
+					break;
+				default:
+					throw new Exception('Invalid type '.$type);
+			}
+		} else {
+			$this->icon->setIcon($name);
+		}
 	}
 	/**
 	 * Returns the icon linked to the menu (placed on the left side of the menu)
-	 * @return IconPixelBig the icon linked to the menu
+	 * @return AbstractIcon the icon linked to the menu
 	 */
-	public function getIcon():IconPixelBig {
+	public function getIcon() {
 		return $this->icon;
 	}
 	/**
@@ -95,9 +130,7 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 		} else {
 			$code .= '<button type="button"';
 		}
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if (count($this->submenus) === 0) {
 			if ($this->startLoadingAnimation) {
 				$code .= ' onClick="ant_loading_start()"';
@@ -105,10 +138,7 @@ class AppMenuPrimary extends AbstractClass implements HtmlCode, HtmlId {
 		} else {
 			$code .= ' onClick="ant_appMenu_toggleSubmenu(this)"';
 		}
-		$code .= '><img src="'.$this->icon->getUrl()
-			.'" width="32" height="32" alt="'
-			.htmlspecialchars($this->text).'"> '
-			.htmlspecialchars($this->text);
+		$code .= '>'.$this->icon->getHtml($this->text).' '.htmlspecialchars($this->text);
 		if (count($this->submenus) === 0) {
 			$code .= '</a>';
 		} else {

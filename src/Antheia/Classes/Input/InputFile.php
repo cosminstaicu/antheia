@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Classes\Input;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
-use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCustomButton;
 /**
  * An input for selecting a file
@@ -17,7 +17,7 @@ class InputFile extends AbstractInput {
 		$this->extensionList = [];
 		$this->button = new InputRawCustomButton();
 		$this->button->setText(Texts::get('SELECT_A_FILE'));
-		$this->button->setIcon(IconVector::ICON_FILE);
+		$this->button->setIcon('file-check');
 		$this->button->setOnClick('ant_inputFile_start(this)');
 		$this->button->disableHiddenInputExport();
 		self::setUniqueHtmlId($this->button);
@@ -54,13 +54,11 @@ class InputFile extends AbstractInput {
 	/**
 	 * Returns the html code used for the hidden file input used by the input.
 	 * Probably the end user will not use this method
-	 * @return string the html code used for the hidden file input used by the input
+	 * @return string the html code used for the hidden file input
 	 */
 	public function getHtmlHiddenFileInput():string {
 		$code = '<input type="file" name="'.$this->getName().'"';
-		if ($this->getHtmlId() !== '') {
-			$code .= 'id="'.$this->getHtmlId().'"';
-		}
+		$code .= Internals::getHtmlIdCode($this->getHtmlId(), $this->getTestId());
 		if (count($this->extensionList) > 0) {
 			$code .= ' accept="'.implode(',', $this->extensionList).'" ';
 		}

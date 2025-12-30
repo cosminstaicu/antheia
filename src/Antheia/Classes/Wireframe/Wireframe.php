@@ -6,6 +6,7 @@ use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Classes\Internals;
 /**
  * A responsive wireframe with a responsive design. The wireframe has no
  * visible borders or background colors and it is used for holding elements,
@@ -22,6 +23,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	private $rows;
 	private $type;
 	private $htmlId;
+	private $testId;
 	private $align;
 	private $classes;
 	private $attributes;
@@ -30,6 +32,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->rows = [];
 		$this->setType(self::TYPE_FLUID);
 		$this->htmlId = '';
+		$this->testId = '';
 		$this->align = self::ALIGN_LEFT;
 		$this->classes = ['ant_wireframe'];
 		$this->attributes = [];
@@ -59,6 +62,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
 	}
+	public function setTestId(string $id):void {
+		$this->testId = $id;
+	}
 	/**
 	 * Defines the type of wireframe. It can be either fixed (a fixed size, based
 	 * on the viewport width) or fluid (full width of the available space)
@@ -85,9 +91,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	public function getHtml():string {
 		$code = '<div ';
-		if ($this->htmlId !== '') {
-			$code .= ' id="'.$this->htmlId.'" ';
-		}
+		$code .= Internals::getHtmlIdCode($this->htmlId, $this->testId);
 		if ($this->type === self::TYPE_FLUID) {
 			$this->addClass('ant-fluid');
 		}
