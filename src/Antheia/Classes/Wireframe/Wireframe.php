@@ -2,11 +2,11 @@
 namespace Antheia\Antheia\Classes\Wireframe;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Interfaces\HtmlAttribute;
 use Antheia\Antheia\Interfaces\HtmlCode;
 use Antheia\Antheia\Interfaces\HtmlId;
-use Antheia\Antheia\Classes\Internals;
 /**
  * A responsive wireframe with a responsive design. The wireframe has no
  * visible borders or background colors and it is used for holding elements,

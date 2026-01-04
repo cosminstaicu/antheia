@@ -67,7 +67,7 @@ body.ant_topBarFixed > #ant_topBar {
 }
 #ant_topBar > form > svg {
 	position: absolute;
-	top: 5px;
+	top: 6px;
 	right: 10px;
 	color: var(--ant-theme-inputIcon);
 	pointer-events: none;

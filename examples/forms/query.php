@@ -1,6 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseList;
 use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseItem;
+use Antheia\Antheia\Classes\Input\SearchResponse\SearchResponseList;
 /**
  * This script will not be accessed directly by the user. The script is 
  * automatically requested by the browser when the user is filling the "search"

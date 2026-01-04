@@ -1,20 +1,18 @@
 <?php
 use Antheia\Antheia\Classes\Globals;
 use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
 use Antheia\Antheia\Classes\Icon\AbstractIcon;
-use Antheia\Antheia\Classes\Page\AbstractPage;
-use Antheia\Antheia\Classes\Page\PageSearchResult;
-use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\InlineButton\InlineButton;
-use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
-use Antheia\Antheia\Classes\Form;
-use Antheia\Antheia\Classes\Search\SearchForm;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Antheia\Classes\Page\PageSearchResult;
+use Antheia\Antheia\Classes\Search\SearchForm;
+use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
+use Antheia\Antheia\Classes\Search\SearchResult;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {
@@ -60,7 +58,7 @@ function init_configurePage(PageEmpty $page):void {
 	$exitMenu->setRender($exitMenu::LINK);
 	$page->addTopRightMenu($exitMenu);
 	// inserts some menus
-	// *************************************************************** login
+	// ******************************************************************* login
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Login');
@@ -75,43 +73,52 @@ function init_configurePage(PageEmpty $page):void {
 	$subMenu->setText('Login failed');
 	$subMenu->setHref('../loginFailed');
 	$subMenu->setIconName('exclamation');
-	// ********************************************************** empty page
+	// ****************************************************** readme  empty page
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
-	$menu->setText('Readme example');
-	$menu->setHref('../emptyPage');
+	$menu->setText('Readme empty');
+	$menu->setHref('../readmeEmptyPage');
 	$menu->setIconName('picture_empty');
-	// *************************************************************** start
+	// ******************************************************** readme test mode
+	$menu = new AppMenuPrimary();
+	$page->addNavigationMenu($menu);
+	$menu->setText('Readme test mode');
+	$menu->setHref('../readmeTestMode');
+	$icon = new IconPixelBig();
+	$icon->setIcon('picture_empty');
+	$icon->setBottomRightIcon('tick');
+	$menu->setIcon($icon);
+	// ******************************************************************* start
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Start testing');
 	$menu->setHref('../start');
 	$menu->setIconName('control_play');
-	// ******************************************************** confirmation
+	// ************************************************************ confirmation
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Confirmation');
 	$menu->setHref('../confirmation');
 	$menu->setIconName('infocard');
-	// **************************************************************** form
+	// ******************************************************************** form
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Forms');
 	$menu->setHref('../forms');
 	$menu->setIconName('form');
-	// *************************************************************** modal
+	// ******************************************************************* modal
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Modals');
 	$menu->setHref('../modals');
 	$menu->setIconName('app-window', AbstractIcon::VECTOR);
-	// ************************************************************** panels
+	// ****************************************************************** panels
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Panels');
 	$menu->setHref('../panels');
 	$menu->setIconName('form(2)');
-	// ************************************************************** search
+	// ****************************************************************** search
 	$menu = new AppMenuPrimary();
 	$menu->setText('Search');
 	$menu->setIconName('page');
@@ -139,13 +146,13 @@ function init_configurePage(PageEmpty $page):void {
 	$subMenu->setText('Table');
 	$subMenu->setHref('../searchResultTable');
 	$subMenu->setIconName('page');
-	// **************************************************************** tabs
+	// ******************************************************************** tabs
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Tabs');
 	$menu->setHref('../tabs');
 	$menu->setIconName('tab');
-	// *********************************************************** wireframe
+	// *************************************************************** wireframe
 	$menu = new AppMenuPrimary();
 	$page->addNavigationMenu($menu);
 	$menu->setText('Wireframe');

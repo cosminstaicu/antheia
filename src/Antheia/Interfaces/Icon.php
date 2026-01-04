@@ -1,8 +1,7 @@
 <?php
 namespace Antheia\Antheia\Interfaces;
 /**
- * Defines the methods used in classes defining vector based icons, like
- * Material Icons.
+ * Defines the methods used in classes defining vector based icons.
  * @author Cosmin Staicu
  */
 interface Icon extends HtmlCode {
@@ -14,8 +13,8 @@ interface Icon extends HtmlCode {
 	public function setSize(int $size):void;
 	/**
 	 * Defines the icon to be displayed
-	 * @param string $name the icon bo be displayed
-	 * (a constant lik IconVector::ICON_##)
+	 * @param string $name the icon to be displayed (the file name from the
+	 * icon zip file, inside the Media/Icons/Vector folder)
 	 */
 	public function setIcon(string $name):void;
 	/**

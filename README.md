@@ -1,7 +1,8 @@
 # Antheia
 A PHP library for building responsive, component-based web interfaces, designed for server-rendered web applications.
 
-> ⚠️ Antheia 2.x is a major release with breaking changes. Versions 1.x.x are no longer supported. Please review the changelog before upgrading.
+> ⚠️ Antheia 2.x is a major release with breaking changes. Versions 1.x.x are
+no longer supported. Please review the [changelog](CHANGELOG.md) before upgrading.
 
 ![GitHub](https://img.shields.io/github/license/cosminstaicu/antheia)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cosminstaicu/antheia?display_name=tag)
@@ -25,7 +26,7 @@ Use [composer](https://getcomposer.org) to install Antheia into your project:
 composer require antheia/antheia
 ```
 
-After installation, you must configure a cache folder for Antheia.
+After installation, you must configure a cache folder for Antheia before rendering any pages.
 
 The cache folder:
 - must be writable by the application
@@ -38,14 +39,17 @@ You can configure it at runtime using:
 Globals::setCache(string $url, string $path);
 ```
 
+The `$url` must point to the public URL of the cache directory,
+while `$path` must be the absolute filesystem path.
+
 Failing to configure the cache correctly will result in runtime errors.
 
 ## Quick Start
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use Antheia\Globals;
-use Antheia\Page\PageEmpty;
+use Antheia\Antheia\Globals;
+use Antheia\Antheia\Page\PageEmpty;
 // set up the cache folder
 Globals::setCache('/cache', __DIR__ . '/public/cache');
 // create a new empty page
@@ -54,7 +58,43 @@ $page = new PageEmpty();
 echo $page->getHtml();
 ```
 
+`PageEmpty` represents the minimal Antheia page layout without predefined components.
+
 This will render a minimal, empty Antheia page and output the generated HTML.
+
+## End to end testing
+
+Most HTML items can have a test attribute (with the default name `data-testid`)
+that will be output only when test mode is enabled. This is useful when the final
+product needs e2e testing (for example, with
+[Playwright](https://github.com/microsoft/playwright))
+
+This allows stable selectors for automated end-to-end tests without affecting production HTML output.
+
+```php
+require __DIR__ . '/vendor/autoload.php';
+use Antheia\Antheia\Globals;
+use Antheia\Antheia\Page\PageEmpty;
+use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
+// set up the cache folder
+Globals::setCache('/cache', __DIR__ . '/public/cache');
+// create a new empty page
+$page = new PageEmpty();
+// creates a menu on the top right side
+$option = new TopRightMenuUser();
+// defines the testid value
+$option->setTestId('topMenuUser');
+$option->setName('User name here');
+$option->setHref('#');
+$page->addTopRightMenu($option);
+// If Globals::setTestMode() is called then the HTML tag for
+// the menu will contain data-testid = "topMenuUser"
+// If the method is not called then the HTML tag will not
+// have the attribute
+Globals::setTestMode();
+// output the page content
+echo $page->getHtml();
+```
 
 ## Supported Versions
 
@@ -63,14 +103,16 @@ This will render a minimal, empty Antheia page and output the generated HTML.
 
 ## Documentation
 
-All PHP code is documented using the PHPDoc standard. Most IDEs can provide code completion and inline documentation (the library is developed using [Eclipse PDT](https://www.eclipse.org/pdt/)).
+All PHP code is documented using the PHPDoc standard. Most IDEs can provide code
+completion and inline documentation (the library is primarily developed using
+[Eclipse PDT](https://www.eclipse.org/pdt/)).
 
 JavaScript files are documented using the JSDoc standard.
 
 Examples located in the `examples` folder are explained in detail in the
 [project wiki](https://github.com/cosminstaicu/antheia/wiki).
 
-For upgrade notes and breaking changes introduced in 2.0.0, please refer to the changelog.
+For upgrade notes and breaking changes introduced in 2.0.0, refer to the changelog.
 
 ## Security
 
@@ -78,7 +120,7 @@ Please review our [Security Policy](SECURITY.md) for reporting vulnerabilities.
 
 ## Credits
 
-Icons used by the framework are provided freely by
+Icons used by the framework are provided by:
  - [IO Broker icons](https://github.com/ioBroker/ioBroker.icons-fatcow-hosting)
  - [Lucide Icons](https://github.com/lucide-icons/lucide)
 

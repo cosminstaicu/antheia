@@ -19,12 +19,14 @@ function ant_deleteConfirmation(element) {
 	inputText.type = "text";
 	inputText.name = "ant_delete_" + (new Date()).getTime();
 	inputText.value = "";
+	ant_utils_injectTestAttribute(inputText, 'ant_deleteConfirmationInput');
 	inputText.maxLength = 20;
 	modal.appendContent(inputText);
 	// submit button
 	let submit = document.createElement("input");
 	submit.type = "button";
 	submit.value = element.dataset.textButton;
+	ant_utils_injectTestAttribute(submit, 'ant_deleteConfirmationButton');
 	submit.onclick = () => {
 		let inputValue = inputText.value.toUpperCase();
 		if (inputValue !== element.dataset.textTemplate) {

@@ -10,6 +10,7 @@ class FixedButtonShoppingAdd extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('shopping-basket');
 		$this->setTitle(Texts::get('ADD_PRODUCT'));
+		$this->setTestId('fixed-button-shopping-add');
 	}
 }
 ?>

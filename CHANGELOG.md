@@ -7,8 +7,18 @@ This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [2.0.1] - YYYY-MM-DD
 
+### Added
+- Fixed buttons (`FixedButtonAdd`, `FixedButtonBack`, etc.) now expose
+test IDs by default to improve end-to-end testing.
+
 ### Changed
-- E2E tests have explicit permissions
+- End-to-end tests now define explicit permissions where required.
+
+### Fixed
+- The “delete all” button in search modals (search-type inputs) now renders correctly.
+- File drop animation for `inputFileDrop` form elements now works as expected.
+- Icons inside input HTML elements have been adjusted to a smaller, consistent size.
+- Ensured all files end with a trailing newline.
 
 ## [2.0.0] - 2025-12-30
 

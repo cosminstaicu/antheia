@@ -1,7 +1,4 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageSearch;
-use Antheia\Antheia\Classes\Input\InputText;
-use Antheia\Antheia\Classes\Input\InputSelect;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 require '../_utils/init.php';
 $page = new PageEmpty();

@@ -1,12 +1,12 @@
 <?php
+use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Menu\Item\MenuEdit;
+use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Table\Table;
-use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Table\TablePlain;
 use Antheia\Antheia\Classes\Table\Formatted\Cell;
 use Antheia\Antheia\Classes\Table\Formatted\Row;
-use Antheia\Antheia\Classes\Menu\Item\MenuEdit;
-use Antheia\Antheia\Classes\Table\TablePlain;
-use Antheia\Antheia\Classes\Menu\Item\NewMenu;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();

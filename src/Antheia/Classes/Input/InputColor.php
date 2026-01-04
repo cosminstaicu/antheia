@@ -61,7 +61,7 @@ class InputColor extends AbstractInput {
 		$code .= $this->getAttributesAsText();
 		$code .= '>';
 		$icon = new IconVector();
-		$icon->setSize(24);
+		$icon->setSize(20);
 		$icon->setIcon('palette');
 		$code .= $icon->getHtml();
 		parent::setHtmlCode($code);

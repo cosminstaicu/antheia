@@ -10,6 +10,7 @@ class FixedButtonAddInfo extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('file-plus-corner');
 		$this->setTitle(Texts::get('ADD_INFO'));
+		$this->setTestId('fixed-button-add-info');
 	}
 }
 ?>

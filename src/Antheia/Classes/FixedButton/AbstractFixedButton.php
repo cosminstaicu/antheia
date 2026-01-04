@@ -5,8 +5,8 @@ use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Interfaces\LinkButtonRender;
 use Antheia\Antheia\Interfaces\HtmlId;
+use Antheia\Antheia\Interfaces\LinkButtonRender;
 /**
  * Defines a fixed button to be displayed on the bottom-right side of the page
  * @author Cosmin Staicu

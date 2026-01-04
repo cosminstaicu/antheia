@@ -10,6 +10,7 @@ class FixedButtonBack extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('arrow-big-left');
 		$this->setTitle(Texts::get('BACK'));
+		$this->setTestId('fixed-button-back');
 	}
 }
 ?>

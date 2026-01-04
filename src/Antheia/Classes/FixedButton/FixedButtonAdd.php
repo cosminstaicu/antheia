@@ -10,6 +10,7 @@ class FixedButtonAdd extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('plus');
 		$this->setTitle(Texts::get('ADD'));
+		$this->setTestId('fixed-button-add');
 	}
 }
 ?>

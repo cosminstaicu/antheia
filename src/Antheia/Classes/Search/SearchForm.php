@@ -6,12 +6,12 @@ use Antheia\Antheia\Classes\Html;
 use Antheia\Antheia\Classes\Texts;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\AbstractInput;
+use Antheia\Antheia\Classes\Input\InputButton;
+use Antheia\Antheia\Classes\Input\InputSubmit;
 use Antheia\Antheia\Classes\Input\NewInput;
 use Antheia\Antheia\Classes\Panel\Panel;
 use Antheia\Antheia\Classes\Slide\SlidePanel;
 use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Input\InputButton;
-use Antheia\Antheia\Classes\Input\InputSubmit;
 /**
  * The class defines a form from a page that contains the results of a search.
  * The class displays the search filters, the sorting options and the pagination.

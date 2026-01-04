@@ -10,6 +10,7 @@ class FixedButtonBug extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('bug');
 		$this->setTitle(Texts::get('BUG'));
+		$this->setTestId('fixed-button-bug');
 	}
 }
 ?>
