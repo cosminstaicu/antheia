@@ -5,7 +5,7 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - YYYY-MM-DD
+## [2.0.1] - 05-01-2025
 
 ### Added
 - Fixed buttons (`FixedButtonAdd`, `FixedButtonBack`, etc.) now expose
