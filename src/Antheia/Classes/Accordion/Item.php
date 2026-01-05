@@ -2,10 +2,9 @@
 namespace Antheia\Antheia\Classes\Accordion;
 use Antheia\Antheia\Classes\AbstractClass;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Interfaces\HtmlCode;
-use Antheia\Antheia\Classes\Globals;
-use Antheia\Antheia\Classes\Internals;
 /**
  * The class defines an accordion item. The item can be clicked, to be expanded
  * and show some content
@@ -47,7 +46,7 @@ class Item extends AbstractClass implements HtmlCode {
 	 * Defines the html test id for the trigger (the button that toogles the content)
 	 * @param string $id the html test id for the trigger or an empty string
 	 * if no id is required
-	 * @see Globals::setTestMode();
+	 * @see \Antheia\Antheia\Classes\Globals::setTestMode();
 	 */
 	public function setTriggerHtmlTestId(string $id):void {
 		$this->triggerTestId = $id;
@@ -64,7 +63,7 @@ class Item extends AbstractClass implements HtmlCode {
 	 * Defines the html test id for the content
 	 * @param string $id the html test id for the content or an empty string
 	 * if no id is required
-	 * @see Globals::setTestMode();
+	 * @see \Antheia\Antheia\Classes\Globals::setTestMode();
 	 */
 	public function setContentHtmlTestId(string $id):void {
 		$this->contentTestId = $id;

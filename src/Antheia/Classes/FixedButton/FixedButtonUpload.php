@@ -10,6 +10,7 @@ class FixedButtonUpload extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('upload');
 		$this->setTitle(Texts::get('UPLOAD'));
+		$this->setTestId('fixed-button-upload');
 	}
 }
 ?>

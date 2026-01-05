@@ -86,7 +86,14 @@ function ant_inputSearch_start(element) {
 	ant_inputSearch_process.modal.appendContent(searchInput);
 	// the button for clearing the input
 	let clearInput = document.createElement("button");
-	clearInput.innerHTML = "<i class='material-icons'>backspace</i>";
+	clearInput.innerHTML = "&nbsp;";
+	ant_utils_getSvgIcon('delete').then((svgContent) => {
+		clearInput.innerHTML = '<svg preserveAspectRatio="xMidYMid meet" '
+			+ 'viewBox="0 0 24 24" width="24" height="24">'
+			+ svgContent + '</svg>';
+	}).catch((error) => {
+		throw error;
+	});
 	clearInput.addEventListener('click', () => {
 		searchInput.value = "";
 		updateResults();

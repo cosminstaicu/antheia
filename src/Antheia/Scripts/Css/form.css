@@ -41,7 +41,7 @@ p.ant_form-text-label {
 }
 .ant_form-item > svg {
 	position: absolute;
-	top: 6px;
+	top: 8px;
 	right: var(--ant_var-rem8px);
 	color: var(--ant-theme-inputIcon);
 	pointer-events: none;

@@ -63,6 +63,7 @@
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+	transition: 0.3s;
 }
 .ant_search-active-filter > button:hover {
 	color: var(--ant-theme-buttonBackgroundHover);

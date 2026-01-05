@@ -5,6 +5,21 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.1] - 05-01-2025
+
+### Added
+- Fixed buttons (`FixedButtonAdd`, `FixedButtonBack`, etc.) now expose
+test IDs by default to improve end-to-end testing.
+
+### Changed
+- End-to-end tests now define explicit permissions where required.
+
+### Fixed
+- The “delete all” button in search modals (search-type inputs) now renders correctly.
+- File drop animation for `inputFileDrop` form elements now works as expected.
+- Icons inside input HTML elements have been adjusted to a smaller, consistent size.
+- Ensured all files end with a trailing newline.
+
 ## [2.0.0] - 2025-12-30
 
 ### Breaking Changes

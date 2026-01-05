@@ -12,8 +12,8 @@ use Antheia\Antheia\Classes\Search\SearchResult;
 use Antheia\Antheia\Classes\Search\Views\SearchViewAccordion;
 use Antheia\Antheia\Classes\Search\Views\SearchViewCards;
 use Antheia\Antheia\Classes\Search\Views\SearchViewTable;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Classes\Wireframe\Cell;
+use Antheia\Antheia\Classes\Wireframe\Wireframe;
 use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * The template for a page that displays the search result, along with the

@@ -1,7 +1,7 @@
 <?php
 namespace Antheia\Antheia\Scripts\Media;
-use Antheia\Antheia\Classes\Icon\IconPixelBig;
 use Antheia\Antheia\Classes\Globals;
+use Antheia\Antheia\Classes\Icon\IconPixelBig;
 include __DIR__.'/../../Interfaces/HtmlCode.php';
 include __DIR__.'/../../Interfaces/HtmlId.php';
 include __DIR__.'/../../Interfaces/HtmlAttribute.php';
@@ -37,5 +37,4 @@ header("Content-type: image/png");
 header('Expires: ' . gmdate('D, d M Y H:i:s', time() + 31536000) . ' GMT');
 header('Cache-Control: public, max-age=31536000, immutable');
 readfile($absolutePath);
-
 ?>

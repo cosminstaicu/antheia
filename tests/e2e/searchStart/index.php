@@ -1,10 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Wireframe\Wireframe;
-use Antheia\Antheia\Classes\Panel\Panel;
-use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\Page\PageSearch;
 use Antheia\Antheia\Classes\Input\NewInput;
+use Antheia\Antheia\Classes\Page\PageSearch;
 require '../_utils/init.php';
 $page = new PageSearch();
 init_configurePage($page);

@@ -10,6 +10,7 @@ class FixedButtonUpdate extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('refresh-ccw');
 		$this->setTitle(Texts::get('REFRESH'));
+		$this->setTestId('fixed-button-update');
 	}
 }
 ?>

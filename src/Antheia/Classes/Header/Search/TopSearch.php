@@ -1,11 +1,11 @@
 <?php
 namespace Antheia\Antheia\Classes\Header\Search;
-use Antheia\Antheia\Interfaces\HtmlCode;
+use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Form;
 use Antheia\Antheia\Classes\Internals;
-use Antheia\Antheia\Classes\Input\AbstractInputText;
-use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Icon\IconVector;
+use Antheia\Antheia\Classes\Input\AbstractInputText;
+use Antheia\Antheia\Interfaces\HtmlCode;
 /**
  * Renders the search input placed on the top bar
  * @author Cosmin Staicu
@@ -227,7 +227,7 @@ class TopSearch implements HtmlCode {
 		$code .= '>';
 		$icon = new IconVector();
 		$icon->setIcon('search');
-		$icon->setSize(24);
+		$icon->setSize(20);
 		$code .= $icon->getHtml();
 		$code .= '</form>';
 		return $code;

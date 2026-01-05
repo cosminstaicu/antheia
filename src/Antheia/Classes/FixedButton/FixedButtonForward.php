@@ -10,6 +10,7 @@ class FixedButtonForward extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('arrow-big-right');
 		$this->setTitle(Texts::get('FORWARD'));
+		$this->setTestId('fixed-button-forward');
 	}
 }
 ?>

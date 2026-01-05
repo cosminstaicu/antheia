@@ -6,10 +6,10 @@ use Antheia\Antheia\Classes\AppMenu\AppMenuSecondary;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuHelp;
 use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Antheia\Classes\Icon\AbstractIcon;
 use Antheia\Antheia\Classes\Page\AbstractPage;
 use Antheia\Antheia\Classes\Page\PageEmpty;
 use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
-use Antheia\Antheia\Classes\Icon\AbstractIcon;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {
@@ -43,6 +43,7 @@ if (!is_file($autoloadFile)) {
 function init_configurePage(AbstractPage $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
+	Globals::setDebug();
 	//******************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');

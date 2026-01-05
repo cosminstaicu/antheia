@@ -5,8 +5,8 @@
  * server suggestions" input inside the form.php example
  */
 require '../_utils/init.php';
-use Antheia\Antheia\Classes\Input\SuggestionResponse\SuggestionList;
 use Antheia\Antheia\Classes\Exception;
+use Antheia\Antheia\Classes\Input\SuggestionResponse\SuggestionList;
 if (!isset($_POST['value'])) {
 	throw new Exception('Value is not set');
 }

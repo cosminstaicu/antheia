@@ -30,7 +30,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	public function __construct() {
 		parent::__construct();
 		$this->icon = new IconVector();
-		$this->icon->setSize(24);
+		$this->icon->setSize(20);
 		$this->setText('');
 		$this->setOnClick('');
 		$this->htmlId = '';

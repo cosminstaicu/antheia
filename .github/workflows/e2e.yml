@@ -1,5 +1,6 @@
 name: End-to-End Tests
-
+permissions:
+  contents: read
 on:
   push:
     branches: [ main, dev ]
@@ -8,7 +9,6 @@ on:
 jobs:
   e2e:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4

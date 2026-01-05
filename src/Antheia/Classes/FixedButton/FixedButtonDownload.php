@@ -10,6 +10,7 @@ class FixedButtonDownload extends AbstractFixedButton {
 		parent::__construct();
 		$this->setIcon('download');
 		$this->setTitle(Texts::get('DOWNLOAD'));
+		$this->setTestId('fixed-button-download');
 	}
 }
 ?>

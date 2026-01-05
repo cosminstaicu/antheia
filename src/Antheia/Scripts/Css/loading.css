@@ -69,7 +69,7 @@
 #ant_loading > div > table > tr > td:nth-of-type(2) {
 	width: 100%;
 }
-#ant_loading > div > table > tr.ant-completed > td:nth-of-type(3) > i.material-icons {
+#ant_loading > div > table > tr.ant-completed > td:nth-of-type(3) > svg {
 	color: var(--ant-theme-valid);
 }
 #ant_loading > div > div > button {

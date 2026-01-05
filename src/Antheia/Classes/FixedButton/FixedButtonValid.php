@@ -11,6 +11,7 @@ class FixedButtonValid extends AbstractFixedButton {
 		$this->setIcon('check');
 		$this->setTitle(Texts::get('SUBMIT'));
 		$this->addClass('ant-valid');
+		$this->setTestId('fixed-button-valid');
 	}
 }
 ?>

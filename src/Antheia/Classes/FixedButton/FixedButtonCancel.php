@@ -11,6 +11,7 @@ class FixedButtonCancel extends AbstractFixedButton {
 		$this->setIcon('x');
 		$this->setTitle(Texts::get('CANCEL'));
 		$this->addClass('ant-warning');
+		$this->setTestId('fixed-button-cancel');
 	}
 }
 ?>
