@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Search\Views;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Panel\Panel;
@@ -73,14 +74,15 @@ class SearchViewAccordion extends AbstractSearchView {
 				$onClick = ' onclick="'.$onClick.'"';
 			}
 			$buttonCode = '';
+			$idCode = Internals::getHtmlIdCode('', 'ant_searchResult'.$index);
 			switch ($result->getAccessRender()) {
 				case $result::LINK:
 					$buttonCode = '<a href="'.$result->getAccessHref()
-						.'"'.$title.$onClick.'>'
+						.'"'.$title.$onClick.$idCode.'>'
 						.$icon->getHtml().'</a>';
 					break;
 				case $result::BUTTON:
-					$buttonCode = '<button type="button" '.$title.$onClick.'>'
+					$buttonCode = '<button type="button" '.$title.$onClick.$idCode.'>'
 							.$icon->getHtml().'</button>';
 					break;
 				default:

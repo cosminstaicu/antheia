@@ -43,7 +43,8 @@ if (!is_file($autoloadFile)) {
 function init_configurePage(AbstractPage $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
-	Globals::setDebug();
+	// Globals::setDebug();
+	// Globals::setTestMode();
 	//******************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');

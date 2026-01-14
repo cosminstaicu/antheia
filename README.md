@@ -6,8 +6,10 @@ no longer supported. Please review the [changelog](CHANGELOG.md) before upgradin
 
 ![GitHub](https://img.shields.io/github/license/cosminstaicu/antheia)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cosminstaicu/antheia?display_name=tag)
+[![E2E Tests](https://github.com/cosminstaicu/antheia/actions/workflows/e2e.yml/badge.svg?branch=main)](https://github.com/cosminstaicu/antheia/actions/workflows/e2e.yml)
+![Packagist Downloads](https://img.shields.io/packagist/dt/antheia/antheia)
+![PHP Version](https://img.shields.io/packagist/php-v/antheia/antheia)
 ![Live Demo](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fantheia.voipit.ro)
-![PHP Version](https://img.shields.io/packagist/dependency-v/antheia/antheia/php)
 
 ![03](https://user-images.githubusercontent.com/25685804/196055946-53d4f73d-f524-465d-adee-c9c762bb61a1.png)
 
