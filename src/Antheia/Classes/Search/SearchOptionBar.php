@@ -33,6 +33,7 @@ class SearchOptionBar extends AbstractClass implements HtmlCode {
 		$row = $table->addRow();
 		$cell = $row->addCell();
 		$checkbox = new InputRawCheckbox();
+		$checkbox->setTestId('ant_selectAllResults');
 		$checkbox->setHtmlId('ant_selectAll');
 		$checkbox->setOnClick('ant_search_toogleSelectAll()');
 		$checkbox->setLabel(Texts::get('SELECT_ALL'));

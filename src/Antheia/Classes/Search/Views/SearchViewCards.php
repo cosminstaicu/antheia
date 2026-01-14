@@ -2,6 +2,7 @@
 namespace Antheia\Antheia\Classes\Search\Views;
 use Antheia\Antheia\Classes\Exception;
 use Antheia\Antheia\Classes\Html;
+use Antheia\Antheia\Classes\Internals;
 use Antheia\Antheia\Classes\Icon\IconVector;
 use Antheia\Antheia\Classes\Input\Raw\InputRawCheckbox;
 use Antheia\Antheia\Classes\Search\SearchResult;
@@ -77,7 +78,8 @@ class SearchViewCards extends AbstractSearchView {
 					.htmlspecialchars(strip_tags($result->getName())).'">';
 			}
 			$code .= '<img src="'.$result->getImageUrl().'" class="'
-					.$imageClass.'" alt="Thumbnail">';
+				.$imageClass.'" alt="Thumbnail"'
+				.Internals::getHtmlIdCode('', 'ant_searchResultImage'.$index).'>';
 			if ($result->getImageLink() !== '') {
 				$code .= '</a>';
 			}
@@ -101,22 +103,24 @@ class SearchViewCards extends AbstractSearchView {
 			if ($onClick !== '') {
 				$onClick = ' onclick="'.$onClick.'"';
 			}
+			$idCode = Internals::getHtmlIdCode('', 'ant_searchResult'.$index);
 			switch ($result->getAccessRender()) {
 				case $result::LINK:
 					$code .= '<a href="'.$result->getAccessHref().'"
-						class="ant_search_card-access"'.$onClick.'>'
+						class="ant_search_card-access"'.$onClick.$idCode.'>'
 						.htmlspecialchars($result->getAccessText())
 						.'</a>';
 					break;
 				case $result::BUTTON:
 					$code .= '<button type="button" class="ant_search_card-access"'
-						.$onClick.'>'.htmlspecialchars($result->getAccessText())
+						.$onClick.$idCode.'>'.htmlspecialchars($result->getAccessText())
 						.'</button>';
 					break;
 				default:
 					throw new Exception('Invalid render '.$result->getAccessRender());
 			}
-			$code .= '<button type="button"
+			$code .= '<button type="button"'
+					.Internals::getHtmlIdCode('', 'ant_showCardDetails'.$index).'
 					onclick="ant_search_card_toggleInfo(this.parentElement)">'
 					.$slideIcon->getHtml().'</button>';
 			// the hidden container
@@ -129,7 +133,8 @@ class SearchViewCards extends AbstractSearchView {
 				$code .= '<dd>'.$property['value'].'</dd>';
 			}
 			$code .= '</dl>';
-			$code .= '<button type="button"
+			$code .= '<button type="button"'
+				.Internals::getHtmlIdCode('', 'ant_hideCardDetails'.$index).'
 				onclick="ant_search_card_toggleInfo(this.parentElement.parentElement)">'
 				.$closeIcon->getHtml().'</button>';
 			$code .= '</div>';

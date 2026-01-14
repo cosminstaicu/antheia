@@ -5,7 +5,14 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 05-01-2025
+## [2.0.2] - 2026-01-14
+
+### Added
+- E2E test status for the main branch is displayed as a badge in the readme file.
+- Search results action button inside a PageSearchResult render now expose
+test IDs by default to improve end-to-end testing.
+
+## [2.0.1] - 2026-01-05
 
 ### Added
 - Fixed buttons (`FixedButtonAdd`, `FixedButtonBack`, etc.) now expose

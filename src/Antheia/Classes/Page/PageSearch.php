@@ -99,6 +99,7 @@ class PageSearch extends PageEmpty {
 		$this->autofocusInput = $input;
 	}
 	public function getHtml():string {
+		$this->button->setTestId('ant_searchStart');
 		$this->panel->addInput($this->button);
 		if ($this->autofocusInput !== NULL) {
 			$this->addJavascriptBodyBottom(
