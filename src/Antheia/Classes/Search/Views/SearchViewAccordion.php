@@ -59,6 +59,7 @@ class SearchViewAccordion extends AbstractSearchView {
 			$button = $slidePanel->getController();
 			$button->setDisplayIcon(false);
 			$button->setText($result->getName());
+			$button->setTestId('ant_searchResultAccordion'.$index);
 			$button->setAfterCallback('ant_search_accordion_click');
 			$titleCode->addElement($button);
 			// access button

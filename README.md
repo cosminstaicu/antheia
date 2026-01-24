@@ -1,6 +1,8 @@
 # Antheia
 A PHP library for building responsive, component-based web interfaces, designed for server-rendered web applications.
 
+Antheia is a server-side UI framework for PHP that provides structured, reusable components while preserving full control over rendered HTML. It is built for applications that value predictability, testability, and long-term maintainability over client-side complexity.
+
 > ⚠️ Antheia 2.x is a major release with breaking changes. Versions 1.x.x are
 no longer supported. Please review the [changelog](CHANGELOG.md) before upgrading.
 
@@ -11,6 +13,23 @@ no longer supported. Please review the [changelog](CHANGELOG.md) before upgradin
 ![PHP Version](https://img.shields.io/packagist/php-v/antheia/antheia)
 ![Live Demo](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fantheia.voipit.ro)
 
+## Why Antheia?
+
+Antheia is designed for applications that need structured, reusable user interfaces
+without adopting a full client-side framework.
+
+It is a good fit when:
+
+- You want **server-rendered pages** with a consistent, component-based layout
+- You prefer **server-side UI composition in PHP** over full client-side SPA frameworks
+- You need **predictable HTML output** that is easy to test end-to-end
+- You want to avoid the complexity and build pipelines required by SPA frameworks
+- You value **long-term stability**, explicit versioning, and controlled breaking changes
+- Your application benefits from **progressive enhancement** rather than full client-side rendering
+
+Antheia focuses on clarity, testability, and maintainability, while remaining flexible
+enough to integrate into existing PHP applications.
+
 ![03](https://user-images.githubusercontent.com/25685804/196055946-53d4f73d-f524-465d-adee-c9c762bb61a1.png)
 
 A live example of the interface (based on the current major version) is available at [antheia.voipit.ro](https://antheia.voipit.ro).  
@@ -19,6 +38,18 @@ The demo uses the content from the `examples` folder.
 Please check the [project wiki](https://github.com/cosminstaicu/antheia/wiki) for more details about the library.
 
 Antheia is used in production by the Cloud PBX service **Accolades**, provided by [VoIPIT Romania](https://www.voipit.ro).
+
+## Who Antheia is NOT for
+
+Antheia may not be a good fit if:
+
+- You are building a **fully client-side SPA** where most logic and rendering live in the browser
+- You expect **real-time UI state management** similar to React, Vue, or Angular
+- You want a framework that hides or abstracts away HTML structure
+- Your project relies heavily on **frontend build pipelines** and JavaScript-first tooling
+- You are looking for a drop-in theme or CMS rather than a UI framework
+
+Antheia is intentionally opinionated toward server-rendered applications with explicit structure and behavior.
 
 ## Installation
 
@@ -44,7 +75,7 @@ Globals::setCache(string $url, string $path);
 The `$url` must point to the public URL of the cache directory,
 while `$path` must be the absolute filesystem path.
 
-Failing to configure the cache correctly will result in runtime errors.
+Failing to configure the cache correctly will result in runtime errors. This requirement exists to allow Antheia to generate cached assets deterministically.
 
 ## Quick Start
 
@@ -64,7 +95,7 @@ echo $page->getHtml();
 
 This will render a minimal, empty Antheia page and output the generated HTML.
 
-## End to end testing
+## End-to-end testing
 
 Most HTML items can have a test attribute (with the default name `data-testid`)
 that will be output only when test mode is enabled. This is useful when the final
@@ -102,6 +133,8 @@ echo $page->getHtml();
 
 - **2.x.x** — actively maintained
 - **1.x.x** — end of life, no longer supported
+
+Please review the [changelog](CHANGELOG.md) for more details.
 
 ## Documentation
 
