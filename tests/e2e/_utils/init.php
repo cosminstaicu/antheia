@@ -1,18 +1,18 @@
 <?php
-use Antheia\Antheia\Classes\Globals;
-use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
-use Antheia\Antheia\Classes\Icon\AbstractIcon;
-use Antheia\Antheia\Classes\Icon\IconPixelBig;
-use Antheia\Antheia\Classes\Icon\IconVector;
-use Antheia\Antheia\Classes\InlineButton\InlineButton;
-use Antheia\Antheia\Classes\Input\NewInput;
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Page\PageSearchResult;
-use Antheia\Antheia\Classes\Search\SearchForm;
-use Antheia\Antheia\Classes\Search\SearchOptionBarButton;
-use Antheia\Antheia\Classes\Search\SearchResult;
+use Antheia\Framework\Classes\Globals;
+use Antheia\Framework\Classes\AppMenu\AppMenuPrimary;
+use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Framework\Classes\Icon\AbstractIcon;
+use Antheia\Framework\Classes\Icon\IconPixelBig;
+use Antheia\Framework\Classes\Icon\IconVector;
+use Antheia\Framework\Classes\InlineButton\InlineButton;
+use Antheia\Framework\Classes\Input\NewInput;
+use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Classes\Page\PageSearchResult;
+use Antheia\Framework\Classes\Search\SearchForm;
+use Antheia\Framework\Classes\Search\SearchOptionBarButton;
+use Antheia\Framework\Classes\Search\SearchResult;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {

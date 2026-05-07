@@ -1,0 +1,147 @@
+<?php
+namespace Antheia\Framework\Classes\Search\Views;
+use Antheia\Framework\Classes\Exception;
+use Antheia\Framework\Classes\Html;
+use Antheia\Framework\Classes\Internals;
+use Antheia\Framework\Classes\Icon\IconVector;
+use Antheia\Framework\Classes\Input\Raw\InputRawCheckbox;
+use Antheia\Framework\Classes\Search\SearchResult;
+use Antheia\Framework\Classes\Wireframe\Wireframe;
+/**
+ * A search result render that displays the results as cards. The card has
+ * an image being displayed that can slide to reveal additional info.
+ * @author Cosmin Staicu
+ */
+class SearchViewCards extends AbstractSearchView {
+	public function __construct() {
+		parent::__construct();
+	}
+	public function getJavascriptStatusUpdate():string {
+		return 'ant_search_card_statusUpdate();';
+	}
+	public function getHtml():string {
+		$slideIcon = new IconVector();
+		$slideIcon->setSize(24);
+		$slideIcon->setIcon('arrow-up');
+		$closeIcon = new IconVector();
+		$closeIcon->setIcon('x');
+		$results = $this->getItems();
+		if (count($results) === 0) {
+			$emptyList = new SearchViewEmpty();
+			$emptyList->setText($this->getNoItemsText());
+			return $emptyList->getHtml();
+		}
+		$wireframe = new Wireframe();
+		$row = $wireframe->addRow();
+		/** @var SearchResult $result */
+		foreach ($results as $index => $result) {
+			$cell = $row->addCell();
+			$cell->addWidth('lg', 3);
+			$cell->addWidth('md', 4);
+			$cell->addWidth('sm', 6);
+			$divClass = 'ant_search_card';
+			switch ($result->getImageSize()) {
+				case SearchResult::IMAGE_SIZE_MAXIMUM:
+					$divClass .= ' ant-image-maximum';
+					break;
+				case SearchResult::IMAGE_SIZE_MEDIUM:
+					$divClass .= ' ant-image-medium';
+					break;
+				default:
+					throw new Exception($result->getImageSize());
+			}
+			$code = '<div id="ant_search_card_item_'.$index.'" class="'.$divClass.'">';
+			// selection checkbox
+			if ($this->getSelectionStatus()) {
+				$code .= '<div class="ant_search_card-checkbox">';
+				$check = new InputRawCheckbox();
+				$check->setHtmlId('ant_search_checkboxItem'.$index);
+				$check->setValue($result->getItemId());
+				$check->setOnClick('ant_search_updateSelection()');
+				$code .= $check->getHtml();
+				$code .= '</div>';
+			}
+			$imageClass = 'ant-main';
+			switch ($result->getImageArea()) {
+				case SearchResult::IMAGE_AREA_FILL:
+					$imageClass .= ' ant-fill';
+					break;
+				case SearchResult::IMAGE_AREA_FIT:
+					$imageClass .= ' ant-fit';
+					break;
+				default:
+					throw new Exception($result->getImageArea());
+			}
+			if ($result->getImageLink() !== '') {
+				$code .= '<a href="'.$result->getImageLink().'"
+					class="ant_search_card-imageLink" title="'
+					.htmlspecialchars(strip_tags($result->getName())).'">';
+			}
+			$code .= '<img src="'.$result->getImageUrl().'" class="'
+				.$imageClass.'" alt="Thumbnail"'
+				.Internals::getHtmlIdCode('', 'ant_searchResultImage'.$index).'>';
+			if ($result->getImageLink() !== '') {
+				$code .= '</a>';
+			}
+			if ($result->getIcon() !== NULL) {
+				if ($result->getIcon()->getSize() !== 32) {
+					throw new Exception(
+						'Only 32px size icons are valid ('
+						.$result->getIcon()->getSize()
+						.'px is not valid)'
+					);
+				}
+				$code .= '<div class="ant-icon">'
+					.$result->getIcon()->getHtml()
+					.'</div>';
+			}
+			$code .= '<p>'.$result->getName().'</p>';
+			if ($result->getImageSize() === SearchResult::IMAGE_SIZE_MEDIUM) {
+				$code .= '<p>'.$result->getDescription().'</p>';
+			}
+			$onClick = $result->getAccessOnClick();
+			if ($onClick !== '') {
+				$onClick = ' onclick="'.$onClick.'"';
+			}
+			$idCode = Internals::getHtmlIdCode('', 'ant_searchResult'.$index);
+			switch ($result->getAccessRender()) {
+				case $result::LINK:
+					$code .= '<a href="'.$result->getAccessHref().'"
+						class="ant_search_card-access"'.$onClick.$idCode.'>'
+						.htmlspecialchars($result->getAccessText())
+						.'</a>';
+					break;
+				case $result::BUTTON:
+					$code .= '<button type="button" class="ant_search_card-access"'
+						.$onClick.$idCode.'>'.htmlspecialchars($result->getAccessText())
+						.'</button>';
+					break;
+				default:
+					throw new Exception('Invalid render '.$result->getAccessRender());
+			}
+			$code .= '<button type="button"'
+					.Internals::getHtmlIdCode('', 'ant_showCardDetails'.$index).'
+					onclick="ant_search_card_toggleInfo(this.parentElement)">'
+					.$slideIcon->getHtml().'</button>';
+			// the hidden container
+			$code .= '<div>';
+			$code .= '<p>'.$result->getName().'</p>';
+			$properties = $result->getProperties();
+			$code .= '<dl>';
+			foreach ($properties as $property) {
+				$code .= '<dt>'.htmlspecialchars($property['label']).'</dt>';
+				$code .= '<dd>'.$property['value'].'</dd>';
+			}
+			$code .= '</dl>';
+			$code .= '<button type="button"'
+				.Internals::getHtmlIdCode('', 'ant_hideCardDetails'.$index).'
+				onclick="ant_search_card_toggleInfo(this.parentElement.parentElement)">'
+				.$closeIcon->getHtml().'</button>';
+			$code .= '</div>';
+			$code .= '</div>';
+			$cell->addElement(new Html($code));
+		}
+		return $wireframe->getHtml();
+	}
+}
+?>

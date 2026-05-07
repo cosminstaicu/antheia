@@ -1,6 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Theme\ThemeDarkAesthetics;
+use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Classes\Theme\ThemeDarkAesthetics;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();

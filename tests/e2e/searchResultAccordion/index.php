@@ -1,5 +1,5 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageSearchResult;
+use Antheia\Framework\Classes\Page\PageSearchResult;
 require '../_utils/init.php';
 $page = new PageSearchResult();
 // this function is defined inside utils/init.php required file

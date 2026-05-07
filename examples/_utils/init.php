@@ -1,15 +1,15 @@
 <?php
-use Antheia\Antheia\Classes\Globals;
-use Antheia\Antheia\Classes\Html;
-use Antheia\Antheia\Classes\AppMenu\AppMenuPrimary;
-use Antheia\Antheia\Classes\AppMenu\AppMenuSecondary;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuExit;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuHelp;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
-use Antheia\Antheia\Classes\Icon\AbstractIcon;
-use Antheia\Antheia\Classes\Page\AbstractPage;
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Theme\ThemeRetroOrangeGray;
+use Antheia\Framework\Classes\Globals;
+use Antheia\Framework\Classes\Html;
+use Antheia\Framework\Classes\AppMenu\AppMenuPrimary;
+use Antheia\Framework\Classes\AppMenu\AppMenuSecondary;
+use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuHelp;
+use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Framework\Classes\Icon\AbstractIcon;
+use Antheia\Framework\Classes\Page\AbstractPage;
+use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Classes\Theme\ThemeRetroOrangeGray;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {
@@ -17,21 +17,16 @@ set_exception_handler(function ($exception) {
 	}
 	throw $exception;
 });
-$autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR
-	.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+$autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {
 	// library is not installed using composer
-	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR
-		.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 	require_once $autoloadFile;
-	Globals::setCache(
-		'../_cache/',
-		dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'_cache'
-	);
+	Globals::setCache('../_cache/',	dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'_cache');
 } else {
 	require_once $autoloadFile;
 	Globals::setCache(
-		'/vendor/antheia/antheia/examples/_cache/',
+		'/vendor/antheia/framework/examples/_cache/',
 		dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'_cache'
 	);
 }
@@ -45,10 +40,10 @@ function init_configurePage(AbstractPage $page):void {
 	Globals::setLogo('../_utils/logo.svg');
 	// Globals::setDebug();
 	Globals::setTestMode();
-	//******************************************************************** THEME
+	//**************************************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');
-	//******************************************************** TOP RIGHT OPTIONS
+	//**************************************************************************** TOP RIGHT OPTIONS
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();
 	$option->setName('User name here');
@@ -66,7 +61,7 @@ function init_configurePage(AbstractPage $page):void {
 	$option->setName('Exit');
 	$option->setHref("javascript:alert('close action')");
 	$page->addTopRightMenu($option);
-	//************************************************************* PRIMARY MENU
+	//********************************************************************************* PRIMARY MENU
 	// simple content
 	$menu = new AppMenuPrimary();
 	$menu->setText('Look and feel');
@@ -197,17 +192,13 @@ function init_configurePage(AbstractPage $page):void {
 /**
  * Adds source info about the current page.
  * @param PageEmpty $page the page where the panel will be inserted
- * @param string $rootSource the name of the folder (on github) that contains
+ * @param string $root the name of the folder (on github) that contains
  * all source files for the page
  * @param array[] $sources a list with all page sources (hosted on github)
  * for the current page
- * @param string $wikipage the name of the github wiki page
+ * @param string $wiki the name of the github wiki page
  */
-function init_insertPageSource(
-		PageEmpty $page,
-		string $rootSource,
-		array $sources,
-		string $wikipage):void {
+function init_insertPageSource(PageEmpty $page, string $root, array $sources, string $wiki):void {
 	$code = '<p>Github page sources:</p><ul>';
 	foreach ($sources as $sourceInfo) {
 		$description = $sourceInfo['info'];
@@ -221,13 +212,13 @@ function init_insertPageSource(
 		}
 		$code .= '<li>'
 			.'<a href="https://github.com/cosminstaicu/antheia/blob/main/examples/'
-			.$rootSource.'/'.$sourceInfo['name'].'">'.$sourceInfo['name']
+			.$root.'/'.$sourceInfo['name'].'">'.$sourceInfo['name']
 			.'</a>: '.$description.'</li>';
 	}
 	$code .= '</ul>';
 	$code .= '<p>Find mode details about this page on the '
 		.'<a href="https://github.com/cosminstaicu/antheia/wiki/'
-		.$wikipage.'">GitHub Wiki Page</a>.</p>';
+		.$wiki.'">GitHub Wiki Page</a>.</p>';
 	$page->addWireframe()->addRow()->addCell()->addPanel()->addElement(new Html($code));
 }
 ?>

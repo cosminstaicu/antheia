@@ -1,6 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Globals;
-use Antheia\Antheia\Classes\Page\Login\PageLoginFailed;
+use Antheia\Framework\Classes\Globals;
+use Antheia\Framework\Classes\Page\Login\PageLoginFailed;
 // init.php is used for initializing the library
 require '../_utils/init.php';
 $page = new PageLoginFailed();
