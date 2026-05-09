@@ -1,6 +1,6 @@
 <?php
-use Antheia\Framework\Classes\Globals;
-use Antheia\Framework\Classes\Page\Login\PageLogin;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Page\Login\PageLogin;
 /**
  * The login page
  */

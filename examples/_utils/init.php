@@ -1,15 +1,15 @@
 <?php
-use Antheia\Framework\Classes\Globals;
-use Antheia\Framework\Classes\Html;
-use Antheia\Framework\Classes\AppMenu\AppMenuPrimary;
-use Antheia\Framework\Classes\AppMenu\AppMenuSecondary;
-use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuExit;
-use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuHelp;
-use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuUser;
-use Antheia\Framework\Classes\Icon\AbstractIcon;
-use Antheia\Framework\Classes\Page\AbstractPage;
-use Antheia\Framework\Classes\Page\PageEmpty;
-use Antheia\Framework\Classes\Theme\ThemeRetroOrangeGray;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Html;
+use Antheia\Framework\AppMenu\AppMenuPrimary;
+use Antheia\Framework\AppMenu\AppMenuSecondary;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuExit;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuHelp;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Framework\Icon\AbstractIcon;
+use Antheia\Framework\Page\AbstractPage;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Theme\ThemeRetroOrangeGray;
 // setting an exception handler to send a 500 http status on exceptions
 set_exception_handler(function ($exception) {
 	if (!headers_sent()) {
@@ -17,10 +17,12 @@ set_exception_handler(function ($exception) {
 	}
 	throw $exception;
 });
-$autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+$autoloadFile = dirname(__DIR__, 5)
+		.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {
 	// library is not installed using composer
-	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'vendor'
+			.DIRECTORY_SEPARATOR.'autoload.php';
 	require_once $autoloadFile;
 	Globals::setCache('../_cache/',	dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'_cache');
 } else {
@@ -40,10 +42,10 @@ function init_configurePage(AbstractPage $page):void {
 	Globals::setLogo('../_utils/logo.svg');
 	// Globals::setDebug();
 	Globals::setTestMode();
-	//**************************************************************************************** THEME
+	//*********************************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');
-	//**************************************************************************** TOP RIGHT OPTIONS
+	//*********************************************************************** TOP RIGHT OPTIONS
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();
 	$option->setName('User name here');
@@ -61,7 +63,7 @@ function init_configurePage(AbstractPage $page):void {
 	$option->setName('Exit');
 	$option->setHref("javascript:alert('close action')");
 	$page->addTopRightMenu($option);
-	//********************************************************************************* PRIMARY MENU
+	//**************************************************************************** PRIMARY MENU
 	// simple content
 	$menu = new AppMenuPrimary();
 	$menu->setText('Look and feel');

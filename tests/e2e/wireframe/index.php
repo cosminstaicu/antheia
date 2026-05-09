@@ -1,8 +1,8 @@
 <?php
-use Antheia\Framework\Classes\Html;
-use Antheia\Framework\Classes\Page\PageEmpty;
-use Antheia\Framework\Classes\Panel\Panel;
-use Antheia\Framework\Classes\Wireframe\Wireframe;
+use Antheia\Framework\Html;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Panel\Panel;
+use Antheia\Framework\Wireframe\Wireframe;
 require '../_utils/init.php';
 $page = new PageEmpty();
 init_configurePage($page);

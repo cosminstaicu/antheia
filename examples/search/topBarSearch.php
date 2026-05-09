@@ -1,5 +1,5 @@
 <?php
-use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Page\PageEmpty;
 require '../_utils/init.php';
 $page = new PageEmpty();
 // this function is defined inside utils/init.php required file

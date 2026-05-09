@@ -6,16 +6,20 @@ The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
-## [3.0.0] - 2026-05-07
+## [3.0.0] - 2026-05-10
 
 ### Breaking Changes
 - The Composer package name has changed:
   - `antheia/antheia` → `antheia/framework`
 - The PHP namespace root has changed:
   - `Antheia\Antheia\` → `Antheia\Framework\`
+- Also, classes are contained inside the root namespace:
+  - `Antheia\Antheia\Classes\` → `Antheia\Framework\`
+  - `Antheia\Framework\Classes\` → `Antheia\Framework\`
 - Antheia 3.0.0 is not backward compatible with any 2.x.x release.
 
 ### Migration
+
 - Update Composer dependencies:
 
 ```bash
@@ -23,7 +27,19 @@ composer remove antheia/antheia
 composer require antheia/framework
 ```
 
-- Replace namespace imports:
+- Replace namespace imports in your project:
+
+```php
+Antheia\Antheia\Classes\
+```
+
+with:
+
+```php
+Antheia\Framework\
+```
+
+- Replace remaining legacy namespace references:
 
 ```php
 Antheia\Antheia\
@@ -38,8 +54,11 @@ Antheia\Framework\
 - In most projects, migration can be completed with a global search-and-replace operation.
 
 ### Changed
-- Internal namespace structure has been reorganized to support future ecosystem expansion and additional Antheia packages.
+- The namespace structure has been reorganized to support future ecosystem expansion and additional Antheia packages.
 - Composer package structure has been aligned with the new ecosystem naming convention.
+
+### Removed
+- The `Classes` namespace segment has been removed from the public API surface.
 
 ## [2.0.3] - 2026-01-26
 

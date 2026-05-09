@@ -1,11 +1,11 @@
 <?php
-use Antheia\Framework\Classes\Icon\IconPixelBig;
-use Antheia\Framework\Classes\Icon\IconVector;
-use Antheia\Framework\Classes\InlineButton\InlineButton;
-use Antheia\Framework\Classes\Input\NewInput;
-use Antheia\Framework\Classes\Page\PageSearchResult;
-use Antheia\Framework\Classes\Search\SearchOptionBarButton;
-use Antheia\Framework\Classes\Search\SearchResult;
+use Antheia\Framework\Icon\IconPixelBig;
+use Antheia\Framework\Icon\IconVector;
+use Antheia\Framework\InlineButton\InlineButton;
+use Antheia\Framework\Input\NewInput;
+use Antheia\Framework\Page\PageSearchResult;
+use Antheia\Framework\Search\SearchOptionBarButton;
+use Antheia\Framework\Search\SearchResult;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageSearchResult();

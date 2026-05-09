@@ -1,11 +1,11 @@
 <?php
-use Antheia\Framework\Classes\Form;
-use Antheia\Framework\Classes\FixedButton\FixedButtonCancel;
-use Antheia\Framework\Classes\FixedButton\NewFixedButton;
-use Antheia\Framework\Classes\Input\NewInput;
-use Antheia\Framework\Classes\Menu\Item\NewMenu;
-use Antheia\Framework\Classes\Page\PageEmpty;
-use Antheia\Framework\Classes\Wireframe\Wireframe;
+use Antheia\Framework\Form;
+use Antheia\Framework\FixedButton\FixedButtonCancel;
+use Antheia\Framework\FixedButton\NewFixedButton;
+use Antheia\Framework\Input\NewInput;
+use Antheia\Framework\Menu\Item\NewMenu;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Wireframe\Wireframe;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();

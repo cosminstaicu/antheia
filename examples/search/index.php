@@ -1,7 +1,7 @@
 <?php
-use Antheia\Framework\Classes\Input\InputSelect;
-use Antheia\Framework\Classes\Input\InputText;
-use Antheia\Framework\Classes\Page\PageSearch;
+use Antheia\Framework\Input\InputSelect;
+use Antheia\Framework\Input\InputText;
+use Antheia\Framework\Page\PageSearch;
 require '../_utils/init.php';
 $page = new PageSearch();
 // this function is defined inside utils/init.php required file

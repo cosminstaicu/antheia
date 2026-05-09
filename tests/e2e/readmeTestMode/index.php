@@ -1,8 +1,8 @@
 <?php
 
-use Antheia\Framework\Classes\Globals;
-use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuUser;
-use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Framework\Page\PageEmpty;
 // init.php is used for initializing the library
 require '../_utils/init.php';
 // create a new empty page

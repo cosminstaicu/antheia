@@ -1,9 +1,9 @@
 <?php
-use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuAlert;
-use Antheia\Framework\Classes\Menu\Item\NewMenu;
-use Antheia\Framework\Classes\Page\PageEmpty;
-use Antheia\Framework\Classes\Panel\Panel;
-use Antheia\Framework\Classes\Wireframe\Wireframe;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuAlert;
+use Antheia\Framework\Menu\Item\NewMenu;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Panel\Panel;
+use Antheia\Framework\Wireframe\Wireframe;
 /**
  * This is just a simple page with some content, to get a look and feel of the
  * library. Further details for each component can be found in the next pages.

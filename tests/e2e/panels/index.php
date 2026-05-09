@@ -1,15 +1,15 @@
 <?php
-use Antheia\Framework\Classes\Html;
-use Antheia\Framework\Classes\Accordion\Accordion;
-use Antheia\Framework\Classes\Icon\AbstractIcon;
-use Antheia\Framework\Classes\InlineButton\InlineButton;
-use Antheia\Framework\Classes\Input\NewInput;
-use Antheia\Framework\Classes\Menu\Item\NewMenu;
-use Antheia\Framework\Classes\Page\PageEmpty;
-use Antheia\Framework\Classes\Panel\Panel;
-use Antheia\Framework\Classes\Panel\PanelInfo;
-use Antheia\Framework\Classes\Panel\PanelInput;
-use Antheia\Framework\Classes\Wireframe\Wireframe;
+use Antheia\Framework\Html;
+use Antheia\Framework\Accordion\Accordion;
+use Antheia\Framework\Icon\AbstractIcon;
+use Antheia\Framework\InlineButton\InlineButton;
+use Antheia\Framework\Input\NewInput;
+use Antheia\Framework\Menu\Item\NewMenu;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Panel\Panel;
+use Antheia\Framework\Panel\PanelInfo;
+use Antheia\Framework\Panel\PanelInput;
+use Antheia\Framework\Wireframe\Wireframe;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();

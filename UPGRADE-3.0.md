@@ -1,15 +1,27 @@
 # Upgrading from Antheia 2.x to 3.0
 
-## Composer package rename
+### Migration
+
+- Update Composer dependencies:
 
 ```bash
 composer remove antheia/antheia
 composer require antheia/framework
 ```
 
-## Namespace migration
+- Replace namespace imports:
 
-Replace:
+```php
+Antheia\Antheia\Classes\
+```
+
+with:
+
+```php
+Antheia\Framework\
+```
+
+- Replace remaining legacy namespace references:
 
 ```php
 Antheia\Antheia\
@@ -21,4 +33,4 @@ with:
 Antheia\Framework\
 ```
 
-In most cases, this can be completed using a global search-and-replace operation.
+- In most projects, migration can be completed with a global search-and-replace operation.

@@ -1,15 +1,15 @@
 <?php
-use Antheia\Framework\Classes\Html;
-use Antheia\Framework\Classes\Accordion\Accordion;
-use Antheia\Framework\Classes\Input\InputButton;
-use Antheia\Framework\Classes\Input\InputInfo;
-use Antheia\Framework\Classes\Input\InputPhone;
-use Antheia\Framework\Classes\Input\InputSelect;
-use Antheia\Framework\Classes\Input\InputText;
-use Antheia\Framework\Classes\Menu\Item\MenuConfirmDelete;
-use Antheia\Framework\Classes\Menu\Item\MenuDelete;
-use Antheia\Framework\Classes\Menu\Item\MenuEdit;
-use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Html;
+use Antheia\Framework\Accordion\Accordion;
+use Antheia\Framework\Input\InputButton;
+use Antheia\Framework\Input\InputInfo;
+use Antheia\Framework\Input\InputPhone;
+use Antheia\Framework\Input\InputSelect;
+use Antheia\Framework\Input\InputText;
+use Antheia\Framework\Menu\Item\MenuConfirmDelete;
+use Antheia\Framework\Menu\Item\MenuDelete;
+use Antheia\Framework\Menu\Item\MenuEdit;
+use Antheia\Framework\Page\PageEmpty;
 /**
  * Just a placeholder file, to be rendered using different themes.
  * The file should not be accessed directly by the browser, but included from one

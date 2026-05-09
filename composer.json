@@ -5,7 +5,9 @@
 	"license" : "Apache-2.0",
 	"autoload" : {
 		"psr-4" : {
-			"Antheia\\Framework\\" : "src/Framework"
+			"Antheia\\Framework\\" : "src/Classes/",
+			"Antheia\\Framework\\Interfaces\\" : "src/Interfaces/",
+			"Antheia\\Framework\\Scripts\\" : "src/Scripts/"
 		}
 	},
 	"archive" : {

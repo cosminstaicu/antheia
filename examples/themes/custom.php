@@ -1,5 +1,5 @@
 <?php
-use Antheia\Framework\Classes\Page\PageEditTheme;
+use Antheia\Framework\Page\PageEditTheme;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEditTheme();
