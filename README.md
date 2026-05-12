@@ -1,5 +1,5 @@
 # Antheia
-A PHP framework for building responsive, component-based web interfaces, designed for server-rendered web applications.
+A server-rendered PHP UI framework for building component-based web applications.
 
 Antheia is a server-side UI framework for PHP that provides structured, reusable components while preserving full control over rendered HTML. It is built for applications that value predictability, testability, and long-term maintainability over client-side complexity.
 
@@ -91,8 +91,8 @@ Failing to configure the cache correctly will result in runtime errors. This req
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use Antheia\Framework\Classes\Globals;
-use Antheia\Framework\Classes\Page\PageEmpty;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Page\PageEmpty;
 // set up the cache folder
 Globals::setCache('/cache', __DIR__ . '/public/cache');
 // create a new empty page
@@ -116,9 +116,9 @@ This allows stable selectors for automated end-to-end tests without affecting pr
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use Antheia\Framework\Classes\Globals;
-use Antheia\Framework\Classes\Page\PageEmpty;
-use Antheia\Framework\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuUser;
 // set up the cache folder
 Globals::setCache('/cache', __DIR__ . '/public/cache');
 // create a new empty page
