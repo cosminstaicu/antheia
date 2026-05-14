@@ -4,27 +4,26 @@ Thank you for making this library safer.
 
 ## Supported Versions
 
-As there is only one main branch, security fixes are applied only to the latest released version. So, as long as you update the library to the latest version, everything should be ok.
+Security fixes are applied only to the latest released version. Users are strongly encouraged to keep Antheia updated to the latest stable release.
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 2.x.x   | :white_check_mark: |
-| 1.x.x   | :x:|
+| 3.x.x   | :white_check_mark: |
+| 2.x.x   | :x: |
+| 1.x.x   | :x: |
 
-Version 1.x.x has reached end of life (EOL) and is no longer supported.
+Versions 1.x.x and 2.x.x have reached end of life (EOL) and are no longer supported.
 
-Security vulnerabilities reported for 1.x.x will not be fixed.
-
-Users are strongly encouraged to upgrade to the latest 2.x.x release.
+Users are strongly encouraged to upgrade to the latest 3.x.x release.
 
 ## Reporting a Vulnerability
 
-If you find a security vulnerability, **DO NOT OPEN A PUBLIC ISSUE** but send an email to cosminstaicu[@]gmail.com. I will acknowledge receipt of the report as soon as possible, typically within a few days.
+If you find a security vulnerability, **DO NOT OPEN A PUBLIC ISSUE** but send an email to cosminstaicu@gmail.com. I will acknowledge receipt of the report as soon as possible, typically within a few days.
 
 Please include as much of the information listed below as you can to help me better understand and resolve the issue:
 
 - The type of issue (e.g., buffer overflow, cross-site scripting)
-- Full paths of source file(s) related to the manifestation of the issue
+- Full paths of source file(s) related to the vulnerability
 - The location of the affected source code (tag/branch/commit or direct URL)
 - Any special configuration required to reproduce the issue
 - Step-by-step instructions to reproduce the issue
@@ -33,7 +32,9 @@ Please include as much of the information listed below as you can to help me bet
 
 (the above list is a modified version from [GitHub platform samples security policy](https://github.com/github/platform-samples/security/policy))
 
-Only vulnerabilities affecting supported versions (2.x.x) are eligible for security fixes. Issues reported for unsupported versions may be closed without action.
+Only vulnerabilities affecting supported versions (3.x.x) are eligible for security fixes. Issues reported for unsupported versions may be closed without action.
+
+Security fixes are not backported to unsupported major versions.
 
 Please do not disclose the vulnerability publicly until a fix has been released.
 

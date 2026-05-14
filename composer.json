@@ -1,11 +1,13 @@
 {
-	"name" : "antheia/antheia",
-	"description" : "Frontend library optimised for web based applications.",
+	"name" : "antheia/framework",
+	"description" : "Frontend and interface framework for web-based applications.",
 	"type" : "library",
 	"license" : "Apache-2.0",
 	"autoload" : {
 		"psr-4" : {
-			"Antheia\\Antheia\\" : "src/Antheia"
+			"Antheia\\Framework\\" : "src/Classes/",
+			"Antheia\\Framework\\Interfaces\\" : "src/Interfaces/",
+			"Antheia\\Framework\\Scripts\\" : "src/Scripts/"
 		}
 	},
 	"archive" : {
@@ -33,7 +35,15 @@
 	"minimum-stability" : "stable",
 	"keywords" : [
 		"frontend",
-		"dark mode"
+		"dark mode",
+		"framework",
+		"interface",
+		"ui",
+		"components"
 	],
-	"homepage" : "https://github.com/cosminstaicu/antheia"
+	"homepage" : "https://github.com/cosminstaicu/antheia",
+	"support" : {
+		"issues" : "https://github.com/cosminstaicu/antheia/issues",
+		"source" : "https://github.com/cosminstaicu/antheia"
+	}
 }

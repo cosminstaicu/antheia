@@ -1,6 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageEmpty;
-use Antheia\Antheia\Classes\Theme\ThemeWarmRustic;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Theme\ThemeWarmRustic;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageEmpty();

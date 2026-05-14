@@ -1,6 +1,6 @@
 <?php
-use Antheia\Antheia\Classes\Input\NewInput;
-use Antheia\Antheia\Classes\Page\PageSearch;
+use Antheia\Framework\Input\NewInput;
+use Antheia\Framework\Page\PageSearch;
 require '../_utils/init.php';
 $page = new PageSearch();
 init_configurePage($page);

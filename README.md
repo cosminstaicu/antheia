@@ -1,16 +1,16 @@
 # Antheia
-A PHP library for building responsive, component-based web interfaces, designed for server-rendered web applications.
+A server-rendered PHP UI framework for building component-based web applications.
 
 Antheia is a server-side UI framework for PHP that provides structured, reusable components while preserving full control over rendered HTML. It is built for applications that value predictability, testability, and long-term maintainability over client-side complexity.
 
-> ⚠️ Antheia 2.x is a major release with breaking changes. Versions 1.x.x are
-no longer supported. Please review the [changelog](CHANGELOG.md) before upgrading.
+> ⚠️ Antheia 3.x introduces namespace and package structure changes and is not backward compatible with 2.x.x releases.
+> Please review the [upgrade guide](UPGRADE-3.0.md) before upgrading.
 
 ![GitHub](https://img.shields.io/github/license/cosminstaicu/antheia)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cosminstaicu/antheia?display_name=tag)
 [![E2E Tests](https://github.com/cosminstaicu/antheia/actions/workflows/e2e.yml/badge.svg?branch=main)](https://github.com/cosminstaicu/antheia/actions/workflows/e2e.yml)
-![Packagist Downloads](https://img.shields.io/packagist/dt/antheia/antheia)
-![PHP Version](https://img.shields.io/packagist/php-v/antheia/antheia)
+![Packagist Downloads](https://img.shields.io/packagist/dt/antheia/framework)
+![PHP Version](https://img.shields.io/packagist/php-v/antheia/framework)
 ![Live Demo](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fantheia.voipit.ro)
 
 ## Why Antheia?
@@ -51,12 +51,22 @@ Antheia may not be a good fit if:
 
 Antheia is intentionally opinionated toward server-rendered applications with explicit structure and behavior.
 
+## Features
+
+- Server-rendered component architecture
+- Reusable PHP UI components
+- Predictable HTML output
+- End-to-end testing support
+- Progressive enhancement friendly
+- Minimal frontend build requirements
+- Explicit versioning and migration policy
+
 ## Installation
 
 Use [composer](https://getcomposer.org) to install Antheia into your project:
 
 ```sh
-composer require antheia/antheia
+composer require antheia/framework
 ```
 
 After installation, you must configure a cache folder for Antheia before rendering any pages.
@@ -81,8 +91,8 @@ Failing to configure the cache correctly will result in runtime errors. This req
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use Antheia\Antheia\Globals;
-use Antheia\Antheia\Page\PageEmpty;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Page\PageEmpty;
 // set up the cache folder
 Globals::setCache('/cache', __DIR__ . '/public/cache');
 // create a new empty page
@@ -106,9 +116,9 @@ This allows stable selectors for automated end-to-end tests without affecting pr
 
 ```php
 require __DIR__ . '/vendor/autoload.php';
-use Antheia\Antheia\Globals;
-use Antheia\Antheia\Page\PageEmpty;
-use Antheia\Antheia\Classes\Header\TopRightMenu\TopRightMenuUser;
+use Antheia\Framework\Globals;
+use Antheia\Framework\Page\PageEmpty;
+use Antheia\Framework\Header\TopRightMenu\TopRightMenuUser;
 // set up the cache folder
 Globals::setCache('/cache', __DIR__ . '/public/cache');
 // create a new empty page
@@ -131,7 +141,8 @@ echo $page->getHtml();
 
 ## Supported Versions
 
-- **2.x.x** — actively maintained
+- **3.x.x** — actively maintained
+- **2.x.x** — security/legacy maintenance only
 - **1.x.x** — end of life, no longer supported
 
 Please review the [changelog](CHANGELOG.md) for more details.
@@ -147,7 +158,7 @@ JavaScript files are documented using the JSDoc standard.
 Examples located in the `examples` folder are explained in detail in the
 [project wiki](https://github.com/cosminstaicu/antheia/wiki).
 
-For upgrade notes and breaking changes introduced in 2.0.0, refer to the changelog.
+For upgrade notes and breaking changes introduced in 3.0.0, refer to the [upgrade guide](UPGRADE-3.0.md) and [changelog](CHANGELOG.md).
 
 ## Security
 

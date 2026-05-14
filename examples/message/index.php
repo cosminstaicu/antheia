@@ -1,5 +1,5 @@
 <?php
-use Antheia\Antheia\Classes\Page\PageMessage;
+use Antheia\Framework\Page\PageMessage;
 // init.php is used for initializing the framework
 require '../_utils/init.php';
 $page = new PageMessage();
