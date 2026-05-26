@@ -250,9 +250,9 @@ abstract class AbstractPage extends AbstractClass {
 		$iconVector = Internals::getCachePath().'iconVector.php';
 		if (!is_file($iconVector)) {
 			$content = '<?php'
-					.PHP_EOL.'$cachePath = dirname(__DIR__, 1).DIRECTORY_SEPARATOR;'
-					.PHP_EOL.'require_once(\''.dirname(__DIR__, 2).'/Scripts/Media/iconVector.php\');'
-					.PHP_EOL.'?>';
+				.PHP_EOL.'$cachePath = dirname(__DIR__, 1).DIRECTORY_SEPARATOR;'
+				.PHP_EOL.'require_once(\''.dirname(__DIR__, 2).'/Scripts/Media/iconVector.php\');'
+				.PHP_EOL.'?>';
 			file_put_contents($iconVector, $content);
 		}
 		$jsPath = Internals::getCachePath().$jsFile;
@@ -445,8 +445,7 @@ abstract class AbstractPage extends AbstractClass {
 				$this->headJavascript .= '; ';
 			}
 		}
-		$this->headJavascript .= 'let ant_theme_backdrop = "'
-				.$this->theme->getLoadingBackdrop().'";';
+		$this->headJavascript .= 'let ant_theme_backdrop = "'.$this->theme->getLoadingBackdrop().'";';
 		if (Globals::getTestMode()) {
 			$this->headJavascript .= 'let ant_testIdAttribute = "'
 				.Globals::getHtmlTestModeAttribute().'";';

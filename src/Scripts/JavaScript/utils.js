@@ -197,3 +197,26 @@ function ant_utils_checkCompatibility() {
 		}, 1000);
 	}
 }
+/**
+ * Selects all number inputs inside the page and disables scroll events on them. This prevents
+ * the user from changing the input value, by mistake, when scrolling over the input. When an input
+ * has scroll disabled, the tag is marked, usind a data-antheianoscroll="yes" attribute, so future
+ * calls of this method can ignore the already marked inputs. If any number type inputs are
+ * added, after the page has loaded, this function can be called again, to update all inputs
+ */
+function ant_utils_disableScrollOnNumberInput() {
+	document.querySelectorAll('input[type="number"]').forEach(input => {
+		if (typeof input.dataset.antheianoscroll !== undefined) {
+			if (input.dataset.antheianoscroll === "yes") {
+				// this input is already blocked from scroll events
+				return;
+			}
+		}
+		input.addEventListener('wheel', function (e) {
+			e.preventDefault();
+		}, { passive: false });
+		input.dataset.antheianoscroll = "yes";
+	});
+}
+// the function above will run after document has been loaded
+document.addEventListener('DOMContentLoaded', () => {ant_utils_disableScrollOnNumberInput()});
