@@ -79,7 +79,7 @@ class Internals {
 			$packages = json_decode(file_get_contents($composerLockPath), true);
 			if (isset($packages['packages'])) {
 				foreach ($packages['packages'] as $package) {
-					if ($package['name'] === 'antheia/antheia') {
+					if ($package['name'] === 'antheia/framework') {
 						$version = $package['version'];
 					}
 				}
@@ -116,9 +116,7 @@ class Internals {
 	 */
 	public static function getCachePath(string $fileName = ''):string {
 		if (self::$cachePath === NULL) {
-			throw new Exception(
-				'Cache path not defined - set it up with the Globals::setCache()'
-			);
+			throw new Exception('Cache path not defined - set it up with the Globals::setCache()');
 		}
 		return self::$cachePath.$fileName;
 	}
@@ -130,9 +128,7 @@ class Internals {
 	 */
 	public static function getCacheUrl():string {
 		if (self::$cacheUrl === NULL) {
-			throw new Exception(
-				'Cache path not defined - set it up with the Globals::setCache()'
-			);
+			throw new Exception('Cache path not defined - set it up with the Globals::setCache()');
 		}
 		return self::$cacheUrl;
 	}

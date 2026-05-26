@@ -5,6 +5,13 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.0.1] - 2026-06-26
+
+### Fixed
+ - Cache folder correctly uses the version number, instead of falling back to 0.0.0
+ 
+### Changed
+ - Number type inputs have wheel event disabled, so the user can not change the input value by mistake 
 
 ## [3.0.0] - 2026-05-14
 

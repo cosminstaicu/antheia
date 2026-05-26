@@ -61,9 +61,11 @@ $cell->addWidth('xs', 12);
 // defining a panel to be displayed inside the wireframe
 $panel = new Panel();
 $panel->setTitle('What is Antheia Frontend');
-$panel->addText('<p>Antheia is a frontend library for web apps, written in PHP,
-fully compatible with mobile devices (responsive). It is designed to be
-used by web apps as it contains features designed mainly for cloud services.</p>
+$panel->addText('<p>
+Antheia is a server-side UI framework for PHP that provides structured, reusable components while
+preserving full control over rendered HTML. It is built for applications that value predictability,
+testability, and long-term maintainability over client-side complexity.
+</p>
 <p>The library is hosted on
 <a href="https://github.com/cosminstaicu/antheia" target="_blank">GitHub</a>.</p>
 <p>The main project using this library is the Cloud PBX Service, called

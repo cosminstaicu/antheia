@@ -17,12 +17,10 @@ set_exception_handler(function ($exception) {
 	}
 	throw $exception;
 });
-$autoloadFile = dirname(__DIR__, 5)
-		.DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
+$autoloadFile = dirname(__DIR__, 5).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 if (!is_file($autoloadFile)) {
 	// library is not installed using composer
-	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'vendor'
-			.DIRECTORY_SEPARATOR.'autoload.php';
+	$autoloadFile = dirname(__DIR__, 2).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
 	require_once $autoloadFile;
 	Globals::setCache('../_cache/',	dirname(__DIR__, 1).DIRECTORY_SEPARATOR.'_cache');
 } else {
@@ -40,8 +38,8 @@ if (!is_file($autoloadFile)) {
 function init_configurePage(AbstractPage $page):void {
 	// set the app logo
 	Globals::setLogo('../_utils/logo.svg');
-	// Globals::setDebug();
-	Globals::setTestMode();
+	//Globals::setDebug();
+	//Globals::setTestMode();
 	//*********************************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');
