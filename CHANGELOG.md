@@ -5,7 +5,7 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.0.2] - 20267-05-27
+## [3.0.2] - 2026-05-27
 
 ### Fixed
  - Cache folder REALLY uses the version number, instead of falling back to 0.0.0
