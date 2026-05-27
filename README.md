@@ -90,6 +90,7 @@ Failing to configure the cache correctly will result in runtime errors. This req
 ## Quick Start
 
 ```php
+<?php
 require __DIR__ . '/vendor/autoload.php';
 use Antheia\Framework\Globals;
 use Antheia\Framework\Page\PageEmpty;
@@ -99,6 +100,7 @@ Globals::setCache('/cache', __DIR__ . '/public/cache');
 $page = new PageEmpty();
 // output the page content
 echo $page->getHtml();
+?>
 ```
 
 `PageEmpty` represents the minimal Antheia page layout without predefined components.
@@ -115,6 +117,7 @@ product needs e2e testing (for example, with
 This allows stable selectors for automated end-to-end tests without affecting production HTML output.
 
 ```php
+<?php
 require __DIR__ . '/vendor/autoload.php';
 use Antheia\Framework\Globals;
 use Antheia\Framework\Page\PageEmpty;
@@ -137,6 +140,7 @@ $page->addTopRightMenu($option);
 Globals::setTestMode();
 // output the page content
 echo $page->getHtml();
+?>
 ```
 
 ## Supported Versions
