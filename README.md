@@ -10,6 +10,7 @@ Antheia is a server-side UI framework for PHP that provides structured, reusable
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/cosminstaicu/antheia?display_name=tag)
 [![E2E Tests](https://github.com/cosminstaicu/antheia/actions/workflows/e2e.yml/badge.svg?branch=main)](https://github.com/cosminstaicu/antheia/actions/workflows/e2e.yml)
 ![Packagist Downloads](https://img.shields.io/packagist/dt/antheia/framework)
+![Packagist Downloads](https://img.shields.io/packagist/dt/antheia/antheia)
 ![PHP Version](https://img.shields.io/packagist/php-v/antheia/framework)
 ![Live Demo](https://img.shields.io/website?down_message=Offline&up_message=Online&url=https%3A%2F%2Fantheia.voipit.ro)
 
