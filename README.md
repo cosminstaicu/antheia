@@ -147,7 +147,7 @@ echo $page->getHtml();
 ## Supported Versions
 
 - **3.x.x** — actively maintained
-- **2.x.x** — security/legacy maintenance only
+- **2.x.x** — end of life, no longer supported
 - **1.x.x** — end of life, no longer supported
 
 Please review the [changelog](CHANGELOG.md) for more details.
