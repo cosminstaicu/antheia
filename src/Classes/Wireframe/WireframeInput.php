@@ -5,13 +5,12 @@ use Antheia\Framework\Html;
 use Antheia\Framework\Texts;
 use Antheia\Framework\Input\AbstractInput;
 use Antheia\Framework\Interfaces\HtmlCode;
+use Antheia\Framework\Internals;
 /**
- * A custom wireframe for forms. Contains 2 columns, one for the label of
- * the input and the other for the input. When the viewport width is too small,
- * the label will be stacked on top of the input.
- * Usually this structure is not directly called by the user.
- * The PanelInput class should be used (that is a panel with this
- * type of structure already in content)
+ * A custom wireframe for forms. Contains 2 columns, one for the label of the input and the other
+ * for the input. When the viewport width is too small, the label will be stacked on top of the input.
+ * Usually this structure is not directly called by the user. The PanelInput class should be used
+ * (that is a panel with this type of structure already in content)
  * @author Cosmin Staicu
  */
 class WireframeInput extends Wireframe {
@@ -44,68 +43,86 @@ class WireframeInput extends Wireframe {
 	/**
 	 * Adds an input to the wireframe
 	 * @param AbstractInput $input the input to be added
-	 * @param string $id (optional) (default '') the html id of the
-	 * row containing the input and the label
+	 * @param string $id (optional) (default '') the html id of the row containing the input and the label
 	 * @param string[] $classes (optional) a list of classes to be added to the row
 	 * definition (the rows contains the label of the input and the input)
 	 * @param int $position (optional) the column where the item should be added,
 	 * as a constant like WireframeInput::COLUMN_##. If it not defined
 	 * then the input will have the label on the left column and the input
 	 * control in the right column
-	 * 
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
+	 * string if no id is required
+	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addInput(
 			AbstractInput $input, 
 			string $id = '', 
 			array $classes = [],
-			int $position = self::REGULAR_ITEM):void {
+			int $position = self::REGULAR_ITEM,
+			string $testid = ''):void {
 		$this->items[] = [
-				'type' => $position,
-				'input' => $input, 
-				'id' => $id,
-				'classes' => $classes
+			'type' => $position,
+			'input' => $input, 
+			'id' => $id,
+			'classes' => $classes,
+			'testid' => $testid
 		];
 	}
 	/**
-	 * Adds a html item to the wireframe, but in only one column, the left
-	 * of the right one
+	 * Adds a html item to the wireframe, but in only one column, the left of the right one
 	 * @param HtmlCode $item the item to be addes
 	 * @param integer $position the column where the item should be added,
 	 * as a constant like WireframeInput::COLUMN_##
-	 * @param string $id (optional) (default '') the id of the row containing
-	 * the item to be added
+	 * @param string $id (optional) (default '') the id of the row containing the item to be added
 	 * @param string[] $classes a list of classes to be added to the row definition
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
+	 * string if no id is required
+	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addHtml(
-			HtmlCode $item, 
-			int $position, 
+			HtmlCode $item,
+			int $position,
 			string $id = '',
-			array $classes = []):void {
+			array $classes = [],
+			string $testid = ''):void {
 		$this->items[] = [
-				'type' => $position,
-				'input' => $item,
-				'id' => $id,
-				'classes' => $classes
+			'type' => $position,
+			'input' => $item,
+			'id' => $id,
+			'classes' => $classes,
+			'testid' => $testid
 		];
 	}
 	/**
-	 * Adds a divider (a horizontal line) spanning the entire width of the
-	 * wireframe
+	 * Adds a divider (a horizontal line) spanning the entire width of the wireframe
+	 * @param string $id (optional) (default '') the id of the row containing the item to be added
+	 * @param string[] $classes a list of classes to be added to the row definition
+	 * @param string $testid (optional) (default '') the value of the testid attribute or an empty
+	 * string if no id is required
+	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
-	public function addDivider():void {
-		$this->addHtml(new Html('<hr>'), self::COLUMN_BOTH);
+	public function addDivider(string $id = '', array $classes = [], string $testid = ''):void {
+		$this->addHtml(new Html('<hr>'), self::COLUMN_BOTH, $id, $classes, $testid);
 	}
 	/**
 	 * Inserts the row that toggles the advanced options. If the method is not
 	 * called then the row will be added at the end of the wireframe
+	 * @param string $id (optional) (default '') the id of the button
+	 * @param string[] $classes a list of classes to be added to the button
+	 * @param string $testid (optional) (default '') the value of the testid attribute or an empty
+	 * string if no id is required
+	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
-	public function addMoreOptionsToggle():void {
-		$this->addHtml(new Html(
-			'<button type="button" onClick="ant_wireframe_toggleMoreOptions(this)"
-				class="wireframe_button-more-options"><span>&uarr; '
+	public function addMoreOptionsToggle(string $id = '', array $classes = [], string $testid = ''):void {
+		$classes[] = 'wireframe_button-more-options';
+		$htmlCode = '<button type="button" onClick="ant_wireframe_toggleMoreOptions(this)" class="';
+		$htmlCode .= implode(' ', $classes);
+		$htmlCode .= '"';
+		$htmlCode .= Internals::getHtmlIdCode($id, $testid);
+		$htmlCode .= '><span>&uarr; '
 			.Texts::get('LESS_OPTIONS').' &uarr;</span><span>&darr; '
-			.Texts::get('MORE_OPTIONS').' &darr;</span></button>'
-		), self::COLUMN_RIGHT);
+			.Texts::get('MORE_OPTIONS').' &darr;</span></button>';
+		$this->addHtml(new Html($htmlCode), self::COLUMN_RIGHT);
 		$this->buttonToggleHiddenInputsAdded = true;
 	}
 	public function getHtml():string {
@@ -167,7 +184,6 @@ class WireframeInput extends Wireframe {
 					}
 					$cell = $row->addCell();
 					$cell->addWidth('xs', 12);
-					
 					$cell->addElement($input);
 					break;
 				case self::REGULAR_ITEM:
@@ -176,8 +192,7 @@ class WireframeInput extends Wireframe {
 					}
 					$cell = $row->addCell();
 					$cell->addWidth('sm', $labelWidth);
-					$code = new Html(
-							'<div class="ant_form-label-container">');
+					$code = new Html('<div class="ant_form-label-container">');
 					if ($input->getLabelExport() !== $input::LABEL_NONE) {
 						$code->addRawCode($input->getLabel()->getHtml());
 					}
@@ -193,6 +208,9 @@ class WireframeInput extends Wireframe {
 			}
 			foreach ($inputInfo['classes'] as $class) {
 				$row->addClass($class);
+			}
+			if ($inputInfo['testid'] !== '') {
+				$row->setTestId($inputInfo['testid']);
 			}
 		}
 		return parent::getHtml();
