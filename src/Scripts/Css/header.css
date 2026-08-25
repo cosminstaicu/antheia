@@ -132,6 +132,8 @@ div#ant_header-tabs {
 #ant_header-tabs > div.ant-selected {
 	color: var(--ant-theme-tabBackground);
 	background-color: var(--ant-theme-tabText);
+	border: 1px solid var(--ant-theme-tabBackground);
+	border-bottom: 1px solid var(--ant-theme-tabText);
 }
 #ant_header-tabs > div.ant-selected > a,
 #ant_header-tabs > div.ant-selected > button {
