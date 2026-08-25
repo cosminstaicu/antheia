@@ -91,10 +91,9 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 	}
 	/**
 	 * Returns the value of the selected option.
-	 * @return string the value of the selected option or null if no option
-	 * is selected
+	 * @return string the value of the selected option or null if no option is selected
 	 */
-	public function getValue():string {
+	public function getValue():?string {
 		foreach ($this->options as $element) {
 			if ($element['selected']) {
 				return $element['value'];
@@ -104,10 +103,9 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 	}
 	/**
 	 * Returns the name of the selected item.
-	 * @return string the name of the selected option or NULL if no option is
-	 * selected
+	 * @return string the name of the selected option or NULL if no option is selected
 	 */
-	public function getReadableValue():string {
+	public function getReadableValue():?string {
 		foreach ($this->options as $element) {
 			if ($element['selected']) {
 				return $element['name'];

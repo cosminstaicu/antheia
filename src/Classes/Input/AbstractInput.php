@@ -84,15 +84,13 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	/**
 	 * Returns a list with all atributes defined for this input
 	 * @return string[] the attributes defined for this input. Each item contains
-	 * 2 properties: name (the name of the attrigure) and value (the value
-	 * of the attribute)
+	 * 2 properties: name (the name of the attrigure) and value (the value of the attribute)
 	 */
 	protected function getAttributeList():array {
 		return $this->attributes;
 	}
 	/**
-	 * Returns the HTML code will all attributes defined for the tag in a single
-	 * line.
+	 * Returns the HTML code will all attributes defined for the tag in a single line.
 	 * @return string a text line with all attributes
 	 */
 	protected function getAttributesAsText():string {
@@ -106,8 +104,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 * Defines a html id for the container containing the input
 	 * (the input, without the label). The container contains the input, along
 	 * sith other elements, like hidden inputs, status icons etc.
-	 * @param string $id the id for the container or an empty string if
-	 * no id is required
+	 * @param string $id the id for the container or an empty string if no id is required
 	 */
 	public function setContainerHtmlId(string $id):void {
 		$this->containerHtmlId = $id;
@@ -116,8 +113,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 * Defines a test id for the container containing the input
 	 * (the input, without the label). The container contains the input, along
 	 * sith other elements, like hidden inputs, status icons etc.
-	 * @param string $id the test id for the container or an empty string if
-	 * no test id is required
+	 * @param string $id the test id for the container or an empty string if no test id is required
 	 * @see HtmlId::setTestId
 	 */
 	public function setContainerTestId(string $id):void {
@@ -154,8 +150,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Defines if the javascript code after the element html will be exported.
-	 * @param boolean $status true if the javascript code will be exported,
-	 * false if not
+	 * @param boolean $status true if the javascript code will be exported, false if not
 	 */
 	public function setJavascriptExport(bool $status):void {
 		$this->exportJavascript = $status;
@@ -316,8 +311,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $this->name;
 	}
 	/**
-	 * Defines the value of the input. Special characters are automatically
-	 * escaped.
+	 * Defines the value of the input. Special characters are automatically escaped.
 	 * @param string $value the value of the input
 	 */
 	public function setValue(string $value):void {
@@ -325,9 +319,10 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Returns the value of the input
-	 * @return string the value of the input
+	 * @return ?string the value of the input or NULL for inputs that do not have a value selected
+	 * (like SELECT tags)
 	 */
-	public function getValue():string {
+	public function getValue():?string {
 		return $this->value;
 	}
 	/**
@@ -336,17 +331,17 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	 * special inputs (date, time) the readable value is different from the
 	 * input value (for example, for a date, the input value is 18910427
 	 * but the readable value is 27 April 1981).
-	 * @return string the human readable value for the input
+	 * @return ?string the human readable value for the input or NULL for inputs that do not have
+	 * a value selected (like SELECT tags)
 	 */
-	public function getReadableValue():string {
+	public function getReadableValue():?string {
 		return $this->value;
 	}
 	/**
 	 * Defines the default value for the input. Is is used when displaying 
 	 * search results. If the input value is different then the default value
 	 * then the user can reset the input to its default value.
-	 * @param string $value the default value or NULL if no default value
-	 * is required.
+	 * @param string $value the default value or NULL if no default value is required.
 	 */
 	public function setDefaultValue(?string $value):void {
 		$this->defaultValue = $value;
@@ -354,8 +349,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	/**
 	 * Returns the default value for the input.
 	 * @see Abstractinput::setDefaultValue()
-	 * @return string the default value or NULL if no default value
-	 * is required.
+	 * @return string the default value or NULL if no default value is required.
 	 */
 	public function getDefaultValue():?string {
 		return $this->defaultValue;
@@ -377,16 +371,14 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Returns the html id for the input
-	 * @return string $id the html id for the input or an empty string if
-	 * no id is defined
+	 * @return string $id the html id for the input or an empty string if no id is defined
 	 */
 	public function getHtmlId():string {
 		return $this->htmlId;
 	}
 	/**
 	 * Returns the test id of the element
-	 * @return string the test if of the element or an empty string if no
-	 * test id is defined
+	 * @return string the test if of the element or an empty string if no test id is defined
 	 */
 	protected function getTestId():string {
 		return $this->testId;
