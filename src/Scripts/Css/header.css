@@ -98,7 +98,7 @@ div#ant_header-tabs {
 	display: inline-block;
 	text-align: right;
 	border: 1px solid var(--ant-theme-tabText);
-	border-bottom: none;
+	border-bottom: 1px solid var(--ant-theme-tabBackground);
 	border-radius: 6px 6px 0px 0px;
 	margin-left: 5px;
 	text-align: left;
