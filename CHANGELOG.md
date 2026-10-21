@@ -5,6 +5,12 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [3.1.3] - 2026-10-21
+
+### Added
+
+ * The pixel based icons (IconPixelBig class) can now have an small icon on the bottom-left side (similar to the one on the right side)
+
 ## [3.1.2] - 2026-08-26
 
 ### Changed
