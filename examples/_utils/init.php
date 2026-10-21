@@ -7,6 +7,7 @@ use Antheia\Framework\Header\TopRightMenu\TopRightMenuExit;
 use Antheia\Framework\Header\TopRightMenu\TopRightMenuHelp;
 use Antheia\Framework\Header\TopRightMenu\TopRightMenuUser;
 use Antheia\Framework\Icon\AbstractIcon;
+use Antheia\Framework\Icon\IconPixelBig;
 use Antheia\Framework\Page\AbstractPage;
 use Antheia\Framework\Page\PageEmpty;
 use Antheia\Framework\Theme\ThemeRetroOrangeGray;
@@ -40,10 +41,10 @@ function init_configurePage(AbstractPage $page):void {
 	Globals::setLogo('../_utils/logo.svg');
 	//Globals::setDebug();
 	//Globals::setTestMode();
-	//*********************************************************************************** THEME
+	//**************************************************************************************** THEME
 	$page->setTheme(new ThemeRetroOrangeGray());
 	$page->addHeadText('<link rel="icon" type="image/png" href="../favicon.png">');
-	//*********************************************************************** TOP RIGHT OPTIONS
+	//**************************************************************************** TOP RIGHT OPTIONS
 	// this can be a link for info about the logged user
 	$option = new TopRightMenuUser();
 	$option->setName('User name here');
@@ -61,7 +62,7 @@ function init_configurePage(AbstractPage $page):void {
 	$option->setName('Exit');
 	$option->setHref("javascript:alert('close action')");
 	$page->addTopRightMenu($option);
-	//**************************************************************************** PRIMARY MENU
+	//********************************************************************************* PRIMARY MENU
 	// simple content
 	$menu = new AppMenuPrimary();
 	$menu->setText('Look and feel');
@@ -85,7 +86,10 @@ function init_configurePage(AbstractPage $page):void {
 	$menu = new AppMenuPrimary();
 	$menu->setText('Form');
 	$menu->setHref('../forms');
-	$menu->setIconName('application_form');
+	$icon = new IconPixelBig();
+	$icon->setIcon('application_form');
+	$icon->setBottomLeftIcon('accept');
+	$menu->setIcon($icon);
 	$page->addNavigationMenu($menu);
 	// tables
 	$menu = new AppMenuPrimary();
@@ -123,7 +127,11 @@ function init_configurePage(AbstractPage $page):void {
 	$menu = new AppMenuPrimary();
 	$menu->setText('Confirm messages');
 	$menu->setHref('../confirmation');
-	$menu->setIconName('tooltip');
+	$icon = new IconPixelBig();
+	$icon->setIcon('tooltip');
+	$icon->setBottomLeftIcon('information');
+	$icon->setBottomRightIcon('exclamation');
+	$menu->setIcon($icon);
 	$page->addNavigationMenu($menu);
 	// loading animations
 	$menu = new AppMenuPrimary();
@@ -192,10 +200,8 @@ function init_configurePage(AbstractPage $page):void {
 /**
  * Adds source info about the current page.
  * @param PageEmpty $page the page where the panel will be inserted
- * @param string $root the name of the folder (on github) that contains
- * all source files for the page
- * @param array[] $sources a list with all page sources (hosted on github)
- * for the current page
+ * @param string $root the name of the folder (on github) that contains all source files for the page
+ * @param array[] $sources a list with all page sources (hosted on github) for the current page
  * @param string $wiki the name of the github wiki page
  */
 function init_insertPageSource(PageEmpty $page, string $root, array $sources, string $wiki):void {
