@@ -5,7 +5,7 @@ This file contains the main changes for the Antheia library.
 The file format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 This library uses [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [3.1.3] - 2026-10-26
+## [3.1.3] - 2026-10-21
 
 ### Added
 
