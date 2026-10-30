@@ -6,8 +6,7 @@ use Antheia\Framework\Texts;
 use Antheia\Framework\Icon\IconVector;
 use Antheia\Framework\Interfaces\BeforeAfterCallback;
 /**
- * Defines an area where the user can drag and drop single or multiple files
- * to be uploaded to the server
+ * Defines an area where the user can drag and drop files to be uploaded to the server
  * @author Cosmin Staicu
  */
 class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
@@ -36,54 +35,50 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$this->infoText = Texts::get('DROP_FILE_HERE');
 		$this->browserButton = new InputFile();
 		$this->browserButton->setLabelExport(self::LABEL_NONE);
-		$this->browserButton->setOnChange(
-			'ant_inputFileDrop_fileSelected(this)'
-		);
-		$this->displayBrowser = true;
-		$this->fullPageDrop = false;
+		$this->browserButton->setOnChange('ant_inputFileDrop_fileSelected(this)');
+		$this->displayBrowser = TRUE;
+		$this->fullPageDrop = FALSE;
 	}
 	/**
-	 * Defines the text to be displayed inside the drop area, below the
-	 * upload icon
-	 * @param string $text the text to be displayed inside the drop area,
-	 * below the upload icon
+	 * Defines the text to be displayed inside the drop area, below the upload icon
+	 * @param string $text the text to be displayed inside the drop area, below the upload icon
 	 */
 	public function setText(string $text):void {
 		$this->infoText = $text;
 	}
 	/**
-	 * Defines if a file select button will be displayed inside the drop area.
-	 * When clicked, the button will display a file browser from where the user
-	 * can select a file that will be uploaded to the server.
-	 * @param bool $status true if the button should be displayed, false if not
+	 * Defines if a file select button will be displayed inside the drop area. When clicked,
+	 * the button will display a file browser from where the user can select a file that will be
+	 * uploaded to the server.
+	 * @param bool $status TRUE if the button should be displayed, FALSE if not
 	 */
 	public function setDisplayBrowser(bool $status):void {
 		$this->displayBrowser = $status;
 	}
 	/**
-	 * Defines if the drop area should be limited (and displayed) or full page
-	 * drop is enabled (and no specific drop area is displayed)
-	 * @param bool $status (optional) (default true) true if full page drop is
-	 * enabled, false if a defined area for drop should be rendered.
+	 * Defines if the drop area should be limited (and displayed) or full page drop is enabled (and
+	 * no specific drop area is displayed)
+	 * @param bool $status (optional) (default TRUE) TRUE if full page drop is enabled, FALSE if a
+	 * defined area for drop should be rendered.
 	 */
-	public function setFullPageDrop(bool $status = true):void {
+	public function setFullPageDrop(bool $status = TRUE):void {
 		$this->fullPageDrop = $status;
 	}
 	/**
-	 * Returns the file select button. The button visibility (default visible)
-	 * can be set using the setDisplayBrowser method
+	 * Returns the file select button. The button visibility (default visible) can be set using the
+	 * setDisplayBrowser method
 	 * @return InputFile the file browser button
 	 */
 	public function getBrowserButton():InputFile {
 		return $this->browserButton;
 	}
 	/**
-	 * Defines the upload size limit. If one of the limits is exceeded then no
-	 * upload will start and an alert will be triggered
-	 * @param int $totalSize total size for all uploades files, in MB. If the
-	 * value is 0 then no limit is required
-	 * @param int $file (optional) (default 0) maximum size for one file, in MB.
-	 * If the value is 0 then no limit is required
+	 * Defines the upload size limit. If one of the limits is exceeded then no upload will start and
+	 * an alert will be triggered
+	 * @param int $totalSize total size for all uploades files, in MB. If the value is 0 then no
+	 * limit is required
+	 * @param int $file (optional) (default 0) maximum size for one file, in MB. If the value is
+	 * 0 then no limit is required
 	 */
 	public function setMaxSize(int $totalSize, int $fileSize = 0):void {
 		$this->maximumTotalSize = $totalSize;
@@ -91,7 +86,7 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 	}
 	/**
 	 * Adds an extension to the accepted extensions list
-	 * @param string $extension the extension
+	 * @param string $extension the extension (the dot prefix is optional, mp3 and .mp3 are valid)
 	 */
 	public function addExtension(string $extension):void {
 		if (substr($extension, 0, 1) !== '.') {
@@ -100,8 +95,8 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$this->extensionList[] = strtolower($extension);
 	}
 	/**
-	 * Defines the maximum number of files that can be dropped on the area.
-	 * Dropping more files will trigger an error
+	 * Defines the maximum number of files that can be dropped on the area. Dropping more files will
+	 * trigger an error
 	 * @param int $maxFiles maximum number of files or 0 if no limit is required
 	 */
 	public function setMaxFiles(int $maxFiles):void {
@@ -115,9 +110,8 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		$this->url = $url;
 	}
 	/**
-	 * In the fileDrop case, the javascript function must return true for the
-	 * upload to start. If the javascript function returns anything but true
-	 * then the upload will not start.
+	 * In the fileDrop case, the javascript function must return TRUE for the upload to start. If
+	 * the javascript function returns anything but TRUE then the upload will not start.
 	 * @see BeforeAfterCallback::setBeforeCallback()
 	 */
 	public function setBeforeCallback(string $functionName):void {
@@ -138,9 +132,7 @@ class InputFileDrop extends AbstractInput implements BeforeAfterCallback {
 		}
 		if ($this->fullPageDrop) {
 			if (self::$totalItems !== 0) {
-				throw new Exception(
-					'Multiple file drops not allowed when full page drop is enabled'
-				);
+				throw new Exception('Multiple file drops not allowed when full page drop is enabled');
 			}
 			self::$totalItems++;
 		}

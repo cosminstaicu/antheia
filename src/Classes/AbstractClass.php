@@ -7,7 +7,6 @@ namespace Antheia\Framework;
 abstract class AbstractClass {
 	private static $htmlId = NULL;
 	public function __construct() {
-		
 	}
 	/**
 	 * The method generates an unique value, unique per session

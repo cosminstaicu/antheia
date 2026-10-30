@@ -4,8 +4,8 @@ use Antheia\Framework\Exception;
 use Antheia\Framework\Input\Raw\InputRawCustomButton;
 use Antheia\Framework\Interfaces\BeforeAfterCallback;
 /**
- * A button that can perform a search on the server and returns a list of values.
- * The user can click on a value that will be updated to the original input
+ * A button that can perform a search on the server and returns a list of values. The user can click
+ * on a value that will be updated to the original input
  * @author Cosmin Staicu
  */
 class InputSearch extends AbstractInput implements BeforeAfterCallback {
@@ -76,11 +76,10 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 	/**
 	 * Adds a button with the Undefined option, available to the user
 	 * @param string $text (optional) the text to be displayed on the button
-	 * @param string $value (optional) (default '') the value to be inserted
-	 * into the hidden input for the element (the value will be sent
-	 * to the server)
+	 * @param string $value (optional) (default '') the value to be inserted into the hidden input
+	 * for the element (the value will be sent to the server)
 	 */
-	public function displayUndefined($text = 'Undefined', $value = '') {
+	public function displayUndefined(string $text = 'Undefined', string $value = ''):void {
 		$this->displayUndefined = true;
 		$this->undefinedText = $text;
 		$this->undefinedValue = $value;
@@ -98,9 +97,7 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setHiddenInputValue($this->getValue());
 		if ($this->getDefaultValue() !== NULL) {
-			$this->button->addHiddenInputAttribute(
-					'data-default', $this->getDefaultValue()
-			);
+			$this->button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
 		}
 		foreach ($this->getAttributeList() as $attr) {
 			$this->button->addHiddenInputAttribute($attr['name'], $attr['value']);
@@ -113,25 +110,17 @@ class InputSearch extends AbstractInput implements BeforeAfterCallback {
 		$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		$this->button->addHiddenInputAttribute('data-post', $this->afterCallback);
 		$this->button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
-		$this->button->addHiddenInputAttribute(
-			'data-visible-element-id', $this->button->getHtmlId()
-		);
+		$this->button->addHiddenInputAttribute('data-visible-element-id', $this->button->getHtmlId());
 		if ($this->displayUndefined) {
 			$this->button->addAttribute('data-show-undefined', 'yes');
-			$this->button->addAttribute(
-					'data-text-undefined', addslashes($this->undefinedText)
-			);
-			$this->button->addAttribute(
-					'data-undefined-value', addslashes($this->undefinedValue)
-			);
+			$this->button->addAttribute('data-text-undefined', addslashes($this->undefinedText));
+			$this->button->addAttribute('data-undefined-value', addslashes($this->undefinedValue));
 		} else {
 			$this->button->addAttribute('data-show-undefined', 'no');
 		}
 		if ($this->exportJavascript()) {
 			$this->button->setHiddenInputHtmlId($this->getHtmlId());
-			$this->button->addHiddenInputAttribute(
-					'data-validate', $this->getValidation()
-			);
+			$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		}
 		$this->setHtmlCode($this->button->getHtml());
 		return parent::getHtml();

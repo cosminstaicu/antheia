@@ -27,16 +27,14 @@ class IconPixelBig extends AbstractIconPixel {
 	}
 	/**
 	 * An addon image that will be places on the bottom right side of the main image.
-	 * @param string $name the name of the image used as an addon or an empty
-	 * string if no image is required
+	 * @param string $name the name of the image used as an addon or an empty string for no image
 	 */
 	public function setBottomRightIcon(string $name):void {
 		$this->bottomRightAddon = $name;
 	}
 	/**
 	 * An addon image that will be places on the bottom left side of the main image.
-	 * @param string $name the name of the image used as an addon or an empty
-	 * string if no image is required
+	 * @param string $name the name of the image used as an addon or an empty string for no image
 	 */
 	public function setBottomLeftIcon(string $name):void {
 		$this->bottomLeftAddon = $name;
@@ -57,23 +55,15 @@ class IconPixelBig extends AbstractIconPixel {
 		$cachePath = Internals::getCachePath().$file;
 		if (!is_file($cachePath)) {
 			$result = $this->getTransparentImage(32,32);
-			imagecopy(
-				$result,
-				self::getLibraryImage($this->getIcon(), 32),
-				0, 0, 0, 0, 32, 32
-			);
+			imagecopy($result, self::getLibraryImage($this->getIcon(), 32),0, 0, 0, 0, 32, 32);
 			if ($this->bottomRightAddon !== '') {
 				imagecopy(
-					$result,
-					self::getLibraryImage($this->bottomRightAddon, 16),
-					16, 16, 0, 0, 16, 16
+					$result, self::getLibraryImage($this->bottomRightAddon, 16), 16, 16, 0, 0, 16, 16
 				);
 			}
 			if ($this->bottomLeftAddon !== '') {
 				imagecopy(
-					$result,
-					self::getLibraryImage($this->bottomLeftAddon, 16),
-					0, 16, 0, 0, 16, 16
+					$result, self::getLibraryImage($this->bottomLeftAddon, 16), 0, 16, 0, 0, 16, 16
 				);
 			}
 			// saving the generated file into cache

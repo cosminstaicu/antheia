@@ -36,8 +36,7 @@ class AppMenuSecondary extends AbstractClass implements HtmlCode, HtmlId {
 		$this->testId = $id;
 	}
 	/**
-	 * Defines if a loading animation will be triggered when the user clicks
-	 * on this menu.
+	 * Defines if a loading animation will be triggered when the user clicks on this menu.
 	 * @param boolean $status true if the animation will start, false if not
 	 */
 	public function startLoadingOnClick($status):void {
@@ -59,14 +58,13 @@ class AppMenuSecondary extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Defines the name of the icon for the menu (and, optionally, the icon type)
-	 * @param string $name the name of the icon for the menu (the filename of
-	 * the symbol, inside the zip file located in the media folder)
-	 * @param string [$type=NULL] the type of the icon, as one of the variables
-	 * AbstractIcon::PIXEL or AbstractIcon::VECTOR. If no type is provided then
-	 * the current icon instance is used. If type is provided then a new instance
-	 * for the icon will be created
+	 * @param string $name the name of the icon for the menu (the filename of the symbol, inside
+	 * the zip file located in the media folder)
+	 * @param ?string [$type=NULL] the type of the icon, as one of the variables AbstractIcon::PIXEL
+	 * or AbstractIcon::VECTOR. If no type is provided then the current icon instance is used. If
+	 * type is provided then a new instance for the icon will be created
 	 */
-	public function setIconName(string $name, string $type = NULL) {
+	public function setIconName(string $name, ?string $type = NULL):void {
 		if ($type !== NULL) {
 			switch ($type) {
 				case AbstractIcon::PIXEL:
@@ -86,7 +84,7 @@ class AppMenuSecondary extends AbstractClass implements HtmlCode, HtmlId {
 	 * Returns the icon linked to the menu (placed on the left side of the menu)
 	 * @return AbstractIcon the icon linked to the menu
 	 */
-	public function getIcon() {
+	public function getIcon():AbstractIcon {
 		return $this->icon;
 	}
 	/**

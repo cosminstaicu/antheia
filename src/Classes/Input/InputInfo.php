@@ -2,8 +2,8 @@
 namespace Antheia\Framework\Input;
 use Antheia\Framework\Internals;
 /**
- * The class defines an info, that can be used to display some information
- * inside a form. The html elemen has no attached data to be sent to the server
+ * The class defines an info, that can be used to display some information inside a form. The html
+ * element has no attached data to be sent to the server
  * @author Cosmin Staicu
  */
 class InputInfo extends AbstractInput {

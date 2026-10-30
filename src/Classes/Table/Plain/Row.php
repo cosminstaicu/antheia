@@ -7,8 +7,7 @@ use Antheia\Framework\Texts;
 use Antheia\Framework\Interfaces\TableCell;
 use Antheia\Framework\Interfaces\TableRow;
 /**
- * Defines a regular row, from a table. The row (just like the table)
- * has no special formatting
+ * Defines a regular row, from a table. The row (just like the table) has no special formatting
  * @author Cosmin Staicu
  */
 class Row extends AbstractClass implements TableRow {
@@ -36,27 +35,25 @@ class Row extends AbstractClass implements TableRow {
 		$this->testId = $id;
 	}
 	/**
-	 * Calling the method will render the row as a title row
-	 * WARNING The method is automatically called by the framework. The user does
-	 * not need to manage it
-	 */
+	 * Calling the method will render the row as a title row.
+	 * <br>WARNING The method is automatically called by the framework. The user does not need to
+	 * manage it	 */
 	public function formatAsTitle():void {
 		$this->titleRow = true;
 	}
 	/**
 	 * Returns the status of rendering the cell, as a title cell.
-	 * WARNING The method is automatically called by the framework. The user does
-	 * not need to manage it
-	 * @return boolean true if the cell will be formatted as a title cell, false
-	 * if not
+	 * <br>WARNING The method is automatically called by the framework. The user does not need to
+	 * manage it
+	 * @return boolean true if the cell will be formatted as a title cell, false if not
 	 */
 	public function isTitle():bool {
 		return $this->titleRow;
 	}
 	/**
 	 * Adds a css property to be inserted into the tag definition
-	 * @param string $css the css code added (ex: "width: 30px").
-	 * If the string does not ends wil a semicolon, then one will be added
+	 * @param string $css the css code added (ex: "width: 30px"). If the string does not ends wil a
+	 * semicolon, then one will be added
 	 */
 	protected function addCss(string $css):void {
 		if (substr($css, -1) !== ';') {
@@ -73,14 +70,12 @@ class Row extends AbstractClass implements TableRow {
 	public function addTextAttribute(string $name, string $value):void {
 		$this->addAttribute('data-text-'.$name, Texts::get($value));
 	}
-	public function addCell(TableCell $cell = NULL):TableCell {
-		if ($cell === null) {
+	public function addCell(?TableCell $cell = NULL):TableCell {
+		if ($cell === NULL) {
 			$cell = new Cell();
 		}
 		if (!is_a($cell, 'Antheia\Framework\Table\Plain\Cell')) {
-			throw new Exception(
-				'Only Antheia\Framework\Table\Plain\Cell instances allowed'
-			);
+			throw new Exception('Only Antheia\Framework\Table\Plain\Cell instances allowed');
 		}
 		$this->cells[] = $cell;
 		return $cell;

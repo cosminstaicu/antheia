@@ -42,8 +42,8 @@ class PanelInfo extends Panel {
 	 * containing the input
 	 * @param string[] $classes (optional) a list of html classes to be added to the row html tag
 	 * of the wireframe
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addNameElement(

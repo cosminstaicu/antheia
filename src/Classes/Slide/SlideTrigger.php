@@ -8,13 +8,12 @@ use Antheia\Framework\Interfaces\HtmlAttribute;
 use Antheia\Framework\Interfaces\HtmlCode;
 use Antheia\Framework\Interfaces\HtmlId;
 /**
- * The controller for container toggle in a slide panel. This class should
- * not be directlly called by the user. Instead, the controller should be
- * returned by calling the getController() method from the slide panel
+ * The controller for container toggle in a slide panel. This class should not be directlly called
+ * by the user. Instead, the controller should be returned by calling the getController() method
+ * from the slide panel
  * @author Cosmin Staicu
  */
-class SlideTrigger extends AbstractClass 
-implements HtmlCode, HtmlAttribute, HtmlId {
+class SlideTrigger extends AbstractClass implements HtmlCode, HtmlAttribute, HtmlId {
 	private $htmlId;
 	private $testId;
 	private $name;
@@ -36,10 +35,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->setAfterCallback('');
 	}
 	/**
-	 * Defines a function that will be called after the default action of the
-	 * trigger has finished
-	 * @param string $functionName the name (just the name) of the javascript
-	 * function that will be called, with the "this" parameter
+	 * Defines a function that will be called after the default action of the trigger has finished
+	 * @param string $functionName the name (just the name) of the javascript function that will be
+	 * called, with the "this" parameter
 	 */
 	public function setAfterCallback(string $functionName):void {
 		$this->postCallback = $functionName;

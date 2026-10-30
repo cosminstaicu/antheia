@@ -43,8 +43,8 @@ class PageEmpty extends PageBlank {
 		$this->topSearch = null;
 	}
 	/**
-	 * Returns the global search object that will be displayed on the top bar.
-	 * If this method is not called, then no top search is displayed
+	 * Returns the global search object that will be displayed on the top bar. If this method is not
+	 * called, then no top search is displayed
 	 */
 	public function getTopSearchForm():TopSearch {
 		if ($this->topSearch === NULL) {
@@ -53,13 +53,11 @@ class PageEmpty extends PageBlank {
 		return $this->topSearch;
 	}
 	/**
-	 * Defines if the top bar of the page (with the main menu toogle button
-	 * and the right side buttons) is fixed to the viewport (always visible) or
-	 * fixed to the body of the page (visible only when the upper part of the
-	 * page is visible)
-	 * @param bool $status true if the top menu should be always visible, false
-	 * if the top menu should be visible only when the top part of the page is
-	 * visible (0 scroll)
+	 * Defines if the top bar of the page (with the main menu toogle button and the right side
+	 * buttons) is fixed to the viewport (always visible) or fixed to the body of the page (visible
+	 * only when the upper part of the page is visible)
+	 * @param bool $status true if the top menu should be always visible, false if the top menu
+	 * should be visible only when the top part of the page is visible (0 scroll)
 	 */
 	public function setFixedTopMenu(bool $status = true):void {
 		$this->fixedTopMenu = $status;
@@ -75,8 +73,7 @@ class PageEmpty extends PageBlank {
 	 * Defines the width of the header.
 	 * @param string $type one of the constants: 
 	 * \Antheia\Framework\Header\Header::TYPE_FIXED (default)
-	 * the page title, along with the page manu (if available) will align with
-	 * a fixed wireframe
+	 * the page title, along with the page manu (if available) will align with a fixed wireframe
 	 * \Antheia\Framework\Header\Header::TYPE_FLUID the page title will always
 	 * be on the left edge of the document
 	 * @see \Antheia\Framework\Header\Header::setType()
@@ -102,23 +99,22 @@ class PageEmpty extends PageBlank {
 	}
 	/**
 	 * Sets up a message to be displayed after the page has been loaded.
-	 * @param string $text the text to be displayed or an empty string if
-	 * no message is needed
-	 * @param string $imageUrl (optional) the url for a image that will be used
-	 * as a full screen background for the message (a fullscreen message) or
-	 * NULL for the message to be rendered as a discreet one (toast type)
-	 * @param boolean $closeOnClick (optional) (default false) if set to true
-	 * then a full page confirmation message can be closed by clicking on it
+	 * @param string $text the text to be displayed or an empty string if no message is needed
+	 * @param ?string $imageUrl (optional) the url for a image that will be used as a full screen
+	 * background for the message (a fullscreen message) or NULL for the message to be rendered as
+	 * a discreet one (toast type)
+	 * @param boolean $closeOnClick (optional) (default false) if set to true then a full page
+	 * confirmation message can be closed by clicking on it
 	 */
 	public function setInfoMessage(
-			string $text, string $imageUrl = NULL, bool $closeOnClick = false):void {
+			string $text, ?string $imageUrl = NULL, bool $closeOnClick = false):void {
 		$this->infoText = $text;
 		$this->infoTextBackgroundImage = $imageUrl;
 		$this->closeFullPageMessageOnClick = $closeOnClick;
 	}
 	/**
-	 * Adds a fixed button to the bottom right side of the page, that will
-	 * slide in after the page has been loaded.
+	 * Adds a fixed button to the bottom right side of the page, that will slide in after the page 
+	 * as been loaded.
 	 * @param AbstractFixedButton $button the button to be added
 	 */
 	public function addFixedButton(AbstractFixedButton $button):void {
@@ -132,16 +128,16 @@ class PageEmpty extends PageBlank {
 		$this->topRightItems[] = $item;
 	}
 	/**
-	 * Add a navigation item to the main menu of the app (the menu that slides
-	 * from the left side of the page)
+	 * Add a navigation item to the main menu of the app (the menu that slides from the left side
+	 * of the page)
 	 * @param AppMenuPrimary $item the menu to be added to the page
 	 */
 	public function addNavigationMenu (AppMenuPrimary $item):void {
 		$this->menu[] = $item;
 	}
 	/**
-	 * Adds an item to the page menu (the menu available when pressing the menu
-	 * button to the left of the title)
+	 * Adds an item to the page menu (the menu available when pressing the menu button to the left
+	 * of the title)
 	 * @param AbstractMenu $item the menu item to be added
 	 */
 	public function addPageMenu(AbstractMenu $item):void {
@@ -149,11 +145,11 @@ class PageEmpty extends PageBlank {
 	}
 	/**
 	 * Adds a tab to the page
-	 * @param HeaderTab $tab (optional) the tab to be added (if the parameter
-	 * is not defined, then a new tab will be instantiated and added to the page)
+	 * @param ?HeaderTab $tab (optional) the tab to be added (if the parameter is not defined,
+	 * then a new tab will be instantiated and added to the page)
 	 * @return HeaderTab the added tab
 	 */
-	public function addTab(HeaderTab $tab = NULL):HeaderTab {
+	public function addTab(?HeaderTab $tab = NULL):HeaderTab {
 		if ($tab === NULL) {
 			$tab = new HeaderTab();
 		}
@@ -189,7 +185,7 @@ class PageEmpty extends PageBlank {
 		if ($this->fixedTopMenu) {
 			$this->addBodyClass('ant_topBarFixed');
 		}
-		// ***************************************************** JAVASCRIPT HEAD
+		// ************************************************************************* JAVASCRIPT HEAD
 		$this->addHtmlClass('ant_tags_bottom-bar');
 		$this->addBodyClass('ant_tags_bottom-bar');
 		if ($this->infoTextBackgroundImage !== null) {
@@ -198,13 +194,11 @@ class PageEmpty extends PageBlank {
 		if (count($this->fixedButtons) > 0) {
 			$this->addBodyClass('ant-has-fixed-buttons');
 		}
-		// *********************************************************** UPPER BAR
+		// ******************************************************************************* UPPER BAR
 		
 		$upperBar = new Html();
 		$upperBar->addRawCode('<div id="ant_topBar">');
-		$upperBar->addRawCode(
-			'<button onClick="ant_appMenu_toggle()" type="button">'
-		);
+		$upperBar->addRawCode('<button onClick="ant_appMenu_toggle()" type="button">');
 		$menuButton = new IconVector();
 		$menuButton->setIcon('menu');
 		$menuButton->setSize(24);
@@ -224,17 +218,17 @@ class PageEmpty extends PageBlank {
 		$upperBar->addElement(new Html($upRight));
 		$upperBar->addRawCode('</div>');
 		parent::addElement($upperBar);
-		// ****************************************************** TITLE AND TABS
+		// ************************************************************************** TITLE AND TABS
 		$this->header->setTitle($this->getTitle());
 		parent::addElement($this->header);
-		// ************************************************************* CONTENT
+		// ********************************************************************************* CONTENT
 		$code = '<div id="ant_content">';
 		parent::addElement(new Html($code));
 		foreach ($this->codeElements as $item) {
 			parent::addElement($item);
 		}
 		$code = '</div>';
-		// ******************************************************* FIXED BUTTONS
+		// *************************************************************************** FIXED BUTTONS
 		if (count($this->fixedButtons) > 0) {
 			$code .= '<div id="ant_fixedButton">';
 			/** @var AbstractFixedButton $element */

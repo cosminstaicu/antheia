@@ -4,8 +4,7 @@ use Antheia\Framework\AbstractClass;
 use Antheia\Framework\Search\SearchResult;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * Abstract class to be extended by all classed defining renders for displaying
- * search results
+ * Abstract class to be extended by all classed defining renders for displaying search results
  * @author Cosmin Staicu
  */
 abstract class AbstractSearchView extends AbstractClass implements HtmlCode {
@@ -33,11 +32,10 @@ abstract class AbstractSearchView extends AbstractClass implements HtmlCode {
 		return $this->noItemsText;
 	}
 	/**
-	 * Returns the javascript code called to update the selection status of
-	 * the items. The code will be inserted into the head of the page, so proper
-	 * formatting is required.
-	 * @return string the javascript code used for updating the selected
-	 * items status. Probably it is just a function
+	 * Returns the javascript code called to update the selection status of the items. The code will
+	 * be inserted into the head of the page, so proper formatting is required.
+	 * @return string the javascript code used for updating the selected items status. Probably it
+	 * is just a function
 	 */
 	abstract public function getJavascriptStatusUpdate():string;
 	/**

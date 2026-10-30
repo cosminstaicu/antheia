@@ -77,8 +77,8 @@ class HeaderTab extends AbstractClass implements HtmlId, HtmlCode, LinkButtonRen
 	/**
 	 * Defines the status of the tab (default or selected)
 	 * @param integer $status the status of the tab, as one of the constants:
-	 * - HeaderTab::STATUS_DEFAULT
-	 * - HeaderTab::STATUS_SELECTED
+	 * <br>- HeaderTab::STATUS_DEFAULT
+	 * <br>- HeaderTab::STATUS_SELECTED
 	 */
 	public function setStatus(string $status):void {
 		$this->status = $status;
@@ -91,11 +91,9 @@ class HeaderTab extends AbstractClass implements HtmlId, HtmlCode, LinkButtonRen
 		$this->accent = $accent;
 	}
 	/**
-	 * Defines if a close option will be rendered to the tab and the action
-	 * for the close event
-	 * @param string $code the code to be inserted into the onClick attribute
-	 * for the close button. If an empty string is provided then no close link
-	 * will be rendered
+	 * Defines if a close option will be rendered to the tab and the action for the close event
+	 * @param string $code the code to be inserted into the onClick attribute for the close button.
+	 * If an empty string is provided then no close link will be rendered
 	 */
 	public function setOnClickClose(string $code):void {
 		$this->onClickClose = $code;
@@ -149,8 +147,8 @@ class HeaderTab extends AbstractClass implements HtmlId, HtmlCode, LinkButtonRen
 			$icon = new IconVector();
 			$icon->setIcon('x');
 			$icon->setSize(16);
-			$code .= '<button type="button" onclick="'
-					.$this->onClickClose.'">'.$icon->getHtml().'</button>';
+			$code .= '<button type="button" onclick="'.$this->onClickClose.'">'.$icon->getHtml()
+				.'</button>';
 		}
 		$code .= '</div>';
 		return $code;

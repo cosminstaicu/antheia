@@ -28,8 +28,7 @@ class InputFile extends AbstractInput {
 	}
 	/**
 	 * Defines javascript code to be executed when the input is changed
-	 * @param string $onChange the javascript code to be executed when
-	 * the input is changed
+	 * @param string $onChange the javascript code to be executed when the input is changed
 	 */
 	public function setOnChange(string $onChange):void {
 		$this->onChange = $onChange;
@@ -52,8 +51,8 @@ class InputFile extends AbstractInput {
 		$this->extensionList[] = $extension;
 	}
 	/**
-	 * Returns the html code used for the hidden file input used by the input.
-	 * Probably the end user will not use this method
+	 * Returns the html code used for the hidden file input used by the input. Probably the end user
+	 * will not use this method
 	 * @return string the html code used for the hidden file input
 	 */
 	public function getHtmlHiddenFileInput():string {

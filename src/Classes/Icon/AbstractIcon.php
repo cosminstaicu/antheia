@@ -50,19 +50,17 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 		return $this->iconType;
 	}
 	/**
-	 * Defines the name of the main image, to be used inside the icon. The name
-	 * must have a coresponding .svg or .png file inside the .zip library
-	 * (the folder Media/Icons/<libraryType> from the library).
-	 * @param string $icon the name of the image from the library file
-	 * (no extension required)
+	 * Defines the name of the main image, to be used inside the icon. The name must have a
+	 * coresponding .svg or .png file inside the .zip library (the folder Media/Icons/<libraryType>
+	 * from the library).
+	 * @param string $icon the name of the image from the library file (no extension required)
 	 */
 	public function setIcon(string $icon):void {
 		$this->icon = $icon;
 	}
 	/**
 	 * Returns the name of the main image used for generating the icon
-	 * @return string the name of the main image used for generating the icon
-	 * without any extension
+	 * @return string the name of the main image used for generating the icon without any extension
 	 */
 	public function getIcon():string {
 		return $this->icon;
@@ -72,8 +70,7 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 	}
 	/**
 	 * Returns the html ID for the tag
-	 * @return string the html id for the tag or an empty string if no htmlId
-	 * is needed
+	 * @return string the html id for the tag or an empty string if no htmlId is needed
 	 */
 	protected function getHtmlId():string {
 		return $this->htmlId;
@@ -83,8 +80,7 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 	}
 	/**
 	 * Returns the test ID for the tag
-	 * @return string the test id for the tag or an empty string if no testId
-	 * is needed
+	 * @return string the test id for the tag or an empty string if no testId is needed
 	 */
 	protected function getTestId():string {
 		return $this->testId;
@@ -93,10 +89,8 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 		$this->classes[] = $class;
 	}
 	/**
-	 * Returns a list with all classes that must be included inside the tag
-	 * definition
-	 * @return string[] a list with all classes that must be included inside
-	 * the tag definition
+	 * Returns a list with all classes that must be included inside the tag definition
+	 * @return string[] a list with all classes that must be included inside the tag definition
 	 */
 	protected function getClasses():array {
 		return $this->classes;
@@ -105,10 +99,8 @@ abstract class AbstractIcon implements HtmlCode, HtmlId, HtmlAttribute, HtmlClas
 		$this->attributes[$name] = addslashes($value);
 	}
 	/**
-	 * Returns a list with all attributes that must be included inside the tag
-	 * definition
-	 * @return string[] a list with all attributes that must be included inside
-	 * the tag definition
+	 * Returns a list with all attributes that must be included inside the tag definition
+	 * @return string[] a list with all attributes that must be included inside the tag definition
 	 */
 	protected function getAttributes():array {
 		return $this->attributes;

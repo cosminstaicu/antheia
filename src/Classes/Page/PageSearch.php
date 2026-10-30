@@ -7,8 +7,8 @@ use Antheia\Framework\Input\InputSubmit;
 use Antheia\Framework\Panel\PanelInput;
 use Antheia\Framework\Wireframe\Wireframe;
 /**
- * The template of a page for starting a search. The user can add inputs to the
- * page that will be sent to the redirect target.
+ * The template of a page for starting a search. The user can add inputs to the page that will be
+ * sent to the redirect target.
  * @author Cosmin Staicu
  */
 class PageSearch extends PageEmpty {
@@ -37,20 +37,16 @@ class PageSearch extends PageEmpty {
 	/**
 	 * Adds a search filter (a for input) to the page
 	 * @param AbstractInput $input the added input
-	 * @param string $id (optional) if defined then the row (from the wireframe)
-	 * containing the filter will have this id
-	 * @param string[] $classes (optional) a list of html classes to be added to the
-	 * row html tag of the wireframe
+	 * @param string $id (optional) if defined then the row (from the wireframe) containing the
+	 * filter will have this id
+	 * @param string[] $classes (optional) a list of html classes to be added to the row html tag of
+	 * the wireframe
 	 */
-	public function addInput(
-			AbstractInput $input,
-			string $id = '',
-			array $classes = []):void {
+	public function addInput(AbstractInput $input, string $id = '', array $classes = []):void {
 		$this->panel->addInput($input, $id, $classes);
 	}
 	/**
-	 * Defines the location where the search parameter sill be sent
-	 * (the action attribute for the form)
+	 * Defines the location where the search parameter sill be sent (the action attribute for the form)
 	 * @param string $url the url for the html form
 	 */
 	public function setUrl(string $url):void {
@@ -64,9 +60,8 @@ class PageSearch extends PageEmpty {
 		$this->button->setText($text);
 	}
 	/**
-	 * Defines the javascript code to be executed just before the form
-	 * is submitted. The code will be exported into the onSubmit attribute
-	 * of the form tag
+	 * Defines the javascript code to be executed just before the form is submitted. The code will
+	 * be exported into the onSubmit attribute of the form tag
 	 * @param string $code the javascript code
 	 */
 	public function setOnSubmit(string $code):void {
@@ -74,28 +69,24 @@ class PageSearch extends PageEmpty {
 	}
 	/**
 	 * Returns the form used by the page
-	 * @return \Antheia\Framework\Form the form that will be submitted,
-	 * when the user pressed the submit button
+	 * @return \Antheia\Framework\Form the form that will be submitted
 	 */
 	public function getForm():\Antheia\Framework\Form {
 		return $this->form;
 	}
 	/**
 	 * Returns the panel used to display inputs
-	 * @return \Antheia\Framework\Panel\PanelInput the panel used to
-	 * display inputs
+	 * @return \Antheia\Framework\Panel\PanelInput the panel used to display inputs
 	 */
 	public function getPanel():\Antheia\Framework\Panel\PanelInput {
 		return $this->panel;
 	}
 	/**
 	 * Defines the input that will get focus after the page has been loaded
-	 * @param \Antheia\Framework\Input\AbstractInput $input the input
-	 * that will get focus after the page has been loaded or null if no autofocus
-	 * is needed
+	 * @param ?\Antheia\Framework\Input\AbstractInput $input the input that will get focus after
+	 * the page has been loaded or null if no autofocus is needed
 	 */
-	public function setAutofocus(
-			?\Antheia\Framework\Input\AbstractInput $input):void {
+	public function setAutofocus(?\Antheia\Framework\Input\AbstractInput $input):void {
 		$this->autofocusInput = $input;
 	}
 	public function getHtml():string {

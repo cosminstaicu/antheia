@@ -15,11 +15,9 @@ class InputColor extends AbstractInput {
 		$this->onChange = '';
 	}
 	/**
-	 * Defines the name of a function that will be called when the color is 
-	 * changed
-	 * @param string $name the name of a javascript function that will
-	 * be called when the color is changed. The function will be called with
-	 * "this" as a parameter
+	 * Defines the name of a function that will be called when the color is changed
+	 * @param string $name the name of a javascript function that will be called when the color
+	 * is changed. The function will be called with "this" as a parameter
 	 */
 	public function setOnChange(string $name):void {
 		$this->onChange = $name;

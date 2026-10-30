@@ -4,8 +4,7 @@ use Antheia\Framework\Exception;
 use Antheia\Framework\Internals;
 use Antheia\Framework\Icon\IconVector;
 /**
- * Abstract class to be extended by all text type inputs
- * (text, password, phone, numbers etc.)
+ * Abstract class to be extended by all text type inputs (text, password, phone, numbers etc.)
  * @author Cosmin Staicu
  */
 abstract class AbstractInputText extends AbstractInput {
@@ -40,11 +39,9 @@ abstract class AbstractInputText extends AbstractInput {
 		$this->classList[] = $class;
 	}
 	/**
-	 * Defines the default maximum length for all text based inputs (passwords,
-	 * text, phones, numbers etc.).
-	 * The instances defined prior to this method call are not affected.
-	 * @param int $maxLength the default maximum length for all text inputs
-	 * or 0 if no limit is defined
+	 * Defines the default maximum length for all text based inputs (passwords, text, phones, numbers
+	 * etc.). The instances defined prior to this method call are not affected.
+	 * @param int $maxLength the default maximum length for all text inputs or 0 for no limit
 	 */
 	public static function setGlobalMaxLength(int $maxLength):void {
 		self::$globalMaxLength = $maxLength;
@@ -72,33 +69,30 @@ abstract class AbstractInputText extends AbstractInput {
 	}
 	/**
 	 * Defines the input type.
-	 * @param integer $type input type as a constant like
-	 * AbstractInputText::TIP_##
+	 * @param integer $type input type as a constant like AbstractInputText::TIP_##
 	 */
 	protected function setType(int $type):void {
 		$this->type = $type;
 	}
 	/**
 	 * Defines the maximum length of the input
-	 * @param int $max the maximum length of the input or 0 if the attribute
-	 * is not required
+	 * @param int $max the maximum length of the input or 0 if the attribute is not required
 	 */
 	public function setMaxLength(int $max):void {
 		$this->maxLength = $max;
 	}
 	/**
-	 * Enables (or disables) the suggestions for the input. Suggestions are loaded
-	 * from the server and then cached. The minimum length for showing suggestions
-	 * can be set up using the $limit parameter
-	 * @param integer $limit the limit of the input for the query. If null then
-	 * suggestions are disabled. If a number is provided then the suggestions will
-	 * be enabled when the length of the typed value is egual of greater then
-	 * $limit. A request for suggestion update is sent to the server when the
-	 * first $limit characters are different then the last request.
-	 * @param string $url the url where the request for suggestions will be sent
-	 * of null if the suggestions are disabled.
+	 * Enables (or disables) the suggestions for the input. Suggestions are loaded from the server
+	 * and then cached. The minimum length for showing suggestions can be set up using the $limit
+	 * parameter
+	 * @param integer $limit the limit of the input for the query. If null then suggestions are
+	 * disabled. If a number is provided then the suggestions will be enabled when the length of the
+	 * typed value is egual of greater then $limit. A request for suggestion update is sent to the
+	 * server when the first $limit characters are different then the last request.
+	 * @param ?string $url the url where the request for suggestions will be sent of null if the
+	 * suggestions are disabled.
 	 */
-	public function setSuggestion(?int $limit, string $url = NULL):void {
+	public function setSuggestion(?int $limit, ?string $url = NULL):void {
 		$this->suggestionLimit = $limit;
 		if ($limit === NULL) {
 			if ($url !== NULL) {

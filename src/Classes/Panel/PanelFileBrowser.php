@@ -23,14 +23,13 @@ class PanelFileBrowser extends AbstractPanel {
 		$this->addClass('ant-fileBrowser');
 	}
 	/**
-	 * Adds a new folder to the list. If no folder object is provided as a parameter
+	 * Adds a new folder to the list. If no folder object is provided as a parameter then a new
+	 * instance will be created
+	 * @param ?Folder $folder (optional) the folder to be added. If the parameter is not defined
 	 * then a new instance will be created
-	 * @param Folder|NULL $folder (optional) the folder
-	 * to be added. If the parameter is not defined then a new instance
-	 * will be created
 	 * @return Folder the added folder
 	 */
-	public function addFolder(Folder $folder = null):Folder {
+	public function addFolder(?Folder $folder = null):Folder {
 		if ($folder === null) {
 			$folder = new Folder($this);
 		}
@@ -38,14 +37,13 @@ class PanelFileBrowser extends AbstractPanel {
 		return $folder;
 	}
 	/**
-	 * Adds a new file to the list. If no folder object is provided as a parameter
-	 * then a new instance will be created
-	 * @param File|NULL $file (optional) the file
-	 * to be added. If the parameter is not defined then a new instance
-	 * will be created
+	 * Adds a new file to the list. If no folder object is provided as a parameter then a new
+	 * instance will be created
+	 * @param ?File $file (optional) the file to be added. If the parameter is not defined then a
+	 * new instance will be created
 	 * @return File the added file
 	 */
-	public function addFile(File $file = null):File {
+	public function addFile(?File $file = null):File {
 		if ($file === null) {
 			$file = new File($this);
 		}

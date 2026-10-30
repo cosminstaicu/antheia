@@ -1,10 +1,9 @@
 <?php
 namespace Antheia\Framework\Panel\Permission;
 /**
- * A group of permission for the app. For example, you can have a clients group
- * that can contain all the permissions for clients: add, edit, view etc.
- * WARNING! This class is not instantiated directly. You can get an instance
- * bu calling PanelPermissionInfo::getGroup() on the parent
+ * A group of permission for the app. For example, you can have a clients group that can contain all
+ * the permissions for clients: add, edit, view etc. WARNING! This class is not instantiated
+ * directly. You can get an instance by calling PanelPermissionInfo::getGroup() on the parent
  * @author Cosmin Staicu
  */
 class PermissionInfoGroup {
@@ -30,8 +29,8 @@ class PermissionInfoGroup {
 	}
 	/**
 	 * Returns a list with all permissions defined for this category
-	 * @return string[] a list with all permissions defined for this category
-	 * like permissionName => permissionValue
+	 * @return string[] a list with all permissions defined for this category like
+	 * permissionName => permissionValue
 	 */
 	public function getList():array {
 		return $this->list;
@@ -41,7 +40,7 @@ class PermissionInfoGroup {
 	 * @param string $name the name of the permission (ex. edit, delete)
 	 * @param string $value the value of the permission (ex. allowed, not allowed)
 	 */
-	public function addElement(string $name, string $value) {
+	public function addElement(string $name, string $value):void {
 		$this->list[$name] = $value;
 	}
 }

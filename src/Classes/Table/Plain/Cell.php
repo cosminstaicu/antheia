@@ -7,8 +7,7 @@ use Antheia\Framework\Texts;
 use Antheia\Framework\Interfaces\HtmlCode;
 use Antheia\Framework\Interfaces\TableCell;
 /**
- * Defines a regular cell, from a table row. The cell (just like the table)
- * has no special formatting
+ * Defines a regular cell, from a table row. The cell (just like the table) has no special formatting
  * @author Cosmin Staicu
  */
 class Cell extends AbstractClass implements TableCell {
@@ -58,8 +57,8 @@ class Cell extends AbstractClass implements TableCell {
 	}
 	/**
 	 * Adds a css property to be inserted into the tag definition
-	 * @param string $css the css code added (ex: "width: 30px"). 
-	 * If the string does not ends wil a semicolon, then one will be added
+	 * @param string $css the css code added (ex: "width: 30px"). If the string does not ends wil a
+	 * semicolon, then one will be added
 	 */
 	protected function addCss(string $css):void {
 		if (substr($css, -1) != ';') {
@@ -78,18 +77,17 @@ class Cell extends AbstractClass implements TableCell {
 	}
 	/**
 	 * Calling the method will render the cell as a title cell
-	 * WARNING The method is automatically called by the library. The user does
-	 * not need to manage it
+	 * <br>WARNING The method is automatically called by the library. The user does not need to
+	 * manage it.
 	 */
 	public function formatAsTitle():void {
 		$this->titleCell = true;
 	}
 	/**
 	 * Returns the status of rendering the cell, as a title cell.
-	 * WARNING The method is automatically called bu the framework. The user does
+	 * <br>WARNING The method is automatically called bu the framework. The user does
 	 * not need to manage it
-	 * @return boolean true if the cell will be formatted as a title cell, false
-	 * if not
+	 * @return boolean true if the cell will be formatted as a title cell, false if not
 	 */
 	public function isTitle():bool {
 		return $this->titleCell;

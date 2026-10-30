@@ -4,11 +4,9 @@ use Antheia\Framework\Input\InputSelect;
 use Antheia\Framework\Panel\Panel;
 use Antheia\Framework\Wireframe\WireframeInput;
 /**
- * A group of permissions for the app, as inputs. For example, you can have a 
- * clients group that can contain all the permissions for clients: add, edit, 
- * view, delete etc.
- * WARNING! This class is not instantiated directly. You can get an instance
- * bu calling PanelPermissionEdit::getGroup() on the parent
+ * A group of permissions for the app, as inputs. For example, you can have a clients group that can
+ * contain all the permissions for clients: add, edit, view, delete etc. WARNING! This class is not
+ * instantiated directly. You can get an instance by calling PanelPermissionEdit::getGroup() on parent
  * @author Cosmin Staicu
  */
 class PermissionEditGroup extends Panel {
@@ -21,18 +19,16 @@ class PermissionEditGroup extends Panel {
 	/**
 	 * @see \Antheia\Framework\Panel\AbstractPanel::setTitle()
 	 */
-	public function setTitle(string $title, bool $smallFont = true):void {
+	public function setTitle(string $title, bool $smallFont = TRUE):void {
 		parent::setTitle($title, $smallFont);
 	}
 	/**
 	 * Returns a new select input, used for defining the permission
-	 * @param string $label the label for the permission
-	 * (ex. view, edit etc.)
+	 * @param string $label the label for the permission (ex. view, edit etc.)
 	 * @param string $nameId html tag name and id for the input element
-	 * @param string $rowId (optional) a html id for the row containing the
-	 * input or an empty string if no id is required
-	 * @param string[] $rowClasses a list of classes to be added to the row
-	 * definition
+	 * @param string $rowId (optional) a html id for the row containing the input or an empty string
+	 * if no id is required
+	 * @param string[] $rowClasses a list of classes to be added to the row definition
 	 * @return InputSelect the select input for the permission
 	 */
 	public function getElement(

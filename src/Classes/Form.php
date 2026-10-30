@@ -33,8 +33,7 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		$this->classes = [];
 	}
 	/**
-	 * Calling the method will display the form using the maximum available
-	 * height (100%)
+	 * Calling the method will display the form using the maximum available height (100%)
 	 */
 	public function setFullHeight():void {
 		$this->addClass('ant-max-height');
@@ -47,17 +46,17 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 		$this->classes[] = $class;
 	}
 	/**
-	 * Calling the method will enable the form to send files to the server.
-	 * If this method is not called, but the form contains input=file
-	 * tags, then those tags will be ignored when the form is submitted
+	 * Calling the method will enable the form to send files to the server. If this method is not
+	 * called, but the form contains input=file tags, then those tags will be ignored when the form
+	 * is submitted
 	 */
 	public function setFileMode():void {
 		$this->fileMode = true;
 	}
 	/**
 	 * Defines the target of the form (the target attribute from the html tag)
-	 * @param string $target the value to be inserted into the target tag or
-	 * an empty string if no target is required
+	 * @param string $target the value to be inserted into the target tag or an empty string if no
+	 * target is required
 	 */
 	public function setTarget(string $target):void {
 		$this->target = $target;
@@ -77,18 +76,16 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Defines the method used for submitting data
-	 * @param integer $method the method used for submitting data, using
-	 * a constant like Form::METHOD_##
+	 * @param integer $method the method used for submitting data, using a constant like
+	 * Form::METHOD_##
 	 */
 	public function setMethod(string $method):void {
 		$this->method = $method;
 	}
 	/**
-	 * Defines a javascript function, to be executed just before submitting
-	 * the form.
-	 * @param string $code the javascript code to be executed or an
-	 * empty string if no onSubmit code is required. The code will be
-	 * automatically prefixed with the "return " string
+	 * Defines a javascript function, to be executed just before submitting the form.
+	 * @param string $code the javascript code to be executed or an empty string if no onSubmit
+	 * code is required. The code will be automatically prefixed with the "return " string
 	 */
 	public function setOnSubmit(string $code):void {
 		$this->onSubmit = $code;
@@ -111,8 +108,8 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a new wireframe to the form and returns the new wireframe instance
-	 * @string $type (optional) (default Wireframe::TYPE_FIXED)
-	 * the wireframe type, as a constant like Wireframe::TYPE_XXXX
+	 * @string $type (optional) (default Wireframe::TYPE_FIXED) the wireframe type, as a constant
+	 * like Wireframe::TYPE_XXXX
 	 * @return Wireframe the added wireframe
 	 */
 	public function addWireframe(string $type = Wireframe::TYPE_FIXED):Wireframe {
@@ -125,16 +122,14 @@ class Form extends AbstractClass implements HtmlCode, HtmlId {
 	 * Adds a hidden input to the form
 	 * @param string $name the name of the hidden input
 	 * @param string $value the value of the hidden input
-	 * @param string $id (optional) an html id to be assigned to the input
-	 * or an empty string, if no id is required
+	 * @param string $id (optional) an html id to be assigned to the input or an empty string, if
+	 * no id is required
 	 */
 	public function addHiddenInput(string $name, string $value, string $id = ''):void {
 		if ($id !== '') {
 			$id = ' id="'.$id.'"';
 		}
-		$this->addElement(new Html(
-			'<input type="hidden" name="'.$name.'"'.$id.' value="'.$value.'">'
-		));
+		$this->addElement(new Html('<input type="hidden" name="'.$name.'"'.$id.' value="'.$value.'">'));
 	}
 	public function getHtml():string {
 		if ($this->action == '') {

@@ -5,8 +5,7 @@ use Antheia\Framework\Internals;
 use Antheia\Framework\Input\Raw\InputRawCustomButton;
 use Antheia\Framework\Interfaces\BeforeAfterCallback;
 /**
- * A select input. On click, the interface will display one ore more options
- * from which the user can select one
+ * A select input. On click, the interface will display one ore more options, the user can select one
  * @author Cosmin Staicu
  */
 class InputSelect extends AbstractInput implements BeforeAfterCallback {
@@ -53,10 +52,10 @@ class InputSelect extends AbstractInput implements BeforeAfterCallback {
 	 * Adds an item to the selection
 	 * @param string $label the label of the element (displayed)
 	 * @param string $value the value of the element
-	 * @param boolean $selected (optional) (default false) if it is true then
-	 * this option will be selected by default
-	 * @param string $helpText (optional) if defined then an info text will
-	 * be displayed under the input when this option is selected
+	 * @param boolean $selected (optional) (default false) if it is true then this option will be
+	 * selected by default
+	 * @param string $helpText (optional) if defined then an info text will be displayed under the
+	 * input when this option is selected
 	 */
 	public function addOption(
 			string $label, 

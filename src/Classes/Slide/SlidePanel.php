@@ -7,7 +7,6 @@ use Antheia\Framework\Interfaces\HtmlId;
 /**
  * A panel that contains two containers that can be toggled by the user.
  * @author Cosmin Staicu
- *
  */
 class SlidePanel extends AbstractClass implements HtmlId, HtmlCode {
 	private $initialVisible;

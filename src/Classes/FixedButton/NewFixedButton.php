@@ -1,9 +1,8 @@
 <?php
 namespace Antheia\Framework\FixedButton;
 /**
- * A shortcut class for generating any fixed button without adding the namespace
- * to the document use section (as a page can have more fixed buttons, the
- * namespace declaration section can become crowded)
+ * A shortcut class for generating any fixed button without adding the namespace to the document use
+ * section (as a page can have more fixed buttons, the namespace declaration section can become crowded)
  * @author Cosmin Staicu
  */
 abstract class NewFixedButton {

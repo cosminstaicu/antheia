@@ -10,20 +10,12 @@ class Row extends \Antheia\Framework\Table\Plain\Row {
 	public function __construct() {
 		parent::__construct();
 	}
-	/**
-	 * Adds a cell to the current row.
-	 * @param TableCell $cell (optional) the cell to be added. If the
-	 * parameter is not defined then a new cell will be created
-	 * @return TableCell the added cell
-	 */
-	public function addCell(TableCell $cell = NULL):TableCell {
-		if ($cell === null) {
+	public function addCell(?TableCell $cell = NULL):TableCell {
+		if ($cell === NULL) {
 			$cell = new Cell();
 		}
 		if (!is_a($cell, 'Antheia\Framework\Table\Formatted\Cell')) {
-			throw new Exception(
-				'Only Antheia\Framework\Table\Formatted\Cell instances allowed'
-			);
+			throw new Exception('Only Antheia\Framework\Table\Formatted\Cell instances allowed');
 		}
 		return parent::addCell($cell);
 	}

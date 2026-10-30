@@ -10,10 +10,9 @@ use Antheia\Framework\Panel\PanelInput;
 use Antheia\Framework\Interfaces\HtmlCode;
 use Antheia\Framework\Interfaces\HtmlId;
 /**
- * A cell in one of the rows from a wireframe. The cells can be set up to
- * have different widths, according to the viewport width (responsive feature).
- * The cell has no border or visible background, it is only used as a container
- * for other visible elements.
+ * A cell in one of the rows from a wireframe. The cells can be set up to have different widths,
+ * according to the viewport width (responsive feature). The cell has no border or visible
+ * background, it is only used as a container for other visible elements.
  * @author Cosmin Staicu
  */
 class Cell extends AbstractClass implements HtmlCode, HtmlId {
@@ -38,16 +37,16 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 		$this->verticalPadding = true;
 	}
 	/**
-	 * Defines if there will be a horizontal padding for the cell. If the
-	 * method is not called then the default value is TRUE.
+	 * Defines if there will be a horizontal padding for the cell. If the method is not called then
+	 * the default value is TRUE.
 	 * @param boolean $status true for padding the cell, false for no padding
 	 */
 	public function setHorizontalPadding(bool $status):void {
 		$this->horizontalPadding = $status;
 	}
 	/**
-	 * Defines if there will be a vertical padding for the cell. If the
-	 * method is not called then the default value is TRUE.
+	 * Defines if there will be a vertical padding for the cell. If the method is not called then
+	 * the default value is TRUE.
 	 * @param boolean $status true for padding the cell, false for no padding
 	 */
 	public function setVerticalPadding(bool $status):void {
@@ -60,13 +59,10 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 		$this->testId = $id;
 	}
 	/**
-	 * Adds a width for a type of screen. The width will be used for the
-	 * defined width and all larger screens, with higher widths, if no
-	 * values are defined upstream.
-	 * @param string $screen one of the values: xs (extra small), sm (small),
-	 * md (medium), lg (large)
-	 * @param integer $span the number of columns the cell will span
-	 * (from 1 to 12)
+	 * Adds a width for a type of screen. The width will be used for the defined width and all larger
+	 * screens, with higher widths, if no values are defined upstream.
+	 * @param string $screen one of the values: xs (extra small), sm (small), md (medium), lg (large)
+	 * @param integer $span the number of columns the cell will span (from 1 to 12)
 	 */
 	public function addWidth (string $screen, int $span):void {
 		if (!in_array($screen, ['xs','sm','md','lg'])) {
@@ -130,10 +126,9 @@ class Cell extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Defines the alignment for the content of the cell
-	 * @param integer $align the align, as a constant like
-	 * Cell:ALIGN_###
+	 * @param integer $align the align, as a constant like Cell:ALIGN_###
 	 */
-	public function setAlign(string $align):void{
+	public function setAlign(string $align):void {
 		switch ($align) {
 			case Cell::ALIGN_LEFT:
 				$this->addClass('ant-left');

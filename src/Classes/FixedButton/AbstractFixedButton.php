@@ -11,8 +11,7 @@ use Antheia\Framework\Interfaces\LinkButtonRender;
  * Defines a fixed button to be displayed on the bottom-right side of the page
  * @author Cosmin Staicu
  */
-abstract class AbstractFixedButton extends AbstractClass
-implements HtmlId, HtmlCode, LinkButtonRender {
+abstract class AbstractFixedButton extends AbstractClass implements HtmlId, HtmlCode, LinkButtonRender {
 	private $href;
 	private $onClick;
 	private $icon;

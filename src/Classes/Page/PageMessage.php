@@ -20,10 +20,10 @@ class PageMessage extends PageEmpty {
 	 * Defines the message shown in the center of the page
 	 * @param string $description the message shown in the center of the page.
 	 * The message can have HTML tags, as it is unescaped
-	 * @param string $title (optional) if defined then the container showing
+	 * @param ?string $title (optional) if defined then the container showing
 	 * the message will have this title
 	 */
-	public function setMessage(string $description, string $title = null):void {
+	public function setMessage(string $description, ?string $title = null):void {
 		$this->message = $description;
 		$this->title = $title;
 	}

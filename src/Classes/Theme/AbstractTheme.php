@@ -95,10 +95,9 @@ abstract class AbstractTheme {
 		$this->auto_shadow = '#999999';
 	}
 	/**
-	 * Returns the general name for all theme classes defined in the frameworl.
-	 * Each returned item contains the last part of the class name (the full
-	 * class name can be obtained by prefixing the value with the namespace
-	 * "\Antheia\Framework\Theme\Theme####")
+	 * Returns the general name for all theme classes defined in the framework. Each returned item
+	 * contains the last part of the class name (the full class name can be obtained by prefixing
+	 * the value with the namespace "\Antheia\Framework\Theme\Theme####")
 	 * @return string[] a list with all available classes
 	 */
 	public static function getThemes():array {
@@ -114,8 +113,7 @@ abstract class AbstractTheme {
 	}
 	/**
 	 * A list with all properties starting with the "auto_" prefix
-	 * @return string[] a list with all properties starting with the
-	 * "auto_" prefix
+	 * @return string[] a list with all properties starting with the "auto_" prefix
 	 */
 	private function getProperties():array {
 		$list = [];
@@ -127,8 +125,8 @@ abstract class AbstractTheme {
 		return $list;
 	}
 	/**
-	 * Exports all theme properties into an array (that can be further serialised,
-	 * to be saved into a database, for example)
+	 * Exports all theme properties into an array (that can be further serialised, to be saved into
+	 * a database, for example)
 	 * @return string[] a list with all class properties
 	 */
 	public function exportArray():array {
@@ -139,8 +137,7 @@ abstract class AbstractTheme {
 		return $list;
 	}
 	/**
-	 * Imports all theme properties from an array (previously exported using
-	 * the "exportArray()" method.
+	 * Imports all theme properties from an array (previously exported using the "exportArray()" method.
 	 * @param $list string[] an array with the theme properties
 	 */
 	public function importArray(array $list):void {
@@ -154,8 +151,8 @@ abstract class AbstractTheme {
 	 * Returns a color using a predefined format
 	 * @param string $rgb the rgb value, in hexadecimal, prefixed with #
 	 * @param string $format the format for export:
-	 *  - rgb : format #RRGGBB
-	 *  - decimal : format [R,G,B] (decimal numeric values)
+	 * <br>- rgb : format #RRGGBB
+	 * <br>- decimal : format [R,G,B] (decimal numeric values)
 	 * @return string|number[] the returned value in the defined format
 	 */
 	private function getColorByFormat(string $rgb, string $format) {
@@ -433,8 +430,8 @@ abstract class AbstractTheme {
 	}
 	/**
 	 * Returns the link color
-	 * @param string $format (optional) (default rgb) the format used
-	 * for returning the color (rgb, decimal)
+	 * @param string $format (optional) (default rgb) the format used for returning the color
+	 * (rgb, decimal)
 	 * @return string|number[] the returned color value in the defined format
 	 */
 	public function getLink(string $format = 'rgb') {

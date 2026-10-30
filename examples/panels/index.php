@@ -26,7 +26,7 @@ $page->addJavascriptFile('script.js');
 $wireframe = new Wireframe();
 $wireframe->setType($wireframe::TYPE_FIXED);
 $row = $wireframe->addRow();
-// ******************************************************* a panel WITH NO TITLE
+// *************************************************************************** a panel WITH NO TITLE
 // inside a cell with a width of 6 columns (50%) on medium and large devices
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
@@ -51,7 +51,7 @@ $panel->addText(
 );
 $panel->setFullHeight();
 $cell->addElement($panel);
-// ******************************************* a panel WITH A TITLE AND A FOOTER
+// *************************************************************** a panel WITH A TITLE AND A FOOTER
 // inside a cell with a width of 6 columns (50%) on medium and large devices
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
@@ -67,7 +67,7 @@ $button->setOnClick('startPanelLoadingAnimation()');
 $panel->addFooterElement($button);
 $panel->setFullHeight();
 $cell->addElement($panel);
-// *********************************************** a panel WITH A TITLE AND MENU
+// ******************************************************************* a panel WITH A TITLE AND MENU
 $row = $wireframe->addRow();
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
@@ -122,14 +122,8 @@ $panel->addMenu($button);
 $panel->addNameValue('Given name', 'John', 'idForRow', ['rowClassOne','rowClassTwo']);
 $panel->addNameValue('Family name', 'Doe', '', ['rowClassOne']);
 $panel->addDivider();
-$panel->addNameValue(
-	'website',
-	'<a href="https://www.example.com">example.com</a>'
-);
-$panel->addNameValue(
-	'e-mail',
-	'<a href="mailto:john.doe@example.com">john.doe@example.com</a>'
-);
+$panel->addNameValue('website', '<a href="https://www.example.com">example.com</a>');
+$panel->addNameValue('e-mail', '<a href="mailto:john.doe@example.com">john.doe@example.com</a>');
 $panel->addNameValue('Height', '173 cm');
 // inserting a button with an image
 $button = new InlineButton();
@@ -160,13 +154,15 @@ $panel->addValue(
 );
 // inserting a button with a long text
 $button = new InlineButton();
-$button->setText('Medium contrast (with image) and a really long text, that should be handled by the render');
+$button->setText(
+	'Medium contrast (with image) and a really long text, that should be handled by the render'
+);
 $button->setIntensity($button::MEDIUM);
 $button->setIcon('user');
 $button->setOnClick('alert(\'on click action\')');
 $panel->addNameElement('Medium contrast (long text)', $button);
 $cell->addElement($panel);
-// ************************************************** a panel WITH FORM ELEMENTS
+// ********************************************************************** a panel WITH FORM ELEMENTS
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
 $panel = new PanelInput();
@@ -187,6 +183,7 @@ $panel->addDivider();
 // phone input element
 $input = NewInput::phone();
 $input->setLabel('Phone number');
+$input->addAttribute('autocomplete', 'phone');
 $input->setPlaceholder('here you can type a phone number');
 $input->setName('phone');
 $panel->addInput($input);
@@ -217,7 +214,7 @@ $button->setText('Warning button');
 $panel->addInput($button);
 // adding the panel to the wireframe cell
 $cell->addElement($panel);
-// *********************************** a panel WITH AN ACCORDION AND TAB CONTROL
+// ******************************************************* a panel WITH AN ACCORDION AND TAB CONTROL
 $cell = $row->addCell();
 $cell->addWidth('xs', 12);
 $panel = $cell->addPanel();
@@ -302,7 +299,7 @@ $accordionItem = $accordion->getNewItem();
 $accordionItem->setTitle('Third accordion item');
 $accordionItem->addElement(new Html('Third item content'));
 $panel->addElement($accordion);
-// ************************************************* a panel WITH A FILE BROWSER
+// ********************************************************************* a panel WITH A FILE BROWSER
 $cell = $row->addCell();
 $cell->addWidth('xs', 12);
 $panel = $cell->addFileBrowserPanel();
@@ -343,7 +340,7 @@ $file->setName('Fourth file');
 $deleteButton = NewMenu::delete();
 $deleteButton->setOnClick("console.log('delete it')");
 $file->addHiddenItem($deleteButton);
-// ******************************************** ADDING THE WIREFRAME TO THE PAGE
+// **************************************************************** ADDING THE WIREFRAME TO THE PAGE
 $page->addElement($wireframe);
 // adding a panel to display page source info
 // the function is defined inside the utils/init.php file

@@ -21,10 +21,10 @@ class PageLogin extends AbstractPageLogin {
 	}
 	/**
 	 * Enables or disables the google recaptcha verification on the login page
-	 * @param string|NULL $key the public key for the recaptcha module or
+	 * @param ?string $key the public key for the recaptcha module or
 	 * NULL if the recaptcha module is inactive
 	 */
-	public function setRecaptcha(string $key = NULL):void {
+	public function setRecaptcha(?string $key = NULL):void {
 		$this->recaptchaKey = $key;
 	}
 	/**
@@ -38,7 +38,7 @@ class PageLogin extends AbstractPageLogin {
 	 * Defines if a checkbox with "remember login" should be displayed
 	 * @param boolean $status true if a checkbox should be displayed, false if not
 	 */
-	public function setRememberLogin(bool $status = true):void {
+	public function setRememberLogin(bool $status = TRUE):void {
 		$this->rememberLogin = $status;
 	}
 	public function getHtml():string {

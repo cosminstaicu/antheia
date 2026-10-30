@@ -42,16 +42,16 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 	}
 	/**
 	 * Defines if a button with TODAY value shoud be available
-	 * @param boolean $status true if the button will be available, false if noe
+	 * @param boolean $status TRUE if the button will be available, false if noe
 	 */
-	public function displayToday(bool $status = true):void {
+	public function displayToday(bool $status = TRUE):void {
 		$this->displayToday = $status;
 	}
 	/**
 	 * Defines if a button with UNDEFINED value should be available
-	 * @param boolean $status true if the button will be available, false if not
+	 * @param boolean $status TRUE if the button will be available, false if not
 	 */
-	public function displayUndefined(bool $status = true):void {
+	public function displayUndefined(bool $status = TRUE):void {
 		$this->displayUndefined = $status;
 	}
 	public function getReadableValue():string {
@@ -94,9 +94,7 @@ class InputDate extends AbstractInput implements BeforeAfterCallback {
 		} else {
 			$this->button->addAttribute('data-show-undefined', 'no');
 		}
-		$this->button->addHiddenInputAttribute(
-			'data-visible-element-id', $this->button->getHtmlId()
-		);
+		$this->button->addHiddenInputAttribute('data-visible-element-id', $this->button->getHtmlId());
 		$this->button->addHiddenInputAttribute('data-pre', $this->beforeCallback);
 		$this->button->addHiddenInputAttribute('data-post', $this->afterCallback);
 		if ($this->exportJavascript()) {

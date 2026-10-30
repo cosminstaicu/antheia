@@ -8,10 +8,9 @@ use Antheia\Framework\Panel\Panel;
 use Antheia\Framework\Table\TablePlain;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * Defines a panel that can be displayed above the list with the search
- * results. Using the panel options, the selected items can be managed.
- * This class should not be directly instanced by the user, as it is
- * auto managed by the framework
+ * Defines a panel that can be displayed above the list with the search results. Using the panel
+ * options, the selected items can be managed. This class should not be directly instanced by the
+ * user, as it is auto managed by the framework
  * @author Cosmin Staicu
  */
 class SearchOptionBar extends AbstractClass implements HtmlCode {

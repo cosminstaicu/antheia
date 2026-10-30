@@ -6,8 +6,7 @@ use Antheia\Framework\Texts;
 use Antheia\Framework\Input\NewInput;
 use Antheia\Framework\Wireframe\Cell;
 /**
- * A page that shows an "authentication failed" message,
- * along with a retry button
+ * A page that shows an "authentication failed" message, along with a retry button
  * @author Cosmin Staicu
  */
 class PageLoginFailed extends AbstractPageLogin {

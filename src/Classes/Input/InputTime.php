@@ -6,8 +6,8 @@ use Antheia\Framework\Texts;
 use Antheia\Framework\Input\Raw\InputRawCustomButton;
 use Antheia\Framework\Interfaces\BeforeAfterCallback;
 /**
- * A time selection input, from where the user can select a time value
- * either by typing or by selecting predefined values
+ * A time selection input, from where the user can select a time value either by typing or by
+ * selecting predefined values
  * @author Cosmin Staicu
  */
 class InputTime extends AbstractInput implements BeforeAfterCallback {
@@ -50,12 +50,10 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		return $this->button;
 	}
 	/**
-	 * Calling the method sets the selection mode for the input. If selection mode
-	 * is enabled then the user will choose from some predefined values, by
-	 * clicking on them. If the selection mode is disabled then the user
-	 * has to input the time by hand
-	 * @param bool $status (optional) (default true) the status for the
-	 * selection mode
+	 * Calling the method sets the selection mode for the input. If selection mode is enabled then
+	 * the user will choose from some predefined values, by clicking on them. If the selection mode
+	 * is disabled then the user has to input the time by hand
+	 * @param bool $status (optional) (default true) the status for the selection mode
 	 */
 	public function setSelectionMode(bool $status = true):void {
 		$this->selectMode = $status;
@@ -103,8 +101,7 @@ class InputTime extends AbstractInput implements BeforeAfterCallback {
 		$this->minuteStep = $step;
 	}
 	/**
-	 * Calling the method will add a button with the Undefined option, available
-	 * to the user
+	 * Calling the method will add a button with the Undefined option, available to the user
 	 */
 	public function displayUndefined():void {
 		$this->displayUndefined = true;

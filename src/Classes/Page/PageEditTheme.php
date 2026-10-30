@@ -82,12 +82,12 @@ class PageEditTheme extends PageEmpty {
 		$this->addElement(new Html('<div style="display:none">'));
 		$this->addElement($selectTheme);
 		$this->addElement(new Html('</div>'));
-		// ********************************************************************* EDIT
+		// ***************************************************************************************** EDIT
 		$wireframe = $this->addWireframe();
 		$wireframe->setHtmlId('ant-edit-wireframe');
 		$wireframe->setType($wireframe::TYPE_FIXED);
 		$row = $wireframe->addRow();
-		// ************************************************** general theme info
+		// ********************************************************************** general theme info
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$panel = $cell->addInputPanel();
@@ -107,7 +107,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setNameId('ant_theme_description');
 		$input->setValue($this->theme->getDescription());
 		$panel->addInput($input);
-		// **************************************************** interface colors
+		// ************************************************************************ interface colors
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$cell->addWidth('md', 6);
@@ -210,7 +210,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setValue($this->theme->getText());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
-		// ************************************************************** panels
+		// ********************************************************************************** panels
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$cell->addWidth('md', 6);
@@ -249,7 +249,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setValue($this->theme->getPanelBorder());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
-		// *************************************************************** forms
+		// *********************************************************************************** forms
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$cell->addWidth('md', 6);
@@ -320,7 +320,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setValue($this->theme->getButtonText());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
-		// ************************************************************* loading
+		// ********************************************************************************* loading
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$cell->addWidth('md', 6);
@@ -409,7 +409,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setValue(Texts::get('LOADING_STEPS'));
 		$input->setOnClick('ant_theme_stepsLoadingAnimation()');
 		$panel->addInput($input);
-		// ******************************************************** other colors
+		// **************************************************************************** other colors
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$panel = $cell->addInputPanel();
@@ -455,14 +455,14 @@ class PageEditTheme extends PageEmpty {
 		$input->setValue($this->theme->getShadow());
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$panel->addInput($input);
-		// ********************************************************************* PREVIEW
+		// ***************************************************************************************** PREVIEW
 		$wireframe = $this->addWireframe();
 		$wireframe->addClass('ant_theme-hidden');
 		$wireframe->setHtmlId('ant-view-wireframe');
 		$wireframe->setType($wireframe::TYPE_FIXED);
 		$input->setOnChange('ant_theme_updateThemeFromInputs');
 		$row = $wireframe->addRow();
-		// ********************************************************** info panel
+		// ****************************************************************************** info panel
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$cell->addWidth('md', 6);
@@ -522,7 +522,7 @@ class PageEditTheme extends PageEmpty {
 			$elementAcordeon->addElement(new Html($continut));
 		}
 		$panel->addElement($acordeon);
-		// ********************************************************** form panel
+		// ****************************************************************************** form panel
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$cell->addWidth('md', 6);
@@ -581,7 +581,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setAppearance($input::WARNING);
 		$input->setOnClick('ant_theme_getPhpCode()');
 		$panel->addInput($input);
-		// ******************************************************** action panel
+		// **************************************************************************** action panel
 		$cell = $row->addCell();
 		$cell->addWidth('xs', 12);
 		$panel = $cell->addInputPanel();
@@ -616,7 +616,7 @@ class PageEditTheme extends PageEmpty {
 		$input->setValue(Texts::get('START_ANIMATION'));
 		$input->setOnClick('ant_theme_smallMessageAnimation(\'Lorem ipsum dolor\')');
 		$panel->addInput($input);
-		// ************************************************* enable theme script
+		// ********************************************************************* enable theme script
 		$this->addJavascriptBodyBottom('ant_theme_updateThemeFromInputs()');
 		return parent::getHtml();
 	}

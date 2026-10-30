@@ -38,25 +38,23 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 		$this->testId = $id;
 	}
 	/**
-	 * Defines if a horizontal scroll should be displayed when the table is
-	 * wider than the available space
+	 * Defines if a horizontal scroll bar should be displayed when the table is wider than the
+	 * available space
 	 * @param boolean $status true if the scrollbar is enabled, false if not
 	 */
-	public function setHorizontalScroll(bool $status = true):void {
+	public function setHorizontalScroll(bool $status = TRUE):void {
 		$this->horizontalScroll = $status;
 	}
 	/**
 	 * Defines if the first row of the table should be formatted as a header row
-	 * @param boolean $status true if the first row should be formated as a
-	 * header row, false if not
+	 * @param boolean $status true if the first row should be formated as a header row, false if not
 	 */
-	protected function setHeaderRowStatus(bool $status = true):void {
+	protected function setHeaderRowStatus(bool $status = TRUE):void {
 		$this->displayTitle = $status;
 	}
 	/**
 	 * Returns the status for formating the first row as a header row
-	 * @return boolean true if the first row should be formated as a
-	 * header row, false if not
+	 * @return boolean true if the first row should be formated as a header row, false if not
 	 */
 	protected function getHeaderRowStatus():bool {
 		return $this->displayTitle;
@@ -70,9 +68,8 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a css property to the tag table definition
-	 * @param string $code the css property added (ex: "width: 30px").
-	 * If the string does not end with a semicolon, then one will be appended
-	 * automatically
+	 * @param string $code the css property added (ex: "width: 30px"). If the string does not end
+	 * with a semicolon, then one will be appended automatically
 	 *
 	 */
 	public function addCss(string $code):void {
@@ -97,18 +94,16 @@ class TablePlain extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a row to the table
-	 * @param TableRow $row (optional) the row to be added. If the
-	 * parameter is not defined then a new row will be created
+	 * @param ?TableRow $row (optional) the row to be added. If the parameter is not defined then
+	 * a new row will be created
 	 * @return TableRow the added row
 	 */
-	public function addRow(TableRow $row = NULL):TableRow {
+	public function addRow(?TableRow $row = NULL):TableRow {
 		if ($row === null) {
 			$row = new Row();
 		}
 		if (!is_a($row, 'Antheia\Framework\Table\Plain\Row')) {
-			throw new Exception(
-				'Only Antheia\Framework\Table\Plain\Row instances allowed'
-			);
+			throw new Exception('Only Antheia\Framework\Table\Plain\Row instances allowed');
 		}
 		$this->rows[] = $row;
 		return $row;

@@ -23,8 +23,8 @@ class WireframeInfo extends Wireframe {
 	 * entire row (in the wireframe) containing the input
 	 * @param string[] $classes (optional) a list of html classes to be added to the
 	 * row html tag of the wireframe
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addNameValue(
@@ -43,8 +43,8 @@ class WireframeInfo extends Wireframe {
 	 * entire row (in the wireframe) containing the input
 	 * @param string[] $classes (optional) a list of html classes to be added to the
 	 * row html tag of the wireframe
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addNameElement(
@@ -71,15 +71,15 @@ class WireframeInfo extends Wireframe {
 		$cell->addElement(new Html('</div>'));
 	}
 	/**
-	 * Adds just a value to the wireframe, that will span over 2 columns (a value
-	 * without a label, spanning over the label column)
+	 * Adds just a value to the wireframe, that will span over 2 columns (a value without a label,
+	 * spanning over the label column)
 	 * @param string $text the text to be added
-	 * @param string $id (optional) (default '') the html id of the
-	 * entire row (in the wireframe) containing the input
+	 * @param string $id (optional) (default '') the html id of the entire row (in the wireframe)
+	 * containing the input
 	 * @param string[] $classes (optional) a list of html classes to be added to the
 	 * row html tag of the wireframe
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addValue(
@@ -102,8 +102,8 @@ class WireframeInfo extends Wireframe {
 	 * Adds a divider (a horizontal line) spanning the entire width of the wireframe
 	 * @param string $id (optional) (default '') the id of the row containing the item to be added
 	 * @param string[] $classes a list of classes to be added to the row definition
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addDivider(string $id = '', array $classes = [], string $testid = ''):void {

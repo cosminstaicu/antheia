@@ -47,7 +47,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->labelTag = new InputRawLabel();
 		$this->labelTag->setInput($this);
 		$this->exportLabel = self::LABEL_NORMAL;
-		$this->exportJavascript = true;
+		$this->exportJavascript = TRUE;
 		self::setUniqueHtmlId($this);
 		$this->testId = '';
 		$this->containerHtmlId = '';
@@ -55,25 +55,22 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->setName('undefined');
 		$this->setValue('');
 		$this->setDefaultValue(NULL);
-		// some inputs will throw an error when setValidation is called
-		// (like the fileDrop input)
+		// some inputs will throw an error when setValidation is called (like the fileDrop input)
 		// so the validation property is set directly, without calling the method
 		$this->validation = '';
 		$this->setHtmlCode('');
 		$this->attributes = [];
 		$this->containerClasses = ['ant_form-item'];
 		$this->onClick = '';
-		$this->defaultHidden = false;
+		$this->defaultHidden = FALSE;
 	}
 	/**
-	 * Sets an unique html id for an html element. The id is unique per session
-	 * and it will change on the next session.
+	 * Sets an unique html id for an html element. The id is unique per session and it will change
+	 * on the next session.
 	 * @param HtmlId $element the element that will be set up
 	 */
 	protected static function setUniqueHtmlId(HtmlId $element):void {
-		$element->setHtmlId(
-			'ant_input_'.AbstractClass::uniqid().'_'.self::$counter++
-		);
+		$element->setHtmlId('ant_input_'.AbstractClass::uniqid().'_'.self::$counter++);
 	}
 	public final function addAttribute(string $name, string $value):void {
 		$this->attributes[] = ['name'=>$name, 'value'=>$value];
@@ -83,8 +80,8 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Returns a list with all atributes defined for this input
-	 * @return string[] the attributes defined for this input. Each item contains
-	 * 2 properties: name (the name of the attrigure) and value (the value of the attribute)
+	 * @return string[] the attributes defined for this input. Each item contains 2 properties:
+	 * name (the name of the attrigure) and value (the value of the attribute)
 	 */
 	protected function getAttributeList():array {
 		return $this->attributes;
@@ -101,18 +98,16 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $code;
 	}
 	/**
-	 * Defines a html id for the container containing the input
-	 * (the input, without the label). The container contains the input, along
-	 * sith other elements, like hidden inputs, status icons etc.
+	 * Defines a html id for the container containing the input (the input, without the label).
+	 * The container contains the input, along with other elements, like hidden inputs, status icons etc.
 	 * @param string $id the id for the container or an empty string if no id is required
 	 */
 	public function setContainerHtmlId(string $id):void {
 		$this->containerHtmlId = $id;
 	}
 	/**
-	 * Defines a test id for the container containing the input
-	 * (the input, without the label). The container contains the input, along
-	 * sith other elements, like hidden inputs, status icons etc.
+	 * Defines a test id for the container containing the input (the input, without the label).
+	 * The container contains the input, along with other elements, like hidden inputs, status icons etc.
 	 * @param string $id the test id for the container or an empty string if no test id is required
 	 * @see HtmlId::setTestId
 	 */
@@ -120,72 +115,68 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->containerTestId = $id;
 	}
 	/**
-	 * Adds a class to the container containing the input
-	 * (the input, without the label). The container contains the input, along
-	 * sith other elements, like hidden inputs, status icons etc.
+	 * Adds a class to the container containing the input (the input, without the label). The
+	 * container contains the input, along with other elements, like hidden inputs, status icons etc.
 	 * @param string $clasa the class added to the container
 	 */
 	public function addContainerClass(string $class):void {
 		$this->containerClasses[] = $class;
 	}
 	/**
-	 * The method returns true if the javascript code, inserted after the element
-	 * needs to be generated or false if not.
-	 * Usually the javascript code needs to be exported. But there are cases
-	 * (for example, for the inputs that are using server side searches)
-	 * the javascript export needs to be blocked.
-	 * @return boolean true if javascript code needs to be inserted
-	 * after the element html code, false if not
+	 * The method returns TRUE if the javascript code, inserted after the element needs to be
+	 * generated or FALSE if not. Usually the javascript code needs to be exported. But there are
+	 * cases (for example, for the inputs that are using server side searches) the javascript export
+	 * needs to be blocked.
+	 * @return boolean TRUE if javascript code needs to be inserted after the element html code,
+	 * FALSE if not
 	 */
 	protected function exportJavascript():bool {
 		if ($this->getValidation() === '') {
 			// no validation function is defined, so no javascript is required
-			return false;
+			return FALSE;
 		}
 		if (!$this->getJavascriptExport()) {
 			// the user has disabled the javascript export
-			return false;
+			return FALSE;
 		}
-		return true;
+		return TRUE;
 	}
 	/**
 	 * Defines if the javascript code after the element html will be exported.
-	 * @param boolean $status true if the javascript code will be exported, false if not
+	 * @param boolean $status TRUE if the javascript code will be exported, FALSE if not
 	 */
 	public function setJavascriptExport(bool $status):void {
 		$this->exportJavascript = $status;
 	}
 	/**
-	 * Returns if the javascript code, for the input needs to be exported
-	 * with the element.
-	 * @param boolean $status if true the javascript code will be exported
-	 * after the element, if false, the code will be ignored
+	 * Returns if the javascript code, for the input needs to be exported with the element.
+	 * @param boolean $status if TRUE the javascript code will be exported after the element,
+	 * if FALSE, the code will be ignored
 	 */
 	protected function getJavascriptExport():bool {
 		return $this->exportJavascript;
 	}
 	/**
 	 * Returns the inline help object attached to the input
-	 * @return null | AbstractInlineHelp the inline help object attached
-	 * to the input or null if no inline help object is defined
+	 * @return ?AbstractInlineHelp the inline help object attached to the input or null if
+	 * no inline help object is defined
 	 */
 	public function getInlineHelp():?AbstractInlineHelp {
 		return $this->labelTag->getInlineHelp();
 	}
 	/**
 	 * Defines the inline help object attached to the input
-	 * @param AbstractInlineHelp $inlineHelp the inline help object
+	 * @param ?AbstractInlineHelp $inlineHelp the inline help object
 	 * attached to the input or null if no inline help object is defined
 	 */
-	public function setInlineHelp(AbstractInlineHelp $inlineHelp = null):void {
+	public function setInlineHelp(?AbstractInlineHelp $inlineHelp = null):void {
 		$this->labelTag->setInlineHelp($inlineHelp);
 	}
 	/**
-	 * Defines the text that will be displayed inside an inline help object,
-	 * places to the right of the input label
+	 * Defines the text that will be displayed inside an inline help object, places to the right
+	 * of the input label
 	 * @param string $text the text to be displayed
-	 * @param string $id (optional) a html id that will be set to the inline
-	 * help object
+	 * @param string $id (optional) a html id that will be set to the inline help object
 	 */
 	public function setInlineHelpText(string $text, string $id = ''):void {
 		$inlineHelp = new InlineHelp();
@@ -210,29 +201,25 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $this->label;
 	}
 	/**
-	 * Returns the id that will be used by the label tag as a value for the
-	 * "for" attribute. Usually it is the id of the element, with some exceptions,
-	 * like inputs using buttons and 
-	 * @return string the value that will be used for the "for" attribute of
-	 * the label
+	 * Returns the id that will be used by the label tag as a value for the "for" attribute. Usually
+	 * it is the id of the element, with some exceptions, like inputs using buttons 
+	 * @return string the value that will be used for the "for" attribute of the label
 	 */
 	public function getIdForLabel():string {
 		return $this->getHtmlId();
 	}
 	/**
 	 * Defines if a label for the input will be exported along with the input
-	 * @param string $status the method used for exporting the label, as one
-	 * of the constants: AbstractInput::LABEL_NONE,
-	 * AbstractInput::LABEL_NORMAL, AbstractInput::LABEL_TEXT
+	 * @param string $status the method used for exporting the label, as one of the constants:
+	 * AbstractInput::LABEL_NONE, AbstractInput::LABEL_NORMAL, AbstractInput::LABEL_TEXT
 	 */
 	public function setLabelExport(string $status):void {
 		$this->exportLabel = $status;
 	}
 	/**
-	 * Returns true if a label for the input needs to be exported, false if not
-	 * @return string the method used for exporting the label, as one
-	 * of the constants: AbstractInput::LABEL_NONE,
-	 * AbstractInput::LABEL_NORMAL, AbstractInput::LABEL_TEXT
+	 * Returns TRUE if a label for the input needs to be exported, FALSE if not
+	 * @return string the method used for exporting the label, as one of the constants:
+	 * AbstractInput::LABEL_NONE, AbstractInput::LABEL_NORMAL, AbstractInput::LABEL_TEXT
 	 */
 	public function getLabelExport():string {
 		return $this->exportLabel;
@@ -245,11 +232,10 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $this->labelTag;
 	}
 	/**
-	 * Defines the javascript code that will be triggered when the user clicks
-	 * on the input. The script adds ";" to the end of the line, if no
-	 * such symbol already exists.
-	 * @param string $javascript the onClick script that will be triggered when
-	 * the user clicks on the element
+	 * Defines the javascript code that will be triggered when the user clicks on the input. The
+	 * script adds ";" to the end of the line, if no such symbol already exists.
+	 * @param string $javascript the onClick script that will be triggered when the user clicks
+	 * on the element
 	 */
 	public function setOnClick(string $javascript):void {
 		$this->onClick = $javascript;
@@ -272,25 +258,21 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->codHtml = $code;
 	}
 	/**
-	 * Defines the name of the javascript function used for the input
-	 * validation. Calling the method will set up the input with a valid
-	 * or invalid symbol next to the input. When needed the input calls
-	 * the javascript function that needs to return a boolean TRUE value
-	 * if the input is valid or a boolean FALSE value if the input is not
-	 * valid.
-	 * @param string $javascriptFunction the name of the javascript
-	 * function (no parameters, just the name) of the function.
-	 * The function needs to return a boolean value
-	 * If an empty string is provided then the entire validation system for
-	 * this input is disabled.
+	 * Defines the name of the javascript function used for the input validation. Calling the method
+	 * will set up the input with a valid or invalid symbol next to the input. When needed the input
+	 * calls the javascript function that needs to return a boolean TRUE value if the input is valid
+	 * or a boolean FALSE value if the input is not valid.
+	 * @param string $javascriptFunction the name of the javascript function (no parameters, just the
+	 * name) of the function. The function needs to return a boolean value If an empty string is
+	 * provided then the entire validation system for this input is disabled.
 	 */
 	public function setValidation(string $javascriptFunction):void {
 		$this->validation = $javascriptFunction;
 	}
 	/**
 	 * Returns the name of the javascript function used for input validations
-	 * @return string the name of the javascript function used for input validations
-	 * or an empty string if no validation is needed
+	 * @return string the name of the javascript function used for input validations or an empty
+	 * string if no validation is needed
 	 * @see Abstractinput::setValidation()
 	 */
 	protected function getValidation():string {
@@ -326,11 +308,10 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $this->value;
 	}
 	/**
-	 * Returns the human readable value for the input. For text inputs, this
-	 * method should returns the same result as getValue(). But for some
-	 * special inputs (date, time) the readable value is different from the
-	 * input value (for example, for a date, the input value is 18910427
-	 * but the readable value is 27 April 1981).
+	 * Returns the human readable value for the input. For text inputs, this method should returns
+	 * the same result as getValue(). But for some special inputs (date, time) the readable value is
+	 * different from the input value (for example, for a date, the input value is 18910427 but the
+	 * readable value is 27 April 1981).
 	 * @return ?string the human readable value for the input or NULL for inputs that do not have
 	 * a value selected (like SELECT tags)
 	 */
@@ -338,9 +319,9 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $this->value;
 	}
 	/**
-	 * Defines the default value for the input. Is is used when displaying 
-	 * search results. If the input value is different then the default value
-	 * then the user can reset the input to its default value.
+	 * Defines the default value for the input. Is is used when displaying search results. If the
+	 * input value is different then the default value then the user can reset the input to its
+	 * default value.
 	 * @param string $value the default value or NULL if no default value is required.
 	 */
 	public function setDefaultValue(?string $value):void {
@@ -361,8 +342,8 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->testId = $id;
 	}
 	/**
-	 * Defines the name and the html id for the element in a single method
-	 * (the name attribute and the id attribute from the tag)
+	 * Defines the name and the html id for the element in a single method (the name attribute and
+	 * the id attribute from the tag)
 	 * @param string $nameId the value for the two properties
 	 */
 	public function setNameId(string $nameId):void {
@@ -384,21 +365,19 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		return $this->testId;
 	}
 	/**
-	 * Sets up the default visibility for the input. If set to true, then the
-	 * element will be hidden, by default and a expand button will be available.
-	 * This feature is only available for inputs displayed using a 
-	 * WireframeInput structure (for example inside a PageSearch instance).
+	 * Sets up the default visibility for the input. If set to TRUE, then the element will be hidden,
+	 * by default and a expand button will be available. This feature is only available for inputs
+	 * displayed using a WireframeInput structure (for example inside a PageSearch instance).
 	 * @param bool $status the status for the hidden feature,
 	 */
-	public function setDefaultHidden(bool $status = true):void {
+	public function setDefaultHidden(bool $status = TRUE):void {
 	    $this->defaultHidden = $status;
 	}
 	/**
-	 * Returns the default visibility for the input. If set to true, then the
-	 * element will be hidden, by default and a expand button will be available.
-	 * This feature is only available for inputs displayed using a 
-	 * WireframeInput structure (for example inside a PageSearch instance).
-	 * @return bool true if the input will be hidden by default
+	 * Returns the default visibility for the input. If set to TRUE, then the element will be hidden,
+	 * by default and a expand button will be available. This feature is only available for inputs
+	 * displayed using a WireframeInput structure (for example inside a PageSearch instance).
+	 * @return bool TRUE if the input will be hidden by default
 	 */
 	public function getDefaultHidden():bool {
 	    return $this->defaultHidden;
@@ -420,9 +399,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		// then that function will be called just after the element is inserted
 		if ($this->getValidation() !== '') {
 			if ($this->getJavascriptExport() && $this->exportJavascript()) {
-				$scriptUniqueId = 'ant_input_script_'.AbstractClass::uniqid()
-					.'_'.self::$counter++;
-				
+				$scriptUniqueId = 'ant_input_script_'.AbstractClass::uniqid().'_'.self::$counter++;
 				$code .= '<script id="'.$scriptUniqueId.'">
 					ant_forms_updateStatus("'.$this->getHtmlId().'");
 					setTimeout(() => {

@@ -60,17 +60,15 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 	}
 	/**
 	 * Defines the text shown when the item is clicked
-	 * @param string $text the text shown when the item is clicked. The text
-	 * will be escaped by default (using htmlspecialchars)
+	 * @param string $text the text shown when the item is clicked. The text will be escaped by
+	 * default (using htmlspecialchars)
 	 */
 	public function setText(string $text):void {
 		$this->text = $text;
 	}
 	/**
-	 * Defines a title for the button. The title is escapes automatically (with
-	 * addSlashes
-	 * @param string|NULL $title the title for the button or null if no title
-	 * is required
+	 * Defines a title for the button. The title is escapes automatically (with addSlashes)
+	 * @param ?string $title the title for the button or null if no title is required
 	 */
 	public function setTitle(?string $title):void {
 		$this->title = $title;
@@ -82,21 +80,17 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 		$this->testId = $id;
 	}
 	/**
-	 * Defines if the content of the button is allowed to span over multiple
-	 * rows or if only one row is allowd (in that case the text is trimmed and
-	 * and "..." suffix is added.
-	 * @param bool $status (optional) (default true) true if multiple rows are
-	 * allowed, false if not
+	 * Defines if the content of the button is allowed to span over multiple rows or if only one
+	 * row is allowd (in that case the text is trimmed and "..." suffix is added.
+	 * @param bool $status (optional) (default true) true if multiple rows are allowed, false if not
 	 */
-	public function allowMultipleRows(bool $status = true):void {
+	public function allowMultipleRows(bool $status = TRUE):void {
 		$this->multipleRows = $status;
 	}
 	/**
-	 * Defines the javascript code that will be triggered when the user clicks
-	 * on the input. The script adds ";" to the end of the line, if no
-	 * such symbol already exists.
-	 * @param string $javascript the onClick script that will be triggered when
-	 * the user clicks on the element
+	 * Defines the javascript code that will be triggered when the user clicks on the input.
+	 * The script adds ";" to the end of the line, if no such symbol already exists.
+	 * @param string $javascript the onClick script triggered when the user clicks on the element
 	 */
 	public function setOnClick(string $javascript):void {
 		$this->onClick = $javascript;
@@ -106,10 +100,10 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 	}
 	/**
 	 * Defines the icon for the button.
-	 * @param string $icon the icon for the button (the name of the png or svg
-	 * file inside the zip archive in media folder) or null if no item is required
-	 * @param string $type (optional, default AbstractIcon::PIXEL) the icon type
-	 * (pixel or vector) to be used
+	 * @param string $icon the icon for the button (the name of the png or svg file inside the zip
+	 * archive in media folder) or null if no item is required
+	 * @param string $type (optional, default AbstractIcon::PIXEL) the icon type (pixel or vector)
+	 * to be used
 	 * @return ?AbstractIcon the instance of the icon or null if no icon provided
 	 */
 	public function setIcon(?string $icon, string $type = AbstractIcon::PIXEL):?AbstractIcon {
@@ -122,16 +116,18 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 					break;
 				case AbstractIcon::VECTOR:
 					$this->icon = new IconVector($icon, 16);
+					break;
+				default:
+					throw new Exception('Type is not valid '.$type);
 			}
 		}
 		return $this->icon;
 	}
 	/**
-	 * Defines the intensity for the button (how much constrast will be between
-	 * the button and the regular text
+	 * Defines the intensity for the button (how much constrast will be between the button and the
+	 * regular text
 	 * @param string $intensity the intensity for the button, as one of the
-	 * constants: AbstractInlineButton::LOW, AbstractInlineButton::MEDIUM,
-	 * AbstractInlineButton::HIGH
+	 * constants: AbstractInlineButton::LOW, AbstractInlineButton::MEDIUM, AbstractInlineButton::HIGH
 	 * @throws Exception if the value is not valid
 	 */
 	public function setIntensity(string $intensity):void {
@@ -181,7 +177,6 @@ implements HtmlCode, HtmlId, LinkButtonRender {
 			default:
 				throw new Exception('Invalid render '.$this->renderType);
 		}
-		
 		return $code;
 	}
 }
