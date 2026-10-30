@@ -11,8 +11,7 @@ use Antheia\Framework\Interfaces\HtmlId;
  * Abstract class to be extended by all panels defined in the library
  * @author Cosmin Staicu
  */
-abstract class AbstractPanel extends AbstractClass
-implements HtmlCode, HtmlId {
+abstract class AbstractPanel extends AbstractClass implements HtmlCode, HtmlId {
 	const ALIGN_LEFT = 1;
 	const ALIGN_CENTER = 2;
 	const ALIGN_RIGHT = 3;
@@ -53,12 +52,11 @@ implements HtmlCode, HtmlId {
 		$this->addClass('ant-loading');
 	}
 	/**
-	 * Defines if the panel will have the full available height or just enough
-	 * to show it's content
-	 * @param boolean $status (optional) (default true) if true then the
-	 * panel will occupy the entire available space
+	 * Defines if the panel will have the full available height or just enough to show it's content
+	 * @param boolean $status (optional) (default true) if true then the panel will occupy the
+	 * entire available space
 	 */
-	public function setFullHeight(bool $status = true):void {
+	public function setFullHeight(bool $status = TRUE):void {
 		$this->maxHeight = $status;
 	}
 	public function setHtmlId(string $id):void {
@@ -68,13 +66,12 @@ implements HtmlCode, HtmlId {
 		$this->testId = $id;
 	}
 	/**
-	 * Defines the title of the panel.
-	 * The method removes any code defined using setHtmlTitle()
+	 * Defines the title of the panel. The method removes any code defined using setHtmlTitle()
 	 * @param string $text the title of the panel
-	 * @param boolean $smallFont (optional) (default false) if true then the title
-	 * will have a smaller font
+	 * @param boolean $smallFont (optional) (default false) if true then the title will have
+	 * a smaller font
 	 */
-	public function setTitle(string $text, bool $smallFont = false):void {
+	public function setTitle(string $text, bool $smallFont = FALSE):void {
 		$tag = 'h2';
 		if ($smallFont) {
 			$tag = 'h3';
@@ -83,8 +80,8 @@ implements HtmlCode, HtmlId {
 		$this->showHeader = true;
 	}
 	/**
-	 * Defines some html code to be used as a title for the panel
-	 * The method removes any code defined using setTitle()
+	 * Defines some html code to be used as a title for the panel. The method removes any code
+	 * defined using setTitle()
 	 * @param HtmlCode $code the html code
 	 */
 	public function setHtmlTitle(HtmlCode $code):void {
@@ -111,8 +108,7 @@ implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a html element to the footer of the panel
-	 * @param HtmlCode $code the html code to be added to the footer of the
-	 * panel
+	 * @param HtmlCode $code the html code to be added to the footer of the panel
 	 */
 	public function addFooterElement(HtmlCode $code):void {
 		$this->footerItems[] = $code;
@@ -126,7 +122,7 @@ implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a tab to the tab list of the panel
-	 * @param Tab $tab (optional) the tab to be added to the panel.
+	 * @param ?Tab $tab (optional) the tab to be added to the panel.
 	 * If no tab is provided, a new one will be created
 	 * @return Tab the added tab
 	 */

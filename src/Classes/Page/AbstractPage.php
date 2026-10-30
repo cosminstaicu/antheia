@@ -43,18 +43,15 @@ abstract class AbstractPage extends AbstractClass {
 		$this->bodyClasses = [];
 	}
 	/**
-	 * Checks if the browser supports the javascript features used by the 
-	 * framework. The test will be performed after the page loads. If the browser
-	 * does not support all framework features then the script will be redirected
-	 * to a page with details.
-	 * @param string $url (optional) the url where the page should redirect when
-	 * the browser is not compatible. If not defined (or null) the browser will
-	 * be redirected to a standard library page
+	 * Checks if the browser supports the javascript features used by the framework. The test will
+	 * be performed after the page loads. If the browser does not support all framework features then
+	 * the script will be redirected to a page with details.
+	 * @param ?string $url (optional) the url where the page should redirect when the browser is not
+	 * compatible. If not defined (or null) the browser will be redirected to a standard library page
 	 */
-	public function checkCompatibility(string $url = null):void {
+	public function checkCompatibility(?string $url = null):void {
 		if ($url === null) {
-			// checking if the invalid browser files are available
-			// inside the cache folder
+			// checking if the invalid browser files are available inside the cache folder
 			foreach ([
 				'invalidBrowser.css',
 				'invalidBrowser.html',
@@ -119,10 +116,9 @@ abstract class AbstractPage extends AbstractClass {
 		$this->headRows[] = $row;
 	}
 	/**
-	 * Adds javascript code to be inserted into the onLoad attribute of the
-	 * body tag.
-	 * @param string $script the script to be inserted (if it does not ends with
-	 * a semicolon then that symbol will be added)
+	 * Adds javascript code to be inserted into the onLoad attribute of the body tag.
+	 * @param string $script the script to be inserted (if it does not ends with a semicolon then
+	 * that symbol will be added)
 	 */
 	public function addOnLoad(string $script):void {
 		$this->onLoad .= $script;
@@ -147,26 +143,20 @@ abstract class AbstractPage extends AbstractClass {
 	/**
 	 * Adds a javascript file to the page
 	 * @param string $url file location (url)
-	 * @param string[] $attributes (optional) a list with attributes to be
-	 * added to the script tag (index = "value")
+	 * @param string[] $attributes (optional) a list with attributes to be added to the script tag
+	 * (index = "value")
 	 */
-	public function addJavascriptFile($url, $attributes = []):void {
-		$this->javascriptFiles[] = [
-			'url' => $url,
-			'attributes' => $attributes
-		];
+	public function addJavascriptFile(string $url, array $attributes = []):void {
+		$this->javascriptFiles[] = ['url' => $url, 'attributes' => $attributes];
 	}
 	/**
 	 * Adds a css file to the page
 	 * @param string $url file location (url)
-	 * @param string[] $attributes (optional) a list with attributes to be
-	 * added to the script tag (index = "value")
+	 * @param string[] $attributes (optional) a list with attributes to be added to the script tag
+	 * (index = "value")
 	 */
-	public function addCssFile($url, $attributes = []):void {
-		$this->cssFiles[] = [
-			'url' => $url,
-			'attributes' => $attributes
-		];
+	public function addCssFile(string $url, array $attributes = []):void {
+		$this->cssFiles[] = ['url' => $url, 'attributes' => $attributes];
 	}
 	/**
 	 * Add css code to be inserted into the head of the page
@@ -177,8 +167,7 @@ abstract class AbstractPage extends AbstractClass {
 	}
 	/**
 	 * Add css code to be inserted into the head of the page
-	 * @param string $javascript javascript code to be inserted into the head
-	 * of the page
+	 * @param string $javascript javascript code to be inserted into the head of the page
 	 */
 	public function addJavascript(string $javascript):void {
 		$this->headJavascript .= $javascript;
@@ -193,9 +182,8 @@ abstract class AbstractPage extends AbstractClass {
 	/**
 	 * Adds javascript code to the top of the body of the document. The code
 	 * will be placed inside a SCRIPT tag pair
-	 * @param string $code the javascript code to be added to the top of the body
-	 * of the page
-	 * @param string $id (optional) the id of the javascript tag to be added
+	 * @param string $code the javascript code to be added to the top of the body of the page
+	 * @param ?string $id (optional) the id of the javascript tag to be added
 	 */
 	public function addJavascriptBodyTop(string $code, ?string $id = NULL):void {
 		$finalCode = '<script';
@@ -206,12 +194,10 @@ abstract class AbstractPage extends AbstractClass {
 		$this->bodyTopJavascript[] = new Html($finalCode);
 	}
 	/**
-	 * Alias for addJavascriptBodyBottom() method.
-	 * Adds javascript code to the bottom of the body of the document. The code
-	 * will be placed inside a SCRIPT tag pair
-	 * @param string $code the javascript code to be added to the bottom of
-	 * the body of the page
-	 * @param string $id (optional) the id of the javascript tag to be added
+	 * Alias for addJavascriptBodyBottom() method. Adds javascript code to the bottom of the body of
+	 * the document. The code will be placed inside a SCRIPT tag pair
+	 * @param string $code the javascript code to be added to the bottom of the body of the page
+	 * @param ?string $id (optional) the id of the javascript tag to be added
 	 * @see AbstractPage::addJavascriptBodyBottom()
 	 */
 	public function addJavascriptBody(string $code, ?string $id = NULL):void {
@@ -220,9 +206,8 @@ abstract class AbstractPage extends AbstractClass {
 	/**
 	 * Adds javascript code to the bottom of the body of the document. The code will be
 	 * placed inside a SCRIPT tag pair
-	 * @param string $code the javascript code to be added to the bottom of the body
-	 * of the page
-	 * @param string $id (optional) the id of the javascript tag to be added
+	 * @param string $code the javascript code to be added to the bottom of the body of the page
+	 * @param ?string $id (optional) the id of the javascript tag to be added
 	 */
 	public function addJavascriptBodyBottom(string $code, ?string $id = NULL):void {
 		$finalCode = '<script';

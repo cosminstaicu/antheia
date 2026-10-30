@@ -4,11 +4,10 @@ use Antheia\Framework\Html;
 use Antheia\Framework\Panel\Permission\PermissionInfoGroup;
 use Antheia\Framework\Table\Table;
 /**
- * A panel with permission, displayed in groups.
- * Can be used for viewing the permission for a user, inside the app.
- * The permissions are grouped (for example, for the users group, the app can 
- * have permissions like add, remove, edit etc., for the clients group you can
- * also have add, edit, remove etc.)
+ * A panel with permission, displayed in groups. Can be used for viewing the permission for a user,
+ * inside the app. The permissions are grouped (for example, for the users group, the app can 
+ * have permissions like add, remove, edit etc., for the clients group you can also have add, edit,
+ * remove etc.)
  * @author Cosmin Staicu
  */
 class PanelPermissionInfo extends Panel {
@@ -19,8 +18,7 @@ class PanelPermissionInfo extends Panel {
 	}
 	/**
 	 * Returns a panel that contains a permission group
-	 * @return PermissionInfoGroup a panel that contains
-	 * a permission group
+	 * @return PermissionInfoGroup a panel that contains a permission group
 	 */
 	public function getGroup():PermissionInfoGroup {
 		$panel = new PermissionInfoGroup();

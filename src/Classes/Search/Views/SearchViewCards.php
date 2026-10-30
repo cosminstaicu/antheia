@@ -8,8 +8,8 @@ use Antheia\Framework\Input\Raw\InputRawCheckbox;
 use Antheia\Framework\Search\SearchResult;
 use Antheia\Framework\Wireframe\Wireframe;
 /**
- * A search result render that displays the results as cards. The card has
- * an image being displayed that can slide to reveal additional info.
+ * A search result render that displays the results as cards. The card has an image being displayed
+ * that can slide to reveal additional info.
  * @author Cosmin Staicu
  */
 class SearchViewCards extends AbstractSearchView {
@@ -73,8 +73,7 @@ class SearchViewCards extends AbstractSearchView {
 					throw new Exception($result->getImageArea());
 			}
 			if ($result->getImageLink() !== '') {
-				$code .= '<a href="'.$result->getImageLink().'"
-					class="ant_search_card-imageLink" title="'
+				$code .= '<a href="'.$result->getImageLink().'"	class="ant_search_card-imageLink" title="'
 					.htmlspecialchars(strip_tags($result->getName())).'">';
 			}
 			$code .= '<img src="'.$result->getImageUrl().'" class="'
@@ -87,13 +86,10 @@ class SearchViewCards extends AbstractSearchView {
 				if ($result->getIcon()->getSize() !== 32) {
 					throw new Exception(
 						'Only 32px size icons are valid ('
-						.$result->getIcon()->getSize()
-						.'px is not valid)'
+							.$result->getIcon()->getSize().'px is not valid)'
 					);
 				}
-				$code .= '<div class="ant-icon">'
-					.$result->getIcon()->getHtml()
-					.'</div>';
+				$code .= '<div class="ant-icon">'.$result->getIcon()->getHtml().'</div>';
 			}
 			$code .= '<p>'.$result->getName().'</p>';
 			if ($result->getImageSize() === SearchResult::IMAGE_SIZE_MEDIUM) {
@@ -108,8 +104,7 @@ class SearchViewCards extends AbstractSearchView {
 				case $result::LINK:
 					$code .= '<a href="'.$result->getAccessHref().'"
 						class="ant_search_card-access"'.$onClick.$idCode.'>'
-						.htmlspecialchars($result->getAccessText())
-						.'</a>';
+						.htmlspecialchars($result->getAccessText()).'</a>';
 					break;
 				case $result::BUTTON:
 					$code .= '<button type="button" class="ant_search_card-access"'
@@ -120,9 +115,9 @@ class SearchViewCards extends AbstractSearchView {
 					throw new Exception('Invalid render '.$result->getAccessRender());
 			}
 			$code .= '<button type="button"'
-					.Internals::getHtmlIdCode('', 'ant_showCardDetails'.$index).'
-					onclick="ant_search_card_toggleInfo(this.parentElement)">'
-					.$slideIcon->getHtml().'</button>';
+				.Internals::getHtmlIdCode('', 'ant_showCardDetails'.$index).'
+				onclick="ant_search_card_toggleInfo(this.parentElement)">'
+				.$slideIcon->getHtml().'</button>';
 			// the hidden container
 			$code .= '<div>';
 			$code .= '<p>'.$result->getName().'</p>';

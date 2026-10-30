@@ -25,11 +25,7 @@ class IconPixelSmall extends AbstractIconPixel {
 		$cachePath = Internals::getCachePath().$file;
 		if (!is_file($cachePath)) {
 			$result = $this->getTransparentImage(16,16);
-			imagecopy(
-					$result,
-					self::getLibraryImage($this->getIcon(), 16),
-					0, 0, 0, 0, 16, 16
-			);
+			imagecopy($result, self::getLibraryImage($this->getIcon(), 16), 0, 0, 0, 0, 16, 16);
 			// saving the generated file into cache
 			imagepng($result, $cachePath, 0);
 		}

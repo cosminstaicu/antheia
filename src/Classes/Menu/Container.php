@@ -5,9 +5,8 @@ use Antheia\Framework\Exception;
 use Antheia\Framework\Menu\Item\AbstractMenu;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * A container with a visible container that can have a menu (default hidden)
- * with one ore more items. The menu items can be toggled from the button places
- * to the left side of the title.
+ * A container with a visible container that can have a menu (default hidden) with one ore more
+ * items. The menu items can be toggled from the button places to the left side of the title.
  * @author Cosmin Staicu
  */
 class Container extends AbstractClass implements HtmlCode {
@@ -27,8 +26,7 @@ class Container extends AbstractClass implements HtmlCode {
 	}
 	/**
 	 * Defines the element visible when the menu items are hidden
-	 * @param HtmlCode $element the visible element when the menu items
-	 * are hidden
+	 * @param HtmlCode $element the visible element when the menu items are hidden
 	 */
 	public function setVisible(HtmlCode $element):void {
 		$this->visible = $element;
@@ -43,7 +41,7 @@ class Container extends AbstractClass implements HtmlCode {
 		$code = '<div class="ant_menu">';
 		$code .= '<button onClick="ant_menu_toogle(this)" type="button">'
 			.'<div></div><div></div><div></div></button><div>';
-			$code .= $this->visible->getHtml();
+		$code .= $this->visible->getHtml();
 		$code .= '</div><div>';
 		/** @var AbstractMenu $item */
 		foreach ($this->items as $item) {

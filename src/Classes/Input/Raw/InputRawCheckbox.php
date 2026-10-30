@@ -10,8 +10,7 @@ use Antheia\Framework\Interfaces\HtmlId;
  * A simple checkbox
  * @author Cosmin Staicu
  */
-class InputRawCheckbox extends AbstractClass 
-implements HtmlCode, HtmlAttribute, HtmlId {
+class InputRawCheckbox extends AbstractClass implements HtmlCode, HtmlAttribute, HtmlId {
 	private $label;
 	private $name;
 	private $value;
@@ -39,15 +38,14 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Defines the name of the parameter that will be send, for the checkbox
-	 * @param string $name the name of the parameter that will be send
-	 * to the server, when the checkbox is checked
+	 * @param string $name the name of the parameter that will be send to the server, when the
+	 * checkbox is checked
 	 */
 	public function setName(string $name):void {
 		$this->name = $name;
 	}
 	/**
-	 * Defines the value of the parameter that will be sent when the checkbox
-	 * is checked
+	 * Defines the value of the parameter that will be sent when the checkbox is checked
 	 * @param string $value the value to be sent when the checlbox is checked
 	 */
 	public function setValue(string $value):void {
@@ -75,8 +73,7 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 	}
 	/**
 	 * Defines the javascript code to be executed when the item is clicked
-	 * @param string $code the javascript code or an empty string if no event
-	 * is needed
+	 * @param string $code the javascript code or an empty string if no event is needed
 	 */
 	public function setOnClick(string $code):void {
 		$this->onClick = $code;

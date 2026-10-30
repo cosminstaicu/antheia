@@ -1,8 +1,8 @@
 <?php
 namespace Antheia\Framework\Interfaces;
 /**
- * Defines the methods used in classes that can be rendered as buttons or as
- * links (tabs, fixedButtons, pageMenus etc)
+ * Defines the methods used in classes that can be rendered as buttons or as links (tabs,
+ * fixedButtons, pageMenus etc)
  * @author Cosmin Staicu
  */
 interface LinkButtonRender {
@@ -26,15 +26,14 @@ interface LinkButtonRender {
 	 */
 	public function setRender(string $type):void;
 	/**
-	 * Defines the href attribute if the item is rendered as a link (the action that
-	 * will be triggered when the user clicks on the item)
+	 * Defines the href attribute if the item is rendered as a link (the action that will be
+	 * triggered when the user clicks on the item)
 	 * @param string $href the href attribute for the link of the item.
 	 */
 	public function setHref(string $href):void;
 	/**
 	 * The onClick script to be executed when the item is clicked
-	 * @param string $code javascript code to be executed when the item
-	 * is clicked
+	 * @param string $code javascript code to be executed when the item is clicked
 	 */
 	public function setOnClick(string $code):void;
 }

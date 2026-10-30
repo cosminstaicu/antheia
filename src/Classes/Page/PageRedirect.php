@@ -3,10 +3,9 @@ namespace Antheia\Framework\Page;
 use Antheia\Framework\Form;
 use Antheia\Framework\Html;
 /**
- * A page that redirects the user to another page. It uses a html form, that
- * can have parameters. After the page has been loaded, the form is auto submitted.
+ * A page that redirects the user to another page. It uses a html form, that can have parameters.
+ * After the page has been loaded, the form is auto submitted.
  * @author Cosmin Staicu
- *
  */
 class PageRedirect extends AbstractPage {
 	private $form;
@@ -18,9 +17,8 @@ class PageRedirect extends AbstractPage {
 		$this->doNotInit = false;
 	}
 	/**
-	 * Calling the method will generate the html code, without submitting
-	 * the redirect form. It can be used for debugging, when you need to see
-	 * the html code.
+	 * Calling the method will generate the html code, without submitting the redirect form. It can
+	 * be used for debugging, when you need to see the html code.
 	 */
 	public function doNotInit():void {
 		$this->doNotInit = true;
@@ -32,17 +30,15 @@ class PageRedirect extends AbstractPage {
 	 */
 	public function addParameter(string $name, string $value):void {
 		$this->form->addElement(new Html(
-			'<input type="hidden" name="'.$name
-			.'" value="'.htmlspecialchars($value).'">'
+			'<input type="hidden" name="'.$name.'" value="'.htmlspecialchars($value).'">'
 		));
 	}
 	/**
 	 * Defines the protocol used for sending the form redirect parameters
-	 * @param integer $method the method used for sending data to the server
-	 * (like Form::METHOD::##)
+	 * @param integer $method the method used for sending data to the server (like Form::METHOD::##)
 	 * @see Form::setMethod()
 	 */
-	public function setMethod($method) {
+	public function setMethod(int $method):void {
 		$this->form->setMethod($method);
 	}
 	/**

@@ -10,9 +10,8 @@ use Antheia\Framework\Search\SearchResult;
 use Antheia\Framework\Slide\SlidePanel;
 use Antheia\Framework\Wireframe\Wireframe;
 /**
- * A search result render that displays the results as an accordion
- * (only the name of the item is displayed, when clicked the panel will expand,
- * showing additional details)
+ * A search result render that displays the results as an accordion (only the name of the item is
+ * displayed, when clicked the panel will expand, showing additional details)
  * @author Cosmin Staicu
  */
 class SearchViewAccordion extends AbstractSearchView {
@@ -48,8 +47,7 @@ class SearchViewAccordion extends AbstractSearchView {
 			if ($result->getIcon() !== null) {
 				if ($result->getIcon()->getSize() !== 32) {
 					throw new Exception(
-						'Only 32px size icons are valid ('
-						.$result->getIcon()->getSize()
+						'Only 32px size icons are valid ('.$result->getIcon()->getSize()
 						.'px is invalid)'
 					);
 				}
@@ -79,12 +77,11 @@ class SearchViewAccordion extends AbstractSearchView {
 			switch ($result->getAccessRender()) {
 				case $result::LINK:
 					$buttonCode = '<a href="'.$result->getAccessHref()
-						.'"'.$title.$onClick.$idCode.'>'
-						.$icon->getHtml().'</a>';
+						.'"'.$title.$onClick.$idCode.'>'.$icon->getHtml().'</a>';
 					break;
 				case $result::BUTTON:
 					$buttonCode = '<button type="button" '.$title.$onClick.$idCode.'>'
-							.$icon->getHtml().'</button>';
+						.$icon->getHtml().'</button>';
 					break;
 				default:
 					throw new Exception('Invalid render '.$result->getAccessRender());
@@ -100,8 +97,7 @@ class SearchViewAccordion extends AbstractSearchView {
 				$cell = $row->addCell();
 				foreach ($buttons as $buttonInfo) {
 					$cell->addElement(new Html(
-						'<input type="button" value="'
-							.$buttonInfo['text'].'" onClick="'
+						'<input type="button" value="'.$buttonInfo['text'].'" onClick="'
 							.$buttonInfo['onClick'].'">'
 					));
 				}
@@ -115,8 +111,7 @@ class SearchViewAccordion extends AbstractSearchView {
 				$cell->addWidth('md', 4);
 				$cell->addWidth('lg', 3);
 				$cell->addElement(new Html(
-					'<div>'.$property['label'].'</div>
-					<div>'.$property['value'].'</div>'	
+					'<div>'.$property['label'].'</div><div>'.$property['value'].'</div>'	
 				));
 			}
 			if ($result->getDescription() !== '') {

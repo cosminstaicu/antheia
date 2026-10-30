@@ -43,15 +43,16 @@ class WireframeInput extends Wireframe {
 	/**
 	 * Adds an input to the wireframe
 	 * @param AbstractInput $input the input to be added
-	 * @param string $id (optional) (default '') the html id of the row containing the input and the label
+	 * @param string $id (optional) (default '') the html id of the row containing the input and
+	 * the label
 	 * @param string[] $classes (optional) a list of classes to be added to the row
 	 * definition (the rows contains the label of the input and the input)
 	 * @param int $position (optional) the column where the item should be added,
 	 * as a constant like WireframeInput::COLUMN_##. If it not defined
 	 * then the input will have the label on the left column and the input
 	 * control in the right column
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addInput(
@@ -75,8 +76,8 @@ class WireframeInput extends Wireframe {
 	 * as a constant like WireframeInput::COLUMN_##
 	 * @param string $id (optional) (default '') the id of the row containing the item to be added
 	 * @param string[] $classes a list of classes to be added to the row definition
-	 * @param string $testid (optional) (default '') the value of the row testid attribute or an empty
-	 * string if no id is required
+	 * @param string $testid (optional) (default '') the value of the row testid attribute or an
+	 * empty string if no id is required
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
 	public function addHtml(

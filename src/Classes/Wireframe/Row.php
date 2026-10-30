@@ -22,11 +22,11 @@ class Row extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Adds a cell to the current row
-	 * @param Cell $cell (optional) the cell to be added. If the
-	 * parameter is not defined then a new cell will be created.
+	 * @param ?Cell $cell (optional) the cell to be added. If the parameter is not defined then a
+	 * new cell will be created.
 	 * @return Cell the cell added to the row
 	 */
-	public function addCell(Cell $cell = null):Cell {
+	public function addCell(?Cell $cell = null):Cell {
 		if ($cell === null) {
 			$cell = new Cell();
 		}

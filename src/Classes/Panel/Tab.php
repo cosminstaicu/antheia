@@ -50,8 +50,7 @@ class Tab extends AbstractClass implements HtmlCode, LinkButtonRender {
 	}
 	/**
 	 * Defines the id for the HTML element (the attribute from the tag).
-	 * @param string $id the id for the HTML element or an empty string if no
-	 * id is required
+	 * @param string $id the id for the HTML element or an empty string if no id is required
 	 */
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;
@@ -72,8 +71,8 @@ class Tab extends AbstractClass implements HtmlCode, LinkButtonRender {
 	/**
 	 * Defines the status of the tab (default or selected)
 	 * @param integer $status the status of the tab, as one of the constants:
-	 * - HeaderTab::STATUS_DEFAULT
-	 * - HeaderTab::STATUS_SELECTED
+	 * <br>- HeaderTab::STATUS_DEFAULT
+	 * <br>- HeaderTab::STATUS_SELECTED
 	 */
 	public function setStatus(string $status):void {
 		$this->status = $status;
@@ -82,7 +81,7 @@ class Tab extends AbstractClass implements HtmlCode, LinkButtonRender {
 	 * Defines if the tab will be rendered with a bold text or not
 	 * @param bool $accent true to enable the text accent, false if not
 	 */
-	public function setAccent(bool $accent = true):void {
+	public function setAccent(bool $accent = TRUE):void {
 		$this->accent = $accent;
 	}
 	public function getHtml():string {

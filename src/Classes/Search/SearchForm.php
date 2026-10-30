@@ -13,8 +13,8 @@ use Antheia\Framework\Panel\Panel;
 use Antheia\Framework\Slide\SlidePanel;
 use Antheia\Framework\Wireframe\Wireframe;
 /**
- * The class defines a form from a page that contains the results of a search.
- * The class displays the search filters, the sorting options and the pagination.
+ * The class defines a form from a page that contains the results of a search. The class displays
+ * the search filters, the sorting options and the pagination.
  * @author Cosmin Staicu
  */
 class SearchForm extends Form {
@@ -92,23 +92,20 @@ class SearchForm extends Form {
 	/**
 	 * Adds an search filter (an input) to the criteria list
 	 * @param AbstractInput $input the input being added
-	 * @param string $id (optional) the HTML id for the cell containing
-	 * the filter (the container with the label and input)
-	 * If an id is not required then an empty string can be used
-	 * @param string $classes (optional) a list o classes to be inserted into
-	 * the input container definition. If no classes are required then an
-	 * empty array can be submitted
+	 * @param string $id (optional) the HTML id for the cell containing the filter (the container
+	 * with the label and input). If an id is not required then an empty string can be used
+	 * @param string $classes (optional) a list o classes to be inserted into the input container
+	 * definition. If no classes are required then an empty array can be submitted
 	 */
-	public function addInput(
-			AbstractInput $input, string $id= '', array $classes = []):void {
+	public function addInput(AbstractInput $input, string $id = '', array $classes = []):void {
 		$this->filters[] = ['id' => $id, 'input' => $input, 'classes' => $classes];
 	}
 	/**
 	 * Defines the sort by list
-	 * @param string[] $list a list having the value send to the
-	 * server as an index and the visible text as a value
-	 * @param string $elementSelectat the index of the selected element from
-	 * the list defined in the previous parameter
+	 * @param string[] $list a list having the value send to the server as an index and the visible
+	 * text as a value
+	 * @param string $elementSelectat the index of the selected element from the list defined in
+	 * the previous parameter
 	 */
 	public function setSortBy(array $list, string $selected):void {
 		$this->sortByList = $list;
@@ -142,8 +139,8 @@ class SearchForm extends Form {
 		$this->totalPages = $total;
 	}
 	/**
-	 * Calling the method generates the html code for the form and loads it
-	 * into the $this->code property
+	 * Calling the method generates the html code for the form and loads it into the
+	 * $this->code property
 	 * @throws Exception
 	 */
 	private function createHtml():void {
@@ -185,9 +182,8 @@ class SearchForm extends Form {
 		}
 		$sortArrow = new IconVector();
 		$sortArrow->setSize(22);
-		$sortCode = '<input type="hidden" name="sortOrder" 
-			id="ant_sort-order" value="'.$this->order
-			.'"><button type="button" id="ant_search-sort-order"
+		$sortCode = '<input type="hidden" name="sortOrder" id="ant_sort-order" value="'
+			.$this->order.'"><button type="button" id="ant_search-sort-order"
 			onclick="ant_search_changeSortOrder(\''.$sortBy.'\')">';
 		switch ($this->order) {
 			case self::SORT_ASC:
@@ -245,8 +241,7 @@ class SearchForm extends Form {
 			if ($input->getDefaultValue() === NULL) {
 				continue;
 			}
-			// there is a letter "t" appended to the value
-			// to force a text comparation
+			// there is a letter "t" appended to the value to force a text comparation
 			// otherwise problems when comparing 0 with "0" will occure
 			if (($input->getDefaultValue().'t') === ($input->getValue().'t')) {
 				continue;

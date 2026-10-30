@@ -2,9 +2,8 @@
 namespace Antheia\Framework;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * An element that can be added to a HTML page. The element is
- * a container for raw HTML code or some other objects that are implementing
- * the HtmlCode interface
+ * An element that can be added to a HTML page. The element is a container for raw HTML code or
+ * some other objects that are implementing the HtmlCode interface
  * @author Cosmin Staicu
  */
 class Html extends AbstractClass implements HtmlCode {
@@ -12,8 +11,7 @@ class Html extends AbstractClass implements HtmlCode {
 	private $rawCode;
 	/**
 	 * The constructor for an element that can be added to a HTML page
-	 * @param string $code (optional) raw HTML code that will be added to the
-	 * element
+	 * @param string $code (optional) raw HTML code that will be added to the element
 	 */
 	public function __construct(string $code = '') {
 		parent::__construct();

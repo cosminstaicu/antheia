@@ -39,8 +39,7 @@ abstract class AbstractInputButton extends AbstractInput {
 	}
 	/**
 	 * Defines the button type
-	 * @param integer $type the button type, as a constant like
-	 * AbstractInputButton::TYPE_##
+	 * @param integer $type the button type, as a constant like AbstractInputButton::TYPE_##
 	 */
 	protected function setButtonType(int $type):void {
 		$this->buttonType = $type;

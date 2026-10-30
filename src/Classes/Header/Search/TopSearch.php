@@ -66,8 +66,7 @@ class TopSearch implements HtmlCode {
 	}
 	/**
 	 * Defines the method used by the form
-	 * @param string $method the method used by the form, using a constant
-	 * like Form::METHOD_##
+	 * @param string $method the method used by the form, using a constant like Form::METHOD_##
 	 */
 	public function setFormMethod(string $method):void {
 		$this->formMethod = $method;
@@ -80,35 +79,30 @@ class TopSearch implements HtmlCode {
 		$this->formClasses[] = $class;
 	}
 	/**
-	 * Defines a javascript function, to be executed just before submitting
-	 * the form.
-	 * @param string $code the javascript code to be executed or an
-	 * empty string if no onSubmit code is required. The code will be
-	 * automatically prefixed with the "return " string
+	 * Defines a javascript function, to be executed just before submitting the form.
+	 * @param string $code the javascript code to be executed or an empty string if no onSubmit
+	 * code is required. The code will be automatically prefixed with the "return " string
 	 */
 	public function setOnSubmit(string $code):void {
 		$this->formOnSubmit = $code;
 	}
 	/**
 	 * Defines the search form id
-	 * @param string $id the id for the search form or en empty string
-	 * if no id is needed
+	 * @param string $id the id for the search form or en empty string if no id is needed
 	 */
 	public function setFormId(string $id):void {
 		$this->formId = $id;
 	}
 	/**
 	 * Defines the search form test id
-	 * @param string $id the test id for the search form or en empty string
-	 * if no test id is needed
+	 * @param string $id the test id for the search form or en empty string if no test id is needed
 	 */
 	public function setFormTestId(string $id):void {
 		$this->formTestId = $id;
 	}
 	/**
 	 * Adds an name=value attribute to the form tag
-	 * @param string $name attribute name (for custom attributes you should
-	 * use "data-XXXX" template)
+	 * @param string $name attribute name (for custom attributes you should use "data-XXXX" template)
 	 * @param string $value attribute value
 	 */
 	public function addFormAttribute(string $name, string $value):void {
@@ -123,16 +117,14 @@ class TopSearch implements HtmlCode {
 	}
 	/**
 	 * Defines the search input id
-	 * @param string $id the id for the search input or an empty string
-	 * if no id is needed
+	 * @param string $id the id for the search input or an empty string if no id is needed
 	 */
 	public function setInputId(string $id):void {
 		$this->inputId = $id;
 	}
 	/**
 	 * Defines the search input test id
-	 * @param string $id the test id for the search input or an empty string
-	 * if no id is needed
+	 * @param string $id the test id for the search input or an empty string if no id is needed
 	 */
 	public function setInputTestId(string $id):void {
 		$this->inputTestId = $id;
@@ -146,8 +138,7 @@ class TopSearch implements HtmlCode {
 	}
 	/**
 	 * Defines the input type
-	 * @param string $type the input type, using a constant like
-	 * AbstractInputText::TYPE_###
+	 * @param string $type the input type, using a constant like AbstractInputText::TYPE_###
 	 */
 	public function setInputType(string $type):void {
 		$this->inputType = $type;

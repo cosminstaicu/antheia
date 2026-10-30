@@ -4,8 +4,7 @@ use Antheia\Framework\AbstractClass;
 use Antheia\Framework\Texts;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * The response from a server search. The class is just a list containing
- * SearchResponseItem instances
+ * The response from a server search. The class is just a list containing SearchResponseItem instances
  * @author Cosmin Staicu
  */
 class SearchResponseList extends AbstractClass implements HtmlCode {
@@ -16,11 +15,10 @@ class SearchResponseList extends AbstractClass implements HtmlCode {
 	}
 	/**
 	 * Adds an element to the list
-	 * @param SearchResponseItem|NULL $item the item to be added or NULL for
-	 * generating an item automatically
+	 * @param ?SearchResponseItem $item the item to be added or NULL for generating an item automatically
 	 * @return SearchResponseItem the added item
 	 */
-	public function addItem(SearchResponseItem $item = NULL):SearchResponseItem {
+	public function addItem(?SearchResponseItem $item = NULL):SearchResponseItem {
 		if ($item === NULL) {
 			$item = new SearchResponseItem();
 		}

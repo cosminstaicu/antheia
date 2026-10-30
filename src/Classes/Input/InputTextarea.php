@@ -1,6 +1,5 @@
 <?php
 namespace Antheia\Framework\Input;
-
 use Antheia\Framework\Internals;
 /**
  * A textarea input
@@ -26,10 +25,10 @@ class InputTextarea extends AbstractInput {
 		$this->classList[] = $class;
 	}
 	/**
-	 * Defines the default maximum length for all textarea inputs.
-	 * The instances defined prior to this method call are not affected.
-	 * @param int $maxLength the default maximum length for all text inputs
-	 * or 0 if no limit is defined
+	 * Defines the default maximum length for all textarea inputs.The instances defined prior to
+	 * this method call are not affected.
+	 * @param int $maxLength the default maximum length for all text inputs or 0 if no limit is
+	 * defined
 	 */
 	public static function setGlobalMaxLength(int $maxLength):void {
 		self::$globalMaxLength = $maxLength;
@@ -50,8 +49,7 @@ class InputTextarea extends AbstractInput {
 	}
 	/**
 	 * Defines the maximum length of the input
-	 * @param int $max the maximum length of the input or 0 if the attribute
-	 * is not required
+	 * @param int $max the maximum length of the input or 0 if the attribute is not required
 	 */
 	public function setMaxLength(int $max):void {
 		$this->maxLength = $max;

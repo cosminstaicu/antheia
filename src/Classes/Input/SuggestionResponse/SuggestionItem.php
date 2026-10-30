@@ -2,9 +2,8 @@
 namespace Antheia\Framework\Input\SuggestionResponse;
 use Antheia\Framework\AbstractClass;
 /**
- * The class defines a suggestion for a text type input. This suggestion will
- * be loaded into a SuggestionList (along with others) then sent back to
- * the client
+ * The class defines a suggestion for a text type input. This suggestion will be loaded into a
+ * SuggestionList (along with others) then sent back to the client
  * @author Cosmin Staicu
  */
 class SuggestionItem extends AbstractClass {

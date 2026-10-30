@@ -10,8 +10,7 @@ class ThemeDarkAesthetics extends AbstractTheme {
 		parent::__construct();
 		$this->setName('Dark aesthetics');
 		$this->setDescription(
-			'Nobility and elegance meet, '
-			.'complement and mingle in a forest foliage at sunset.'
+			'Nobility and elegance meet, complement and mingle in a forest foliage at sunset.'
 		);
 		$this->setWarning('#ff6666');
 		$this->setLink('#d6d6ff');

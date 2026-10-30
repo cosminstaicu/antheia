@@ -3,9 +3,9 @@ namespace Antheia\Framework\Icon;
 use Antheia\Framework\Exception;
 use Antheia\Framework\Internals;
 /**
- * Class to be extended by all classes defining a pixel (png) image icon.
- * The icon will be first checked in the cache folder and if it is not found there
- * then it will be generated and saved into the cache folder.
+ * Class to be extended by all classes defining a pixel (png) image icon. The icon will be first
+ * checked in the cache folder and if it is not found there then it will be generated and saved into
+ * the cache folder.
  * @author Cosmin Staicu
  */
 abstract class AbstractIconPixel extends AbstractIcon {
@@ -23,9 +23,9 @@ abstract class AbstractIconPixel extends AbstractIcon {
 	 * Returns a transparent image of a defined size
 	 * @param integer $width the width of the resulting image
 	 * @param integer $height the height of the resulting image
-	 * @return resource the generated image
+	 * @return \GdImage the generated image
 	 */
-	protected function getTransparentImage(int $width, int $height) {
+	protected function getTransparentImage(int $width, int $height):\GdImage {
 		$image = imagecreatetruecolor($width, $height);
 		imagesavealpha($image, true);
 		$color = imagecolorallocatealpha($image, 0, 0, 0, 127);
@@ -33,16 +33,14 @@ abstract class AbstractIconPixel extends AbstractIcon {
 		return $image;
 	}
 	/**
-	 * Returns a generated image based on a .png file from the .zip archive
-	 * inside the Media/Icons/Pixel folder
+	 * Returns a generated image based on a .png file from the .zip archive inside Media/Icons/Pixel
 	 * @param string $name the name of the .png file inside the library
-	 * @param integer $size size of the generated image. It can be
-	 * 16 or 32 (32x32 px or 16x16 px, corresponding to the folder inside the
-	 * .zip archive)
-	 * @return resource the generated image
+	 * @param integer $size size of the generated image. It can be 16 or 32 (32x32 px or 16x16 px,
+	 * corresponding to the folder inside the .zip archive)
+	 * @return \GdImage the generated image
 	 * @throws Exception if the image can not be generated
 	 */
-	protected function getLibraryImage(string $name, int $size) {
+	protected function getLibraryImage(string $name, int $size):\GdImage {
 		switch ($size) {
 			case 16:
 			case 32:

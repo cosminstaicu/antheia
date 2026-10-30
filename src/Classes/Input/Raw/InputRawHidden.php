@@ -11,8 +11,7 @@ use Antheia\Framework\Interfaces\HtmlId;
  * A hidden input html tag
  * @author Cosmin Staicu
  */
-class InputRawHidden extends AbstractClass 
-implements HtmlCode, HtmlAttribute, HtmlId {
+class InputRawHidden extends AbstractClass implements HtmlCode, HtmlAttribute, HtmlId {
 	private $htmlId;
 	private $testId;
 	private $name;
@@ -46,8 +45,8 @@ implements HtmlCode, HtmlAttribute, HtmlId {
 		$this->name = $name;
 	}
 	/**
-	 * Defines the name and the html id for the element in a single method
-	 * (the name attribute and the id attribute from the tag)
+	 * Defines the name and the html id for the element in a single method (the name attribute and
+	 * the id attribute from the tag)
 	 * @param string $nameId the value for the two properties
 	 */
 	public function setNameId(string $nameId):void {

@@ -24,18 +24,17 @@ class InputRawLabel extends AbstractClass implements HtmlCode, HtmlId {
 	}
 	/**
 	 * Defines the inline help element to be displayed near the label
-	 * @param AbstractInlineHelp $inlineHelp the inline help element
-	 * to be displayed near the label or NULL if no inline help in required
+	 * @param ?AbstractInlineHelp $inlineHelp the inline help element to be displayed near the label
+	 * or NULL if no inline help in required
 	 */
-	public function setInlineHelp(AbstractInlineHelp $inlineHelp = null):void {
+	public function setInlineHelp(?AbstractInlineHelp $inlineHelp = null):void {
 		$this->inlineHelp = $inlineHelp;
 	}
 	/**
-	 * Returns the inline help object that will be displayed next to the label
-	 * or null if no inline help is defined
-	 * @return null | AbstractInlineHelp the inline help object 
-	 * that will be displayed next to the label or null if no inline help
-	 * is required
+	 * Returns the inline help object that will be displayed next to the label or null if no inline
+	 * help is defined
+	 * @return ?AbstractInlineHelp the inline help object that will be displayed next to the label
+	 * or null if no inline help is required
 	 */
 	public function getInlineHelp():?AbstractInlineHelp {
 		return $this->inlineHelp;

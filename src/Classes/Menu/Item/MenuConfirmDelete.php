@@ -3,14 +3,11 @@ namespace Antheia\Framework\Menu\Item;
 use Antheia\Framework\Exception;
 use Antheia\Framework\Interfaces\BeforeAfterCallback;
 /**
- * The class defines a button that, when pressed, asks for a delete confirmation
- * before initiating a (delete) action. When the confirmation is valid the
- * button will either submit a form or call a javascript function.
- * If the method setUrl is called then a form will be submitted.
- * If the method setAfterCallback is called then a javascript function will
- * be called.
- * If both methods are called or no method is called then an exception will be
- * thrown.
+ * The class defines a button that, when pressed, asks for a delete confirmation before initiating a
+ * (delete) action. When the confirmation is valid the button will either submit a form or call a
+ * javascript function. If the method setUrl is called then a form will be submitted. If the method
+ * setAfterCallback is called then a javascript function will be called. If both methods are called
+ * or no method is called then an exception will be thrown.
  * @author Cosmin Staicu
  */
 class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
@@ -35,17 +32,17 @@ class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
 		throw new Exception('OnClick function is not available. Use setAfterCallback()');
 	}
 	/**
-	 * Defines the URL where the delete request will be sent. For a form to be
-	 * submitted then the method setAfterCallback must not be called.
-	 * @param string $url the URL where the delete request will be sent or
-	 * an empy string if no form needs to be submitted
+	 * Defines the URL where the delete request will be sent. For a form to be submitted then the
+	 * method setAfterCallback must not be called.
+	 * @param string $url the URL where the delete request will be sent or an empy string if no
+	 * form needs to be submitted
 	 */
 	public function setUrl(string $url):void {
 		$this->url = $url;
 	}
 	/**
-	 * Defines the value to be sent with the delete request. This value is
-	 * the id (from the database) of the element to be deleted
+	 * Defines the value to be sent with the delete request. This value is the id (from the database)
+	 * of the element to be deleted
 	 * @param string $id the id of the item to be deleted
 	 */
 	public function setItemId(string $id):void {
@@ -55,13 +52,11 @@ class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
 		$this->beforeCallback = $functionName;
 	}
 	/**
-	 * Defines a javascript function that will be called after the user confirmed
-	 * the deletion. Warning! This function is only called if no url for
-	 * the form has been provided. If a URL is provided (using the serUrl method)
-	 * then this method is never called
-	 * @param string $functionName the name (just the name) of the javascript
-	 * function that will be called, with the "this" parameter If an empty string
-	 * is provided then no function will be called.
+	 * Defines a javascript function that will be called after the user confirmed the deletion.
+	 * Warning! This function is only called if no url for the form has been provided. If a URL is
+	 * provided (using the serUrl method) then this method is never called
+	 * @param string $functionName the name (just the name) of the javascript function that will be
+	 * called, with the "this" parameter If an empty string is provided then no function is called.
 	 */
 	public function setAfterCallback(string $functionName):void {
 		$this->afterCallback = $functionName;
@@ -74,9 +69,8 @@ class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
 		$this->formTarget = $target;
 	}
 	/**
-	 * Defines the name of the parameter that contains the id of the item
-	 * to be deleted. If this method is not called then the default
-	 * parameter name is "id"
+	 * Defines the name of the parameter that contains the id of the item to be deleted. If this
+	 * method is not called then the default parameter name is "id"
 	 * @param string $name the parameter name
 	 */
 	public function setParamName(string $name):void {
@@ -84,7 +78,7 @@ class MenuConfirmDelete extends MenuDelete implements BeforeAfterCallback {
 	}
 	public function getHtml():string {
 		if ( ($this->url === '') && ($this->afterCallback === '') ) {
-			throw new Exception('URL not defined, afterCallback not defined. Please choose one of them.');
+			throw new Exception('URL not defined, afterCallback not defined. Please choose one!');
 		}
 		if ( ($this->url !== '') && ($this->afterCallback !== '') ) {
 			throw new Exception('Both URL and afterCallback are defined, use only one.');

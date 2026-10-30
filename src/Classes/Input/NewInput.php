@@ -1,9 +1,8 @@
 <?php
 namespace Antheia\Framework\Input;
 /**
- * A shortcut class for generating any input without adding the namespace
- * to the document use section (as a form uses many types of inputs, the
- * namespace declaration section can become crowded)
+ * A shortcut class for generating any input without adding the namespace to the document use section
+ * (as a form uses many types of inputs, the namespace declaration section can become crowded)
  * @author Cosmin Staicu
  */
 abstract class NewInput {

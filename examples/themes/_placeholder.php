@@ -20,7 +20,7 @@ use Antheia\Framework\Page\PageEmpty;
  */
 $wireframe = $page->addWireframe();
 $row = $wireframe->addRow();
-// ******************************************************* a panel WITH NO TITLE
+// *************************************************************************** a panel WITH NO TITLE
 // inside a cell with a width of 6 columns (50%) on medium and large devices
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
@@ -35,7 +35,7 @@ $panel->addElement($codHtml);
 $panel->addElement(new Html('<p>Inside the panel you can add text or
 	other PHP classes that are implementing the HtmlCode interface</p>'));
 $panel->setFullHeight();
-// ******************************************* a panel WITH A TITLE AND A FOOTER
+// *************************************************************** a panel WITH A TITLE AND A FOOTER
 // inside a cell with a width of 6 columns (50%) on medium and large devices
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
@@ -50,7 +50,7 @@ $button->setText('Footer button');
 $button->setOnClick('alert()');
 $panel->addFooterElement($button);
 $panel->setFullHeight();
-// *********************************************** a panel WITH A TITLE AND MENU
+// ******************************************************************* a panel WITH A TITLE AND MENU
 $row = $wireframe->addRow();
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
@@ -74,20 +74,14 @@ $panel->addMenu($button);
 // the name-value pairs are added tot the panel
 $panel->addNameValue('Given name', 'John');
 $panel->addNameValue('Family name', 'Doe');
-$panel->addNameValue(
-	'website',
-	'<a href="https://www.example.com">example.com</a>'
-);
-$panel->addNameValue(
-	'e-mail',
-	'<a href="mailto:john.doe@example.com">john.doe@example.com</a>'
-);
+$panel->addNameValue('website',	'<a href="https://www.example.com">example.com</a>');
+$panel->addNameValue('e-mail','<a href="mailto:john.doe@example.com">john.doe@example.com</a>');
 $panel->addNameValue('Height', '173 cm');
 $panel->addValue(
 	'Some remarks can be shown using the entire panel width.
 	Check the DELETE option in the panel menu, for a delete confirmation template.'
 );
-// ************************************************** a panel WITH FORM ELEMENTS
+// ********************************************************************** a panel WITH FORM ELEMENTS
 $cell = $row->addCell();
 $cell->addWidth('md', 6);
 $panel = $cell->addInputPanel();
@@ -105,6 +99,7 @@ $input->setPlaceholder('a placeholder text');
 $panel->addInput($input);
 // phone input element
 $input = new InputPhone();
+$input->addAttribute('autocomplete', 'phone');
 $input->setLabel('Phone number');
 $input->setPlaceholder('here you can type a phone number');
 $input->setName('phone');
@@ -119,7 +114,7 @@ $input->addOption('Value 3', 'v3');
 $input->addOption('Value 4', 'v4', false, 'info about the forth value');
 $input->setValue('v2'); // default value can be set
 $panel->addInput($input);
-// *************************************************** a panel WITH AN ACCORDION
+// *********************************************************************** a panel WITH AN ACCORDION
 $cell = $row->addCell();
 $cell->addWidth('xs', 12);
 $panel = $cell->addPanel();
@@ -135,7 +130,7 @@ $accordionItem = $accordion->getNewItem();
 $accordionItem->setTitle('Third accordion item');
 $accordionItem->addElement(new Html('Third item content'));
 $panel->addElement($accordion);
-// ************************************************* a panel WITH A FILE BROWSER
+// ********************************************************************* a panel WITH A FILE BROWSER
 $cell = $row->addCell();
 $cell->addWidth('xs', 12);
 $panel = $cell->addFileBrowserPanel();

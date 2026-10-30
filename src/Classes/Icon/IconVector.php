@@ -26,7 +26,7 @@ class IconVector extends AbstractIcon {
 	/**
 	 * Checks if an image exists inside the icon archive.
 	 * @param string $name the name of the image, without the .svg extension
-	 * @return bool true if the image exists, false if not
+	 * @return bool TRUE if the image exists, FALSE if not
 	 */
 	protected static function imageExistsInZip(string $name):bool {
 		$imageListFile = Internals::getCachePath().'icons_vector.csv';
@@ -59,9 +59,9 @@ class IconVector extends AbstractIcon {
 			self::$imageFileList = explode(',', file_get_contents($imageListFile));
 		}
 		if (in_array($name, self::$imageFileList)) {
-			return true;
+			return TRUE;
 		}
-		return false;
+		return FALSE;
 	}
 	/**
 	 * The size of the icon (it will be rendered as a square)
@@ -74,8 +74,8 @@ class IconVector extends AbstractIcon {
 		return $this->size;
 	}
 	/**
-	 * Check if the cache folder contains the image. If not, then the image will
-	 * be extracted from the zip file
+	 * Check if the cache folder contains the image. If not, then the image will be extracted from
+	 * the zip file
 	 */
 	private function ensureCachedImage():void {
 		$file = 'vector_'.$this->getIcon().'.svg';
@@ -83,15 +83,12 @@ class IconVector extends AbstractIcon {
 			// file does not exists
 			$zipPath = Internals::getFolder(['Media','Icons','Vector']).'icons.zip';
 			if (!self::imageExistsInZip($this->getIcon())) {
-				throw new Exception(
-					'File not found in '.$zipPath.'#'.$this->getIcon().'.svg'
-				);
+				throw new Exception('File not found in '.$zipPath.'#'.$this->getIcon().'.svg');
 			}
 			$archive = new \ZipArchive();
 			if ($archive->open($zipPath)) {
 				file_put_contents(
-					Internals::getCachePath($file),
-					$archive->getFromName($this->getIcon().'.svg')
+					Internals::getCachePath($file), $archive->getFromName($this->getIcon().'.svg')
 				);
 			} else {
 				throw new Exception('Unable to process '.$zipPath);

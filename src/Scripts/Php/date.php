@@ -28,7 +28,7 @@ if ($nextMonth === 13) {
 }
 $today = date('Ymd');
 $monthText = Texts::getMonth($curentMonth);
-// ********************************************************************* BUTTONS
+// ***************************************************************************************** BUTTONS
 $code = '<div>'
 	.'<input type="button" value="<" onClick="ant_inputDate_changeMonth('
 	.$previousMonth.','.$previousYear.')"><input type="button" value="'
@@ -43,7 +43,7 @@ $code = '<div>'
 	.'<input type="button" value=">" onClick="ant_inputDate_changeYears(this)">'
 	.'</div>'
 	.'<table>';
-// ***************************************************************** MONTH TABLE	
+	// ************************************************************************************* MONTH TABLE	
 $code .= '<thead><tr>'
 		.'<th>'.substr(Texts::get('MONDAY'), 0, 1).'</th>'
 		.'<th>'.substr(Texts::get('TUESDAY'), 0, 1).'</th>'
@@ -92,14 +92,14 @@ for( $i = $currentColumn; $i <= 7; $i ++) {
 	$code .='<td>&nbsp;</td>';
 }
 $code .= '</tr></tbody></table>';
-// ************************************************************* MONTH SELECTION
+// ********************************************************************************* MONTH SELECTION
 $code .= '<div>';
 for ($i = 1; $i <= 12; $i++) {
 	$code .= '<input type="button" value="'.Texts::getMonth($i)
 		.'" onClick="ant_inputDate_changeMonth('.$i.')">';
 }
 $code .='</div>';
-// ************************************************************** YEAR SELECTION
+// ********************************************************************************** YEAR SELECTION
 $code .= '<div></div>';
 echo $code;
 ?>

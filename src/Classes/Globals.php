@@ -5,13 +5,12 @@ namespace Antheia\Framework;
  * @author Cosmin Staicu
  */
 class Globals {
-	// the LANGUAGE_## is used as a file name for the class that contains
-	// the texts for the language
+	// the LANGUAGE_## is used as a file name for the class that contains the texts for the language
 	const LANGUAGE_ENGLISH = '\\Antheia\\Framework\\Language\\English';
 	const LANGUAGE_ROMANA = '\\Antheia\\Framework\\Language\\Romana';
 	private static $logoUrl = NULL;
 	private static $appName = 'Antheia';
-	private static $appMenuLoadingAnimation = true;
+	private static $appMenuLoadingAnimation = TRUE;
 	private static $undefinedDate = '00000000';
 	private static $undefinedTime = '9999';
 	private static $language = self::LANGUAGE_ENGLISH;
@@ -20,41 +19,35 @@ class Globals {
 	private static $testModeAttribute = 'data-testid';
 	/**
 	 * Defines the location of the cache folder for the library
-	 * @param string $url the url of the cache folder (as an absolute
-	 * location, relative to the root of the web server)
-	 * @param string $path the path of the cache folder (an absolute
-	 * location on the file system)
+	 * @param string $url the url of the cache folder (as an absolute location, relative to the root
+	 * of the web server)
+	 * @param string $path the path of the cache folder (an absolute location on the file system)
 	 */
 	public static function setCache(string $url, string $path):void {
 		Internals::setCache($url, $path);
 	}
 	/**
-	 * Defines if the library runs in debugging mode. If debuggin mode
-	 * is enabled then the css and js files in the cache folder are always
-	 * generated on each run.
-	 * @param boolean $mode (optional) (default true) true if debugging mode
-	 * is enabled, false if the debugging mode is disables
+	 * Defines if the library runs in debugging mode. If debuggin mode is enabled then the css and
+	 * js files in the cache folder are always generated on each run.
+	 * @param boolean $mode (optional) (default true) true if debugging mode is enabled, false if
+	 * the debugging mode is disables
 	 */
-	public static function setDebug(bool $mode = true):void {
+	public static function setDebug(bool $mode = TRUE):void {
 		self::$debugMode = $mode;
 	}
 	/**
-	 * Returns if the library runs in debugging mode. If debuggin mode
-	 * is enabled then the css and js files in the cache folder are always
-	 * generated on each run.
-	 * @return boolean true if debugging mode is enabled, false if the
-	 * debugging mode is disabled
+	 * Returns if the library runs in debugging mode. If debuggin mode is enabled then the css and
+	 * js files in the cache folder are always generated on each run.
+	 * @return boolean true if debugging mode is enabled, false if the debugging mode is disabled
 	 */
 	public static function getDebug():bool {
 		return self::$debugMode;
 	}
 	/**
-	 * Defines the name of the html attribute used when test mode is enabled.
-	 * If test mode is enabled then all components that have a test id (defined
-	 * using HtmlId::setTestId()) will have the attribute inserted into the
-	 * html tag.
-	 * For example, this mechanism is used by playwright testing, when the method
-	 * getByTestId is called
+	 * Defines the name of the html attribute used when test mode is enabled. If test mode is
+	 * enabled then all components that have a test id (defined using HtmlId::setTestId()) will have
+	 * the attribute inserted into the html tag. For example, this mechanism is used by playwright
+	 * testing, when the method getByTestId is called
 	 * @param string $name the name of the test attribute
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
@@ -62,12 +55,10 @@ class Globals {
 		self::$testModeAttribute = $name;
 	}
 	/**
-	 * Returns the name of the html attribute used when test mode is enabled.
-	 * If test mode is enabled then all components that have a test id (defined
-	 * using HtmlId::setTestId()) will have the attribute inserted into the
-	 * html tag.
-	 * For example, this mechanism is used by playwright testing, when the method
-	 * getByTestId is called
+	 * Returns the name of the html attribute used when test mode is enabled. If test mode is enabled
+	 * then all components that have a test id (defined using HtmlId::setTestId()) will have the
+	 * attribute inserted into the html tag. For example, this mechanism is used by playwright
+	 * testing, when the method getByTestId is called
 	 * @return string the name of the test attribute (default data-testid)
 	 * @see https://playwright.dev/docs/locators#locate-by-test-id
 	 */
@@ -75,9 +66,8 @@ class Globals {
 		return self::$testModeAttribute;
 	}
 	/**
-	 * Enables or disables the test mode. When test mode is enabled, all tags
-	 * having a testId defined (using HtmlId::setTestId()) will have that
-	 * attribute echoed inside the html tag
+	 * Enables or disables the test mode. When test mode is enabled, all tags having a testId defined
+	 * (using HtmlId::setTestId()) will have that attribute echoed inside the html tag
 	 * @param bool $mode true if test mode is enabled, false if not
 	 */
 	public static function setTestMode(bool $mode = true):void {
@@ -92,55 +82,48 @@ class Globals {
 	}
 	/**
 	 * Defines the language used by the library
-	 * @param string $language the language used by the library as a constant
-	 * like Globals::LANGUAGE_####
+	 * @param string $language the language used by the library as a constant like
+	 * Globals::LANGUAGE_####
 	 */
 	public static function setLanguage(string $language):void {
 		self::$language = $language;
 	}
 	/**
 	 * Returns the language used by the library
-	 * @return string the language used by the library as a constant like
-	 * Globals::LANGUAGE_####
+	 * @return string the language used by the library as a constant like Globals::LANGUAGE_####
 	 */
 	public static function getLanguage():string {
 		return self::$language;
 	}
 	/**
-	 * Defines the value used for an undefined date
-	 * (for example, the value to be inserted into a date input, when the
-	 * user clicks the Undefined button)
-	 * @param string $undefinedDate the value for the undefined date
-	 * (default 00000000)
+	 * Defines the value used for an undefined date (for example, the value to be inserted into a
+	 * date input, when the user clicks the Undefined button)
+	 * @param string $undefinedDate the value for the undefined date (default 00000000)
 	 */
 	public static function setUndefinedDate(string $undefinedDate):void {
 		self::$undefinedDate = $undefinedDate;
 	}
 	/**
-	 * Returns the value used for an undefined date
-	 * (for example, the value to be inserted into a date input, when the
-	 * user clicks the Undefined button)
+	 * Returns the value used for an undefined date (for example, the value to be inserted into a
+	 * date input, when the user clicks the Undefined button)
 	 * @return string the value for the undefined date (default 00000000)
 	 */
 	public static function getUndefinedDate():string {
 		return self::$undefinedDate;
 	}
 	/**
-	 * Defines the value used for an undefined time
-	 * (for example, the value to be inserted into a time input, when the
-	 * user clicks the Undefined button)
-	 * @param string $undefinedTime the value for the undefined time
-	 * (default 9999)
+	 * Defines the value used for an undefined time (for example, the value to be inserted into a
+	 * time input, when the user clicks the Undefined button)
+	 * @param string $undefinedTime the value for the undefined time (default 9999)
 	 */
 	public static function setUndefinedTime(string $undefinedTime):void {
 		self::$undefinedTime = $undefinedTime;
 	}
 	/**
-	 * Returns the value used for an undefined time
-	 * (for example, the value to be inserted into a time input, when the
-	 * user clicks the Undefined button)
-	 * @return string the value for the undefined time (default 9999,
-	 * if the value has not been altered by the setUndefinedTime method)
+	 * Returns the value used for an undefined time (for example, the value to be inserted into a
+	 * time input, when the user clicks the Undefined button)
+	 * @return string the value for the undefined time (default 9999, if the value has not been
+	 * altered by the setUndefinedTime method)
 	 */
 	public static function getUndefinedTime():string {
 		return self::$undefinedTime;
@@ -160,27 +143,26 @@ class Globals {
 		return self::$appName;
 	}
 	/**
-	 * Sets the default onClick animation for future instances of appMenu
-	 * instances (the menus and submenus on the left slider).
-	 * @param bool $status true if the loading animation should start when
-	 * the user clicks on a menu, false if not
+	 * Sets the default onClick animation for future instances of appMenu instances (the menus and
+	 * submenus on the left slider).
+	 * @param bool $status true if the loading animation should start when the user clicks on a menu,
+	 * false if not
 	 */
 	public static function setAppMenuLoadingAnimation(bool $status):void {
 		self::$appMenuLoadingAnimation = $status;
 	}
 	/**
-	 * Returns the default onClick animation for future instances of appMenu
-	 * instances (the menus and submenus on the left slider).
-	 * @return bool true if the loading animation should start when
-	 * the user clicks on a menu, false if not
+	 * Returns the default onClick animation for future instances of appMenu instances (the menus
+	 * and submenus on the left slider).
+	 * @return bool true if the loading animation should start when the user clicks on a menu,
+	 * false if not
 	 */
 	public static function getAppMenuLoadingAnimation():bool {
 		return self::$appMenuLoadingAnimation;
 	}
 	/**
 	 * Defines the path to the app logo (used as a URL)
-	 * @param string $logoUrl the absolute path to the app logo, to be used
-	 * as an URL
+	 * @param string $logoUrl the absolute path to the app logo, to be used as an URL
 	 */
 	public static function setLogo(string $logoUrl):void {
 		self::$logoUrl = $logoUrl;
@@ -196,8 +178,8 @@ class Globals {
 		return self::$logoUrl;
 	}
 	/**
-	 * Removes any tabs and spaces from the edge of each row inside the
-	 * provided text and returns the formatted text
+	 * Removes any tabs and spaces from the edge of each row inside the provided text and returns
+	 * the formatted text
 	 * @param string $text the text to be formatted
 	 * @return string the formatted text
 	 */

@@ -51,10 +51,9 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		$this->initialText = $text;
 	}
 	/**
-	 * Defines the text displayed on the button after the password has been
-	 * defined by the user
-	 * @param string $text the final text displayed on the button after the
-	 * password has been defined by the user
+	 * Defines the text displayed on the button after the password has been defined by the user
+	 * @param string $text the final text displayed on the button after the password has been defined
+	 * by the user
 	 */
 	public function setFinalText(string $text):void {
 		$this->finalText = $text;
@@ -62,8 +61,7 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 	/**
 	 * Defines the minimum and maximum length for the password
 	 * @param int $minimum the minimum length for the password
-	 * @param int $maximum (optional) the maximum length for the password 
-	 * or 0 if no limit is required
+	 * @param int $maximum (optional) the maximum length for the password or 0 if no limit is required
 	 */
 	public function setLength (int $minimum, int $maximum = 0):void {
 		if ($minimum < 3) {
@@ -73,45 +71,44 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 		$this->maxLength = $maximum;
 	}
 	/**
-	 * Calling the method will render the input to only accept digits
-	 * (for defining a PIN number, for example)
+	 * Calling the method will render the input to only accept digits (for defining a PIN number,
+	 * for example)
 	 */
 	public function setOnlyDigits():void {
 		$this->justDigits = 'yes';
 	}
 	/**
-	 * Calling the method will render the input to validate the password if
-	 * it contains at least one uppercase character
+	 * Calling the method will render the input to validate the password if it contains at least
+	 * one uppercase character
 	 */
 	public function mustContainUppercase():void {
 		$this->uppercase = 'yes';
 	}
 	/**
-	 * Calling the method will render the input to validate the password if
-	 * it contains at least one lowercase character
+	 * Calling the method will render the input to validate the password if it contains at least
+	 * one lowercase character
 	 */
 	public function mustContainLowercase():void {
 		$this->lowercase = 'yes';
 	}
 	/**
-	 * Calling the method will render the input to validate the password if
-	 * it contains at least one digit
+	 * Calling the method will render the input to validate the password if it contains at least
+	 * one digit
 	 */
 	public function mustContainDigits():void {
 		$this->digits = 'yes';
 	}
 	/**
-	 * Calling the method will render the input to validate the password if
-	 * it contains at least one special symbol
+	 * Calling the method will render the input to validate the password if it contains at least
+	 * one special symbol
 	 */
 	public function mustContainSymbols():void {
 		$this->symbols = 'yes';
 	}
 	/**
-	 * Defines the username attached to the new password. It is not used
-	 * by the script, it just enters the username in a display-none text field.
-	 * It is required so the browser can save the new password in a keychain,
-	 * if the user agrees.
+	 * Defines the username attached to the new password. It is not used by the script, it just
+	 * enters the username in a display-none text field. It is required so the browser can save the
+	 * new password in a keychain, if the user agrees.
 	 * @param string $username the username for which the password is updated
 	 */
 	public function setUsername(string $username):void {
@@ -133,34 +130,25 @@ class InputNewPassword extends AbstractInput implements BeforeAfterCallback  {
 	public function getHtml():string {
 		if ($this->justDigits === 'yes') {
 			if ($this->lowercase === 'yes') {
-				throw new Exception(
-					'Invalid rules: only digits - must contain lowercase'
-				);
+				throw new Exception('Invalid rules: only digits - must contain lowercase');
 			}
 			if ($this->uppercase === 'yes') {
-				throw new Exception(
-					'Invalid rules: only digits - must contain uppercase'
-				);
+				throw new Exception('Invalid rules: only digits - must contain uppercase');
 			}
 			if ($this->symbols === 'yes') {
-				throw new Exception(
-					'Invalid rules: only digits - must contain symbols'
-				);
+				throw new Exception('Invalid rules: only digits - must contain symbols');
 			}
 		}
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
 		$this->button->setHiddenInputValue($this->getValue());
 		if ($this->getDefaultValue() !== NULL) {
-			$this->button->addHiddenInputAttribute(
-					'data-default', $this->getDefaultValue());
+			$this->button->addHiddenInputAttribute('data-default', $this->getDefaultValue());
 		}
 		foreach ($this->getAttributeList() as $info) {
 			$this->button->addHiddenInputAttribute($info['name'], $info['value']);
 		}
-		$this->button->addHiddenInputAttribute(
-			'data-visible-element-id', $this->button->getHtmlId()
-		);
+		$this->button->addHiddenInputAttribute('data-visible-element-id', $this->button->getHtmlId());
 		$this->button->setText($this->initialText);
 		$this->button->setIcon('key-round');
 		$this->button->setOnClick('ant_inputNewPassword_start(this)');

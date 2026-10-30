@@ -102,8 +102,8 @@ class Internals {
 	}
 	/**
 	 * Returns the absolute path to the cache folder of the library
-	 * @param string $fileName (optional) if defined then the returned path points to the file defined here
-	 * It is a string used by the file manager, not an URL.
+	 * @param string $fileName (optional) if defined then the returned path points to the file
+	 * defined here. It is a string used by the file manager, not an URL.
 	 * @return string the absolute path to the cache folder of the app, ending with the file
 	 * separator (if no particular file was defined using the $fileName parameter)
 	 * @throws Exception if the cache path is not defined

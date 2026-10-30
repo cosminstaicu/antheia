@@ -52,8 +52,8 @@ implements HtmlCode, BeforeAfterCallback, HtmlAttribute, LinkButtonRender {
 		$this->name = $name;
 	}
 	/**
-	 * Defines the icon to be shown near the name of the item. If the method
-	 * is not called then a default icon will be used
+	 * Defines the icon to be shown near the name of the item. If the method is not called then a
+	 * default icon will be used
 	 * @param IconPixelBig $icon the icon to be shown to the left of the name
 	 */
 	public function setIcon(IconPixelBig $icon):void {
@@ -96,8 +96,7 @@ implements HtmlCode, BeforeAfterCallback, HtmlAttribute, LinkButtonRender {
 	}
 	/**
 	 * Adds a hidden item that will be visible only when the item is selected
-	 * @param HtmlCode $item the item that will be visible only when the
-	 * item is selected
+	 * @param HtmlCode $item the item that will be visible only when the item is selected
 	 */
 	public function addHiddenItem(HtmlCode $item):void {
 		$this->hiddenItems[] = $item;

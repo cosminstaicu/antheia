@@ -16,8 +16,8 @@ use Antheia\Framework\Wireframe\Cell;
 use Antheia\Framework\Wireframe\Wireframe;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * The template for a page that displays the search result, along with the
- * filters, to further refine the search.
+ * The template for a page that displays the search result, along with the filters, to further
+ * refine the search.
  * @author Cosmin Staicu
  */
 class PageSearchResult extends PageEmpty {
@@ -70,12 +70,10 @@ class PageSearchResult extends PageEmpty {
 		$this->noItemsText = $text;
 	}
 	/**
-	 * Defines the type of wireframe used by the search result container.
-	 * If it is fixed, then the result set width will have a fixed width, based
-	 * on the curent viewport width, being aligned with the rest of the page
-	 * elements.
-	 * It the wireframe is fluid then all available width will be used, ignoring
-	 * the alignment with the rest of the page elements.
+	 * Defines the type of wireframe used by the search result container. If it is fixed, then the
+	 * result set width will have a fixed width, based on the curent viewport width, being aligned
+	 * with the rest of the page elements. It the wireframe is fluid then all available width will
+	 * be used, ignoring the alignment with the rest of the page elements.
 	 * @param integer $wireframeType the type of wireframe, as one of the
 	 * Wireframe::TYPE_FIXED, Wireframe::TYPE_FLUID
 	 */
@@ -89,8 +87,8 @@ class PageSearchResult extends PageEmpty {
 		$this->showSelectOptions = true;
 	}
 	/**
-	 * Adds a button to right of the the container for managing selected elements
-	 * (if the container is enabled using the showSelectOptions() method)
+	 * Adds a button to right of the the container for managing selected elements (if the container
+	 * is enabled using the showSelectOptions() method)
 	 * @param SearchOptionBarButton $button the button to be added
 	 */
 	public function addSelectButton(SearchOptionBarButton $button):void {
@@ -134,10 +132,10 @@ class PageSearchResult extends PageEmpty {
 	}
 	/**
 	 * Defines the sort by list
-	 * @param string[] $list a list having the value send to the
-	 * server as an index and the visible text as a value
-	 * @param string $elementSelectat the index of the selected element from
-	 * the list defined in the previous parameter
+	 * @param string[] $list a list having the value send to the server as an index and the visible
+	 * text as a value
+	 * @param string $elementSelectat the index of the selected element from the list defined in the
+	 * previous parameter
 	 * @see SearchForm::setSortBy
 	 */
 	public function setSortBy(array $list, string $selected):void {
@@ -160,16 +158,13 @@ class PageSearchResult extends PageEmpty {
 	/**
 	 * Adds an search filter (an input) to the criteria list of the page
 	 * @param AbstractInput $input the input being added
-	 * @param string $id (optional) the HTML id for the cell containing
-	 * the filter (the container with the label and input)
-	 * If an id is not required then an empty string can be used
-	 * @param string $classes (optional) a list o classes to be inserted into
-	 * the input container definition. If no classes are required then an
-	 * empty array can be submitted
+	 * @param string $id (optional) the HTML id for the cell containing the filter (the container
+	 * with the label and input). If an id is not required then an empty string can be used
+	 * @param string $classes (optional) a list o classes to be inserted into the input container
+	 * definition. If no classes are required then an empty array can be submitted
 	 * @see SearchForm::addInput
 	 */
-	public function addInput(
-			AbstractInput $input, string $id = '', array $classes = []):void {
+	public function addInput(AbstractInput $input, string $id = '', array $classes = []):void {
 		if ($input->getHtmlId() === NULL) {
 			$input->setHtmlId('ant_search-filter-id'.$this->uniqueIdCounter++);
 		}
@@ -183,56 +178,50 @@ class PageSearchResult extends PageEmpty {
 		return $this->form;
 	}
 	/**
-	 * Adds a HTML element before the content of the page
-	 * (before the main wireframe)
+	 * Adds a HTML element before the content of the page (before the main wireframe)
 	 * @param HtmlCode $item the element to be added
 	 */
 	public function addItemBeforeContent(HtmlCode $item):void {
 		$this->beforeContent[] = $item;
 	}
 	/**
-	 * Adds a HTML element after the content of the page
-	 * (after the main wireframe)
+	 * Adds a HTML element after the content of the page (after the main wireframe)
 	 * @param HtmlCode $item the element to be added
 	 */
 	public function addItemAfterContent(HtmlCode $item):void {
 		$this->afterContent[] = $item;
 	}
 	/**
-	 * Adds a HTML element before the filters displayed on the page
-	 * As the page is displayed using a wireframe, all elements added using this
-	 * method will be inserted into a single cell, from a new row added just before
-	 * the row with the filters.
+	 * Adds a HTML element before the filters displayed on the page. As the page is displayed using
+	 * a wireframe, all elements added using this method will be inserted into a single cell, from
+	 * a new row added just before the row with the filters.
 	 * @param HtmlCode $item the element to be added
 	 */
 	public function addItemBeforeFilters(HtmlCode $item):void {
 		$this->beforeFilters[] = $item;
 	}
 	/**
-	 * Adds a HTML element after the filters displayed on the page.
-	 * As the page is displayed using a wireframe, all elements added using this
-	 * method will be inserted into a single cell, from a new row added just after
-	 * the row with the filters.
+	 * Adds a HTML element after the filters displayed on the page. As the page is displayed using a
+	 * wireframe, all elements added using this method will be inserted into a single cell, from a
+	 * new row added just after the row with the filters.
 	 * @param HtmlCode $item the element to be added
 	 */
 	public function addItemAfterFilters(HtmlCode $item):void {
 		$this->afterFilters[] = $item;
 	}
 	/**
-	 * Adds a HTML element before the results displayed on the page
-	 * As the page is displayed using a wireframe, all elements added using this
-	 * method will be inserted into a single cell, from a new row added just before
-	 * the row with the results.
+	 * Adds a HTML element before the results displayed on the page. As the page is displayed using
+	 * a wireframe, all elements added using this method will be inserted into a single cell, from
+	 * a new row added just before the row with the results.
 	 * @param HtmlCode $item the element to be added
 	 */
 	public function addItemBeforeResults(HtmlCode $item):void {
 		$this->beforeResults[] = $item;
 	}
 	/**
-	 * Adds a HTML element after the results displayed on the page
-	 * As the page is displayed using a wireframe, all elements added using this
-	 * method will be inserted into a single cell, from a new row added just after
-	 * the row with the results.
+	 * Adds a HTML element after the results displayed on the page. As the page is displayed using
+	 * a wireframe, all elements added using this method will be inserted into a single cell, from
+	 * a new row added just after the row with the results.
 	 * @param HtmlCode $item the element to be added
 	 */
 	public function addItemAfterResults(HtmlCode $item):void {

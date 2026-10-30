@@ -8,10 +8,9 @@ use Antheia\Framework\Interfaces\HtmlAttribute;
 use Antheia\Framework\Interfaces\HtmlCode;
 use Antheia\Framework\Interfaces\HtmlId;
 /**
- * A responsive wireframe with a responsive design. The wireframe has no
- * visible borders or background colors and it is used for holding elements,
- * ussualy panels.
- * A wireframe contains one ore more rows, each row with one ore more items / cells
+ * A responsive wireframe with a responsive design. The wireframe has no visible borders or
+ * background colors and it is used for holding elements, ussualy panels. A wireframe contains one
+ * ore more rows, each row with one ore more items / cells
  * @author Cosmin Staicu
  */
 class Wireframe extends AbstractClass implements HtmlCode, HtmlAttribute, HtmlId {
@@ -50,9 +49,8 @@ class Wireframe extends AbstractClass implements HtmlCode, HtmlAttribute, HtmlId
 		$this->addAttribute('data-text-'.$name, Texts::get($value));
 	}
 	/**
-	 * Defines the alignment of the items in a wireframe row. It is used when
-	 * the items width is smaller than 100% (the items in a row will have to align,
-	 * relative to the ones on a full row).
+	 * Defines the alignment of the items in a wireframe row. It is used when the items width is
+	 * smaller than 100% (the items in a row will have to align, relative to the ones on a full row).
 	 * @param int $align a constant like Simple::ALIGN:##
 	 */
 	public function setAlign(int $align):void {
@@ -65,23 +63,21 @@ class Wireframe extends AbstractClass implements HtmlCode, HtmlAttribute, HtmlId
 		$this->testId = $id;
 	}
 	/**
-	 * Defines the type of wireframe. It can be either fixed (a fixed size, based
-	 * on the viewport width) or fluid (full width of the available space)
-	 * @param integer $type the type of structure, as a constant
-	 * like Simple::TYPE_##.
-	 * If the method is not called, then the wireframe will be rendered as a
-	 * a FLUID type
+	 * Defines the type of wireframe. It can be either fixed (a fixed size, based on the viewport
+	 * width) or fluid (full width of the available space)
+	 * @param integer $type the type of structure, as a constant like Simple::TYPE_##.
+	 * If the method is not called, then the wireframe will be rendered as a FLUID type
 	 */
 	public function setType(int $type):void {
 		$this->type = $type;
 	}
 	/**
 	 * Adds a row to the wireframe and returns it
-	 * @param Row $row (optional) the row to be added.
-	 * If the parameter is not specified then a new row will be instanced.
+	 * @param ?Row $row (optional) the row to be added. If the parameter is not specified then a new
+	 * row will be instanced.
 	 * @return Row the added row
 	 */
-	public function addRow(Row $row = null):Row {
+	public function addRow(?Row $row = null):Row {
 		if ($row === null) {
 			$row = new Row();
 		}

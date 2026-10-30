@@ -7,8 +7,8 @@ use Antheia\Framework\Menu\Container;
 use Antheia\Framework\Menu\Item\AbstractMenu;
 use Antheia\Framework\Interfaces\HtmlCode;
 /**
- * The header of the page. The class is controlled internally by the library
- * so no new instances for this class are required
+ * The header of the page. The class is controlled internally by the library so no new instances
+ * for this class are required
  * @author Cosmin Staicu
  */
 class Header implements HtmlCode {
@@ -58,29 +58,28 @@ class Header implements HtmlCode {
 	}
 	/**
 	 * Defines the width of the header.
-	 * @param string $type one of the constants: Header::TYPE_FIXED (default)
-	 * the page title, along with the page manu (if available) will align with
-	 * a fixed wireframe
-	 * Header::FLUID the page title will always be on the left edge of the document
+	 * @param string $type one of the constants:
+	 *  - Header::TYPE_FIXED (default) the page title, along
+	 * with the page manu (if available) will align with a fixed wireframe.
+	 *  - Header::FLUID the page title will always be on the left edge of the document
 	 */
 	public function setType(string $type):void {
 		$this->type = $type;
 	}
 	/**
 	 * Defines the url to be used for the header background image
-	 * @param string|NULL $url the url to be uses for the header background image
-	 * or NULL if no background image is used
+	 * @param ?string $url the url to be uses for the header background image or NULL if no
+	 * background image is used
 	 */
 	public function setBackgroundImage(?string $url):void {
 		$this->backgroundUrl = $url;
 	}
 	/**
-	 * Defines the background fill type, if a background image is used for
-	 * the header
+	 * Defines the background fill type, if a background image is used for the header
 	 * @param string $fillType the background fill type for the background image:
-	 * - Header::BK_FIT the image will be displayed as large as possible,
+	 * <br>- Header::BK_FIT the image will be displayed as large as possible,
 	 * with no hidden areas even if empty areas inside the header will ve visible.
-	 * - Header::BK_FILL the entire header area will be covered by the image
+	 * <br>- Header::BK_FILL the entire header area will be covered by the image
 	 * even if parts of the image are hidden, to preserve the aspect ratio.
 	 */
 	public function setBackgroundFill(string $fillType):void {
@@ -90,16 +89,16 @@ class Header implements HtmlCode {
 	 * Defines the position of the image background
 	 * @param string $position the position of the background image as one
 	 * of the constants:
-	 * - Header::BK_POSITION_CENTER
-	 * - Header::BK_POSITION_N
-	 * - Header::BK_POSITION_S
-	 * - Header::BK_POSITION_W
-	 * - Header::BK_POSITION_E
-	 * - Header::BK_POSITION_NE
-	 * - Header::BK_POSITION_NW
-	 * - Header::BK_POSITION_SW
-	 * - Header:: BK_POSITION_SE;
-	 * Symbols N S E W corespond to north, south, west, east
+	 * <br>- Header::BK_POSITION_CENTER
+	 * <br>- Header::BK_POSITION_N
+	 * <br>- Header::BK_POSITION_S
+	 * <br>- Header::BK_POSITION_W
+	 * <br>- Header::BK_POSITION_E
+	 * <br>- Header::BK_POSITION_NE
+	 * <br>- Header::BK_POSITION_NW
+	 * <br>- Header::BK_POSITION_SW
+	 * <br>- Header:: BK_POSITION_SE;
+	 * <br>Symbols N S E W corespond to north, south, west, east
 	 */
 	public function setBackgroundPosition(string $position):void {
 		$this->backgroundPosition = $position;

@@ -9,11 +9,10 @@ use Antheia\Framework\Interfaces\HtmlCode;
 use Antheia\Framework\Interfaces\HtmlId;
 use Antheia\Framework\Interfaces\LinkButtonRender;
 /**
- * Abstract class that is extended by all menu items that can be inserted into
- * the top right menu
+ * Abstract class that is extended by all menu items that can be inserted into the top right menu
  * @author Cosmin Staicu
  */
-abstract class AbstractTopRightMenu extends AbstractClass
+abstract class AbstractTopRightMenu extends AbstractClass 
 implements HtmlCode, LinkButtonRender, HtmlId {
 	private $href;
 	private $onClick;
@@ -45,13 +44,12 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 		$this->renderType = $type;
 	}
 	/**
-	 * Defines if the action is executed in a new browser window or not
-	 * (if a a target=_blank attribute will be inserted into the html tag).
-	 * Only used if the render type is set to LINK
-	 * @param boolean $status (optional) (default true) if true then a new
-	 * browser window will be opened on click
+	 * Defines if the action is executed in a new browser window or not (if a a target=_blank
+	 * attribute will be inserted into the html tag). Only used if the render type is set to LINK
+	 * @param boolean $status (optional) (default TRUE) if TRUE then a new browser window will be
+	 * opened on click
 	 */
-	public function setTargetBlank(bool $status = true):void {
+	public function setTargetBlank(bool $status = TRUE):void {
 		$this->targetBlank = $status;
 	}
 	/**
@@ -73,11 +71,10 @@ implements HtmlCode, LinkButtonRender, HtmlId {
 		$this->icon->setIcon($icon);
 	}
 	/**
-	 * Calling the method will set up the menu to trigger a loading animation
-	 * when the menu is clicked
+	 * Calling the method will set up the menu to trigger a loading animation when the menu is clicked
 	 */
 	public function startLoadingOnClick():void {
-		$this->startLoadingAnimationOnClick = true;
+		$this->startLoadingAnimationOnClick = TRUE;
 	}
 	public function setHtmlId(string $id):void {
 		$this->htmlId = $id;

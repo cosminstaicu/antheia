@@ -1,8 +1,7 @@
 <?php
 namespace Antheia\Framework\Interfaces;
 /**
- * The interface used by the table cells inside the library. The interface
- * is needed so type hinting is backward compatible with PHP-7.2
+ * The interface used by the table cells inside the library.
  * @author Cosmin Staicu
  */
 interface TableCell extends HtmlCode, HtmlId, HtmlAttribute {
@@ -13,8 +12,7 @@ interface TableCell extends HtmlCode, HtmlId, HtmlAttribute {
 	public function addClass(string $class):void;
 	/**
 	 * Defines the cell content alignment
-	 * @param integer $align the content alignment using a constant like
-	 * Cell::ALIGN_##
+	 * @param integer $align the content alignment using a constant like Cell::ALIGN_##
 	 */
 	public function setAlign(int $align):void;
 	/**

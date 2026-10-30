@@ -3,8 +3,8 @@ namespace Antheia\Framework\Input;
 use Antheia\Framework\Input\Raw\InputRawCustomButton;
 use Antheia\Framework\Input\Raw\InputRawHidden;
 /**
- * A custom button, to be displayed inside a form. The button has a hidden
- * input attached to it, that can be used for sending values with a form.
+ * A custom button, to be displayed inside a form. The button has a hidden input attached to it,
+ * that can be used for sending values with a form.
  * @author Cosmin Staicu
  */
 class InputCustomButton extends AbstractInput {
@@ -27,9 +27,8 @@ class InputCustomButton extends AbstractInput {
 		return $this->button;
 	}
 	/**
-	 * Defines the javascript code to be executed when the user clicks
-	 * on the button. If the code does not ends with ; then the script will
-	 * add it.
+	 * Defines the javascript code to be executed when the user clicks on the button. If the code
+	 * does not ends with ; then the script will add it.
 	 * @param string $javascript the javascript code to be executed when the user clicks
 	 * the user clicks on the button
 	 */
@@ -67,16 +66,13 @@ class InputCustomButton extends AbstractInput {
 	public function getHtml():string {
 		$this->button->setHiddenInputHtmlId($this->getHtmlId());
 		$this->button->setHiddenInputName($this->getName());
-		$this->button->addHiddenInputAttribute(
-			'data-visible-element-id', $this->button->getHtmlId()
-		);
+		$this->button->addHiddenInputAttribute('data-visible-element-id', $this->button->getHtmlId());
 		$this->button->setText($this->getValue());
 		foreach ($this->getAttributeList() as $attr) {
 			$this->button->addHiddenInputAttribute($attr['name'], $attr['value']);
 		}
 		if ($this->exportJavascript()) {
-			$this->button->addHiddenInputAttribute(
-					'data-validate', $this->getValidation());
+			$this->button->addHiddenInputAttribute('data-validate', $this->getValidation());
 		}
 		$cod = $this->button->getHtml();
 		$this->setHtmlCode($cod);
